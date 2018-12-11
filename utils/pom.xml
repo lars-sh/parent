@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<artifactId>utils</artifactId>
+	
+	<name>Utilities</name>
+	<description>This package offers generic utilities for many different situations.</description>
+	<url>https://github.com/lars-sh/parent/tree/master/utils</url>
+
+	<parent>
+		<groupId>de.lars-sh</groupId>
+		<artifactId>root</artifactId>
+		<version>0.9.0</version>
+	</parent>
+
+	<licenses>
+		<license>
+			<name>MIT License</name>
+			<url>https://opensource.org/licenses/MIT</url>
+		</license>
+	</licenses>
+
+	<developers>
+		<developer>
+			<name>Lars Knickrehm</name>
+			<email>mail@lars-sh.de</email>
+			<url>https://lars-sh.de/</url>
+		</developer>
+	</developers>
+
+	<scm>
+		<connection>scm:git:git@github.com:lars-sh/parent.git</connection>
+		<developerConnection>scm:git:git@github.com:lars-sh/parent.git</developerConnection>
+		<url>https://github.com/lars-sh/parent</url>
+	</scm>
+
+	<issueManagement>
+		<system>GitHub Issues</system>
+		<url>https://github.com/lars-sh/parent/issues</url>
+	</issueManagement>
+
+	<ciManagement>
+		<system>Travis</system>
+		<url>https://travis-ci.org/lars-sh/parent</url>
+	</ciManagement>
+
+	<dependencies>
+		<!-- Provided -->
+		<dependency>
+			<groupId>de.lars-sh</groupId>
+			<artifactId>utils-annotations</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.maven</groupId>
+			<artifactId>maven-core</artifactId>
+			<optional>true</optional>
+		</dependency>
+
+		<!-- Test -->
+		<dependency>
+			<groupId>de.lars-sh</groupId>
+			<artifactId>utils-test</artifactId>
+		</dependency>
+	</dependencies>
+</project>

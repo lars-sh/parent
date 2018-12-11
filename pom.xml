@@ -1,0 +1,3190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>de.lars-sh</groupId>
+	<artifactId>root</artifactId>
+	<version>0.9.0</version>
+	<packaging>pom</packaging>
+
+	<name>Root POM</name>
+	<description>This POM is meant to be used as root POM. Use de.lars-sh:parent for your own projects.</description>
+	<url>https://github.com/lars-sh/parent</url>
+
+	<!-- The following lines are commented out to avoid Maven from passing them 
+		through to depending projects, that might be distributed by someone else 
+		or licensed differently. -->
+
+	<licenses>
+		<license>
+			<name>MIT License</name>
+			<url>https://opensource.org/licenses/MIT</url>
+		</license>
+	</licenses>
+
+	<developers>
+		<developer>
+			<name>Lars Knickrehm</name>
+			<email>mail@lars-sh.de</email>
+			<url>https://lars-sh.de/</url>
+		</developer>
+	</developers>
+
+	<scm>
+		<connection>scm:git:git@github.com:lars-sh/parent.git</connection>
+		<developerConnection>scm:git:git@github.com:lars-sh/parent.git</developerConnection>
+		<url>https://github.com/lars-sh/parent</url>
+	</scm>
+
+	<issueManagement>
+		<system>GitHub Issues</system>
+		<url>https://github.com/lars-sh/parent/issues</url>
+	</issueManagement>
+
+	<ciManagement>
+		<system>Travis</system>
+		<url>https://travis-ci.org/lars-sh/parent</url>
+	</ciManagement>
+
+	<properties>
+		<!-- "project.build.mainClass" is meant to be used by child POMs to configure 
+			a default main class, e.g. "de.larssh.Main". -->
+		<project.build.mainClass></project.build.mainClass>
+
+		<!-- "project.build.packageDependenciesPhase" is meant to be used by child 
+			POMs to configure if an archive containing dependencies should be created. 
+			Values can be "none" (disabled) and "package" (enabled) as this property 
+			is used with the <phase> tag. -->
+		<project.build.packageDependenciesPhase>none</project.build.packageDependenciesPhase>
+
+		<!-- "spotbugs.excludeFilterFile" is meant to be used by child POMs to 
+			configure a SpotBugs excludes file. -->
+		<!-- <spotbugs.excludeFilterFile>${project.basedir}/spotbugs-exclude.xml</spotbugs.excludeFilterFile> -->
+
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+		<maven.compiler.failOnWarning>true</maven.compiler.failOnWarning>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+
+		<junit.version>5.3.1</junit.version>
+		<junit.platform.version>1.3.1</junit.platform.version>
+		<lombok.version>1.18.4</lombok.version>
+		<pmd.version>6.8.0</pmd.version>
+		<spotbugs.version>3.1.8</spotbugs.version>
+	</properties>
+
+	<modules>
+		<module>utils</module>
+		<module>utils-annotations</module>
+		<module>utils-test</module>
+		<module>parent</module>
+	</modules>
+
+	<distributionManagement>
+		<snapshotRepository>
+			<id>sonatype-nexus-snapshots</id>
+			<name>Sonatype Nexus Snapshots</name>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+		</snapshotRepository>
+		<repository>
+			<id>sonatype-nexus-staging</id>
+			<name>Nexus Release Repository</name>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+		</repository>
+	</distributionManagement>
+
+	<dependencyManagement>
+		<dependencies>
+			<!-- de.lars-sh -->
+			<dependency>
+				<groupId>de.lars-sh</groupId>
+				<artifactId>lombok-annotations</artifactId>
+				<version>${lombok.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>de.lars-sh</groupId>
+				<artifactId>utils-annotations</artifactId>
+				<version>${project.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>de.lars-sh</groupId>
+				<artifactId>utils</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>de.lars-sh</groupId>
+				<artifactId>utils-test</artifactId>
+				<version>${project.version}</version>
+				<scope>test</scope>
+			</dependency>
+
+			<!-- Provided -->
+			<dependency>
+				<groupId>com.github.spotbugs</groupId>
+				<artifactId>spotbugs-annotations</artifactId>
+				<version>${spotbugs.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.maven.plugin-tools</groupId>
+				<artifactId>maven-plugin-annotations</artifactId>
+				<version>3.5.2</version>
+				<scope>provided</scope>
+			</dependency>
+
+			<!-- Compile -->
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-databind</artifactId>
+				<version>2.9.7</version>
+			</dependency>
+			<dependency>
+				<groupId>com.google.code.gson</groupId>
+				<artifactId>gson</artifactId>
+				<version>2.8.5</version>
+			</dependency>
+			<dependency>
+				<groupId>com.google.guava</groupId>
+				<artifactId>guava</artifactId>
+				<version>26.0-jre</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-io</groupId>
+				<artifactId>commons-io</artifactId>
+				<version>2.6</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-net</groupId>
+				<artifactId>commons-net</artifactId>
+				<version>3.6</version>
+			</dependency>
+			<dependency>
+				<groupId>info.picocli</groupId>
+				<artifactId>picocli</artifactId>
+				<version>3.7.0</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-text</artifactId>
+				<version>1.6</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.maven</groupId>
+				<artifactId>maven-core</artifactId>
+				<version>3.6.0</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.maven</groupId>
+				<artifactId>maven-plugin-api</artifactId>
+				<version>3.5.4</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.maven.resolver</groupId>
+				<artifactId>maven-resolver-api</artifactId>
+				<version>1.3.1</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.maven.resolver</groupId>
+				<artifactId>maven-resolver-util</artifactId>
+				<version>1.3.1</version>
+			</dependency>
+			<dependency>
+				<groupId>org.jooq</groupId>
+				<artifactId>jool-java-8</artifactId>
+				<version>0.9.14</version>
+			</dependency>
+			<dependency>
+				<groupId>org.jooq</groupId>
+				<artifactId>joor-java-8</artifactId>
+				<version>0.9.9</version>
+			</dependency>
+
+			<!-- Test -->
+			<dependency>
+				<groupId>org.junit.jupiter</groupId>
+				<artifactId>junit-jupiter-api</artifactId>
+				<version>${junit.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.junit.jupiter</groupId>
+				<artifactId>junit-jupiter-engine</artifactId>
+				<version>${junit.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.junit.platform</groupId>
+				<artifactId>junit-platform-runner</artifactId>
+				<version>${junit.platform.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.mockito</groupId>
+				<artifactId>mockito-core</artifactId>
+				<version>2.23.0</version>
+				<scope>test</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<dependencies>
+		<!-- Provided -->
+		<dependency>
+			<groupId>de.lars-sh</groupId>
+			<artifactId>lombok-annotations</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.github.spotbugs</groupId>
+			<artifactId>spotbugs-annotations</artifactId>
+		</dependency>
+
+		<!-- Test -->
+		<dependency>
+			<groupId>org.jooq</groupId>
+			<artifactId>joor-java-8</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.platform</groupId>
+			<artifactId>junit-platform-runner</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+			<resource>
+				<directory>${project.basedir}</directory>
+				<targetPath>META-INF</targetPath>
+				<includes>
+					<include>LICENSE.txt</include>
+					<include>README.md</include>
+				</includes>
+			</resource>
+		</resources>
+		<testResources>
+			<testResource>
+				<directory>src/test/resources</directory>
+			</testResource>
+			<testResource>
+				<directory>${project.basedir}</directory>
+				<targetPath>META-INF</targetPath>
+				<includes>
+					<include>LICENSE.txt</include>
+					<include>README.md</include>
+				</includes>
+			</testResource>
+		</testResources>
+
+		<pluginManagement>
+			<plugins>
+				<!-- Maven -->
+				<plugin>
+					<artifactId>maven-antrun-plugin</artifactId>
+					<version>1.8</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-assembly-plugin</artifactId>
+					<version>3.1.0</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-checkstyle-plugin</artifactId>
+					<version>3.0.0</version>
+					<dependencies>
+						<dependency>
+							<groupId>com.puppycrawl.tools</groupId>
+							<artifactId>checkstyle</artifactId>
+							<version>8.13</version>
+						</dependency>
+					</dependencies>
+				</plugin>
+				<plugin>
+					<artifactId>maven-clean-plugin</artifactId>
+					<version>3.1.0</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.8.0</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-dependency-plugin</artifactId>
+					<version>3.1.1</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-deploy-plugin</artifactId>
+					<version>2.8.2</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-gpg-plugin</artifactId>
+					<version>1.6</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-install-plugin</artifactId>
+					<version>2.5.2</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>3.1.0</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<version>3.0.1</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-jxr-plugin</artifactId>
+					<version>2.5</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-plugin-plugin</artifactId>
+					<version>3.5.2</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-pmd-plugin</artifactId>
+					<version>3.10.0</version>
+					<dependencies>
+						<dependency>
+							<groupId>net.sourceforge.pmd</groupId>
+							<artifactId>pmd-core</artifactId>
+							<version>${pmd.version}</version>
+						</dependency>
+						<dependency>
+							<groupId>net.sourceforge.pmd</groupId>
+							<artifactId>pmd-java</artifactId>
+							<version>${pmd.version}</version>
+						</dependency>
+						<dependency>
+							<groupId>net.sourceforge.pmd</groupId>
+							<artifactId>pmd-javascript</artifactId>
+							<version>${pmd.version}</version>
+						</dependency>
+						<dependency>
+							<groupId>net.sourceforge.pmd</groupId>
+							<artifactId>pmd-jsp</artifactId>
+							<version>${pmd.version}</version>
+						</dependency>
+					</dependencies>
+				</plugin>
+				<plugin>
+					<artifactId>maven-project-info-reports-plugin</artifactId>
+					<version>3.0.0</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-release-plugin</artifactId>
+					<version>2.5.3</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>3.1.0</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-shade-plugin</artifactId>
+					<version>3.2.0</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-site-plugin</artifactId>
+					<version>3.7.1</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-source-plugin</artifactId>
+					<version>3.0.1</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>2.22.0</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-surefire-report-plugin</artifactId>
+					<version>2.22.0</version>
+				</plugin>
+
+				<!-- Eclipse Lifecycle Mapping -->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+							<!-- Execute AntRun goals on configuration and non-incremental builds -->
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.apache.maven.plugins</groupId>
+										<artifactId>maven-antrun-plugin</artifactId>
+										<versionRange>[0.0,)</versionRange>
+										<goals>
+											<goal>run</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<execute>
+											<runOnConfiguration>true</runOnConfiguration>
+											<runOnIncremental>false</runOnIncremental>
+										</execute>
+									</action>
+								</pluginExecution>
+								
+								<!-- Ignore delombok goals -->
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.projectlombok</groupId>
+										<artifactId>lombok-maven-plugin</artifactId>
+										<versionRange>${lombok.version}.0</versionRange>
+										<goals>
+											<goal>delombok</goal>
+											<goal>testDelombok</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore />
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+
+				<!-- Others -->
+				<plugin>
+					<groupId>com.github.spotbugs</groupId>
+					<artifactId>spotbugs-maven-plugin</artifactId>
+					<version>3.1.7</version>
+					<dependencies>
+						<dependency>
+							<groupId>com.github.spotbugs</groupId>
+							<artifactId>spotbugs</artifactId>
+							<version>${spotbugs.version}</version>
+						</dependency>
+					</dependencies>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>build-helper-maven-plugin</artifactId>
+					<version>3.0.0</version>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>versions-maven-plugin</artifactId>
+					<version>2.7</version>
+				</plugin>
+				<plugin>
+					<groupId>org.jacoco</groupId>
+					<artifactId>jacoco-maven-plugin</artifactId>
+					<version>0.8.2</version>
+				</plugin>
+				<plugin>
+					<groupId>org.projectlombok</groupId>
+					<artifactId>lombok-maven-plugin</artifactId>
+					<version>${lombok.version}.0</version>
+					<dependencies>
+						<dependency>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+							<version>${lombok.version}</version>
+						</dependency>
+					</dependencies>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+
+		<plugins>
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<!-- .gitignore -->
+					<execution>
+						<id>gitignore</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<target>
+								<echo message="Update ${project.basedir}/.gitignore" />
+								<echo file="${project.basedir}/.gitignore"><![CDATA[/.settings/
+/src/main/lombok/lombok.config
+/src/test/lombok/lombok.config
+/src/lombok.config
+/target/
+/.checkstyle
+/.classpath
+/.project
+]]></echo>
+							</target>
+						</configuration>
+					</execution>
+
+					<!-- README.md -->
+					<execution>
+						<id>project-readme-md-exists</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<exportAntProperties>true</exportAntProperties>
+							<target>
+								<available property="project.readme-md.exists"
+									file="${project.basedir}/README.md" />
+							</target>
+						</configuration>
+					</execution>
+					<execution>
+						<id>readme-md</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<target unless="project.readme-md.exists">
+								<echo message="Create README.md" />
+								<echo file="${project.basedir}/README.md"><![CDATA[# TODO: Project name
+TODO: Short introduction
+
+## Getting started
+TODO: Easy to understand usage example
+]]></echo>
+							</target>
+						</configuration>
+					</execution>
+
+					<!-- Source directories -->
+					<execution>
+						<id>source-directories</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<target>
+								<mkdir dir="${project.basedir}/src/main/lombok" />
+								<mkdir dir="${project.basedir}/src/main/resources" />
+								<mkdir dir="${project.basedir}/src/test/lombok" />
+								<mkdir dir="${project.basedir}/src/test/resources" />
+							</target>
+						</configuration>
+					</execution>
+
+					<!-- lombok.config -->
+					<execution>
+						<id>lombok-config</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<target>
+								<propertyfile
+									file="${project.basedir}/src/lombok.config">
+									<entry key="config.stopBubbling" value="true" />
+									<entry key="lombok.accessors.flagUsage" value="error" />
+									<entry key="lombok.addLombokGeneratedAnnotation"
+										value="true" />
+									<entry key="lombok.anyConstructor.flagUsage"
+										value="error" />
+									<entry key="lombok.builder.flagUsage" value="error" />
+									<entry key="lombok.cleanup.flagUsage" value="error" />
+									<entry key="lombok.data.flagUsage" value="error" />
+									<entry key="lombok.delegate.flagUsage" value="error" />
+									<entry key="lombok.equalsAndHashCode.flagUsage"
+										value="error" />
+									<entry key="lombok.experimental.flagUsage" value="error" />
+									<entry key="lombok.extensionMethod.flagUsage"
+										value="error" />
+									<entry key="lombok.extern.findbugs.addSuppressFBWarnings"
+										value="true" />
+									<entry key="lombok.fieldDefaults.flagUsage" value="error" />
+									<entry key="lombok.fieldNameConstants.flagUsage"
+										value="error" />
+									<entry key="lombok.getter.flagUsage" value="error" />
+									<entry key="lombok.getter.lazy.flagUsage" value="error" />
+									<entry key="lombok.helper.flagUsage" value="error" />
+									<entry key="lombok.log.apacheCommons.flagUsage"
+										value="error" />
+									<entry key="lombok.log.flagUsage" value="error" />
+									<entry key="lombok.log.flogger.flagUsage" value="error" />
+									<entry key="lombok.log.javaUtilLogging.flagUsage"
+										value="error" />
+									<entry key="lombok.log.jbosslog.flagUsage" value="error" />
+									<entry key="lombok.log.log4j.flagUsage" value="error" />
+									<entry key="lombok.log.log4j2.flagUsage" value="error" />
+									<entry key="lombok.log.slf4j.flagUsage" value="error" />
+									<entry key="lombok.log.xslf4j.flagUsage" value="error" />
+									<entry key="lombok.nonNull.flagUsage" value="error" />
+									<entry key="lombok.onX.flagUsage" value="error" />
+									<entry key="lombok.setter.flagUsage" value="error" />
+									<entry key="lombok.sneakyThrows.flagUsage" value="error" />
+									<entry key="lombok.synchronized.flagUsage" value="error" />
+									<entry key="lombok.toString.flagUsage" value="error" />
+									<entry key="lombok.utilityClass.flagUsage" value="error" />
+									<entry key="lombok.val.flagUsage" value="error" />
+									<entry key="lombok.value.flagUsage" value="error" />
+									<entry key="lombok.var.flagUsage" value="error" />
+									<entry key="lombok.wither.flagUsage" value="error" />
+								</propertyfile>
+								<propertyfile
+									file="${project.basedir}/src/main/lombok/lombok.config">
+									<entry key="config.stopBubbling" value="true" />
+									<entry key="lombok.addLombokGeneratedAnnotation"
+										value="true" />
+									<entry key="lombok.cleanUp.flagUsage" value="error" />
+									<entry key="lombok.data.flagUsage" value="error" />
+									<entry key="lombok.extern.findbugs.addSuppressFBWarnings"
+										value="true" />
+									<entry key="lombok.fieldDefaults.defaultFinal"
+										value="true" />
+									<entry key="lombok.fieldDefaults.defaultPrivate"
+										value="true" />
+									<entry key="lombok.getter.lazy.flagUsage" value="error" />
+									<entry key="lombok.nonNull.flagUsage" value="error" />
+									<entry key="lombok.sneakyThrows.flagUsage" value="error" />
+									<entry key="lombok.val.flagUsage" value="error" />
+									<entry key="lombok.value.flagUsage" value="error" />
+									<entry key="lombok.var.flagUsage" value="error" />
+								</propertyfile>
+								<propertyfile
+									file="${project.basedir}/src/test/lombok/lombok.config">
+									<entry key="config.stopBubbling" value="true" />
+									<entry key="lombok.addLombokGeneratedAnnotation"
+										value="true" />
+									<entry key="lombok.cleanUp.flagUsage" value="error" />
+									<entry key="lombok.data.flagUsage" value="error" />
+									<entry key="lombok.extern.findbugs.addSuppressFBWarnings"
+										value="true" />
+									<entry key="lombok.fieldDefaults.defaultFinal"
+										value="true" />
+									<entry key="lombok.fieldDefaults.defaultPrivate"
+										value="true" />
+									<entry key="lombok.getter.lazy.flagUsage" value="error" />
+									<entry key="lombok.nonNull.flagUsage" value="error" />
+									<entry key="lombok.sneakyThrows.flagUsage" value="error" />
+									<entry key="lombok.val.flagUsage" value="error" />
+									<entry key="lombok.value.flagUsage" value="error" />
+									<entry key="lombok.var.flagUsage" value="error" />
+								</propertyfile>
+							</target>
+						</configuration>
+					</execution>
+
+					<!-- checkstyle.xml -->
+					<execution>
+						<id>checkstyle-xml</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<target>
+								<echo file="${project.build.directory}/checkstyle.xml"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE module PUBLIC "-//Checkstyle//DTD Checkstyle Configuration 1.3//EN" "https://checkstyle.org/dtds/configuration_1_3.dtd">
+<module name="Checker">
+	<property name="localeCountry" value="US" />
+	<property name="localeLanguage" value="en" />
+	<property name="charset" value="UTF-8" />
+	
+	<!-- File Filters -->
+	<module name="SuppressionFilter">
+		<property name="file" value="${project.build.directory}/checkstyle-suppressions.xml" />
+	</module>
+	<module name="SuppressionFilter">
+		<property name="file" value="${project.basedir}/suppressions.xml" />
+		<property name="optional" value="true" />
+	</module>
+
+	<!-- Javadoc Comments -->
+	<module name="JavadocPackage" />
+	
+	<!-- Miscellaneous -->
+	<module name="NewlineAtEndOfFile">
+		<property name="lineSeparator" value="lf" />
+		<property name="fileExtensions" value="java" />
+	</module>
+	<module name="Translation" />
+	<module name="UniqueProperties" />
+	
+	<!-- Regexp -->
+	<module name="RegexpOnFilename"><!-- TODO: Does not seem to work -->
+		<message key="regexp.filename.mismatch" value="Java and Lombok sources must not contain mixed content." />
+		<property name="folderPattern" value="[/\\]src[/\\](main|test)[/\\](java|lombok)[/\\]" />
+		<property name="fileNamePattern" value="\.java$" />
+		<property name="match" value="false" />
+	</module>
+	
+	<!-- Size Violations -->
+	<module name="FileLength" />
+	
+	<module name="TreeWalker">
+		<property name="tabWidth" value="4" />
+		
+		<!-- Annotations -->
+		<module name="AnnotationLocation">
+			<property name="allowSamelineSingleParameterlessAnnotation" value="false"/>
+		</module>
+		<module name="AnnotationUseStyle" />
+		<module name="MissingDeprecated" />
+		<module name="MissingOverride" />
+		<module name="SuppressWarnings">
+			<!-- The list of disallowed SuppressWarnings matches the list of SuppressWarnings supported by
+			     Eclipse Photon JDT Compiler except "deprecation", "null", "unchecked" and "unused".
+			     see http://help.eclipse.org/index.jsp?topic=/org.eclipse.jdt.doc.user/tasks/task-suppress_warnings.htm -->
+			<property name="format" value="^(all|boxing|cast|fallthrough|finally|hiding|incomplete-switch|nls|rawtypes|resource|restriction|restriction|removal|serial|static-access|static-method|super|synthetic-access|sync-override|unqualified-field-access|unlikely-arg-type)$" />
+		</module>
+		
+		<!-- Block Checks -->
+		<module name="AvoidNestedBlocks" />
+		<module name="EmptyBlock">
+			<property name="option" value="text" />
+		</module>
+		<module name="EmptyCatchBlock">
+			<property name="exceptionVariableName" value="ignore" />
+		</module>
+		<module name="LeftCurly" />
+		<module name="NeedBraces">
+			<property name="allowSingleLineStatement" value="true" />
+		</module>
+		<module name="RightCurly" />
+		
+		<!-- Class Design -->
+		<module name="DesignForExtension" />
+		<module name="FinalClass" />
+		<module name="HideUtilityClassConstructor" />
+		<module name="InnerTypeLast" />
+		<module name="InterfaceIsType" />
+		<module name="MutableException" />
+		<module name="OneTopLevelClass" />
+		<module name="ThrowsCount" />
+		<module name="VisibilityModifier" />
+		
+		<!-- Coding -->
+		<module name="CovariantEquals" />
+		<module name="DefaultComesLast">
+			<property name="skipIfLastAndSharedWithCase" value="true" />
+		</module>
+		<module name="EmptyStatement" />
+		<module name="EqualsHashCode" />
+		<module name="FallThrough">
+			<property name="checkLastCaseGroup" value="true" />
+		</module>
+		<module name="FinalLocalVariable">
+			<property name="validateEnhancedForLoopVariable" value="true" />
+			<property name="tokens" value="VARIABLE_DEF, PARAMETER_DEF" />
+		</module>
+		<module name="IllegalCatch" />
+		<module name="IllegalInstantiation">
+			<property name="classes" value="java.util.Hashtable, java.util.Vector, org.xml.sax.SAXException, org.xml.sax.SAXParseException" />
+		</module>
+		<module name="IllegalThrows" />
+		<module name="IllegalToken">
+			<property name="tokens" value="BAND, BOR, DEC, EMPTY_STAT, INC, LABELED_STAT, LITERAL_ASSERT, LITERAL_BREAK, LITERAL_CONTINUE, POST_DEC, POST_INC, UNARY_PLUS" />
+		</module>
+		<module name="IllegalTokenText">
+			<property name="format" value="^(ASCII|ISO-8859-1|US-ASCII|UTF-16|UTF-16BE|UTF-16LE|UTF-8)$" />
+			<property name="ignoreCase" value="true" />
+			<property name="message" value="Consider using StandardCharsets instead of charset strings." />
+			<property name="tokens" value="STRING_LITERAL" />
+		</module>
+		<module name="InnerAssignment" />
+		<module name="MagicNumber">
+			<property name="ignoreHashCodeMethod" value="true" />
+		</module>
+		<module name="MissingCtor" />
+		<module name="MissingSwitchDefault" />
+		<module name="MultipleStringLiterals">
+			<property name="ignoreStringsRegexp" value="^&quot;(|.+ is marked @NonNull but is null)&quot;$" />
+			<property name="ignoreOccurrenceContext" value="ANNOTATION, STATIC_INIT" />
+		</module>
+		<module name="MultipleVariableDeclarations" />
+		<module name="NoClone" />
+		<module name="NoFinalizer" />
+		<module name="OneStatementPerLine" />
+		<module name="OverloadMethodsDeclarationOrder" />
+		<module name="PackageDeclaration" />
+		<module name="ParameterAssignment" />
+		<module name="SimplifyBooleanExpression" />
+		<module name="SimplifyBooleanReturn" />
+		<module name="StringLiteralEquality" />
+		<module name="SuperClone" />
+		<module name="SuperFinalize" />
+		<module name="UnnecessaryParentheses" />
+		<module name="VariableDeclarationUsageDistance" />
+		
+		<!-- Filters -->
+		<module name="SuppressionXpathFilter">
+			<property name="file" value="${project.build.directory}/checkstyle-suppressions.xml" />
+		</module>
+		<module name="SuppressionXpathFilter">
+			<property name="file" value="${project.basedir}/suppressions.xml" />
+			<property name="optional" value="true" />
+		</module>
+		<module name="SuppressWithNearbyCommentFilter">
+			<property name="commentFormat" value="Checkstyle: Ignore duplicate &quot;(\S+)&quot; for (\d+) lines?" />
+			<property name="checkFormat" value="MultipleStringLiteralsCheck" />
+			<property name="messageFormat" value="^The String &quot;$1&quot; appears \d+ times in the file\.$" />
+			<property name="influenceFormat" value="$2" />
+		</module>
+		
+		<!-- Headers -->
+		<!-- none -->
+		
+		<!-- Imports -->
+		<module name="AvoidStarImport" />
+		<module name="IllegalImport" />
+		<module name="ImportOrder">
+			<property name="option" value="top" />
+			<property name="groups" value="java., javax., org., com." />
+			<property name="separated" value="true" />
+			<property name="separatedStaticGroups" value="true" />
+			<property name="caseSensitive" value="true" />
+			<property name="sortStaticImportsAlphabetically" value="true" />
+		</module>
+		<module name="RedundantImport" />
+		<module name="UnusedImports">
+			<property name="processJavadoc" value="false" />
+		</module>
+		
+		<!-- Javadoc Comments -->
+		<module name="AtclauseOrder" />
+		<module name="JavadocMethod">
+			<property name="validateThrows" value="true" />
+			<property name="allowUndeclaredRTE" value="true" />
+		</module>
+		<module name="JavadocParagraph">
+			<property name="allowNewlineParagraph" value="false" />
+		</module>
+		<module name="JavadocStyle">
+			<property name="checkFirstSentence" value="false" />
+			<property name="checkEmptyJavadoc" value="true" />
+		</module>
+		<module name="JavadocTagContinuationIndentation" />
+		<module name="JavadocType" />
+		<module name="JavadocVariable" />
+		<module name="NonEmptyAtclauseDescription" />
+		<module name="SingleLineJavadoc" />
+		
+		<!-- Metrics -->
+		<!-- none -->
+		
+		<!-- Miscellaneous -->
+		<module name="ArrayTypeStyle" />
+		<module name="AvoidEscapedUnicodeCharacters">
+			<property name="allowEscapesForControlCharacters" value="true"/>
+			<property name="allowByTailComment" value="true"/>
+			<property name="allowNonPrintableEscapes" value="true"/>
+		</module>
+		<module name="CommentsIndentation" />
+		<module name="FinalParameters">
+			<property name="tokens" value="METHOD_DEF, CTOR_DEF, LITERAL_CATCH, FOR_EACH_CLAUSE" />
+		</module>
+		<module name="Indentation">
+			<property name="lineWrappingIndentation" value="8" />
+			<property name="forceStrictCondition" value="true" />
+		</module>
+		<module name="OuterTypeFilename" />
+		<module name="TodoComment">
+			<property name="format" value="^\s*(TODO|XXX|FIXME).*" />
+			<property name="severity" value="info" />
+		</module>
+		<module name="TrailingComment">
+			<property name="format" value="^(.*,)?\s*$"/>
+			<property name="legalComment" value="^TODO$" />
+		</module>
+		<module name="UncommentedMain" />
+		<module name="UpperEll" />
+		
+		<!-- Modifiers -->
+		<module name="ModifierOrder" />
+		<module name="RedundantModifier" />
+		
+		<!-- Naming Conventions -->
+		<module name="AbbreviationAsWordInName">
+			<property name="ignoreStatic" value="false" />
+		</module>
+		<module name="CatchParameterName" />
+		<module name="ClassTypeParameterName" />
+		<module name="ConstantName" />
+		<module name="InterfaceTypeParameterName" />
+		<module name="LambdaParameterName" />
+		<module name="LocalFinalVariableName" />
+		<module name="LocalVariableName" />
+		<module name="MemberName" />
+		<module name="MethodName" />
+		<module name="MethodTypeParameterName" />
+		<module name="PackageName" />
+		<module name="ParameterName" />
+		<module name="StaticVariableName" />
+		<module name="TypeName" />
+		
+		<!-- Regexp -->
+		<module name="RegexpSinglelineJava">
+			<property name="format" value="\s+$" />
+			<property name="message" value="Line has trailing spaces." />
+		</module>
+		<module name="RegexpSinglelineJava">
+			<property name="format" value="^\t* [^*]" />
+			<property name="message" value="Line does not use tab indentation." />
+		</module>
+		
+		<!-- Size Violations -->
+		<module name="AnonInnerLength" />
+		<module name="ExecutableStatementCount" />
+		<module name="MethodLength" />
+		<module name="OuterTypeNumber" />
+		<module name="ParameterNumber">
+			<property name="ignoreOverriddenMethods" value="true" />
+		</module>
+		
+		<!-- Whitespace -->
+		<module name="EmptyForInitializerPad" />
+		<module name="EmptyForIteratorPad" />
+		<module name="EmptyLineSeparator">
+			<property name="allowNoEmptyLineBetweenFields" value="true" />
+			<property name="allowMultipleEmptyLines" value="false" />
+			<property name="allowMultipleEmptyLinesInsideClassMembers" value="false" />
+			<property name="tokens" value="IMPORT, STATIC_IMPORT, CLASS_DEF, INTERFACE_DEF, ENUM_DEF, STATIC_INIT, INSTANCE_INIT, METHOD_DEF, CTOR_DEF, VARIABLE_DEF" />
+		</module>
+		<module name="GenericWhitespace" />
+		<module name="MethodParamPad" />
+		<module name="NoLineWrap" />
+		<module name="NoWhitespaceAfter" />
+		<module name="NoWhitespaceBefore">
+			<property name="tokens" value="COMMA, SEMI, POST_INC, POST_DEC, ELLIPSIS, GENERIC_END" />
+		</module>
+		<module name="OperatorWrap">
+			<property name="option" value="nl" />
+			<property name="tokens" value="QUESTION, COLON, EQUAL, NOT_EQUAL, DIV, PLUS, MINUS, STAR, MOD, SR, BSR, GE, GT, SL, LE, LT, BXOR, BOR, LOR, BAND, LAND, LITERAL_INSTANCEOF, TYPE_EXTENSION_AND, ASSIGN, DIV_ASSIGN, PLUS_ASSIGN, MINUS_ASSIGN, STAR_ASSIGN, MOD_ASSIGN, SR_ASSIGN, BSR_ASSIGN, SL_ASSIGN, BXOR_ASSIGN, BOR_ASSIGN, BAND_ASSIGN, METHOD_REF" />
+		</module>
+		<module name="ParenPad" />
+		<module name="SeparatorWrap">
+			<property name="option" value="eol" />
+			<property name="tokens" value="COMMA, SEMI, ELLIPSIS, RPAREN" />
+		</module>
+		<module name="SeparatorWrap">
+			<property name="option" value="nl" />
+			<property name="tokens" value="DOT, AT, LPAREN, METHOD_REF" />
+		</module>
+		<module name="SingleSpaceSeparator">
+			<property name="validateComments" value="true" />
+		</module>
+		<module name="TypecastParenPad" />
+		<module name="WhitespaceAfter" />
+		<module name="WhitespaceAround">
+			<property name="allowEmptyConstructors" value="true" />
+			<property name="ignoreEnhancedForColon" value="false" />
+		</module>
+	</module>
+</module>
+]]></echo>
+							</target>
+						</configuration>
+					</execution>
+
+					<!-- checkstyle-suppressions.xml -->
+					<execution>
+						<id>checkstyle-suppressions-xml</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<target>
+								<echo
+									file="${project.build.directory}/checkstyle-suppressions.xml"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN" "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
+<suppressions>
+	<!-- Allow multi catch while disallowing bitwise OR -->
+	<suppress-xpath checks="IllegalTokenCheck" query="//LITERAL_CATCH/PARAMETER_DEF//BOR" />
+	
+	<!-- Allow magic numbers inside static initialization blocks -->
+	<suppress-xpath checks="MagicNumberCheck" query="//STATIC_INIT/descendant-or-self::node()" />
+	
+	<!-- Lombok: Suppress checks for annotated with "@lombok.Generated" -->
+	<suppress-xpath checks="^.*$" query="//*[MODIFIERS/ANNOTATION[@text = 'Generated' or *[@text = 'lombok'] or *[@text = 'Generated']]]/descendant-or-self::node()" />
+	
+	<!-- Lombok: Suppress import separation checks -->
+	<suppress checks="ImportOrder" message="^'.*' should be separated from previous imports.$" />
+	
+	<!-- Lombok: Suppress specific unused imports -->
+	<suppress checks="UnusedImports" message="^Unused import - lombok\.ToString\.$" />
+	
+	<!-- Unit Tests -->
+	<suppress checks="JavadocPackageCheck" files="^.*[/\\]generated-test-sources[/\\].*$" />
+	<suppress checks="JavadocVariableCheck" files="^.*[/\\]generated-test-sources[/\\].*$" />
+	<suppress checks="MultipleStringLiteralsCheck" files="^.*[/\\]generated-test-sources[/\\].*$" />
+</suppressions>
+]]></echo>
+							</target>
+						</configuration>
+					</execution>
+
+					<!-- pmd-ruleset.xml -->
+					<execution>
+						<id>pmd-ruleset-xml</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<target>
+								<mkdir dir="${project.build.directory}/pmd" />
+								<echo file="${project.build.directory}/pmd/pmd-ruleset.xml"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<ruleset name="de.lars-sh" xmlns="http://pmd.sourceforge.net/ruleset/2.0.0">
+	<description></description>
+	<rule ref="category/java/bestpractices.xml">
+		<exclude name="AbstractClassWithoutAbstractMethod" />
+		<exclude name="JUnitTestContainsTooManyAsserts" />
+		<exclude name="JUnitTestsShouldIncludeAssert" />
+		<exclude name="JUnitAssertionsShouldIncludeMessage" />
+		<exclude name="PositionLiteralsFirstInComparisons" />
+		<exclude name="UnusedImports" />
+		<exclude name="UseVarargs" />
+	</rule>
+	<rule ref="category/java/bestpractices.xml/UnusedImports">
+		<properties>
+			<property name="violationSuppressRegex" value="^Avoid unused imports such as &apos;lombok\.EqualsAndHashCode\.Include&apos;$" />
+		</properties>
+	</rule>
+	<rule ref="category/java/codestyle.xml">
+		<exclude name="AvoidFinalLocalVariable" />
+		<exclude name="ClassNamingConventions" /><!-- TODO -->
+		<exclude name="EmptyMethodInAbstractClassShouldBeAbstract" />
+		<exclude name="FieldNamingConventions" /><!-- TODO -->
+		<exclude name="FieldDeclarationsShouldBeAtStartOfClass" />
+		<exclude name="LinguisticNaming" />
+		<exclude name="LongVariable" />
+		<exclude name="OnlyOneReturn" />
+		<exclude name="PrematureDeclaration" />
+		<exclude name="ShortClassName" />
+		<exclude name="ShortMethodName" />
+		<exclude name="ShortVariable" />
+		<exclude name="TooManyStaticImports" />
+		<exclude name="UnnecessaryFullyQualifiedName" /><!-- TODO -->
+	</rule>
+	<rule ref="category/java/codestyle.xml/LinguisticNaming">
+		<properties>
+			<property name="checkSetters" value="false" />
+		</properties>
+	</rule>
+	<rule ref="category/java/design.xml">
+		<exclude name="CyclomaticComplexity" />
+		<exclude name="LawOfDemeter" />
+		<exclude name="NPathComplexity" />
+		<exclude name="TooManyMethods" />
+	</rule>
+	<rule ref="category/java/documentation.xml">
+		<exclude name="CommentSize" />
+		<exclude name="CommentRequired" />
+	</rule>
+	<rule ref="category/java/errorprone.xml">
+		<exclude name="AvoidDuplicateLiterals" />
+		<exclude name="AvoidLiteralsInIfCondition" />
+		<exclude name="BeanMembersShouldSerialize" />
+		<exclude name="ConstructorCallsOverridableMethod" />
+		<exclude name="DataflowAnomalyAnalysis" />
+		<exclude name="EmptyWhileStmt" />
+	</rule>
+	<rule ref="category/java/errorprone.xml/AvoidDuplicateLiterals">
+		<properties>
+			<property name="skipAnnotations" value="true" />
+			<property name="violationSuppressRegex" value="^The String literal &quot;\S+ is marked @NonNull but is null&quot; appears \d+ times in this file; the first occurrence is on line \d+$" />
+		</properties>
+	</rule>
+	<rule ref="category/java/errorprone.xml/AvoidLiteralsInIfCondition">
+		<properties>
+			<property name="ignoreMagicNumbers" value="-1, 0, 1, 2" />
+		</properties>
+	</rule>
+	<rule ref="category/java/multithreading.xml">
+		<exclude name="DoNotUseThreads" />
+		<exclude name="UseConcurrentHashMap" />
+	</rule>
+	<rule ref="category/java/performance.xml">
+		<exclude name="AvoidInstantiatingObjectsInLoops" />
+		<exclude name="SimplifyStartsWith" />
+	</rule>
+	<rule ref="category/java/security.xml" />
+</ruleset>
+]]></echo>
+							</target>
+						</configuration>
+					</execution>
+
+					<!-- Travis CI -->
+					<execution>
+						<id>project-travis-yml-exists</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<exportAntProperties>true</exportAntProperties>
+							<target>
+								<available property="project.travis-yml.exists"
+									file="${project.basedir}/.travis.yml" />
+							</target>
+						</configuration>
+					</execution>
+					<execution>
+						<id>travis-ci</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<target unless="project.travis-yml.exists">
+								<echo message="Create .travis.yml" />
+								<echo file="${project.basedir}/.travis.yml"><![CDATA[language: java
+]]></echo>
+							</target>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- Delombok -->
+			<plugin>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>delombok</goal>
+							<goal>testDelombok</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- Check test code coverage -->
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>prepare-agent</goal>
+							<goal>report</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- Check code style -->
+			<plugin>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>test</phase>
+						<goals>
+							<goal>check</goal>
+						</goals>
+						<configuration>
+							<configLocation>${project.build.directory}/checkstyle.xml</configLocation>
+							<consoleOutput>true</consoleOutput>
+							<includeTestSourceDirectory>true</includeTestSourceDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- Package -->
+			<plugin>
+				<artifactId>maven-jar-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>test-jar</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+							<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+							<mainClass>${project.build.mainClass}</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+
+			<!-- Package dependencies (optional) -->
+			<plugin>
+				<artifactId>maven-shade-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>${project.build.packageDependenciesPhase}</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+						<configuration>
+							<dependencyReducedPomLocation>${project.build.directory}/dependency-reduced-pom.xml</dependencyReducedPomLocation>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- Package sources -->
+			<plugin>
+				<artifactId>maven-source-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>jar-no-fork</goal>
+							<goal>test-jar-no-fork</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- Package documentation -->
+			<plugin>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>jar</goal>
+							<goal>test-jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- Sign packages -->
+			<plugin>
+				<artifactId>maven-gpg-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>sign</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- Deployment -->
+			<plugin>
+				<groupId>org.sonatype.plugins</groupId>
+				<artifactId>nexus-staging-maven-plugin</artifactId>
+				<version>1.6.8</version>
+				<extensions>true</extensions>
+				<configuration>
+					<serverId>sonatype-nexus-staging</serverId>
+					<nexusUrl>https://oss.sonatype.org/</nexusUrl>
+					<autoReleaseAfterClose>false</autoReleaseAfterClose>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<reporting>
+		<plugins>
+			<!-- Code style -->
+			<plugin>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>checkstyle</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+				<configuration>
+					<configLocation>${project.build.directory}/checkstyle.xml</configLocation>
+					<includeTestSourceDirectory>true</includeTestSourceDirectory>
+				</configuration>
+			</plugin>
+
+			<!-- SpotBugs -->
+			<plugin>
+				<groupId>com.github.spotbugs</groupId>
+				<artifactId>spotbugs-maven-plugin</artifactId>
+				<configuration>
+					<effort>Max</effort>
+					<failOnError>false</failOnError>
+					<fork>false</fork>
+					<threshold>Low</threshold>
+					<plugins>
+						<plugin>
+							<groupId>com.h3xstream.findsecbugs</groupId>
+							<artifactId>findsecbugs-plugin</artifactId>
+							<version>1.8.0</version>
+						</plugin>
+						<plugin>
+							<groupId>com.mebigfatguy.fb-contrib</groupId>
+							<artifactId>fb-contrib</artifactId>
+							<version>7.4.3.sb</version>
+						</plugin>
+					</plugins>
+				</configuration>
+			</plugin>
+
+			<!-- Analyze Code -->
+			<!-- Remark: Requires to run at least "mvn test-compile site"! -->
+			<plugin>
+				<artifactId>maven-pmd-plugin</artifactId>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>cpd</report>
+						</reports>
+						<configuration>
+							<excludeFromFailureFile>${project.basedir}/cpd-excludes.properties</excludeFromFailureFile>
+						</configuration>
+					</reportSet>
+					<reportSet>
+						<reports>
+							<report>pmd</report>
+						</reports>
+						<configuration>
+							<excludeFromFailureFile>${project.basedir}/pmd-excludes.properties</excludeFromFailureFile>
+							<rulesets>
+								<ruleset>${project.build.directory}/pmd/pmd-ruleset.xml</ruleset>
+							</rulesets>
+						</configuration>
+					</reportSet>
+				</reportSets>
+				<configuration>
+					<includeTests>true</includeTests>
+					<skipEmptyReport>false</skipEmptyReport>
+				</configuration>
+			</plugin>
+
+			<!-- Tests -->
+			<plugin>
+				<artifactId>maven-surefire-report-plugin</artifactId>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>report-only</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
+
+			<!-- Test code coverage -->
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>report</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
+
+			<!-- Check for un/used dependencies -->
+			<plugin>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>analyze-report</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
+
+			<!-- Check versions -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>versions-maven-plugin</artifactId>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>dependency-updates-report</report>
+							<report>plugin-updates-report</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
+
+			<!-- Documentation -->
+			<plugin>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>javadoc-no-fork</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
+
+			<!-- Cross references -->
+			<plugin>
+				<artifactId>maven-jxr-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</reporting>
+
+	<profiles>
+		<!-- Eclipse only -->
+		<profile>
+			<id>eclipse-only</id>
+			<activation>
+				<property>
+					<name>m2e.version</name>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<!-- Update classpaths -->
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>build-helper-maven-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>add-source</id>
+								<phase>generate-sources</phase>
+								<goals>
+									<goal>add-source</goal>
+								</goals>
+								<configuration>
+									<sources>
+										<source>${project.basedir}/src/main/lombok</source>
+									</sources>
+								</configuration>
+							</execution>
+							<execution>
+								<id>add-test-source</id>
+								<phase>generate-sources</phase>
+								<goals>
+									<goal>add-test-source</goal>
+								</goals>
+								<configuration>
+									<sources>
+										<source>${project.basedir}/src/test/lombok</source>
+									</sources>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+
+					<!-- Update eclipse settings -->
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>eclipse-settings</id>
+								<phase>generate-sources</phase>
+								<goals>
+									<goal>run</goal>
+								</goals>
+								<configuration>
+									<target>
+										<!-- .settings -->
+										<mkdir dir="${project.basedir}/.settings" />
+
+										<!-- .settings/checkstyle.xml -->
+										<copy file="${project.build.directory}/checkstyle.xml"
+											tofile="${project.basedir}/.settings/checkstyle.xml"
+											overwrite="true" force="true" />
+										<replace
+											file="${project.basedir}/.settings/checkstyle.xml"
+											encoding="UTF-8"
+											token="${project.build.directory}/checkstyle-suppressions.xml"
+											value="${project.basedir}/.settings/checkstyle-suppressions.xml"
+											summary="true" failOnNoReplacements="true" />
+
+										<!-- .settings/checkstyle-suppressions.xml -->
+										<copy
+											file="${project.build.directory}/checkstyle-suppressions.xml"
+											tofile="${project.basedir}/.settings/checkstyle-suppressions.xml"
+											overwrite="true" force="true" />
+
+										<!-- .checkstyle -->
+										<echo message="Update .checkstyle" />
+										<echo file="${project.basedir}/.checkstyle"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<fileset-config file-format-version="1.2.0" simple-config="false" sync-formatter="false">
+	<local-check-config name="Checkstyle" location=".settings/checkstyle.xml" type="project" description="">
+		<additional-data name="protect-config-file" value="false"/>
+	</local-check-config>
+	<fileset name="main" enabled="true" check-config-name="Checkstyle" local="true">
+		<file-match-pattern match-pattern="^target/generated-sources/delombok/" include-pattern="true" />
+		<file-match-pattern match-pattern="^src/main/java/" include-pattern="true" />
+	</fileset>
+	<fileset name="test" enabled="true" check-config-name="Checkstyle" local="true">
+		<file-match-pattern match-pattern="^target/generated-test-sources/delombok/" include-pattern="true" />
+		<file-match-pattern match-pattern="^src/test/java/" include-pattern="true" />
+	</fileset>
+</fileset-config>
+]]></echo>
+
+										<!-- .settings/*.properties -->
+										<propertyfile
+											file="${project.basedir}/.settings/edu.umd.cs.findbugs.core.prefs">
+											<entry key="detector_threshold" value="3" />
+											<entry key="effort" value="max" />
+											<entry key="filter_settings"
+												value="Low|BAD_PRACTICE,CORRECTNESS,EXPERIMENTAL,I18N,MALICIOUS_CODE,MT_CORRECTNESS,PERFORMANCE,SECURITY,STYLE|false|20" />
+											<entry key="filter_settings_neg" value="NOISE|" />
+											<entry key="includefilter0"
+												value="spotbugs-exclude.xml|true" />
+											<entry key="run_at_full_build" value="true" />
+										</propertyfile>
+										<propertyfile
+											file="${project.basedir}/.settings/org.eclipse.core.resources.prefs">
+											<entry key="encoding/&lt;project&gt;" value="UTF-8" />
+										</propertyfile>
+										<propertyfile
+											file="${project.basedir}/.settings/org.eclipse.core.runtime.prefs">
+											<entry key="line.separator" value="&#10;" />
+										</propertyfile>
+										<propertyfile
+											file="${project.basedir}/.settings/org.eclipse.jdt.ui.prefs">
+											<entry key="cleanup.add_default_serial_version_id"
+												value="true" />
+											<entry key="cleanup.add_generated_serial_version_id"
+												value="false" />
+											<entry key="cleanup.add_missing_annotations"
+												value="true" />
+											<entry key="cleanup.add_missing_deprecated_annotations"
+												value="true" />
+											<entry key="cleanup.add_missing_methods" value="false" />
+											<entry key="cleanup.add_missing_nls_tags" value="false" />
+											<entry key="cleanup.add_missing_override_annotations"
+												value="true" />
+											<entry
+												key="cleanup.add_missing_override_annotations_interface_methods"
+												value="true" />
+											<entry key="cleanup.add_serial_version_id"
+												value="false" />
+											<entry key="cleanup.always_use_blocks" value="true" />
+											<entry
+												key="cleanup.always_use_parentheses_in_expressions"
+												value="false" />
+											<entry
+												key="cleanup.always_use_this_for_non_static_field_access"
+												value="false" />
+											<entry
+												key="cleanup.always_use_this_for_non_static_method_access"
+												value="false" />
+											<entry key="cleanup.convert_functional_interfaces"
+												value="true" />
+											<entry key="cleanup.convert_to_enhanced_for_loop"
+												value="true" />
+											<entry key="cleanup.correct_indentation" value="true" />
+											<entry key="cleanup.format_source_code" value="true" />
+											<entry key="cleanup.format_source_code_changes_only"
+												value="false" />
+											<entry key="cleanup.insert_inferred_type_arguments"
+												value="false" />
+											<entry key="cleanup.make_local_variable_final"
+												value="true" />
+											<entry key="cleanup.make_parameters_final" value="true" />
+											<entry key="cleanup.make_private_fields_final"
+												value="false" />
+											<entry
+												key="cleanup.make_type_abstract_if_missing_method"
+												value="false" />
+											<entry key="cleanup.make_variable_declarations_final"
+												value="true" />
+											<entry key="cleanup.never_use_blocks" value="false" />
+											<entry
+												key="cleanup.never_use_parentheses_in_expressions"
+												value="true" />
+											<entry key="cleanup.organize_imports" value="true" />
+											<entry
+												key="cleanup.qualify_static_field_accesses_with_declaring_class"
+												value="false" />
+											<entry
+												key="cleanup.qualify_static_member_accesses_through_instances_with_declaring_class"
+												value="true" />
+											<entry
+												key="cleanup.qualify_static_member_accesses_through_subtypes_with_declaring_class"
+												value="false" />
+											<entry
+												key="cleanup.qualify_static_member_accesses_with_declaring_class"
+												value="true" />
+											<entry
+												key="cleanup.qualify_static_method_accesses_with_declaring_class"
+												value="false" />
+											<entry key="cleanup.remove_private_constructors"
+												value="true" />
+											<entry key="cleanup.remove_redundant_modifiers"
+												value="true" />
+											<entry key="cleanup.remove_redundant_semicolons"
+												value="false" />
+											<entry key="cleanup.remove_redundant_type_arguments"
+												value="true" />
+											<entry key="cleanup.remove_trailing_whitespaces"
+												value="true" />
+											<entry key="cleanup.remove_trailing_whitespaces_all"
+												value="true" />
+											<entry
+												key="cleanup.remove_trailing_whitespaces_ignore_empty"
+												value="false" />
+											<entry key="cleanup.remove_unnecessary_casts"
+												value="true" />
+											<entry key="cleanup.remove_unnecessary_nls_tags"
+												value="true" />
+											<entry key="cleanup.remove_unused_imports" value="true" />
+											<entry key="cleanup.remove_unused_local_variables"
+												value="false" />
+											<entry key="cleanup.remove_unused_private_fields"
+												value="true" />
+											<entry key="cleanup.remove_unused_private_members"
+												value="false" />
+											<entry key="cleanup.remove_unused_private_methods"
+												value="true" />
+											<entry key="cleanup.remove_unused_private_types"
+												value="true" />
+											<entry key="cleanup.sort_members" value="false" />
+											<entry key="cleanup.sort_members_all" value="false" />
+											<entry key="cleanup.use_anonymous_class_creation"
+												value="false" />
+											<entry key="cleanup.use_blocks" value="true" />
+											<entry
+												key="cleanup.use_blocks_only_for_return_and_throw"
+												value="false" />
+											<entry key="cleanup.use_lambda" value="true" />
+											<entry key="cleanup.use_parentheses_in_expressions"
+												value="true" />
+											<entry
+												key="cleanup.use_this_for_non_static_field_access"
+												value="true" />
+											<entry
+												key="cleanup.use_this_for_non_static_field_access_only_if_necessary"
+												value="true" />
+											<entry
+												key="cleanup.use_this_for_non_static_method_access"
+												value="true" />
+											<entry
+												key="cleanup.use_this_for_non_static_method_access_only_if_necessary"
+												value="true" />
+											<entry key="cleanup_profile" value="_de.lars-sh" />
+											<entry key="cleanup_settings_version" value="2" />
+											<entry key="eclipse.preferences.version" value="1" />
+											<entry
+												key="editor_save_participant_org.eclipse.jdt.ui.postsavelistener.cleanup"
+												value="true" />
+											<entry key="formatter_profile" value="_de.lars-sh" />
+											<entry key="formatter_settings_version" value="14" />
+											<entry key="org.eclipse.jdt.ui.exception.name"
+												value="e" />
+											<entry key="org.eclipse.jdt.ui.gettersetter.use.is"
+												value="true" />
+											<entry key="org.eclipse.jdt.ui.ignorelowercasenames"
+												value="true" />
+											<entry key="org.eclipse.jdt.ui.importorder"
+												value="java;javax;org;com;" />
+											<entry key="org.eclipse.jdt.ui.keywordthis"
+												value="false" />
+											<entry key="org.eclipse.jdt.ui.ondemandthreshold"
+												value="99" />
+											<entry key="org.eclipse.jdt.ui.overrideannotation"
+												value="true" />
+											<entry key="org.eclipse.jdt.ui.staticondemandthreshold"
+												value="99" />
+											<entry key="sp_cleanup.add_default_serial_version_id"
+												value="true" />
+											<entry key="sp_cleanup.add_generated_serial_version_id"
+												value="false" />
+											<entry key="sp_cleanup.add_missing_annotations"
+												value="true" />
+											<entry
+												key="sp_cleanup.add_missing_deprecated_annotations"
+												value="true" />
+											<entry key="sp_cleanup.add_missing_methods"
+												value="false" />
+											<entry key="sp_cleanup.add_missing_nls_tags"
+												value="false" />
+											<entry
+												key="sp_cleanup.add_missing_override_annotations"
+												value="true" />
+											<entry
+												key="sp_cleanup.add_missing_override_annotations_interface_methods"
+												value="true" />
+											<entry key="sp_cleanup.add_serial_version_id"
+												value="false" />
+											<entry key="sp_cleanup.always_use_blocks" value="true" />
+											<entry
+												key="sp_cleanup.always_use_parentheses_in_expressions"
+												value="false" />
+											<entry
+												key="sp_cleanup.always_use_this_for_non_static_field_access"
+												value="false" />
+											<entry
+												key="sp_cleanup.always_use_this_for_non_static_method_access"
+												value="false" />
+											<entry key="sp_cleanup.convert_functional_interfaces"
+												value="true" />
+											<entry key="sp_cleanup.convert_to_enhanced_for_loop"
+												value="true" />
+											<entry key="sp_cleanup.correct_indentation"
+												value="true" />
+											<entry key="sp_cleanup.format_source_code" value="true" />
+											<entry key="sp_cleanup.format_source_code_changes_only"
+												value="false" />
+											<entry key="sp_cleanup.insert_inferred_type_arguments"
+												value="false" />
+											<entry key="sp_cleanup.make_local_variable_final"
+												value="true" />
+											<entry key="sp_cleanup.make_parameters_final"
+												value="true" />
+											<entry key="sp_cleanup.make_private_fields_final"
+												value="false" />
+											<entry
+												key="sp_cleanup.make_type_abstract_if_missing_method"
+												value="false" />
+											<entry
+												key="sp_cleanup.make_variable_declarations_final"
+												value="true" />
+											<entry key="sp_cleanup.never_use_blocks" value="false" />
+											<entry
+												key="sp_cleanup.never_use_parentheses_in_expressions"
+												value="true" />
+											<entry key="sp_cleanup.on_save_use_additional_actions"
+												value="true" />
+											<entry key="sp_cleanup.organize_imports" value="true" />
+											<entry
+												key="sp_cleanup.qualify_static_field_accesses_with_declaring_class"
+												value="false" />
+											<entry
+												key="sp_cleanup.qualify_static_member_accesses_through_instances_with_declaring_class"
+												value="true" />
+											<entry
+												key="sp_cleanup.qualify_static_member_accesses_through_subtypes_with_declaring_class"
+												value="false" />
+											<entry
+												key="sp_cleanup.qualify_static_member_accesses_with_declaring_class"
+												value="true" />
+											<entry
+												key="sp_cleanup.qualify_static_method_accesses_with_declaring_class"
+												value="false" />
+											<entry key="sp_cleanup.remove_private_constructors"
+												value="true" />
+											<entry key="sp_cleanup.remove_redundant_modifiers"
+												value="true" />
+											<entry key="sp_cleanup.remove_redundant_semicolons"
+												value="false" />
+											<entry key="sp_cleanup.remove_redundant_type_arguments"
+												value="true" />
+											<entry key="sp_cleanup.remove_trailing_whitespaces"
+												value="true" />
+											<entry key="sp_cleanup.remove_trailing_whitespaces_all"
+												value="true" />
+											<entry
+												key="sp_cleanup.remove_trailing_whitespaces_ignore_empty"
+												value="false" />
+											<entry key="sp_cleanup.remove_unnecessary_casts"
+												value="true" />
+											<entry key="sp_cleanup.remove_unnecessary_nls_tags"
+												value="true" />
+											<entry key="sp_cleanup.remove_unused_imports"
+												value="true" />
+											<entry key="sp_cleanup.remove_unused_local_variables"
+												value="false" />
+											<entry key="sp_cleanup.remove_unused_private_fields"
+												value="true" />
+											<entry key="sp_cleanup.remove_unused_private_members"
+												value="false" />
+											<entry key="sp_cleanup.remove_unused_private_methods"
+												value="true" />
+											<entry key="sp_cleanup.remove_unused_private_types"
+												value="true" />
+											<entry key="sp_cleanup.sort_members" value="false" />
+											<entry key="sp_cleanup.sort_members_all" value="false" />
+											<entry key="sp_cleanup.use_anonymous_class_creation"
+												value="false" />
+											<entry key="sp_cleanup.use_blocks" value="true" />
+											<entry
+												key="sp_cleanup.use_blocks_only_for_return_and_throw"
+												value="false" />
+											<entry key="sp_cleanup.use_lambda" value="true" />
+											<entry key="sp_cleanup.use_parentheses_in_expressions"
+												value="true" />
+											<entry
+												key="sp_cleanup.use_this_for_non_static_field_access"
+												value="true" />
+											<entry
+												key="sp_cleanup.use_this_for_non_static_field_access_only_if_necessary"
+												value="true" />
+											<entry
+												key="sp_cleanup.use_this_for_non_static_method_access"
+												value="true" />
+											<entry
+												key="sp_cleanup.use_this_for_non_static_method_access_only_if_necessary"
+												value="true" />
+										</propertyfile>
+										<propertyfile
+											file="${project.basedir}/.settings/org.eclipse.jdt.core.prefs">
+											<entry key="eclipse.preferences.version" value="1" />
+											<entry
+												key="org.eclipse.jdt.core.codeComplete.argumentPrefixes"
+												value="" />
+											<entry
+												key="org.eclipse.jdt.core.codeComplete.argumentSuffixes"
+												value="" />
+											<entry
+												key="org.eclipse.jdt.core.codeComplete.fieldPrefixes"
+												value="" />
+											<entry
+												key="org.eclipse.jdt.core.codeComplete.fieldSuffixes"
+												value="" />
+											<entry
+												key="org.eclipse.jdt.core.codeComplete.localPrefixes"
+												value="" />
+											<entry
+												key="org.eclipse.jdt.core.codeComplete.localSuffixes"
+												value="" />
+											<entry
+												key="org.eclipse.jdt.core.codeComplete.staticFieldPrefixes"
+												value="" />
+											<entry
+												key="org.eclipse.jdt.core.codeComplete.staticFieldSuffixes"
+												value="" />
+											<entry
+												key="org.eclipse.jdt.core.codeComplete.staticFinalFieldPrefixes"
+												value="" />
+											<entry
+												key="org.eclipse.jdt.core.codeComplete.staticFinalFieldSuffixes"
+												value="" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.annotation.inheritNullAnnotations"
+												value="enabled" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.annotation.missingNonNullByDefaultAnnotation"
+												value="warning" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.annotation.nonnull"
+												value="edu.umd.cs.findbugs.annotations.NonNull" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.annotation.nonnull.secondary"
+												value="" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.annotation.nonnullbydefault"
+												value="de.larssh.utils.annotations.NonNullByDefault" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.annotation.nonnullbydefault.secondary"
+												value="" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.annotation.nullable"
+												value="edu.umd.cs.findbugs.annotations.Nullable" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.annotation.nullable.secondary"
+												value="edu.umd.cs.findbugs.annotations.CheckForNull" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.annotation.nullanalysis"
+												value="enabled" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.codegen.inlineJsrBytecode"
+												value="enabled" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.codegen.methodParameters"
+												value="do not generate" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.codegen.targetPlatform"
+												value="1.8" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.codegen.unusedLocal"
+												value="preserve" />
+											<entry key="org.eclipse.jdt.core.compiler.compliance"
+												value="1.8" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.debug.lineNumber"
+												value="generate" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.debug.localVariable"
+												value="generate" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.debug.sourceFile"
+												value="generate" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.doc.comment.support"
+												value="enabled" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.APILeak"
+												value="warning" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.annotationSuperInterface"
+												value="warning" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.assertIdentifier"
+												value="error" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.autoboxing"
+												value="ignore" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.comparingIdentical"
+												value="warning" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.deadCode"
+												value="warning" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.deprecation"
+												value="warning" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.deprecationInDeprecatedCode"
+												value="disabled" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.deprecationWhenOverridingDeprecatedMethod"
+												value="disabled" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.discouragedReference"
+												value="warning" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.emptyStatement"
+												value="ignore" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.enumIdentifier"
+												value="error" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.explicitlyClosedAutoCloseable"
+												value="info" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.fallthroughCase"
+												value="info" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.fatalOptionalError"
+												value="enabled" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.fieldHiding"
+												value="warning" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.finalParameterBound"
+												value="warning" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.finallyBlockNotCompletingNormally"
+												value="warning" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.forbiddenReference"
+												value="warning" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.hiddenCatchBlock"
+												value="warning" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.includeNullInfoFromAsserts"
+												value="disabled" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.incompatibleNonInheritedInterfaceMethod"
+												value="warning" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.incompleteEnumSwitch"
+												value="warning" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.indirectStaticAccess"
+												value="ignore" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.invalidJavadoc"
+												value="ignore" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.invalidJavadocTags"
+												value="enabled" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.invalidJavadocTagsDeprecatedRef"
+												value="enabled" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.invalidJavadocTagsNotVisibleRef"
+												value="enabled" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.invalidJavadocTagsVisibility"
+												value="private" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.localVariableHiding"
+												value="ignore" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.methodWithConstructorName"
+												value="warning" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.missingDefaultCase"
+												value="warning" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.missingDeprecatedAnnotation"
+												value="warning" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.missingEnumCaseDespiteDefault"
+												value="enabled" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.missingHashCodeMethod"
+												value="warning" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.missingJavadocComments"
+												value="warning" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.missingJavadocCommentsOverriding"
+												value="enabled" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.missingJavadocCommentsVisibility"
+												value="default" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.missingJavadocTagDescription"
+												value="all_standard_tags" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.missingJavadocTags"
+												value="warning" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.missingJavadocTagsMethodTypeParameters"
+												value="enabled" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.missingJavadocTagsOverriding"
+												value="enabled" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.missingJavadocTagsVisibility"
+												value="private" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.missingOverrideAnnotation"
+												value="warning" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.missingOverrideAnnotationForInterfaceMethodImplementation"
+												value="enabled" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.missingSerialVersion"
+												value="warning" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.missingSynchronizedOnInheritedMethod"
+												value="warning" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.noEffectAssignment"
+												value="warning" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.noImplicitStringConversion"
+												value="warning" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.nonExternalizedStringLiteral"
+												value="ignore" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.nonnullParameterAnnotationDropped"
+												value="warning" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.nonnullTypeVariableFromLegacyInvocation"
+												value="warning" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.nullAnnotationInferenceConflict"
+												value="error" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.nullReference"
+												value="error" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.nullSpecViolation"
+												value="error" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.nullUncheckedConversion"
+												value="ignore" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.overridingPackageDefaultMethod"
+												value="warning" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.parameterAssignment"
+												value="warning" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.pessimisticNullAnalysisForFreeTypeVariables"
+												value="warning" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.possibleAccidentalBooleanAssignment"
+												value="warning" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.potentialNullReference"
+												value="error" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.potentiallyUnclosedCloseable"
+												value="warning" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.rawTypeReference"
+												value="warning" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.redundantNullAnnotation"
+												value="warning" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.redundantNullCheck"
+												value="warning" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.redundantSpecificationOfTypeArguments"
+												value="info" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.redundantSuperinterface"
+												value="info" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.reportMethodCanBePotentiallyStatic"
+												value="ignore" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.reportMethodCanBeStatic"
+												value="ignore" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.specialParameterHidingField"
+												value="disabled" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.staticAccessReceiver"
+												value="warning" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.suppressOptionalErrors"
+												value="disabled" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.suppressWarnings"
+												value="enabled" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.syntacticNullAnalysisForFields"
+												value="enabled" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.syntheticAccessEmulation"
+												value="ignore" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.terminalDeprecation"
+												value="warning" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.typeParameterHiding"
+												value="warning" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.unavoidableGenericTypeProblems"
+												value="enabled" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.uncheckedTypeOperation"
+												value="warning" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.unclosedCloseable"
+												value="warning" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.undocumentedEmptyBlock"
+												value="info" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.unhandledWarningToken"
+												value="warning" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.unlikelyCollectionMethodArgumentType"
+												value="warning" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.unlikelyCollectionMethodArgumentTypeStrict"
+												value="disabled" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.unlikelyEqualsArgumentType"
+												value="warning" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.unnecessaryElse"
+												value="warning" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.unnecessaryTypeCheck"
+												value="warning" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.unqualifiedFieldAccess"
+												value="ignore" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.unstableAutoModuleName"
+												value="warning" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.unusedDeclaredThrownException"
+												value="info" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.unusedDeclaredThrownExceptionExemptExceptionAndThrowable"
+												value="disabled" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.unusedDeclaredThrownExceptionIncludeDocCommentReference"
+												value="disabled" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.unusedDeclaredThrownExceptionWhenOverriding"
+												value="disabled" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.unusedExceptionParameter"
+												value="info" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.unusedImport"
+												value="warning" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.unusedLabel"
+												value="warning" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.unusedLocal"
+												value="warning" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.unusedObjectAllocation"
+												value="info" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.unusedParameter"
+												value="info" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.unusedParameterIncludeDocCommentReference"
+												value="disabled" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.unusedParameterWhenImplementingAbstract"
+												value="enabled" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.unusedParameterWhenOverridingConcrete"
+												value="enabled" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.unusedPrivateMember"
+												value="warning" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.unusedTypeParameter"
+												value="info" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.unusedWarningToken"
+												value="warning" />
+											<entry
+												key="org.eclipse.jdt.core.compiler.problem.varargsArgumentNeedCast"
+												value="warning" />
+											<entry key="org.eclipse.jdt.core.compiler.release"
+												value="disabled" />
+											<entry key="org.eclipse.jdt.core.compiler.source"
+												value="1.8" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.align_assignment_statements_on_columns"
+												value="false" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.align_fields_grouping_blank_lines"
+												value="2147483647" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.align_type_members_on_columns"
+												value="false" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.align_variable_declarations_on_columns"
+												value="false" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.align_with_spaces"
+												value="false" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.alignment_for_arguments_in_allocation_expression"
+												value="80" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.alignment_for_arguments_in_annotation"
+												value="80" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.alignment_for_arguments_in_enum_constant"
+												value="80" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.alignment_for_arguments_in_explicit_constructor_call"
+												value="80" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.alignment_for_arguments_in_method_invocation"
+												value="80" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.alignment_for_arguments_in_qualified_allocation_expression"
+												value="80" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.alignment_for_assignment"
+												value="16" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.alignment_for_binary_expression"
+												value="48" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.alignment_for_compact_if"
+												value="0" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.alignment_for_compact_loops"
+												value="0" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.alignment_for_conditional_expression"
+												value="48" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.alignment_for_enum_constants"
+												value="49" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.alignment_for_expressions_in_array_initializer"
+												value="48" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.alignment_for_expressions_in_for_loop_header"
+												value="80" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.alignment_for_method_declaration"
+												value="0" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.alignment_for_module_statements"
+												value="80" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.alignment_for_multiple_fields"
+												value="16" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.alignment_for_parameterized_type_references"
+												value="0" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.alignment_for_parameters_in_constructor_declaration"
+												value="80" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.alignment_for_parameters_in_method_declaration"
+												value="80" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.alignment_for_resources_in_try"
+												value="80" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.alignment_for_selector_in_method_invocation"
+												value="80" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.alignment_for_superclass_in_type_declaration"
+												value="16" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.alignment_for_superinterfaces_in_enum_declaration"
+												value="16" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.alignment_for_superinterfaces_in_type_declaration"
+												value="16" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.alignment_for_throws_clause_in_constructor_declaration"
+												value="16" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.alignment_for_throws_clause_in_method_declaration"
+												value="16" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.alignment_for_type_arguments"
+												value="0" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.alignment_for_type_parameters"
+												value="0" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.alignment_for_union_type_in_multicatch"
+												value="80" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.blank_lines_after_imports"
+												value="1" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.blank_lines_after_package"
+												value="1" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.blank_lines_before_field"
+												value="1" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.blank_lines_before_first_class_body_declaration"
+												value="0" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.blank_lines_before_imports"
+												value="1" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.blank_lines_before_member_type"
+												value="1" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.blank_lines_before_method"
+												value="1" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.blank_lines_before_new_chunk"
+												value="1" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.blank_lines_before_package"
+												value="0" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.blank_lines_between_import_groups"
+												value="1" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.blank_lines_between_type_declarations"
+												value="1" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.brace_position_for_annotation_type_declaration"
+												value="end_of_line" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.brace_position_for_anonymous_type_declaration"
+												value="end_of_line" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.brace_position_for_array_initializer"
+												value="end_of_line" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.brace_position_for_block"
+												value="end_of_line" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.brace_position_for_block_in_case"
+												value="end_of_line" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.brace_position_for_constructor_declaration"
+												value="end_of_line" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.brace_position_for_enum_constant"
+												value="end_of_line" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.brace_position_for_enum_declaration"
+												value="end_of_line" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.brace_position_for_lambda_body"
+												value="end_of_line" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.brace_position_for_method_declaration"
+												value="end_of_line" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.brace_position_for_switch"
+												value="end_of_line" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.brace_position_for_type_declaration"
+												value="end_of_line" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.comment.align_tags_descriptions_grouped"
+												value="true" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.comment.align_tags_names_descriptions"
+												value="false" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.comment.clear_blank_lines_in_block_comment"
+												value="false" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.comment.clear_blank_lines_in_javadoc_comment"
+												value="false" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.comment.count_line_length_from_starting_position"
+												value="true" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.comment.format_block_comments"
+												value="true" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.comment.format_header"
+												value="true" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.comment.format_html"
+												value="true" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.comment.format_javadoc_comments"
+												value="true" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.comment.format_line_comments"
+												value="true" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.comment.format_source_code"
+												value="false" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.comment.indent_parameter_description"
+												value="false" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.comment.indent_root_tags"
+												value="false" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.comment.insert_new_line_before_root_tags"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.comment.insert_new_line_for_parameter"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.comment.line_length"
+												value="80" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.comment.new_lines_at_block_boundaries"
+												value="true" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.comment.new_lines_at_javadoc_boundaries"
+												value="true" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.comment.preserve_white_space_between_code_and_line_comments"
+												value="false" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.compact_else_if"
+												value="true" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.continuation_indentation"
+												value="2" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.continuation_indentation_for_array_initializer"
+												value="2" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.disabling_tag"
+												value="@formatter\:off" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.enabling_tag"
+												value="@formatter\:on" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.format_guardian_clause_on_one_line"
+												value="false" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.format_line_comment_starting_on_first_column"
+												value="true" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.indent_body_declarations_compare_to_annotation_declaration_header"
+												value="true" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.indent_body_declarations_compare_to_enum_constant_header"
+												value="true" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.indent_body_declarations_compare_to_enum_declaration_header"
+												value="true" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.indent_body_declarations_compare_to_type_header"
+												value="true" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.indent_breaks_compare_to_cases"
+												value="true" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.indent_empty_lines"
+												value="false" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.indent_statements_compare_to_block"
+												value="true" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.indent_statements_compare_to_body"
+												value="true" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.indent_switchstatements_compare_to_cases"
+												value="true" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.indent_switchstatements_compare_to_switch"
+												value="false" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.indentation.size"
+												value="4" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_new_line_after_annotation_on_enum_constant"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_new_line_after_annotation_on_field"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_new_line_after_annotation_on_local_variable"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_new_line_after_annotation_on_method"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_new_line_after_annotation_on_package"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_new_line_after_annotation_on_parameter"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_new_line_after_annotation_on_type"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_new_line_after_label"
+												value="false" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_new_line_after_opening_brace_in_array_initializer"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_new_line_after_type_annotation"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_new_line_at_end_of_file_if_missing"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_new_line_before_catch_in_try_statement"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_new_line_before_closing_brace_in_array_initializer"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_new_line_before_else_in_if_statement"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_new_line_before_finally_in_try_statement"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_new_line_before_while_in_do_statement"
+												value="false" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_new_line_in_empty_annotation_declaration"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_new_line_in_empty_anonymous_type_declaration"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_new_line_in_empty_block"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_new_line_in_empty_enum_constant"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_new_line_in_empty_enum_declaration"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_new_line_in_empty_method_body"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_new_line_in_empty_type_declaration"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_and_in_type_parameter"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_assignment_operator"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_at_in_annotation"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_at_in_annotation_type_declaration"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_binary_operator"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_closing_angle_bracket_in_type_arguments"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_closing_angle_bracket_in_type_parameters"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_closing_brace_in_block"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_closing_paren_in_cast"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_colon_in_assert"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_colon_in_case"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_colon_in_conditional"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_colon_in_for"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_colon_in_labeled_statement"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_comma_in_allocation_expression"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_comma_in_annotation"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_comma_in_array_initializer"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_comma_in_constructor_declaration_parameters"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_comma_in_constructor_declaration_throws"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_comma_in_enum_constant_arguments"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_comma_in_enum_declarations"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_comma_in_explicitconstructorcall_arguments"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_comma_in_for_increments"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_comma_in_for_inits"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_comma_in_method_declaration_parameters"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_comma_in_method_declaration_throws"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_comma_in_method_invocation_arguments"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_comma_in_multiple_field_declarations"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_comma_in_multiple_local_declarations"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_comma_in_parameterized_type_reference"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_comma_in_superinterfaces"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_comma_in_type_arguments"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_comma_in_type_parameters"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_ellipsis"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_lambda_arrow"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_opening_angle_bracket_in_parameterized_type_reference"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_opening_angle_bracket_in_type_arguments"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_opening_angle_bracket_in_type_parameters"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_opening_brace_in_array_initializer"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_opening_bracket_in_array_allocation_expression"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_opening_bracket_in_array_reference"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_opening_paren_in_annotation"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_opening_paren_in_cast"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_opening_paren_in_catch"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_opening_paren_in_constructor_declaration"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_opening_paren_in_enum_constant"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_opening_paren_in_for"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_opening_paren_in_if"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_opening_paren_in_method_declaration"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_opening_paren_in_method_invocation"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_opening_paren_in_parenthesized_expression"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_opening_paren_in_switch"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_opening_paren_in_synchronized"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_opening_paren_in_try"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_opening_paren_in_while"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_postfix_operator"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_prefix_operator"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_question_in_conditional"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_question_in_wildcard"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_semicolon_in_for"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_semicolon_in_try_resources"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_unary_operator"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_and_in_type_parameter"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_assignment_operator"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_at_in_annotation_type_declaration"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_binary_operator"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_closing_angle_bracket_in_parameterized_type_reference"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_closing_angle_bracket_in_type_arguments"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_closing_angle_bracket_in_type_parameters"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_closing_brace_in_array_initializer"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_closing_bracket_in_array_allocation_expression"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_closing_bracket_in_array_reference"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_closing_paren_in_annotation"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_closing_paren_in_cast"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_closing_paren_in_catch"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_closing_paren_in_constructor_declaration"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_closing_paren_in_enum_constant"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_closing_paren_in_for"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_closing_paren_in_if"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_closing_paren_in_method_declaration"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_closing_paren_in_method_invocation"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_closing_paren_in_parenthesized_expression"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_closing_paren_in_switch"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_closing_paren_in_synchronized"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_closing_paren_in_try"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_closing_paren_in_while"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_colon_in_assert"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_colon_in_case"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_colon_in_conditional"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_colon_in_default"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_colon_in_for"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_colon_in_labeled_statement"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_comma_in_allocation_expression"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_comma_in_annotation"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_comma_in_array_initializer"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_comma_in_constructor_declaration_parameters"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_comma_in_constructor_declaration_throws"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_comma_in_enum_constant_arguments"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_comma_in_enum_declarations"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_comma_in_explicitconstructorcall_arguments"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_comma_in_for_increments"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_comma_in_for_inits"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_comma_in_method_declaration_parameters"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_comma_in_method_declaration_throws"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_comma_in_method_invocation_arguments"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_comma_in_multiple_field_declarations"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_comma_in_multiple_local_declarations"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_comma_in_parameterized_type_reference"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_comma_in_superinterfaces"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_comma_in_type_arguments"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_comma_in_type_parameters"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_ellipsis"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_lambda_arrow"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_opening_angle_bracket_in_parameterized_type_reference"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_opening_angle_bracket_in_type_arguments"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_opening_angle_bracket_in_type_parameters"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_opening_brace_in_annotation_type_declaration"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_opening_brace_in_anonymous_type_declaration"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_opening_brace_in_array_initializer"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_opening_brace_in_block"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_opening_brace_in_constructor_declaration"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_opening_brace_in_enum_constant"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_opening_brace_in_enum_declaration"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_opening_brace_in_method_declaration"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_opening_brace_in_switch"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_opening_brace_in_type_declaration"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_opening_bracket_in_array_allocation_expression"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_opening_bracket_in_array_reference"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_opening_bracket_in_array_type_reference"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_opening_paren_in_annotation"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_opening_paren_in_annotation_type_member_declaration"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_opening_paren_in_catch"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_opening_paren_in_constructor_declaration"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_opening_paren_in_enum_constant"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_opening_paren_in_for"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_opening_paren_in_if"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_opening_paren_in_method_declaration"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_opening_paren_in_method_invocation"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_opening_paren_in_parenthesized_expression"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_opening_paren_in_switch"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_opening_paren_in_synchronized"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_opening_paren_in_try"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_opening_paren_in_while"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_parenthesized_expression_in_return"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_parenthesized_expression_in_throw"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_postfix_operator"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_prefix_operator"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_question_in_conditional"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_question_in_wildcard"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_semicolon"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_semicolon_in_for"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_semicolon_in_try_resources"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_unary_operator"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_between_brackets_in_array_type_reference"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_between_empty_braces_in_array_initializer"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_between_empty_brackets_in_array_allocation_expression"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_between_empty_parens_in_annotation_type_member_declaration"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_between_empty_parens_in_constructor_declaration"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_between_empty_parens_in_enum_constant"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_between_empty_parens_in_method_declaration"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_between_empty_parens_in_method_invocation"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.join_lines_in_comments"
+												value="true" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.join_wrapped_lines"
+												value="true" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.keep_else_statement_on_same_line"
+												value="true" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.keep_empty_array_initializer_on_one_line"
+												value="false" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.keep_imple_if_on_one_line"
+												value="true" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.keep_simple_do_while_body_on_same_line"
+												value="true" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.keep_simple_for_body_on_same_line"
+												value="true" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.keep_simple_while_body_on_same_line"
+												value="true" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.keep_then_statement_on_same_line"
+												value="true" />
+											<entry key="org.eclipse.jdt.core.formatter.lineSplit"
+												value="120" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.never_indent_block_comments_on_first_column"
+												value="false" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.never_indent_line_comments_on_first_column"
+												value="false" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.number_of_blank_lines_at_beginning_of_method_body"
+												value="0" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.number_of_empty_lines_to_preserve"
+												value="1" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.parentheses_positions_in_annotation"
+												value="common_lines" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.parentheses_positions_in_catch_clause"
+												value="common_lines" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.parentheses_positions_in_enum_constant_declaration"
+												value="common_lines" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.parentheses_positions_in_for_statment"
+												value="common_lines" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.parentheses_positions_in_if_while_statement"
+												value="common_lines" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.parentheses_positions_in_lambda_declaration"
+												value="common_lines" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.parentheses_positions_in_method_delcaration"
+												value="common_lines" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.parentheses_positions_in_method_invocation"
+												value="common_lines" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.parentheses_positions_in_switch_statement"
+												value="common_lines" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.parentheses_positions_in_try_clause"
+												value="common_lines" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.put_empty_statement_on_new_line"
+												value="false" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.tabulation.char"
+												value="tab" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.tabulation.size"
+												value="4" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.use_on_off_tags"
+												value="true" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.use_tabs_only_for_leading_indentations"
+												value="false" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.wrap_before_assignment_operator"
+												value="true" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.wrap_before_binary_operator"
+												value="true" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.wrap_before_conditional_operator"
+												value="true" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.wrap_before_or_operator_multicatch"
+												value="true" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.wrap_outer_expressions_when_nested"
+												value="true" />
+											<entry key="org.eclipse.jdt.core.javaFormatter"
+												value="org.eclipse.jdt.core.defaultJavaFormatter" />
+										</propertyfile>
+									</target>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+</project>
