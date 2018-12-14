@@ -16,7 +16,7 @@ Read below descriptions and tips to get started. In case you run into problems [
 This POM is made for development using Eclipse Photon or later by handling some of its settings to comply with the projects settings. However you can use this POM together with any other IDE for sure.
 
 ## Getting started
-When starting a new project all you need to do is following these generic and one of the below environment specific steps.
+When starting a new project all you need to do is following (a) the following generic and (b) one of the below environment specific steps.
 
 1. Create an empty folder. This one will contain your projects data.
 2. Create a file called `pom.xml` with the following content. Remember to replace the comments with a valid group ID, artifact ID and the latest `de.lars-sh:parent` version.
