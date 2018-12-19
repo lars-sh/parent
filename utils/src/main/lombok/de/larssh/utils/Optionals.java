@@ -94,13 +94,15 @@ public class Optionals {
 	 *
 	 * @param           <T> type of the return value
 	 * @param isPresent predicate to match
-	 * @param values    any number of values to test
+	 * @param suppliers any number of value suppliers, which values to test,
+	 *                  evaluated in a lazy manner
 	 * @return an {@link Optional} describing the first value matching the predicate
 	 *         {@code isPresent}, an empty {@link Optional} if no element matches
 	 */
 	@SafeVarargs
-	public static <T> Optional<T> getFirst(final Predicate<T> isPresent, final T... values) {
-		for (final T value : values) {
+	public static <T> Optional<T> getFirst(final Predicate<T> isPresent, final Supplier<T>... suppliers) {
+		for (final Supplier<T> supplier : suppliers) {
+			final T value = supplier.get();
 			if (isPresent.test(value)) {
 				return Optional.ofNullable(value);
 			}
@@ -114,15 +116,13 @@ public class Optionals {
 	 *
 	 * @param           <T> type of the return value
 	 * @param isPresent predicate to match
-	 * @param suppliers any number of value suppliers, which values to test,
-	 *                  evaluated in a lazy manner
+	 * @param values    any number of values to test
 	 * @return an {@link Optional} describing the first value matching the predicate
 	 *         {@code isPresent}, an empty {@link Optional} if no element matches
 	 */
 	@SafeVarargs
-	public static <T> Optional<T> getFirst(final Predicate<T> isPresent, final Supplier<T>... suppliers) {
-		for (final Supplier<T> supplier : suppliers) {
-			final T value = supplier.get();
+	public static <T> Optional<T> getFirstValue(final Predicate<T> isPresent, final T... values) {
+		for (final T value : values) {
 			if (isPresent.test(value)) {
 				return Optional.ofNullable(value);
 			}
