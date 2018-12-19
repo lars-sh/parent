@@ -1,6 +1,8 @@
 package de.larssh.utils;
 
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.Optional;
 import java.util.OptionalDouble;
 import java.util.OptionalInt;
@@ -12,6 +14,7 @@ import java.util.function.ToIntFunction;
 import java.util.function.ToLongFunction;
 import java.util.stream.Stream;
 
+import de.larssh.utils.text.Characters;
 import de.larssh.utils.text.Strings;
 import edu.umd.cs.findbugs.annotations.Nullable;
 import lombok.experimental.UtilityClass;
@@ -148,28 +151,171 @@ public class Optionals {
 	}
 
 	/**
-	 * Returns an {@link Optional} describing the specified value, if non-null and
-	 * non-empty after being trimmed, otherwise returns an empty {@link Optional}.
+	 * Returns an {@link Optional} describing the specified string, if non-null and
+	 * non-blank, otherwise returns an empty {@link Optional}.
 	 *
-	 * @param value the possibly-null-or-empty value to describe
-	 * @return an {@link Optional} with a present value if the specified value is
+	 * @param string the possibly-null-or-blank string to describe
+	 * @return an {@link Optional} with a present value if the specified string is
 	 *         non-null and non-empty after being trimmed, otherwise an empty
 	 *         {@link Optional}
 	 */
-	public static Optional<String> ofNonBlank(@Nullable final String value) {
-		return ofNon(Strings::isBlank, value);
+	public static Optional<String> ofNonBlank(@Nullable final String string) {
+		return ofNon(Strings::isBlank, string);
 	}
 
 	/**
-	 * Returns an {@link Optional} describing the specified value, if non-null and
+	 * Returns an {@link Optional} describing the specified array, if non-null and
 	 * non-empty, otherwise returns an empty {@link Optional}.
 	 *
-	 * @param value the possibly-null-or-empty value to describe
-	 * @return an {@link Optional} with a present value if the specified value is
+	 * @param       <T> array element type
+	 * @param array the possibly-null-or-empty array to describe
+	 * @return an {@link Optional} with a present value if the specified array is
 	 *         non-null and non-empty, otherwise an empty {@link Optional}
 	 */
-	public static Optional<String> ofNonEmpty(@Nullable final String value) {
-		return ofNon(String::isEmpty, value);
+	public static <T> Optional<T[]> ofNonEmpty(@Nullable final T[] array) {
+		return ofNon(a -> a.length == 0, array);
+	}
+
+	/**
+	 * Returns an {@link Optional} describing the specified collection, if non-null
+	 * and non-empty, otherwise returns an empty {@link Optional}.
+	 *
+	 * @param            <T> collection and collection element type
+	 * @param collection the possibly-null-or-empty collection to describe
+	 * @return an {@link Optional} with a present value if the specified collection
+	 *         is non-null and non-empty, otherwise an empty {@link Optional}
+	 */
+	public static <T extends Collection<?>> Optional<T> ofNonEmpty(@Nullable final T collection) {
+		return ofNon(Collection::isEmpty, collection);
+	}
+
+	/**
+	 * Returns an {@link Optional} describing the specified string, if non-null and
+	 * non-empty, otherwise returns an empty {@link Optional}.
+	 *
+	 * @param string the possibly-null-or-empty string to describe
+	 * @return an {@link Optional} with a present value if the specified string is
+	 *         non-null and non-empty, otherwise an empty {@link Optional}
+	 */
+	public static Optional<String> ofNonEmpty(@Nullable final String string) {
+		return ofNon(String::isEmpty, string);
+	}
+
+	/**
+	 * Returns an {@link Optional} describing the specified arrays first element, if
+	 * present, otherwise returns an empty {@link Optional}. Throws a
+	 * {@link TooManyElementsException} if {@code array} contains more than one
+	 * element.
+	 *
+	 * @param       <T> array element type
+	 * @param array the array describing the element
+	 * @return an {@link Optional} describing the specified arrays first element, if
+	 *         present, otherwise returns an empty {@link Optional}
+	 * @throws TooManyElementsException if {@code array} contains more than one
+	 *                                  element
+	 */
+	public static <T> Optional<T> ofSingle(final T[] array) {
+		if (array.length == 0) {
+			return Optional.empty();
+		}
+		if (array.length == 1) {
+			return Optional.ofNullable(array[0]);
+		}
+		throw new TooManyElementsException();
+	}
+
+	/**
+	 * Returns an {@link Optional} describing the specified collections first
+	 * element, if present, otherwise returns an empty {@link Optional}. Throws a
+	 * {@link TooManyElementsException} if {@code collection} contains more than one
+	 * element.
+	 *
+	 * @param            <T> collection element type
+	 * @param collection the collection describing the element
+	 * @return an {@link Optional} describing the specified collections first
+	 *         element, if present, otherwise returns an empty {@link Optional}
+	 * @throws TooManyElementsException if {@code collection} contains more than one
+	 *                                  element
+	 */
+	public static <T> Optional<T> ofSingle(final Collection<T> collection) {
+		return ofSingle(collection.iterator());
+	}
+
+	/**
+	 * Returns an {@link Optional} describing the specified iterators first element,
+	 * if present, otherwise returns an empty {@link Optional}. Throws a
+	 * {@link TooManyElementsException} if {@code iterator} contains more than one
+	 * element.
+	 *
+	 * @param          <T> iterator element type
+	 * @param iterator the iterator describing the element
+	 * @return an {@link Optional} describing the specified iterators first element,
+	 *         if present, otherwise returns an empty {@link Optional}
+	 * @throws TooManyElementsException if {@code iterator} contains more than one
+	 *                                  element
+	 */
+	public static <T> Optional<T> ofSingle(final Iterator<T> iterator) {
+		if (!iterator.hasNext()) {
+			return Optional.empty();
+		}
+
+		final Optional<T> optional = Optional.ofNullable(iterator.next());
+		if (iterator.hasNext()) {
+			throw new TooManyElementsException();
+		}
+
+		return optional;
+	}
+
+	/**
+	 * Returns an {@link Optional} describing the specified streams first element,
+	 * if present, otherwise returns an empty {@link Optional}. Throws a
+	 * {@link TooManyElementsException} if {@code stream} contains more than one
+	 * element.
+	 *
+	 * <p>
+	 * This is a terminal operation.
+	 *
+	 * @param        <T> stream element type
+	 * @param stream the stream describing the element
+	 * @return an {@link Optional} describing the specified streams first element,
+	 *         if present, otherwise returns an empty {@link Optional}
+	 * @throws TooManyElementsException if {@code stream} contains more than one
+	 *                                  element
+	 */
+	public static <T> Optional<T> ofSingle(final Stream<T> stream) {
+		return ofSingle(stream.iterator());
+	}
+
+	/**
+	 * Returns an {@link OptionalInt} describing the specified strings first
+	 * character, if present, otherwise returns an empty {@link OptionalInt}. Throws
+	 * a {@link TooManyElementsException} if {@code string} contains more than one
+	 * character, ignoring trailing whitespaces.
+	 *
+	 * <p>
+	 * Whitespace characters are recognized using
+	 * {@link Characters#isAsciiWhitespace(char)}.
+	 *
+	 * @param string the string describing the character
+	 * @return an {@link OptionalInt} describing the specified strings first
+	 *         character, if present, otherwise returns an empty {@link OptionalInt}
+	 * @throws TooManyElementsException if {@code string} contains more than one
+	 *                                  character, ignoring trailing whitespaces
+	 */
+	public static OptionalInt ofSingle(final CharSequence string) {
+		final int length = string.length();
+		if (length == 0) {
+			return OptionalInt.empty();
+		}
+
+		final char character = string.charAt(0);
+		for (int index = 1; index < length; index += 1) {
+			if (!Characters.isAsciiWhitespace(string.charAt(index))) {
+				throw new TooManyElementsException();
+			}
+		}
+		return OptionalInt.of(character);
 	}
 
 	/**
