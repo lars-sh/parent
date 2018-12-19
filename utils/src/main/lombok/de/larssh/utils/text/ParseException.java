@@ -20,7 +20,7 @@ public class ParseException extends Exception {
 	 *         {@code format} contains unexpected syntax
 	 */
 	public ParseException(final String message, final Object... arguments) {
-		super(Strings.format(message, arguments));
+		super(Strings.format(message, arguments), null);
 	}
 
 	/**

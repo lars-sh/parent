@@ -14,7 +14,6 @@ public class CompletedException extends RuntimeException {
 	 * Constructs a new {@link CompletedException} with the default detail message.
 	 */
 	public CompletedException() {
-		super("Object has been completed prior modifying.");
-		initCause(null);
+		super("Object has been completed prior modifying.", null);
 	}
 }
