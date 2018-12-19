@@ -1,4 +1,4 @@
-package de.larssh.utils;
+package de.larssh.utils.net;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -19,6 +19,7 @@ import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.TrustManagerFactory;
 
+import de.larssh.utils.SneakyException;
 import edu.umd.cs.findbugs.annotations.Nullable;
 import lombok.experimental.UtilityClass;
 
