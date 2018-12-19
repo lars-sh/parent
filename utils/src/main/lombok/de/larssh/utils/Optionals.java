@@ -9,6 +9,7 @@ import java.util.OptionalInt;
 import java.util.OptionalLong;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.function.Supplier;
 import java.util.function.ToDoubleFunction;
 import java.util.function.ToIntFunction;
 import java.util.function.ToLongFunction;
@@ -85,6 +86,48 @@ public class Optionals {
 	 */
 	public static <T> OptionalLong flatMapToLong(final Optional<T> optional, final Function<T, OptionalLong> mapper) {
 		return optional.isPresent() ? mapper.apply(optional.get()) : OptionalLong.empty();
+	}
+
+	/**
+	 * Returns an {@link Optional} describing the first value matching the predicate
+	 * {@code isPresent}. Returns an empty {@link Optional} if no element matches.
+	 *
+	 * @param           <T> type of the return value
+	 * @param isPresent predicate to match
+	 * @param values    any number of values to test
+	 * @return an {@link Optional} describing the first value matching the predicate
+	 *         {@code isPresent}, an empty {@link Optional} if no element matches
+	 */
+	@SafeVarargs
+	public static <T> Optional<T> getFirst(final Predicate<T> isPresent, final T... values) {
+		for (final T value : values) {
+			if (isPresent.test(value)) {
+				return Optional.ofNullable(value);
+			}
+		}
+		return Optional.empty();
+	}
+
+	/**
+	 * Returns an {@link Optional} describing the first value matching the predicate
+	 * {@code isPresent}. Returns an empty {@link Optional} if no element matches.
+	 *
+	 * @param           <T> type of the return value
+	 * @param isPresent predicate to match
+	 * @param suppliers any number of value suppliers, which values to test,
+	 *                  evaluated in a lazy manner
+	 * @return an {@link Optional} describing the first value matching the predicate
+	 *         {@code isPresent}, an empty {@link Optional} if no element matches
+	 */
+	@SafeVarargs
+	public static <T> Optional<T> getFirst(final Predicate<T> isPresent, final Supplier<T>... suppliers) {
+		for (final Supplier<T> supplier : suppliers) {
+			final T value = supplier.get();
+			if (isPresent.test(value)) {
+				return Optional.ofNullable(value);
+			}
+		}
+		return Optional.empty();
 	}
 
 	/**
