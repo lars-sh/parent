@@ -21,11 +21,13 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.IntStream;
 
+import de.larssh.utils.Optionals;
 import de.larssh.utils.SneakyException;
 import edu.umd.cs.findbugs.annotations.Nullable;
 import lombok.experimental.UtilityClass;
@@ -434,18 +436,14 @@ public class Strings {
 
 		// Checkstyle: Ignore duplicate "unit" for 1 line
 		final String unit = matcher.get().group("unit");
-		final int powerOfTen;
-		if (unit == null) {
-			powerOfTen = 0;
-		} else if (DECIMAL_UNITS.containsKey(unit)) {
-			powerOfTen = DECIMAL_UNITS.get(unit);
-		} else if (DECIMAL_UNITS.containsKey(Strings.toNeutralUpperCase(unit))) {
-			powerOfTen = DECIMAL_UNITS.get(Strings.toNeutralUpperCase(unit));
-		} else if (DECIMAL_UNITS.containsKey(Strings.toNeutralLowerCase(unit))) {
-			powerOfTen = DECIMAL_UNITS.get(Strings.toNeutralLowerCase(unit));
-		} else {
-			throw new ParseException("Found unexpected decimal unit unit [%s].", unit);
-		}
+
+		final int powerOfTen = Optionals
+				.getFirst(Objects::nonNull,
+						() -> unit == null ? 0 : null,
+						() -> DECIMAL_UNITS.get(unit),
+						() -> DECIMAL_UNITS.get(Strings.toNeutralUpperCase(unit)),
+						() -> DECIMAL_UNITS.get(Strings.toNeutralLowerCase(unit)))
+				.orElseThrow(() -> new ParseException("Found unexpected decimal unit [%s].", unit));
 
 		return new BigDecimal(replaceAll(value, UNIT_WHITE_SPACE_PATTERN, "")).scaleByPowerOfTen(powerOfTen);
 	}
