@@ -1153,7 +1153,7 @@ TODO: Easy to understand usage example
 							<target unless="project.travis-yml.exists">
 								<echo message="Create .travis.yml" />
 								<echo file="${project.basedir}/.travis.yml"><![CDATA[language: java
-install: true
+install: mvn install -DskipTests=true -Dgpg.skip=true --batch-mode --show-version
 ]]></echo>
 							</target>
 						</configuration>
