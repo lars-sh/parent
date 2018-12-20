@@ -1021,14 +1021,17 @@ TODO: Easy to understand usage example
 	<suppress-xpath checks="^.*$" query="//*[MODIFIERS/ANNOTATION[@text = 'Generated' or *[@text = 'lombok'] or *[@text = 'Generated']]]/descendant-or-self::node()" />
 	
 	<!-- Lombok: Suppress import separation checks -->
-	<suppress checks="ImportOrder" message="^'.*' should be separated from previous imports.$" />
+	<suppress checks="ImportOrder" message="^'.*' should be separated from previous imports\.$" />
 	
 	<!-- Lombok: Suppress specific unused imports -->
 	<suppress checks="UnusedImports" message="^Unused import - lombok\.ToString\.$" />
 	
 	<!-- Unit Tests -->
+	<suppress checks="ExecutableStatementCountCheck" files="^.*[/\\]generated-test-sources[/\\].*$" />
 	<suppress checks="JavadocPackageCheck" files="^.*[/\\]generated-test-sources[/\\].*$" />
 	<suppress checks="JavadocVariableCheck" files="^.*[/\\]generated-test-sources[/\\].*$" />
+	<suppress checks="MagicNumberCheck" files="^.*[/\\]generated-test-sources[/\\].*$" />
+	<suppress checks="MethodLengthCheck" files="^.*[/\\]generated-test-sources[/\\].*$" />
 	<suppress checks="MultipleStringLiteralsCheck" files="^.*[/\\]generated-test-sources[/\\].*$" />
 </suppressions>
 ]]></echo>
