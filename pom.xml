@@ -707,7 +707,7 @@ TODO: Easy to understand usage example
 		<property name="file" value="${project.build.directory}/checkstyle-suppressions.xml" />
 	</module>
 	<module name="SuppressionFilter">
-		<property name="file" value="${project.basedir}/suppressions.xml" />
+		<property name="file" value="${project.basedir}/checkstyle-suppressions.xml" />
 		<property name="optional" value="true" />
 	</module>
 
@@ -833,7 +833,7 @@ TODO: Easy to understand usage example
 			<property name="file" value="${project.build.directory}/checkstyle-suppressions.xml" />
 		</module>
 		<module name="SuppressionXpathFilter">
-			<property name="file" value="${project.basedir}/suppressions.xml" />
+			<property name="file" value="${project.basedir}/checkstyle-suppressions.xml" />
 			<property name="optional" value="true" />
 		</module>
 		<module name="SuppressWithNearbyCommentFilter">
