@@ -3,6 +3,7 @@ package de.larssh.utils.text;
 import java.io.Serializable;
 import java.util.Comparator;
 
+import de.larssh.utils.annotations.PackagePrivate;
 import edu.umd.cs.findbugs.annotations.Nullable;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -41,22 +42,23 @@ import lombok.experimental.NonFinal;
  * will result in an unsatisfactory ordering for certain locales.
  */
 @Getter
+@PackagePrivate
 @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
-/* package */ final class NumericTextComparator implements Comparator<String>, Serializable {
+final class NumericTextComparator implements Comparator<String>, Serializable {
 	private static final long serialVersionUID = 1882417254984172719L;
 
-	/* package */
 	/**
 	 * Singleton instance of {@link NumericTextComparator} to compare strings case
 	 * insensitive.
 	 */
+	@PackagePrivate
 	static final Comparator<String> COMPARATOR_CASE_INSENSITIVE = new NumericTextComparator(true);
 
-	/* package */
 	/**
 	 * Singleton instance of {@link NumericTextComparator} to compare strings case
 	 * sensitive.
 	 */
+	@PackagePrivate
 	static final Comparator<String> COMPARATOR_CASE_SENSITIVE = new NumericTextComparator(false);
 
 	/**

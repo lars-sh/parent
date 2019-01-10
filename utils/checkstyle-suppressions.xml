@@ -7,9 +7,6 @@
 	<suppress files="^.*[/\\]de[/\\]larssh[/\\]utils[/\\]function[/\\]ThrowingRunnable\.java$" checks="IllegalCatchCheck" message="Catching &apos;Exception&apos; is not allowed." lines="48" columns="11" />
 	<suppress files="^.*[/\\]de[/\\]larssh[/\\]utils[/\\]function[/\\]ThrowingSupplier\.java$" checks="IllegalCatchCheck" message="Catching &apos;Exception&apos; is not allowed." lines="56" columns="11" />
 	
-	<!-- Lombok: Suppress illegal formatting -->
-	<suppress files="^.*[/\\]de[/\\]larssh[/\\]utils[/\\]text[/\\]NumericTextComparator\.java$" checks="EmptyLineSeparator" message="&apos;CLASS_DEF&apos; should be separated from previous statement." lines="39" />
-
 	<!-- Suppress magic numbers, that have been verified -->
 	<suppress-xpath files="^.*[/\\]de[/\\]larssh[/\\]utils[/\\]text[/\\]Strings\.java$" checks="MagicNumberCheck" query="//METHOD_DEF[@text = 'getDecimalUnits']/descendant-or-self::node()" />
 </suppressions>

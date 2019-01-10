@@ -1,5 +1,7 @@
 package de.larssh.utils.test;
 
+import de.larssh.utils.annotations.PackagePrivate;
+
 /**
  * SneakyException allow rethrowing any kind of {@link Exception}, hiding them
  * from compiler checks.
@@ -17,10 +19,10 @@ package de.larssh.utils.test;
  * <b>This class has been copied from "utils" module and must not be used
  * publicly!</b>
  */
-/* package */ final class SneakyException extends RuntimeException {
+@PackagePrivate
+final class SneakyException extends RuntimeException {
 	private static final long serialVersionUID = 1;
 
-	/* package */
 	/**
 	 * Rethrows {@code throwable}, hiding it from compiler checks.
 	 *
@@ -35,6 +37,7 @@ package de.larssh.utils.test;
 	 *
 	 * @param throwable throwable to be hidden
 	 */
+	@PackagePrivate
 	SneakyException(final Throwable throwable) {
 		super(throwable);
 
