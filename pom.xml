@@ -686,14 +686,6 @@ TODO: Easy to understand usage example
 	<module name="Translation" />
 	<module name="UniqueProperties" />
 	
-	<!-- Regexp -->
-	<module name="RegexpOnFilename"><!-- TODO: Does not seem to work -->
-		<message key="regexp.filename.mismatch" value="Java and Lombok sources must not contain mixed content." />
-		<property name="folderPattern" value="[/\\]src[/\\](main|test)[/\\](java|lombok)[/\\]" />
-		<property name="fileNamePattern" value="\.java$" />
-		<property name="match" value="false" />
-	</module>
-	
 	<!-- Size Violations -->
 	<module name="FileLength" />
 	
@@ -1032,9 +1024,10 @@ TODO: Easy to understand usage example
 	</rule>
 	<rule ref="category/java/codestyle.xml">
 		<exclude name="AvoidFinalLocalVariable" />
-		<exclude name="ClassNamingConventions" /><!-- TODO -->
+		<exclude name="ClassNamingConventions" />
+		<exclude name="CommentDefaultAccessModifier" />
+		<exclude name="DefaultPackage" />
 		<exclude name="EmptyMethodInAbstractClassShouldBeAbstract" />
-		<exclude name="FieldNamingConventions" /><!-- TODO -->
 		<exclude name="FieldDeclarationsShouldBeAtStartOfClass" />
 		<exclude name="LinguisticNaming" />
 		<exclude name="LongVariable" />
@@ -1044,7 +1037,17 @@ TODO: Easy to understand usage example
 		<exclude name="ShortMethodName" />
 		<exclude name="ShortVariable" />
 		<exclude name="TooManyStaticImports" />
-		<exclude name="UnnecessaryFullyQualifiedName" /><!-- TODO -->
+		<exclude name="UnnecessaryFullyQualifiedName" />
+	</rule>
+	<rule ref="category/java/codestyle.xml/ClassNamingConventions">
+		<properties>
+			<property name="utilityClassPattern" value="[A-Z][a-zA-Z0-9]+(Utils?|Helper|s)" />
+		</properties>
+	</rule>
+	<rule ref="category/java/codestyle.xml/CommentDefaultAccessModifier">
+		<properties>
+			<property name="ignoredAnnotations" value="com.google.common.annotations.VisibleForTesting|android.support.annotation.VisibleForTesting|de.larssh.utils.annotations.PackagePrivate" />
+		</properties>
 	</rule>
 	<rule ref="category/java/codestyle.xml/LinguisticNaming">
 		<properties>
@@ -1054,6 +1057,7 @@ TODO: Easy to understand usage example
 	<rule ref="category/java/design.xml">
 		<exclude name="CyclomaticComplexity" />
 		<exclude name="LawOfDemeter" />
+		<exclude name="LoosePackageCoupling" />
 		<exclude name="NPathComplexity" />
 		<exclude name="TooManyMethods" />
 	</rule>
