@@ -32,8 +32,8 @@ public class NodeLists {
 			return (List<T>) nodeList;
 		}
 
-		final List<T> list = new ArrayList<>();
 		final int size = nodeList.getLength();
+		final List<T> list = new ArrayList<>(size);
 		for (int index = 0; index < size; index += 1) {
 			list.add((T) nodeList.item(index));
 		}
