@@ -6,8 +6,6 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import javax.annotation.meta.TypeQualifierNickname;
-
 import edu.umd.cs.findbugs.annotations.DefaultAnnotation;
 import edu.umd.cs.findbugs.annotations.NonNull;
 
@@ -23,7 +21,6 @@ import edu.umd.cs.findbugs.annotations.NonNull;
  */
 @Documented
 @Retention(RetentionPolicy.CLASS)
-@TypeQualifierNickname
 @Target({ ElementType.PACKAGE, ElementType.TYPE })
 @DefaultAnnotation(NonNull.class)
 public @interface NonNullByDefault {
