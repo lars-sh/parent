@@ -274,6 +274,7 @@ Create a file called `checkstyle-suppressions.xml`. See [SuppressionXPathFilter]
 More information about SpotBugs warnings can be found at one of the below resources.
 * [SpotBugs](https://spotbugs.readthedocs.io/en/latest/bugDescriptions.html)
 * [fb-contrib](http://fb-contrib.sourceforge.net/bugdescriptions.html)
+* [Find Security Bugs](https://find-sec-bugs.github.io/bugs.htm)
 
 There are two ways to suppress SpotBugs warnings.
 * Either go the recommended way by using the `SuppressFBWarnings` annotation as shown below. Inserting a `justification` information is mandatory.
