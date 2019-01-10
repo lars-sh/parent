@@ -79,8 +79,8 @@ public class Assertions {
 		final Object object = constructor.apply(arguments.getOriginal().toArray());
 		final int hashCode = object.hashCode();
 
-		assertNotEquals(object, null, "equals null");
-		assertNotEquals(object, true, "equals true");
+		assertNotEquals(null, object, "equals null");
+		assertNotEquals(Boolean.TRUE, object, "equals true");
 		assertEquals(object, object, "equals this");
 
 		final Object sameObject = constructor.apply(arguments.getOriginal().toArray());
