@@ -18,6 +18,7 @@ import java.util.stream.Stream;
 import de.larssh.utils.text.Characters;
 import de.larssh.utils.text.Strings;
 import edu.umd.cs.findbugs.annotations.Nullable;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import lombok.experimental.UtilityClass;
 
 /**
@@ -215,6 +216,8 @@ public class Optionals {
 	 * @return an {@link Optional} with a present value if the specified array is
 	 *         non-null and non-empty, otherwise an empty {@link Optional}
 	 */
+	@SuppressFBWarnings(value = "UVA_USE_VAR_ARGS",
+			justification = "var args make no sense as their length is constant")
 	public static <T> Optional<T[]> ofNonEmpty(@Nullable final T[] array) {
 		return ofNon(a -> a.length == 0, array);
 	}
@@ -257,6 +260,8 @@ public class Optionals {
 	 * @throws TooManyElementsException if {@code array} contains more than one
 	 *                                  element
 	 */
+	@SuppressFBWarnings(value = "UVA_USE_VAR_ARGS",
+			justification = "var args make no sense as their length is constant")
 	public static <T> Optional<T> ofSingle(final T[] array) {
 		if (array.length == 0) {
 			return Optional.empty();
