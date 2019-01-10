@@ -21,6 +21,7 @@ import javax.net.ssl.TrustManagerFactory;
 
 import de.larssh.utils.SneakyException;
 import edu.umd.cs.findbugs.annotations.Nullable;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import lombok.experimental.UtilityClass;
 
 /**
@@ -91,6 +92,8 @@ public class SecureConnections {
 	 * @param keyManagers key manager
 	 * @return SSL socket factory
 	 */
+	@SuppressFBWarnings(value = "UVA_USE_VAR_ARGS",
+			justification = "var args make no sense as KeyManager is handled as array regularly")
 	public static SocketFactory getSocketFactory(final KeyManager[] keyManagers) {
 		return getSocketFactory(keyManagers, null);
 	}
@@ -101,6 +104,8 @@ public class SecureConnections {
 	 * @param trustManagers trust manager
 	 * @return SSL socket factory
 	 */
+	@SuppressFBWarnings(value = "UVA_USE_VAR_ARGS",
+			justification = "var args make no sense as TrustManager is handled as array regularly")
 	public static SocketFactory getSocketFactory(final TrustManager[] trustManagers) {
 		return getSocketFactory(null, trustManagers);
 	}
