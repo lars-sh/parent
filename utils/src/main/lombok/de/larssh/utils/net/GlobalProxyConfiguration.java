@@ -230,7 +230,7 @@ public class GlobalProxyConfiguration {
 	 *                                       {@code nonProxyHosts} property
 	 */
 	public void resetNonProxyHosts() {
-		setNonProxyHosts(getDefaultNonProxyHosts().orElse(emptyList()));
+		setNonProxyHosts(getDefaultNonProxyHosts().orElseGet(() -> emptyList()));
 	}
 
 	/**
