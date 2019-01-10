@@ -10,6 +10,7 @@ import java.util.stream.IntStream;
 import org.jooq.lambda.function.Consumer3;
 import org.joor.Reflect;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import lombok.experimental.UtilityClass;
 
 /**
@@ -71,6 +72,8 @@ public class Assertions {
 	 * @param arguments   declaration of arguments and if changing arguments should
 	 *                    change equality
 	 */
+	@SuppressFBWarnings(value = "PRMC_POSSIBLY_REDUNDANT_METHOD_CALLS",
+			justification = "need to call constructor twice to validate equals")
 	public static void assertEqualsAndHashCode(final Function<Object[], ?> constructor,
 			final AssertEqualsAndHashCodeArguments arguments) {
 		final Object object = constructor.apply(arguments.getOriginal().toArray());

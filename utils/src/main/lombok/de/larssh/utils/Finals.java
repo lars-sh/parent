@@ -3,6 +3,7 @@ package de.larssh.utils;
 import java.util.Optional;
 import java.util.function.Supplier;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.NonFinal;
 import lombok.experimental.UtilityClass;
@@ -82,6 +83,8 @@ public class Finals {
 
 		/** {@inheritDoc} */
 		@Override
+		@SuppressFBWarnings(value = "PRMC_POSSIBLY_REDUNDANT_METHOD_CALLS",
+				justification = "value.isPresent() really need to be called twice")
 		public T get() {
 			if (!value.isPresent()) {
 				synchronized (lock) {
