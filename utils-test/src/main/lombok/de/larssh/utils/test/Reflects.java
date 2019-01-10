@@ -61,7 +61,7 @@ public class Reflects {
 	 * @throws ReflectException any reflection exception
 	 * @throws SneakyException  invocation target exceptions
 	 */
-	@SuppressFBWarnings(value = "BC_IMPOSSIBLE_INSTANCEOF",
+	@SuppressFBWarnings(value = { "BC_IMPOSSIBLE_INSTANCEOF", "EXS_EXCEPTION_SOFTENING_NO_CONSTRAINTS" },
 			justification = "supplier might sneaky throw InvocationTargetException")
 	private static <T> T extractInvocationTargetExceptions(final Supplier<T> supplier) {
 		try {
