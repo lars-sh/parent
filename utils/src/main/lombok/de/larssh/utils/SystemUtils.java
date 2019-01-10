@@ -197,8 +197,7 @@ public class SystemUtils {
 	 * @return path to JVM executable
 	 */
 	public static Path getJavaExecutable() {
-		return Paths.get(System.getProperty(
-				JAVA_HOME) + File.separator + "bin" + File.separator + "java" + (isWindows() ? ".exe" : ""));
+		return Paths.get(System.getProperty(JAVA_HOME), "bin", "java" + (isWindows() ? ".exe" : ""));
 	}
 
 	/**
