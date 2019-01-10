@@ -1,6 +1,5 @@
 package de.larssh.utils;
 
-import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -20,12 +19,12 @@ import lombok.experimental.UtilityClass;
  * </tr>
  * <tr>
  * <td>{@code file.separator}
- * <td>{@link File#separatorChar}
+ * <td>{@link java.io.File#separatorChar}
  * <td>
  * </tr>
  * <tr>
  * <td>{@code path.separator}
- * <td>{@link File#pathSeparatorChar}
+ * <td>{@link java.io.File#pathSeparatorChar}
  * <td>
  * </tr>
  * <tr>
