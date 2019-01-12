@@ -294,6 +294,7 @@
 				<directory>${project.basedir}</directory>
 				<targetPath>META-INF</targetPath>
 				<includes>
+					<include>CHANGELOG.md</include>
 					<include>LICENSE.txt</include>
 					<include>README.md</include>
 				</includes>
@@ -307,6 +308,7 @@
 				<directory>${project.basedir}</directory>
 				<targetPath>META-INF</targetPath>
 				<includes>
+					<include>CHANGELOG.md</include>
 					<include>LICENSE.txt</include>
 					<include>README.md</include>
 				</includes>
@@ -499,6 +501,64 @@
 /.checkstyle
 /.classpath
 /.project
+]]></echo>
+							</target>
+						</configuration>
+					</execution>
+
+					<!-- CHANGELOG.md -->
+					<execution>
+						<id>project-changelog-md-exists</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<exportAntProperties>true</exportAntProperties>
+							<target>
+								<available property="project.changelog-md.exists"
+									file="${project.basedir}/CHANGELOG.md" />
+							</target>
+						</configuration>
+					</execution>
+					<execution>
+						<id>changelog-md</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<target unless="project.changelog-md.exists">
+								<echo message="Create CHANGELOG.md" />
+								<echo file="${project.basedir}/CHANGELOG.md"><![CDATA[# Changelog
+All notable changes to this project will be documented in this file.
+
+<a name="version"></a>
+
+## [Version](Link) (YYYY-mm-dd)
+
+Download at TODO
+
+### Added
+* 
+
+### Changed
+* 
+
+### Deprecated
+* 
+
+### Removed
+* 
+
+### Fixed
+* 
+
+### Security
+* 
+
+### Dependencies
+* 
 ]]></echo>
 							</target>
 						</configuration>

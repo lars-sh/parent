@@ -2,7 +2,7 @@
 This package offers generic utilities for many different situations.
 
 ## Getting started
-The package is part of the project `de.lars-sh:parent`.
+The package is part of the project [de.lars-sh:parent](../README.md).
 
 In case you want to use this package separately, here's a Maven dependency example:
 

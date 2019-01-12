@@ -184,7 +184,7 @@ Wherever possible the following four JAR files are packaged:
 * JavaDoc (*-javadoc.jar)
 * Unit tests (*-test.jar)
 
-JAR files contain your README.md and a to-be-created LICENSE.txt file inside their META-INF folder. Those two are meant to be used for documentation. See the below section about generated files for further information.
+JAR files contain your CHANGELOG.md, README.md and the to-be-created LICENSE.txt file inside their META-INF folder. Those two are meant to be used for documentation. See the below section about generated files for further information.
 
 In addition the JARs manifest includes a generated Class-Path to simplify execution and version information.
 
@@ -212,7 +212,7 @@ During the build process some project files are generated. Those files and their
 
 `.travis.yml` tells [Travis](https://travis-ci.org/) which kind of project to build. It is created only if it does not exist.
 
-`README.md` is *your* place for a short project introduction, getting started information and user documentation. A template is created only if it does not exist.
+`CHANGELOG.md` and `README.md` are *your* places. Insert your changes, a short project introduction, getting started information and user documentation. Templates are created only if the file does not exist.
 
 `LICENSE.txt` is **not** created. You need to create one yourself! See the section about JAR Generation above for more information.
 
