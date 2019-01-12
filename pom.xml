@@ -476,6 +476,11 @@
 						</dependency>
 					</dependencies>
 				</plugin>
+				<plugin>
+					<groupId>org.sonatype.plugins</groupId>
+					<artifactId>nexus-staging-maven-plugin</artifactId>
+					<version>1.6.8</version>
+				</plugin>
 
 				<!-- Eclipse Lifecycle Mapping -->
 				<plugin>
@@ -1290,7 +1295,7 @@ install: mvn install -DskipTests=true -Dgpg.skip=true --batch-mode --show-versio
 				</executions>
 			</plugin>
 
-			<!-- Package -->
+			<!-- Package test -->
 			<plugin>
 				<artifactId>maven-jar-plugin</artifactId>
 				<executions>
@@ -1444,7 +1449,6 @@ install: mvn install -DskipTests=true -Dgpg.skip=true --batch-mode --show-versio
 			<plugin>
 				<groupId>org.sonatype.plugins</groupId>
 				<artifactId>nexus-staging-maven-plugin</artifactId>
-				<version>1.6.8</version>
 				<extensions>true</extensions>
 				<configuration>
 					<serverId>sonatype-nexus-staging</serverId>
