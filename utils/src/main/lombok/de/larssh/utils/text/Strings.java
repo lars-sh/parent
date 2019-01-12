@@ -245,11 +245,13 @@ public class Strings {
 	 * @param value value to split
 	 * @return list of lines
 	 */
+	@SuppressFBWarnings(value = "EXS_EXCEPTION_SOFTENING_NO_CONSTRAINTS",
+			justification = "converting checked to unchecked exception, that should never be thrown at all")
 	public static List<String> getLines(final String value) {
 		try (final BufferedReader reader = new BufferedReader(new StringReader(value))) {
 			return reader.lines().collect(toList());
 		} catch (final IOException e) {
-			// This is not documented, as it should never happen at all.
+			// This is not documented, as it should never be thrown at all.
 			throw new SneakyException(e);
 		}
 	}

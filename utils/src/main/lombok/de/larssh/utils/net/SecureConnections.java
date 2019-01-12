@@ -54,6 +54,8 @@ public class SecureConnections {
 	 *                              could not be loaded
 	 * @throws IOException          if an I/O error occurs
 	 */
+	@SuppressFBWarnings(value = "EXS_EXCEPTION_SOFTENING_NO_CONSTRAINTS",
+			justification = "converting checked to unchecked exceptions that must not be thrown")
 	public static KeyStore loadKeyStore(final Path jksFilePath, final String password)
 			throws CertificateException, IOException {
 		try (InputStream inputStream = Files.newInputStream(jksFilePath)) {
@@ -74,6 +76,8 @@ public class SecureConnections {
 	 * @throws UnrecoverableKeyException if the key cannot be recovered (e.g. the
 	 *                                   given password is wrong).
 	 */
+	@SuppressFBWarnings(value = "EXS_EXCEPTION_SOFTENING_NO_CONSTRAINTS",
+			justification = "converting checked to unchecked exceptions that must not be thrown")
 	public static KeyManager[] getKeyManagers(final KeyStore keyStore, final String password)
 			throws UnrecoverableKeyException {
 		try {
@@ -117,6 +121,8 @@ public class SecureConnections {
 	 * @param trustManagers trust manager
 	 * @return SSL socket factory
 	 */
+	@SuppressFBWarnings(value = "EXS_EXCEPTION_SOFTENING_NO_CONSTRAINTS",
+			justification = "converting checked to unchecked exceptions that must not be thrown")
 	public static SSLSocketFactory getSocketFactory(@Nullable final KeyManager[] keyManagers,
 			@Nullable final TrustManager[] trustManagers) {
 		try {
@@ -150,6 +156,8 @@ public class SecureConnections {
 	 * @param keyStore key store
 	 * @return array of {@link TrustManager}s
 	 */
+	@SuppressFBWarnings(value = "EXS_EXCEPTION_SOFTENING_NO_CONSTRAINTS",
+			justification = "converting checked to unchecked exceptions that must not be thrown")
 	public static TrustManager[] getTrustManagers(final KeyStore keyStore) {
 		try {
 			final TrustManagerFactory trustManagerFactory
