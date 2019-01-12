@@ -175,7 +175,7 @@ Inside your favorite IDE feel free to use its Maven-compatible build infrastrucu
 
 `mvn install` compiles and packages your project. Afterwards the packaged artifacts are installed to your local repository. Use `mvn package` instead to compile and package without installing or `mvn compile` to compile only.
 
-`mvn test-compile site` runs additional reports on your project. Open `target/site/index.html` to check its results. Note: Executing `mvn site` might result in unexpected behavior. PMD and CPD reports require compilation together with the site generation.
+`mvn test-compile site` runs additional reports on your project. Open `target/site/index.html` to check its results. Note: Executing `mvn site` might result in unexpected behavior. PMD requires compilation together with the site generation.
 
 #### JAR Generation
 Wherever possible the following four JAR files are packaged:
@@ -283,16 +283,16 @@ There are two ways to suppress SpotBugs warnings.
 
 * Or add `<spotbugs.excludeFilterFile>${project.basedir}/spotbugs-excludes.xml</spotbugs.excludeFilterFile>` to your Maven Properties and create a file called `spotbugs-excludes.xml`. See [Filter](https://spotbugs.readthedocs.io/en/stable/filter.html) for more information.
 
+##### CPD
+Add `<cpd.excludeFromFailureFile>${project.basedir}/cpd-excludes.csv</cpd.excludeFromFailureFile>` to your Maven Properties and create a file called `cpd-excludes.csv`. See [Violation Exclusions](http://maven.apache.org/plugins/maven-pmd-plugin/examples/violation-exclusions.html) for more information. The following lines show an example file.
+
+	org.apache.maven.ClassA,org.apache.maven.ClassB
+
 ##### PMD
 Create a file called `pmd-excludes.properties`. See [Violation Exclusions](http://maven.apache.org/plugins/maven-pmd-plugin/examples/violation-exclusions.html) for more information. The following lines show an example file.
 
 	org.apache.maven.ClassA=UnusedPrivateField,EmptyCatchBlock
 	org.apache.maven.ClassB=UnusedPrivateField,UnusedFormalParameter,UnusedPrivateMethod
-
-##### CPD
-Create a file called `cpd-excludes.properties`. See [Violation Exclusions](http://maven.apache.org/plugins/maven-pmd-plugin/examples/violation-exclusions.html) for more information. The following lines show an example file.
-
-	org.apache.maven.ClassA,org.apache.maven.ClassB
 
 #### Dependencies
 We aim at using up-to-date dependencies and Maven plugins and minimizing runtime dependencies while still increasing safety and development ease.
@@ -338,11 +338,11 @@ TODO
 ### Checks
 TODO
 
-#### Checkstyle, Spotbugs
+#### Checkstyle, CPD, Spotbugs
 TODO: These are run at compile time. Describe Eclipse plugins.
 
-#### PMD, CPD
-TODO: These are run for `mvn site` only. Describe Eclipse plugins.
+#### PMD
+TODO: This is run for `mvn site` only. Describe Eclipse plugin.
 
 ### Documentation
 TODO: JavaDoc is run at compile time.

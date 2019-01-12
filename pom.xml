@@ -59,6 +59,10 @@
 			is used with the <phase> tag. -->
 		<project.build.packageDependenciesPhase>none</project.build.packageDependenciesPhase>
 
+		<!-- "cpd.excludeFromFailureFile" is meant to be used by child POMs to 
+			configure a CPD excludes file. -->
+		<!-- <cpd.excludeFromFailureFile>${project.basedir}/cpd-excludes.csv</cpd.excludeFromFailureFile> -->
+
 		<!-- "spotbugs.excludeFilterFile" is meant to be used by child POMs to 
 			configure a SpotBugs excludes file. -->
 		<!-- <spotbugs.excludeFilterFile>${project.basedir}/spotbugs-excludes.xml</spotbugs.excludeFilterFile> -->
@@ -1244,6 +1248,23 @@ install: mvn install -DskipTests=true -Dgpg.skip=true --batch-mode --show-versio
 				</executions>
 			</plugin>
 
+			<!-- Copy Paste Detection -->
+			<plugin>
+				<artifactId>maven-pmd-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>default-cpd-check</id>
+						<goals>
+							<goal>cpd-check</goal>
+						</goals>
+						<configuration>
+							<excludeFromFailureFile>${cpd.excludeFromFailureFile}</excludeFromFailureFile>
+							<printFailingErrors>true</printFailingErrors>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
 			<!-- SpotBugs -->
 			<plugin>
 				<groupId>com.github.spotbugs</groupId>
@@ -1351,14 +1372,6 @@ install: mvn install -DskipTests=true -Dgpg.skip=true --batch-mode --show-versio
 			<plugin>
 				<artifactId>maven-pmd-plugin</artifactId>
 				<reportSets>
-					<reportSet>
-						<reports>
-							<report>cpd</report>
-						</reports>
-						<configuration>
-							<excludeFromFailureFile>${project.basedir}/cpd-excludes.properties</excludeFromFailureFile>
-						</configuration>
-					</reportSet>
 					<reportSet>
 						<reports>
 							<report>pmd</report>
