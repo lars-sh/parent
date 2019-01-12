@@ -197,7 +197,7 @@ This parent POM either predefines existing Maven Properties or introduces some o
 
 `project.build.packageDependenciesPhase` is meant to be used by child POMs to configure if an archive containing dependencies should be created. Values can be `none` (disabled) and `package` (enabled) as this property is used with the <phase> tag. Default value: `none`
 
-`spotbugs.excludeFilterFile` is meant to be used by child POMs to configure a SpotBugs excludes file. Example value: `${project.basedir}/spotbugs-exclude.xml`, Default value: *not set*
+`spotbugs.excludeFilterFile` is meant to be used by child POMs to configure a SpotBugs excludes file. Example value: `${project.basedir}/spotbugs-excludes.xml`, Default value: *not set*
 
 	maven.compiler.failOnWarning:     true
 	maven.compiler.source:            1.8
@@ -273,15 +273,15 @@ Create a file called `checkstyle-suppressions.xml`. See [SuppressionXPathFilter]
 ##### SpotBugs
 More information about SpotBugs warnings can be found at one of the below resources.
 * [SpotBugs](https://spotbugs.readthedocs.io/en/latest/bugDescriptions.html)
-* [fb-contrib](http://fb-contrib.sourceforge.net/bugdescriptions.html)
 * [Find Security Bugs](https://find-sec-bugs.github.io/bugs.htm)
+* [fb-contrib](http://fb-contrib.sourceforge.net/bugdescriptions.html)
 
 There are two ways to suppress SpotBugs warnings.
 * Either go the recommended way by using the `SuppressFBWarnings` annotation as shown below. Inserting a `justification` information is mandatory.
 
 	@SuppressFBWarnings(value = "REC_CATCH_EXCEPTION", justification = "catching any exception at execution root")
 
-* Or add `<spotbugs.excludeFilterFile>${project.basedir}/spotbugs-exclude.xml</spotbugs.excludeFilterFile>` to your Maven Properties and create a file called `spotbugs-exclude.xml`. See [Filter](https://spotbugs.readthedocs.io/en/stable/filter.html) for more information.
+* Or add `<spotbugs.excludeFilterFile>${project.basedir}/spotbugs-excludes.xml</spotbugs.excludeFilterFile>` to your Maven Properties and create a file called `spotbugs-excludes.xml`. See [Filter](https://spotbugs.readthedocs.io/en/stable/filter.html) for more information.
 
 ##### PMD
 Create a file called `pmd-excludes.properties`. See [Violation Exclusions](http://maven.apache.org/plugins/maven-pmd-plugin/examples/violation-exclusions.html) for more information. The following lines show an example file.
@@ -338,10 +338,10 @@ TODO
 ### Checks
 TODO
 
-#### Checkstyle
-TODO: This is run at compile time. Describe Eclipse plugins.
+#### Checkstyle, Spotbugs
+TODO: These are run at compile time. Describe Eclipse plugins.
 
-#### PMD, CPD, Spotbugs
+#### PMD, CPD
 TODO: These are run for `mvn site` only. Describe Eclipse plugins.
 
 ### Documentation
