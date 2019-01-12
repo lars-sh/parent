@@ -1351,22 +1351,6 @@ install: mvn install -DskipTests=true -Dgpg.skip=true --batch-mode --show-versio
 
 	<reporting>
 		<plugins>
-			<!-- Code style -->
-			<plugin>
-				<artifactId>maven-checkstyle-plugin</artifactId>
-				<reportSets>
-					<reportSet>
-						<reports>
-							<report>checkstyle</report>
-						</reports>
-					</reportSet>
-				</reportSets>
-				<configuration>
-					<configLocation>${project.build.directory}/checkstyle.xml</configLocation>
-					<includeTestSourceDirectory>true</includeTestSourceDirectory>
-				</configuration>
-			</plugin>
-
 			<!-- Analyze Code -->
 			<!-- Remark: Requires to run at least "mvn test-compile site"! -->
 			<plugin>
@@ -1378,26 +1362,11 @@ install: mvn install -DskipTests=true -Dgpg.skip=true --batch-mode --show-versio
 						</reports>
 						<configuration>
 							<excludeFromFailureFile>${project.basedir}/pmd-excludes.properties</excludeFromFailureFile>
+							<includeTests>true</includeTests>
 							<rulesets>
 								<ruleset>${project.build.directory}/pmd/pmd-ruleset.xml</ruleset>
 							</rulesets>
 						</configuration>
-					</reportSet>
-				</reportSets>
-				<configuration>
-					<includeTests>true</includeTests>
-					<skipEmptyReport>false</skipEmptyReport>
-				</configuration>
-			</plugin>
-
-			<!-- Tests -->
-			<plugin>
-				<artifactId>maven-surefire-report-plugin</artifactId>
-				<reportSets>
-					<reportSet>
-						<reports>
-							<report>report-only</report>
-						</reports>
 					</reportSet>
 				</reportSets>
 			</plugin>
