@@ -30,6 +30,7 @@ import java.util.stream.IntStream;
 import de.larssh.utils.Optionals;
 import de.larssh.utils.SneakyException;
 import edu.umd.cs.findbugs.annotations.Nullable;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import lombok.experimental.UtilityClass;
 
 /**
@@ -160,6 +161,8 @@ public class Strings {
 	 * @param arguments arguments referenced by format specifiers in {@code format}
 	 * @return formatted string
 	 */
+	@SuppressFBWarnings(value = "FORMAT_STRING_MANIPULATION",
+			justification = "formatting exceptions are catched and handled accordingly")
 	public static String format(final String format, final Object... arguments) {
 		if (arguments.length < 1) {
 			return format;
@@ -198,6 +201,8 @@ public class Strings {
 	 *
 	 * @return map map of decimal units to their power of ten
 	 */
+	@SuppressFBWarnings(value = "PSC_PRESIZE_COLLECTIONS",
+			justification = "this method is called just once (in static initializer); keep code simple")
 	private static Map<String, Integer> getDecimalUnits() {
 		final Map<String, Integer> decimalUnits = new LinkedHashMap<>();
 
