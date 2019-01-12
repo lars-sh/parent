@@ -70,9 +70,11 @@
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 
+		<joor.version>0.9.10</joor.version>
 		<junit.version>5.4.0-M1</junit.version>
 		<junit.platform.version>1.4.0-M1</junit.platform.version>
 		<lombok.version>1.18.4</lombok.version>
+		<mockito.version>2.23.4</mockito.version>
 		<parent.version>0.9.2-SNAPSHOT</parent.version>
 		<pmd.version>6.10.0</pmd.version>
 		<spotbugs.version>3.1.10</spotbugs.version>
@@ -213,7 +215,7 @@
 			<dependency>
 				<groupId>org.jooq</groupId>
 				<artifactId>joor-java-8</artifactId>
-				<version>0.9.10</version>
+				<version>${joor.version}</version>
 			</dependency>
 
 			<!-- Test -->
@@ -238,7 +240,7 @@
 			<dependency>
 				<groupId>org.mockito</groupId>
 				<artifactId>mockito-core</artifactId>
-				<version>2.23.4</version>
+				<version>${mockito.version}</version>
 				<scope>test</scope>
 			</dependency>
 		</dependencies>
@@ -1272,6 +1274,33 @@ install: mvn install -DskipTests=true -Dgpg.skip=true --batch-mode --show-versio
 				</configuration>
 			</plugin>
 
+			<!-- Check for un/used dependencies -->
+			<plugin>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>analyze-only</goal>
+						</goals>
+						<configuration>
+							<failOnWarning>true</failOnWarning>
+							<ignoredUnusedDeclaredDependencies>
+								<!-- Provided -->
+								<ignoredUnusedDeclaredDependency>de.lars-sh:lombok-annotations:jar:${lombok.version}</ignoredUnusedDeclaredDependency>
+								<ignoredUnusedDeclaredDependency>com.github.spotbugs:spotbugs-annotations:${spotbugs.version}</ignoredUnusedDeclaredDependency>
+
+								<!-- Test -->
+								<ignoredUnusedDeclaredDependency>org.jooq:joor-java-8:jar:${joor.version}</ignoredUnusedDeclaredDependency>
+								<ignoredUnusedDeclaredDependency>org.junit.jupiter:junit-jupiter-api:jar:${junit.version}</ignoredUnusedDeclaredDependency>
+								<ignoredUnusedDeclaredDependency>org.junit.jupiter:junit-jupiter-engine:jar:${junit.version}</ignoredUnusedDeclaredDependency>
+								<ignoredUnusedDeclaredDependency>org.junit.platform:junit-platform-runner:jar:${junit.platform.version}</ignoredUnusedDeclaredDependency>
+								<ignoredUnusedDeclaredDependency>org.mockito:mockito-core:jar:${mockito.version}</ignoredUnusedDeclaredDependency>
+							</ignoredUnusedDeclaredDependencies>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
 			<!-- Sign packages -->
 			<plugin>
 				<artifactId>maven-gpg-plugin</artifactId>
@@ -1368,18 +1397,6 @@ install: mvn install -DskipTests=true -Dgpg.skip=true --batch-mode --show-versio
 					<reportSet>
 						<reports>
 							<report>report</report>
-						</reports>
-					</reportSet>
-				</reportSets>
-			</plugin>
-
-			<!-- Check for un/used dependencies -->
-			<plugin>
-				<artifactId>maven-dependency-plugin</artifactId>
-				<reportSets>
-					<reportSet>
-						<reports>
-							<report>analyze-report</report>
 						</reports>
 					</reportSet>
 				</reportSets>
