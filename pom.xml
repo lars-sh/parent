@@ -1417,11 +1417,16 @@ install: mvn install -DskipTests=true -Dgpg.skip=true --batch-mode --show-versio
 						<configuration>
 							<failOnWarning>true</failOnWarning>
 							<ignoredUnusedDeclaredDependencies>
+								<!-- Compile -->
+								<ignoredUnusedDeclaredDependency>de.lars-sh:utils:jar:${parent.version}</ignoredUnusedDeclaredDependency>
+
 								<!-- Provided -->
 								<ignoredUnusedDeclaredDependency>de.lars-sh:lombok-annotations:jar:${lombok.version}</ignoredUnusedDeclaredDependency>
+								<ignoredUnusedDeclaredDependency>de.lars-sh:utils-annotations:jar:${parent.version}</ignoredUnusedDeclaredDependency>
 								<ignoredUnusedDeclaredDependency>com.github.spotbugs:spotbugs-annotations:${spotbugs.version}</ignoredUnusedDeclaredDependency>
 
 								<!-- Test -->
+								<ignoredUnusedDeclaredDependency>de.lars-sh:utils-test:jar:${parent.version}</ignoredUnusedDeclaredDependency>
 								<ignoredUnusedDeclaredDependency>org.jooq:joor-java-8:jar:${joor.version}</ignoredUnusedDeclaredDependency>
 								<ignoredUnusedDeclaredDependency>org.junit.jupiter:junit-jupiter-api:jar:${junit.version}</ignoredUnusedDeclaredDependency>
 								<ignoredUnusedDeclaredDependency>org.junit.jupiter:junit-jupiter-engine:jar:${junit.version}</ignoredUnusedDeclaredDependency>
