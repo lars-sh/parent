@@ -1,4 +1,4 @@
-package de.larssh.utils;
+package de.larssh.utils.maven;
 
 import static java.util.stream.Collectors.toList;
 

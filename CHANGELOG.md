@@ -9,15 +9,17 @@ Download at TODO
 
 ### Added
 * Changelog
-* Annotation PackagePrivate
-* Class GlobalProxyConfiguration
-* Method Optionals.getFirst(isPresent, suppliers)
-* Method Optionals.getFirstValue(isPresent, values)
-* Method Optionals.ofNonEmpty(array|collection)
-* Method Optionals.ofSingle(array|collection|iterator|stream|string)
+* Annotation de.larssh.utils.annotations.PackagePrivate
+* Class de.larssh.utils.maven.DependencyScope
+* Class de.larssh.utils.net.GlobalProxyConfiguration
+* Method de.larssh.utils.Optionals.getFirst(isPresent, suppliers)
+* Method de.larssh.utils.Optionals.getFirstValue(isPresent, values)
+* Method de.larssh.utils.Optionals.ofNonEmpty(array|collection)
+* Method de.larssh.utils.Optionals.ofSingle(array|collection|iterator|stream|string)
 
 ### Changed
 * Execute SpotBugs, copy-paste-detection (CPD) and dependency analysis from Maven reporting to build phase
+* Moved de.larssh.utils.AetherUtils to de.larssh.utils.maven.AetherUtils
 * ParseException initializes cause
 * Checkstyle suppressions file name changed from "suppressions.xml" to "checkstyle-suppressions.xml"
 * Checkstyle for unit tests suppresses checks ExecutableStatementCountCheck, MagicNumberCheck and MethodLengthCheck
