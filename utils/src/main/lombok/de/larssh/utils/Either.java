@@ -52,6 +52,7 @@ public class Either<A, B> {
 	 * @throws IllegalArgumentException if both parameters are non-{@code null}
 	 */
 	@Deprecated
+	@SuppressWarnings("PMD.AvoidThrowingNullPointerException")
 	public static <A, B> Either<A, B> of(@Nullable final A first, @Nullable final B second) {
 		if (first == null && second == null) {
 			throw new NullPointerException();

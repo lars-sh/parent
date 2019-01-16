@@ -49,6 +49,7 @@ public interface ThrowingSupplier<T> extends Supplier<T> {
 	 */
 	@Nullable
 	@Override
+	@SuppressWarnings("PMD.AvoidCatchingGenericException")
 	default T get() {
 		try {
 			return getThrowing();
@@ -64,5 +65,6 @@ public interface ThrowingSupplier<T> extends Supplier<T> {
 	 * @throws Exception any kind of exception
 	 */
 	@Nullable
+	@SuppressWarnings("PMD.SignatureDeclareThrowsException")
 	T getThrowing() throws Exception;
 }

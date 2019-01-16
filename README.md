@@ -286,13 +286,20 @@ There are two ways to suppress SpotBugs warnings.
 ##### CPD
 Add `<cpd.excludeFromFailureFile>${project.basedir}/cpd-excludes.csv</cpd.excludeFromFailureFile>` to your Maven Properties and create a file called `cpd-excludes.csv`. See [Violation Exclusions](http://maven.apache.org/plugins/maven-pmd-plugin/examples/violation-exclusions.html) for more information. The following lines show an example file.
 
-	org.apache.maven.ClassA,org.apache.maven.ClassB
+	com.example.ClassA,com.example.ClassB
 
 ##### PMD
-Create a file called `pmd-excludes.properties`. See [Violation Exclusions](http://maven.apache.org/plugins/maven-pmd-plugin/examples/violation-exclusions.html) for more information. The following lines show an example file.
+There are two ways to suppress PMD warnings.
+* Either go the recommended way by using the `java.lang.SuppressWarnings` annotation as shown below.
 
-	org.apache.maven.ClassA=UnusedPrivateField,EmptyCatchBlock
-	org.apache.maven.ClassB=UnusedPrivateField,UnusedFormalParameter,UnusedPrivateMethod
+	@SuppressWarnings("PMD.EmptyCatchBlock")
+
+	@SuppressWarnings({ "PMD.EmptyCatchBlock", "PMD.UnusedPrivateField" })
+
+* Or create a file called `pmd-excludes.properties`. See [Violation Exclusions](http://maven.apache.org/plugins/maven-pmd-plugin/examples/violation-exclusions.html) for more information. The following lines show an example file.
+
+    com.example.ClassA=UnusedPrivateField
+    com.example.ClassB=EmptyCatchBlock,UnusedPrivateField
 
 #### Dependencies
 We aim at using up-to-date dependencies and Maven plugins and minimizing runtime dependencies while still increasing safety and development ease.

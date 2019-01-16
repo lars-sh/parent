@@ -61,6 +61,10 @@ public class Reflects {
 	 * @throws ReflectException any reflection exception
 	 * @throws SneakyException  invocation target exceptions
 	 */
+	@SuppressWarnings({
+			"PMD.AvoidCatchingGenericException",
+			"PMD.AvoidInstanceofChecksInCatchClause",
+			"PMD.PreserveStackTrace" })
 	@SuppressFBWarnings(value = { "BC_IMPOSSIBLE_INSTANCEOF", "EXS_EXCEPTION_SOFTENING_NO_CONSTRAINTS" },
 			justification = "supplier might sneaky throw InvocationTargetException")
 	private static <T> T extractInvocationTargetExceptions(final Supplier<T> supplier) {

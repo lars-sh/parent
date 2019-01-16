@@ -50,6 +50,7 @@ public interface ThrowingConsumer<T> extends Consumer<T> {
 	 * @throws SneakyException hidden exceptions
 	 */
 	@Override
+	@SuppressWarnings("PMD.AvoidCatchingGenericException")
 	default void accept(@Nullable final T t) {
 		try {
 			acceptThrowing(t);
@@ -65,5 +66,6 @@ public interface ThrowingConsumer<T> extends Consumer<T> {
 	 * @param t the input argument
 	 * @throws Exception any kind of exception
 	 */
+	@SuppressWarnings("PMD.SignatureDeclareThrowsException")
 	void acceptThrowing(@Nullable T t) throws Exception;
 }

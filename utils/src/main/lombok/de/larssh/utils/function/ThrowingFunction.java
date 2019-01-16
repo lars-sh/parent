@@ -52,6 +52,7 @@ public interface ThrowingFunction<T, R> extends Function<T, R> {
 	 */
 	@Nullable
 	@Override
+	@SuppressWarnings("PMD.AvoidCatchingGenericException")
 	default R apply(@Nullable final T t) {
 		try {
 			return applyThrowing(t);
@@ -69,5 +70,6 @@ public interface ThrowingFunction<T, R> extends Function<T, R> {
 	 * @throws Exception any kind of exception
 	 */
 	@Nullable
+	@SuppressWarnings("PMD.SignatureDeclareThrowsException")
 	R applyThrowing(@Nullable T t) throws Exception;
 }

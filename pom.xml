@@ -817,10 +817,13 @@ TODO: Easy to understand usage example
 		<module name="MissingDeprecated" />
 		<module name="MissingOverride" />
 		<module name="SuppressWarnings">
-			<!-- The list of disallowed SuppressWarnings matches the list of SuppressWarnings supported by
-			     Eclipse Photon JDT Compiler except "deprecation", "null", "unchecked" and "unused".
-			     see http://help.eclipse.org/index.jsp?topic=/org.eclipse.jdt.doc.user/tasks/task-suppress_warnings.htm -->
-			<property name="format" value="^(all|boxing|cast|fallthrough|finally|hiding|incomplete-switch|nls|rawtypes|resource|restriction|restriction|removal|serial|static-access|static-method|super|synthetic-access|sync-override|unqualified-field-access|unlikely-arg-type)$" />
+			<!--
+			The list of disallowed SuppressWarnings matches the warnings supported by Eclipse JDTs Compiler
+			* see http://help.eclipse.org/index.jsp?topic=/org.eclipse.jdt.doc.user/tasks/task-suppress_warnings.htm
+			* except "deprecation", "null", "unchecked" and "unused"
+			* plus "PMD"
+			-->
+			<property name="format" value="^(all|boxing|cast|fallthrough|finally|hiding|incomplete-switch|nls|PMD|rawtypes|resource|restriction|restriction|removal|serial|static-access|static-method|super|synthetic-access|sync-override|unqualified-field-access|unlikely-arg-type)$" />
 		</module>
 		
 		<!-- Block Checks -->
@@ -2253,7 +2256,7 @@ install: mvn install -DskipTests=true -Dgpg.skip=true --batch-mode --show-versio
 												value="info" />
 											<entry
 												key="org.eclipse.jdt.core.compiler.problem.unhandledWarningToken"
-												value="warning" />
+												value="ignore" />
 											<entry
 												key="org.eclipse.jdt.core.compiler.problem.unlikelyCollectionMethodArgumentType"
 												value="warning" />

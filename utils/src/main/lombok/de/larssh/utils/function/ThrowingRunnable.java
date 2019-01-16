@@ -39,6 +39,7 @@ public interface ThrowingRunnable extends Runnable {
 	 * @throws SneakyException hidden exceptions
 	 */
 	@Override
+	@SuppressWarnings("PMD.AvoidCatchingGenericException")
 	default void run() {
 		try {
 			runThrowing();
@@ -52,5 +53,6 @@ public interface ThrowingRunnable extends Runnable {
 	 *
 	 * @throws Exception any kind of exception
 	 */
+	@SuppressWarnings("PMD.SignatureDeclareThrowsException")
 	void runThrowing() throws Exception;
 }
