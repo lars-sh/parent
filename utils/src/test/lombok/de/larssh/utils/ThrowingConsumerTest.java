@@ -1,5 +1,6 @@
 package de.larssh.utils;
 
+import static de.larssh.utils.function.ThrowingConsumer.throwing;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -18,7 +19,7 @@ import lombok.NoArgsConstructor;
 public class ThrowingConsumerTest {
 	private static final ThrowingConsumer<String> A = a -> assertEquals("A", a);
 
-	private static final Consumer<String> B = ThrowingConsumer.throwing(b -> {
+	private static final Consumer<String> B = throwing(b -> {
 		throw new TestException();
 	});
 
@@ -27,8 +28,8 @@ public class ThrowingConsumerTest {
 	 */
 	@Test
 	public void testThrowing() {
-		assertEquals(A, ThrowingConsumer.throwing(A));
-		assertEquals(B, ThrowingConsumer.throwing((ThrowingConsumer<?>) B));
+		assertEquals(A, throwing(A));
+		assertEquals(B, throwing((ThrowingConsumer<?>) B));
 	}
 
 	/**

@@ -1,11 +1,11 @@
 package de.larssh.utils.net;
 
+import static java.util.Arrays.asList;
 import static java.util.Collections.emptyList;
 import static java.util.stream.Collectors.joining;
 
 import java.net.InetSocketAddress;
 import java.net.Proxy.Type;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.Optional;
@@ -43,7 +43,7 @@ public class GlobalProxyConfiguration {
 	/**
 	 * Default {@code nonProxyHosts} for {@link #FTP} and {@link #HTTP}
 	 */
-	private static final Collection<String> NO_PROXY_HOSTS_DEFAULT = Arrays.asList("localhost", "127.*", "[::1]");
+	private static final Collection<String> NO_PROXY_HOSTS_DEFAULT = asList("localhost", "127.*", "[::1]");
 
 	/**
 	 * FTP proxy related settings
@@ -161,7 +161,7 @@ public class GlobalProxyConfiguration {
 	 */
 	public void addNonProxyHosts(final String... nonProxyHosts) {
 		final Set<String> set = getNonProxyHosts();
-		set.addAll(Arrays.asList(nonProxyHosts));
+		set.addAll(asList(nonProxyHosts));
 		setNonProxyHosts(set);
 	}
 
@@ -177,7 +177,7 @@ public class GlobalProxyConfiguration {
 	 *                                       {@code nonProxyHosts} property
 	 */
 	public Set<String> getNonProxyHosts() {
-		return new LinkedHashSet<>(Arrays.asList(
+		return new LinkedHashSet<>(asList(
 				Optional.ofNullable(System.getProperty(getNonProxyHostsPropertyOrThrow())).orElse("").split("\\|")));
 	}
 
@@ -212,7 +212,7 @@ public class GlobalProxyConfiguration {
 	 */
 	public void removeNonProxyHosts(final String... nonProxyHosts) {
 		final Set<String> set = getNonProxyHosts();
-		set.removeAll(Arrays.asList(nonProxyHosts));
+		set.removeAll(asList(nonProxyHosts));
 		setNonProxyHosts(set);
 	}
 

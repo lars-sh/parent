@@ -2,6 +2,8 @@ package de.larssh.utils.text;
 
 import static de.larssh.utils.Collectors.toLinkedHashMap;
 import static de.larssh.utils.Finals.constant;
+import static java.util.Arrays.asList;
+import static java.util.Collections.unmodifiableMap;
 import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.toList;
 
@@ -12,8 +14,6 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.Formatter;
 import java.util.IllegalFormatException;
@@ -124,7 +124,7 @@ public class Strings {
 
 	static {
 		// Binary Units + Pattern
-		BINARY_UNITS = Collections.unmodifiableMap(getBinaryUnits());
+		BINARY_UNITS = unmodifiableMap(getBinaryUnits());
 		final String joinedBinaryUnits = BINARY_UNITS.keySet().stream().map(Pattern::quote).collect(joining("|"));
 		BINARY_UNIT_PATTERN
 				= Pattern.compile("(?i)^\\s*(?<value>[+-]?\\s*(\\d([\\d_]*\\d)?)?\\.?\\d([\\d_]*\\d)?)\\s*((?<unit>"
@@ -132,7 +132,7 @@ public class Strings {
 						+ ")i?)?\\s*$");
 
 		// Decimal Units + Pattern
-		DECIMAL_UNITS = Collections.unmodifiableMap(getDecimalUnits());
+		DECIMAL_UNITS = unmodifiableMap(getDecimalUnits());
 		final String joinedDecimalUnits = DECIMAL_UNITS.keySet().stream().map(Pattern::quote).collect(joining("|"));
 		DECIMAL_UNIT_PATTERN
 				= Pattern.compile("(?i)^\\s*(?<value>[+-]?\\s*(\\d([\\d_]*\\d)?)?\\.?\\d([\\d_]*\\d)?)\\s*(?<unit>"
@@ -187,7 +187,7 @@ public class Strings {
 		// Checkstyle: Ignore duplicate "E" for 3 lines
 		// Checkstyle: Ignore duplicate "Z" for 2 lines
 		// Checkstyle: Ignore duplicate "Y" for 1 line
-		final List<String> binaryUnits = Arrays.asList("K", "M", "G", "T", "P", "E", "Z", "Y");
+		final List<String> binaryUnits = asList("K", "M", "G", "T", "P", "E", "Z", "Y");
 		final BigDecimal oneThousandTwentyFour = new BigDecimal(1024);
 
 		return IntStream.range(0, binaryUnits.size())

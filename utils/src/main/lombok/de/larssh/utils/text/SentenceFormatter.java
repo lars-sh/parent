@@ -1,8 +1,9 @@
 package de.larssh.utils.text;
 
+import static java.util.Arrays.asList;
+import static java.util.Collections.emptyList;
+
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.function.Function;
 
@@ -200,7 +201,7 @@ public class SentenceFormatter {
 	 * @return formatted sentence
 	 */
 	public String format(final String... words) {
-		return format(Arrays.asList(words));
+		return format(asList(words));
 	}
 
 	/**
@@ -236,7 +237,7 @@ public class SentenceFormatter {
 	 */
 	public List<String> parse(final String sentence) {
 		if (sentence.isEmpty()) {
-			return Collections.emptyList();
+			return emptyList();
 		}
 		if (getSeparator().isEmpty()) {
 			return splitByTitleCharacters(sentence);

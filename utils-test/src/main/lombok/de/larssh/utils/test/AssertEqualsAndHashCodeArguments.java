@@ -1,7 +1,8 @@
 package de.larssh.utils.test;
 
+import static java.util.Collections.unmodifiableList;
+
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import edu.umd.cs.findbugs.annotations.Nullable;
@@ -70,7 +71,7 @@ public class AssertEqualsAndHashCodeArguments {
 	 * @return list of original arguments
 	 */
 	public List<Object> getOriginal() {
-		return Collections.unmodifiableList(original);
+		return unmodifiableList(original);
 	}
 
 	/**
@@ -79,7 +80,7 @@ public class AssertEqualsAndHashCodeArguments {
 	 * @return list of changed arguments
 	 */
 	protected List<Object> getChanged() {
-		return Collections.unmodifiableList(changed);
+		return unmodifiableList(changed);
 	}
 
 	/**
