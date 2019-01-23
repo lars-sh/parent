@@ -1,1 +1,1 @@
-verify -Dmdep.analyze.skip=true
+verify -Dgpg.skip=true -Dmdep.analyze.skip=true
