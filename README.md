@@ -13,35 +13,22 @@ Used technologies and main focus are:
 Read below descriptions and tips to get started. In case you run into problems [open an issue](https://github.com/lars-sh/parent/issues), in case you'd like to help with this document or one of the submodules feel free to [create pull requests](https://github.com/lars-sh/parent/pulls). There is still much that can be done.
 
 ## Preconditions
-This POM is made for development using Eclipse Photon or later by handling some of its settings to comply with the projects settings. However you can use this POM together with any other IDE for sure.
+This POM is made for development using Maven and Eclipse Photon or later by handling some of its settings to comply with the projects settings. However you can use this POM together with any other IDE for sure.
 
 ## Getting started
-When starting a new project all you need to do is following (a) the following generic and (b) one of the below environment specific steps.
+Creating a new project has been simplified as much as possible.
 
-1. Create an empty folder. This one will contain your projects data.
-2. Create a file called `pom.xml` with the following content. Remember to replace the comments with a valid group ID, artifact ID and the latest `de.lars-sh:parent` version.
+1. Open the command line of your choice and navigate to the place where you'd like to create a new project folder.
+2. Run the following command to create your new projects folder and a `pom.xml` file pointing at the Parent POM project.
 
-	<?xml version="1.0" encoding="UTF-8"?>
-	<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-		<modelVersion>4.0.0</modelVersion>
-	
-		<groupId><!-- TODO --></groupId>
-		<artifactId><!-- TODO --></artifactId>
-	
-		<parent>
-			<groupId>de.lars-sh</groupId>
-			<artifactId>parent</artifactId>
-			<version><!-- TODO --></version>
-		</parent>
-	</project>
+	mvn archetype:generate -DarchetypeGroupId=de.lars-sh -DarchetypeArtifactId=parent-archetype
 
-### ...with Eclipse
-3. In Eclipse choose `File`, `Import...`, `Existing Maven Projects`, `Next`, point the root directory to your newly created folder and press `Finish`.
-4. Wait until your workspace is built. In case it does not build automatically, remember to trigger it!
-5. **Restart Eclipse** to apply changes to project settings.
+3. Change into the new projects directory and run `mvn package` to test the POM and your infrastructure.
 
-### ...with Maven
-3. Open a command line and call `mvn package` to test the POM and your infrastructure.
+### Import into Eclipse
+1. In Eclipse choose `File`, `Import...`, `Existing Maven Projects`, `Next`, point the root directory to your newly created folder and press `Finish`.
+2. Wait until your workspace is built. In case it does not build automatically, remember to trigger it!
+3. **Restart Eclipse** to apply changes to project settings.
 
 ## Ingredients
 Taking your first steps using this POM is as simple as not using it. However it comes with a lot nicely pre-configured *ingredients*.

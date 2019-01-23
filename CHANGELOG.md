@@ -8,6 +8,7 @@ All notable changes to this project will be documented in this file.
 Download at TODO
 
 ### Added
+* Archetype
 * Changelog
 * Annotation de.larssh.utils.annotations.PackagePrivate
 * Class de.larssh.utils.maven.DependencyScope
