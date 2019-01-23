@@ -48,13 +48,6 @@
 		<url>https://travis-ci.org/lars-sh/parent</url>
 	</ciManagement>
 
-	<properties>
-		<!-- The Maven Dependency Plugin lets the build fail unexpectedly. This 
-			property and a command line argument inside goal.txt avoid calling that plugin 
-			for this archetype. -->
-		<mdep.analyze.skip>true</mdep.analyze.skip>
-	</properties>
-
 	<build>
 		<extensions>
 			<extension>
@@ -63,5 +56,21 @@
 				<version>3.0.1</version>
 			</extension>
 		</extensions>
+
+		<plugins>
+			<plugin>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>analyze-only</goal>
+						</goals>
+						<configuration>
+							<failOnWarning>false</failOnWarning>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
 	</build>
 </project>

@@ -1425,9 +1425,9 @@ install: mvn install -DskipTests=true -Dgpg.skip=true --batch-mode --show-versio
 								<ignoredUnusedDeclaredDependency>de.lars-sh:utils:jar:${parent.version}</ignoredUnusedDeclaredDependency>
 
 								<!-- Provided -->
+								<ignoredUnusedDeclaredDependency>com.github.spotbugs:spotbugs-annotations:${spotbugs.version}</ignoredUnusedDeclaredDependency>
 								<ignoredUnusedDeclaredDependency>de.lars-sh:lombok-annotations:jar:${lombok.version}</ignoredUnusedDeclaredDependency>
 								<ignoredUnusedDeclaredDependency>de.lars-sh:utils-annotations:jar:${parent.version}</ignoredUnusedDeclaredDependency>
-								<ignoredUnusedDeclaredDependency>com.github.spotbugs:spotbugs-annotations:${spotbugs.version}</ignoredUnusedDeclaredDependency>
 
 								<!-- Test -->
 								<ignoredUnusedDeclaredDependency>de.lars-sh:utils-test:jar:${parent.version}</ignoredUnusedDeclaredDependency>
