@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<artifactId>parent-archetype</artifactId>
+	<packaging>maven-archetype</packaging>
+
+	<name>Archetype for Parent POM</name>
+	<description>This archetype package creates a new Maven project consisting of nothing more than a pom.xml file referencing the parent POM project</description>
+	<url>https://github.com/lars-sh/parent/tree/master/parent-archetype</url>
+
+	<parent>
+		<groupId>de.lars-sh</groupId>
+		<artifactId>root</artifactId>
+		<version>0.9.2-SNAPSHOT</version>
+	</parent>
+
+	<licenses>
+		<license>
+			<name>MIT License</name>
+			<url>https://opensource.org/licenses/MIT</url>
+		</license>
+	</licenses>
+
+	<developers>
+		<developer>
+			<name>Lars Knickrehm</name>
+			<email>mail@lars-sh.de</email>
+			<url>https://lars-sh.de/</url>
+		</developer>
+	</developers>
+
+	<scm>
+		<connection>scm:git:git@github.com:lars-sh/parent.git</connection>
+		<developerConnection>scm:git:git@github.com:lars-sh/parent.git</developerConnection>
+		<url>https://github.com/lars-sh/parent</url>
+	</scm>
+
+	<issueManagement>
+		<system>GitHub Issues</system>
+		<url>https://github.com/lars-sh/parent/issues</url>
+	</issueManagement>
+
+	<ciManagement>
+		<system>Travis</system>
+		<url>https://travis-ci.org/lars-sh/parent</url>
+	</ciManagement>
+
+	<properties>
+		<!-- The Maven Dependency Plugin lets the build fail unexpectedly. This 
+			property and a command line argument inside goal.txt avoid calling that plugin 
+			for this archetype. -->
+		<mdep.analyze.skip>true</mdep.analyze.skip>
+	</properties>
+
+	<build>
+		<extensions>
+			<extension>
+				<groupId>org.apache.maven.archetype</groupId>
+				<artifactId>archetype-packaging</artifactId>
+				<version>3.0.1</version>
+			</extension>
+		</extensions>
+	</build>
+</project>
