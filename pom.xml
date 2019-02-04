@@ -1547,7 +1547,7 @@ install: mvn install -DskipTests=true -Dgpg.skip=true --batch-mode --show-versio
 			</activation>
 			<build>
 				<plugins>
-					<!-- Update classpaths -->
+					<!-- Update class paths ourselves, since delombok goals are ignored -->
 					<plugin>
 						<groupId>org.codehaus.mojo</groupId>
 						<artifactId>build-helper-maven-plugin</artifactId>
