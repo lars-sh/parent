@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>de.lars-sh</groupId>
@@ -12,7 +10,6 @@
 	<name>Root POM</name>
 	<description>This POM is meant to be used as root POM. Use de.lars-sh:parent for your own projects.</description>
 	<url>https://github.com/lars-sh/parent</url>
-
 	<licenses>
 		<license>
 			<name>MIT License</name>
@@ -28,21 +25,39 @@
 		</developer>
 	</developers>
 
+	<modules>
+		<module>utils</module>
+		<module>utils-annotations</module>
+		<module>utils-test</module>
+		<module>parent</module>
+		<module>parent-archetype</module>
+	</modules>
+
 	<scm>
 		<connection>scm:git:git@github.com:lars-sh/parent.git</connection>
 		<developerConnection>scm:git:git@github.com:lars-sh/parent.git</developerConnection>
 		<url>https://github.com/lars-sh/parent</url>
 	</scm>
-
 	<issueManagement>
 		<system>GitHub Issues</system>
 		<url>https://github.com/lars-sh/parent/issues</url>
 	</issueManagement>
-
 	<ciManagement>
 		<system>Travis</system>
 		<url>https://travis-ci.org/lars-sh/parent</url>
 	</ciManagement>
+	<distributionManagement>
+		<snapshotRepository>
+			<id>sonatype-nexus-snapshots</id>
+			<name>Sonatype Nexus Snapshots</name>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+		</snapshotRepository>
+		<repository>
+			<id>sonatype-nexus-staging</id>
+			<name>Nexus Release Repository</name>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+		</repository>
+	</distributionManagement>
 
 	<properties>
 		<!-- "project.build.mainClass" is meant to be used by child POMs to configure 
@@ -79,27 +94,6 @@
 		<pmd.version>6.11.0</pmd.version>
 		<spotbugs.version>3.1.11</spotbugs.version>
 	</properties>
-
-	<modules>
-		<module>utils</module>
-		<module>utils-annotations</module>
-		<module>utils-test</module>
-		<module>parent</module>
-		<module>parent-archetype</module>
-	</modules>
-
-	<distributionManagement>
-		<snapshotRepository>
-			<id>sonatype-nexus-snapshots</id>
-			<name>Sonatype Nexus Snapshots</name>
-			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
-		</snapshotRepository>
-		<repository>
-			<id>sonatype-nexus-staging</id>
-			<name>Nexus Release Repository</name>
-			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
-		</repository>
-	</distributionManagement>
 
 	<dependencyManagement>
 		<dependencies>
@@ -246,7 +240,6 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-
 	<dependencies>
 		<!-- Provided -->
 		<dependency>
@@ -311,7 +304,6 @@
 				</includes>
 			</testResource>
 		</testResources>
-
 		<pluginManagement>
 			<plugins>
 				<!-- Maven -->
@@ -530,7 +522,6 @@
 				</plugin>
 			</plugins>
 		</pluginManagement>
-
 		<plugins>
 			<plugin>
 				<artifactId>maven-antrun-plugin</artifactId>
