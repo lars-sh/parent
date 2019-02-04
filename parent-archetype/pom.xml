@@ -58,6 +58,27 @@
 		</extensions>
 
 		<plugins>
+			<!-- Skip integration tests when using embedded maven -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>regex-properties</id>
+						<goals>
+							<goal>regex-property</goal>
+						</goals>
+						<configuration>
+							<name>archetype.test.skip</name>
+							<value>_${maven.home}</value>
+							<regex>^_.*EMBEDDED$</regex>
+							<replacement>true</replacement>
+							<failIfNoMatch>false</failIfNoMatch>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
 			<plugin>
 				<artifactId>maven-dependency-plugin</artifactId>
 				<executions>
