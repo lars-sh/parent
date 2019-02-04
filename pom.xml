@@ -76,7 +76,7 @@
 		<lombok.version>1.18.4</lombok.version>
 		<mockito.version>2.24.0</mockito.version>
 		<parent.version>0.9.2-SNAPSHOT</parent.version>
-		<pmd.version>6.10.0</pmd.version>
+		<pmd.version>6.11.0</pmd.version>
 		<spotbugs.version>3.1.11</spotbugs.version>
 	</properties>
 
