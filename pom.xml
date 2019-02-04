@@ -449,6 +449,11 @@
 				</plugin>
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>tidy-maven-plugin</artifactId>
+					<version>1.1.0</version>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>versions-maven-plugin</artifactId>
 					<version>2.7</version>
 				</plugin>
@@ -1429,6 +1434,19 @@ install: mvn install -DskipTests=true -Dgpg.skip=true --batch-mode --show-versio
 								<ignoredUnusedDeclaredDependency>org.mockito:mockito-core:jar:${mockito.version}</ignoredUnusedDeclaredDependency>
 							</ignoredUnusedDeclaredDependencies>
 						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- Check for tidied up pom.xml -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>tidy-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>check</goal>
+						</goals>
 					</execution>
 				</executions>
 			</plugin>
