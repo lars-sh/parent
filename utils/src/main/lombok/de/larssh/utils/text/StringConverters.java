@@ -116,18 +116,23 @@ public class StringConverters {
 					value.charAt(length - 1));
 		}
 
+		int index = 1;
 		final StringBuilder builder = new StringBuilder(length - 2);
-		for (int index = 1; index < length - 1; index += 1) {
+		while (index < length - 1) {
 			final char character = value.charAt(index);
 			if (character == escaper) {
 				index += 1;
 				if (index >= length - 1) {
-					throw new ParseException("Unexpected end of CSV value [%s].", value);
-				} else if (value.charAt(index) != escaper) {
-					throw new ParseException("Unexpected character [%s] inside CSV value.", value.charAt(index));
+					throw new ParseException("Unexpected end after escape character in [%s].", value);
+				}
+				if (value.charAt(index) != escaper) {
+					throw new ParseException("Unexpected character \"%s\" at index %d after escape character.",
+							value.charAt(index),
+							index);
 				}
 			}
 			builder.append(character);
+			index += 1;
 		}
 		return builder.length() == length ? value : builder.toString();
 	}
