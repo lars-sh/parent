@@ -1104,12 +1104,12 @@ TODO: Easy to understand usage example
 	<suppress checks="UnusedImports" message="^Unused import - lombok\.ToString\.$" />
 	
 	<!-- Unit Tests -->
-	<suppress checks="ExecutableStatementCountCheck" files="^.*[/\\]generated-test-sources[/\\].*$" />
-	<suppress checks="JavadocPackageCheck" files="^.*[/\\]generated-test-sources[/\\].*$" />
-	<suppress checks="JavadocVariableCheck" files="^.*[/\\]generated-test-sources[/\\].*$" />
-	<suppress checks="MagicNumberCheck" files="^.*[/\\]generated-test-sources[/\\].*$" />
-	<suppress checks="MethodLengthCheck" files="^.*[/\\]generated-test-sources[/\\].*$" />
-	<suppress checks="MultipleStringLiteralsCheck" files="^.*[/\\]generated-test-sources[/\\].*$" />
+	<suppress checks="ExecutableStatementCountCheck" files="^(.*[/\\])?(src[/\\]test|generated-test-sources)[/\\].*$" />
+	<suppress checks="JavadocPackageCheck" files="^(.*[/\\])?(src[/\\]test|generated-test-sources)[/\\].*$" />
+	<suppress checks="JavadocVariableCheck" files="^(.*[/\\])?(src[/\\]test|generated-test-sources)[/\\].*$" />
+	<suppress checks="MagicNumberCheck" files="^(.*[/\\])?(src[/\\]test|generated-test-sources)[/\\].*$" />
+	<suppress checks="MethodLengthCheck" files="^(.*[/\\])?(src[/\\]test|generated-test-sources)[/\\].*$" />
+	<suppress checks="MultipleStringLiteralsCheck" files="^(.*[/\\])?(src[/\\]test|generated-test-sources)[/\\].*$" />
 </suppressions>
 ]]></echo>
 							</target>
