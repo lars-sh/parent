@@ -13,12 +13,12 @@
 	<version>${version}</version>
 
 	<name>${artifactId}</name>
+
 	<!-- TODO: description, url, licenses -->
 
 	<!-- TODO: developers -->
 
 	<!-- TODO: scm, issueManagement, ciManagement -->
-
 	<properties>
 		<!-- ... -->
 	</properties>
