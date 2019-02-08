@@ -9,29 +9,21 @@ public class AssertionException extends RuntimeException {
 	private static final long serialVersionUID = -7622697337052594786L;
 
 	/**
-	 * Constructs a new {@link AssertionException} with the given message,
-	 * formatting as described at {@link String#format(String, Object...)}.
+	 * Constructs a new {@link AssertionException} with the given message.
 	 *
-	 * @param message   the detail message
-	 * @param arguments arguments referenced by format specifiers in {@code message}
-	 * @throws java.util.IllegalFormatException {@code arguments} is not empty and
-	 *         {@code message} contains unexpected syntax
+	 * @param message the detail message
 	 */
-	public AssertionException(final String message, final Object... arguments) {
-		super(String.format(message, arguments), null);
+	public AssertionException(final String message) {
+		super(message, null);
 	}
 
 	/**
-	 * Constructs a new {@link AssertionException} with the given message,
-	 * formatting as described at {@link String#format(String, Object...)}.
+	 * Constructs a new {@link AssertionException} with the given message.
 	 *
-	 * @param cause     the cause
-	 * @param message   the detail message
-	 * @param arguments arguments referenced by format specifiers in {@code message}
-	 * @throws java.util.IllegalFormatException {@code arguments} is not empty and
-	 *         {@code message} contains unexpected syntax
+	 * @param cause   the cause
+	 * @param message the detail message
 	 */
-	public AssertionException(final Throwable cause, final String message, final Object... arguments) {
-		super(String.format(message, arguments), cause);
+	public AssertionException(final Throwable cause, final String message) {
+		super(message, cause);
 	}
 }

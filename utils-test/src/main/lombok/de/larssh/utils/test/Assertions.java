@@ -125,9 +125,9 @@ public class Assertions {
 				return constructor.apply(arguments);
 			} catch (final Exception e) {
 				throw new AssertionException(e,
-						"Failed constructing using "
-								+ Arrays.stream(arguments).map(a -> "%s").collect(joining("], [", "[", "]")),
-						arguments);
+						Arrays.stream(arguments)
+								.map(Object::toString)
+								.collect(joining("], [", "Failed constructing using [", "]")));
 			}
 		};
 	}
