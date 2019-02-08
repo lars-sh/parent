@@ -1,8 +1,10 @@
 package de.larssh.utils.test;
 
+import static java.util.stream.Collectors.joining;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
+import java.util.Arrays;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.IntStream;
@@ -76,14 +78,16 @@ public class Assertions {
 			justification = "need to call constructor twice to validate equals")
 	public static void assertEqualsAndHashCode(final Function<Object[], ?> constructor,
 			final AssertEqualsAndHashCodeArguments arguments) {
-		final Object object = constructor.apply(arguments.getOriginal().toArray());
+		final Function<Object[], ?> wrappedConstructor = wrapConstructorExceptions(constructor);
+
+		final Object object = wrappedConstructor.apply(arguments.getOriginal().toArray());
 		final int hashCode = object.hashCode();
 
 		assertNotEquals(null, object, "equals null");
 		assertNotEquals(Boolean.TRUE, object, "equals true");
 		assertEquals(object, object, "equals this");
 
-		final Object sameObject = constructor.apply(arguments.getOriginal().toArray());
+		final Object sameObject = wrappedConstructor.apply(arguments.getOriginal().toArray());
 		assertEquals(object, sameObject, "equals original arguments");
 		assertEquals(hashCode, sameObject.hashCode(), "hashCode original arguments");
 
@@ -91,7 +95,7 @@ public class Assertions {
 			final Consumer3<Object, Object, Supplier<String>> consumer = arguments.isExpectEquality(index)
 					? org.junit.jupiter.api.Assertions::assertEquals
 					: org.junit.jupiter.api.Assertions::assertNotEquals;
-			final Object newObject = constructor.apply(arguments.getChangedArguments(index).toArray());
+			final Object newObject = wrappedConstructor.apply(arguments.getChangedArguments(index).toArray());
 
 			// Assert equals
 			final Supplier<String> equalsMessage = () -> String
@@ -102,5 +106,26 @@ public class Assertions {
 			final Supplier<String> hashCodeMessage = () -> String.format("hashCode changed argument %d", index + 1);
 			consumer.accept(hashCode, newObject.hashCode(), hashCodeMessage);
 		});
+	}
+
+	/**
+	 * Wraps {@code constructor} to wrap exceptions thrown by that constructor with
+	 * an {@link AssertionException} showing the used arguments.
+	 *
+	 * @param             <T> the constructors class
+	 * @param constructor the constructor to wrap
+	 * @return wrapped constructor
+	 */
+	private static <T> Function<Object[], T> wrapConstructorExceptions(final Function<Object[], T> constructor) {
+		return arguments -> {
+			try {
+				return constructor.apply(arguments);
+			} catch (final Exception e) {
+				throw new AssertionException(e,
+						"Failed constructing using "
+								+ Arrays.stream(arguments).map(a -> "%s").collect(joining("], [", "[", "]")),
+						arguments);
+			}
+		};
 	}
 }
