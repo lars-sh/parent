@@ -4,6 +4,7 @@ package de.larssh.utils.test;
  * Thrown to indicate that an assertion failed in an unexpected situation.
  */
 public class AssertionException extends RuntimeException {
+	// @EqualsAndHashCode(callSuper = true, onParam_ = { @Nullable })
 
 	private static final long serialVersionUID = -7622697337052594786L;
 
@@ -14,7 +15,7 @@ public class AssertionException extends RuntimeException {
 	 * @param message   the detail message
 	 * @param arguments arguments referenced by format specifiers in {@code message}
 	 * @throws java.util.IllegalFormatException {@code arguments} is not empty and
-	 *         {@code format} contains unexpected syntax
+	 *         {@code message} contains unexpected syntax
 	 */
 	public AssertionException(final String message, final Object... arguments) {
 		super(String.format(message, arguments), null);
@@ -28,7 +29,7 @@ public class AssertionException extends RuntimeException {
 	 * @param message   the detail message
 	 * @param arguments arguments referenced by format specifiers in {@code message}
 	 * @throws java.util.IllegalFormatException {@code arguments} is not empty and
-	 *         {@code format} contains unexpected syntax
+	 *         {@code message} contains unexpected syntax
 	 */
 	public AssertionException(final Throwable cause, final String message, final Object... arguments) {
 		super(String.format(message, arguments), cause);
