@@ -1,13 +1,12 @@
 package de.larssh.utils;
 
-import lombok.ToString;
-
 /**
  * Thrown to indicate that an object contains more than one element while either
  * no or exactly one element are expected.
  */
-// @EqualsAndHashCode(callSuper = true, onParam_ = { @Nullable })
 public class TooManyElementsException extends RuntimeException {
+	// @EqualsAndHashCode(callSuper = true, onParam_ = { @Nullable })
+
 	private static final long serialVersionUID = -1912601313948443590L;
 
 	/**

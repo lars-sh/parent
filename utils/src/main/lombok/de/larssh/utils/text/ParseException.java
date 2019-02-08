@@ -1,12 +1,11 @@
 package de.larssh.utils.text;
 
-import lombok.ToString;
-
 /**
  * Thrown to indicate that a string could not be parsed.
  */
-// @EqualsAndHashCode(callSuper = true, onParam_ = { @Nullable })
 public class ParseException extends Exception {
+	// @EqualsAndHashCode(callSuper = true, onParam_ = { @Nullable })
+
 	private static final long serialVersionUID = 4898591627790201970L;
 
 	/**
