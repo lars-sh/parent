@@ -2,5 +2,6 @@
 <!DOCTYPE suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN" "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
 	<!-- Suppress illegal catches, that have been verified -->
+	<suppress files="^.*[/\\]de[/\\]larssh[/\\]utils[/\\]test[/\\]Assertions\.java$" checks="IllegalCatchCheck" message="^Catching &apos;Exception&apos; is not allowed\.$" lines="111" columns="15" />
 	<suppress files="^.*[/\\]de[/\\]larssh[/\\]utils[/\\]test[/\\]Reflects\.java$" checks="IllegalCatchCheck" message="^Catching &apos;Exception&apos; is not allowed\.$" lines="70" columns="11" />
 </suppressions>
