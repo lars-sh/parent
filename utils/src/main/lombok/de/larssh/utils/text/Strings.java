@@ -282,22 +282,28 @@ public class Strings {
 	 * this kind of ordering for user output.
 	 *
 	 * <p>
-	 * Numeric values can have a leading plus or minus sign. Fractions are mot
-	 * supported and will be handled as two separate numeric values. Because numeric
-	 * values are not deserialized into numeric data types, their length is not
-	 * limited.
+	 * Because numeric values are not deserialized into numeric data types, their
+	 * length is not limited. Fractions are not supported and will be handled as two
+	 * separate numeric values.
+	 *
+	 * <p>
+	 * Numeric values can have a leading plus or minus sign when following a
+	 * whitespace character or at a strings start.
 	 *
 	 * <p>
 	 * The following lists some example values to demonstrate the ordering.
 	 * <ul>
 	 * <li>Banana -12 Circus
-	 * <li>Banana -1 Circus
-	 * <li>Banana +1 Circus
-	 * <li>Banana 1 Circus
-	 * <li>Banana +1 Dolphin
-	 * <li>Banana 2 Circus
+	 * <li>Banana -5 Circus
+	 * <li>Banana +5 Circus
+	 * <li>Banana 5 Circus
+	 * <li>Banana +5 Dolphin
+	 * <li>Banana 8 Circus
 	 * <li>Banana 12 Circus
-	 * <li>Elephant 1 Circus
+	 * <li>Banana-5 Circus
+	 * <li>Banana-12 Circus
+	 * <li>Banana--5 Circus
+	 * <li>Elephant 5 Circus
 	 * </ul>
 	 *
 	 * <p>

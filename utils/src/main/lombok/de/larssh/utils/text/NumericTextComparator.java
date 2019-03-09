@@ -16,22 +16,28 @@ import lombok.experimental.NonFinal;
  * this kind of ordering for user output.
  *
  * <p>
- * Numeric values can have a leading plus or minus sign. Fractions are mot
- * supported and will be handled as two separate numeric values. Because numeric
- * values are not deserialized into numeric data types, their length is not
- * limited.
+ * Because numeric values are not deserialized into numeric data types, their
+ * length is not limited. Fractions are not supported and will be handled as two
+ * separate numeric values.
+ *
+ * <p>
+ * Numeric values can have a leading plus or minus sign when following a
+ * whitespace character or at a strings start.
  *
  * <p>
  * The following lists some example values to demonstrate the ordering.
  * <ul>
  * <li>Banana -12 Circus
- * <li>Banana -1 Circus
- * <li>Banana +1 Circus
- * <li>Banana 1 Circus
- * <li>Banana +1 Dolphin
- * <li>Banana 2 Circus
+ * <li>Banana -5 Circus
+ * <li>Banana +5 Circus
+ * <li>Banana 5 Circus
+ * <li>Banana +5 Dolphin
+ * <li>Banana 8 Circus
  * <li>Banana 12 Circus
- * <li>Elephant 1 Circus
+ * <li>Banana-5 Circus
+ * <li>Banana-12 Circus
+ * <li>Banana--5 Circus
+ * <li>Elephant 5 Circus
  * </ul>
  *
  * <p>
@@ -148,7 +154,7 @@ final class NumericTextComparator implements Comparator<String>, Serializable {
 		 */
 		public int compare() {
 			while (!isRest()) {
-				if (isSignedNumeric()) {
+				if (isNumeric()) {
 					final int compared = compareSignedNumeric();
 					if (compared != 0) {
 						return compared;
@@ -178,7 +184,7 @@ final class NumericTextComparator implements Comparator<String>, Serializable {
 		}
 
 		/**
-		 * Returns {@code true} if at least of the strings continue with an optionally
+		 * Returns {@code true} if at least of the strings continues with an optionally
 		 * signed numeric value.
 		 *
 		 * <p>
@@ -188,7 +194,7 @@ final class NumericTextComparator implements Comparator<String>, Serializable {
 		 * @return {@code true} if any sequence continues with an optionally signed
 		 *         numeric value
 		 */
-		private boolean isSignedNumeric() {
+		private boolean isNumeric() {
 			return Characters.isAsciiDigit(first.charAt(firstIndex))
 					|| Characters.isAsciiDigit(second.charAt(secondIndex))
 					|| isSignedNumeric(first, firstLength, firstIndex)
@@ -199,6 +205,10 @@ final class NumericTextComparator implements Comparator<String>, Serializable {
 		 * Returns {@code true} if {@code value} has a signed numeric value at
 		 * {@code index}.
 		 *
+		 * <p>
+		 * Signed values need to be at index {@code 0} or require a whitespace character
+		 * at {@code index - 1}.
+		 *
 		 * @param value  the string to check
 		 * @param length the length of {@code value} (cached)
 		 * @param index  the index to check
@@ -207,7 +217,9 @@ final class NumericTextComparator implements Comparator<String>, Serializable {
 		 */
 		private boolean isSignedNumeric(final String value, final int length, final int index) {
 			final char sign = value.charAt(index);
-			if (sign != '-' && sign != '+' || index + 1 >= length) {
+			if (sign != '-' && sign != '+'
+					|| index > 0 && !Characters.isAsciiWhitespace(value.charAt(index - 1))
+					|| index + 1 >= length) {
 				return false;
 			}
 			return Characters.isAsciiDigit(value.charAt(index + 1));
@@ -224,8 +236,8 @@ final class NumericTextComparator implements Comparator<String>, Serializable {
 		 */
 		private int compareSignedNumeric() {
 			// Calculate length of the numeric chunks
-			final int firstSignedNumericLength = getSignedNumericLength(first, firstLength, firstIndex);
-			final int secondSignedNumericLength = getSignedNumericLength(second, secondLength, secondIndex);
+			final int firstSignedNumericLength = getNumericLength(first, firstLength, firstIndex);
+			final int secondSignedNumericLength = getNumericLength(second, secondLength, secondIndex);
 
 			// Return if one is not numeric
 			if (firstSignedNumericLength == 0 || secondSignedNumericLength == 0) {
@@ -240,17 +252,15 @@ final class NumericTextComparator implements Comparator<String>, Serializable {
 			}
 
 			// Calculate numeric length without signs and leading zeros
-			final int firstNumericLength = getNumericLength(first, firstIndex, firstSignedNumericLength);
-			final int secondNumericLength = getNumericLength(second, secondIndex, secondSignedNumericLength);
+			final int firstNumericLength = getDigitsLength(first, firstIndex, firstSignedNumericLength);
+			final int secondNumericLength = getDigitsLength(second, secondIndex, secondSignedNumericLength);
 
 			// Update indexes
 			firstIndex += firstSignedNumericLength;
 			secondIndex += secondSignedNumericLength;
 
 			// Compare
-			return firstIsNegative
-					? -compareNumeric(firstNumericLength, secondNumericLength)
-					: compareNumeric(firstNumericLength, secondNumericLength);
+			return (firstIsNegative ? -1 : 1) * compareNumeric(firstNumericLength, secondNumericLength);
 		}
 
 		/**
@@ -263,7 +273,7 @@ final class NumericTextComparator implements Comparator<String>, Serializable {
 		 * @return length of an optionally signed numeric in {@code value} at
 		 *         {@code index} or zero
 		 */
-		private int getSignedNumericLength(final String value, final int length, final int index) {
+		private int getNumericLength(final String value, final int length, final int index) {
 			int numericIndex = index;
 			if (isSignedNumeric(value, length, numericIndex)) {
 				numericIndex += 2;
@@ -293,7 +303,7 @@ final class NumericTextComparator implements Comparator<String>, Serializable {
 		 * @return length of the absolute value of an optionally signed numeric without
 		 *         leading zeros
 		 */
-		private int getNumericLength(final String value, final int index, final int signedNumericLength) {
+		private int getDigitsLength(final String value, final int index, final int signedNumericLength) {
 			for (int numericIndex = 0; numericIndex < signedNumericLength; numericIndex += 1) {
 				final char character = value.charAt(index + numericIndex);
 				if (character != '0' && character != '-' && character != '+') {

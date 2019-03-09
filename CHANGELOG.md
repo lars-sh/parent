@@ -21,6 +21,7 @@ Download at TODO
 ### Changed
 * Execute SpotBugs, copy-paste-detection (CPD) and dependency analysis from Maven reporting to build phase
 * Moved de.larssh.utils.AetherUtils to de.larssh.utils.maven.AetherUtils
+* NumericTextComparator handles numerics as signed only if the sign is preceeded by a whitespace or at a strings start
 * ParseException initializes cause
 * Checkstyle suppressions file name changed from "suppressions.xml" to "checkstyle-suppressions.xml"
 * Checkstyle for unit tests suppresses checks ExecutableStatementCountCheck, MagicNumberCheck and MethodLengthCheck
