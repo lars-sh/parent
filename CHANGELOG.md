@@ -19,6 +19,7 @@ Download at TODO
 * Method de.larssh.utils.Optionals.ofSingle(array|collection|iterator|stream|string)
 
 ### Changed
+* Enforce Maven version 3.3.9 (as JaCoCo requires it)
 * Execute SpotBugs, copy-paste-detection (CPD) and dependency analysis from Maven reporting to build phase
 * Moved de.larssh.utils.AetherUtils to de.larssh.utils.maven.AetherUtils
 * NumericTextComparator handles numerics as signed only if the sign is preceeded by a whitespace or at a strings start

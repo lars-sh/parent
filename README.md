@@ -360,6 +360,7 @@ The following shows at which point in the Maven lifecycle plugins do their work.
     * post-clean
 * default
     * validate
+        * maven-enforcer-plugin:enforce (default)
         * jacoco-maven-plugin:prepare-agent (default)
     * initialize
     * generate-sources
