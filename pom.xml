@@ -840,7 +840,7 @@ TODO: Easy to understand usage example
 	<property name="localeCountry" value="US" />
 	<property name="localeLanguage" value="en" />
 	<property name="charset" value="UTF-8" />
-	
+
 	<!-- File Filters -->
 	<module name="SuppressionFilter">
 		<property name="file" value="${project.build.directory}/checkstyle-suppressions.xml" />
@@ -852,7 +852,7 @@ TODO: Easy to understand usage example
 
 	<!-- Javadoc Comments -->
 	<module name="JavadocPackage" />
-	
+
 	<!-- Miscellaneous -->
 	<module name="NewlineAtEndOfFile">
 		<property name="lineSeparator" value="lf" />
@@ -860,16 +860,16 @@ TODO: Easy to understand usage example
 	</module>
 	<module name="Translation" />
 	<module name="UniqueProperties" />
-	
+
 	<!-- Size Violations -->
 	<module name="FileLength" />
-	
+
 	<module name="TreeWalker">
 		<property name="tabWidth" value="4" />
-		
+
 		<!-- Annotations -->
 		<module name="AnnotationLocation">
-			<property name="allowSamelineSingleParameterlessAnnotation" value="false"/>
+			<property name="allowSamelineSingleParameterlessAnnotation" value="false" />
 		</module>
 		<module name="AnnotationUseStyle" />
 		<module name="MissingDeprecated" />
@@ -883,7 +883,7 @@ TODO: Easy to understand usage example
 			-->
 			<property name="format" value="^(all|boxing|cast|fallthrough|finally|hiding|incomplete-switch|nls|PMD|rawtypes|resource|restriction|restriction|removal|serial|static-access|static-method|super|synthetic-access|sync-override|unqualified-field-access|unlikely-arg-type)$" />
 		</module>
-		
+
 		<!-- Block Checks -->
 		<module name="AvoidNestedBlocks" />
 		<module name="EmptyBlock">
@@ -897,7 +897,7 @@ TODO: Easy to understand usage example
 			<property name="allowSingleLineStatement" value="true" />
 		</module>
 		<module name="RightCurly" />
-		
+
 		<!-- Class Design -->
 		<module name="DesignForExtension" />
 		<module name="FinalClass" />
@@ -908,7 +908,7 @@ TODO: Easy to understand usage example
 		<module name="OneTopLevelClass" />
 		<module name="ThrowsCount" />
 		<module name="VisibilityModifier" />
-		
+
 		<!-- Coding -->
 		<module name="CovariantEquals" />
 		<module name="DefaultComesLast">
@@ -961,7 +961,7 @@ TODO: Easy to understand usage example
 		<module name="SuperFinalize" />
 		<module name="UnnecessaryParentheses" />
 		<module name="VariableDeclarationUsageDistance" />
-		
+
 		<!-- Filters -->
 		<module name="SuppressionXpathFilter">
 			<property name="file" value="${project.build.directory}/checkstyle-suppressions.xml" />
@@ -976,10 +976,10 @@ TODO: Easy to understand usage example
 			<property name="messageFormat" value="^The String &quot;$1&quot; appears \d+ times in the file\.$" />
 			<property name="influenceFormat" value="$2" />
 		</module>
-		
+
 		<!-- Headers -->
 		<!-- none -->
-		
+
 		<!-- Imports -->
 		<module name="AvoidStarImport" />
 		<module name="IllegalImport" />
@@ -995,7 +995,7 @@ TODO: Easy to understand usage example
 		<module name="UnusedImports">
 			<property name="processJavadoc" value="false" />
 		</module>
-		
+
 		<!-- Javadoc Comments -->
 		<module name="AtclauseOrder" />
 		<module name="JavadocMethod">
@@ -1014,16 +1014,16 @@ TODO: Easy to understand usage example
 		<module name="JavadocVariable" />
 		<module name="NonEmptyAtclauseDescription" />
 		<module name="SingleLineJavadoc" />
-		
+
 		<!-- Metrics -->
 		<!-- none -->
-		
+
 		<!-- Miscellaneous -->
 		<module name="ArrayTypeStyle" />
 		<module name="AvoidEscapedUnicodeCharacters">
-			<property name="allowEscapesForControlCharacters" value="true"/>
-			<property name="allowByTailComment" value="true"/>
-			<property name="allowNonPrintableEscapes" value="true"/>
+			<property name="allowEscapesForControlCharacters" value="true" />
+			<property name="allowByTailComment" value="true" />
+			<property name="allowNonPrintableEscapes" value="true" />
 		</module>
 		<module name="CommentsIndentation" />
 		<module name="FinalParameters">
@@ -1039,16 +1039,16 @@ TODO: Easy to understand usage example
 			<property name="severity" value="info" />
 		</module>
 		<module name="TrailingComment">
-			<property name="format" value="^(.*,)?\s*$"/>
+			<property name="format" value="^(.*,)?\s*$" />
 			<property name="legalComment" value="^TODO$" />
 		</module>
 		<module name="UncommentedMain" />
 		<module name="UpperEll" />
-		
+
 		<!-- Modifiers -->
 		<module name="ModifierOrder" />
 		<module name="RedundantModifier" />
-		
+
 		<!-- Naming Conventions -->
 		<module name="AbbreviationAsWordInName">
 			<property name="ignoreStatic" value="false" />
@@ -1067,7 +1067,7 @@ TODO: Easy to understand usage example
 		<module name="ParameterName" />
 		<module name="StaticVariableName" />
 		<module name="TypeName" />
-		
+
 		<!-- Regexp -->
 		<module name="RegexpSinglelineJava">
 			<property name="format" value="\s+$" />
@@ -1077,7 +1077,7 @@ TODO: Easy to understand usage example
 			<property name="format" value="^\t* [^*]" />
 			<property name="message" value="Line does not use tab indentation." />
 		</module>
-		
+
 		<!-- Size Violations -->
 		<module name="AnonInnerLength" />
 		<module name="ExecutableStatementCount" />
@@ -1086,7 +1086,7 @@ TODO: Easy to understand usage example
 		<module name="ParameterNumber">
 			<property name="ignoreOverriddenMethods" value="true" />
 		</module>
-		
+
 		<!-- Whitespace -->
 		<module name="EmptyForInitializerPad" />
 		<module name="EmptyForIteratorPad" />
