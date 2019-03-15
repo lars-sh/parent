@@ -217,8 +217,6 @@ Our Eclipse Integration mostly synchronizes settings of Maven plugins with your 
 
 `.settings/checkstyle.xml` contains the Checkstyle rules. It gets overwritten with each update from inside Eclipse.
 
-`.settings/checkstyle-suppressions.xml` contains the default Checkstyle suppressions. It gets overwritten with each update from inside Eclipse.
-
 `.settings/edu.umd.cs.findbugs.core.prefs` contains the Eclipse SpotBugs Plugin configuration. Some properties are overwritten with each update from inside Eclipse.
 
 `.settings/org.eclipse.core.resources.prefs` contains the default sources encoding. Some properties are overwritten with each update from inside Eclipse.
@@ -235,8 +233,6 @@ The following files are generated for the build process itself. You should not n
 `target/pmd/pmd-ruleset.xml` contains the PMD rule set. It is overwritten at the Maven goal `generate-source`.
 
 `target/checkstyle.xml` contains the Checkstyle rules. It is overwritten at the Maven goal `generate-source`.
-
-`target/checkstyle-suppressions.xml` contains the default Checkstyle suppressions. It is overwritten at the Maven goal `generate-source`.
 
 #### Suppress Warnings
 As this POM comes with some code check and validation tools you might need to suppress false-positives.
@@ -370,7 +366,6 @@ The following shows at which point in the Maven lifecycle plugins do their work.
         * maven-antrun-plugin:run (source-directories)
         * maven-antrun-plugin:run (lombok-config)
         * maven-antrun-plugin:run (checkstyle-xml)
-        * maven-antrun-plugin:run (checkstyle-suppressions-xml)
         * maven-antrun-plugin:run (pmd-ruleset-xml)
         * maven-antrun-plugin:run (project-travis-yml-exists)
         * maven-antrun-plugin:run (travis-ci)

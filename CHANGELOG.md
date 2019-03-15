@@ -20,6 +20,7 @@ Download at TODO
 
 ### Changed
 * Enforce Maven version 3.3.9 (as JaCoCo requires it)
+* Unit tests require a "package-info.java" file per package. You might need to copy them over from your regular sources.
 * Execute SpotBugs, copy-paste-detection (CPD) and dependency analysis from Maven reporting to build phase
 * Moved de.larssh.utils.AetherUtils to de.larssh.utils.maven.AetherUtils
 * NumericTextComparator handles numerics as signed only if the sign is preceeded by a whitespace or at a strings start
