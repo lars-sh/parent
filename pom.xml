@@ -85,6 +85,7 @@
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 
+		<checkstyle.version>8.18</checkstyle.version>
 		<joor.version>0.9.10</joor.version>
 		<junit.version>5.4.0-RC2</junit.version>
 		<junit.platform.version>1.4.0-RC2</junit.platform.version>
@@ -238,6 +239,43 @@
 				<version>${mockito.version}</version>
 				<scope>test</scope>
 			</dependency>
+
+			<!-- Plugin dependencies -->
+			<dependency>
+				<groupId>com.github.spotbugs</groupId>
+				<artifactId>spotbugs</artifactId>
+				<version>${spotbugs.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.puppycrawl.tools</groupId>
+				<artifactId>checkstyle</artifactId>
+				<version>${checkstyle.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>net.sourceforge.pmd</groupId>
+				<artifactId>pmd-core</artifactId>
+				<version>${pmd.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>net.sourceforge.pmd</groupId>
+				<artifactId>pmd-java</artifactId>
+				<version>${pmd.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>net.sourceforge.pmd</groupId>
+				<artifactId>pmd-javascript</artifactId>
+				<version>${pmd.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>net.sourceforge.pmd</groupId>
+				<artifactId>pmd-jsp</artifactId>
+				<version>${pmd.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok</artifactId>
+				<version>${lombok.version}</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 	<dependencies>
@@ -326,7 +364,7 @@
 						<dependency>
 							<groupId>com.puppycrawl.tools</groupId>
 							<artifactId>checkstyle</artifactId>
-							<version>8.17</version>
+							<version>${checkstyle.version}</version>
 						</dependency>
 					</dependencies>
 				</plugin>
