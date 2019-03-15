@@ -1,0 +1,1 @@
+call mvn de.lars-sh:jar-runner-maven-plugin:run -Dartifact=org.projectlombok:lombok:LATEST
