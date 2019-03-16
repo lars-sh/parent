@@ -52,7 +52,7 @@ public interface ThrowingFunction<T, R> extends Function<T, R> {
 	 */
 	@Nullable
 	@Override
-	@SuppressWarnings("PMD.AvoidCatchingGenericException")
+	@SuppressWarnings({ "checkstyle:IllegalCatch", "PMD.AvoidCatchingGenericException" })
 	default R apply(@Nullable final T t) {
 		try {
 			return applyThrowing(t);

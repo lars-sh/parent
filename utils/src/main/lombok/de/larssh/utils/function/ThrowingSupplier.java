@@ -49,7 +49,7 @@ public interface ThrowingSupplier<T> extends Supplier<T> {
 	 */
 	@Nullable
 	@Override
-	@SuppressWarnings("PMD.AvoidCatchingGenericException")
+	@SuppressWarnings({ "checkstyle:IllegalCatch", "PMD.AvoidCatchingGenericException" })
 	default T get() {
 		try {
 			return getThrowing();

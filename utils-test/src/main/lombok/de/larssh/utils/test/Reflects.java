@@ -62,6 +62,7 @@ public class Reflects {
 	 * @throws SneakyException  invocation target exceptions
 	 */
 	@SuppressWarnings({
+			"checkstyle:IllegalCatch",
 			"PMD.AvoidCatchingGenericException",
 			"PMD.AvoidInstanceofChecksInCatchClause",
 			"PMD.PreserveStackTrace" })

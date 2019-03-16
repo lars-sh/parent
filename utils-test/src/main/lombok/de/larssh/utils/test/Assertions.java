@@ -116,7 +116,7 @@ public class Assertions {
 	 * @param constructor the constructor to wrap
 	 * @return wrapped constructor
 	 */
-	@SuppressWarnings("PMD.AvoidCatchingGenericException")
+	@SuppressWarnings({ "checkstyle:IllegalCatch", "PMD.AvoidCatchingGenericException" })
 	@SuppressFBWarnings(value = "EXS_EXCEPTION_SOFTENING_NO_CONSTRAINTS",
 			justification = "throw AssertionException instead")
 	private static <T> Function<Object[], T> wrapConstructorExceptions(final Function<Object[], T> constructor) {

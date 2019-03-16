@@ -50,7 +50,7 @@ public interface ThrowingConsumer<T> extends Consumer<T> {
 	 * @throws SneakyException hidden exceptions
 	 */
 	@Override
-	@SuppressWarnings("PMD.AvoidCatchingGenericException")
+	@SuppressWarnings({ "checkstyle:IllegalCatch", "PMD.AvoidCatchingGenericException" })
 	default void accept(@Nullable final T t) {
 		try {
 			acceptThrowing(t);

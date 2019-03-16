@@ -179,14 +179,8 @@ public class Strings {
 	 *
 	 * @return map map of binary units to their factor
 	 */
+	@SuppressWarnings("checkstyle:MultipleStringLiterals")
 	private static Map<String, BigDecimal> getBinaryUnits() {
-		// Checkstyle: Ignore duplicate "M" for 7 lines
-		// Checkstyle: Ignore duplicate "G" for 6 lines
-		// Checkstyle: Ignore duplicate "T" for 5 lines
-		// Checkstyle: Ignore duplicate "P" for 4 lines
-		// Checkstyle: Ignore duplicate "E" for 3 lines
-		// Checkstyle: Ignore duplicate "Z" for 2 lines
-		// Checkstyle: Ignore duplicate "Y" for 1 line
 		final List<String> binaryUnits = asList("K", "M", "G", "T", "P", "E", "Z", "Y");
 		final BigDecimal oneThousandTwentyFour = new BigDecimal(1024);
 
@@ -201,6 +195,7 @@ public class Strings {
 	 *
 	 * @return map map of decimal units to their power of ten
 	 */
+	@SuppressWarnings({ "checkstyle:MagicNumber", "checkstyle:MultipleStringLiterals" })
 	@SuppressFBWarnings(value = "PSC_PRESIZE_COLLECTIONS",
 			justification = "this method is called just once (in static initializer); keep code simple")
 	private static Map<String, Integer> getDecimalUnits() {
@@ -220,14 +215,6 @@ public class Strings {
 		decimalUnits.put("da", 1);
 		decimalUnits.put("h", 2);
 		decimalUnits.put("k", 3);
-
-		// Checkstyle: Ignore duplicate "M" for 7 lines
-		// Checkstyle: Ignore duplicate "G" for 7 lines
-		// Checkstyle: Ignore duplicate "T" for 7 lines
-		// Checkstyle: Ignore duplicate "P" for 7 lines
-		// Checkstyle: Ignore duplicate "E" for 7 lines
-		// Checkstyle: Ignore duplicate "Z" for 7 lines
-		// Checkstyle: Ignore duplicate "Y" for 7 lines
 		decimalUnits.put("M", 6);
 		decimalUnits.put("G", 9);
 		decimalUnits.put("T", 12);
