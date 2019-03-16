@@ -31,6 +31,7 @@ Download at TODO
 #### Checkstyle
 * Allow empty // comments at the end of lines with code.
 * Force Finals.constant for string and primitive constants.
+* Force @SuppressFBWarnings to include a justification that is not-empty and not "TODO".
 * Warnings may be suppressed using @SuppressWarnings
 * Suppressions file name changed from "suppressions.xml" to "checkstyle-suppressions.xml"
 * For unit tests suppressing checks ExecutableStatementCountCheck, MagicNumberCheck and MethodLengthCheck
