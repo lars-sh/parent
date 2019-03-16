@@ -25,11 +25,14 @@ Download at TODO
 * Moved de.larssh.utils.AetherUtils to de.larssh.utils.maven.AetherUtils
 * NumericTextComparator handles numerics as signed only if the sign is preceeded by a whitespace or at a strings start
 * ParseException initializes cause
-* Checkstyle warnings may be suppressed using @SuppressWarnings
-* Checkstyle suppressions file name changed from "suppressions.xml" to "checkstyle-suppressions.xml"
-* Checkstyle for unit tests suppresses checks ExecutableStatementCountCheck, MagicNumberCheck and MethodLengthCheck
 * Validate Javadoc inside Travis CI
 * Update dependencies and Maven plugins
+
+#### Checkstyle
+* Allow empty // comments at the end of lines with code.
+* Warnings may be suppressed using @SuppressWarnings
+* Suppressions file name changed from "suppressions.xml" to "checkstyle-suppressions.xml"
+* For unit tests suppressing checks ExecutableStatementCountCheck, MagicNumberCheck and MethodLengthCheck
 
 ### Fixed
 * Maven plugins were not compatible with Maven versions unequal to 3.6.0
