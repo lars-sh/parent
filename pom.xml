@@ -1146,10 +1146,12 @@ TODO: Easy to understand usage example
 
 		<!-- Regexp -->
 		<module name="RegexpSinglelineJava">
+			<property name="id" value="XLineTrailingSpaces" />
 			<property name="format" value="\s+$" />
 			<property name="message" value="Line has trailing spaces." />
 		</module>
 		<module name="RegexpSinglelineJava">
+			<property name="id" value="XLineTabIndentation" />
 			<property name="format" value="^\t* [^*]" />
 			<property name="message" value="Line does not use tab indentation." />
 		</module>
@@ -1185,12 +1187,14 @@ TODO: Easy to understand usage example
 		</module>
 		<module name="ParenPad" />
 		<module name="SeparatorWrap">
+			<property name="id" value="XSeparatorWrapEndOfLine" />
 			<property name="option" value="eol" />
-			<property name="tokens" value="COMMA, SEMI, ELLIPSIS, RPAREN" />
+			<property name="tokens" value="COMMA, ELLIPSIS, LPAREN, SEMI" />
 		</module>
 		<module name="SeparatorWrap">
+			<property name="id" value="XSeparatorWrapNextLine" />
 			<property name="option" value="nl" />
-			<property name="tokens" value="DOT, AT, LPAREN, METHOD_REF" />
+			<property name="tokens" value="AT, DOT" />
 		</module>
 		<module name="SingleSpaceSeparator">
 			<property name="validateComments" value="true" />

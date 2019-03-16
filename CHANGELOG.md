@@ -37,6 +37,7 @@ Download at TODO
 * Warnings may be suppressed using @SuppressWarnings
 * Suppressions file name changed from "suppressions.xml" to "checkstyle-suppressions.xml"
 * For unit tests suppressing checks ExecutableStatementCountCheck, MagicNumberCheck and MethodLengthCheck
+* Refined checkstyles SeparatorWrap checks.
 
 ### Fixed
 * Maven plugins were not compatible with Maven versions unequal to 3.6.0
