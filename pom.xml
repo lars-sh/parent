@@ -890,6 +890,18 @@ TODO: Easy to understand usage example
 		<property name="format" value="\P{javaJavaIdentifierPart}Optional\s*&lt;\s*Integer\s*&gt;" />
 		<property name="message" value="Optional&lt;Integer&gt; must not be used. Use OptionalInt instead." />
 	</module>
+	<module name="RegexpMultiline">
+		<property name="id" value="XStringReplaceAll" />
+		<property name="fileExtensions" value="java" />
+		<property name="format" value="\.\s*replaceAll\s*\(\s*&quot;" />
+		<property name="message" value="String.replaceAll must not be used. Use Strings.replaceAll instead." />
+	</module>
+	<module name="RegexpMultiline">
+		<property name="id" value="XStringReplaceFirst" />
+		<property name="fileExtensions" value="java" />
+		<property name="format" value="\.\s*replaceFirst\s*\(\s*&quot;" />
+		<property name="message" value="String.replaceFirst must not be used. Use Strings.replaceFirst instead." />
+	</module>
 
 	<!-- Size Violations -->
 	<module name="FileLength" />
