@@ -30,6 +30,7 @@ Download at TODO
 
 #### Checkstyle
 * Allow empty // comments at the end of lines with code.
+* Force Finals.constant for string and primitive constants.
 * Warnings may be suppressed using @SuppressWarnings
 * Suppressions file name changed from "suppressions.xml" to "checkstyle-suppressions.xml"
 * For unit tests suppressing checks ExecutableStatementCountCheck, MagicNumberCheck and MethodLengthCheck

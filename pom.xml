@@ -859,6 +859,13 @@ TODO: Easy to understand usage example
 	<module name="Translation" />
 	<module name="UniqueProperties" />
 
+	<!-- Regexp -->
+	<module name="RegexpMultiline">
+		<property name="id" value="XFinalConstant" />
+		<property name="fileExtensions" value="java" />
+		<property name="format" value="\s(?!private\s+)static\s+final\s+\S+\s+\S+\s+=\s+([&quot;0-9\.+\-]|(true|false)[\s;])" />
+		<property name="message" value="String and primitive constants should use Finals.constant." />
+	</module>
 	<!-- Size Violations -->
 	<module name="FileLength" />
 
