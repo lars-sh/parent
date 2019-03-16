@@ -846,6 +846,7 @@ TODO: Easy to understand usage example
 		<property name="file" value="${project.basedir}/checkstyle-suppressions.xml" />
 		<property name="optional" value="true" />
 	</module>
+	<module name="SuppressWarningsFilter" />
 
 	<!-- Javadoc Comments -->
 	<module name="JavadocPackage" />
@@ -880,6 +881,7 @@ TODO: Easy to understand usage example
 			-->
 			<property name="format" value="^(all|boxing|cast|fallthrough|finally|hiding|incomplete-switch|nls|PMD|rawtypes|resource|restriction|restriction|removal|serial|static-access|static-method|super|synthetic-access|sync-override|unqualified-field-access|unlikely-arg-type)$" />
 		</module>
+		<module name="SuppressWarningsHolder" />
 
 		<!-- Block Checks -->
 		<module name="AvoidNestedBlocks" />

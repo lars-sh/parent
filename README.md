@@ -238,7 +238,12 @@ The following files are generated for the build process itself. You should not n
 As this POM comes with some code check and validation tools you might need to suppress false-positives.
 
 ##### Checkstyle
-Create a file called `checkstyle-suppressions.xml`. See [SuppressionXPathFilter](http://checkstyle.sourceforge.net/config_filters.html#SuppressionXpathFilter) and [SuppressionFilter](http://checkstyle.sourceforge.net/config_filters.html#SuppressionFilter) for more information. The following lines show an example suppressions file.
+There are two ways to suppress Checkstyle warnings.
+* Either go the recommended way by using the `SuppressWarnings` annotation as shown below.
+
+	@SuppressWarnings("checkstyle:MagicNumber")
+
+* Or create a file called `checkstyle-suppressions.xml`. See [SuppressionXPathFilter](http://checkstyle.sourceforge.net/config_filters.html#SuppressionXpathFilter) and [SuppressionFilter](http://checkstyle.sourceforge.net/config_filters.html#SuppressionFilter) for more information. The following lines show an example suppressions file.
 
 	<?xml version="1.0" encoding="UTF-8"?>
 	<!DOCTYPE suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN" "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
@@ -250,7 +255,7 @@ Create a file called `checkstyle-suppressions.xml`. See [SuppressionXPathFilter]
 		<suppress checks="UnusedImports" message="^Unused import - lombok\.ToString\.$" />
 		
 		<!-- Unit Tests -->
-		<suppress checks="JavadocPackageCheck" files="^.*[/\\]generated-test-sources[/\\].*$" />
+		<suppress checks="JavadocPackage" files="^.*[/\\]generated-test-sources[/\\].*$" />
 	</suppressions>
 
 ##### SpotBugs
