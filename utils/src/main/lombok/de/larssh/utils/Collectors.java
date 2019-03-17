@@ -105,29 +105,6 @@ public class Collectors {
 	 * when the collection operation is performed. If the mapped keys may have
 	 * duplicates, use {@link #toMap(Function, Function, BinaryOperator)} instead.
 	 *
-	 * @apiNote It is common for either the key or the value to be the input
-	 *          elements. In this case, the utility method
-	 *          {@link java.util.function.Function#identity()} may be helpful. For
-	 *          example, the following produces a {@code Map} mapping students to
-	 *          their grade point average: <pre>{@code
-	 *     Map<Student, Double> studentToGPA
-	 *         students.stream().collect(toMap(Functions.identity(),
-	 *                                         student -> computeGPA(student)));
-	 * }</pre> And the following produces a {@code Map} mapping a unique identifier
-	 *          to students: <pre>{@code
-	 *     Map<String, Student> studentIdToStudent
-	 *         students.stream().collect(toMap(Student::getId,
-	 *                                         Functions.identity());
-	 * }</pre>
-	 *
-	 * @implNote The returned {@code Collector} is not concurrent. For parallel
-	 *           stream pipelines, the {@code combiner} function operates by merging
-	 *           the keys from one map into another, which can be an expensive
-	 *           operation. If it is not required that results are inserted into the
-	 *           {@code Map} in encounter order, using
-	 *           {@link #toConcurrentMap(Function, Function)} may offer better
-	 *           parallel performance.
-	 *
 	 * @param             <T> the type of the input elements
 	 * @param             <K> the output type of the key mapping function
 	 * @param             <U> the output type of the value mapping function
@@ -152,29 +129,6 @@ public class Collectors {
 	 * {@link Object#equals(Object)}), the value mapping function is applied to each
 	 * equal element, and the results are merged using the provided merging
 	 * function.
-	 *
-	 * @apiNote There are multiple ways to deal with collisions between multiple
-	 *          elements mapping to the same key. The other forms of {@code toMap}
-	 *          simply use a merge function that throws unconditionally, but you can
-	 *          easily write more flexible merge policies. For example, if you have
-	 *          a stream of {@code Person}, and you want to produce a "phone book"
-	 *          mapping name to address, but it is possible that two persons have
-	 *          the same name, you can do as follows to gracefully deals with these
-	 *          collisions, and produce a {@code Map} mapping names to a
-	 *          concatenated list of addresses: <pre>{@code
-	 *     Map<String, String> phoneBook
-	 *         people.stream().collect(toMap(Person::getName,
-	 *                                       Person::getAddress,
-	 *                                       (s, a) -> s + ", " + a));
-	 * }</pre>
-	 *
-	 * @implNote The returned {@code Collector} is not concurrent. For parallel
-	 *           stream pipelines, the {@code combiner} function operates by merging
-	 *           the keys from one map into another, which can be an expensive
-	 *           operation. If it is not required that results are merged into the
-	 *           {@code Map} in encounter order, using
-	 *           {@link #toConcurrentMap(Function, Function, BinaryOperator)} may
-	 *           offer better parallel performance.
 	 *
 	 * @param               <T> the type of the input elements
 	 * @param               <K> the output type of the key mapping function
@@ -238,14 +192,6 @@ public class Collectors {
 	 * {@link Object#equals(Object)}), the value mapping function is applied to each
 	 * equal element, and the results are merged using the provided merging
 	 * function. The {@code Map} is created by a provided supplier function.
-	 *
-	 * @implNote The returned {@code Collector} is not concurrent. For parallel
-	 *           stream pipelines, the {@code combiner} function operates by merging
-	 *           the keys from one map into another, which can be an expensive
-	 *           operation. If it is not required that results are merged into the
-	 *           {@code Map} in encounter order, using
-	 *           {@link #toConcurrentMap(Function, Function, BinaryOperator, Supplier)}
-	 *           may offer better parallel performance.
 	 *
 	 * @param               <T> the type of the input elements
 	 * @param               <K> the output type of the key mapping function
