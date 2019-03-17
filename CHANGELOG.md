@@ -13,6 +13,7 @@ Download at TODO
 * Annotation de.larssh.utils.annotations.PackagePrivate
 * Class de.larssh.utils.maven.DependencyScope
 * Class de.larssh.utils.net.GlobalProxyConfiguration
+* Method de.larssh.utils.Collectors.toMap(keyMapper, valueMapper [, mergeFunction] [, mapSupplier])
 * Method de.larssh.utils.Optionals.getFirst(isPresent, suppliers)
 * Method de.larssh.utils.Optionals.getFirstValue(isPresent, values)
 * Method de.larssh.utils.Optionals.ofNonEmpty(array|collection)
