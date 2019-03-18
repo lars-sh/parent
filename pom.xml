@@ -848,9 +848,6 @@ TODO: Easy to understand usage example
 	</module>
 	<module name="SuppressWarningsFilter" />
 
-	<!-- Javadoc Comments -->
-	<module name="JavadocPackage" />
-
 	<!-- Miscellaneous -->
 	<module name="NewlineAtEndOfFile">
 		<property name="lineSeparator" value="lf" />
