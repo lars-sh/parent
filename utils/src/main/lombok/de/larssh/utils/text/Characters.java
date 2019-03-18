@@ -24,15 +24,25 @@ public class Characters {
 	 */
 	public static int compareIgnoreCase(final char first, final char second) {
 		if (first != second) {
-			char a = Character.toUpperCase(first);
-			char b = Character.toUpperCase(second);
+			final char a = Character.toUpperCase(first);
+			final char b = Character.toUpperCase(second);
 			if (a != b) {
-				a = Character.toLowerCase(a);
-				b = Character.toLowerCase(b);
-				return a - b;
+				return Character.toLowerCase(a) - Character.toLowerCase(b);
 			}
 		}
 		return 0;
+	}
+
+	/**
+	 * Compares the characters, ignoring case considerations.
+	 *
+	 * @param first  the first {@code char} to compare
+	 * @param second the second {@code char} to compare
+	 * @return {@code true} if the objects are the same, ignoring case
+	 *         considerations; {@code false} otherwise.
+	 */
+	public static boolean equalsIgnoreCase(final char first, final char second) {
+		return compareIgnoreCase(first, second) == 0;
 	}
 
 	/**

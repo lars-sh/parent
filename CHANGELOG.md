@@ -18,6 +18,10 @@ Download at TODO
 * Method de.larssh.utils.Optionals.getFirstValue(isPresent, values)
 * Method de.larssh.utils.Optionals.ofNonEmpty(array|collection)
 * Method de.larssh.utils.Optionals.ofSingle(array|collection|iterator|stream|string)
+* Method de.larssh.utils.text.Characters.equalsIgnoreCase(first, second)
+* Method de.larssh.utils.text.Strings.endsWithIgnoreCase(value, suffix)
+* Method de.larssh.utils.text.Strings.startsWithIgnoreCase(value, prefix)
+* Method de.larssh.utils.text.Strings.startsWithIgnoreCase(value, prefix, offset)
 
 ### Changed
 * Enforce Maven version 3.3.9 (as JaCoCo requires it)

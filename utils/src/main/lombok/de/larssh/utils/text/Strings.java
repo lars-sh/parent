@@ -489,6 +489,61 @@ public class Strings {
 	}
 
 	/**
+	 * Tests if this string ends with the specified suffix, ignoring case
+	 * considerations.
+	 *
+	 * @param value  string to compare against
+	 * @param suffix the suffix.
+	 * @return {@code true} if the character sequence represented by the argument is
+	 *         a suffix of the character sequence represented by this object,
+	 *         ignoring case considerations; {@code false} otherwise.
+	 */
+	public static boolean endsWithIgnoreCase(final String value, final String suffix) {
+		return startsWithIgnoreCase(value, suffix, value.length() - suffix.length());
+	}
+
+	/**
+	 * Tests if this string starts with the specified prefix, ignoring case
+	 * considerations.
+	 *
+	 * @param value  string to compare against
+	 * @param prefix the prefix.
+	 * @return {@code true} if the character sequence represented by the argument is
+	 *         a prefix of the character sequence represented by this string,
+	 *         ignoring case considerations; {@code false} otherwise.
+	 */
+	public static boolean startsWithIgnoreCase(final String value, final String prefix) {
+		return startsWithIgnoreCase(value, prefix, 0);
+	}
+
+	/**
+	 * Tests if the substring of this string beginning at the specified index starts
+	 * with the specified prefix, ignoring case considerations.
+	 *
+	 * @param value  string to compare against
+	 * @param prefix the prefix.
+	 * @param offset where to begin looking in this string.
+	 * @return {@code true} if the character sequence represented by the argument is
+	 *         a prefix of the substring of this object starting at index
+	 *         {@code offset}, ignoring case considerations; {@code false}
+	 *         otherwise. The result is {@code false} if {@code offset} is negative
+	 *         or greater than the length of this {@code String} object.
+	 */
+	public static boolean startsWithIgnoreCase(final String value, final String prefix, final int offset) {
+		final int prefixLength = prefix.length();
+		if (offset < 0 || offset + prefixLength > value.length()) {
+			return false;
+		}
+
+		for (int index = 0; index < prefixLength; index += 1) {
+			if (!Characters.equalsIgnoreCase(value.charAt(offset + index), prefix.charAt(index))) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	/**
 	 * Converts all of the characters in {@code value} to lower case using
 	 * {@link #DEFAULT_LOCALE}. This method is equivalent to
 	 * {@code toLowerCase(Locale.ROOT)}.
