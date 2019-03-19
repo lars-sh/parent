@@ -1186,7 +1186,7 @@ TODO: Easy to understand usage example
 		<module name="SeparatorWrap">
 			<property name="id" value="XSeparatorWrapEndOfLine" />
 			<property name="option" value="eol" />
-			<property name="tokens" value="COMMA, ELLIPSIS, LPAREN, SEMI" />
+			<property name="tokens" value="COMMA, ELLIPSIS, SEMI" />
 		</module>
 		<module name="SeparatorWrap">
 			<property name="id" value="XSeparatorWrapNextLine" />
