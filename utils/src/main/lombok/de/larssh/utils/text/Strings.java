@@ -141,6 +141,20 @@ public class Strings {
 	}
 
 	/**
+	 * Tests if this string ends with the specified suffix, ignoring case
+	 * considerations.
+	 *
+	 * @param value  string to compare against
+	 * @param suffix the suffix.
+	 * @return {@code true} if the character sequence represented by the argument is
+	 *         a suffix of the character sequence represented by this object,
+	 *         ignoring case considerations; {@code false} otherwise.
+	 */
+	public static boolean endsWithIgnoreCase(final String value, final String suffix) {
+		return startsWithIgnoreCase(value, suffix, value.length() - suffix.length());
+	}
+
+	/**
 	 * Returns a formatted string using the specified format string and
 	 * {@code arguments}. In that way this method works <i>similar</i> to
 	 * {@link String#format(String, Object...)}.
@@ -486,20 +500,6 @@ public class Strings {
 	 */
 	public static String replaceAll(final CharSequence input, final Pattern pattern, final String replacement) {
 		return pattern.matcher(input).replaceAll(replacement);
-	}
-
-	/**
-	 * Tests if this string ends with the specified suffix, ignoring case
-	 * considerations.
-	 *
-	 * @param value  string to compare against
-	 * @param suffix the suffix.
-	 * @return {@code true} if the character sequence represented by the argument is
-	 *         a suffix of the character sequence represented by this object,
-	 *         ignoring case considerations; {@code false} otherwise.
-	 */
-	public static boolean endsWithIgnoreCase(final String value, final String suffix) {
-		return startsWithIgnoreCase(value, suffix, value.length() - suffix.length());
 	}
 
 	/**
