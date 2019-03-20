@@ -273,20 +273,20 @@ public class Optionals {
 	}
 
 	/**
-	 * Returns an {@link Optional} describing the specified collections first
-	 * element, if present, otherwise returns an empty {@link Optional}. Throws a
-	 * {@link TooManyElementsException} if {@code collection} contains more than one
+	 * Returns an {@link Optional} describing the specified iterables first element,
+	 * if present, otherwise returns an empty {@link Optional}. Throws a
+	 * {@link TooManyElementsException} if {@code iterable} contains more than one
 	 * element.
 	 *
-	 * @param            <T> collection element type
-	 * @param collection the collection describing the element
-	 * @return an {@link Optional} describing the specified collections first
-	 *         element, if present, otherwise returns an empty {@link Optional}
-	 * @throws TooManyElementsException if {@code collection} contains more than one
+	 * @param          <T> iterable element type
+	 * @param iterable the iterable describing the element
+	 * @return an {@link Optional} describing the specified iterables first element,
+	 *         if present, otherwise returns an empty {@link Optional}
+	 * @throws TooManyElementsException if {@code iterable} contains more than one
 	 *                                  element
 	 */
-	public static <T> Optional<T> ofSingle(final Collection<T> collection) {
-		return ofSingle(collection.iterator());
+	public static <T> Optional<T> ofSingle(final Iterable<T> iterable) {
+		return ofSingle(iterable.iterator());
 	}
 
 	/**
