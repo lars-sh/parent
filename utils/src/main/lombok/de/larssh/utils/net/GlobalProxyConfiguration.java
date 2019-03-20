@@ -2,7 +2,6 @@ package de.larssh.utils.net;
 
 import static java.util.Arrays.asList;
 import static java.util.Collections.emptyList;
-import static java.util.stream.Collectors.joining;
 
 import java.net.InetSocketAddress;
 import java.net.Proxy.Type;
@@ -258,7 +257,7 @@ public class GlobalProxyConfiguration {
 	 *                                       {@code nonProxyHosts} property
 	 */
 	public void setNonProxyHosts(final Collection<String> nonProxyHosts) {
-		System.setProperty(getNonProxyHostsPropertyOrThrow(), nonProxyHosts.stream().distinct().collect(joining("|")));
+		System.setProperty(getNonProxyHostsPropertyOrThrow(), String.join("|", nonProxyHosts));
 	}
 
 	/**
