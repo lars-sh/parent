@@ -86,6 +86,8 @@
 		<maven.compiler.target>1.8</maven.compiler.target>
 
 		<checkstyle.version>8.18</checkstyle.version>
+		<fb-contrib.version>7.4.3.sb</fb-contrib.version>
+		<findsecbugs.version>1.8.0</findsecbugs.version>
 		<joor.version>0.9.10</joor.version>
 		<junit.version>5.4.0</junit.version>
 		<junit.platform.version>1.4.0</junit.platform.version>
@@ -522,6 +524,18 @@
 					<version>1.6.8</version>
 				</plugin>
 
+				<!-- Plugin dependencies -->
+				<plugin>
+					<groupId>com.h3xstream.findsecbugs</groupId>
+					<artifactId>findsecbugs-plugin</artifactId>
+					<version>${findsecbugs.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>com.mebigfatguy.fb-contrib</groupId>
+					<artifactId>fb-contrib</artifactId>
+					<version>${fb-contrib.version}</version>
+				</plugin>
+
 				<!-- Eclipse Lifecycle Mapping -->
 				<plugin>
 					<groupId>org.eclipse.m2e</groupId>
@@ -570,7 +584,7 @@
 			</plugins>
 		</pluginManagement>
 		<plugins>
-			<!-- Require certain mavne version -->
+			<!-- Require certain maven version -->
 			<plugin>
 				<artifactId>maven-enforcer-plugin</artifactId>
 				<executions>
@@ -1492,12 +1506,12 @@ install: mvn install -DskipTests=true -Dgpg.skip=true --batch-mode --show-versio
 						<plugin>
 							<groupId>com.h3xstream.findsecbugs</groupId>
 							<artifactId>findsecbugs-plugin</artifactId>
-							<version>1.8.0</version>
+							<version>${findsecbugs.version}</version>
 						</plugin>
 						<plugin>
 							<groupId>com.mebigfatguy.fb-contrib</groupId>
 							<artifactId>fb-contrib</artifactId>
-							<version>7.4.3.sb</version>
+							<version>${fb-contrib.version}</version>
 						</plugin>
 					</plugins>
 				</configuration>
