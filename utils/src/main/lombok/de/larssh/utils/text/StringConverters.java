@@ -1,12 +1,12 @@
 package de.larssh.utils.text;
 
+import java.io.UncheckedIOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 
-import de.larssh.utils.SneakyException;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import lombok.experimental.UtilityClass;
 
@@ -159,8 +159,7 @@ public class StringConverters {
 		} catch (final IllegalArgumentException e) {
 			throw new ParseException(e, "Failed decoding URL.");
 		} catch (final UnsupportedEncodingException e) {
-			// This is not documented, as it should never be thrown at all.
-			throw new SneakyException(e);
+			throw new UncheckedIOException(e);
 		}
 	}
 
@@ -299,8 +298,7 @@ public class StringConverters {
 		try {
 			return URLEncoder.encode(value, StandardCharsets.UTF_8.name());
 		} catch (final UnsupportedEncodingException e) {
-			// This is not documented, as it should never be thrown at all.
-			throw new SneakyException(e);
+			throw new UncheckedIOException(e);
 		}
 	}
 }

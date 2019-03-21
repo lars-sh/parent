@@ -10,6 +10,7 @@ import static java.util.stream.Collectors.toList;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.StringReader;
+import java.io.UncheckedIOException;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.nio.charset.Charset;
@@ -28,7 +29,6 @@ import java.util.regex.Pattern;
 import java.util.stream.IntStream;
 
 import de.larssh.utils.Optionals;
-import de.larssh.utils.SneakyException;
 import edu.umd.cs.findbugs.annotations.Nullable;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import lombok.experimental.UtilityClass;
@@ -252,8 +252,7 @@ public class Strings {
 		try (final BufferedReader reader = new BufferedReader(new StringReader(value))) {
 			return reader.lines().collect(toList());
 		} catch (final IOException e) {
-			// This is not documented, as it should never be thrown at all.
-			throw new SneakyException(e);
+			throw new UncheckedIOException(e);
 		}
 	}
 

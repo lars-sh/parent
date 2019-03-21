@@ -28,6 +28,10 @@ public final class SneakyException extends RuntimeException {
 	 * {@code @throws}.
 	 * </ul>
 	 *
+	 * <p>
+	 * To hide {@link java.io.IOException}s from compiler checks the usage of
+	 * {@link java.io.UncheckedIOException} is highly recommended instead.
+	 *
 	 * @param throwable throwable to be hidden
 	 */
 	public SneakyException(final Throwable throwable) {
