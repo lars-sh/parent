@@ -46,6 +46,7 @@ Download at TODO
 
 ### Fixed
 * Maven plugins were not compatible with Maven versions unequal to 3.6.0
+* Formatter tags
 
 <a name="0.9.1"></a>
 
