@@ -2458,6 +2458,9 @@ install: mvn install -DskipTests=true -Dgpg.skip=true --batch-mode --show-versio
 												key="org.eclipse.jdt.core.formatter.align_with_spaces"
 												value="false" />
 											<entry
+												key="org.eclipse.jdt.core.formatter.alignment_for_additive_operator"
+												value="48" />
+											<entry
 												key="org.eclipse.jdt.core.formatter.alignment_for_arguments_in_allocation_expression"
 												value="80" />
 											<entry
@@ -2482,6 +2485,9 @@ install: mvn install -DskipTests=true -Dgpg.skip=true --batch-mode --show-versio
 												key="org.eclipse.jdt.core.formatter.alignment_for_binary_expression"
 												value="48" />
 											<entry
+												key="org.eclipse.jdt.core.formatter.alignment_for_bitwise_operator"
+												value="48" />
+											<entry
 												key="org.eclipse.jdt.core.formatter.alignment_for_compact_if"
 												value="0" />
 											<entry
@@ -2489,6 +2495,9 @@ install: mvn install -DskipTests=true -Dgpg.skip=true --batch-mode --show-versio
 												value="0" />
 											<entry
 												key="org.eclipse.jdt.core.formatter.alignment_for_conditional_expression"
+												value="48" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.alignment_for_conditional_expression_chain"
 												value="48" />
 											<entry
 												key="org.eclipse.jdt.core.formatter.alignment_for_enum_constants"
@@ -2500,6 +2509,9 @@ install: mvn install -DskipTests=true -Dgpg.skip=true --batch-mode --show-versio
 												key="org.eclipse.jdt.core.formatter.alignment_for_expressions_in_for_loop_header"
 												value="80" />
 											<entry
+												key="org.eclipse.jdt.core.formatter.alignment_for_logical_operator"
+												value="48" />
+											<entry
 												key="org.eclipse.jdt.core.formatter.alignment_for_method_declaration"
 												value="0" />
 											<entry
@@ -2508,6 +2520,9 @@ install: mvn install -DskipTests=true -Dgpg.skip=true --batch-mode --show-versio
 											<entry
 												key="org.eclipse.jdt.core.formatter.alignment_for_multiple_fields"
 												value="16" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.alignment_for_multiplicative_operator"
+												value="48" />
 											<entry
 												key="org.eclipse.jdt.core.formatter.alignment_for_parameterized_type_references"
 												value="0" />
@@ -2518,11 +2533,20 @@ install: mvn install -DskipTests=true -Dgpg.skip=true --batch-mode --show-versio
 												key="org.eclipse.jdt.core.formatter.alignment_for_parameters_in_method_declaration"
 												value="80" />
 											<entry
+												key="org.eclipse.jdt.core.formatter.alignment_for_relational_operator"
+												value="0" />
+											<entry
 												key="org.eclipse.jdt.core.formatter.alignment_for_resources_in_try"
 												value="80" />
 											<entry
 												key="org.eclipse.jdt.core.formatter.alignment_for_selector_in_method_invocation"
 												value="80" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.alignment_for_shift_operator"
+												value="0" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.alignment_for_string_concatenation"
+												value="48" />
 											<entry
 												key="org.eclipse.jdt.core.formatter.alignment_for_superclass_in_type_declaration"
 												value="16" />
@@ -2654,6 +2678,9 @@ install: mvn install -DskipTests=true -Dgpg.skip=true --batch-mode --show-versio
 												value="false" />
 											<entry
 												key="org.eclipse.jdt.core.formatter.comment.indent_root_tags"
+												value="false" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.comment.indent_tag_description"
 												value="false" />
 											<entry
 												key="org.eclipse.jdt.core.formatter.comment.insert_new_line_before_root_tags"
@@ -2797,6 +2824,9 @@ install: mvn install -DskipTests=true -Dgpg.skip=true --batch-mode --show-versio
 												key="org.eclipse.jdt.core.formatter.insert_new_line_in_empty_type_declaration"
 												value="do not insert" />
 											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_additive_operator"
+												value="insert" />
+											<entry
 												key="org.eclipse.jdt.core.formatter.insert_space_after_and_in_type_parameter"
 												value="insert" />
 											<entry
@@ -2810,6 +2840,9 @@ install: mvn install -DskipTests=true -Dgpg.skip=true --batch-mode --show-versio
 												value="do not insert" />
 											<entry
 												key="org.eclipse.jdt.core.formatter.insert_space_after_binary_operator"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_bitwise_operator"
 												value="insert" />
 											<entry
 												key="org.eclipse.jdt.core.formatter.insert_space_after_closing_angle_bracket_in_type_arguments"
@@ -2902,6 +2935,12 @@ install: mvn install -DskipTests=true -Dgpg.skip=true --batch-mode --show-versio
 												key="org.eclipse.jdt.core.formatter.insert_space_after_lambda_arrow"
 												value="insert" />
 											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_logical_operator"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_multiplicative_operator"
+												value="insert" />
+											<entry
 												key="org.eclipse.jdt.core.formatter.insert_space_after_opening_angle_bracket_in_parameterized_type_reference"
 												value="do not insert" />
 											<entry
@@ -2974,14 +3013,26 @@ install: mvn install -DskipTests=true -Dgpg.skip=true --batch-mode --show-versio
 												key="org.eclipse.jdt.core.formatter.insert_space_after_question_in_wildcard"
 												value="do not insert" />
 											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_relational_operator"
+												value="insert" />
+											<entry
 												key="org.eclipse.jdt.core.formatter.insert_space_after_semicolon_in_for"
 												value="insert" />
 											<entry
 												key="org.eclipse.jdt.core.formatter.insert_space_after_semicolon_in_try_resources"
 												value="insert" />
 											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_shift_operator"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_string_concatenation"
+												value="insert" />
+											<entry
 												key="org.eclipse.jdt.core.formatter.insert_space_after_unary_operator"
 												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_additive_operator"
+												value="insert" />
 											<entry
 												key="org.eclipse.jdt.core.formatter.insert_space_before_and_in_type_parameter"
 												value="insert" />
@@ -2993,6 +3044,9 @@ install: mvn install -DskipTests=true -Dgpg.skip=true --batch-mode --show-versio
 												value="do not insert" />
 											<entry
 												key="org.eclipse.jdt.core.formatter.insert_space_before_binary_operator"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_bitwise_operator"
 												value="insert" />
 											<entry
 												key="org.eclipse.jdt.core.formatter.insert_space_before_closing_angle_bracket_in_parameterized_type_reference"
@@ -3136,6 +3190,12 @@ install: mvn install -DskipTests=true -Dgpg.skip=true --batch-mode --show-versio
 												key="org.eclipse.jdt.core.formatter.insert_space_before_lambda_arrow"
 												value="insert" />
 											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_logical_operator"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_multiplicative_operator"
+												value="insert" />
+											<entry
 												key="org.eclipse.jdt.core.formatter.insert_space_before_opening_angle_bracket_in_parameterized_type_reference"
 												value="do not insert" />
 											<entry
@@ -3244,6 +3304,9 @@ install: mvn install -DskipTests=true -Dgpg.skip=true --batch-mode --show-versio
 												key="org.eclipse.jdt.core.formatter.insert_space_before_question_in_wildcard"
 												value="do not insert" />
 											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_relational_operator"
+												value="insert" />
+											<entry
 												key="org.eclipse.jdt.core.formatter.insert_space_before_semicolon"
 												value="do not insert" />
 											<entry
@@ -3252,6 +3315,12 @@ install: mvn install -DskipTests=true -Dgpg.skip=true --batch-mode --show-versio
 											<entry
 												key="org.eclipse.jdt.core.formatter.insert_space_before_semicolon_in_try_resources"
 												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_shift_operator"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_string_concatenation"
+												value="insert" />
 											<entry
 												key="org.eclipse.jdt.core.formatter.insert_space_before_unary_operator"
 												value="do not insert" />
@@ -3286,14 +3355,41 @@ install: mvn install -DskipTests=true -Dgpg.skip=true --batch-mode --show-versio
 												key="org.eclipse.jdt.core.formatter.join_wrapped_lines"
 												value="true" />
 											<entry
+												key="org.eclipse.jdt.core.formatter.keep_annotation_declaration_on_one_line"
+												value="one_line_if_empty" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.keep_anonymous_type_declaration_on_one_line"
+												value="one_line_if_empty" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.keep_code_block_on_one_line"
+												value="one_line_if_empty" />
+											<entry
 												key="org.eclipse.jdt.core.formatter.keep_else_statement_on_same_line"
 												value="true" />
 											<entry
 												key="org.eclipse.jdt.core.formatter.keep_empty_array_initializer_on_one_line"
 												value="false" />
 											<entry
+												key="org.eclipse.jdt.core.formatter.keep_enum_constant_declaration_on_one_line"
+												value="one_line_if_empty" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.keep_enum_declaration_on_one_line"
+												value="one_line_if_empty" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.keep_if_then_body_block_on_one_line"
+												value="one_line_if_empty" />
+											<entry
 												key="org.eclipse.jdt.core.formatter.keep_imple_if_on_one_line"
 												value="true" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.keep_lambda_body_block_on_one_line"
+												value="one_line_if_empty" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.keep_loop_body_block_on_one_line"
+												value="one_line_if_empty" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.keep_method_body_on_one_line"
+												value="one_line_if_empty" />
 											<entry
 												key="org.eclipse.jdt.core.formatter.keep_simple_do_while_body_on_same_line"
 												value="true" />
@@ -3301,11 +3397,17 @@ install: mvn install -DskipTests=true -Dgpg.skip=true --batch-mode --show-versio
 												key="org.eclipse.jdt.core.formatter.keep_simple_for_body_on_same_line"
 												value="true" />
 											<entry
+												key="org.eclipse.jdt.core.formatter.keep_simple_getter_setter_on_one_line"
+												value="false" />
+											<entry
 												key="org.eclipse.jdt.core.formatter.keep_simple_while_body_on_same_line"
 												value="true" />
 											<entry
 												key="org.eclipse.jdt.core.formatter.keep_then_statement_on_same_line"
 												value="true" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.keep_type_declaration_on_one_line"
+												value="one_line_if_empty" />
 											<entry key="org.eclipse.jdt.core.formatter.lineSplit"
 												value="120" />
 											<entry
@@ -3366,16 +3468,37 @@ install: mvn install -DskipTests=true -Dgpg.skip=true --batch-mode --show-versio
 												key="org.eclipse.jdt.core.formatter.use_tabs_only_for_leading_indentations"
 												value="false" />
 											<entry
+												key="org.eclipse.jdt.core.formatter.wrap_before_additive_operator"
+												value="true" />
+											<entry
 												key="org.eclipse.jdt.core.formatter.wrap_before_assignment_operator"
 												value="true" />
 											<entry
 												key="org.eclipse.jdt.core.formatter.wrap_before_binary_operator"
 												value="true" />
 											<entry
+												key="org.eclipse.jdt.core.formatter.wrap_before_bitwise_operator"
+												value="true" />
+											<entry
 												key="org.eclipse.jdt.core.formatter.wrap_before_conditional_operator"
 												value="true" />
 											<entry
+												key="org.eclipse.jdt.core.formatter.wrap_before_logical_operator"
+												value="true" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.wrap_before_multiplicative_operator"
+												value="true" />
+											<entry
 												key="org.eclipse.jdt.core.formatter.wrap_before_or_operator_multicatch"
+												value="true" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.wrap_before_relational_operator"
+												value="true" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.wrap_before_shift_operator"
+												value="true" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.wrap_before_string_concatenation"
 												value="true" />
 											<entry
 												key="org.eclipse.jdt.core.formatter.wrap_outer_expressions_when_nested"

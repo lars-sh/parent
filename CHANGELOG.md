@@ -13,7 +13,7 @@ Download at TODO
 * Annotation de.larssh.utils.annotations.PackagePrivate
 * Class de.larssh.utils.maven.DependencyScope
 * Class de.larssh.utils.net.GlobalProxyConfiguration
-* Method de.larssh.utils.Collectors.toMap(keyMapper, valueMapper [, mergeFunction] [, mapSupplier])
+* Method de.larssh.utils.Collectors.toMap(keyMapper, valueMapper \[, mergeFunction\] \[, mapSupplier\])
 * Method de.larssh.utils.Optionals.getFirst(isPresent, suppliers)
 * Method de.larssh.utils.Optionals.getFirstValue(isPresent, values)
 * Method de.larssh.utils.Optionals.ofNonEmpty(array|collection)
@@ -31,6 +31,7 @@ Download at TODO
 * NumericTextComparator handles numerics as signed only if the sign is preceeded by a whitespace or at a strings start
 * ParseException initializes cause
 * Validate Javadoc inside Travis CI
+* Update formatter settings for Eclipse 2019-03
 * Update dependencies and Maven plugins
 
 #### Checkstyle
