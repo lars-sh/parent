@@ -10,7 +10,7 @@ Download at TODO
 ### Added
 * Archetype
 * Changelog
-* Annotation de.larssh.utils.annotations.PackagePrivate
+* Class de.larssh.utils.Nullables
 * Class de.larssh.utils.maven.DependencyScope
 * Class de.larssh.utils.net.GlobalProxyConfiguration
 * Method de.larssh.utils.Collectors.toMap(keyMapper, valueMapper \[, mergeFunction\] \[, mapSupplier\])
@@ -22,6 +22,7 @@ Download at TODO
 * Method de.larssh.utils.text.Strings.endsWithIgnoreCase(value, suffix)
 * Method de.larssh.utils.text.Strings.startsWithIgnoreCase(value, prefix)
 * Method de.larssh.utils.text.Strings.startsWithIgnoreCase(value, prefix, offset)
+* Annotation de.larssh.utils.annotations.PackagePrivate
 
 ### Changed
 * Enforce Maven version 3.3.9 (as JaCoCo requires it)
