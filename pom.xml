@@ -872,10 +872,22 @@ TODO: Easy to understand usage example
 
 	<!-- Regexp -->
 	<module name="RegexpMultiline">
+		<property name="id" value="XCheckForNullAnnotation" />
+		<property name="fileExtensions" value="java" />
+		<property name="format" value="\P{javaJavaIdentifierPart}final\s([^,\(\);]*\s)?@\s*(edu\s*\.\s*umd\s*\.\s*cs\s*\.\s*findbugs\s*\.\s*annotations\s*\.\s*)?CheckForNull\s" />
+		<property name="message" value="@CheckForNull should precede keyword &quot;final&quot;." />
+	</module>
+	<module name="RegexpMultiline">
 		<property name="id" value="XFinalsConstant" />
 		<property name="fileExtensions" value="java" />
 		<property name="format" value="\P{javaJavaIdentifierPart}(?!private\s*)\sstatic\s+final\s+\S+\s+\S+\s*=\s*([&quot;0-9\.+\-]|(true|false)[\s;])" />
 		<property name="message" value="String and primitive constants should use Finals.constant." />
+	</module>
+	<module name="RegexpMultiline">
+		<property name="id" value="XNullableAnnotation" />
+		<property name="fileExtensions" value="java" />
+		<property name="format" value="\P{javaJavaIdentifierPart}final\s([^,\(\);]*\s)?@\s*(edu\s*\.\s*umd\s*\.\s*cs\s*\.\s*findbugs\s*\.\s*annotations\s*\.\s*)?Nullable\s" />
+		<property name="message" value="@Nullable should precede keyword &quot;final&quot;." />
 	</module>
 	<module name="RegexpMultiline">
 		<property name="id" value="XSuppressFBWarnings" />

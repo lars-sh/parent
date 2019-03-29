@@ -41,7 +41,7 @@ public class Nullables {
 	 * @param value    nullable value
 	 * @param consumer executed if {@code value} is null
 	 */
-	public static <T> void ifNonNull(final @Nullable T value, final Consumer<? super T> consumer) {
+	public static <T> void ifNonNull(@Nullable final T value, final Consumer<? super T> consumer) {
 		if (value != null) {
 			consumer.accept(value);
 		}
@@ -57,7 +57,7 @@ public class Nullables {
 	 * @param emptyAction the empty-based action to be performed, if {@code value}
 	 *                    is null
 	 */
-	public static <T> void ifNonNullOrElse(final @Nullable T value,
+	public static <T> void ifNonNullOrElse(@Nullable final T value,
 			final Consumer<? super T> action,
 			final Runnable emptyAction) {
 		if (value == null) {
@@ -79,7 +79,7 @@ public class Nullables {
 	 *         {@code value}, if {@code value} is non-null, otherwise {@code null}
 	 */
 	@Nullable
-	public static <T, U> U map(final @Nullable T value, final Function<? super T, ? extends U> mapper) {
+	public static <T, U> U map(@Nullable final T value, final Function<? super T, ? extends U> mapper) {
 		return value == null ? null : mapper.apply(value);
 	}
 
@@ -95,7 +95,7 @@ public class Nullables {
 	 *         nullable value produced by the supplying function.
 	 */
 	@Nullable
-	public static <T> T or​(final @Nullable T value, final Supplier<? extends T> supplier) {
+	public static <T> T or(@Nullable final T value, final Supplier<? extends T> supplier) {
 		return value == null ? supplier.get() : value;
 	}
 
@@ -136,7 +136,7 @@ public class Nullables {
 	 */
 	@SuppressFBWarnings(value = "NP_PARAMETER_MUST_BE_NONNULL_BUT_MARKED_AS_NULLABLE",
 			justification = "nullable vs. non-null by design")
-	public static <T> T orElseThrow(final @Nullable T value) {
+	public static <T> T orElseThrow(@Nullable final T value) {
 		return Objects.requireNonNull(value);
 	}
 
