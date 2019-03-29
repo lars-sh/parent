@@ -1,9 +1,8 @@
 package de.larssh.utils;
 
-import java.util.Optional;
 import java.util.function.Supplier;
 
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
+import edu.umd.cs.findbugs.annotations.Nullable;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.NonFinal;
 import lombok.experimental.UtilityClass;
@@ -25,7 +24,7 @@ public class Finals {
 	 * <b>Usage example:</b>
 	 * <pre>public static final String CONSTANT_FIELD = constant("constant value");</pre>
 	 *
-	 * @param       <T> return type
+	 * @param <T>   return type
 	 * @param value value
 	 * @return value
 	 */
@@ -40,7 +39,7 @@ public class Finals {
 	 * <p>
 	 * The used implementation synchronizes threads while calling {@code supplier}.
 	 *
-	 * @param          <T> return type
+	 * @param <T>      return type
 	 * @param supplier value supplier
 	 * @return value
 	 */
@@ -72,28 +71,16 @@ public class Finals {
 		 * @return cached value or empty optional
 		 */
 		@NonFinal
-		Optional<T> value = Optional.empty();
-
-		/**
-		 * Lock object
-		 *
-		 * @return lock object
-		 */
-		Object lock = new Object();
+		@Nullable
+		T value = null;
 
 		/** {@inheritDoc} */
 		@Override
-		@SuppressFBWarnings(value = "PRMC_POSSIBLY_REDUNDANT_METHOD_CALLS",
-				justification = "value.isPresent() really need to be called twice")
-		public T get() {
-			if (!value.isPresent()) {
-				synchronized (lock) {
-					if (!value.isPresent()) {
-						value = Optional.of(supplier.get());
-					}
-				}
+		public synchronized T get() {
+			if (value == null) {
+				value = supplier.get();
 			}
-			return value.get();
+			return Nullables.orElseThrow(value);
 		}
 	}
 }

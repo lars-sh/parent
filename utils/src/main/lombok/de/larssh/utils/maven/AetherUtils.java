@@ -4,7 +4,6 @@ import static java.util.stream.Collectors.toList;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.StringTokenizer;
 import java.util.regex.Pattern;
 
@@ -21,6 +20,7 @@ import org.eclipse.aether.resolution.DependencyResult;
 import org.eclipse.aether.util.graph.visitor.PreorderNodeListGenerator;
 import org.eclipse.aether.util.repository.AuthenticationBuilder;
 
+import de.larssh.utils.Nullables;
 import edu.umd.cs.findbugs.annotations.Nullable;
 import lombok.experimental.UtilityClass;
 
@@ -53,9 +53,8 @@ public class AetherUtils {
 	 */
 	@Nullable
 	public static RepositoryPolicy convert(@Nullable final ArtifactRepositoryPolicy mavenPolicy) {
-		return Optional.ofNullable(mavenPolicy)
-				.map(p -> new RepositoryPolicy(p.isEnabled(), p.getUpdatePolicy(), p.getChecksumPolicy()))
-				.orElse(null);
+		return Nullables.map(mavenPolicy,
+				p -> new RepositoryPolicy(p.isEnabled(), p.getUpdatePolicy(), p.getChecksumPolicy()));
 	}
 
 	/**
@@ -67,9 +66,8 @@ public class AetherUtils {
 	@Nullable
 	public static Authentication convert(
 			@Nullable final org.apache.maven.artifact.repository.Authentication mavenAuthentication) {
-		return Optional.ofNullable(mavenAuthentication)
-				.map(a -> new AuthenticationBuilder().addPassword(a.getPassword()).addUsername(a.getUsername()).build())
-				.orElse(null);
+		return Nullables.map(mavenAuthentication,
+				a -> new AuthenticationBuilder().addPassword(a.getPassword()).addUsername(a.getUsername()).build());
 	}
 
 	/**
