@@ -886,7 +886,7 @@ TODO: Easy to understand usage example
 	<module name="RegexpMultiline">
 		<property name="id" value="XNullableAnnotation" />
 		<property name="fileExtensions" value="java" />
-		<property name="format" value="\P{javaJavaIdentifierPart}final\s([^,\(\);]*\s)?@\s*(edu\s*\.\s*umd\s*\.\s*cs\s*\.\s*findbugs\s*\.\s*annotations\s*\.\s*)?Nullable\s" />
+		<property name="format" value="\P{javaJavaIdentifierPart}final\s([^,\(\)\{;]*\s)?@\s*(edu\s*\.\s*umd\s*\.\s*cs\s*\.\s*findbugs\s*\.\s*annotations\s*\.\s*)?Nullable\s" />
 		<property name="message" value="@Nullable should precede keyword &quot;final&quot;." />
 	</module>
 	<module name="RegexpMultiline">
