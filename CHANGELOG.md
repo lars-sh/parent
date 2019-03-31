@@ -25,14 +25,14 @@ Download at TODO
 * Annotation de.larssh.utils.annotations.PackagePrivate
 
 ### Changed
-* Enforce Maven version 3.3.9 (as JaCoCo requires it)
-* Unit tests require a "package-info.java" file per package. You might need to copy them over from your regular sources.
-* Execute SpotBugs, copy-paste-detection (CPD) and dependency analysis from Maven reporting to build phase
-* Moved de.larssh.utils.AetherUtils to de.larssh.utils.maven.AetherUtils
-* NumericTextComparator handles numerics as signed only if the sign is preceeded by a whitespace or at a strings start
-* ParseException initializes cause
-* Validate Javadoc inside Travis CI
 * Update formatter settings for Eclipse 2019-03
+* Enforce Maven version 3.3.9 (as JaCoCo requires it)
+* Execute SpotBugs, copy-paste-detection (CPD) and dependency analysis from Maven reporting to build phase
+* Validate Javadoc inside Travis CI
+* Checkstyle validates lombok sources, too.
+* NumericTextComparator handles numerics as signed only if the sign is preceeded by a whitespace or at a strings start
+* Moved de.larssh.utils.AetherUtils to de.larssh.utils.maven.AetherUtils
+* ParseException initializes cause
 * Update dependencies and Maven plugins
 
 #### Checkstyle

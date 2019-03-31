@@ -181,7 +181,7 @@ public class Strings {
 		if (arguments.length < 1) {
 			return format;
 		}
-		try (final Formatter formatter = new Formatter(DEFAULT_LOCALE)) {
+		try (Formatter formatter = new Formatter(DEFAULT_LOCALE)) {
 			return formatter.format(format, arguments).toString();
 		} catch (final IllegalFormatException e) {
 			return "Failed formatting string [" + format + "]: " + e.getMessage();
@@ -249,7 +249,7 @@ public class Strings {
 	@SuppressFBWarnings(value = "EXS_EXCEPTION_SOFTENING_NO_CONSTRAINTS",
 			justification = "converting checked to unchecked exception, that should never be thrown at all")
 	public static List<String> getLines(final String value) {
-		try (final BufferedReader reader = new BufferedReader(new StringReader(value))) {
+		try (BufferedReader reader = new BufferedReader(new StringReader(value))) {
 			return reader.lines().collect(toList());
 		} catch (final IOException e) {
 			throw new UncheckedIOException(e);
