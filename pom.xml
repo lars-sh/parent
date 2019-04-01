@@ -1423,7 +1423,7 @@ install: mvn install -DskipTests=true -Dgpg.skip=true --batch-mode --show-versio
 							<configLocation>${project.build.directory}/checkstyle.xml</configLocation>
 							<consoleOutput>true</consoleOutput>
 							<includeTestSourceDirectory>true</includeTestSourceDirectory>
-							<sourceDirectories>${project.compileSourceRoots},${project.basedir}/src/main/lombok,${project.basedir}/src/test/lombok</sourceDirectories>
+							<sourceDirectories>${project.basedir}/src/main/java, ${project.basedir}/src/test/java, ${project.basedir}/src/main/lombok, ${project.basedir}/src/test/lombok, ${project.build.directory}/generated-sources/delombok, ${project.build.directory}/generated-test-sources/delombok</sourceDirectories>
 						</configuration>
 					</execution>
 				</executions>
