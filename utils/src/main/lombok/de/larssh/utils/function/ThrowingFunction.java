@@ -25,8 +25,8 @@ public interface ThrowingFunction<T, R> extends Function<T, R> {
 	 * Short-hand method to cast any {@link ThrowingFunction} as {@link Function}.
 	 *
 	 * @param function throwing function
-	 * @param          <T> the type of the input to the function
-	 * @param          <R> the type of the result of the function
+	 * @param <T>      the type of the input to the function
+	 * @param <R>      the type of the result of the function
 	 * @return hidden throwing function
 	 */
 	static <T, R> Function<T, R> throwing(final ThrowingFunction<T, R> function) {

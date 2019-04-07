@@ -12,6 +12,7 @@ import java.util.function.LongToIntFunction;
 import java.util.stream.LongStream;
 
 import de.larssh.utils.function.LongToLongFunction;
+import edu.umd.cs.findbugs.annotations.Nullable;
 import lombok.experimental.UtilityClass;
 
 /**
@@ -135,7 +136,7 @@ public class OptionalLongs {
 	 * whose result is already an {@code Optional}, and if invoked,
 	 * {@code flatMapToDouble} does not wrap it with an additional {@link Optional}.
 	 *
-	 * @param          <T> the type parameter to the {@code Optional} returned
+	 * @param <T>      the type parameter to the {@code Optional} returned
 	 * @param optional optional value
 	 * @param mapper   a mapping function to apply to the value, if present the
 	 *                 mapping function
@@ -199,7 +200,7 @@ public class OptionalLongs {
 	 * an {@link Optional} describing the result. Otherwise returns an empty
 	 * {@link Optional}.
 	 *
-	 * @param          <T> the type of the result of {@code mapper}
+	 * @param <T>      the type of the result of {@code mapper}
 	 * @param optional optional value
 	 * @param mapper   a mapping function to apply to the value, if present
 	 * @return an {@link Optional} describing the result of applying {@code mapper}
@@ -222,6 +223,18 @@ public class OptionalLongs {
 	 */
 	public static OptionalLong ofNon(final LongPredicate isEmpty, final long value) {
 		return isEmpty.test(value) ? OptionalLong.empty() : OptionalLong.of(value);
+	}
+
+	/**
+	 * Returns an {@link OptionalLong} describing the specified value, if non-null,
+	 * otherwise returns an empty {@link OptionalLong}.
+	 *
+	 * @param value the possibly-null value to describe
+	 * @return an {@link OptionalLong} with a present value if the specified value
+	 *         is non-null, otherwise an empty {@link OptionalLong}
+	 */
+	public static OptionalLong ofNullable(@Nullable final Long value) {
+		return value == null ? OptionalLong.empty() : OptionalLong.of(value);
 	}
 
 	/**

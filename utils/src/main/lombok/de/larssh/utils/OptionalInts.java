@@ -12,6 +12,7 @@ import java.util.function.IntToLongFunction;
 import java.util.stream.IntStream;
 
 import de.larssh.utils.function.IntToIntFunction;
+import edu.umd.cs.findbugs.annotations.Nullable;
 import lombok.experimental.UtilityClass;
 
 /**
@@ -134,7 +135,7 @@ public class OptionalInts {
 	 * whose result is already an {@code Optional}, and if invoked,
 	 * {@code flatMapToDouble} does not wrap it with an additional {@link Optional}.
 	 *
-	 * @param          <T> the type parameter to the {@code Optional} returned
+	 * @param <T>      the type parameter to the {@code Optional} returned
 	 * @param optional optional value
 	 * @param mapper   a mapping function to apply to the value, if present the
 	 *                 mapping function
@@ -198,7 +199,7 @@ public class OptionalInts {
 	 * an {@link Optional} describing the result. Otherwise returns an empty
 	 * {@link Optional}.
 	 *
-	 * @param          <T> the type of the result of {@code mapper}
+	 * @param <T>      the type of the result of {@code mapper}
 	 * @param optional optional value
 	 * @param mapper   a mapping function to apply to the value, if present
 	 * @return an {@link Optional} describing the result of applying {@code mapper}
@@ -221,6 +222,18 @@ public class OptionalInts {
 	 */
 	public static OptionalInt ofNon(final IntPredicate isEmpty, final int value) {
 		return isEmpty.test(value) ? OptionalInt.empty() : OptionalInt.of(value);
+	}
+
+	/**
+	 * Returns an {@link OptionalInt} describing the specified value, if non-null,
+	 * otherwise returns an empty {@link OptionalInt}.
+	 *
+	 * @param value the possibly-null value to describe
+	 * @return an {@link OptionalInt} with a present value if the specified value is
+	 *         non-null, otherwise an empty {@link OptionalInt}
+	 */
+	public static OptionalInt ofNullable(@Nullable final Integer value) {
+		return value == null ? OptionalInt.empty() : OptionalInt.of(value);
 	}
 
 	/**

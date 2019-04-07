@@ -14,6 +14,9 @@ Download at TODO
 * Class de.larssh.utils.maven.DependencyScope
 * Class de.larssh.utils.net.GlobalProxyConfiguration
 * Method de.larssh.utils.Collectors.toMap(keyMapper, valueMapper \[, mergeFunction\] \[, mapSupplier\])
+* Method de.larssh.utils.OptionalDoubles.ofNullable(value)
+* Method de.larssh.utils.OptionalInts.ofNullable(value)
+* Method de.larssh.utils.OptionalLongs.ofNullable(value)
 * Method de.larssh.utils.Optionals.getFirst(isPresent, suppliers)
 * Method de.larssh.utils.Optionals.getFirstValue(isPresent, values)
 * Method de.larssh.utils.Optionals.ofNonEmpty(array|collection)

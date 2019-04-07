@@ -12,6 +12,7 @@ import java.util.function.DoubleToLongFunction;
 import java.util.stream.DoubleStream;
 
 import de.larssh.utils.function.DoubleToDoubleFunction;
+import edu.umd.cs.findbugs.annotations.Nullable;
 import lombok.experimental.UtilityClass;
 
 /**
@@ -134,7 +135,7 @@ public class OptionalDoubles {
 	 * one whose result is already an {@code Optional}, and if invoked,
 	 * {@code flatMapToDouble} does not wrap it with an additional {@link Optional}.
 	 *
-	 * @param          <T> the type parameter to the {@code Optional} returned
+	 * @param <T>      the type parameter to the {@code Optional} returned
 	 * @param optional optional value
 	 * @param mapper   a mapping function to apply to the value, if present the
 	 *                 mapping function
@@ -201,7 +202,7 @@ public class OptionalDoubles {
 	 * an {@link Optional} describing the result. Otherwise returns an empty
 	 * {@link Optional}.
 	 *
-	 * @param          <T> the type of the result of {@code mapper}
+	 * @param <T>      the type of the result of {@code mapper}
 	 * @param optional optional value
 	 * @param mapper   a mapping function to apply to the value, if present
 	 * @return an {@link Optional} describing the result of applying {@code mapper}
@@ -224,6 +225,18 @@ public class OptionalDoubles {
 	 */
 	public static OptionalDouble ofNon(final DoublePredicate isEmpty, final double value) {
 		return isEmpty.test(value) ? OptionalDouble.empty() : OptionalDouble.of(value);
+	}
+
+	/**
+	 * Returns an {@link OptionalDouble} describing the specified value, if
+	 * non-null, otherwise returns an empty {@link OptionalDouble}.
+	 *
+	 * @param value the possibly-null value to describe
+	 * @return an {@link OptionalDouble} with a present value if the specified value
+	 *         is non-null, otherwise an empty {@link OptionalDouble}
+	 */
+	public static OptionalDouble ofNullable(@Nullable final Double value) {
+		return value == null ? OptionalDouble.empty() : OptionalDouble.of(value);
 	}
 
 	/**
