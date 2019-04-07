@@ -916,13 +916,13 @@ TODO: Easy to understand usage example
 	<module name="RegexpMultiline">
 		<property name="id" value="XStringReplaceAll" />
 		<property name="fileExtensions" value="java" />
-		<property name="format" value="\.\s*replaceAll\s*\(([^"\(,\)]+|&quot;([^\\&quot;]+|\\.)*&quot;|\([^\)]*\))*," />
+		<property name="format" value="\.\s*replaceAll\s*\(([^&quot;\(,\)]+|&quot;([^\\&quot;]+|\\.)*&quot;|\([^\)]*\))*," />
 		<property name="message" value="String.replaceAll must not be used. Use Strings.replaceAll instead. This might be a false positive if String.replaceAll is not called." />
 	</module>
 	<module name="RegexpMultiline">
 		<property name="id" value="XStringReplaceFirst" />
 		<property name="fileExtensions" value="java" />
-		<property name="format" value="\.\s*replaceFirst\s*\(([^"\(,\)]+|&quot;([^\\&quot;]+|\\.)*&quot;|\([^\)]*\))*," />
+		<property name="format" value="\.\s*replaceFirst\s*\(([^&quot;\(,\)]+|&quot;([^\\&quot;]+|\\.)*&quot;|\([^\)]*\))*," />
 		<property name="message" value="String.replaceFirst must not be used. Use Strings.replaceFirst instead. This might be a false positive if String.replaceAll is not called." />
 	</module>
 
