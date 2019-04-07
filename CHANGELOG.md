@@ -13,6 +13,8 @@ Download at TODO
 * Class de.larssh.utils.Nullables
 * Class de.larssh.utils.maven.DependencyScope
 * Class de.larssh.utils.net.GlobalProxyConfiguration
+* Method de.larssh.utils.Collectors.toLinkedHashMap()
+* Method de.larssh.utils.Collectors.toMap(mapSupplier)
 * Method de.larssh.utils.Collectors.toMap(keyMapper, valueMapper \[, mergeFunction\] \[, mapSupplier\])
 * Method de.larssh.utils.OptionalDoubles.ofNullable(value)
 * Method de.larssh.utils.OptionalInts.ofNullable(value)

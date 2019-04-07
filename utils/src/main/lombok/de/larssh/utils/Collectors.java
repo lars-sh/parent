@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.function.BinaryOperator;
 import java.util.function.Function;
 import java.util.function.Supplier;
@@ -37,15 +38,16 @@ public class Collectors {
 	}
 
 	/**
-	 * Returns a {@link Collector} that accumulates the input elements into a new
-	 * {@link LinkedHashSet}, in encounter order.
+	 * Returns a {@code Collector} that accumulates {@link Entry} elements into a
+	 * {@code LinkedHashMap}.
 	 *
-	 * @param <T> the type of the input elements
-	 * @return a {@link Collector} which collects all the input elements into a
-	 *         {@link LinkedHashSet}
+	 * @param <K> the type of the key
+	 * @param <V> the type of the value
+	 * @return a {@code Collector} which collects {@link Entry} elements into a
+	 *         {@code LinkedHashMap}
 	 */
-	public static <T> Collector<T, ?, LinkedHashSet<T>> toLinkedHashSet() {
-		return toCollection(LinkedHashSet::new);
+	public static <K, V> Collector<Entry<K, V>, ?, LinkedHashMap<K, V>> toLinkedHashMap() {
+		return toLinkedHashMap(Entry::getKey, Entry::getValue, throwingMerger());
 	}
 
 	/**
@@ -53,9 +55,9 @@ public class Collectors {
 	 * {@code LinkedHashMap} whose keys and values are the result of applying the
 	 * provided mapping functions to the input elements.
 	 *
-	 * @param             <T> the type of the input elements
-	 * @param             <K> the output type of the key mapping function
-	 * @param             <U> the output type of the value mapping function
+	 * @param <T>         the type of the input elements
+	 * @param <K>         the output type of the key mapping function
+	 * @param <U>         the output type of the value mapping function
 	 * @param keyMapper   a mapping function to produce keys
 	 * @param valueMapper a mapping function to produce values
 	 * @return a {@code Collector} which collects elements into a
@@ -73,9 +75,9 @@ public class Collectors {
 	 * {@code LinkedHashMap} whose keys and values are the result of applying the
 	 * provided mapping functions to the input elements.
 	 *
-	 * @param               <T> the type of the input elements
-	 * @param               <K> the output type of the key mapping function
-	 * @param               <U> the output type of the value mapping function
+	 * @param <T>           the type of the input elements
+	 * @param <K>           the output type of the key mapping function
+	 * @param <U>           the output type of the value mapping function
 	 * @param keyMapper     a mapping function to produce keys
 	 * @param valueMapper   a mapping function to produce values
 	 * @param mergeFunction a merge function, used to resolve collisions between
@@ -95,6 +97,34 @@ public class Collectors {
 	}
 
 	/**
+	 * Returns a {@link Collector} that accumulates the input elements into a new
+	 * {@link LinkedHashSet}, in encounter order.
+	 *
+	 * @param <T> the type of the input elements
+	 * @return a {@link Collector} which collects all the input elements into a
+	 *         {@link LinkedHashSet}
+	 */
+	public static <T> Collector<T, ?, LinkedHashSet<T>> toLinkedHashSet() {
+		return toCollection(LinkedHashSet::new);
+	}
+
+	/**
+	 * Returns a {@code Collector} that accumulates {@link Entry} elements into a
+	 * {@code Map}.
+	 *
+	 * @param <K>         the type of the key
+	 * @param <V>         the type of the value
+	 * @param <M>         the type of the resulting {@code Map}
+	 * @param mapSupplier a function which returns a new, empty {@code Map} into
+	 *                    which the results will be inserted
+	 * @return a {@code Collector} which collects {@link Entry} elements into a
+	 *         {@code Map} created by {@code mapSupplier}
+	 */
+	public static <K, V, M extends Map<K, V>> Collector<Entry<K, V>, ?, M> toMap(final Supplier<M> mapSupplier) {
+		return toMap(Entry::getKey, Entry::getValue, throwingMerger(), mapSupplier);
+	}
+
+	/**
 	 * Returns a {@code Collector} that accumulates elements into a {@code Map}
 	 * whose keys and values are the result of applying the provided mapping
 	 * functions to the input elements.
@@ -105,9 +135,9 @@ public class Collectors {
 	 * when the collection operation is performed. If the mapped keys may have
 	 * duplicates, use {@link #toMap(Function, Function, BinaryOperator)} instead.
 	 *
-	 * @param             <T> the type of the input elements
-	 * @param             <K> the output type of the key mapping function
-	 * @param             <U> the output type of the value mapping function
+	 * @param <T>         the type of the input elements
+	 * @param <K>         the output type of the key mapping function
+	 * @param <U>         the output type of the value mapping function
 	 * @param keyMapper   a mapping function to produce keys
 	 * @param valueMapper a mapping function to produce values
 	 * @return a {@code Collector} which collects elements into a {@code Map} whose
@@ -130,9 +160,9 @@ public class Collectors {
 	 * equal element, and the results are merged using the provided merging
 	 * function.
 	 *
-	 * @param               <T> the type of the input elements
-	 * @param               <K> the output type of the key mapping function
-	 * @param               <U> the output type of the value mapping function
+	 * @param <T>           the type of the input elements
+	 * @param <K>           the output type of the key mapping function
+	 * @param <U>           the output type of the value mapping function
 	 * @param keyMapper     a mapping function to produce keys
 	 * @param valueMapper   a mapping function to produce values
 	 * @param mergeFunction a merge function, used to resolve collisions between
@@ -161,10 +191,10 @@ public class Collectors {
 	 * when the collection operation is performed. If the mapped keys may have
 	 * duplicates, use {@link #toMap(Function, Function, BinaryOperator)} instead.
 	 *
-	 * @param             <T> the type of the input elements
-	 * @param             <K> the output type of the key mapping function
-	 * @param             <U> the output type of the value mapping function
-	 * @param             <M> the type of the resulting {@code Map}
+	 * @param <T>         the type of the input elements
+	 * @param <K>         the output type of the key mapping function
+	 * @param <U>         the output type of the value mapping function
+	 * @param <M>         the type of the resulting {@code Map}
 	 * @param keyMapper   a mapping function to produce keys
 	 * @param valueMapper a mapping function to produce values
 	 * @param mapSupplier a function which returns a new, empty {@code Map} into
@@ -193,10 +223,10 @@ public class Collectors {
 	 * equal element, and the results are merged using the provided merging
 	 * function. The {@code Map} is created by a provided supplier function.
 	 *
-	 * @param               <T> the type of the input elements
-	 * @param               <K> the output type of the key mapping function
-	 * @param               <U> the output type of the value mapping function
-	 * @param               <M> the type of the resulting {@code Map}
+	 * @param <T>           the type of the input elements
+	 * @param <K>           the output type of the key mapping function
+	 * @param <U>           the output type of the value mapping function
+	 * @param <M>           the type of the resulting {@code Map}
 	 * @param keyMapper     a mapping function to produce keys
 	 * @param valueMapper   a mapping function to produce values
 	 * @param mergeFunction a merge function, used to resolve collisions between
