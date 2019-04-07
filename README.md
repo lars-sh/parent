@@ -274,7 +274,10 @@ There are two ways to suppress SpotBugs warnings.
 ##### CPD
 Add `<cpd.excludeFromFailureFile>${project.basedir}/cpd-excludes.csv</cpd.excludeFromFailureFile>` to your Maven Properties and create a file called `cpd-excludes.csv`. See [Violation Exclusions](http://maven.apache.org/plugins/maven-pmd-plugin/examples/violation-exclusions.html) for more information. The following lines show an example file.
 
-	com.example.ClassA,com.example.ClassB
+	com.example.ClassA,com.example.CopyOfClassA
+	com.example.ClassB,com.example.CopyOfClassB
+
+Remark: While the notation inside the CPD exclude files seems class-path-alike, matching is based on the scheme `pathOfFileWithDuplicate.replace('/', '.').replace('\\', '.').contains(classPathAlikeExclude)`. Therefore subclasses cannot be matched in an exact manner. Use the files path (replacing slashes with dots) instead.
 
 ##### PMD
 There are two ways to suppress PMD warnings.
