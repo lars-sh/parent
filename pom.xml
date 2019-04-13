@@ -608,14 +608,28 @@
 				<executions>
 					<!-- .gitignore -->
 					<execution>
+						<id>project-gitignore-exists</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<exportAntProperties>true</exportAntProperties>
+							<target>
+								<available property="project.gitignore.exists"
+									file="${project.basedir}/.gitignore" />
+							</target>
+						</configuration>
+					</execution>
+					<execution>
 						<id>gitignore</id>
 						<phase>generate-sources</phase>
 						<goals>
 							<goal>run</goal>
 						</goals>
 						<configuration>
-							<target>
-								<echo message="Update ${project.basedir}/.gitignore" />
+							<target unless="project.gitignore.exists">
+								<echo message="Create .gitignore" />
 								<echo file="${project.basedir}/.gitignore"><![CDATA[/.settings/
 /src/main/lombok/lombok.config
 /src/test/lombok/lombok.config
