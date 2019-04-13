@@ -60,6 +60,13 @@
 	</distributionManagement>
 
 	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+		<maven.compiler.failOnWarning>true</maven.compiler.failOnWarning>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+
 		<!-- "project.build.mainClass" is meant to be used by child POMs to configure 
 			a default main class, e.g. "de.larssh.Main". -->
 		<project.build.mainClass></project.build.mainClass>
@@ -78,12 +85,6 @@
 			configure a SpotBugs excludes file. -->
 		<!-- <spotbugs.excludeFilterFile>${project.basedir}/spotbugs-excludes.xml</spotbugs.excludeFilterFile> -->
 
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
-		<maven.compiler.failOnWarning>true</maven.compiler.failOnWarning>
-		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target>
 
 		<checkstyle.version>8.18</checkstyle.version>
 		<fb-contrib.version>7.4.3.sb</fb-contrib.version>
@@ -1437,7 +1438,12 @@ install: mvn install -DskipTests=true -Dgpg.skip=true --batch-mode --show-versio
 							<configLocation>${project.build.directory}/checkstyle.xml</configLocation>
 							<consoleOutput>true</consoleOutput>
 							<includeTestSourceDirectory>true</includeTestSourceDirectory>
-							<sourceDirectories>${project.basedir}/src/main/java, ${project.basedir}/src/test/java, ${project.basedir}/src/main/lombok, ${project.basedir}/src/test/lombok, ${project.build.directory}/generated-sources/delombok, ${project.build.directory}/generated-test-sources/delombok</sourceDirectories>
+							<sourceDirectories>${project.basedir}/src/main/java,
+								${project.basedir}/src/test/java,
+								${project.basedir}/src/main/lombok,
+								${project.basedir}/src/test/lombok,
+								${project.build.directory}/generated-sources/delombok,
+								${project.build.directory}/generated-test-sources/delombok</sourceDirectories>
 						</configuration>
 					</execution>
 				</executions>
