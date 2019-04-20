@@ -1,7 +1,9 @@
 package de.larssh.utils;
 
+import java.util.concurrent.atomic.AtomicBoolean;
+
 import lombok.Getter;
-import lombok.experimental.NonFinal;
+import lombok.RequiredArgsConstructor;
 
 /**
  * This class implements a boolean {@code completed} status, allowing objects to
@@ -16,21 +18,14 @@ import lombok.experimental.NonFinal;
  * constructor or a builder class.
  */
 @Getter
+@RequiredArgsConstructor
 public abstract class Completable {
 	/**
 	 * Completed status
 	 *
 	 * @return completed status
 	 */
-	@NonFinal
-	boolean completed;
-
-	/**
-	 * Constructor of class {@link Completable}
-	 */
-	public Completable() {
-		completed = false;
-	}
+	AtomicBoolean completed = new AtomicBoolean(false);
 
 	/**
 	 * Finishes the objects initialization phase.
@@ -39,7 +34,7 @@ public abstract class Completable {
 	 * This method is recommended to be called by each getter.
 	 */
 	protected void complete() {
-		completed = true;
+		completed.set(true);
 	}
 
 	/**
@@ -52,7 +47,7 @@ public abstract class Completable {
 	 * @throws CompletedException if object is completed
 	 */
 	protected void throwIfCompleted() {
-		if (isCompleted()) {
+		if (completed.get()) {
 			throw new CompletedException();
 		}
 	}

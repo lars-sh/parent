@@ -1,10 +1,9 @@
 package de.larssh.utils;
 
+import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Supplier;
 
-import edu.umd.cs.findbugs.annotations.Nullable;
 import lombok.RequiredArgsConstructor;
-import lombok.experimental.NonFinal;
 import lombok.experimental.UtilityClass;
 
 /**
@@ -70,17 +69,17 @@ public class Finals {
 		 *
 		 * @return cached value or empty optional
 		 */
-		@NonFinal
-		@Nullable
-		T value = null;
+		AtomicReference<T> value = new AtomicReference<>(null);
 
 		/** {@inheritDoc} */
 		@Override
-		public synchronized T get() {
-			if (value == null) {
-				value = supplier.get();
+		public T get() {
+			synchronized (value) {
+				if (value.get() == null) {
+					value.set(supplier.get());
+				}
 			}
-			return Nullables.orElseThrow(value);
+			return Nullables.orElseThrow(value.get());
 		}
 	}
 }
