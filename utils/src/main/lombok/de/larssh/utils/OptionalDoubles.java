@@ -23,23 +23,23 @@ public class OptionalDoubles {
 	/**
 	 * Predicate returning {@code true} for all values less than zero.
 	 */
-	public static final DoublePredicate IS_NEGATIVE = i -> i < 0;
+	public static final DoublePredicate IS_NEGATIVE = value -> value < 0;
 
 	/**
 	 * Predicate returning {@code true} for all values less than or equal to zero.
 	 */
-	public static final DoublePredicate IS_NEGATIVE_OR_ZERO = i -> i <= 0;
+	public static final DoublePredicate IS_NEGATIVE_OR_ZERO = value -> value <= 0;
 
 	/**
 	 * Predicate returning {@code true} for all values greater than zero.
 	 */
-	public static final DoublePredicate IS_POSITIVE = i -> i > 0;
+	public static final DoublePredicate IS_POSITIVE = value -> value > 0;
 
 	/**
 	 * Predicate returning {@code true} for all values greater than or equal to
 	 * zero.
 	 */
-	public static final DoublePredicate IS_POSITIVE_OR_ZERO = i -> i >= 0;
+	public static final DoublePredicate IS_POSITIVE_OR_ZERO = value -> value >= 0;
 
 	/**
 	 * Returns a {@link Optional} consisting of the elements of {@code optional},
