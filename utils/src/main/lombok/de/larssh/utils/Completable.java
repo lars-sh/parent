@@ -1,20 +1,20 @@
 package de.larssh.utils;
 
-import java.util.concurrent.atomic.AtomicBoolean;
-
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import lombok.experimental.NonFinal;
 
 /**
- * This class implements a boolean {@code completed} status, allowing objects to
- * differentiate between an initialization phase and their final value.
+ * Implementation of a boolean {@code completed} status, allowing objects to
+ * differentiate between an initialization phase and their final value. This
+ * implementation is synchronized.
  *
  * <p>
  * Each getter is recommended to call {@code #complete()}, while
  * {@code #throwIfCompleted()} must be called prior to object modification.
  *
  * <p>
- * Before using {@code Completable} think about using either a streamlined
+ * Before using {@code Completable} think about using either a non-mobifiable
  * constructor or a builder class.
  */
 @Getter
@@ -25,7 +25,13 @@ public abstract class Completable {
 	 *
 	 * @return completed status
 	 */
-	AtomicBoolean completed = new AtomicBoolean(false);
+	@NonFinal
+	volatile boolean completed = false;
+
+	/**
+	 * Object used for locking
+	 */
+	Object lock = new Object();
 
 	/**
 	 * Finishes the objects initialization phase.
@@ -34,7 +40,7 @@ public abstract class Completable {
 	 * This method is recommended to be called by each getter.
 	 */
 	protected void complete() {
-		completed.set(true);
+		completed = true;
 	}
 
 	/**
@@ -47,7 +53,7 @@ public abstract class Completable {
 	 * @throws CompletedException if object is completed
 	 */
 	protected void throwIfCompleted() {
-		if (completed.get()) {
+		if (completed) {
 			throw new CompletedException();
 		}
 	}

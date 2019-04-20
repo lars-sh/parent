@@ -1,9 +1,10 @@
 package de.larssh.utils;
 
-import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Supplier;
 
+import edu.umd.cs.findbugs.annotations.Nullable;
 import lombok.RequiredArgsConstructor;
+import lombok.experimental.NonFinal;
 import lombok.experimental.UtilityClass;
 
 /**
@@ -36,7 +37,8 @@ public class Finals {
 	 * time. Therefore it can be used to create lazy fields.
 	 *
 	 * <p>
-	 * The used implementation synchronizes threads while calling {@code supplier}.
+	 * This implementation is synchronized. {@code supplier} is guaranteed to be
+	 * called at max once.
 	 *
 	 * @param <T>      return type
 	 * @param supplier value supplier
@@ -69,17 +71,24 @@ public class Finals {
 		 *
 		 * @return cached value or empty optional
 		 */
-		AtomicReference<T> value = new AtomicReference<>(null);
+		@NonFinal
+		@Nullable
+		volatile T value = null;
+
+		/**
+		 * Object used for locking
+		 */
+		Object lock = new Object();
 
 		/** {@inheritDoc} */
 		@Override
 		public T get() {
-			synchronized (value) {
-				if (value.get() == null) {
-					value.set(supplier.get());
+			synchronized (lock) {
+				if (value == null) {
+					value = supplier.get();
 				}
 			}
-			return Nullables.orElseThrow(value.get());
+			return Nullables.orElseThrow(value);
 		}
 	}
 }
