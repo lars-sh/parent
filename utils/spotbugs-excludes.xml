@@ -9,4 +9,10 @@
 	<Match>
 		<Bug pattern="WEM_WEAK_EXCEPTION_MESSAGING" />
 	</Match>
+	
+	<!-- Suppress modifications of Duration.toString output for formatting reasons -->
+	<Match>
+		<Bug pattern="ITU_INAPPROPRIATE_TOSTRING_USE" />
+		<Class name="de.larssh.utils.time.LoggingStopwatch$StringLoggingStopwatchMode" />
+	</Match>
 </FindBugsFilter>
