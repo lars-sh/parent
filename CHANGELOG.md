@@ -13,6 +13,9 @@ Download at TODO
 * Class de.larssh.utils.Nullables
 * Class de.larssh.utils.maven.DependencyScope
 * Class de.larssh.utils.net.GlobalProxyConfiguration
+* Class de.larssh.utils.time.ClosableStopwatch
+* Class de.larssh.utils.time.LoggingStopwatch
+* Class de.larssh.utils.time.Stopwatch
 * Method de.larssh.utils.Collectors.toLinkedHashMap()
 * Method de.larssh.utils.Collectors.toMap(mapSupplier)
 * Method de.larssh.utils.Collectors.toMap(keyMapper, valueMapper \[, mergeFunction\] \[, mapSupplier\])
@@ -35,6 +38,7 @@ Download at TODO
 * Execute SpotBugs, copy-paste-detection (CPD) and dependency analysis from Maven reporting to build phase
 * Validate Javadoc inside Travis CI
 * Checkstyle validates lombok sources, too.
+* Make classes Completable and Finals thread-safe
 * NumericTextComparator handles numerics as signed only if the sign is preceeded by a whitespace or at a strings start
 * Moved de.larssh.utils.AetherUtils to de.larssh.utils.maven.AetherUtils
 * ParseException initializes cause
