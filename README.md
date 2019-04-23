@@ -16,6 +16,7 @@ Read below descriptions and tips to get started. In case you run into problems [
 This POM is made for development using Maven and Eclipse Photon or later by handling some of its settings to comply with the projects settings. However you can use this POM together with any other IDE for sure.
 
 ## Getting started
+### With a new Project
 Creating a new project has been simplified as much as possible.
 
 1. Open the command line of your choice and navigate to the place where you'd like to create a new project folder.
@@ -23,12 +24,45 @@ Creating a new project has been simplified as much as possible.
 
 	mvn archetype:generate -DarchetypeGroupId=de.lars-sh -DarchetypeArtifactId=parent-archetype
 
-3. Change into the new projects directory and run `mvn package` to test the POM and your infrastructure.
+3. Your artifacts will be signed digitally. Follow the configuration instructions at [Working with GPG Signatures](https://central.sonatype.org/pages/working-with-pgp-signatures.html) to set up your personal GPG keys.
+4. Change into the new projects directory and run `mvn verify` to test the POM and your infrastructure.
 
-### Import into Eclipse
+#### Import into Eclipse
 1. In Eclipse choose `File`, `Import...`, `Existing Maven Projects`, `Next`, point the root directory to your newly created folder and press `Finish`.
 2. Wait until your workspace is built. In case it does not build automatically, remember to trigger it!
 3. **Restart Eclipse** to apply changes to project settings.
+
+### With an existing Project
+1. Here's a Maven parent example:
+
+	<parent>
+		<groupId>de.lars-sh</groupId>
+		<artifactId>parent</artifactId>
+		<version><!-- TODO --></version>
+	</parent>
+
+2. Your artifacts will be signed digitally. Follow the configuration instructions at [Working with GPG Signatures](https://central.sonatype.org/pages/working-with-pgp-signatures.html) to set up your personal GPG keys.
+3. Change into the projects directory and run `mvn verify` to test the POM and your infrastructure.
+
+Remember to **restart Eclipse** to apply changes to project settings.
+
+#### Skip Validations
+Upgrading existing projects to use this parent POM can be done step by step. As this parent specifies some strict rules, some validations might need to be skipped until others pass. The following sections describe the corresponding Maven Properties.
+
+##### Skip Checkstyle
+	<checkstyle.skip>true</checkstyle.skip>
+
+##### Skip SpotBugs
+	<spotbugs.skip>true</spotbugs.skip>
+
+##### Skip CPD
+	<cpd.skip>true</cpd.skip>
+
+##### Skip JavaDoc
+	<maven.javadoc.skip>true</maven.javadoc.skip>
+
+##### Skip GPG Signing
+	<gpg.skip>true</gpg.skip>
 
 ## Ingredients
 Taking your first steps using this POM is as simple as not using it. However it comes with a lot nicely pre-configured *ingredients*.
@@ -368,6 +402,7 @@ The following shows at which point in the Maven lifecycle plugins do their work.
         * jacoco-maven-plugin:prepare-agent (default)
     * initialize
     * generate-sources
+        * maven-antrun-plugin:run (gitignore-exists)
         * maven-antrun-plugin:run (gitignore)
         * maven-antrun-plugin:run (project-readme-md-exists)
         * maven-antrun-plugin:run (readme-md)
