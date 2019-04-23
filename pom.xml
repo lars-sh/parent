@@ -817,6 +817,8 @@ TODO: Easy to understand usage example
 										value="true" />
 									<entry key="lombok.cleanUp.flagUsage" value="error" />
 									<entry key="lombok.data.flagUsage" value="error" />
+									<entry key="lombok.equalsAndHashCode.callSuper"
+										value="warn" />
 									<entry key="lombok.extern.findbugs.addSuppressFBWarnings"
 										value="true" />
 									<entry key="lombok.fieldDefaults.defaultFinal"
@@ -826,6 +828,7 @@ TODO: Easy to understand usage example
 									<entry key="lombok.getter.lazy.flagUsage" value="error" />
 									<entry key="lombok.nonNull.flagUsage" value="error" />
 									<entry key="lombok.sneakyThrows.flagUsage" value="error" />
+									<entry key="lombok.toString.callSuper" value="warn" />
 									<entry key="lombok.val.flagUsage" value="error" />
 									<entry key="lombok.value.flagUsage" value="error" />
 									<entry key="lombok.var.flagUsage" value="error" />
@@ -837,6 +840,8 @@ TODO: Easy to understand usage example
 										value="true" />
 									<entry key="lombok.cleanUp.flagUsage" value="error" />
 									<entry key="lombok.data.flagUsage" value="error" />
+									<entry key="lombok.equalsAndHashCode.callSuper"
+										value="warn" />
 									<entry key="lombok.extern.findbugs.addSuppressFBWarnings"
 										value="true" />
 									<entry key="lombok.fieldDefaults.defaultFinal"
@@ -846,6 +851,7 @@ TODO: Easy to understand usage example
 									<entry key="lombok.getter.lazy.flagUsage" value="error" />
 									<entry key="lombok.nonNull.flagUsage" value="error" />
 									<entry key="lombok.sneakyThrows.flagUsage" value="error" />
+									<entry key="lombok.toString.callSuper" value="warn" />
 									<entry key="lombok.val.flagUsage" value="error" />
 									<entry key="lombok.value.flagUsage" value="error" />
 									<entry key="lombok.var.flagUsage" value="error" />
