@@ -28,6 +28,8 @@ Download at TODO
 * Method de.larssh.utils.Optionals.ofSingle(array|iterable|iterator|stream|string)
 * Method de.larssh.utils.text.Characters.equalsIgnoreCase(first, second)
 * Method de.larssh.utils.text.Strings.endsWithIgnoreCase(value, suffix)
+* Method de.larssh.utils.text.Strings.find(input, pattern)
+* Method de.larssh.utils.text.Strings.matches(input, pattern)
 * Method de.larssh.utils.text.Strings.startsWithIgnoreCase(value, prefix)
 * Method de.larssh.utils.text.Strings.startsWithIgnoreCase(value, prefix, offset)
 * Annotation de.larssh.utils.annotations.PackagePrivate

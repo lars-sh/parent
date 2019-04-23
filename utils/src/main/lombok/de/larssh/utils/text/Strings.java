@@ -155,6 +155,20 @@ public class Strings {
 	}
 
 	/**
+	 * Tells whether or not a subsequence {@code input} matches {@code pattern}.
+	 *
+	 * <p>
+	 * Use {@link Patterns#find(Pattern, CharSequence)} if you need a matcher.
+	 *
+	 * @param input   the input sequence to find the pattern in
+	 * @param pattern the matching pattern
+	 * @return {@code true} if, and only if, {@code input} matches {@code pattern}
+	 */
+	public static boolean find(final CharSequence input, final Pattern pattern) {
+		return pattern.matcher(input).find();
+	}
+
+	/**
 	 * Returns a formatted string using the specified format string and
 	 * {@code arguments}. In that way this method works <i>similar</i> to
 	 * {@link String#format(String, Object...)}.
@@ -274,6 +288,20 @@ public class Strings {
 			}
 		}
 		return true;
+	}
+
+	/**
+	 * Tells whether or not {@code input} matches {@code pattern}.
+	 *
+	 * <p>
+	 * Use {@link Patterns#matches(Pattern, CharSequence)} if you need a matcher.
+	 *
+	 * @param input   the value to match
+	 * @param pattern the matching pattern
+	 * @return {@code true} if, and only if, {@code input} matches {@code pattern}
+	 */
+	public static boolean matches(final CharSequence input, final Pattern pattern) {
+		return pattern.matcher(input).matches();
 	}
 
 	/**

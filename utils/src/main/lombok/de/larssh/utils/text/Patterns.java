@@ -15,6 +15,10 @@ public class Patterns {
 	 * Attempts to find the first subsequence of the input sequence that matches the
 	 * given pattern.
 	 *
+	 * <p>
+	 * Use {@link Strings#find(CharSequence, Pattern)} if you do <b>not</b> need a
+	 * matcher.
+	 *
 	 * @param pattern the pattern
 	 * @param input   the input sequence to find the pattern in
 	 * @return if the match succeeds then more information can be obtained via the
@@ -28,6 +32,10 @@ public class Patterns {
 
 	/**
 	 * Attempts to match the entire region against the pattern.
+	 *
+	 * <p>
+	 * Use {@link Strings#matches(CharSequence, Pattern)} if you do <b>not</b> need
+	 * a matcher.
 	 *
 	 * @param pattern the pattern
 	 * @param input   the input sequence to match against the pattern
