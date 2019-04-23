@@ -220,6 +220,16 @@ This parent POM either predefines existing Maven Properties or introduces some o
 
 `spotbugs.excludeFilterFile` is meant to be used by child POMs to configure a SpotBugs excludes file. Example value: `${project.basedir}/spotbugs-excludes.xml`, Default value: *not set*
 
+`org.eclipse.jdt.core.compiler.annotation.missingNonNullByDefaultAnnotation` is meant to be used by child POMs to configure if Eclipse should enforce @NonNullByDefault annotations on every package. Values can be `error`, `warning`, `info` or `ignore` (disabled). Default value: `warning`
+
+`org.eclipse.jdt.core.compiler.annotation.nonnull.secondary` is meant to be used by child POMs to configure secondary @NonNull annotations that Eclipse should handle. Multiple values must be separated by comma. Default value: *empty*
+
+`org.eclipse.jdt.core.compiler.annotation.nonnullbydefault.secondary` is meant to be used by child POMs to configure secondary @NonNullByDefault annotations that Eclipse should handle. Multiple values must be separated by comma. Default value: *empty*
+
+`org.eclipse.jdt.core.compiler.annotation.nullable.secondary` is meant to be used by child POMs to configure secondary @Nullable annotations that Eclipse should handle. Multiple values must be separated by comma. Default value: `edu.umd.cs.findbugs.annotations.CheckForNull`
+
+`org.eclipse.jdt.core.compiler.doc.comment.support` is meant to be used by child POMs to configure if Eclipse should validate JavaDoc comments. Values can be `enabled` or `disabled`. Default value: `enabled`
+
 	maven.compiler.failOnWarning:     true
 	maven.compiler.source:            1.8
 	maven.compiler.target:            1.8

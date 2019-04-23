@@ -35,6 +35,8 @@ Download at TODO
 * Annotation de.larssh.utils.annotations.PackagePrivate
 
 ### Changed
+* Update README.md with information on skipping plugins
+* Allow overwriting some predefined Eclipse settings using Maven Properties
 * Update formatter settings for Eclipse 2019-03
 * Enforce Maven version 3.3.9 (as JaCoCo requires it)
 * Execute SpotBugs, copy-paste-detection (CPD) and dependency analysis from Maven reporting to build phase
