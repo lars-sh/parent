@@ -54,7 +54,7 @@
 		</snapshotRepository>
 		<repository>
 			<id>sonatype-nexus-staging</id>
-			<name>Nexus Release Repository</name>
+			<name>Sonatype Nexus Releases</name>
 			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
 		</repository>
 	</distributionManagement>
@@ -935,16 +935,34 @@ TODO: Easy to understand usage example
 		<property name="message" value="Optional&lt;Integer&gt; must not be used. Use OptionalInt instead." />
 	</module>
 	<module name="RegexpMultiline">
+		<property name="id" value="XPatternSplit" />
+		<property name="fileExtensions" value="java" />
+		<property name="format" value="\.\s*split\s*\(([^&quot;\(,\)]+|&quot;([^\\&quot;]+|\\.)*&quot;|\([^\)]*\))+\)" />
+		<property name="message" value="Pattern.split(input) must not be used. Use Pattern.split(input, limit) instead and think about the limit. Use -1 to not discard trailing empty strings." />
+	</module>
+	<module name="RegexpMultiline">
+		<property name="id" value="XStringMatches" />
+		<property name="fileExtensions" value="java" />
+		<property name="format" value="\.\s*matches\s*\(([^&quot;\(,\)]+|&quot;([^\\&quot;]+|\\.)*&quot;|\([^\)]*\))+\)" />
+		<property name="message" value="String.matches must not be used. Use Strings.matches instead. This is likely to be a false positive if String.matches is not called." />
+	</module>
+	<module name="RegexpMultiline">
 		<property name="id" value="XStringReplaceAll" />
 		<property name="fileExtensions" value="java" />
-		<property name="format" value="\.\s*replaceAll\s*\(([^&quot;\(,\)]+|&quot;([^\\&quot;]+|\\.)*&quot;|\([^\)]*\))*," />
-		<property name="message" value="String.replaceAll must not be used. Use Strings.replaceAll instead. This might be a false positive if String.replaceAll is not called." />
+		<property name="format" value="&quot;\s*\.\s*replaceAll\s*\(|\.\s*replaceAll\s*\(([^&quot;\(,\)]+|&quot;([^\\&quot;]+|\\.)*&quot;|\([^\)]*\))*," />
+		<property name="message" value="String.replaceAll must not be used. Use Strings.replaceAll instead. This is likely to be a false positive if String.replaceAll is not called." />
 	</module>
 	<module name="RegexpMultiline">
 		<property name="id" value="XStringReplaceFirst" />
 		<property name="fileExtensions" value="java" />
-		<property name="format" value="\.\s*replaceFirst\s*\(([^&quot;\(,\)]+|&quot;([^\\&quot;]+|\\.)*&quot;|\([^\)]*\))*," />
-		<property name="message" value="String.replaceFirst must not be used. Use Strings.replaceFirst instead. This might be a false positive if String.replaceAll is not called." />
+		<property name="format" value="&quot;\s*\.\s*replaceFirst\s*\(|\.\s*replaceFirst\s*\(([^&quot;\(,\)]+|&quot;([^\\&quot;]+|\\.)*&quot;|\([^\)]*\))*," />
+		<property name="message" value="String.replaceFirst must not be used. Use Strings.replaceFirst instead. This is likely to be a false positive if String.replaceFirst is not called." />
+	</module>
+	<module name="RegexpMultiline">
+		<property name="id" value="XStringSplit" />
+		<property name="fileExtensions" value="java" />
+		<property name="format" value="&quot;\s*\.\s*split\s*\(|[a-z][A-Z0-9_]*\s*\.\s*split\s*\(" />
+		<property name="message" value="String.split must not be used. Use Pattern.split instead. This is likely to be a false positive if String.split is not called." />
 	</module>
 
 	<!-- Size Violations -->
