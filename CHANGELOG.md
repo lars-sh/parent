@@ -41,7 +41,6 @@ Download at TODO
 * Enforce Maven version 3.3.9 (as JaCoCo requires it)
 * Execute SpotBugs, copy-paste-detection (CPD) and dependency analysis from Maven reporting to build phase
 * Validate Javadoc inside Travis CI
-* Checkstyle validates lombok sources, too.
 * Make classes Completable and Finals thread-safe
 * NumericTextComparator handles numerics as signed only if the sign is preceeded by a whitespace or at a strings start
 * Moved de.larssh.utils.AetherUtils to de.larssh.utils.maven.AetherUtils
@@ -49,6 +48,7 @@ Download at TODO
 * Update dependencies and Maven plugins
 
 #### Checkstyle
+* Validate lombok sources.
 * Allow empty // comments at the end of lines with code.
 * Force Finals.constant for string and primitive constants.
 * Force @SuppressFBWarnings to include a justification that is not-empty and not "TODO".
