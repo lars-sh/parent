@@ -112,7 +112,7 @@
 			Values can be "enabled" or "disabled". -->
 		<org.eclipse.jdt.core.compiler.doc.comment.support>enabled</org.eclipse.jdt.core.compiler.doc.comment.support>
 
-		<checkstyle.version>8.18</checkstyle.version>
+		<checkstyle.version>8.20</checkstyle.version>
 		<fb-contrib.version>7.4.3.sb</fb-contrib.version>
 		<findsecbugs.version>1.8.0</findsecbugs.version>
 		<joor.version>0.9.11</joor.version>
@@ -1073,6 +1073,13 @@ TODO: Easy to understand usage example
 			<property name="message" value="Consider using StandardCharsets instead of charset strings." />
 			<property name="tokens" value="STRING_LITERAL" />
 		</module>
+		<module name="IllegalType">
+			<property name="id" value="XIllegalTypeDefault" />
+		</module>
+		<module name="IllegalType">
+			<property name="id" value="XIllegalTypeCustom" />
+			<property name="illegalClassNames" value="java.lang.StringBuffer, StringBuffer" />
+		</module>
 		<module name="InnerAssignment" />
 		<module name="MagicNumber">
 			<property name="ignoreHashCodeMethod" value="true" />
@@ -1138,7 +1145,13 @@ TODO: Easy to understand usage example
 		<module name="SuppressionXpathSingleFilter">
 			<property name="checks" value="^.*$" />
 			<property name="files" value="^(.*[/\\])?generated-(test-)?sources[/\\]delombok[/\\].*$" />
-			<property name="query" value="//*[MODIFIERS/ANNOTATION[@text = 'Generated' or *[@text = 'lombok'] or *[@text = 'Generated']]]/descendant-or-self::node()" />
+			<property name="query" value="//*[MODIFIERS/ANNOTATION[count(DOT) = 1 and DOT[count(IDENT) = 2 and IDENT[@text = 'lombok'] and IDENT[@text = 'Generated']]]]/descendant-or-self::node()" />
+		</module>
+
+		<!-- Filters: Delombok: Suppress irregular formatting -->
+		<module name="SuppressionXpathSingleFilter">
+			<property name="checks" value="EmptyLineSeparator" />
+			<property name="files" value="^(.*[/\\])?generated-(test-)?sources[/\\]delombok[/\\].*$" />
 		</module>
 
 		<!-- Filters: Delombok: Suppress import separation checks -->
@@ -1190,6 +1203,9 @@ TODO: Easy to understand usage example
 		<module name="JavadocTagContinuationIndentation" />
 		<module name="JavadocType" />
 		<module name="JavadocVariable" />
+		<module name="MissingJavadocType">
+			<property name="scope" value="private" />
+		</module>
 		<module name="NonEmptyAtclauseDescription" />
 		<module name="SingleLineJavadoc" />
 
