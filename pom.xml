@@ -1061,7 +1061,7 @@ TODO: Easy to understand usage example
 			<property name="illegalClassNames" value="java.lang.NullPointerException" />
 		</module>
 		<module name="IllegalInstantiation">
-			<property name="classes" value="java.util.Hashtable, java.util.Vector, org.xml.sax.SAXException, org.xml.sax.SAXParseException" />
+			<property name="classes" value="java.lang.StringBuffer, java.util.Hashtable, java.util.Vector, org.xml.sax.SAXException, org.xml.sax.SAXParseException" />
 		</module>
 		<module name="IllegalThrows" />
 		<module name="IllegalToken">
