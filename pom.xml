@@ -1053,7 +1053,13 @@ TODO: Easy to understand usage example
 			<property name="validateEnhancedForLoopVariable" value="true" />
 			<property name="tokens" value="VARIABLE_DEF, PARAMETER_DEF" />
 		</module>
-		<module name="IllegalCatch" />
+		<module name="IllegalCatch">
+			<property name="id" value="XIllegalCatchDefault" />
+		</module>
+		<module name="IllegalCatch">
+			<property name="id" value="XIllegalCatchCustom" />
+			<property name="illegalClassNames" value="java.lang.NullPointerException" />
+		</module>
 		<module name="IllegalInstantiation">
 			<property name="classes" value="java.util.Hashtable, java.util.Vector, org.xml.sax.SAXException, org.xml.sax.SAXParseException" />
 		</module>
