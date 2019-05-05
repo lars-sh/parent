@@ -67,48 +67,48 @@
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 
-		<!-- "project.build.mainClass" is meant to be used by child POMs to configure
+		<!-- "project.build.mainClass" is meant to be used by child POMs to configure 
 			a default main class, e.g. "de.larssh.Main". -->
 		<project.build.mainClass></project.build.mainClass>
 
-		<!-- "project.build.packageDependenciesPhase" is meant to be used by child
-			POMs to configure if an archive containing dependencies should be created.
-			Values can be "none" (disabled, default) or "package" (enabled) as this property
+		<!-- "project.build.packageDependenciesPhase" is meant to be used by child 
+			POMs to configure if an archive containing dependencies should be created. 
+			Values can be "none" (disabled, default) or "package" (enabled) as this property 
 			is used with the <phase> tag. -->
 		<project.build.packageDependenciesPhase>none</project.build.packageDependenciesPhase>
 
-		<!-- "cpd.excludeFromFailureFile" is meant to be used by child POMs to
+		<!-- "cpd.excludeFromFailureFile" is meant to be used by child POMs to 
 			configure a CPD excludes file. -->
 		<!-- <cpd.excludeFromFailureFile>${project.basedir}/cpd-excludes.csv</cpd.excludeFromFailureFile> -->
 
-		<!-- "spotbugs.excludeFilterFile" is meant to be used by child POMs to
+		<!-- "spotbugs.excludeFilterFile" is meant to be used by child POMs to 
 			configure a SpotBugs excludes file. -->
 		<!-- <spotbugs.excludeFilterFile>${project.basedir}/spotbugs-excludes.xml</spotbugs.excludeFilterFile> -->
 
-		<!-- "org.eclipse.jdt.core.compiler.annotation.missingNonNullByDefaultAnnotation"
-			is meant to be used by child POMs to configure if Eclipse should enforce
-			@NonNullByDefault annotations on every package. Values can be "error", "warning",
+		<!-- "org.eclipse.jdt.core.compiler.annotation.missingNonNullByDefaultAnnotation" 
+			is meant to be used by child POMs to configure if Eclipse should enforce 
+			@NonNullByDefault annotations on every package. Values can be "error", "warning", 
 			"info" or "ignore" (disabled). -->
 		<org.eclipse.jdt.core.compiler.annotation.missingNonNullByDefaultAnnotation>warning</org.eclipse.jdt.core.compiler.annotation.missingNonNullByDefaultAnnotation>
 
-		<!-- "org.eclipse.jdt.core.compiler.annotation.nonnull.secondary" is meant
-			to be used by child POMs to configure secondary @NonNull annotations that
+		<!-- "org.eclipse.jdt.core.compiler.annotation.nonnull.secondary" is meant 
+			to be used by child POMs to configure secondary @NonNull annotations that 
 			Eclipse should handle. Multiple values must be separated by comma. -->
 		<org.eclipse.jdt.core.compiler.annotation.nonnull.secondary></org.eclipse.jdt.core.compiler.annotation.nonnull.secondary>
 
-		<!-- "org.eclipse.jdt.core.compiler.annotation.nonnullbydefault.secondary"
-			is meant to be used by child POMs to configure secondary @NonNullByDefault
-			annotations that Eclipse should handle. Multiple values must be separated
+		<!-- "org.eclipse.jdt.core.compiler.annotation.nonnullbydefault.secondary" 
+			is meant to be used by child POMs to configure secondary @NonNullByDefault 
+			annotations that Eclipse should handle. Multiple values must be separated 
 			by comma. -->
 		<org.eclipse.jdt.core.compiler.annotation.nonnullbydefault.secondary></org.eclipse.jdt.core.compiler.annotation.nonnullbydefault.secondary>
 
-		<!-- "org.eclipse.jdt.core.compiler.annotation.nullable.secondary" is meant
-			to be used by child POMs to configure secondary @Nullable annotations that
+		<!-- "org.eclipse.jdt.core.compiler.annotation.nullable.secondary" is meant 
+			to be used by child POMs to configure secondary @Nullable annotations that 
 			Eclipse should handle. Multiple values must be separated by comma. -->
 		<org.eclipse.jdt.core.compiler.annotation.nullable.secondary>edu.umd.cs.findbugs.annotations.CheckForNull</org.eclipse.jdt.core.compiler.annotation.nullable.secondary>
 
-		<!-- "org.eclipse.jdt.core.compiler.doc.comment.support" is meant to be
-			used by child POMs to configure if Eclipse should validate JavaDoc comments.
+		<!-- "org.eclipse.jdt.core.compiler.doc.comment.support" is meant to be 
+			used by child POMs to configure if Eclipse should validate JavaDoc comments. 
 			Values can be "enabled" or "disabled". -->
 		<org.eclipse.jdt.core.compiler.doc.comment.support>enabled</org.eclipse.jdt.core.compiler.doc.comment.support>
 
