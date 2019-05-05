@@ -6,6 +6,9 @@ set old_cd=%CD%
 rem Change directory to project root
 cd /d "%~dp0\.."
 
+rem Update parent version
+call mvn org.codehaus.mojo:versions-maven-plugin:update-parent -DgenerateBackupPoms=false -DallowSnapshots=true
+
 rem Update version properties
 call mvn org.codehaus.mojo:versions-maven-plugin:update-properties -DgenerateBackupPoms=false -Dmaven.version.rules="file:///%old_cd%/rules.xml"
 
