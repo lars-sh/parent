@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 
 ## [0.9.2-SNAPSHOT](https://github.com/lars-sh/parent/compare/3547b85c9a72fd0c10c00be9dd40ceee65fec7cf...master)
 
-Download at TODO
+Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%20%28a:parent%20a:parent-archetype%20a:root%20a:utils%20a:utils-annotations%20a:utils-test%29%20AND%20v:0.9.2)
 
 ### Added
 * Archetype
@@ -35,6 +35,8 @@ Download at TODO
 * Annotation de.larssh.utils.annotations.PackagePrivate
 
 ### Changed
+* Disallow usage of java.lang.StringBuffer
+* Disallow catching java.lang.NullPointerException
 * Update README.md with information on skipping plugins
 * Allow overwriting some predefined Eclipse settings using Maven Properties
 * Update formatter settings for Eclipse 2019-03
