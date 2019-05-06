@@ -11,7 +11,7 @@ Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%
 * TODO
 
 ### Changed
-* TODO
+* Removed methods Completable.getLock() and ClosableStopwatch.getLock()
 
 <a name="0.9.2"></a>
 

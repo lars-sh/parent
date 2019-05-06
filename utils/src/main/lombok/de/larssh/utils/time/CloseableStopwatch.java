@@ -5,6 +5,8 @@ import java.time.Instant;
 import java.util.Optional;
 
 import de.larssh.utils.CompletedException;
+import lombok.AccessLevel;
+import lombok.Getter;
 import lombok.ToString;
 import lombok.experimental.NonFinal;
 
@@ -21,8 +23,15 @@ import lombok.experimental.NonFinal;
  * {@link #close()} can be called multiple times while all but the first call
  * are ignored.
  */
+@Getter
 @ToString(callSuper = true)
 public abstract class CloseableStopwatch extends Stopwatch implements AutoCloseable {
+	/**
+	 * Instant at the stopwatches stopping or empty if the stopwatch is not stopped,
+	 * yet.
+	 *
+	 * @return the instant at the stopwatches stopping or empty
+	 */
 	@NonFinal
 	volatile Optional<Instant> stopInstant = Optional.empty();
 
@@ -30,6 +39,7 @@ public abstract class CloseableStopwatch extends Stopwatch implements AutoClosea
 	 * Object used for locking
 	 */
 	@ToString.Exclude
+	@Getter(AccessLevel.NONE)
 	Object lock = new Object();
 
 	/**
@@ -73,16 +83,6 @@ public abstract class CloseableStopwatch extends Stopwatch implements AutoClosea
 				stopInstant = Optional.of(Instant.now());
 			}
 		}
-	}
-
-	/**
-	 * Instant at the stopwatches stopping or empty if the stopwatch is not stopped,
-	 * yet.
-	 *
-	 * @return the instant at the stopwatches stopping or empty
-	 */
-	public Optional<Instant> getStopInstant() {
-		return stopInstant;
 	}
 
 	/**

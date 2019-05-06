@@ -1,5 +1,6 @@
 package de.larssh.utils;
 
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.NonFinal;
@@ -31,6 +32,7 @@ public abstract class Completable {
 	/**
 	 * Object used for locking
 	 */
+	@Getter(AccessLevel.NONE)
 	Object lock = new Object();
 
 	/**
