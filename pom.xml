@@ -1595,12 +1595,49 @@ install: mvn install -DskipTests=true -Dgpg.skip=true --batch-mode --show-versio
 				<artifactId>maven-pmd-plugin</artifactId>
 				<executions>
 					<execution>
+						<!-- The following ID must not be changed as "default-cpd-check" uses 
+							it. -->
+						<id>cpd</id>
+						<goals>
+							<goal>cpd</goal>
+						</goals>
+						<phase>verify</phase>
+						<configuration>
+							<excludeFromFailureFile>${cpd.excludeFromFailureFile}</excludeFromFailureFile>
+						</configuration>
+					</execution>
+					<execution>
 						<id>default-cpd-check</id>
 						<goals>
 							<goal>cpd-check</goal>
 						</goals>
 						<configuration>
-							<excludeFromFailureFile>${cpd.excludeFromFailureFile}</excludeFromFailureFile>
+							<printFailingErrors>true</printFailingErrors>
+						</configuration>
+					</execution>
+
+					<!-- Analyze Code -->
+					<execution>
+						<!-- The following ID must not be changed as "default-check" uses it. -->
+						<id>pmd</id>
+						<goals>
+							<goal>pmd</goal>
+						</goals>
+						<phase>verify</phase>
+						<configuration>
+							<excludeFromFailureFile>${project.basedir}/pmd-excludes.properties</excludeFromFailureFile>
+							<includeTests>true</includeTests>
+							<rulesets>
+								<ruleset>${project.build.directory}/pmd/pmd-ruleset.xml</ruleset>
+							</rulesets>
+						</configuration>
+					</execution>
+					<execution>
+						<id>default-check</id>
+						<goals>
+							<goal>check</goal>
+						</goals>
+						<configuration>
 							<printFailingErrors>true</printFailingErrors>
 						</configuration>
 					</execution>
@@ -1710,26 +1747,6 @@ install: mvn install -DskipTests=true -Dgpg.skip=true --batch-mode --show-versio
 
 	<reporting>
 		<plugins>
-			<!-- Analyze Code -->
-			<!-- Remark: Requires to run at least "mvn test-compile site"! -->
-			<plugin>
-				<artifactId>maven-pmd-plugin</artifactId>
-				<reportSets>
-					<reportSet>
-						<reports>
-							<report>pmd</report>
-						</reports>
-						<configuration>
-							<excludeFromFailureFile>${project.basedir}/pmd-excludes.properties</excludeFromFailureFile>
-							<includeTests>true</includeTests>
-							<rulesets>
-								<ruleset>${project.build.directory}/pmd/pmd-ruleset.xml</ruleset>
-							</rulesets>
-						</configuration>
-					</reportSet>
-				</reportSets>
-			</plugin>
-
 			<!-- Test code coverage -->
 			<plugin>
 				<groupId>org.jacoco</groupId>

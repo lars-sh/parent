@@ -52,14 +52,17 @@ Upgrading existing projects to use this parent POM can be done step by step. As 
 ##### Skip Checkstyle
 	<checkstyle.skip>true</checkstyle.skip>
 
-##### Skip SpotBugs
-	<spotbugs.skip>true</spotbugs.skip>
+##### Skip JavaDoc
+	<maven.javadoc.skip>true</maven.javadoc.skip>
 
 ##### Skip CPD
 	<cpd.skip>true</cpd.skip>
 
-##### Skip JavaDoc
-	<maven.javadoc.skip>true</maven.javadoc.skip>
+##### Skip PMD
+	<pmd.skip>true</pmd.skip>
+
+##### Skip SpotBugs
+	<spotbugs.skip>true</spotbugs.skip>
 
 ##### Skip GPG Signing
 	<gpg.skip>true</gpg.skip>
@@ -196,7 +199,7 @@ Inside your favorite IDE feel free to use its Maven-compatible build infrastrucu
 
 `mvn install` compiles and packages your project. Afterwards the packaged artifacts are installed to your local repository. Use `mvn package` instead to compile and package without installing or `mvn compile` to compile only.
 
-`mvn test-compile site` runs additional reports on your project. Open `target/site/index.html` to check its results. Note: Executing `mvn site` might result in unexpected behavior. PMD requires compilation together with the site generation.
+`mvn site` runs additional reports on your project. Open `target/site/index.html` to check its results.
 
 #### JAR Generation
 Wherever possible the following four JAR files are packaged:
@@ -380,11 +383,8 @@ TODO
 ### Checks
 TODO
 
-#### Checkstyle, CPD, Spotbugs
+#### Checkstyle, CPD, PMD and Spotbugs
 TODO: These are run at compile time. Describe Eclipse plugins.
-
-#### PMD
-TODO: This is run for `mvn site` only. Describe Eclipse plugin.
 
 ### Documentation
 TODO: JavaDoc is run at compile time.
