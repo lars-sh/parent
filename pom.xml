@@ -1350,90 +1350,148 @@ TODO: Easy to understand usage example
 								<echo file="${project.build.directory}/pmd/pmd-ruleset.xml"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <ruleset name="de.lars-sh" xmlns="http://pmd.sourceforge.net/ruleset/2.0.0">
 	<description></description>
+
 	<rule ref="category/java/bestpractices.xml">
-		<exclude name="AbstractClassWithoutAbstractMethod" />
+		<!-- See separate rule with different properties -->
+		<exclude name="AvoidReassigningLoopVariables" />
+		<exclude name="OneDeclarationPerLine" />
+
+		<!-- Bad code style for non-null code -->
+		<exclude name="PositionLiteralsFirstInCaseInsensitiveComparisons" />
+		<exclude name="PositionLiteralsFirstInComparisons" />
+
+		<!-- Simplify JUnit usage -->
+		<exclude name="JUnitAssertionsShouldIncludeMessage" />
 		<exclude name="JUnitTestContainsTooManyAsserts" />
 		<exclude name="JUnitTestsShouldIncludeAssert" />
-		<exclude name="JUnitAssertionsShouldIncludeMessage" />
-		<exclude name="PositionLiteralsFirstInComparisons" />
-		<exclude name="UnusedImports" />
-		<exclude name="UseVarargs" />
 	</rule>
-	<rule ref="category/java/bestpractices.xml/UnusedImports">
+
+	<rule ref="category/java/bestpractices.xml/AvoidReassigningLoopVariables">
 		<properties>
-			<property name="violationSuppressRegex" value="^Avoid unused imports such as &apos;lombok\.EqualsAndHashCode\.Include&apos;$" />
+			<property name="foreachReassign" value="firstOnly" />
+			<property name="forReassign" value="skip" />
 		</properties>
 	</rule>
+
+	<!-- Activate strict mode -->
+	<rule ref="category/java/bestpractices.xml/OneDeclarationPerLine">
+	    <properties>
+	        <property name="strictMode" value="true" />
+	    </properties>
+	</rule>
+
 	<rule ref="category/java/codestyle.xml">
-		<exclude name="AvoidFinalLocalVariable" />
+		<exclude name="TooManyStaticImports" />
+
+		<!-- Deprecated -->
+		<exclude name="AbstractNaming" />
+		<exclude name="AvoidPrefixingMethodParameters" />
+		<exclude name="ForLoopsMustUseBraces" />
+		<exclude name="IfElseStmtsMustUseBraces" />
+		<exclude name="IfStmtsMustUseBraces" />
+		<exclude name="MIsLeadingVariableName" />
+		<exclude name="SuspiciousConstantFieldName" />
+		<exclude name="VariableNamingConventions" />
+		<exclude name="WhileLoopsMustUseBraces" />
+
+		<!-- See separate rule with different properties -->
 		<exclude name="ClassNamingConventions" />
 		<exclude name="CommentDefaultAccessModifier" />
-		<exclude name="DefaultPackage" />
-		<exclude name="EmptyMethodInAbstractClassShouldBeAbstract" />
-		<exclude name="FieldDeclarationsShouldBeAtStartOfClass" />
 		<exclude name="LinguisticNaming" />
+
+		<!-- Requires Google Guava -->
+		<exclude name="DefaultPackage" />
+
+		<!-- Quite a few false positives when using Lombok -->
+		<exclude name="FieldDeclarationsShouldBeAtStartOfClass" />
+
+		<!-- Better use long variable names than abbreviations -->
 		<exclude name="LongVariable" />
+
+		<!-- Better use long variable names than abbreviations -->
 		<exclude name="OnlyOneReturn" />
-		<exclude name="PrematureDeclaration" />
-		<exclude name="ShortClassName" />
-		<exclude name="ShortMethodName" />
-		<exclude name="ShortVariable" />
-		<exclude name="TooManyStaticImports" />
-		<exclude name="UnnecessaryFullyQualifiedName" />
+
+		<!-- Better use long variable names than abbreviations -->
+		<exclude name="UnnecessaryConstructor" />
 	</rule>
+
+	<!-- Allow utility class names ending with character 's' -->
 	<rule ref="category/java/codestyle.xml/ClassNamingConventions">
 		<properties>
 			<property name="utilityClassPattern" value="[A-Z][a-zA-Z0-9]+(Utils?|Helper|s)" />
 		</properties>
 	</rule>
+
+	<!-- Ignore annotation de.larssh.utils.annotations.PackagePrivate -->
 	<rule ref="category/java/codestyle.xml/CommentDefaultAccessModifier">
 		<properties>
 			<property name="ignoredAnnotations" value="com.google.common.annotations.VisibleForTesting|android.support.annotation.VisibleForTesting|de.larssh.utils.annotations.PackagePrivate" />
 		</properties>
 	</rule>
-	<rule ref="category/java/codestyle.xml/LinguisticNaming">
-		<properties>
-			<property name="checkSetters" value="false" />
-		</properties>
-	</rule>
+
 	<rule ref="category/java/design.xml">
-		<exclude name="CyclomaticComplexity" />
 		<exclude name="LawOfDemeter" />
 		<exclude name="LoosePackageCoupling" />
-		<exclude name="NPathComplexity" />
+		<exclude name="NcssConstructorCount" />
+		<exclude name="NcssMethodCount" />
+		<exclude name="NcssTypeCount" />
+		<exclude name="StdCyclomaticComplexity" />
 		<exclude name="TooManyMethods" />
 	</rule>
+
 	<rule ref="category/java/documentation.xml">
+		<!-- Do not restrict commenting -->
 		<exclude name="CommentSize" />
-		<exclude name="CommentRequired" />
 	</rule>
+
 	<rule ref="category/java/errorprone.xml">
+		<exclude name="BeanMembersShouldSerialize" />
+		<exclude name="DataflowAnomalyAnalysis" />
+
+		<!-- See separate rule with different properties -->
 		<exclude name="AvoidDuplicateLiterals" />
 		<exclude name="AvoidLiteralsInIfCondition" />
-		<exclude name="BeanMembersShouldSerialize" />
-		<exclude name="ConstructorCallsOverridableMethod" />
-		<exclude name="DataflowAnomalyAnalysis" />
-		<exclude name="EmptyWhileStmt" />
 	</rule>
+
+	<!-- Ignore annotations -->
 	<rule ref="category/java/errorprone.xml/AvoidDuplicateLiterals">
 		<properties>
 			<property name="skipAnnotations" value="true" />
-			<property name="violationSuppressRegex" value="^The String literal &quot;\S+ is marked @NonNull but is null&quot; appears \d+ times in this file; the first occurrence is on line \d+$" />
 		</properties>
 	</rule>
+
+	<!-- Ignore additional magic numbers -->
 	<rule ref="category/java/errorprone.xml/AvoidLiteralsInIfCondition">
 		<properties>
 			<property name="ignoreMagicNumbers" value="-1, 0, 1, 2" />
 		</properties>
 	</rule>
+
 	<rule ref="category/java/multithreading.xml">
+		<!-- Deprecated -->
+		<exclude name="UnsynchronizedStaticDateFormatter" />
+
+		<!-- No need to avoid volatile if you know what you are doing -->
+		<exclude name="AvoidUsingVolatile" />
+
+		<!-- Do not avoid usage of interface Runnable -->
 		<exclude name="DoNotUseThreads" />
+
+		<!-- Quite a few false positives -->
 		<exclude name="UseConcurrentHashMap" />
 	</rule>
+
 	<rule ref="category/java/performance.xml">
 		<exclude name="AvoidInstantiatingObjectsInLoops" />
+		<exclude name="ConsecutiveAppendsShouldReuse" />
+
+		<!-- Bad code style: Do not depend on compiler defaults -->
+		<exclude name="RedundantFieldInitializer" />
+
+		<!-- Bad code style: Write what you meant to do -->
 		<exclude name="SimplifyStartsWith" />
 	</rule>
+
 	<rule ref="category/java/security.xml" />
 </ruleset>
 ]]></echo>
