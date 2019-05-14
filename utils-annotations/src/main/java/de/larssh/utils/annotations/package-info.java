@@ -1,5 +1,5 @@
 /**
  * Annotations
  */
-@de.larssh.utils.annotations.NonNullByDefault
+@NonNullByDefault
 package de.larssh.utils.annotations;

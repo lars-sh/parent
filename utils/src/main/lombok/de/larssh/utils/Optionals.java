@@ -35,7 +35,7 @@ public class Optionals {
 	 * {@code flatMapToDouble} does not wrap it with an additional
 	 * {@link OptionalDouble}.
 	 *
-	 * @param          <T> element type
+	 * @param <T>      element type
 	 * @param optional optional value
 	 * @param mapper   a mapping function to apply to the value, if present the
 	 *                 mapping function
@@ -56,7 +56,7 @@ public class Optionals {
 	 * whose result is already an {@code OptionalInt}, and if invoked,
 	 * {@code flatMap} does not wrap it with an additional {@link OptionalInt}.
 	 *
-	 * @param          <T> element type
+	 * @param <T>      element type
 	 * @param optional optional value
 	 * @param mapper   a mapping function to apply to the value, if present the
 	 *                 mapping function
@@ -77,7 +77,7 @@ public class Optionals {
 	 * {@code flatMapToDouble} does not wrap it with an additional
 	 * {@link OptionalLong}.
 	 *
-	 * @param          <T> element type
+	 * @param <T>      element type
 	 * @param optional optional value
 	 * @param mapper   a mapping function to apply to the value, if present the
 	 *                 mapping function
@@ -93,7 +93,7 @@ public class Optionals {
 	 * Returns an {@link Optional} describing the first value matching the predicate
 	 * {@code isPresent}. Returns an empty {@link Optional} if no element matches.
 	 *
-	 * @param           <T> type of the return value
+	 * @param <T>       type of the return value
 	 * @param isPresent predicate to match
 	 * @param suppliers any number of value suppliers, which values to test,
 	 *                  evaluated in a lazy manner
@@ -115,7 +115,7 @@ public class Optionals {
 	 * Returns an {@link Optional} describing the first value matching the predicate
 	 * {@code isPresent}. Returns an empty {@link Optional} if no element matches.
 	 *
-	 * @param           <T> type of the return value
+	 * @param <T>       type of the return value
 	 * @param isPresent predicate to match
 	 * @param values    any number of values to test
 	 * @return an {@link Optional} describing the first value matching the predicate
@@ -136,7 +136,7 @@ public class Optionals {
 	 * an {@link OptionalDouble} describing the result. Otherwise returns an empty
 	 * {@link OptionalDouble}.
 	 *
-	 * @param          <T> element type
+	 * @param <T>      element type
 	 * @param optional optional value
 	 * @param mapper   a mapping function to apply to the value, if present
 	 * @return an {@link OptionalDouble} describing the result of applying
@@ -152,7 +152,7 @@ public class Optionals {
 	 * an {@link OptionalInt} describing the result. Otherwise returns an empty
 	 * {@link OptionalInt}.
 	 *
-	 * @param          <T> element type
+	 * @param <T>      element type
 	 * @param optional optional value
 	 * @param mapper   a mapping function to apply to the value, if present
 	 * @return an {@link OptionalInt} describing the result of applying
@@ -168,7 +168,7 @@ public class Optionals {
 	 * an {@link OptionalLong} describing the result. Otherwise returns an empty
 	 * {@link OptionalLong}.
 	 *
-	 * @param          <T> element type
+	 * @param <T>      element type
 	 * @param optional optional value
 	 * @param mapper   a mapping function to apply to the value, if present
 	 * @return an {@link OptionalLong} describing the result of applying
@@ -184,7 +184,7 @@ public class Optionals {
 	 * non-empty, otherwise returns an empty {@link Optional}. The term <i>empty</i>
 	 * is described by {@code isEmpty}.
 	 *
-	 * @param         <T> value type
+	 * @param <T>     value type
 	 * @param isEmpty predicate describing the term <i>empty</i>
 	 * @param value   the possibly-null-or-empty value to describe
 	 * @return an {@link Optional} with a present value if the specified value is
@@ -211,11 +211,12 @@ public class Optionals {
 	 * Returns an {@link Optional} describing the specified array, if non-null and
 	 * non-empty, otherwise returns an empty {@link Optional}.
 	 *
-	 * @param       <T> array element type
+	 * @param <T>   array element type
 	 * @param array the possibly-null-or-empty array to describe
 	 * @return an {@link Optional} with a present value if the specified array is
 	 *         non-null and non-empty, otherwise an empty {@link Optional}
 	 */
+	@SuppressWarnings("PMD.UseVarargs")
 	@SuppressFBWarnings(value = "UVA_USE_VAR_ARGS",
 			justification = "var args make no sense as their length is constant")
 	public static <T> Optional<T[]> ofNonEmpty(@Nullable final T[] array) {
@@ -226,7 +227,7 @@ public class Optionals {
 	 * Returns an {@link Optional} describing the specified collection, if non-null
 	 * and non-empty, otherwise returns an empty {@link Optional}.
 	 *
-	 * @param            <T> collection and collection element type
+	 * @param <T>        collection and collection element type
 	 * @param collection the possibly-null-or-empty collection to describe
 	 * @return an {@link Optional} with a present value if the specified collection
 	 *         is non-null and non-empty, otherwise an empty {@link Optional}
@@ -253,13 +254,14 @@ public class Optionals {
 	 * {@link TooManyElementsException} if {@code array} contains more than one
 	 * element.
 	 *
-	 * @param       <T> array element type
+	 * @param <T>   array element type
 	 * @param array the array describing the element
 	 * @return an {@link Optional} describing the specified arrays first element, if
 	 *         present, otherwise returns an empty {@link Optional}
 	 * @throws TooManyElementsException if {@code array} contains more than one
 	 *                                  element
 	 */
+	@SuppressWarnings("PMD.UseVarargs")
 	@SuppressFBWarnings(value = "UVA_USE_VAR_ARGS",
 			justification = "var args make no sense as their length is constant")
 	public static <T> Optional<T> ofSingle(final T[] array) {
@@ -278,7 +280,7 @@ public class Optionals {
 	 * {@link TooManyElementsException} if {@code iterable} contains more than one
 	 * element.
 	 *
-	 * @param          <T> iterable element type
+	 * @param <T>      iterable element type
 	 * @param iterable the iterable describing the element
 	 * @return an {@link Optional} describing the specified iterables first element,
 	 *         if present, otherwise returns an empty {@link Optional}
@@ -295,13 +297,14 @@ public class Optionals {
 	 * {@link TooManyElementsException} if {@code iterator} contains more than one
 	 * element.
 	 *
-	 * @param          <T> iterator element type
+	 * @param <T>      iterator element type
 	 * @param iterator the iterator describing the element
 	 * @return an {@link Optional} describing the specified iterators first element,
 	 *         if present, otherwise returns an empty {@link Optional}
 	 * @throws TooManyElementsException if {@code iterator} contains more than one
 	 *                                  element
 	 */
+	@SuppressWarnings("PMD.PrematureDeclaration")
 	public static <T> Optional<T> ofSingle(final Iterator<T> iterator) {
 		if (!iterator.hasNext()) {
 			return Optional.empty();
@@ -324,7 +327,7 @@ public class Optionals {
 	 * <p>
 	 * This is a terminal operation.
 	 *
-	 * @param        <T> stream element type
+	 * @param <T>    stream element type
 	 * @param stream the stream describing the element
 	 * @return an {@link Optional} describing the specified streams first element,
 	 *         if present, otherwise returns an empty {@link Optional}
@@ -357,19 +360,18 @@ public class Optionals {
 			return OptionalInt.empty();
 		}
 
-		final char character = string.charAt(0);
 		for (int index = 1; index < length; index += 1) {
 			if (!Characters.isAsciiWhitespace(string.charAt(index))) {
 				throw new TooManyElementsException();
 			}
 		}
-		return OptionalInt.of(character);
+		return OptionalInt.of(string.charAt(0));
 	}
 
 	/**
 	 * Returns a stream consisting of present elements.
 	 *
-	 * @param           <T> element type
+	 * @param <T>       element type
 	 * @param optionals array of optional elements
 	 * @return the new stream
 	 */

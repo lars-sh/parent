@@ -96,6 +96,7 @@ public class SecureConnections {
 	 * @param keyManagers key manager
 	 * @return SSL socket factory
 	 */
+	@SuppressWarnings("PMD.UseVarargs")
 	@SuppressFBWarnings(value = "UVA_USE_VAR_ARGS",
 			justification = "var args make no sense as KeyManager is handled as array regularly")
 	public static SocketFactory getSocketFactory(final KeyManager[] keyManagers) {
@@ -108,6 +109,7 @@ public class SecureConnections {
 	 * @param trustManagers trust manager
 	 * @return SSL socket factory
 	 */
+	@SuppressWarnings("PMD.UseVarargs")
 	@SuppressFBWarnings(value = "UVA_USE_VAR_ARGS",
 			justification = "var args make no sense as TrustManager is handled as array regularly")
 	public static SocketFactory getSocketFactory(final TrustManager[] trustManagers) {
@@ -121,6 +123,7 @@ public class SecureConnections {
 	 * @param trustManagers trust manager
 	 * @return SSL socket factory
 	 */
+	@SuppressWarnings("PMD.UseVarargs")
 	@SuppressFBWarnings(value = "EXS_EXCEPTION_SOFTENING_NO_CONSTRAINTS",
 			justification = "converting checked to unchecked exceptions that must not be thrown")
 	public static SSLSocketFactory getSocketFactory(@Nullable final KeyManager[] keyManagers,

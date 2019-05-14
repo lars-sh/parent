@@ -46,16 +46,16 @@ public interface ThrowingFunction<T, R> extends Function<T, R> {
 	 * {@code @throws}.
 	 * </ul>
 	 *
-	 * @param t the function argument
+	 * @param value the function argument
 	 * @return the function result
 	 * @throws SneakyException hidden exceptions
 	 */
 	@Nullable
 	@Override
 	@SuppressWarnings({ "checkstyle:IllegalCatch", "PMD.AvoidCatchingGenericException" })
-	default R apply(@Nullable final T t) {
+	default R apply(@Nullable final T value) {
 		try {
-			return applyThrowing(t);
+			return applyThrowing(value);
 		} catch (final Exception e) {
 			throw new SneakyException(e);
 		}
@@ -65,11 +65,11 @@ public interface ThrowingFunction<T, R> extends Function<T, R> {
 	 * Applies this function to the given argument, allow throwing any kind of
 	 * {@link Exception}.
 	 *
-	 * @param t the function argument
+	 * @param value the function argument
 	 * @return the function result
 	 * @throws Exception any kind of exception
 	 */
 	@Nullable
 	@SuppressWarnings("PMD.SignatureDeclareThrowsException")
-	R applyThrowing(@Nullable T t) throws Exception;
+	R applyThrowing(@Nullable T value) throws Exception;
 }

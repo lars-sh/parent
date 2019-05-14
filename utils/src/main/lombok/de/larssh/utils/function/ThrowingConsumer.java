@@ -46,14 +46,14 @@ public interface ThrowingConsumer<T> extends Consumer<T> {
 	 * {@code @throws}.
 	 * </ul>
 	 *
-	 * @param t the input argument
+	 * @param value the input argument
 	 * @throws SneakyException hidden exceptions
 	 */
 	@Override
 	@SuppressWarnings({ "checkstyle:IllegalCatch", "PMD.AvoidCatchingGenericException" })
-	default void accept(@Nullable final T t) {
+	default void accept(@Nullable final T value) {
 		try {
-			acceptThrowing(t);
+			acceptThrowing(value);
 		} catch (final Exception e) {
 			throw new SneakyException(e);
 		}
@@ -63,9 +63,9 @@ public interface ThrowingConsumer<T> extends Consumer<T> {
 	 * Performs this operation on the given argument, allow throwing any kind of
 	 * {@link Exception}.
 	 *
-	 * @param t the input argument
+	 * @param value the input argument
 	 * @throws Exception any kind of exception
 	 */
 	@SuppressWarnings("PMD.SignatureDeclareThrowsException")
-	void acceptThrowing(@Nullable T t) throws Exception;
+	void acceptThrowing(@Nullable T value) throws Exception;
 }

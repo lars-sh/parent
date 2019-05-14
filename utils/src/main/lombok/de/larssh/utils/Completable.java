@@ -1,6 +1,5 @@
 package de.larssh.utils;
 
-import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.NonFinal;
@@ -15,11 +14,12 @@ import lombok.experimental.NonFinal;
  * {@code #throwIfCompleted()} must be called prior to object modification.
  *
  * <p>
- * Before using {@code Completable} think about using either a non-mobifiable
+ * Before using {@code Completable} think about using either a non-modifiable
  * constructor or a builder class.
  */
 @Getter
 @RequiredArgsConstructor
+@SuppressWarnings("PMD.AbstractClassWithoutAbstractMethod")
 public abstract class Completable {
 	/**
 	 * Completed status
@@ -28,12 +28,6 @@ public abstract class Completable {
 	 */
 	@NonFinal
 	volatile boolean completed = false;
-
-	/**
-	 * Object used for locking
-	 */
-	@Getter(AccessLevel.NONE)
-	Object lock = new Object();
 
 	/**
 	 * Finishes the objects initialization phase.

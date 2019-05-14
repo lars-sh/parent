@@ -95,6 +95,7 @@ public class Nullables {
 	 *         nullable value produced by the supplying function.
 	 */
 	@Nullable
+	@SuppressWarnings("PMD.ShortMethodName")
 	public static <T> T or(@Nullable final T value, final Supplier<? extends T> supplier) {
 		return value == null ? supplier.get() : value;
 	}
@@ -122,7 +123,7 @@ public class Nullables {
 	 * @return {@code value} if non-null otherwise the result of {@code other.get()}
 	 */
 	public static <T> T orElseGet(@Nullable final T value, final Supplier<? extends T> other) {
-		return value != null ? value : other.get();
+		return value == null ? other.get() : value;
 	}
 
 	/**

@@ -12,6 +12,7 @@ import lombok.experimental.UtilityClass;
  * This class contains helper methods for {@link Map}.
  */
 @UtilityClass
+@SuppressWarnings("PMD.ShortClassName")
 public class Maps {
 	/**
 	 * Sorts a {@link Map} based on a given {@link Entry} {@link Comparator}.
@@ -20,8 +21,8 @@ public class Maps {
 	 * Currently returned map is implemented as {@link java.util.LinkedHashMap}
 	 * though that might change.
 	 *
-	 * @param            <K> the type of keys maintained by this map
-	 * @param            <V> the type of mapped values
+	 * @param <K>        the type of keys maintained by this map
+	 * @param <V>        the type of mapped values
 	 * @param unsorted   probably unsorted map
 	 * @param comparator entry based comparator
 	 * @return sorted map based on the given comparator

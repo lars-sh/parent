@@ -24,10 +24,10 @@ public class Characters {
 	 */
 	public static int compareIgnoreCase(final char first, final char second) {
 		if (first != second) {
-			final char a = Character.toUpperCase(first);
-			final char b = Character.toUpperCase(second);
-			if (a != b) {
-				return Character.toLowerCase(a) - Character.toLowerCase(b);
+			final char firstUpperCase = Character.toUpperCase(first);
+			final char secondUpperCase = Character.toUpperCase(second);
+			if (firstUpperCase != secondUpperCase) {
+				return Character.toLowerCase(firstUpperCase) - Character.toLowerCase(secondUpperCase);
 			}
 		}
 		return 0;

@@ -100,6 +100,7 @@ public class StringConverters {
 	 * @throws ParseException if the CSV value ends unexpectedly or some occurrence
 	 *                        of {@code escaper} is not escaped correctly
 	 */
+	@SuppressWarnings("PMD.CyclomaticComplexity")
 	public static String decodeCsv(final String value, final char escaper) throws ParseException {
 		if (value.isEmpty() || value.charAt(0) != escaper) {
 			return value;
@@ -247,6 +248,7 @@ public class StringConverters {
 	 * @param separator the separator character
 	 * @return the encoded value
 	 */
+	@SuppressWarnings("PMD.CyclomaticComplexity")
 	public static String encodeCsv(final String value, final char escaper, final char separator) {
 		if (escaper == separator) {
 			throw new IllegalArgumentException("Escape character and separator must not be equal.");

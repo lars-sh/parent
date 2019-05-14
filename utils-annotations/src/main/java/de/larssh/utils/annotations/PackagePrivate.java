@@ -1,6 +1,3 @@
-/**
- *
- */
 package de.larssh.utils.annotations;
 
 import java.lang.annotation.ElementType;

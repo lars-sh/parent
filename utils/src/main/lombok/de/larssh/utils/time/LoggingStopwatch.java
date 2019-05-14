@@ -226,7 +226,7 @@ public class LoggingStopwatch extends CloseableStopwatch {
 		 * @param checkpoint the checkpoint
 		 * @param logger     the string supplier logging operation
 		 */
-		private static final void logCheckpoint(final Checkpoint checkpoint, final Consumer<Supplier<String>> logger) {
+		private static void logCheckpoint(final Checkpoint checkpoint, final Consumer<Supplier<String>> logger) {
 			logger.accept(() -> String.format("Period took %s. Checkpoint \"%s\" reached at %s.",
 					checkpoint.sincePrevious().toString().substring(2),
 					checkpoint.getName(),
@@ -243,7 +243,7 @@ public class LoggingStopwatch extends CloseableStopwatch {
 		 * @param stopwatch the stopwatch
 		 * @param logger    the string supplier logging operation
 		 */
-		private static final void logStopwatchLastPeriod(final LoggingStopwatch stopwatch,
+		private static void logStopwatchLastPeriod(final LoggingStopwatch stopwatch,
 				final Consumer<Supplier<String>> logger) {
 			logger.accept(() -> String.format("Period took %s.", stopwatch.sinceLast().toString().substring(2)));
 		}
@@ -254,7 +254,7 @@ public class LoggingStopwatch extends CloseableStopwatch {
 		 * @param stopwatch the stopwatch
 		 * @param logger    the string supplier logging operation
 		 */
-		private static final void logStopwatchStarted(final LoggingStopwatch stopwatch,
+		private static void logStopwatchStarted(final LoggingStopwatch stopwatch,
 				final Consumer<Supplier<String>> logger) {
 			logger.accept(() -> String
 					.format("Stopwatch \"%s\" started at %s.", stopwatch.getName(), stopwatch.getStartInstant()));
@@ -266,7 +266,7 @@ public class LoggingStopwatch extends CloseableStopwatch {
 		 * @param stopwatch the stopwatch
 		 * @param logger    the string supplier logging operation
 		 */
-		private static final void logStopwatchStopped(final LoggingStopwatch stopwatch,
+		private static void logStopwatchStopped(final LoggingStopwatch stopwatch,
 				final Consumer<Supplier<String>> logger) {
 			logger.accept(() -> String.format("Stopwatch \"%s\" stopped after %s.",
 					stopwatch.getName(),

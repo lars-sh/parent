@@ -43,8 +43,8 @@ public class Either<A, B> {
 	 * @deprecated This is a convenience method for special cases only. Use
 	 *             {@link #ofFirst} and {@link #ofSecond} where possible.
 	 *
-	 * @param        <A> type of first value
-	 * @param        <B> type of second value
+	 * @param <A>    type of first value
+	 * @param <B>    type of second value
 	 * @param first  value of first type or {@code null}
 	 * @param second value of second type or {@code null}
 	 * @return an {@link Either} object with the given value
@@ -52,7 +52,7 @@ public class Either<A, B> {
 	 * @throws IllegalArgumentException if both parameters are non-{@code null}
 	 */
 	@Deprecated
-	@SuppressWarnings("PMD.AvoidThrowingNullPointerException")
+	@SuppressWarnings({ "PMD.AvoidThrowingNullPointerException", "PMD.ShortMethodName" })
 	public static <A, B> Either<A, B> of(@Nullable final A first, @Nullable final B second) {
 		if (first == null && second == null) {
 			throw new NullPointerException();
@@ -67,8 +67,8 @@ public class Either<A, B> {
 	 * Returns an {@link Either} object describing the given value of the
 	 * <b>first</b> type.
 	 *
-	 * @param       <A> first type of value
-	 * @param       <B> second type of value
+	 * @param <A>   first type of value
+	 * @param <B>   second type of value
 	 * @param value value to describe
 	 * @return an {@link Either} object describing the given value
 	 */
@@ -80,8 +80,8 @@ public class Either<A, B> {
 	 * Returns an {@link Either} object describing the given value of the
 	 * <b>second</b> type.
 	 *
-	 * @param       <A> first type of value
-	 * @param       <B> second type of value
+	 * @param <A>   first type of value
+	 * @param <B>   second type of value
 	 * @param value value to describe
 	 * @return an {@link Either} object describing the given value
 	 */
@@ -119,7 +119,7 @@ public class Either<A, B> {
 	 * long value = either.map(Long::parseLong, Number::longValue);
 	 * </pre>
 	 *
-	 * @param           <T> resulting type
+	 * @param <T>       resulting type
 	 * @param functionA function to map value, if it is of first type
 	 * @param functionB function to map value, if it is of second type
 	 * @return result after mapping the value using either {@code functionA} or

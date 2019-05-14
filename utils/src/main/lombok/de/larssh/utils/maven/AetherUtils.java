@@ -35,6 +35,7 @@ public class AetherUtils {
 	 * @param mavenRepository Maven Artifact Repository
 	 * @return Aether Remote Repository
 	 */
+	@SuppressWarnings("PMD.ShortVariable")
 	public static RemoteRepository convert(final ArtifactRepository mavenRepository) {
 		final ArtifactRepository r = mavenRepository;
 		return new RemoteRepository.Builder(r.getId(), r.getLayout().getId(), r.getUrl())
