@@ -1626,7 +1626,6 @@ install: mvn install -DskipTests=true -Dgpg.skip=true --batch-mode --show-versio
 						<phase>verify</phase>
 						<configuration>
 							<excludeFromFailureFile>${project.basedir}/pmd-excludes.properties</excludeFromFailureFile>
-							<includeTests>true</includeTests>
 							<rulesets>
 								<ruleset>${project.build.directory}/pmd/pmd-ruleset.xml</ruleset>
 							</rulesets>
