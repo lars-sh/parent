@@ -271,10 +271,15 @@ public class Strings {
 	}
 
 	/**
-	 * Returns {@code value.trim().isEmpty()}.
+	 * Returns {@code true} if {@code value} consists of whitespace only or equals
+	 * {@code null}.
+	 *
+	 * <p>
+	 * This is an optimized way of {@code value.trim().isEmpty()}.
 	 *
 	 * @param value string
-	 * @return {@code value.trim().isEmpty()}
+	 * @return {@code true} if {@code value} consists of whitespace only or equals
+	 *         {@code null}
 	 */
 	public static boolean isBlank(@Nullable final CharSequence value) {
 		if (value == null) {
