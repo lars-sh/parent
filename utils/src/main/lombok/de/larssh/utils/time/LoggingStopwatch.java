@@ -245,7 +245,7 @@ public class LoggingStopwatch extends CloseableStopwatch {
 		 */
 		private static void logStopwatchLastPeriod(final LoggingStopwatch stopwatch,
 				final Consumer<Supplier<String>> logger) {
-			logger.accept(() -> String.format("Period took %s.", stopwatch.sinceLast().toString().substring(2)));
+			logger.accept(() -> Strings.format("Period took %s.", stopwatch.sinceLast().toString().substring(2)));
 		}
 
 		/**
@@ -256,7 +256,7 @@ public class LoggingStopwatch extends CloseableStopwatch {
 		 */
 		private static void logStopwatchStarted(final LoggingStopwatch stopwatch,
 				final Consumer<Supplier<String>> logger) {
-			logger.accept(() -> String
+			logger.accept(() -> Strings
 					.format("Stopwatch \"%s\" started at %s.", stopwatch.getName(), stopwatch.getStartInstant()));
 		}
 
@@ -268,7 +268,7 @@ public class LoggingStopwatch extends CloseableStopwatch {
 		 */
 		private static void logStopwatchStopped(final LoggingStopwatch stopwatch,
 				final Consumer<Supplier<String>> logger) {
-			logger.accept(() -> String.format("Stopwatch \"%s\" stopped after %s.",
+			logger.accept(() -> Strings.format("Stopwatch \"%s\" stopped after %s.",
 					stopwatch.getName(),
 					stopwatch.sinceStart().toString().substring(2)));
 		}

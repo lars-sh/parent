@@ -46,7 +46,7 @@ public class Assertions {
 	 *                  change equality
 	 */
 	public static void assertEqualsAndHashCode(final Class<?> clazz, final AssertEqualsAndHashCodeArguments arguments) {
-		final Reflect reflect = Reflect.on(clazz);
+		final Reflect reflect = Reflect.onClass(clazz);
 		assertEqualsAndHashCode(a -> Reflects.create(reflect, a).get(), arguments);
 	}
 
