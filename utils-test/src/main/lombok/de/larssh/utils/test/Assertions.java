@@ -112,7 +112,7 @@ public class Assertions {
 	 * Wraps {@code constructor} to wrap exceptions thrown by that constructor with
 	 * an {@link AssertionException} showing the used arguments.
 	 *
-	 * @param             <T> the constructors class
+	 * @param <T>         the constructors class
 	 * @param constructor the constructor to wrap
 	 * @return wrapped constructor
 	 */

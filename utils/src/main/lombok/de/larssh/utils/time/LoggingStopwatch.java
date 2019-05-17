@@ -227,7 +227,7 @@ public class LoggingStopwatch extends CloseableStopwatch {
 		 * @param logger     the string supplier logging operation
 		 */
 		private static void logCheckpoint(final Checkpoint checkpoint, final Consumer<Supplier<String>> logger) {
-			logger.accept(() -> String.format("Period took %s. Checkpoint \"%s\" reached at %s.",
+			logger.accept(() -> Strings.format("Period took %s. Checkpoint \"%s\" reached at %s.",
 					checkpoint.sincePrevious().toString().substring(2),
 					checkpoint.getName(),
 					checkpoint.getInstant()));
