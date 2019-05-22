@@ -12,6 +12,9 @@ Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%
 * Hide CPD warnings about suppressed classes
 * Removed methods Completable.getLock() and ClosableStopwatch.getLock()
 
+### Fixed
+* Scope of maven-resolver-util dependency
+
 <a name="0.9.2"></a>
 
 ## [0.9.2](https://github.com/lars-sh/parent/compare/3547b85c9a72fd0c10c00be9dd40ceee65fec7cf...dcd5e2319393a95ac13db6ad55d6baf2a1cd7d31) (2019-05-06)
