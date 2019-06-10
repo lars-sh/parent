@@ -52,9 +52,6 @@ Upgrading existing projects to use this parent POM can be done step by step. As 
 ##### Skip Checkstyle
 	<checkstyle.skip>true</checkstyle.skip>
 
-##### Skip JavaDoc
-	<maven.javadoc.skip>true</maven.javadoc.skip>
-
 ##### Skip CPD
 	<cpd.skip>true</cpd.skip>
 
@@ -63,6 +60,9 @@ Upgrading existing projects to use this parent POM can be done step by step. As 
 
 ##### Skip SpotBugs
 	<spotbugs.skip>true</spotbugs.skip>
+
+##### Skip JavaDoc
+	<maven.javadoc.skip>true</maven.javadoc.skip>
 
 ##### Skip GPG Signing
 	<gpg.skip>true</gpg.skip>
