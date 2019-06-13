@@ -197,7 +197,7 @@ Inside your favorite IDE feel free to use its Maven-compatible build infrastrucu
 
 `mvn clean` empties Mavens `target` directory
 
-`mvn install` compiles and packages your project. Afterwards the packaged artifacts are installed to your local repository. Use `mvn package` instead to compile and package without installing or `mvn compile` to compile only.
+`mvn install` compiles and packages your project. Afterwards the packaged artifacts are installed to your local repository. Use `mvn verify` instead to compile and package without installing or `mvn compile` to compile only.
 
 `mvn site` runs additional reports on your project. Open `target/site/index.html` to check its results.
 
