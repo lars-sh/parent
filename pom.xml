@@ -1869,7 +1869,8 @@ install: mvn install -DskipTests=true -Dgpg.skip=true --batch-mode --show-versio
 	</reporting>
 
 	<profiles>
-		<!-- Eclipse only -->
+		<!-- Eclipse (only!): Add lombok sources to class path since delombok goals 
+			are ignored -->
 		<profile>
 			<id>eclipse-only</id>
 			<activation>
@@ -1879,7 +1880,6 @@ install: mvn install -DskipTests=true -Dgpg.skip=true --batch-mode --show-versio
 			</activation>
 			<build>
 				<plugins>
-					<!-- Update class paths ourselves, since delombok goals are ignored -->
 					<plugin>
 						<groupId>org.codehaus.mojo</groupId>
 						<artifactId>build-helper-maven-plugin</artifactId>
@@ -1910,8 +1910,20 @@ install: mvn install -DskipTests=true -Dgpg.skip=true --batch-mode --show-versio
 							</execution>
 						</executions>
 					</plugin>
+				</plugins>
+			</build>
+		</profile>
 
-					<!-- Update eclipse settings -->
+		<!-- Eclipse: Update eclipse settings -->
+		<profile>
+			<id>eclipse</id>
+			<activation>
+				<property>
+					<name>m2e.version</name>
+				</property>
+			</activation>
+			<build>
+				<plugins>
 					<plugin>
 						<artifactId>maven-antrun-plugin</artifactId>
 						<executions>

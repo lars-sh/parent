@@ -27,11 +27,6 @@ Creating a new project has been simplified as much as possible.
 3. Your artifacts will be signed digitally. Follow the configuration instructions at [Working with GPG Signatures](https://central.sonatype.org/pages/working-with-pgp-signatures.html) to set up your personal GPG keys.
 4. Change into the new projects directory and run `mvn verify` to test the POM and your infrastructure.
 
-#### Import into Eclipse
-1. In Eclipse choose `File`, `Import...`, `Existing Maven Projects`, `Next`, point the root directory to your newly created folder and press `Finish`.
-2. Wait until your workspace is built. In case it does not build automatically, remember to trigger it!
-3. **Restart Eclipse** to apply changes to project settings.
-
 ### With an existing Project
 1. Here's a Maven parent example:
 
@@ -45,6 +40,12 @@ Creating a new project has been simplified as much as possible.
 3. Change into the projects directory and run `mvn verify` to test the POM and your infrastructure.
 
 Remember to **restart Eclipse** to apply changes to project settings.
+
+### Import into Eclipse
+0. Optionally: Run `mvn generate-sources -P eclipse` to initialize the Eclipse settings. This might solve problems some users experience.
+1. In Eclipse choose `File`, `Import...`, `Existing Maven Projects`, `Next`, point the root directory to your newly created folder and press `Finish`.
+2. Wait until your workspace is built. In case it does not build automatically, remember to trigger it!
+3. **Restart Eclipse** to apply changes to project settings.
 
 #### Skip Validations
 Upgrading existing projects to use this parent POM can be done step by step. As this parent specifies some strict rules, some validations might need to be skipped until others pass. The following sections describe the corresponding Maven Properties.
