@@ -112,6 +112,25 @@
 			Values can be "enabled" or "disabled". -->
 		<org.eclipse.jdt.core.compiler.doc.comment.support>enabled</org.eclipse.jdt.core.compiler.doc.comment.support>
 
+		<!-- "dirty" allows to skip code checks and tests. Values can be "true" 
+			and "false". -->
+		<dirty>false</dirty>
+		<skipTests>${project.dirty}</skipTests>
+		<checkstyle.skip>${project.dirty}</checkstyle.skip>
+		<jacoco.skip>${project.dirty}</jacoco.skip>
+		<cpd.skip>${project.dirty}</cpd.skip>
+		<pmd.skip>${project.dirty}</pmd.skip>
+		<spotbugs.skip>${project.dirty}</spotbugs.skip>
+		<mdep.analyze.skip>${project.dirty}</mdep.analyze.skip>
+		<tidy.skip>${project.dirty}</tidy.skip>
+
+		<!-- "dirty-package" allows to skip the creation of optional packages. 
+			Values can be "true" and "false". -->
+		<dirty-package>false</dirty-package>
+		<maven.source.skip>${project.dirty-package}</maven.source.skip>
+		<maven.javadoc.skip>${project.dirty-package}</maven.javadoc.skip>
+		<gpg.skip>${project.dirty-package}</gpg.skip>
+
 		<checkstyle.version>8.20</checkstyle.version>
 		<fb-contrib.version>7.4.3.sb</fb-contrib.version>
 		<findsecbugs.version>1.8.0</findsecbugs.version>

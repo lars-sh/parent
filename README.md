@@ -49,8 +49,14 @@ Remember to **restart Eclipse** to apply changes to project settings.
 #### Skip Validations
 Upgrading existing projects to use this parent POM can be done step by step. As this parent specifies some strict rules, some validations might need to be skipped until others pass. The following sections describe the corresponding Maven Properties.
 
+##### Skip Tests
+	<skipTests>${project.dirty}</skipTests>
+
 ##### Skip Checkstyle
 	<checkstyle.skip>true</checkstyle.skip>
+
+##### Skip JaCoCo
+	<jacoco.skip>${project.dirty}</jacoco.skip>
 
 ##### Skip CPD
 	<cpd.skip>true</cpd.skip>
@@ -61,11 +67,30 @@ Upgrading existing projects to use this parent POM can be done step by step. As 
 ##### Skip SpotBugs
 	<spotbugs.skip>true</spotbugs.skip>
 
+##### Skip Dependency Analysis
+	<mdep.analyze.skip>${project.dirty}</mdep.analyze.skip>
+
+##### Skip Tidy
+	<tidy.skip>${project.dirty}</tidy.skip>
+
+##### Dirty
+Skip all the above checks and tests.
+
+	-Ddirty=true
+
+##### Skip Sources
+	<maven.source.skip>${project.dirty-package}</maven.source.skip>
+
 ##### Skip JavaDoc
 	<maven.javadoc.skip>true</maven.javadoc.skip>
 
 ##### Skip GPG Signing
 	<gpg.skip>true</gpg.skip>
+
+##### Dirty Package
+Skip the above creation of optional packages and signing.
+
+	-Ddirty-package=true
 
 ## Ingredients
 Taking your first steps using this POM is as simple as not using it. However it comes with a lot nicely pre-configured *ingredients*.
@@ -216,6 +241,10 @@ Optionally dependencies can be bundled to deploy and run a *full-blown* JAR file
 
 #### Maven Properties
 This parent POM either predefines existing Maven Properties or introduces some own.
+
+`dirty` allows to skip code checks and tests. Values can be `true` and `false`. Deafult value: `false`
+
+`dirty-package` allows to skip the creation of optional packages. Values can be `true` and `false`. Default value: `false`
 
 `project.build.mainClass` is meant to be used by child POMs to configure a default main class, e.g. "de.larssh.Main". Default value: *empty*
 
