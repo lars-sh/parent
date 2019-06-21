@@ -14,7 +14,10 @@ Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%
 ### Changed
 * Run PMD as build goal instead of as report
 * Hide CPD warnings about suppressed classes
-* Removed methods Completable.getLock() and ClosableStopwatch.getLock()
+* Remove redundant semicolons when running save actions or doing clean up
+
+### Removed
+* Methods Completable.getLock() and ClosableStopwatch.getLock()
 
 ### Fixed
 * Scope of maven-resolver-util dependency

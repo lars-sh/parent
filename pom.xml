@@ -2055,7 +2055,7 @@ install: mvn install -DskipTests=true -Dgpg.skip=true --batch-mode --show-versio
 											<entry key="cleanup.remove_redundant_modifiers"
 												value="true" />
 											<entry key="cleanup.remove_redundant_semicolons"
-												value="false" />
+												value="true" />
 											<entry key="cleanup.remove_redundant_type_arguments"
 												value="true" />
 											<entry key="cleanup.remove_trailing_whitespaces"
@@ -2208,7 +2208,7 @@ install: mvn install -DskipTests=true -Dgpg.skip=true --batch-mode --show-versio
 											<entry key="sp_cleanup.remove_redundant_modifiers"
 												value="true" />
 											<entry key="sp_cleanup.remove_redundant_semicolons"
-												value="false" />
+												value="true" />
 											<entry key="sp_cleanup.remove_redundant_type_arguments"
 												value="true" />
 											<entry key="sp_cleanup.remove_trailing_whitespaces"
