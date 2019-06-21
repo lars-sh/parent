@@ -2110,7 +2110,7 @@ install: mvn install -DskipTests=true -Dgpg.skip=true --batch-mode --show-versio
 												key="editor_save_participant_org.eclipse.jdt.ui.postsavelistener.cleanup"
 												value="true" />
 											<entry key="formatter_profile" value="_de.lars-sh" />
-											<entry key="formatter_settings_version" value="14" />
+											<entry key="formatter_settings_version" value="16" />
 											<entry key="org.eclipse.jdt.ui.exception.name"
 												value="e" />
 											<entry key="org.eclipse.jdt.ui.gettersetter.use.is"
@@ -2127,6 +2127,8 @@ install: mvn install -DskipTests=true -Dgpg.skip=true --batch-mode --show-versio
 												value="true" />
 											<entry key="org.eclipse.jdt.ui.staticondemandthreshold"
 												value="99" />
+											<entry
+												key="org.eclipse.jdt.ui.text.custom_code_templates" value="" />
 											<entry key="sp_cleanup.add_default_serial_version_id"
 												value="true" />
 											<entry key="sp_cleanup.add_generated_serial_version_id"
@@ -3054,6 +3056,12 @@ install: mvn install -DskipTests=true -Dgpg.skip=true --batch-mode --show-versio
 												key="org.eclipse.jdt.core.formatter.insert_space_after_and_in_type_parameter"
 												value="insert" />
 											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_arrow_in_switch_case"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_arrow_in_switch_default"
+												value="insert" />
+											<entry
 												key="org.eclipse.jdt.core.formatter.insert_space_after_assignment_operator"
 												value="insert" />
 											<entry
@@ -3145,6 +3153,9 @@ install: mvn install -DskipTests=true -Dgpg.skip=true --batch-mode --show-versio
 												value="insert" />
 											<entry
 												key="org.eclipse.jdt.core.formatter.insert_space_after_comma_in_superinterfaces"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_after_comma_in_switch_case_expressions"
 												value="insert" />
 											<entry
 												key="org.eclipse.jdt.core.formatter.insert_space_after_comma_in_type_arguments"
@@ -3259,6 +3270,12 @@ install: mvn install -DskipTests=true -Dgpg.skip=true --batch-mode --show-versio
 												value="insert" />
 											<entry
 												key="org.eclipse.jdt.core.formatter.insert_space_before_and_in_type_parameter"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_arrow_in_switch_case"
+												value="insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_arrow_in_switch_default"
 												value="insert" />
 											<entry
 												key="org.eclipse.jdt.core.formatter.insert_space_before_assignment_operator"
@@ -3400,6 +3417,9 @@ install: mvn install -DskipTests=true -Dgpg.skip=true --batch-mode --show-versio
 												value="do not insert" />
 											<entry
 												key="org.eclipse.jdt.core.formatter.insert_space_before_comma_in_superinterfaces"
+												value="do not insert" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.insert_space_before_comma_in_switch_case_expressions"
 												value="do not insert" />
 											<entry
 												key="org.eclipse.jdt.core.formatter.insert_space_before_comma_in_type_arguments"
