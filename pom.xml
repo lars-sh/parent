@@ -1270,6 +1270,10 @@ TODO: Easy to understand usage example
 			<property name="maximumNumber" value="0" />
 			<property name="maximumMessage" value="The return value of the operators ++ and -- should not be used as they lead to hardly readable code." />
 		</module>
+		<module name="Indentation">
+			<property name="throwsIndent" value="8" />
+			<property name="lineWrappingIndentation" value="0" />
+		</module>
 		<module name="OuterTypeFilename" />
 		<module name="TodoComment">
 			<property name="format" value="^\s*(TODO|XXX|FIXME).*" />
