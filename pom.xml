@@ -1185,7 +1185,7 @@ TODO: Easy to understand usage example
 
 		<!-- Filters: Delombok: Suppress irregular formatting -->
 		<module name="SuppressionXpathSingleFilter">
-			<property name="checks" value="EmptyLineSeparator" />
+			<property name="checks" value="EmptyLineSeparator|XLineTrailingSpaces" />
 			<property name="files" value="^(.*[/\\])?generated-(test-)?sources[/\\]delombok[/\\].*$" />
 		</module>
 
