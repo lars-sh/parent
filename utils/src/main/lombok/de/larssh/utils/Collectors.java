@@ -7,6 +7,7 @@ import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 import java.util.function.BinaryOperator;
 import java.util.function.Function;
 import java.util.function.Supplier;
@@ -46,7 +47,7 @@ public class Collectors {
 	 * @return a {@code Collector} which collects {@link Entry} elements into a
 	 *         {@code LinkedHashMap}
 	 */
-	public static <K, V> Collector<Entry<K, V>, ?, LinkedHashMap<K, V>> toLinkedHashMap() {
+	public static <K, V> Collector<Entry<K, V>, ?, Map<K, V>> toLinkedHashMap() {
 		return toLinkedHashMap(Entry::getKey, Entry::getValue, throwingMerger());
 	}
 
@@ -64,8 +65,7 @@ public class Collectors {
 	 *         {@code LinkedHashMap} whose keys and values are the result of
 	 *         applying mapping functions to the input elements
 	 */
-	public static <T, K, U> Collector<T, ?, LinkedHashMap<K, U>> toLinkedHashMap(
-			final Function<? super T, ? extends K> keyMapper,
+	public static <T, K, U> Collector<T, ?, Map<K, U>> toLinkedHashMap(final Function<? super T, ? extends K> keyMapper,
 			final Function<? super T, ? extends U> valueMapper) {
 		return toLinkedHashMap(keyMapper, valueMapper, throwingMerger());
 	}
@@ -89,8 +89,7 @@ public class Collectors {
 	 *         result of applying a value mapping function to all input elements
 	 *         equal to the key and combining them using the merge function
 	 */
-	public static <T, K, U> Collector<T, ?, LinkedHashMap<K, U>> toLinkedHashMap(
-			final Function<? super T, ? extends K> keyMapper,
+	public static <T, K, U> Collector<T, ?, Map<K, U>> toLinkedHashMap(final Function<? super T, ? extends K> keyMapper,
 			final Function<? super T, ? extends U> valueMapper,
 			final BinaryOperator<U> mergeFunction) {
 		return toMap(keyMapper, valueMapper, mergeFunction, LinkedHashMap::new);
@@ -104,7 +103,7 @@ public class Collectors {
 	 * @return a {@link Collector} which collects all the input elements into a
 	 *         {@link LinkedHashSet}
 	 */
-	public static <T> Collector<T, ?, LinkedHashSet<T>> toLinkedHashSet() {
+	public static <T> Collector<T, ?, Set<T>> toLinkedHashSet() {
 		return toCollection(LinkedHashSet::new);
 	}
 
