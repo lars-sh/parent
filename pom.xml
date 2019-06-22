@@ -1088,7 +1088,7 @@ TODO: Easy to understand usage example
 		</module>
 		<module name="IllegalThrows" />
 		<module name="IllegalToken">
-			<property name="tokens" value="BAND, BOR, DEC, EMPTY_STAT, INC, LABELED_STAT, LITERAL_ASSERT, LITERAL_BREAK, LITERAL_CONTINUE, POST_DEC, POST_INC, UNARY_PLUS" />
+			<property name="tokens" value="BAND, BOR, DEC, EMPTY_STAT, INC, LABELED_STAT, LITERAL_ASSERT, LITERAL_BREAK, LITERAL_CONTINUE, UNARY_PLUS" />
 		</module>
 		<module name="IllegalTokenText">
 			<property name="format" value="^(ASCII|ISO-8859-1|US-ASCII|UTF-16|UTF-16BE|UTF-16LE|UTF-8)$" />
@@ -1138,6 +1138,12 @@ TODO: Easy to understand usage example
 			<property name="checkFormat" value="MultipleStringLiteralsCheck" />
 			<property name="messageFormat" value="^The String &quot;$1&quot; appears \d+ times in the file\.$" />
 			<property name="influenceFormat" value="$2" />
+		</module>
+
+		<!-- Filters: Allow postfix incrementor and decrementor inside for iterators -->
+		<module name="SuppressionXpathSingleFilter">
+			<property name="checks" value="DescendantToken" />
+			<property name="query" value="//FOR_ITERATOR/descendant-or-self::node()" />
 		</module>
 
 		<!-- Filters: Allow multi catch while disallowing bitwise OR -->
@@ -1251,6 +1257,12 @@ TODO: Easy to understand usage example
 		<module name="CommentsIndentation" />
 		<module name="FinalParameters">
 			<property name="tokens" value="METHOD_DEF, CTOR_DEF, LITERAL_CATCH, FOR_EACH_CLAUSE" />
+		</module>
+		<module name="DescendantToken">
+			<property name="tokens" value="ANNOTATION, ASSIGN, BAND_ASSIGN, BOR_ASSIGN, BSR_ASSIGN, BXOR_ASSIGN, DIV_ASSIGN, DO_WHILE, ELIST, FOR_EACH_CLAUSE, LAMBDA, LITERAL_ASSERT, LITERAL_CASE, LITERAL_IF, LITERAL_RETURN, LITERAL_WHILE, MINUS_ASSIGN, MOD_ASSIGN, PLUS_ASSIGN, QUESTION, SL_ASSIGN, SR_ASSIGN, STAR_ASSIGN" />
+			<property name="limitedTokens" value="POST_DEC, POST_INC" />
+			<property name="maximumNumber" value="0" />
+			<property name="maximumMessage" value="Do not use the ++ operators result value directly" />
 		</module>
 		<module name="Indentation">
 			<property name="throwsIndent" value="8" />
