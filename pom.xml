@@ -131,7 +131,7 @@
 		<maven.javadoc.skip>${project.dirty-package}</maven.javadoc.skip>
 		<gpg.skip>${project.dirty-package}</gpg.skip>
 
-		<checkstyle.version>8.20</checkstyle.version>
+		<checkstyle.version>8.21</checkstyle.version>
 		<fb-contrib.version>7.4.3.sb</fb-contrib.version>
 		<findsecbugs.version>1.8.0</findsecbugs.version>
 		<joor.version>0.9.11</joor.version>
@@ -1244,6 +1244,10 @@ TODO: Easy to understand usage example
 		<module name="JavadocTagContinuationIndentation" />
 		<module name="JavadocType" />
 		<module name="JavadocVariable" />
+		<module name="MissingJavadocMethod">
+			<property name="allowedAnnotations" value="" />
+			<property name="scope" value="private" />
+		</module>
 		<module name="MissingJavadocType">
 			<property name="scope" value="private" />
 		</module>
