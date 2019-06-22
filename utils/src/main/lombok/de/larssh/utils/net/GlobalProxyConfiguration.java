@@ -11,6 +11,7 @@ import java.util.Optional;
 import java.util.Set;
 
 import de.larssh.utils.Nullables;
+import de.larssh.utils.text.SplitLimit;
 import de.larssh.utils.text.Strings;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -177,8 +178,8 @@ public class GlobalProxyConfiguration {
 	 *                                       {@code nonProxyHosts} property
 	 */
 	public Set<String> getNonProxyHosts() {
-		return new LinkedHashSet<>(
-				asList(Nullables.orElse(System.getProperty(getNonProxyHostsPropertyOrThrow()), "").split("\\|")));
+		return new LinkedHashSet<>(asList(Nullables.orElse(System.getProperty(getNonProxyHostsPropertyOrThrow()), "")
+				.split("\\|", SplitLimit.NONE_AND_NO_EMPTY_TRAILING)));
 	}
 
 	/**

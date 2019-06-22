@@ -987,7 +987,7 @@ TODO: Easy to understand usage example
 		<property name="id" value="XPatternSplit" />
 		<property name="fileExtensions" value="java" />
 		<property name="format" value="\.\s*split\s*\(([^&quot;\(,\)]+|&quot;([^\\&quot;]+|\\.)*&quot;|\([^\)]*\))+\)" />
-		<property name="message" value="Pattern.split(input) must not be used. Use Pattern.split(input, limit) instead and think about the limit. Use -1 to not discard trailing empty strings." />
+		<property name="message" value="Pattern.split(input) must not be used. Use Pattern.split(input, limit) instead and think about the limit. Use StringLimit.NONE to not discard trailing empty strings." />
 	</module>
 	<module name="RegexpMultiline">
 		<property name="id" value="XStringMatches" />
@@ -1011,7 +1011,7 @@ TODO: Easy to understand usage example
 		<property name="id" value="XStringSplit" />
 		<property name="fileExtensions" value="java" />
 		<property name="format" value="&quot;\s*\.\s*split\s*\(|[a-z][A-Z0-9_]*\s*\.\s*split\s*\(" />
-		<property name="message" value="String.split must not be used. Use Pattern.split instead. This is likely to be a false positive if String.split is not called." />
+		<property name="message" value="String.split must not be used. Use Pattern.split(input, limit) instead. This is likely to be a false positive if String.split is not called." />
 	</module>
 
 	<!-- Size Violations -->

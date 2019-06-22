@@ -10,6 +10,7 @@ Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%
 ### Added
 * The new properties `dirty` and `dirty-package` allow to skip multiple checks at once.
 * Allow updating Eclipse settings manually
+* SplitLimit utility to handle `Pattern.split` and `String.split` in a clean way.
 
 ### Changed
 * Run PMD as build goal instead of as report
