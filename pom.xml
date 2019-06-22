@@ -1268,7 +1268,7 @@ TODO: Easy to understand usage example
 			<property name="tokens" value="ANNOTATION, ASSIGN, BAND_ASSIGN, BOR_ASSIGN, BSR_ASSIGN, BXOR_ASSIGN, DIV_ASSIGN, DO_WHILE, ELIST, FOR_EACH_CLAUSE, LAMBDA, LITERAL_ASSERT, LITERAL_CASE, LITERAL_IF, LITERAL_RETURN, LITERAL_WHILE, MINUS_ASSIGN, MOD_ASSIGN, PLUS_ASSIGN, QUESTION, SL_ASSIGN, SR_ASSIGN, STAR_ASSIGN" />
 			<property name="limitedTokens" value="POST_DEC, POST_INC" />
 			<property name="maximumNumber" value="0" />
-			<property name="maximumMessage" value="Do not use the ++ operators result value directly" />
+			<property name="maximumMessage" value="The return value of the operators ++ and -- should not be used as they lead to hardly readable code." />
 		</module>
 		<module name="OuterTypeFilename" />
 		<module name="TodoComment">
