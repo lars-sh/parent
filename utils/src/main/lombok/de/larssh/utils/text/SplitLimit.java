@@ -16,6 +16,7 @@ import lombok.experimental.UtilityClass;
  * trailing empty strings.
  */
 @UtilityClass
+@SuppressWarnings("PMD.ClassNamingConventions")
 public class SplitLimit {
 	/**
 	 * No limit and do not discard trailing empty strings.
