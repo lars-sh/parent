@@ -1164,6 +1164,12 @@ TODO: Easy to understand usage example
 			<property name="files" value="^(.*[/\\])?src[/\\](main|test)[/\\]lombok[/\\].*$" />
 		</module>
 
+		<!-- Filters: Lombok: Allow @Tostring.Include member "rank" to have any magic number -->
+		<module name="SuppressionXpathSingleFilter">
+			<property name="checks" value="MagicNumber" />
+			<property name="query" value="//ANNOTATION[DOT[IDENT[@text = 'ToString'] and IDENT[@text = 'Include']]]/ANNOTATION_MEMBER_VALUE_PAIR[IDENT[@text = 'rank']]/descendant-or-self::node()" />
+		</module>
+
 		<!-- Filters: Delombok: Suppress checks for annotated with "@lombok.Generated" -->
 		<module name="SuppressionXpathSingleFilter">
 			<property name="checks" value="^.*$" />
