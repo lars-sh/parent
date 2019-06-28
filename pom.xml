@@ -1281,11 +1281,10 @@ TODO: Easy to understand usage example
 			<property name="tokens" value="METHOD_DEF, CTOR_DEF, LITERAL_CATCH, FOR_EACH_CLAUSE" />
 		</module>
 		<module name="DescendantToken">
-			<property name="tokens" value="ASSIGN, BAND_ASSIGN, BOR_ASSIGN, BSR_ASSIGN, BXOR_ASSIGN, DIV_ASSIGN, FOR_EACH_CLAUSE, FOR_ITERATOR, LITERAL_CASE, MINUS_ASSIGN, MOD_ASSIGN, PLUS_ASSIGN, SL_ASSIGN, SR_ASSIGN, STAR_ASSIGN" />
-			<property name="limitedTokens" value="ASSIGN, BAND_ASSIGN, BOR_ASSIGN, BSR_ASSIGN, BXOR_ASSIGN, DEC, DIV_ASSIGN, INC, MINUS_ASSIGN, MOD_ASSIGN, PLUS_ASSIGN, POST_DEC, POST_INC, SL_ASSIGN, SR_ASSIGN, STAR_ASSIGN" />
-			<property name="minimumDepth" value="1" />
+			<property name="tokens" value="ANNOTATION, ASSIGN, BAND_ASSIGN, BOR_ASSIGN, BSR_ASSIGN, BXOR_ASSIGN, DIV_ASSIGN, DO_WHILE, ELIST, FOR_EACH_CLAUSE, LAMBDA, LITERAL_ASSERT, LITERAL_CASE, LITERAL_IF, LITERAL_RETURN, LITERAL_WHILE, MINUS_ASSIGN, MOD_ASSIGN, PLUS_ASSIGN, QUESTION, SL_ASSIGN, SR_ASSIGN, STAR_ASSIGN" />
+			<property name="limitedTokens" value="POST_DEC, POST_INC" />
 			<property name="maximumNumber" value="0" />
-			<property name="maximumMessage" value="The return value of assignment {3} is used inside a {2}. Such code might be hardly readable as it mixes changing a variable and processing its value. Better use two separate statements instead." />
+			<property name="maximumMessage" value="The return value of the operators ++ and -- should not be used as they lead to hardly readable code." />
 		</module>
 		<module name="Indentation">
 			<property name="caseIndent" value="0" />
