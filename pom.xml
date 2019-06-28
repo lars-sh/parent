@@ -1158,6 +1158,12 @@ TODO: Easy to understand usage example
 			<property name="query" value="//STATIC_INIT/descendant-or-self::node()" />
 		</module>
 
+		<!-- Filters: Formatter (known error): Ignore misaligned if and else blocks as the Eclipse formatter is not able to handle long breaking lines correctly -->
+		<module name="SuppressionXpathSingleFilter">
+			<property name="checks" value="Indentation" />
+			<property name="message" value="^&apos;(if|else)(&apos; child| rcurly&apos;) has incorrect indentation level \d+, expected level should be \d+\.$" />
+		</module>
+
 		<!-- Filters: Unit Tests -->
 		<module name="SuppressionXpathSingleFilter">
 			<property name="checks" value="ExecutableStatementCount|JavadocVariable|MagicNumber|MethodLength|MultipleStringLiterals" />
@@ -1275,7 +1281,9 @@ TODO: Easy to understand usage example
 			<property name="maximumMessage" value="The return value of the operators ++ and -- should not be used as they lead to hardly readable code." />
 		</module>
 		<module name="Indentation">
+			<property name="caseIndent" value="0" />
 			<property name="throwsIndent" value="8" />
+			<property name="arrayInitIndent" value="8" />
 			<property name="lineWrappingIndentation" value="0" />
 		</module>
 		<module name="OuterTypeFilename" />
@@ -2795,7 +2803,7 @@ install: mvn install -DskipTests=true -Dgpg.skip=true --batch-mode --show-versio
 												value="0" />
 											<entry
 												key="org.eclipse.jdt.core.formatter.alignment_for_resources_in_try"
-												value="80" />
+												value="81" />
 											<entry
 												key="org.eclipse.jdt.core.formatter.alignment_for_selector_in_method_invocation"
 												value="80" />
