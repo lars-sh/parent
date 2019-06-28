@@ -31,5 +31,5 @@ import edu.umd.cs.findbugs.annotations.NonNull;
 @Target({ ElementType.PACKAGE, ElementType.TYPE })
 @DefaultAnnotation(NonNull.class)
 public @interface NonNullByDefault {
-	// empty by design
+	// no annotation type elements needed
 }

@@ -150,7 +150,6 @@ public class LoggingStopwatch extends CloseableStopwatch {
 	 * @param logger the logging operation
 	 */
 	public LoggingStopwatch(final String name, final Consumer<? super LoggingStopwatch> logger) {
-		super();
 		this.logger = logger;
 		this.name = name;
 		logger.accept(this);

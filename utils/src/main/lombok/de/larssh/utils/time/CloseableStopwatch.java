@@ -56,7 +56,7 @@ public abstract class CloseableStopwatch extends Stopwatch implements AutoClosea
 	 * are ignored.
 	 */
 	public CloseableStopwatch() {
-		super();
+		// no fields to be initialized
 	}
 
 	/**

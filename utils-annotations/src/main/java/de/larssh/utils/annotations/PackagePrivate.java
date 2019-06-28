@@ -20,5 +20,5 @@ import java.lang.annotation.Target;
 		ElementType.METHOD,
 		ElementType.TYPE })
 public @interface PackagePrivate {
-	// empty by design
+	// no annotation type elements needed
 }
