@@ -12,6 +12,7 @@ Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%
 * Allow updating Eclipse settings manually
 * SplitLimit utility to handle `Pattern.split` and `String.split` in a clean way.
 * Disallow `super()` using checkstyle
+* Disallow using the assigning statements return value (as far as possible)
 
 ### Changed
 * Run PMD as build goal instead of as report
