@@ -1459,6 +1459,9 @@ TODO: Easy to understand usage example
 		<exclude name="CommentDefaultAccessModifier" />
 		<exclude name="LinguisticNaming" />
 
+		<!-- Better document why a constructor is empty than writing "super()" -->
+		<exclude name="CallSuperInConstructor" />
+
 		<!-- Requires Google Guava -->
 		<exclude name="DefaultPackage" />
 
