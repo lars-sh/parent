@@ -14,8 +14,9 @@ Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%
 * Disallow `super()` using checkstyle
 
 ### Changed
-* Run PMD as build goal instead of as report
+* Fail on JavaDoc warnings
 * Hide CPD warnings about suppressed classes
+* Run PMD as build goal instead of as report
 * Remove redundant semicolons when running save actions or doing clean up
 
 ### Removed

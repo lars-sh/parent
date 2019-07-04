@@ -1713,6 +1713,10 @@ install: mvn install -DskipTests=true -Dgpg.skip=true --batch-mode --show-versio
 						</goals>
 					</execution>
 				</executions>
+				<configuration>
+					<failOnWarnings>true</failOnWarnings>
+					<quiet>true</quiet>
+				</configuration>
 			</plugin>
 
 			<!-- Copy Paste Detection -->
