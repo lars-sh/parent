@@ -864,6 +864,7 @@ TODO: Easy to understand usage example
 									<entry key="config.stopBubbling" value="true" />
 									<entry key="lombok.addLombokGeneratedAnnotation"
 										value="true" />
+									<entry key="lombok.builder.flagUsage" value="error" />
 									<entry key="lombok.cleanUp.flagUsage" value="error" />
 									<entry key="lombok.data.flagUsage" value="error" />
 									<entry key="lombok.equalsAndHashCode.callSuper"
@@ -887,6 +888,7 @@ TODO: Easy to understand usage example
 									<entry key="config.stopBubbling" value="true" />
 									<entry key="lombok.addLombokGeneratedAnnotation"
 										value="true" />
+									<entry key="lombok.builder.flagUsage" value="error" />
 									<entry key="lombok.cleanUp.flagUsage" value="error" />
 									<entry key="lombok.data.flagUsage" value="error" />
 									<entry key="lombok.equalsAndHashCode.callSuper"

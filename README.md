@@ -143,9 +143,9 @@ Writing a `toString` method is either exhausting or requires to bundle external 
 ##### @UtilityClass
 As Java does not have a real namespace system, all methods need to be part of a class. This leads to helper classes containing only static methods while the *class* shouldn't be instantiated at any time.
 
-Warning: This annotations forces all methods inside its class to be static. In theory that's absolutely fine, in practice that might bring you into trouble. So remember to make your methods static yourself! 
+Warning: This annotations forces all methods inside its class to be static. In theory that's absolutely fine, in practice that might bring you into trouble. So remember to make your methods static yourself!
 
-##### @Builder, @Log
+##### @Log
 I did not play around with these, though they seem to simplify two quite common cases.
 
 #### The bad parts
@@ -153,6 +153,9 @@ The following Project Lombok features are disabled on default to minimize your r
 
 ##### @NonNull
 This Lombok annotation adds non-null-checks to method and constructor parameters. Those are simple runtime checks, however we decided to go with compile-time checks as described in the next section.
+
+##### @Builder
+Sadly `@Builder` is incompatible with the default non-nullable concept. See https://github.com/rzwitserloot/lombok/issues/1570 for more up-to-date information.
 
 ##### @Cleanup
 Use try-with-resource statements instead.
@@ -189,11 +192,11 @@ Usage example:
 		throw new SneakyException(e);
 	}
 
-##### var
-Use the `var` statement supported by Java 9 and upper.
-
 ##### val
 This is a pseudo-type similar to the `var` statement, but meant for local variables making them final. It is prohibited to not be confused with the `var` statement. In addition Eclipse is configued to make local variables final while formatting and saving.
+
+##### var
+Use the `var` statement supported by Java 9 and upper.
 
 ### Null Values
 When Java was introduced it came with null values, which can be compared to a reference into no-where. It's often used for missing values or simply as additional or special value. Though null values need to be handled by developers, leading to `NullPointerException`s whenever they are not.
