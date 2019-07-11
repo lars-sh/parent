@@ -131,7 +131,7 @@
 		<maven.javadoc.skip>${dirty-package}</maven.javadoc.skip>
 		<gpg.skip>${dirty-package}</gpg.skip>
 
-		<checkstyle.version>8.21</checkstyle.version>
+		<checkstyle.version>8.22</checkstyle.version>
 		<fb-contrib.version>7.4.3.sb</fb-contrib.version>
 		<findsecbugs.version>1.8.0</findsecbugs.version>
 		<joor.version>0.9.11</joor.version>
@@ -1134,6 +1134,7 @@ TODO: Easy to understand usage example
 		<module name="SuperClone" />
 		<module name="SuperFinalize" />
 		<module name="UnnecessaryParentheses" />
+		<module name="UnnecessarySemicolonInTryWithResources" />
 		<module name="VariableDeclarationUsageDistance" />
 
 		<!-- Filters -->
@@ -1262,6 +1263,7 @@ TODO: Easy to understand usage example
 			<property name="allowedAnnotations" value="" />
 			<property name="scope" value="private" />
 		</module>
+		<module name="MissingJavadocPackage" />
 		<module name="MissingJavadocType">
 			<property name="scope" value="private" />
 		</module>
