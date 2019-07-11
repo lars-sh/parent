@@ -16,6 +16,7 @@ Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%
 ### Changed
 * Fail on JavaDoc warnings
 * Disallow the usage of @lombok.Builder as of compatibility problems with the default non-null concept
+* Disallow parameter names that match "arg" or "arg0" and similar
 * Hide CPD warnings about suppressed classes
 * Run PMD as build goal instead of as report
 * Remove redundant semicolons when running save actions or doing clean up
