@@ -139,6 +139,7 @@ public class Optionals {
 	 * @return an {@link OptionalDouble} describing the value of {@code optional},
 	 *         if a value is present, otherwise an empty {@link OptionalDouble}
 	 */
+	@SuppressFBWarnings(value = "FII_USE_METHOD_REFERENCE", justification = "Missing ToLongFunction.identity()")
 	public static OptionalDouble mapToDouble(final Optional<Double> optional) {
 		return mapToDouble(optional, value -> value);
 	}
@@ -167,6 +168,7 @@ public class Optionals {
 	 * @return an {@link OptionalInt} describing the value of {@code optional}, if a
 	 *         value is present, otherwise an empty {@link OptionalInt}
 	 */
+	@SuppressFBWarnings(value = "FII_USE_METHOD_REFERENCE", justification = "Missing ToLongFunction.identity()")
 	public static OptionalInt mapToInt(final Optional<Integer> optional) {
 		return mapToInt(optional, value -> value);
 	}
@@ -195,6 +197,7 @@ public class Optionals {
 	 * @return an {@link OptionalLong} describing the value of {@code optional}, if
 	 *         a value is present, otherwise an empty {@link OptionalLong}
 	 */
+	@SuppressFBWarnings(value = "FII_USE_METHOD_REFERENCE", justification = "Missing ToLongFunction.identity()")
 	public static OptionalLong mapToLong(final Optional<Long> optional) {
 		return mapToLong(optional, value -> value);
 	}

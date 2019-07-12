@@ -2,7 +2,7 @@
 <!DOCTYPE suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN" "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
 <suppressions>
 	<!-- Suppress checks for illegal optionals for optional utility classes -->
-	<suppress files="^.*[/\\]de[/\\]larssh[/\\]utils[/\\]OptionalDoubles\.java$" id="XOptionalDouble" />
-	<suppress files="^.*[/\\]de[/\\]larssh[/\\]utils[/\\]OptionalInts\.java$" id="XOptionalInteger" />
-	<suppress files="^.*[/\\]de[/\\]larssh[/\\]utils[/\\]OptionalLongs\.java$" id="XOptionalLong" />
+	<suppress files="^.*[/\\]de[/\\]larssh[/\\]utils[/\\]Optional(Double)?s\.java$" id="XOptionalDouble" />
+	<suppress files="^.*[/\\]de[/\\]larssh[/\\]utils[/\\]Optional(Int)?s\.java$" id="XOptionalInteger" />
+	<suppress files="^.*[/\\]de[/\\]larssh[/\\]utils[/\\]Optional(Long)?s\.java$" id="XOptionalLong" />
 </suppressions>
