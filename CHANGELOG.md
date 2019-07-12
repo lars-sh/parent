@@ -23,6 +23,7 @@ Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%
 
 ### Removed
 * Methods Completable.getLock() and ClosableStopwatch.getLock()
+* Dependency Management entries inside POM that were not used by one of the parent projects
 
 ### Fixed
 * Scope of maven-resolver-util dependency
