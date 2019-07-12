@@ -140,7 +140,7 @@
 		<lombok.version>1.18.8</lombok.version>
 		<mockito.version>3.0.0</mockito.version>
 		<parent.version>0.9.3-SNAPSHOT</parent.version>
-		<pmd.version>6.15.0</pmd.version>
+		<pmd.version>6.16.0</pmd.version>
 		<spotbugs.version>3.1.12</spotbugs.version>
 	</properties>
 
@@ -314,16 +314,6 @@
 				<version>${pmd.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>net.sourceforge.pmd</groupId>
-				<artifactId>pmd-javascript</artifactId>
-				<version>${pmd.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>net.sourceforge.pmd</groupId>
-				<artifactId>pmd-jsp</artifactId>
-				<version>${pmd.version}</version>
-			</dependency>
-			<dependency>
 				<groupId>org.projectlombok</groupId>
 				<artifactId>lombok</artifactId>
 				<version>${lombok.version}</version>
@@ -476,16 +466,6 @@
 						<dependency>
 							<groupId>net.sourceforge.pmd</groupId>
 							<artifactId>pmd-java</artifactId>
-							<version>${pmd.version}</version>
-						</dependency>
-						<dependency>
-							<groupId>net.sourceforge.pmd</groupId>
-							<artifactId>pmd-javascript</artifactId>
-							<version>${pmd.version}</version>
-						</dependency>
-						<dependency>
-							<groupId>net.sourceforge.pmd</groupId>
-							<artifactId>pmd-jsp</artifactId>
 							<version>${pmd.version}</version>
 						</dependency>
 					</dependencies>
@@ -1451,6 +1431,7 @@ TODO: Easy to understand usage example
 
 		<!-- Deprecated -->
 		<exclude name="AbstractNaming" />
+		<exclude name="AvoidFinalLocalVariable" />
 		<exclude name="AvoidPrefixingMethodParameters" />
 		<exclude name="ForLoopsMustUseBraces" />
 		<exclude name="IfElseStmtsMustUseBraces" />
