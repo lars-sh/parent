@@ -132,6 +132,18 @@ public class Optionals {
 	}
 
 	/**
+	 * If a value is present, returns an {@link OptionalDouble} describing the
+	 * result. Otherwise returns an empty {@link OptionalDouble}.
+	 *
+	 * @param optional optional value
+	 * @return an {@link OptionalDouble} describing the value of {@code optional},
+	 *         if a value is present, otherwise an empty {@link OptionalDouble}
+	 */
+	public static OptionalDouble mapToDouble(final Optional<Double> optional) {
+		return mapToDouble(optional, value -> value);
+	}
+
+	/**
 	 * If a value is present, applies {@code mapper} to {@code optional} and returns
 	 * an {@link OptionalDouble} describing the result. Otherwise returns an empty
 	 * {@link OptionalDouble}.
@@ -148,6 +160,18 @@ public class Optionals {
 	}
 
 	/**
+	 * If a value is present, returns an {@link OptionalInt} describing the result.
+	 * Otherwise returns an empty {@link OptionalInt}.
+	 *
+	 * @param optional optional value
+	 * @return an {@link OptionalInt} describing the value of {@code optional}, if a
+	 *         value is present, otherwise an empty {@link OptionalInt}
+	 */
+	public static OptionalInt mapToInt(final Optional<Integer> optional) {
+		return mapToInt(optional, value -> value);
+	}
+
+	/**
 	 * If a value is present, applies {@code mapper} to {@code optional} and returns
 	 * an {@link OptionalInt} describing the result. Otherwise returns an empty
 	 * {@link OptionalInt}.
@@ -161,6 +185,18 @@ public class Optionals {
 	 */
 	public static <T> OptionalInt mapToInt(final Optional<T> optional, final ToIntFunction<T> mapper) {
 		return optional.isPresent() ? OptionalInt.of(mapper.applyAsInt(optional.get())) : OptionalInt.empty();
+	}
+
+	/**
+	 * If a value is present, returns an {@link OptionalLong} describing the result.
+	 * Otherwise returns an empty {@link OptionalLong}.
+	 *
+	 * @param optional optional value
+	 * @return an {@link OptionalLong} describing the value of {@code optional}, if
+	 *         a value is present, otherwise an empty {@link OptionalLong}
+	 */
+	public static OptionalLong mapToLong(final Optional<Long> optional) {
+		return mapToLong(optional, value -> value);
 	}
 
 	/**
