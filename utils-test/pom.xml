@@ -53,15 +53,18 @@
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-api</artifactId>
+			<version>5.5.0</version>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.jooq</groupId>
 			<artifactId>jool-java-8</artifactId>
+			<version>0.9.14</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jooq</groupId>
 			<artifactId>joor-java-8</artifactId>
+			<version>0.9.12</version>
 		</dependency>
 	</dependencies>
 </project>
