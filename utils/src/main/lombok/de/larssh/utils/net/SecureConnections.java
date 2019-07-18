@@ -11,7 +11,6 @@ import java.security.NoSuchAlgorithmException;
 import java.security.UnrecoverableKeyException;
 import java.security.cert.CertificateException;
 
-import javax.net.SocketFactory;
 import javax.net.ssl.KeyManager;
 import javax.net.ssl.KeyManagerFactory;
 import javax.net.ssl.SSLContext;
@@ -99,7 +98,7 @@ public class SecureConnections {
 	@SuppressWarnings("PMD.UseVarargs")
 	@SuppressFBWarnings(value = "UVA_USE_VAR_ARGS",
 			justification = "var args make no sense as KeyManager is handled as array regularly")
-	public static SocketFactory getSocketFactory(final KeyManager[] keyManagers) {
+	public static SSLSocketFactory getSocketFactory(final KeyManager[] keyManagers) {
 		return getSocketFactory(keyManagers, null);
 	}
 
@@ -112,7 +111,7 @@ public class SecureConnections {
 	@SuppressWarnings("PMD.UseVarargs")
 	@SuppressFBWarnings(value = "UVA_USE_VAR_ARGS",
 			justification = "var args make no sense as TrustManager is handled as array regularly")
-	public static SocketFactory getSocketFactory(final TrustManager[] trustManagers) {
+	public static SSLSocketFactory getSocketFactory(final TrustManager[] trustManagers) {
 		return getSocketFactory(null, trustManagers);
 	}
 
@@ -148,7 +147,7 @@ public class SecureConnections {
 	 *                              could not be loaded
 	 * @throws IOException          if an I/O error occurs
 	 */
-	public static SocketFactory getSocketFactoryTrusting(final Path jksFilePath, final String password)
+	public static SSLSocketFactory getSocketFactoryTrusting(final Path jksFilePath, final String password)
 			throws CertificateException, IOException {
 		return getSocketFactory(getTrustManagers(loadKeyStore(jksFilePath, password)));
 	}

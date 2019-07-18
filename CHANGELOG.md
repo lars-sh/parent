@@ -17,16 +17,17 @@ Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%
 ### Changed
 * Fail on JavaDoc warnings
 * Disallow the usage of @lombok.Builder as of compatibility problems with the default non-null concept
-* Disallow parameter names that match "arg" or "arg0" and similar
+* Disallow parameter names that match `arg` or `arg0` and similar
 * Hide CPD warnings about suppressed classes
 * Run PMD as build goal instead of as report
 * Remove redundant semicolons when running save actions or doing clean up
 
 ### Removed
-* Methods Completable.getLock() and ClosableStopwatch.getLock()
+* Methods `Completable.getLock()` and `ClosableStopwatch.getLock()`
 * Dependency Management entries inside POM that were not used by one of the parent projects
 
 ### Fixed
+* `SecureConnections.getSocketFactory(...)` not returning a SSLSocketFactory
 * JavaDoc processing when using JDK 9 and later
 * Working around bad formatter behavior related to indentation of blocks after long lines.
 * Scope of maven-resolver-util dependency
