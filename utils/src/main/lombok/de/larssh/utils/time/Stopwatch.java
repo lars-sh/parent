@@ -18,6 +18,7 @@ import java.util.stream.Stream;
 
 import de.larssh.utils.Nullables;
 import edu.umd.cs.findbugs.annotations.Nullable;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -135,6 +136,8 @@ public class Stopwatch {
 	 * @throws InterruptedException if any thread has interrupted the current thread
 	 */
 	@SuppressWarnings("unused")
+	@SuppressFBWarnings(value = "MDM_THREAD_YIELD",
+			justification = "This is really intended to sleep for a specified duration.")
 	public boolean waitFor(final Duration duration, final Duration timeoutSinceStart) throws InterruptedException {
 		return waitFor(duration,
 				timeoutSinceStart,
@@ -155,16 +158,26 @@ public class Stopwatch {
 	 * @return {@code true} if the timeout was not reached and {@code false} if the
 	 *         timeout has been reached
 	 */
+	@SuppressFBWarnings(value = "PRMC_POSSIBLY_REDUNDANT_METHOD_CALLS",
+			justification = "no redundant calls, because Instant.now() might return different values")
 	public boolean waitFor(final Duration duration, final Duration timeoutSinceStart, final Consumer<Duration> wait) {
-		final Instant nowBeforeWaiting = Instant.now();
-		final Instant timeout = getStartInstant().plus(timeoutSinceStart);
-
-		final Duration maxWaiting = Duration.between(nowBeforeWaiting, timeout);
-		if (!timeout.isAfter(nowBeforeWaiting)) {
-			return false;
+		if (duration.isNegative()) {
+			throw new IllegalArgumentException(
+					String.format("Parameter \"duration\" must not be negative, but is %s.", duration));
+		}
+		if (timeoutSinceStart.isNegative()) {
+			throw new IllegalArgumentException(String
+					.format("Parameter \"timeoutSinceStart\" must not be negative, but is %s.", timeoutSinceStart));
 		}
 
-		wait.accept(maxWaiting.compareTo(duration) > 0 ? duration : maxWaiting);
+		final Instant timeout = getStartInstant().plus(timeoutSinceStart);
+		final Duration maxWaiting = Duration.between(Instant.now(), timeout);
+		final Duration actualWaiting = maxWaiting.compareTo(duration) > 0 ? duration : maxWaiting;
+
+		if (!actualWaiting.isNegative() && !actualWaiting.isZero()) {
+			wait.accept(actualWaiting);
+		}
+
 		return timeout.isAfter(Instant.now());
 	}
 

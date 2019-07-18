@@ -15,4 +15,10 @@
 		<Bug pattern="ITU_INAPPROPRIATE_TOSTRING_USE" />
 		<Class name="de.larssh.utils.time.LoggingStopwatch$StringLoggingStopwatchMode" />
 	</Match>
+
+	<!-- Method "waitFor" is really intended to wait for a specified duration. -->
+	<Match>
+		<Bug pattern="MDM_THREAD_YIELD" />
+		<Class name="de.larssh.utils.time.Stopwatch" />
+	</Match>
 </FindBugsFilter>
