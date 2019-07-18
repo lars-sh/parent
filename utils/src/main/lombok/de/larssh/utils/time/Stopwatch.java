@@ -1,5 +1,6 @@
 package de.larssh.utils.time;
 
+import static de.larssh.utils.function.ThrowingConsumer.throwing;
 import static java.util.Collections.synchronizedList;
 import static java.util.Collections.unmodifiableList;
 
@@ -12,8 +13,10 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.function.Consumer;
 import java.util.stream.Stream;
 
+import de.larssh.utils.Nullables;
 import edu.umd.cs.findbugs.annotations.Nullable;
 import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
@@ -119,6 +122,50 @@ public class Stopwatch {
 	 */
 	public Duration sinceStart() {
 		return Duration.between(getStartInstant(), Instant.now());
+	}
+
+	/**
+	 * Waits for {@code duration} using {@code Thread#sleep(long)}. If reached, it
+	 * times out at {@code timeoutSinceStart} after the {@link Stopwatch} start.
+	 *
+	 * @param duration          duration to wait
+	 * @param timeoutSinceStart timeout duration since the {@link Stopwatch} start
+	 * @return {@code true} if the timeout was not reached and {@code false} if the
+	 *         timeout has been reached
+	 * @throws InterruptedException if any thread has interrupted the current thread
+	 */
+	@SuppressWarnings("unused")
+	public boolean waitFor(final Duration duration, final Duration timeoutSinceStart) throws InterruptedException {
+		return waitFor(duration,
+				timeoutSinceStart,
+				throwing(waiting -> Thread.sleep(Nullables.orElseThrow(waiting).toMillis())));
+	}
+
+	/**
+	 * Waits for {@code duration} using {@code wait}. If reached, it times out at
+	 * {@code timeoutSinceStart} after the {@link Stopwatch} start.
+	 *
+	 * <p>
+	 * Note: The {@link Duration} given to {@code wait} might be less than
+	 * {@code duration} to handle {@code timeoutSinceStart} more precisely.
+	 *
+	 * @param duration          duration to wait
+	 * @param timeoutSinceStart timeout duration since the {@link Stopwatch} start
+	 * @param wait              method to use for waiting
+	 * @return {@code true} if the timeout was not reached and {@code false} if the
+	 *         timeout has been reached
+	 */
+	public boolean waitFor(final Duration duration, final Duration timeoutSinceStart, final Consumer<Duration> wait) {
+		final Instant nowBeforeWaiting = Instant.now();
+		final Instant timeout = getStartInstant().plus(timeoutSinceStart);
+
+		final Duration maxWaiting = Duration.between(nowBeforeWaiting, timeout);
+		if (!timeout.isAfter(nowBeforeWaiting)) {
+			return false;
+		}
+
+		wait.accept(maxWaiting.compareTo(duration) > 0 ? duration : maxWaiting);
+		return timeout.isAfter(Instant.now());
 	}
 
 	/**

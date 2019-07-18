@@ -8,9 +8,10 @@ All notable changes to this project will be documented in this file.
 Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%20%28a:parent%20a:parent-archetype%20a:root%20a:utils%20a:utils-annotations%20a:utils-test%29%20AND%20v:0.9.3)
 
 ### Added
-* The new properties `dirty` and `dirty-package` allow to skip multiple checks at once.
+* Properties `dirty` and `dirty-package` allow to skip multiple checks at once
 * Allow updating Eclipse settings manually
-* SplitLimit utility to handle `Pattern.split` and `String.split` in a clean way.
+* SplitLimit utility to handle `Pattern.split` and `String.split` in a clean way
+* New method `Stopwatch.waitFor(...)` to simplify working with timeouts
 * Disallow `super()` using checkstyle
 
 ### Changed
