@@ -26,8 +26,9 @@ Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%
 * Dependency Management entries inside POM that were not used by one of the parent projects
 
 ### Fixed
-* Scope of maven-resolver-util dependency
+* JavaDoc processing when using JDK 9 and later
 * Working around bad formatter behavior related to indentation of blocks after long lines.
+* Scope of maven-resolver-util dependency
 
 <a name="0.9.2"></a>
 
