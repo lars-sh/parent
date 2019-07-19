@@ -431,6 +431,17 @@ TODO
 ## Appendix
 In this appendix you can find additional technical sheets, referenced by aboves topics.
 
+### Maven Tips
+
+#### Log Timestamp
+By default the Maven output contains no timestamp. This tip describes how to change that on your computer. Sadly this needs to be configured globally and not on a per-project base.
+
+1. Open `<maven-install-directory>/conf/logging/simplelogger.properties` in your favorite folder.
+2. Add/modify the following properties:
+
+	org.slf4j.simpleLogger.showDateTime=true
+	org.slf4j.simpleLogger.dateTimeFormat=HH:mm:ss,SSS
+
 ### Build Process: Maven Lifecycle
 The following shows at which point in the Maven lifecycle plugins do their work.
 
