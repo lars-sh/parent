@@ -45,7 +45,7 @@ import lombok.experimental.UtilityClass;
  * URLConnection urlConnection = url.openConnection();
  *
  * SecureConnections.getHttpsUrlConnection(urlConnection)
- *   .ifPresent(httpsUrlConnection -> httpsUrlConnection.setSSLSocketFactory(socketFactory));
+ *   .ifPresent(httpsUrlConnection -&gt; httpsUrlConnection.setSSLSocketFactory(socketFactory));
  * </pre>
  */
 @UtilityClass
