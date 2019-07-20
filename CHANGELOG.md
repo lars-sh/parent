@@ -13,6 +13,7 @@ Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%
 * SplitLimit utility to handle `Pattern.split` and `String.split` in a clean way
 * New method `Stopwatch.waitFor(...)` to simplify working with timeouts
 * New method `SecureConnections.getHttpsUrlConnection()`
+* New utility class `InsecureConnections`
 * Disallow `super()` using checkstyle
 * Tip in the README that describes how to add timestamps to the Maven output
 
