@@ -2,6 +2,7 @@ package de.larssh.utils.net;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URLConnection;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.security.KeyManagementException;
@@ -10,7 +11,9 @@ import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
 import java.security.UnrecoverableKeyException;
 import java.security.cert.CertificateException;
+import java.util.Optional;
 
+import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.KeyManager;
 import javax.net.ssl.KeyManagerFactory;
 import javax.net.ssl.SSLContext;
@@ -30,40 +33,35 @@ import lombok.experimental.UtilityClass;
  * Method {@link #getSocketFactoryTrusting(Path, String)} highly simplifies
  * trusting custom certificates by creating a {@link SSLSocketFactory} directly
  * from a JKS (Java Key Store) file. Those key stores can be created and
- * maintained using the <a href="http://keystore-explorer.org/">KeyStore
+ * maintained using e.g. the <a href="http://keystore-explorer.org/">KeyStore
  * Explorer</a>.
  *
  * <pre>
- * HttpsURLConnection connection = ...;
  * Path jksFilePath = ...;
  * String password = ...;
  * SSLSocketFactory socketFactory = SecureConnections.getSocketFactoryTrusting(jksFilePath, password);
- * connection.setSSLSocketFactory(socketFactory);
+ *
+ * URL url = ...;
+ * URLConnection urlConnection = url.openConnection();
+ *
+ * SecureConnections.getHttpsUrlConnection(urlConnection)
+ *   .ifPresent(httpsUrlConnection -> httpsUrlConnection.setSSLSocketFactory(socketFactory));
  * </pre>
  */
 @UtilityClass
 public class SecureConnections {
 	/**
-	 * Loads a JKS (Java Key Store) file.
+	 * Returns {@code connection} if it is of type {@link HttpsURLConnection} or
+	 * {@link Optional#empty()}.
 	 *
-	 * @param jksFilePath path to the key store
-	 * @param password    key store password
-	 * @return key store
-	 * @throws CertificateException if any of the certificates in the key store
-	 *                              could not be loaded
-	 * @throws IOException          if an I/O error occurs
+	 * @param connection the connection to handle
+	 * @return {@code connection} if it is of type {@link HttpsURLConnection} or
+	 *         {@link Optional#empty()}
 	 */
-	@SuppressFBWarnings(value = "EXS_EXCEPTION_SOFTENING_NO_CONSTRAINTS",
-			justification = "converting checked to unchecked exceptions that must not be thrown")
-	public static KeyStore loadKeyStore(final Path jksFilePath, final String password)
-			throws CertificateException, IOException {
-		try (InputStream inputStream = Files.newInputStream(jksFilePath)) {
-			final KeyStore keyStore = KeyStore.getInstance("JKS");
-			keyStore.load(inputStream, password.toCharArray());
-			return keyStore;
-		} catch (final KeyStoreException | NoSuchAlgorithmException e) {
-			throw new SneakyException(e);
-		}
+	public static Optional<HttpsURLConnection> getHttpsUrlConnection(final URLConnection connection) {
+		return connection instanceof HttpsURLConnection
+				? Optional.of((HttpsURLConnection) connection)
+				: Optional.empty();
 	}
 
 	/**
@@ -166,6 +164,29 @@ public class SecureConnections {
 					= TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
 			trustManagerFactory.init(keyStore);
 			return trustManagerFactory.getTrustManagers();
+		} catch (final KeyStoreException | NoSuchAlgorithmException e) {
+			throw new SneakyException(e);
+		}
+	}
+
+	/**
+	 * Loads a JKS (Java Key Store) file.
+	 *
+	 * @param jksFilePath path to the key store
+	 * @param password    key store password
+	 * @return key store
+	 * @throws CertificateException if any of the certificates in the key store
+	 *                              could not be loaded
+	 * @throws IOException          if an I/O error occurs
+	 */
+	@SuppressFBWarnings(value = "EXS_EXCEPTION_SOFTENING_NO_CONSTRAINTS",
+			justification = "converting checked to unchecked exceptions that must not be thrown")
+	public static KeyStore loadKeyStore(final Path jksFilePath, final String password)
+			throws CertificateException, IOException {
+		try (InputStream inputStream = Files.newInputStream(jksFilePath)) {
+			final KeyStore keyStore = KeyStore.getInstance("JKS");
+			keyStore.load(inputStream, password.toCharArray());
+			return keyStore;
 		} catch (final KeyStoreException | NoSuchAlgorithmException e) {
 			throw new SneakyException(e);
 		}
