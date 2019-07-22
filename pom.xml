@@ -1311,9 +1311,9 @@ TODO: Easy to understand usage example
 
 	<!-- Activate strict mode -->
 	<rule ref="category/java/bestpractices.xml/OneDeclarationPerLine">
-	    <properties>
-	        <property name="strictMode" value="true" />
-	    </properties>
+		<properties>
+			<property name="strictMode" value="true" />
+		</properties>
 	</rule>
 
 	<rule ref="category/java/codestyle.xml">
@@ -1344,6 +1344,7 @@ TODO: Easy to understand usage example
 
 		<!-- Quite a few false positives when using Lombok -->
 		<exclude name="FieldDeclarationsShouldBeAtStartOfClass" />
+		<exclude name="UseUnderscoresInNumericLiterals" />
 
 		<!-- Better use long variable names than abbreviations -->
 		<exclude name="LongVariable" />
