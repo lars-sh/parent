@@ -4,7 +4,7 @@
 
 	<groupId>de.lars-sh</groupId>
 	<artifactId>root</artifactId>
-	<version>0.9.3-SNAPSHOT</version>
+	<version>0.9.3</version>
 	<packaging>pom</packaging>
 
 	<name>Root POM</name>
@@ -139,7 +139,7 @@
 		<junit.platform.version>1.5.0</junit.platform.version>
 		<lombok.version>1.18.8</lombok.version>
 		<mockito.version>3.0.0</mockito.version>
-		<parent.version>0.9.3-SNAPSHOT</parent.version>
+		<parent.version>0.9.3</parent.version>
 		<pmd.version>6.16.0</pmd.version>
 		<spotbugs.version>3.1.12</spotbugs.version>
 	</properties>
