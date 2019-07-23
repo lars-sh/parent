@@ -131,17 +131,54 @@
 		<maven.javadoc.skip>${dirty-package}</maven.javadoc.skip>
 		<gpg.skip>${dirty-package}</gpg.skip>
 
-		<checkstyle.version>8.22</checkstyle.version>
-		<fb-contrib.version>7.4.3.sb</fb-contrib.version>
-		<findsecbugs.version>1.8.0</findsecbugs.version>
+		<!-- Versions: Dependencies -->
 		<joor.version>0.9.12</joor.version>
 		<junit.version>5.5.1</junit.version>
 		<junit.platform.version>1.5.1</junit.platform.version>
 		<lombok.version>1.18.8</lombok.version>
 		<mockito.version>3.0.0</mockito.version>
 		<parent.version>0.9.4-SNAPSHOT</parent.version>
+
+		<!-- Versions: Plugin Dependencies -->
+		<checkstyle.version>8.22</checkstyle.version>
+		<fb-contrib.version>7.4.3.sb</fb-contrib.version>
+		<findsecbugs.version>1.8.0</findsecbugs.version>
 		<pmd.version>6.16.0</pmd.version>
 		<spotbugs.version>3.1.12</spotbugs.version>
+
+		<!-- Versions: Plugins -->
+		<build-helper-maven-plugin.version>3.0.0</build-helper-maven-plugin.version>
+		<jacoco-maven-plugin.version>0.8.2</jacoco-maven-plugin.version>
+		<lifecycle-mapping.version>1.0.0</lifecycle-mapping.version>
+		<lombok-maven-plugin.version>1.18.6.0</lombok-maven-plugin.version>
+		<maven-antrun-plugin.version>1.8</maven-antrun-plugin.version>
+		<maven-archetype-plugin.version>3.0.1</maven-archetype-plugin.version>
+		<maven-assembly-plugin.version>3.1.0</maven-assembly-plugin.version>
+		<maven-checkstyle-plugin.version>3.0.0</maven-checkstyle-plugin.version>
+		<maven-clean-plugin.version>3.1.0</maven-clean-plugin.version>
+		<maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
+		<maven-dependency-plugin.version>3.1.1</maven-dependency-plugin.version>
+		<maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
+		<maven-enforcer-plugin.version>1.4.1</maven-enforcer-plugin.version>
+		<maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
+		<maven-install-plugin.version>2.5.2</maven-install-plugin.version>
+		<maven-jar-plugin.version>3.1.0</maven-jar-plugin.version>
+		<maven-javadoc-plugin.version>3.0.1</maven-javadoc-plugin.version>
+		<maven-jxr-plugin.version>2.5</maven-jxr-plugin.version>
+		<maven-plugin-plugin.version>3.6.0</maven-plugin-plugin.version>
+		<maven-pmd-plugin.version>3.10.0</maven-pmd-plugin.version>
+		<maven-project-info-reports-plugin.version>3.0.0</maven-project-info-reports-plugin.version>
+		<maven-release-plugin.version>2.5.3</maven-release-plugin.version>
+		<maven-resources-plugin.version>3.1.0</maven-resources-plugin.version>
+		<maven-shade-plugin.version>3.2.0</maven-shade-plugin.version>
+		<maven-site-plugin.version>3.7.1</maven-site-plugin.version>
+		<maven-source-plugin.version>3.0.1</maven-source-plugin.version>
+		<maven-surefire-plugin.version>2.22.0</maven-surefire-plugin.version>
+		<maven-surefire-report-plugin.version>2.22.0</maven-surefire-report-plugin.version>
+		<nexus-staging-maven-plugin.version>1.6.8</nexus-staging-maven-plugin.version>
+		<spotbugs-maven-plugin.version>3.1.7</spotbugs-maven-plugin.version>
+		<tidy-maven-plugin.version>1.1.0</tidy-maven-plugin.version>
+		<versions-maven-plugin.version>1.7</versions-maven-plugin.version>
 	</properties>
 
 	<dependencyManagement>
@@ -169,33 +206,6 @@
 				<artifactId>utils-test</artifactId>
 				<version>${parent.version}</version>
 				<scope>test</scope>
-			</dependency>
-
-			<!-- Plugin dependencies -->
-			<dependency>
-				<groupId>com.github.spotbugs</groupId>
-				<artifactId>spotbugs</artifactId>
-				<version>${spotbugs.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.puppycrawl.tools</groupId>
-				<artifactId>checkstyle</artifactId>
-				<version>${checkstyle.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>net.sourceforge.pmd</groupId>
-				<artifactId>pmd-core</artifactId>
-				<version>${pmd.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>net.sourceforge.pmd</groupId>
-				<artifactId>pmd-java</artifactId>
-				<version>${pmd.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.projectlombok</groupId>
-				<artifactId>lombok</artifactId>
-				<version>${lombok.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
@@ -279,19 +289,19 @@
 				<!-- Maven -->
 				<plugin>
 					<artifactId>maven-antrun-plugin</artifactId>
-					<version>1.8</version>
+					<version>${maven-antrun-plugin.version}</version>
 				</plugin>
 				<plugin>
 					<artifactId>maven-archetype-plugin</artifactId>
-					<version>3.0.1</version>
+					<version>${maven-archetype-plugin.version}</version>
 				</plugin>
 				<plugin>
 					<artifactId>maven-assembly-plugin</artifactId>
-					<version>3.1.0</version>
+					<version>${maven-assembly-plugin.version}</version>
 				</plugin>
 				<plugin>
 					<artifactId>maven-checkstyle-plugin</artifactId>
-					<version>3.0.0</version>
+					<version>${maven-checkstyle-plugin.version}</version>
 					<dependencies>
 						<dependency>
 							<groupId>com.puppycrawl.tools</groupId>
@@ -302,51 +312,51 @@
 				</plugin>
 				<plugin>
 					<artifactId>maven-clean-plugin</artifactId>
-					<version>3.1.0</version>
+					<version>${maven-clean-plugin.version}</version>
 				</plugin>
 				<plugin>
 					<artifactId>maven-compiler-plugin</artifactId>
-					<version>3.8.0</version>
+					<version>${maven-compiler-plugin.version}</version>
 				</plugin>
 				<plugin>
 					<artifactId>maven-dependency-plugin</artifactId>
-					<version>3.1.1</version>
+					<version>${maven-dependency-plugin.version}</version>
 				</plugin>
 				<plugin>
 					<artifactId>maven-deploy-plugin</artifactId>
-					<version>2.8.2</version>
+					<version>${maven-deploy-plugin.version}</version>
 				</plugin>
 				<plugin>
 					<artifactId>maven-enforcer-plugin</artifactId>
-					<version>1.4.1</version>
+					<version>${maven-enforcer-plugin.version}</version>
 				</plugin>
 				<plugin>
 					<artifactId>maven-gpg-plugin</artifactId>
-					<version>1.6</version>
+					<version>${maven-gpg-plugin.version}</version>
 				</plugin>
 				<plugin>
 					<artifactId>maven-install-plugin</artifactId>
-					<version>2.5.2</version>
+					<version>${maven-install-plugin.version}</version>
 				</plugin>
 				<plugin>
 					<artifactId>maven-jar-plugin</artifactId>
-					<version>3.1.0</version>
+					<version>${maven-jar-plugin.version}</version>
 				</plugin>
 				<plugin>
 					<artifactId>maven-javadoc-plugin</artifactId>
-					<version>3.0.1</version>
+					<version>${maven-javadoc-plugin.version}</version>
 				</plugin>
 				<plugin>
 					<artifactId>maven-jxr-plugin</artifactId>
-					<version>2.5</version>
+					<version>${maven-jxr-plugin.version}</version>
 				</plugin>
 				<plugin>
 					<artifactId>maven-plugin-plugin</artifactId>
-					<version>3.6.0</version>
+					<version>${maven-plugin-plugin.version}</version>
 				</plugin>
 				<plugin>
 					<artifactId>maven-pmd-plugin</artifactId>
-					<version>3.10.0</version>
+					<version>${maven-pmd-plugin.version}</version>
 					<dependencies>
 						<dependency>
 							<groupId>net.sourceforge.pmd</groupId>
@@ -362,42 +372,42 @@
 				</plugin>
 				<plugin>
 					<artifactId>maven-project-info-reports-plugin</artifactId>
-					<version>3.0.0</version>
+					<version>${maven-project-info-reports-plugin.version}</version>
 				</plugin>
 				<plugin>
 					<artifactId>maven-release-plugin</artifactId>
-					<version>2.5.3</version>
+					<version>${maven-release-plugin.version}</version>
 				</plugin>
 				<plugin>
 					<artifactId>maven-resources-plugin</artifactId>
-					<version>3.1.0</version>
+					<version>${maven-resources-plugin.version}</version>
 				</plugin>
 				<plugin>
 					<artifactId>maven-shade-plugin</artifactId>
-					<version>3.2.0</version>
+					<version>${maven-shade-plugin.version}</version>
 				</plugin>
 				<plugin>
 					<artifactId>maven-site-plugin</artifactId>
-					<version>3.7.1</version>
+					<version>${maven-site-plugin.version}</version>
 				</plugin>
 				<plugin>
 					<artifactId>maven-source-plugin</artifactId>
-					<version>3.0.1</version>
+					<version>${maven-source-plugin.version}</version>
 				</plugin>
 				<plugin>
 					<artifactId>maven-surefire-plugin</artifactId>
-					<version>2.22.0</version>
+					<version>${maven-surefire-plugin.version}</version>
 				</plugin>
 				<plugin>
 					<artifactId>maven-surefire-report-plugin</artifactId>
-					<version>2.22.0</version>
+					<version>${maven-surefire-report-plugin.version}</version>
 				</plugin>
 
 				<!-- Others -->
 				<plugin>
 					<groupId>com.github.spotbugs</groupId>
 					<artifactId>spotbugs-maven-plugin</artifactId>
-					<version>3.1.7</version>
+					<version>${spotbugs-maven-plugin.version}</version>
 					<dependencies>
 						<dependency>
 							<groupId>com.github.spotbugs</groupId>
@@ -409,27 +419,27 @@
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>build-helper-maven-plugin</artifactId>
-					<version>3.0.0</version>
+					<version>${build-helper-maven-plugin.version}</version>
 				</plugin>
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>tidy-maven-plugin</artifactId>
-					<version>1.1.0</version>
+					<version>${tidy-maven-plugin.version}</version>
 				</plugin>
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>versions-maven-plugin</artifactId>
-					<version>2.7</version>
+					<version>${versions-maven-plugin.version}</version>
 				</plugin>
 				<plugin>
 					<groupId>org.jacoco</groupId>
 					<artifactId>jacoco-maven-plugin</artifactId>
-					<version>0.8.2</version>
+					<version>${jacoco-maven-plugin.version}</version>
 				</plugin>
 				<plugin>
 					<groupId>org.projectlombok</groupId>
 					<artifactId>lombok-maven-plugin</artifactId>
-					<version>1.18.6.0</version>
+					<version>${lombok-maven-plugin.version}</version>
 					<dependencies>
 						<dependency>
 							<groupId>org.projectlombok</groupId>
@@ -441,26 +451,14 @@
 				<plugin>
 					<groupId>org.sonatype.plugins</groupId>
 					<artifactId>nexus-staging-maven-plugin</artifactId>
-					<version>1.6.8</version>
-				</plugin>
-
-				<!-- Plugin dependencies -->
-				<plugin>
-					<groupId>com.h3xstream.findsecbugs</groupId>
-					<artifactId>findsecbugs-plugin</artifactId>
-					<version>${findsecbugs.version}</version>
-				</plugin>
-				<plugin>
-					<groupId>com.mebigfatguy.fb-contrib</groupId>
-					<artifactId>fb-contrib</artifactId>
-					<version>${fb-contrib.version}</version>
+					<version>${nexus-staging-maven-plugin.version}</version>
 				</plugin>
 
 				<!-- Eclipse Lifecycle Mapping -->
 				<plugin>
 					<groupId>org.eclipse.m2e</groupId>
 					<artifactId>lifecycle-mapping</artifactId>
-					<version>1.0.0</version>
+					<version>${lifecycle-mapping.version}</version>
 					<configuration>
 						<lifecycleMappingMetadata>
 							<pluginExecutions>
@@ -469,7 +467,7 @@
 									<pluginExecutionFilter>
 										<groupId>org.apache.maven.plugins</groupId>
 										<artifactId>maven-antrun-plugin</artifactId>
-										<versionRange>[0.0,)</versionRange>
+										<versionRange>${maven-antrun-plugin.version}</versionRange>
 										<goals>
 											<goal>run</goal>
 										</goals>
@@ -487,7 +485,7 @@
 									<pluginExecutionFilter>
 										<groupId>org.projectlombok</groupId>
 										<artifactId>lombok-maven-plugin</artifactId>
-										<versionRange>${lombok.version}.0</versionRange>
+										<versionRange>${lombok-maven-plugin.version}</versionRange>
 										<goals>
 											<goal>delombok</goal>
 											<goal>testDelombok</goal>
@@ -838,28 +836,22 @@ TODO: Easy to understand usage example
 		<property name="message" value="@Nullable should precede keyword &quot;final&quot;." />
 	</module>
 	<module name="RegexpMultiline">
-		<property name="id" value="XSuppressFBWarnings" />
-		<property name="fileExtensions" value="java" />
-		<property name="format" value="@\s*SuppressFBWarnings\s*\(((?![^)]*\s*justification\s*=)|[^)]*\s*justification\s*=\s*&quot;(\s*|TODO)&quot;)" />
-		<property name="message" value="SuppressFBWarnings requires justification parameter. It must not be empty or TODO." />
-	</module>
-	<module name="RegexpMultiline">
 		<property name="id" value="XOptionalDouble" />
 		<property name="fileExtensions" value="java" />
 		<property name="format" value="\P{javaJavaIdentifierPart}Optional\s*&lt;\s*Double\s*&gt;" />
 		<property name="message" value="Optional&lt;Double&gt; must not be used. Use OptionalDouble instead." />
 	</module>
 	<module name="RegexpMultiline">
-		<property name="id" value="XOptionalLong" />
-		<property name="fileExtensions" value="java" />
-		<property name="format" value="\P{javaJavaIdentifierPart}Optional\s*&lt;\s*Long\s*&gt;" />
-		<property name="message" value="Optional&lt;Long&gt; must not be used. Use OptionalLong instead." />
-	</module>
-	<module name="RegexpMultiline">
 		<property name="id" value="XOptionalInteger" />
 		<property name="fileExtensions" value="java" />
 		<property name="format" value="\P{javaJavaIdentifierPart}Optional\s*&lt;\s*Integer\s*&gt;" />
 		<property name="message" value="Optional&lt;Integer&gt; must not be used. Use OptionalInt instead." />
+	</module>
+	<module name="RegexpMultiline">
+		<property name="id" value="XOptionalLong" />
+		<property name="fileExtensions" value="java" />
+		<property name="format" value="\P{javaJavaIdentifierPart}Optional\s*&lt;\s*Long\s*&gt;" />
+		<property name="message" value="Optional&lt;Long&gt; must not be used. Use OptionalLong instead." />
 	</module>
 	<module name="RegexpMultiline">
 		<property name="id" value="XPatternSplit" />
@@ -896,6 +888,12 @@ TODO: Easy to understand usage example
 		<property name="fileExtensions" value="java" />
 		<property name="format" value="\P{javaJavaIdentifierPart}super\s*\(\s*\)" />
 		<property name="message" value="Avoid using super() as it is called implicitly." />
+	</module>
+	<module name="RegexpMultiline">
+		<property name="id" value="XSuppressFBWarnings" />
+		<property name="fileExtensions" value="java" />
+		<property name="format" value="@\s*SuppressFBWarnings\s*\(((?![^)]*\s*justification\s*=)|[^)]*\s*justification\s*=\s*&quot;(\s*|TODO)&quot;)" />
+		<property name="message" value="SuppressFBWarnings requires justification parameter. It must not be empty or TODO." />
 	</module>
 
 	<!-- Size Violations -->
