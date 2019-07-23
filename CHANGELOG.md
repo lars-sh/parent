@@ -11,7 +11,7 @@ Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%
 * TODO
 
 ### Changed
-* TODO
+* Finals.constant should not be used for private constants.
 
 ### Fixed
 * TODO

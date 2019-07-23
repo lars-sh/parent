@@ -826,6 +826,12 @@ TODO: Easy to understand usage example
 		<property name="message" value="String and primitive constants should use Finals.constant." />
 	</module>
 	<module name="RegexpMultiline">
+		<property name="id" value="XFinalsConstantPrivate" />
+		<property name="fileExtensions" value="java" />
+		<property name="format" value="\P{javaJavaIdentifierPart}private\s+static\s+final\s+\S+\s+\S+\s*=\s*(de\s*\.\s*larssh\s*\.\s*utils\s*\.\s*)?Finals\s*\.\s*constant\s*\(" />
+		<property name="message" value="Finals.constant should not be used for private constants." />
+	</module>
+	<module name="RegexpMultiline">
 		<property name="id" value="XNullableAnnotation" />
 		<property name="fileExtensions" value="java" />
 		<property name="format" value="\P{javaJavaIdentifierPart}final\s([^,\(\)\{;]*\s)?@\s*(edu\s*\.\s*umd\s*\.\s*cs\s*\.\s*findbugs\s*\.\s*annotations\s*\.\s*)?Nullable\s" />
