@@ -135,8 +135,8 @@
 		<fb-contrib.version>7.4.3.sb</fb-contrib.version>
 		<findsecbugs.version>1.8.0</findsecbugs.version>
 		<joor.version>0.9.12</joor.version>
-		<junit.version>5.5.0</junit.version>
-		<junit.platform.version>1.5.0</junit.platform.version>
+		<junit.version>5.5.1</junit.version>
+		<junit.platform.version>1.5.1</junit.platform.version>
 		<lombok.version>1.18.8</lombok.version>
 		<mockito.version>3.0.0</mockito.version>
 		<parent.version>0.9.4-SNAPSHOT</parent.version>
@@ -3690,7 +3690,8 @@ install: mvn install -DskipTests=true -Dgpg.skip=true --batch-mode --show-versio
 			</build>
 		</profile>
 
-		<!-- JDK9 and later: Add -html4 option when generating JavaDoc to avoid the warning about HTML5 -->
+		<!-- JDK9 and later: Add -html4 option when generating JavaDoc to avoid 
+			the warning about HTML5 -->
 		<profile>
 			<id>jdk9-and-later</id>
 			<activation>
