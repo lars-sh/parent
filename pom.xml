@@ -832,28 +832,22 @@ TODO: Easy to understand usage example
 		<property name="message" value="@Nullable should precede keyword &quot;final&quot;." />
 	</module>
 	<module name="RegexpMultiline">
-		<property name="id" value="XSuppressFBWarnings" />
-		<property name="fileExtensions" value="java" />
-		<property name="format" value="@\s*SuppressFBWarnings\s*\(((?![^)]*\s*justification\s*=)|[^)]*\s*justification\s*=\s*&quot;(\s*|TODO)&quot;)" />
-		<property name="message" value="SuppressFBWarnings requires justification parameter. It must not be empty or TODO." />
-	</module>
-	<module name="RegexpMultiline">
 		<property name="id" value="XOptionalDouble" />
 		<property name="fileExtensions" value="java" />
 		<property name="format" value="\P{javaJavaIdentifierPart}Optional\s*&lt;\s*Double\s*&gt;" />
 		<property name="message" value="Optional&lt;Double&gt; must not be used. Use OptionalDouble instead." />
 	</module>
 	<module name="RegexpMultiline">
-		<property name="id" value="XOptionalLong" />
-		<property name="fileExtensions" value="java" />
-		<property name="format" value="\P{javaJavaIdentifierPart}Optional\s*&lt;\s*Long\s*&gt;" />
-		<property name="message" value="Optional&lt;Long&gt; must not be used. Use OptionalLong instead." />
-	</module>
-	<module name="RegexpMultiline">
 		<property name="id" value="XOptionalInteger" />
 		<property name="fileExtensions" value="java" />
 		<property name="format" value="\P{javaJavaIdentifierPart}Optional\s*&lt;\s*Integer\s*&gt;" />
 		<property name="message" value="Optional&lt;Integer&gt; must not be used. Use OptionalInt instead." />
+	</module>
+	<module name="RegexpMultiline">
+		<property name="id" value="XOptionalLong" />
+		<property name="fileExtensions" value="java" />
+		<property name="format" value="\P{javaJavaIdentifierPart}Optional\s*&lt;\s*Long\s*&gt;" />
+		<property name="message" value="Optional&lt;Long&gt; must not be used. Use OptionalLong instead." />
 	</module>
 	<module name="RegexpMultiline">
 		<property name="id" value="XPatternSplit" />
@@ -890,6 +884,12 @@ TODO: Easy to understand usage example
 		<property name="fileExtensions" value="java" />
 		<property name="format" value="\P{javaJavaIdentifierPart}super\s*\(\s*\)" />
 		<property name="message" value="Avoid using super() as it is called implicitly." />
+	</module>
+	<module name="RegexpMultiline">
+		<property name="id" value="XSuppressFBWarnings" />
+		<property name="fileExtensions" value="java" />
+		<property name="format" value="@\s*SuppressFBWarnings\s*\(((?![^)]*\s*justification\s*=)|[^)]*\s*justification\s*=\s*&quot;(\s*|TODO)&quot;)" />
+		<property name="message" value="SuppressFBWarnings requires justification parameter. It must not be empty or TODO." />
 	</module>
 
 	<!-- Size Violations -->
