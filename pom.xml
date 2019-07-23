@@ -826,7 +826,7 @@ TODO: Easy to understand usage example
 	<module name="RegexpMultiline">
 		<property name="id" value="XFinalsConstantPrivate" />
 		<property name="fileExtensions" value="java" />
-		<property name="format" value="\P{javaJavaIdentifierPart}private\s+static\s+final\s+\S+\s+\S+\s*=\s*(de\s*\.\s*larssh\s*\.\s*utils\s*\.\s*)?Finals\s*\.\s*constant\s*\(" />
+		<property name="format" value="\P{javaJavaIdentifierPart}private\s+static\s+final\s+\S+\s+\S+\s*=\s*(de\s*\.\s*larssh\s*\.\s*utils\s*\.\s*)?(Finals\s*\.\s*)?constant\s*\(" />
 		<property name="message" value="Finals.constant should not be used for private constants." />
 	</module>
 	<module name="RegexpMultiline">
