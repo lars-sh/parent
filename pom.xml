@@ -982,10 +982,12 @@ TODO: Easy to understand usage example
 		</module>
 		<module name="IllegalType">
 			<property name="id" value="XIllegalTypeDefault" />
+			<property name="tokens" value="ANNOTATION_FIELD_DEF, INTERFACE_DEF, METHOD_CALL, METHOD_DEF, METHOD_REF, PARAMETER_DEF, VARIABLE_DEF" />
 		</module>
 		<module name="IllegalType">
 			<property name="id" value="XIllegalTypeCustom" />
 			<property name="illegalClassNames" value="java.lang.StringBuffer, StringBuffer" />
+			<property name="tokens" value="ANNOTATION_FIELD_DEF, INTERFACE_DEF, METHOD_CALL, METHOD_DEF, METHOD_REF, PARAMETER_DEF, VARIABLE_DEF" />
 		</module>
 		<module name="InnerAssignment" />
 		<module name="MagicNumber">
