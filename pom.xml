@@ -133,9 +133,10 @@
 
 		<!-- Versions: Dependencies -->
 		<joor.version>0.9.12</joor.version>
-		<junit.version>5.5.1</junit.version>
-		<junit.platform.version>1.5.1</junit.platform.version>
-		<lombok.version>1.18.8</lombok.version>
+		<junit-jupiter-api.version>5.5.1</junit-jupiter-api.version>
+		<junit-jupiter-engine.version>5.5.1</junit-jupiter-engine.version>
+		<junit-platform-runner.version>1.5.1</junit-platform-runner.version>
+		<lombok-annotations.version>1.18.8</lombok-annotations.version>
 		<mockito.version>3.0.0</mockito.version>
 		<parent.version>0.9.4-SNAPSHOT</parent.version>
 
@@ -143,6 +144,7 @@
 		<checkstyle.version>8.22</checkstyle.version>
 		<fb-contrib.version>7.4.3.sb</fb-contrib.version>
 		<findsecbugs.version>1.8.0</findsecbugs.version>
+		<lombok.version>1.18.8</lombok.version>
 		<pmd.version>6.16.0</pmd.version>
 		<spotbugs.version>3.1.12</spotbugs.version>
 
@@ -187,7 +189,7 @@
 			<dependency>
 				<groupId>de.lars-sh</groupId>
 				<artifactId>lombok-annotations</artifactId>
-				<version>${lombok.version}</version>
+				<version>${lombok-annotations.version}</version>
 				<scope>provided</scope>
 			</dependency>
 			<dependency>
@@ -232,19 +234,19 @@
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-api</artifactId>
-			<version>${junit.version}</version>
+			<version>${junit-jupiter-api.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-engine</artifactId>
-			<version>${junit.version}</version>
+			<version>${junit-jupiter-engine.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.junit.platform</groupId>
 			<artifactId>junit-platform-runner</artifactId>
-			<version>${junit.platform.version}</version>
+			<version>${junit-platform-runner.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -1700,15 +1702,15 @@ install: mvn install -DskipTests=true -Dgpg.skip=true --batch-mode --show-versio
 
 								<!-- Provided -->
 								<ignoredUnusedDeclaredDependency>com.github.spotbugs:spotbugs-annotations:${spotbugs.version}</ignoredUnusedDeclaredDependency>
-								<ignoredUnusedDeclaredDependency>de.lars-sh:lombok-annotations:jar:${lombok.version}</ignoredUnusedDeclaredDependency>
+								<ignoredUnusedDeclaredDependency>de.lars-sh:lombok-annotations:jar:${lombok-annotations.version}</ignoredUnusedDeclaredDependency>
 								<ignoredUnusedDeclaredDependency>de.lars-sh:utils-annotations:jar:${parent.version}</ignoredUnusedDeclaredDependency>
 
 								<!-- Test -->
 								<ignoredUnusedDeclaredDependency>de.lars-sh:utils-test:jar:${parent.version}</ignoredUnusedDeclaredDependency>
 								<ignoredUnusedDeclaredDependency>org.jooq:joor-java-8:jar:${joor.version}</ignoredUnusedDeclaredDependency>
-								<ignoredUnusedDeclaredDependency>org.junit.jupiter:junit-jupiter-api:jar:${junit.version}</ignoredUnusedDeclaredDependency>
-								<ignoredUnusedDeclaredDependency>org.junit.jupiter:junit-jupiter-engine:jar:${junit.version}</ignoredUnusedDeclaredDependency>
-								<ignoredUnusedDeclaredDependency>org.junit.platform:junit-platform-runner:jar:${junit.platform.version}</ignoredUnusedDeclaredDependency>
+								<ignoredUnusedDeclaredDependency>org.junit.jupiter:junit-jupiter-api:jar:${junit-jupiter-api.version}</ignoredUnusedDeclaredDependency>
+								<ignoredUnusedDeclaredDependency>org.junit.jupiter:junit-jupiter-engine:jar:${junit-jupiter-engine.version}</ignoredUnusedDeclaredDependency>
+								<ignoredUnusedDeclaredDependency>org.junit.platform:junit-platform-runner:jar:${junit-platform-runner.version}</ignoredUnusedDeclaredDependency>
 								<ignoredUnusedDeclaredDependency>org.mockito:mockito-core:jar:${mockito.version}</ignoredUnusedDeclaredDependency>
 							</ignoredUnusedDeclaredDependencies>
 						</configuration>
