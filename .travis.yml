@@ -1,2 +1,4 @@
 language: java
-install: mvn install -DskipTests=true -Dgpg.skip=true --batch-mode --show-version
+
+install: skip
+script: mvn install -Dgpg.skip=true --batch-mode --show-version
