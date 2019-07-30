@@ -374,7 +374,7 @@ public class Strings {
 	 * <p>
 	 * <b>Examples:</b>
 	 * <table>
-	 * <summary>Examples</summary>
+	 * <caption>Examples</caption>
 	 * <tr>
 	 * <th>Parameter</th>
 	 * <th>Calculation</th>
@@ -443,7 +443,7 @@ public class Strings {
 	 * <p>
 	 * <b>Examples:</b>
 	 * <table>
-	 * <summary>Examples</summary>
+	 * <caption>Examples</caption>
 	 * <tr>
 	 * <th>Parameter</th>
 	 * <th>Return Value</th>

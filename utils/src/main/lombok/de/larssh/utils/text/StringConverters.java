@@ -64,7 +64,7 @@ public class StringConverters {
 	 * <p>
 	 * <b>Examples:</b>
 	 * <table>
-	 * <summary>Examples</summary>
+	 * <caption>Examples</caption>
 	 * <tr>
 	 * <th>Parameter</th>
 	 * <th>Return Value</th>
@@ -222,7 +222,7 @@ public class StringConverters {
 	 * <p>
 	 * <b>Examples:</b>
 	 * <table>
-	 * <summary>Examples</summary>
+	 * <caption>Examples</caption>
 	 * <tr>
 	 * <th>Parameter</th>
 	 * <th>Return Value</th>
