@@ -1922,7 +1922,14 @@ install: mvn install -DskipTests=true -Dgpg.skip=true --batch-mode --show-versio
 										</propertyfile>
 										<propertyfile
 											file="${project.basedir}/.settings/org.eclipse.core.resources.prefs">
+											<entry key="eclipse.preferences.version" value="1" />
 											<entry key="encoding/&lt;project&gt;" value="UTF-8" />
+											<entry key="encoding//src/main/java" value="UTF-8" />
+											<entry key="encoding//src/main/lombok" value="UTF-8" />
+											<entry key="encoding//src/main/resources" value="UTF-8" />
+											<entry key="encoding//src/test/java" value="UTF-8" />
+											<entry key="encoding//src/test/lombok" value="UTF-8" />
+											<entry key="encoding//src/test/resources" value="UTF-8" />
 										</propertyfile>
 										<propertyfile
 											file="${project.basedir}/.settings/org.eclipse.core.runtime.prefs">
