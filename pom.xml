@@ -3705,24 +3705,5 @@ install: mvn install -DskipTests=true -Dgpg.skip=true --batch-mode --show-versio
 				</plugins>
 			</build>
 		</profile>
-
-		<!-- JDK9 and later: Add -html4 option when generating JavaDoc to avoid 
-			the warning about HTML5 -->
-		<profile>
-			<id>jdk9-and-later</id>
-			<activation>
-				<jdk>(9,)</jdk>
-			</activation>
-			<build>
-				<plugins>
-					<plugin>
-						<artifactId>maven-javadoc-plugin</artifactId>
-						<configuration>
-							<additionalOptions>-html4</additionalOptions>
-						</configuration>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
 	</profiles>
 </project>
