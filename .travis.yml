@@ -1,4 +1,8 @@
 language: java
 
 install: skip
-script: mvn install -Dgpg.skip=true --batch-mode --show-version
+script: mvn install -Dgpg.skip=true --batch-mode --show-version --update-snapshots
+
+cache:
+  directories:
+    - $HOME/.m2
