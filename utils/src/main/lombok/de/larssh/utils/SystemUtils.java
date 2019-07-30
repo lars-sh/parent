@@ -11,7 +11,8 @@ import lombok.experimental.UtilityClass;
  * <p>
  * Constants have been taken from {@link System#getProperties()} with the
  * following exclusions:
- * <table summary="Excluded Properties">
+ * <table>
+ * <summary>Excluded Properties</summary>
  * <tr>
  * <th>System Property
  * <th>Direct Representation

@@ -16,7 +16,8 @@ import lombok.RequiredArgsConstructor;
  * <p>
  * Constants define instances of common formatters. The following is an example
  * using the words {@code abc}, {@code def} and {@code ghi}.
- * <table summary="Examples">
+ * <table>
+ * <summary>Examples</summary>
  * <tr>
  * <th>Formatter</th>
  * <th>Example</th>
