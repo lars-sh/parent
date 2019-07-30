@@ -141,6 +141,7 @@
 		<parent.version>0.9.4-SNAPSHOT</parent.version>
 
 		<!-- Versions: Plugin Dependencies -->
+		<apache-ant.version>1.10.6</apache-ant.version>
 		<checkstyle.version>8.22</checkstyle.version>
 		<fb-contrib.version>7.4.3.sb</fb-contrib.version>
 		<findsecbugs.version>1.8.0</findsecbugs.version>
@@ -292,6 +293,13 @@
 				<plugin>
 					<artifactId>maven-antrun-plugin</artifactId>
 					<version>${maven-antrun-plugin.version}</version>
+					<dependencies>
+						<dependency>
+							<groupId>org.apache.ant</groupId>
+							<artifactId>ant</artifactId>
+							<version>${apache-ant.version}</version>
+						</dependency>
+					</dependencies>
 				</plugin>
 				<plugin>
 					<artifactId>maven-archetype-plugin</artifactId>
