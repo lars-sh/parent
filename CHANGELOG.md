@@ -15,7 +15,7 @@ Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%
 * Improve the default Travis CI configuration. Run `mvn generate-sources -Dupdate-travis-yml=true` to update existing `.travis.yml` files.
 
 ### Fixed
-* Fix SpotBugs when using JDK11
+* Fix SpotBugs when using JDK 11
 
 <a name="0.9.3"></a>
 

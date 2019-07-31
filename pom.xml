@@ -157,7 +157,6 @@
 		<maven-antrun-plugin.version>1.8</maven-antrun-plugin.version>
 		<maven-archetype-plugin.version>3.1.1</maven-archetype-plugin.version>
 		<maven-assembly-plugin.version>3.1.1</maven-assembly-plugin.version>
-		<maven-checkstyle-plugin.version>3.0.0</maven-checkstyle-plugin.version>
 		<maven-clean-plugin.version>3.1.0</maven-clean-plugin.version>
 		<maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
 		<maven-dependency-plugin.version>3.1.1</maven-dependency-plugin.version>
@@ -182,6 +181,9 @@
 		<spotbugs-maven-plugin.version>3.1.12.1</spotbugs-maven-plugin.version>
 		<tidy-maven-plugin.version>1.1.0</tidy-maven-plugin.version>
 		<versions-maven-plugin.version>2.7</versions-maven-plugin.version>
+
+		<!-- Must not be updated as of https://issues.apache.org/jira/browse/MCHECKSTYLE-377 -->
+		<maven-checkstyle-plugin.version>3.0.0</maven-checkstyle-plugin.version>
 	</properties>
 
 	<dependencyManagement>
