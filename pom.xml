@@ -1468,7 +1468,7 @@ TODO: Easy to understand usage example
 						</goals>
 						<configuration>
 							<exportAntProperties>true</exportAntProperties>
-							<target>
+							<target unless="update-travis-yml">
 								<available property="project.travis-yml.exists"
 									file="${project.basedir}/.travis.yml" />
 							</target>
@@ -1484,7 +1484,16 @@ TODO: Easy to understand usage example
 							<target unless="project.travis-yml.exists">
 								<echo message="Create .travis.yml" />
 								<echo file="${project.basedir}/.travis.yml"><![CDATA[language: java
-install: mvn install -DskipTests=true -Dgpg.skip=true --batch-mode --show-version
+jdk:
+  - openjdk8
+  - openjdk11
+
+install: skip
+script: mvn install -Dgpg.skip=true --batch-mode --show-version --update-snapshots
+
+cache:
+  directories:
+    - $HOME/.m2
 ]]></echo>
 							</target>
 						</configuration>

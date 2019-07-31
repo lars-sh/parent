@@ -12,9 +12,10 @@ Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%
 
 ### Changed
 * Finals.constant should not be used for private constants.
+* Improve the default Travis CI configuration. Run `mvn generate-sources -Dupdate-travis-yml=true` to update existing `.travis.yml` files.
 
 ### Fixed
-* TODO
+* Fix SpotBugs when using JDK11
 
 <a name="0.9.3"></a>
 
