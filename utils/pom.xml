@@ -42,10 +42,6 @@
 		<url>https://travis-ci.org/lars-sh/parent</url>
 	</ciManagement>
 
-	<properties>
-		<spotbugs.excludeFilterFile>${project.basedir}/spotbugs-excludes.xml</spotbugs.excludeFilterFile>
-	</properties>
-
 	<dependencies>
 		<!-- Provided -->
 		<dependency>
