@@ -77,14 +77,6 @@
 			is used with the <phase> tag. -->
 		<project.build.packageDependenciesPhase>none</project.build.packageDependenciesPhase>
 
-		<!-- "cpd.excludeFromFailureFile" is meant to be used by child POMs to 
-			configure a CPD excludes file. -->
-		<!-- <cpd.excludeFromFailureFile>${project.basedir}/cpd-excludes.csv</cpd.excludeFromFailureFile> -->
-
-		<!-- "spotbugs.excludeFilterFile" is meant to be used by child POMs to 
-			configure a SpotBugs excludes file. -->
-		<!-- <spotbugs.excludeFilterFile>${project.basedir}/spotbugs-excludes.xml</spotbugs.excludeFilterFile> -->
-
 		<!-- "org.eclipse.jdt.core.compiler.annotation.missingNonNullByDefaultAnnotation" 
 			is meant to be used by child POMs to configure if Eclipse should enforce 
 			@NonNullByDefault annotations on every package. Values can be "error", "warning", 
@@ -111,25 +103,6 @@
 			used by child POMs to configure if Eclipse should validate JavaDoc comments. 
 			Values can be "enabled" or "disabled". -->
 		<org.eclipse.jdt.core.compiler.doc.comment.support>enabled</org.eclipse.jdt.core.compiler.doc.comment.support>
-
-		<!-- "dirty" allows to skip code checks and tests. Values can be "true" 
-			and "false". -->
-		<dirty>false</dirty>
-		<skipTests>${dirty}</skipTests>
-		<checkstyle.skip>${dirty}</checkstyle.skip>
-		<jacoco.skip>${dirty}</jacoco.skip>
-		<cpd.skip>${dirty}</cpd.skip>
-		<pmd.skip>${dirty}</pmd.skip>
-		<spotbugs.skip>${dirty}</spotbugs.skip>
-		<mdep.analyze.skip>${dirty}</mdep.analyze.skip>
-		<tidy.skip>${dirty}</tidy.skip>
-
-		<!-- "dirty-package" allows to skip the creation of optional packages. 
-			Values can be "true" and "false". -->
-		<dirty-package>false</dirty-package>
-		<maven.source.skip>${dirty-package}</maven.source.skip>
-		<maven.javadoc.skip>${dirty-package}</maven.javadoc.skip>
-		<gpg.skip>${dirty-package}</gpg.skip>
 
 		<!-- Versions: Dependencies -->
 		<joor.version>0.9.12</joor.version>
@@ -1840,16 +1813,28 @@ cache:
 			</properties>
 		</profile>
 
-		<!-- Add SpotBugs excludes if the file exists -->
+		<!-- Skip code checks and tests -->
 		<profile>
-			<id>spotbugs-excludes-xml-exists</id>
-			<activation>
-				<file>
-					<exists>${basedir}/spotbugs-excludes.xml</exists>
-				</file>
-			</activation>
+			<id>dirty</id>
 			<properties>
-				<spotbugs.excludeFilterFile>${project.basedir}/spotbugs-excludes.xml</spotbugs.excludeFilterFile>
+				<skipTests>true</skipTests>
+				<checkstyle.skip>true</checkstyle.skip>
+				<jacoco.skip>true</jacoco.skip>
+				<cpd.skip>true</cpd.skip>
+				<pmd.skip>true</pmd.skip>
+				<spotbugs.skip>true</spotbugs.skip>
+				<mdep.analyze.skip>true</mdep.analyze.skip>
+				<tidy.skip>true</tidy.skip>
+			</properties>
+		</profile>
+
+		<!-- Skip the creation of optional packages -->
+		<profile>
+			<id>dirty-package</id>
+			<properties>
+				<maven.source.skip>true</maven.source.skip>
+				<maven.javadoc.skip>true</maven.javadoc.skip>
+				<gpg.skip>true</gpg.skip>
 			</properties>
 		</profile>
 
@@ -1865,8 +1850,28 @@ cache:
 			</properties>
 		</profile>
 
-		<!-- Eclipse (only!): Add lombok sources to class path since delombok goals 
-			are ignored -->
+		<!-- Add SpotBugs excludes if the file exists -->
+		<profile>
+			<id>spotbugs-excludes-xml-exists</id>
+			<activation>
+				<file>
+					<exists>${basedir}/spotbugs-excludes.xml</exists>
+				</file>
+			</activation>
+			<properties>
+				<spotbugs.excludeFilterFile>${project.basedir}/spotbugs-excludes.xml</spotbugs.excludeFilterFile>
+			</properties>
+		</profile>
+
+		<!-- Update existing .travis.yml files -->
+		<profile>
+			<id>update-travis-yml</id>
+			<properties>
+				<update-travis-yml>true</update-travis-yml>
+			</properties>
+		</profile>
+
+		<!-- Eclipse only: Add lombok sources to class path since delombok goals are ignored -->
 		<profile>
 			<id>eclipse-only</id>
 			<activation>
@@ -1910,9 +1915,9 @@ cache:
 			</build>
 		</profile>
 
-		<!-- Eclipse: Update eclipse settings -->
+		<!-- Update eclipse settings -->
 		<profile>
-			<id>eclipse</id>
+			<id>update-eclipse</id>
 			<activation>
 				<property>
 					<name>m2e.version</name>

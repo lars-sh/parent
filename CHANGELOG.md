@@ -11,7 +11,8 @@ Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%
 * TODO
 
 ### Changed
-* Travis CI: JDK 11, Caching and speed improvements. Run `mvn generate-sources -Dupdate-travis-yml=true` to update existing `.travis.yml` files.
+* Travis CI: JDK 11, Caching and speed improvements. Run `mvn generate-sources -P update-travis-yml` to update existing `.travis.yml` files.
+* The properties `dirty` and `dirty-package` changed into profiles. Instead of `-Ddirty=true` you need to use `-P dirty` now.
 * CPD and SpotBugs exclude files no longer require the additional property to be set manually.
 * Automatically releasing after closing deployment
 * Finals.constant should not be used for private constants.

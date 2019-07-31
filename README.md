@@ -51,13 +51,13 @@ Remember to **restart Eclipse** to apply changes to project settings.
 Upgrading existing projects to use this parent POM can be done step by step. As this parent specifies some strict rules, some validations might need to be skipped until others pass. The following sections describe the corresponding Maven Properties.
 
 ##### Skip Tests
-	<skipTests>${project.dirty}</skipTests>
+	<skipTests>true</skipTests>
 
 ##### Skip Checkstyle
 	<checkstyle.skip>true</checkstyle.skip>
 
 ##### Skip JaCoCo
-	<jacoco.skip>${project.dirty}</jacoco.skip>
+	<jacoco.skip>true</jacoco.skip>
 
 ##### Skip CPD
 	<cpd.skip>true</cpd.skip>
@@ -69,18 +69,18 @@ Upgrading existing projects to use this parent POM can be done step by step. As 
 	<spotbugs.skip>true</spotbugs.skip>
 
 ##### Skip Dependency Analysis
-	<mdep.analyze.skip>${project.dirty}</mdep.analyze.skip>
+	<mdep.analyze.skip>true</mdep.analyze.skip>
 
 ##### Skip Tidy
-	<tidy.skip>${project.dirty}</tidy.skip>
+	<tidy.skip>true</tidy.skip>
 
 ##### Dirty
 Skip all the above checks and tests.
 
-	-Ddirty=true
+	-P dirty
 
 ##### Skip Sources
-	<maven.source.skip>${project.dirty-package}</maven.source.skip>
+	<maven.source.skip>true</maven.source.skip>
 
 ##### Skip JavaDoc
 	<maven.javadoc.skip>true</maven.javadoc.skip>
@@ -91,7 +91,7 @@ Skip all the above checks and tests.
 ##### Dirty Package
 Skip the above creation of optional packages and signing.
 
-	-Ddirty-package=true
+	-P dirty-package
 
 ## Ingredients
 Taking your first steps using this POM is as simple as not using it. However it comes with a lot nicely pre-configured *ingredients*.
@@ -243,18 +243,23 @@ In addition the JARs manifest includes a generated Class-Path to simplify execut
 
 Optionally dependencies can be bundled to deploy and run a *full-blown* JAR file. See more information about this at the description of the Maven Property `project.build.packageDependenciesPhase`.
 
+#### Maven Profiles
+The following profiles can be activated by hand to handle some rare cases.
+
+`-P dirty` skips code checks and tests
+
+`-P dirty-package` skips the creation of optional packages
+
+`mvn generate-sources -P update-eclipse` updates eclipse settings
+
+`mvn generate-sources -P update-travis-yml` updates existing `.travis.yml` files
+
 #### Maven Properties
 This parent POM either predefines existing Maven Properties or introduces some own.
-
-`dirty` allows to skip code checks and tests. Values can be `true` and `false`. Deafult value: `false`
-
-`dirty-package` allows to skip the creation of optional packages. Values can be `true` and `false`. Default value: `false`
 
 `project.build.mainClass` is meant to be used by child POMs to configure a default main class, e.g. "de.larssh.Main". Default value: *empty*
 
 `project.build.packageDependenciesPhase` is meant to be used by child POMs to configure if an archive containing dependencies should be created. Values can be `none` (disabled) and `package` (enabled) as this property is used with the <phase> tag. Default value: `none`
-
-`spotbugs.excludeFilterFile` is meant to be used by child POMs to configure a SpotBugs excludes file. Example value: `${project.basedir}/spotbugs-excludes.xml`, Default value: *not set*
 
 `org.eclipse.jdt.core.compiler.annotation.missingNonNullByDefaultAnnotation` is meant to be used by child POMs to configure if Eclipse should enforce @NonNullByDefault annotations on every package. Values can be `error`, `warning`, `info` or `ignore` (disabled). Default value: `warning`
 
