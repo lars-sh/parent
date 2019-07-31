@@ -11,8 +11,9 @@ Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%
 * TODO
 
 ### Changed
-* Automatically release after closing deployment
 * Travis CI: JDK 11, Caching and speed improvements. Run `mvn generate-sources -Dupdate-travis-yml=true` to update existing `.travis.yml` files.
+* CPD and SpotBugs exclude files no longer require the additional property to be set manually.
+* Automatically releasing after closing deployment
 * Finals.constant should not be used for private constants.
 
 ### Fixed

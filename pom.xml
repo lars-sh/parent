@@ -1827,6 +1827,44 @@ cache:
 	</reporting>
 
 	<profiles>
+		<!-- Add CPD excludes if the file exists -->
+		<profile>
+			<id>cpd-excludes-csv-exists</id>
+			<activation>
+				<file>
+					<exists>${project.basedir}/cpd-excludes.csv</exists>
+				</file>
+			</activation>
+			<properties>
+				<cpd.excludeFromFailureFile>${project.basedir}/cpd-excludes.csv</cpd.excludeFromFailureFile>
+			</properties>
+		</profile>
+
+		<!-- Add SpotBugs excludes if the file exists -->
+		<profile>
+			<id>spotbugs-excludes-xml-exists</id>
+			<activation>
+				<file>
+					<exists>${project.basedir}/spotbugs-excludes.xml</exists>
+				</file>
+			</activation>
+			<properties>
+				<spotbugs.excludeFilterFile>${project.basedir}/spotbugs-excludes.xml</spotbugs.excludeFilterFile>
+			</properties>
+		</profile>
+
+		<!-- JDK 11 and later: Suppress SpotBugs bug RCN_REDUNDANT_NULLCHECK_OF_NONNULL_VALUE
+		as of https://github.com/spotbugs/spotbugs/issues/756 -->
+		<profile>
+			<id>jdk11-and-later</id>
+			<activation>
+				<jdk>(11,)</jdk>
+			</activation>
+			<properties>
+				<spotbugs.skip>true</spotbugs.skip>
+			</properties>
+		</profile>
+
 		<!-- Eclipse (only!): Add lombok sources to class path since delombok goals 
 			are ignored -->
 		<profile>
@@ -3722,18 +3760,6 @@ cache:
 					</plugin>
 				</plugins>
 			</build>
-		</profile>
-
-		<!-- JDK 11 and later: Suppress SpotBugs bug RCN_REDUNDANT_NULLCHECK_OF_NONNULL_VALUE
-		as of https://github.com/spotbugs/spotbugs/issues/756 -->
-		<profile>
-			<id>jdk11-and-later</id>
-			<activation>
-				<jdk>(11,)</jdk>
-			</activation>
-			<properties>
-				<spotbugs.skip>true</spotbugs.skip>
-			</properties>
 		</profile>
 	</profiles>
 </project>

@@ -349,10 +349,10 @@ There are two ways to suppress SpotBugs warnings.
 
 	@SuppressFBWarnings(value = "REC_CATCH_EXCEPTION", justification = "catching any exception at execution root")
 
-* Or add `<spotbugs.excludeFilterFile>${project.basedir}/spotbugs-excludes.xml</spotbugs.excludeFilterFile>` to your Maven Properties and create a file called `spotbugs-excludes.xml`. See [Filter](https://spotbugs.readthedocs.io/en/stable/filter.html) for more information.
+* Or create a file called `spotbugs-excludes.xml`. See [Filter](https://spotbugs.readthedocs.io/en/stable/filter.html) for more information.
 
 ##### CPD
-Add `<cpd.excludeFromFailureFile>${project.basedir}/cpd-excludes.csv</cpd.excludeFromFailureFile>` to your Maven Properties and create a file called `cpd-excludes.csv`. See [Violation Exclusions](http://maven.apache.org/plugins/maven-pmd-plugin/examples/violation-exclusions.html) for more information. The following lines show an example file.
+Create a file called `cpd-excludes.csv`. See [Violation Exclusions](http://maven.apache.org/plugins/maven-pmd-plugin/examples/violation-exclusions.html) for more information. The following lines show an example file.
 
 	com.example.ClassA,com.example.CopyOfClassA
 	com.example.ClassB,com.example.CopyOfClassB
