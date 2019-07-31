@@ -11,11 +11,14 @@ Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%
 * TODO
 
 ### Changed
+* Automatically release after closing deployment
+* Travis CI: JDK 11, Caching and speed improvements. Run `mvn generate-sources -Dupdate-travis-yml=true` to update existing `.travis.yml` files.
 * Finals.constant should not be used for private constants.
-* Improve the default Travis CI configuration. Run `mvn generate-sources -Dupdate-travis-yml=true` to update existing `.travis.yml` files.
 
 ### Fixed
+* Fix checkstyle rule XFinalsConstantPrivate for static imports
 * Fix SpotBugs when using JDK 11
+* Fix Eclipse Oxygen failing while trying to save charset preferences
 
 <a name="0.9.3"></a>
 
