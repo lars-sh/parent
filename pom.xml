@@ -3705,5 +3705,17 @@ install: mvn install -DskipTests=true -Dgpg.skip=true --batch-mode --show-versio
 				</plugins>
 			</build>
 		</profile>
+
+		<!-- JDK 11 and later: Suppress SpotBugs bug RCN_REDUNDANT_NULLCHECK_OF_NONNULL_VALUE
+		as of https://github.com/spotbugs/spotbugs/issues/756 -->
+		<profile>
+			<id>jdk11-and-later</id>
+			<activation>
+				<jdk>(11,)</jdk>
+			</activation>
+			<properties>
+				<spotbugs.skip>true</spotbugs.skip>
+			</properties>
+		</profile>
 	</profiles>
 </project>
