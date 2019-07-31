@@ -1832,7 +1832,7 @@ cache:
 			<id>cpd-excludes-csv-exists</id>
 			<activation>
 				<file>
-					<exists>${project.basedir}/cpd-excludes.csv</exists>
+					<exists>${basedir}/cpd-excludes.csv</exists>
 				</file>
 			</activation>
 			<properties>
@@ -1845,7 +1845,7 @@ cache:
 			<id>spotbugs-excludes-xml-exists</id>
 			<activation>
 				<file>
-					<exists>${project.basedir}/spotbugs-excludes.xml</exists>
+					<exists>${basedir}/spotbugs-excludes.xml</exists>
 				</file>
 			</activation>
 			<properties>
