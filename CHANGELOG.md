@@ -8,7 +8,7 @@ All notable changes to this project will be documented in this file.
 Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%20%28a:parent%20a:parent-archetype%20a:root%20a:utils%20a:utils-annotations%20a:utils-test%29%20AND%20v:0.9.4)
 
 ### Added
-* TODO
+* New method `Maps.entry(K, V)`
 
 ### Changed
 * Travis CI: JDK 11, Caching and speed improvements. Run `mvn generate-sources -P update-travis-yml` to update existing `.travis.yml` files.

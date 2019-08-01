@@ -2,10 +2,12 @@ package de.larssh.utils.collection;
 
 import static de.larssh.utils.Collectors.toLinkedHashMap;
 
+import java.util.AbstractMap.SimpleImmutableEntry;
 import java.util.Comparator;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import edu.umd.cs.findbugs.annotations.Nullable;
 import lombok.experimental.UtilityClass;
 
 /**
@@ -14,6 +16,23 @@ import lombok.experimental.UtilityClass;
 @UtilityClass
 @SuppressWarnings("PMD.ShortClassName")
 public class Maps {
+	/**
+	 * Creates an {@link Entry} representing a mapping from the specified key to the
+	 * specified value.
+	 *
+	 * <p>
+	 * This entry is immutable. It does not support the method <tt>setValue</tt>.
+	 *
+	 * @param <K>   the type of the key
+	 * @param <V>   the type of the value
+	 * @param key   the key represented by this entry
+	 * @param value the value represented by this entry
+	 * @return the immutable entry
+	 */
+	public static <K, V> Entry<K, V> entry(@Nullable final K key, @Nullable final V value) {
+		return new SimpleImmutableEntry<>(key, value);
+	}
+
 	/**
 	 * Sorts a {@link Map} based on a given {@link Entry} {@link Comparator}.
 	 *
