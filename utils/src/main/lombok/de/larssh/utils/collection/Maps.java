@@ -21,7 +21,8 @@ public class Maps {
 	 * specified value.
 	 *
 	 * <p>
-	 * This entry is immutable. It does not support the method <tt>setValue</tt>.
+	 * This entry is immutable. It does not support the method
+	 * {@link Entry#setValue(Object)}.
 	 *
 	 * @param <K>   the type of the key
 	 * @param <V>   the type of the value
