@@ -155,7 +155,7 @@
 		<tidy-maven-plugin.version>1.1.0</tidy-maven-plugin.version>
 		<versions-maven-plugin.version>2.7</versions-maven-plugin.version>
 
-		<!-- Must not be updated as of https://issues.apache.org/jira/browse/MCHECKSTYLE-377 -->
+		<!-- Must not be updated to 3.1.0 as of https://issues.apache.org/jira/browse/MCHECKSTYLE-377 -->
 		<maven-checkstyle-plugin.version>3.0.0</maven-checkstyle-plugin.version>
 	</properties>
 
@@ -1838,8 +1838,8 @@ cache:
 			</properties>
 		</profile>
 
-		<!-- JDK 11 and later: Suppress SpotBugs bug RCN_REDUNDANT_NULLCHECK_OF_NONNULL_VALUE
-		as of https://github.com/spotbugs/spotbugs/issues/756 -->
+		<!-- JDK 11 and later: Suppress SpotBugs bug RCN_REDUNDANT_NULLCHECK_OF_NONNULL_VALUE 
+			as of https://github.com/spotbugs/spotbugs/issues/756 -->
 		<profile>
 			<id>jdk11-and-later</id>
 			<activation>
@@ -1871,7 +1871,8 @@ cache:
 			</properties>
 		</profile>
 
-		<!-- Eclipse only: Add lombok sources to class path since delombok goals are ignored -->
+		<!-- Eclipse only: Add lombok sources to class path since delombok goals 
+			are ignored -->
 		<profile>
 			<id>eclipse-only</id>
 			<activation>
@@ -1880,6 +1881,7 @@ cache:
 				</property>
 			</activation>
 			<build>
+				<!-- Add lombok sources to Eclipse build path -->
 				<plugins>
 					<plugin>
 						<groupId>org.codehaus.mojo</groupId>
