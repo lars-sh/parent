@@ -377,6 +377,9 @@ There are two ways to suppress PMD warnings.
     com.example.ClassA=UnusedPrivateField
     com.example.ClassB=EmptyCatchBlock,UnusedPrivateField
 
+##### JaCoCo
+Use the `de.larssh.utils.annotations.SuppressJacocoGenerated` annotation to indicate that JaCoCo should ignore the annotated type, constructor or method.
+
 #### Dependencies
 We aim at using up-to-date dependencies and Maven plugins and minimizing runtime dependencies while still increasing safety and development ease.
 
