@@ -23,6 +23,8 @@ import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 public @interface SuppressJacocoGenerated {
 	/**
 	 * Documentation of the reason why JaCoCo is suppressed
+	 *
+	 * @return the documentation of the reason why JaCoCo is suppressed
 	 */
 	String justification();
 }
