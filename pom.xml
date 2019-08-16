@@ -156,7 +156,7 @@
 
 		<!-- Must not be updated to 3.1.0 as of https://issues.apache.org/jira/browse/MCHECKSTYLE-377 -->
 		<maven-checkstyle-plugin.version>3.0.0</maven-checkstyle-plugin.version>
-	
+
 		<!-- Must not be updated to 3.1.2 as of https://bugs.eclipse.org/bugs/show_bug.cgi?id=547340 -->
 		<maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
 	</properties>
@@ -1498,10 +1498,22 @@ cache:
 				<artifactId>jacoco-maven-plugin</artifactId>
 				<executions>
 					<execution>
+						<id>prepare-agent</id>
 						<goals>
 							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>report</id>
+						<goals>
 							<goal>report</goal>
 						</goals>
+
+						<!-- The "report" goal should be executed before the (optional) "check" 
+							goal to make sure developers have the report to analyze the check results 
+							with. By default the "check" goal is executed at the "verify" phase. The 
+							"post-integration-test" phase is the last phase before that. -->
+						<phase>post-integration-test</phase>
 					</execution>
 				</executions>
 			</plugin>
