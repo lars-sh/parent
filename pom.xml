@@ -115,7 +115,7 @@
 
 		<!-- Versions: Plugin Dependencies -->
 		<apache-ant.version>1.10.6</apache-ant.version>
-		<checkstyle.version>8.22</checkstyle.version>
+		<checkstyle.version>8.23</checkstyle.version>
 		<fb-contrib.version>7.4.3.sb</fb-contrib.version>
 		<findsecbugs.version>1.8.0</findsecbugs.version>
 		<lombok.version>1.18.8</lombok.version>
@@ -789,6 +789,50 @@ TODO: Easy to understand usage example
 	</module>
 	<module name="SuppressWarningsFilter" />
 
+	<!-- Filters: Formatter (known error): Ignore misaligned if and else blocks as the Eclipse formatter is not able to handle long breaking lines correctly -->
+	<module name="SuppressionSingleFilter">
+		<property name="checks" value="Indentation" />
+		<property name="message" value="^&apos;(if|else)(&apos; child| rcurly&apos;) has incorrect indentation level \d+, expected level should be \d+\.$" />
+	</module>
+
+	<!-- Filters: Unit Tests -->
+	<module name="SuppressionSingleFilter">
+		<property name="checks" value="ExecutableStatementCount|JavadocVariable|MagicNumber|MethodLength|MultipleStringLiterals" />
+		<property name="files" value="^(.*[/\\])?(src[/\\]test|generated-test-sources)[/\\].*$" />
+	</module>
+
+	<!-- Filters: Lombok -->
+	<module name="SuppressionSingleFilter">
+		<property name="checks" value="FinalClass|HideUtilityClassConstructor|MissingCtor|MutableException|VisibilityModifier" />
+		<property name="files" value="^(.*[/\\])?src[/\\](main|test)[/\\]lombok[/\\].*$" />
+	</module>
+
+	<!-- Filters: Delombok: Suppress irregular formatting -->
+	<module name="SuppressionSingleFilter">
+		<property name="checks" value="EmptyLineSeparator" />
+		<property name="files" value="^(.*[/\\])?generated-(test-)?sources[/\\]delombok[/\\].*$" />
+	</module>
+
+	<!-- Filters: Delombok: Suppress irregular formatting -->
+	<module name="SuppressionSingleFilter">
+		<property name="id" value="XLineTrailingSpaces" />
+		<property name="files" value="^(.*[/\\])?generated-(test-)?sources[/\\]delombok[/\\].*$" />
+	</module>
+
+	<!-- Filters: Delombok: Suppress import separation checks -->
+	<module name="SuppressionSingleFilter">
+		<property name="checks" value="ImportOrder" />
+		<property name="files" value="^(.*[/\\])?generated-(test-)?sources[/\\]delombok[/\\].*$" />
+		<property name="message" value="^'.*' should be separated from previous imports\.$" />
+	</module>
+
+	<!-- Filters: Delombok: Suppress specific unused imports -->
+	<module name="SuppressionSingleFilter">
+		<property name="checks" value="UnusedImports" />
+		<property name="files" value="^(.*[/\\])?generated-(test-)?sources[/\\]delombok[/\\].*$" />
+		<property name="message" value="^Unused import - lombok\.ToString\.$" />
+	</module>
+
 	<!-- Miscellaneous -->
 	<module name="NewlineAtEndOfFile">
 		<property name="lineSeparator" value="lf" />
@@ -987,7 +1031,9 @@ TODO: Easy to understand usage example
 		<module name="MultipleVariableDeclarations" />
 		<module name="NoClone" />
 		<module name="NoFinalizer" />
-		<module name="OneStatementPerLine" />
+		<module name="OneStatementPerLine">
+			<property name="treatTryResourcesAsStatement" value="true" />
+		</module>
 		<module name="OverloadMethodsDeclarationOrder" />
 		<module name="PackageDeclaration" />
 		<module name="ParameterAssignment" />
@@ -1030,24 +1076,6 @@ TODO: Easy to understand usage example
 			<property name="query" value="//STATIC_INIT/descendant-or-self::node()" />
 		</module>
 
-		<!-- Filters: Formatter (known error): Ignore misaligned if and else blocks as the Eclipse formatter is not able to handle long breaking lines correctly -->
-		<module name="SuppressionXpathSingleFilter">
-			<property name="checks" value="Indentation" />
-			<property name="message" value="^&apos;(if|else)(&apos; child| rcurly&apos;) has incorrect indentation level \d+, expected level should be \d+\.$" />
-		</module>
-
-		<!-- Filters: Unit Tests -->
-		<module name="SuppressionXpathSingleFilter">
-			<property name="checks" value="ExecutableStatementCount|JavadocVariable|MagicNumber|MethodLength|MultipleStringLiterals" />
-			<property name="files" value="^(.*[/\\])?(src[/\\]test|generated-test-sources)[/\\].*$" />
-		</module>
-
-		<!-- Filters: Lombok -->
-		<module name="SuppressionXpathSingleFilter">
-			<property name="checks" value="FinalClass|HideUtilityClassConstructor|MissingCtor|MutableException|VisibilityModifier" />
-			<property name="files" value="^(.*[/\\])?src[/\\](main|test)[/\\]lombok[/\\].*$" />
-		</module>
-
 		<!-- Filters: Lombok: Allow @Tostring.Include member "rank" to have any magic number -->
 		<module name="SuppressionXpathSingleFilter">
 			<property name="checks" value="MagicNumber" />
@@ -1059,32 +1087,6 @@ TODO: Easy to understand usage example
 			<property name="checks" value="^.*$" />
 			<property name="files" value="^(.*[/\\])?generated-(test-)?sources[/\\]delombok[/\\].*$" />
 			<property name="query" value="//*[MODIFIERS/ANNOTATION[DOT[IDENT[@text = 'lombok'] and IDENT[@text = 'Generated']]]]/descendant-or-self::node()" />
-		</module>
-
-		<!-- Filters: Delombok: Suppress irregular formatting -->
-		<module name="SuppressionXpathSingleFilter">
-			<property name="checks" value="EmptyLineSeparator" />
-			<property name="files" value="^(.*[/\\])?generated-(test-)?sources[/\\]delombok[/\\].*$" />
-		</module>
-
-		<!-- Filters: Delombok: Suppress irregular formatting -->
-		<module name="SuppressionXpathSingleFilter">
-			<property name="id" value="XLineTrailingSpaces" />
-			<property name="files" value="^(.*[/\\])?generated-(test-)?sources[/\\]delombok[/\\].*$" />
-		</module>
-
-		<!-- Filters: Delombok: Suppress import separation checks -->
-		<module name="SuppressionXpathSingleFilter">
-			<property name="checks" value="ImportOrder" />
-			<property name="files" value="^(.*[/\\])?generated-(test-)?sources[/\\]delombok[/\\].*$" />
-			<property name="message" value="^'.*' should be separated from previous imports\.$" />
-		</module>
-
-		<!-- Filters: Delombok: Suppress specific unused imports -->
-		<module name="SuppressionXpathSingleFilter">
-			<property name="checks" value="UnusedImports" />
-			<property name="files" value="^(.*[/\\])?generated-(test-)?sources[/\\]delombok[/\\].*$" />
-			<property name="message" value="^Unused import - lombok\.ToString\.$" />
 		</module>
 
 		<!-- Headers -->
@@ -1108,6 +1110,7 @@ TODO: Easy to understand usage example
 
 		<!-- Javadoc Comments -->
 		<module name="AtclauseOrder" />
+		<module name="InvalidJavadocPosition" />
 		<module name="JavadocMethod">
 			<property name="validateThrows" value="true" />
 			<property name="allowUndeclaredRTE" value="true" />
