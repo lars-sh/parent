@@ -22,6 +22,7 @@ Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%
 * Fix checkstyle rule XFinalsConstantPrivate for static imports
 * Fix SpotBugs when using JDK 11
 * Fix Eclipse Oxygen failing while trying to save charset preferences
+* Fix `Stopwatch.waitFor(...)` when reaching the timeout value exactly
 
 <a name="0.9.3"></a>
 

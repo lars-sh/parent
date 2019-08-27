@@ -178,7 +178,7 @@ public class Stopwatch {
 			wait.accept(actualWaiting);
 		}
 
-		return timeout.isAfter(Instant.now());
+		return !Instant.now().isAfter(timeout);
 	}
 
 	/**
