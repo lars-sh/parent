@@ -34,6 +34,7 @@ Creating a new project has been simplified as much as possible.
 		<groupId>de.lars-sh</groupId>
 		<artifactId>parent</artifactId>
 		<version><!-- TODO --></version>
+		<relativePath></relativePath>
 	</parent>
 
 2. Your artifacts will be signed digitally. Follow the configuration instructions at [Working with GPG Signatures](https://central.sonatype.org/pages/working-with-pgp-signatures.html) to set up your personal GPG keys.
