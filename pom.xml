@@ -64,6 +64,8 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
 		<maven.compiler.failOnWarning>true</maven.compiler.failOnWarning>
+		<maven.compiler.showDeprecation>true</maven.compiler.showDeprecation>
+		<maven.compiler.showWarnings>true</maven.compiler.showWarnings>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 
@@ -1852,6 +1854,19 @@ cache:
 				<maven.source.skip>true</maven.source.skip>
 				<maven.javadoc.skip>true</maven.javadoc.skip>
 				<gpg.skip>true</gpg.skip>
+			</properties>
+		</profile>
+
+        <!-- JDK 9 and later: Do not show warnings as the bootstrap class path 
+            does not match the current sources version. -->
+		<profile>
+			<id>jdk9-and-later</id>
+			<activation>
+				<jdk>(9,)</jdk>
+			</activation>
+			<properties>
+				<maven.compiler.showDeprecation>false</maven.compiler.showDeprecation>
+				<maven.compiler.showWarnings>false</maven.compiler.showWarnings>
 			</properties>
 		</profile>
 
