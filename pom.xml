@@ -1567,6 +1567,7 @@ cache:
 							<mainClass>${project.build.mainClass}</mainClass>
 						</manifest>
 					</archive>
+					<skipIfEmpty>true</skipIfEmpty>
 				</configuration>
 			</plugin>
 
@@ -1682,7 +1683,6 @@ cache:
 				</executions>
 				<configuration>
 					<effort>Max</effort>
-					<fork>false</fork>
 					<threshold>Low</threshold>
 					<plugins>
 						<plugin>
@@ -1806,6 +1806,7 @@ cache:
 					<reportSet>
 						<reports>
 							<report>javadoc-no-fork</report>
+							<report>test-javadoc-no-fork</report>
 						</reports>
 					</reportSet>
 				</reportSets>
@@ -1857,8 +1858,8 @@ cache:
 			</properties>
 		</profile>
 
-        <!-- JDK 9 and later: Do not show warnings as the bootstrap class path 
-            does not match the current sources version. -->
+		<!-- JDK 9 and later: Do not show warnings as the bootstrap class path 
+			does not match the current sources version. -->
 		<profile>
 			<id>jdk9-and-later</id>
 			<activation>

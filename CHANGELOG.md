@@ -11,7 +11,7 @@ Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%
 * TODO
 
 ### Changed
-* TODO
+* Avoid some warnings inside the Maven output
 
 ### Fixed
 * TODO

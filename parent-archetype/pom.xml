@@ -45,7 +45,7 @@
 
 	<build>
 		<plugins>
-			<!-- Skip integration tests when using embedded maven -->
+			<!-- Skip integration tests when using M2E (embedded Maven into Eclipse). -->
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>build-helper-maven-plugin</artifactId>
@@ -74,7 +74,9 @@
 							<goal>analyze-only</goal>
 						</goals>
 						<configuration>
-							<failOnWarning>false</failOnWarning>
+							<ignoredUnusedDeclaredDependencies>
+								<ignoredUnusedDeclaredDependency>*</ignoredUnusedDeclaredDependency>
+							</ignoredUnusedDeclaredDependencies>
 						</configuration>
 					</execution>
 				</executions>
