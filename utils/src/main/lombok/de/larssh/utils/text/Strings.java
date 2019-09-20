@@ -407,19 +407,18 @@ public class Strings {
 	 * @throws ArithmeticException on failing fraction part
 	 * @throws ParseException      on parse failure
 	 */
+	@SuppressWarnings("checkstyle:MultipleStringLiterals")
 	public static BigInteger parseBinaryUnit(final String binaryValue) throws ParseException {
 		final Optional<Matcher> matcher = Patterns.matches(BINARY_UNIT_PATTERN, binaryValue);
 		if (!matcher.isPresent()) {
 			throw new ParseException("Value [%s] does not match binary unit pattern.", binaryValue);
 		}
 
-		@SuppressWarnings("checkstyle:MultipleStringLiterals")
 		final String value = matcher.get().group("value");
 		if (value == null) {
 			throw new ParseException("No binary unit value given in string [%s].", binaryValue);
 		}
 
-		@SuppressWarnings("checkstyle:MultipleStringLiterals")
 		final String unit = matcher.get().group("unit");
 		final BigDecimal multiplicator
 				= unit == null ? BigDecimal.ONE : BINARY_UNITS.get(Strings.toNeutralUpperCase(unit));
@@ -470,19 +469,18 @@ public class Strings {
 	 * @return decimal value
 	 * @throws ParseException on parse failure
 	 */
+	@SuppressWarnings("checkstyle:MultipleStringLiterals")
 	public static BigDecimal parseDecimalUnit(final String decimalValue) throws ParseException {
 		final Optional<Matcher> matcher = Patterns.matches(DECIMAL_UNIT_PATTERN, decimalValue);
 		if (!matcher.isPresent()) {
 			throw new ParseException("Value [%s] does not match decimal unit pattern.", decimalValue);
 		}
 
-		@SuppressWarnings("checkstyle:MultipleStringLiterals")
 		final String value = matcher.get().group("value");
 		if (value == null) {
 			throw new ParseException("No decimal unit value given in string [%s].", decimalValue);
 		}
 
-		@SuppressWarnings("checkstyle:MultipleStringLiterals")
 		final String unit = matcher.get().group("unit");
 
 		final int powerOfTen = Optionals
