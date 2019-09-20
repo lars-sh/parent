@@ -10,6 +10,9 @@ Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%
 ### Added
 * TODO
 
+### Removed
+* Checkstyle nearby comment filter for the MultipleStringLiterals check
+
 ### Changed
 * Avoid some warnings inside the Maven output
 

@@ -1053,12 +1053,6 @@ TODO: Easy to understand usage example
 			<property name="file" value="${project.basedir}/checkstyle-suppressions.xml" />
 			<property name="optional" value="true" />
 		</module>
-		<module name="SuppressWithNearbyCommentFilter">
-			<property name="commentFormat" value="Checkstyle: Ignore duplicate &quot;(\S+)&quot; for (\d+) lines?" />
-			<property name="checkFormat" value="MultipleStringLiteralsCheck" />
-			<property name="messageFormat" value="^The String &quot;$1&quot; appears \d+ times in the file\.$" />
-			<property name="influenceFormat" value="$2" />
-		</module>
 
 		<!-- Filters: Allow postfix incrementor and decrementor inside for iterators -->
 		<module name="SuppressionXpathSingleFilter">

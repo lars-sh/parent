@@ -413,13 +413,13 @@ public class Strings {
 			throw new ParseException("Value [%s] does not match binary unit pattern.", binaryValue);
 		}
 
-		// Checkstyle: Ignore duplicate "value" for 1 line
+		@SuppressWarnings("checkstyle:MultipleStringLiterals")
 		final String value = matcher.get().group("value");
 		if (value == null) {
 			throw new ParseException("No binary unit value given in string [%s].", binaryValue);
 		}
 
-		// Checkstyle: Ignore duplicate "unit" for 1 line
+		@SuppressWarnings("checkstyle:MultipleStringLiterals")
 		final String unit = matcher.get().group("unit");
 		final BigDecimal multiplicator
 				= unit == null ? BigDecimal.ONE : BINARY_UNITS.get(Strings.toNeutralUpperCase(unit));
@@ -476,13 +476,13 @@ public class Strings {
 			throw new ParseException("Value [%s] does not match decimal unit pattern.", decimalValue);
 		}
 
-		// Checkstyle: Ignore duplicate "value" for 1 line
+		@SuppressWarnings("checkstyle:MultipleStringLiterals")
 		final String value = matcher.get().group("value");
 		if (value == null) {
 			throw new ParseException("No decimal unit value given in string [%s].", decimalValue);
 		}
 
-		// Checkstyle: Ignore duplicate "unit" for 1 line
+		@SuppressWarnings("checkstyle:MultipleStringLiterals")
 		final String unit = matcher.get().group("unit");
 
 		final int powerOfTen = Optionals
