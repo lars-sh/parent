@@ -43,7 +43,7 @@ Creating a new project has been simplified as much as possible.
 Remember to **restart Eclipse** to apply changes to project settings.
 
 ### Import into Eclipse
-0. Optionally: Run `mvn generate-sources -P eclipse` to initialize the Eclipse settings. This might solve problems some users experience.
+0. Optionally: Run `mvn initialize -P eclipse` to initialize the Eclipse settings. This might solve problems some users experience.
 1. In Eclipse choose `File`, `Import...`, `Existing Maven Projects`, `Next`, point the root directory to your newly created folder and press `Finish`.
 2. Wait until your workspace is built. In case it does not build automatically, remember to trigger it!
 3. **Restart Eclipse** to apply changes to project settings.
@@ -254,9 +254,9 @@ The following profiles can be activated by hand to handle some rare cases.
 
 `-P dirty-package` skips the creation of optional packages
 
-`mvn generate-sources -P update-eclipse` updates eclipse settings
+`mvn initialize -P update-eclipse` updates eclipse settings
 
-`mvn generate-sources -P update-travis-yml` updates existing `.travis.yml` files
+`mvn initialize -P update-travis-yml` updates existing `.travis.yml` files
 
 #### Maven Properties
 This parent POM either predefines existing Maven Properties or introduces some own.
@@ -319,9 +319,9 @@ Our Eclipse Integration mostly synchronizes settings of Maven plugins with your 
 ##### Build Process
 The following files are generated for the build process itself. You should not need to know them for your regular work.
 
-`target/pmd/pmd-ruleset.xml` contains the PMD rule set. It is overwritten at the Maven goal `generate-source`.
+`target/pmd/pmd-ruleset.xml` contains the PMD rule set. It is overwritten at the Maven goal `initialize`.
 
-`target/checkstyle.xml` contains the Checkstyle rules. It is overwritten at the Maven goal `generate-source`.
+`target/checkstyle.xml` contains the Checkstyle rules. It is overwritten at the Maven goal `initialize`.
 
 `target/formatter.xml` contains the formatting rules. It is overwritten at the Maven goal `initialize`.
 
@@ -469,7 +469,6 @@ The following shows at which point in the Maven lifecycle plugins do their work.
         * maven-enforcer-plugin:enforce (default)
         * jacoco-maven-plugin:prepare-agent (default)
     * initialize
-    * generate-sources
         * maven-antrun-plugin:run (gitignore-exists)
         * maven-antrun-plugin:run (gitignore)
         * maven-antrun-plugin:run (project-readme-md-exists)
@@ -480,8 +479,10 @@ The following shows at which point in the Maven lifecycle plugins do their work.
         * maven-antrun-plugin:run (pmd-ruleset-xml)
         * maven-antrun-plugin:run (project-travis-yml-exists)
         * maven-antrun-plugin:run (travis-ci)
+    * generate-sources
         * lombok-maven-plugin:delombok (default)
     * process-sources
+        * maven-checkstyle-plugin:check (default)
         * maven-formatter-plugin:validate (default)
     * generate-resources
     * process-resources
@@ -501,7 +502,6 @@ The following shows at which point in the Maven lifecycle plugins do their work.
     * test
         * maven-surefire-plugin:test (default-test)
     * prepare-package
-        * maven-checkstyle-plugin:check (default)
     * package
         * maven-jar-plugin:jar (default-jar)
         * maven-jar-plugin:test-jar (default)

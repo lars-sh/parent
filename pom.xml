@@ -506,13 +506,27 @@
 				</executions>
 			</plugin>
 
+			<!-- Check for tidied up pom.xml -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>tidy-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>validate</phase>
+						<goals>
+							<goal>check</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
 			<plugin>
 				<artifactId>maven-antrun-plugin</artifactId>
 				<executions>
 					<!-- .gitignore -->
 					<execution>
 						<id>project-gitignore-exists</id>
-						<phase>generate-sources</phase>
+						<phase>initialize</phase>
 						<goals>
 							<goal>run</goal>
 						</goals>
@@ -526,7 +540,7 @@
 					</execution>
 					<execution>
 						<id>gitignore</id>
-						<phase>generate-sources</phase>
+						<phase>initialize</phase>
 						<goals>
 							<goal>run</goal>
 						</goals>
@@ -549,7 +563,7 @@
 					<!-- CHANGELOG.md -->
 					<execution>
 						<id>project-changelog-md-exists</id>
-						<phase>generate-sources</phase>
+						<phase>initialize</phase>
 						<goals>
 							<goal>run</goal>
 						</goals>
@@ -563,7 +577,7 @@
 					</execution>
 					<execution>
 						<id>changelog-md</id>
-						<phase>generate-sources</phase>
+						<phase>initialize</phase>
 						<goals>
 							<goal>run</goal>
 						</goals>
@@ -607,7 +621,7 @@ Download at TODO
 					<!-- README.md -->
 					<execution>
 						<id>project-readme-md-exists</id>
-						<phase>generate-sources</phase>
+						<phase>initialize</phase>
 						<goals>
 							<goal>run</goal>
 						</goals>
@@ -621,7 +635,7 @@ Download at TODO
 					</execution>
 					<execution>
 						<id>readme-md</id>
-						<phase>generate-sources</phase>
+						<phase>initialize</phase>
 						<goals>
 							<goal>run</goal>
 						</goals>
@@ -641,7 +655,7 @@ TODO: Easy to understand usage example
 					<!-- Source directories -->
 					<execution>
 						<id>source-directories</id>
-						<phase>generate-sources</phase>
+						<phase>initialize</phase>
 						<goals>
 							<goal>run</goal>
 						</goals>
@@ -658,7 +672,7 @@ TODO: Easy to understand usage example
 					<!-- lombok.config -->
 					<execution>
 						<id>lombok-config</id>
-						<phase>generate-sources</phase>
+						<phase>initialize</phase>
 						<goals>
 							<goal>run</goal>
 						</goals>
@@ -768,7 +782,7 @@ TODO: Easy to understand usage example
 					<!-- checkstyle.xml -->
 					<execution>
 						<id>checkstyle-xml</id>
-						<phase>generate-sources</phase>
+						<phase>initialize</phase>
 						<goals>
 							<goal>run</goal>
 						</goals>
@@ -1614,7 +1628,7 @@ TODO: Easy to understand usage example
 					<!-- pmd-ruleset.xml -->
 					<execution>
 						<id>pmd-ruleset-xml</id>
-						<phase>generate-sources</phase>
+						<phase>initialize</phase>
 						<goals>
 							<goal>run</goal>
 						</goals>
@@ -1784,7 +1798,7 @@ TODO: Easy to understand usage example
 					<!-- Travis CI -->
 					<execution>
 						<id>project-travis-yml-exists</id>
-						<phase>generate-sources</phase>
+						<phase>initialize</phase>
 						<goals>
 							<goal>run</goal>
 						</goals>
@@ -1798,7 +1812,7 @@ TODO: Easy to understand usage example
 					</execution>
 					<execution>
 						<id>travis-ci</id>
-						<phase>generate-sources</phase>
+						<phase>initialize</phase>
 						<goals>
 							<goal>run</goal>
 						</goals>
@@ -1819,20 +1833,6 @@ cache:
 ]]></echo>
 							</target>
 						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-
-			<!-- Delombok -->
-			<plugin>
-				<groupId>org.projectlombok</groupId>
-				<artifactId>lombok-maven-plugin</artifactId>
-				<executions>
-					<execution>
-						<goals>
-							<goal>delombok</goal>
-							<goal>testDelombok</goal>
-						</goals>
 					</execution>
 				</executions>
 			</plugin>
@@ -1863,12 +1863,26 @@ cache:
 				</executions>
 			</plugin>
 
+			<!-- Delombok -->
+			<plugin>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>delombok</goal>
+							<goal>testDelombok</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
 			<!-- Check code style -->
 			<plugin>
 				<artifactId>maven-checkstyle-plugin</artifactId>
 				<executions>
 					<execution>
-						<phase>test</phase>
+						<phase>process-sources</phase>
 						<goals>
 							<goal>check</goal>
 						</goals>
@@ -2093,19 +2107,6 @@ cache:
 				</executions>
 			</plugin>
 
-			<!-- Check for tidied up pom.xml -->
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>tidy-maven-plugin</artifactId>
-				<executions>
-					<execution>
-						<goals>
-							<goal>check</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-
 			<!-- Sign packages -->
 			<plugin>
 				<artifactId>maven-gpg-plugin</artifactId>
@@ -2199,13 +2200,14 @@ cache:
 		<profile>
 			<id>dirty</id>
 			<properties>
-				<skipTests>true</skipTests>
 				<checkstyle.skip>true</checkstyle.skip>
-				<jacoco.skip>true</jacoco.skip>
 				<cpd.skip>true</cpd.skip>
-				<pmd.skip>true</pmd.skip>
-				<spotbugs.skip>true</spotbugs.skip>
+				<formatter.skip>true</formatter.skip>
+				<jacoco.skip>true</jacoco.skip>
 				<mdep.analyze.skip>true</mdep.analyze.skip>
+				<pmd.skip>true</pmd.skip>
+				<skipTests>true</skipTests>
+				<spotbugs.skip>true</spotbugs.skip>
 				<tidy.skip>true</tidy.skip>
 			</properties>
 		</profile>
@@ -2214,9 +2216,9 @@ cache:
 		<profile>
 			<id>dirty-package</id>
 			<properties>
-				<maven.source.skip>true</maven.source.skip>
-				<maven.javadoc.skip>true</maven.javadoc.skip>
 				<gpg.skip>true</gpg.skip>
+				<maven.javadoc.skip>true</maven.javadoc.skip>
+				<maven.source.skip>true</maven.source.skip>
 			</properties>
 		</profile>
 
@@ -2284,7 +2286,6 @@ cache:
 						<executions>
 							<execution>
 								<id>add-source</id>
-								<phase>generate-sources</phase>
 								<goals>
 									<goal>add-source</goal>
 								</goals>
@@ -2296,7 +2297,6 @@ cache:
 							</execution>
 							<execution>
 								<id>add-test-source</id>
-								<phase>generate-sources</phase>
 								<goals>
 									<goal>add-test-source</goal>
 								</goals>
@@ -2327,7 +2327,7 @@ cache:
 						<executions>
 							<execution>
 								<id>eclipse-settings</id>
-								<phase>generate-sources</phase>
+								<phase>initialize</phase>
 								<goals>
 									<goal>run</goal>
 								</goals>
