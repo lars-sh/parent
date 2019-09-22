@@ -139,6 +139,7 @@
 		<maven-enforcer-plugin.version>1.4.1</maven-enforcer-plugin.version>
 		<maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
 		<maven-install-plugin.version>2.5.2</maven-install-plugin.version>
+		<maven-jar-plugin.version>3.1.2</maven-jar-plugin.version>
 		<maven-javadoc-plugin.version>3.1.1</maven-javadoc-plugin.version>
 		<maven-jxr-plugin.version>3.0.0</maven-jxr-plugin.version>
 		<maven-plugin-plugin.version>3.6.0</maven-plugin-plugin.version>
@@ -158,9 +159,6 @@
 
 		<!-- Must not be updated to 3.1.0 as of https://issues.apache.org/jira/browse/MCHECKSTYLE-377 -->
 		<maven-checkstyle-plugin.version>3.0.0</maven-checkstyle-plugin.version>
-
-		<!-- Must not be updated to 3.1.2 as of https://bugs.eclipse.org/bugs/show_bug.cgi?id=547340 -->
-		<maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
 	</properties>
 
 	<dependencyManagement>
