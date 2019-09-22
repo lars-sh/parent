@@ -25,7 +25,7 @@ public interface ThrowingSupplier<T> extends Supplier<T> {
 	 * Short-hand method to cast any {@link ThrowingSupplier} as {@link Supplier}.
 	 *
 	 * @param supplier throwing supplier
-	 * @param          <T> the type of results supplied by this supplier
+	 * @param <T>      the type of results supplied by this supplier
 	 * @return hidden throwing supplier
 	 */
 	static <T> Supplier<T> throwing(final ThrowingSupplier<T> supplier) {

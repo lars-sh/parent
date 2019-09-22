@@ -22,7 +22,7 @@ public class NodeLists {
 	 * new list. Therefore lazy behavior of {@link NodeList} implementations might
 	 * not work on the returned list.
 	 *
-	 * @param          <T> expected node type
+	 * @param <T>      expected node type
 	 * @param nodeList list of nodes
 	 * @return list of {@code nodeList} elements
 	 */

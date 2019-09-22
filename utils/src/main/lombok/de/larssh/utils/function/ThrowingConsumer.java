@@ -26,7 +26,7 @@ public interface ThrowingConsumer<T> extends Consumer<T> {
 	 * Short-hand method to cast any {@link ThrowingConsumer} as {@link Consumer}.
 	 *
 	 * @param consumer throwing consumer
-	 * @param          <T> the type of the input to the operation
+	 * @param <T>      the type of the input to the operation
 	 * @return hidden throwing consumer
 	 */
 	static <T> Consumer<T> throwing(final ThrowingConsumer<T> consumer) {

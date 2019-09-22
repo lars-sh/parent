@@ -55,7 +55,7 @@ public class Reflects {
 	 * within the supplier is not encapsulated exception inside a
 	 * {@link InvocationTargetException} or {@link ReflectException}.
 	 *
-	 * @param          <T> type of the return value
+	 * @param <T>      type of the return value
 	 * @param supplier functionality to execute
 	 * @return any value returned by {@code supplier}
 	 * @throws ReflectException any reflection exception

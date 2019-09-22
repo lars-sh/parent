@@ -405,7 +405,7 @@ public class Strings {
 	 * @param binaryValue binary string
 	 * @return binary value
 	 * @throws ArithmeticException on failing fraction part
-	 * @throws ParseException      on parse failure
+	 * @throws ParseException on parse failure
 	 */
 	@SuppressWarnings("checkstyle:MultipleStringLiterals")
 	public static BigInteger parseBinaryUnit(final String binaryValue) throws ParseException {

@@ -35,7 +35,7 @@ public final class XPathExpressions {
 	 * Evaluates the compiled XPath expression in the specified context and
 	 * optionally returns a {@link Node}.
 	 *
-	 * @param            <T> expected node type
+	 * @param <T>        expected node type
 	 * @param node       the starting context
 	 * @param expression the XPath expression
 	 * @return evaluation result as optional {@code T extends Node}
@@ -51,7 +51,7 @@ public final class XPathExpressions {
 	 * Evaluates the compiled XPath expression in the specified context and returns
 	 * a list of {@link Node}.
 	 *
-	 * @param            <T> expected node type
+	 * @param <T>        expected node type
 	 * @param node       the starting context
 	 * @param expression the XPath expression
 	 * @return evaluation result as list of {@code T extends Node}

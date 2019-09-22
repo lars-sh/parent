@@ -47,7 +47,7 @@ public final class SneakyException extends RuntimeException {
 	 * This is not part of the constructor to hide the public API from generic type
 	 * {@code T}.
 	 *
-	 * @param           <T> generic throwable
+	 * @param <T>       generic throwable
 	 * @param throwable throwable to be hidden
 	 * @throws T hidden throwable
 	 */
