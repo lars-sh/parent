@@ -111,7 +111,7 @@
 		<junit-jupiter-api.version>5.5.2</junit-jupiter-api.version>
 		<junit-jupiter-engine.version>5.5.2</junit-jupiter-engine.version>
 		<junit-platform-runner.version>1.5.2</junit-platform-runner.version>
-		<lombok-annotations.version>1.18.8</lombok-annotations.version>
+		<lombok-annotations.version>1.18.10</lombok-annotations.version>
 		<mockito.version>3.0.0</mockito.version>
 		<parent.version>0.9.5-SNAPSHOT</parent.version>
 
@@ -120,7 +120,7 @@
 		<checkstyle.version>8.23</checkstyle.version>
 		<fb-contrib.version>7.4.3.sb</fb-contrib.version>
 		<findsecbugs.version>1.8.0</findsecbugs.version>
-		<lombok.version>1.18.8</lombok.version>
+		<lombok.version>1.18.10</lombok.version>
 		<pmd.version>6.17.0</pmd.version>
 		<spotbugs.version>3.1.12</spotbugs.version>
 
@@ -689,6 +689,7 @@ TODO: Easy to understand usage example
 									<entry key="lombok.helper.flagUsage" value="error" />
 									<entry key="lombok.log.apacheCommons.flagUsage"
 										value="error" />
+									<entry key="lombok.log.custom.flagUsage" value="error" />
 									<entry key="lombok.log.flagUsage" value="error" />
 									<entry key="lombok.log.flogger.flagUsage" value="error" />
 									<entry key="lombok.log.javaUtilLogging.flagUsage"
@@ -708,7 +709,7 @@ TODO: Easy to understand usage example
 									<entry key="lombok.val.flagUsage" value="error" />
 									<entry key="lombok.value.flagUsage" value="error" />
 									<entry key="lombok.var.flagUsage" value="error" />
-									<entry key="lombok.wither.flagUsage" value="error" />
+									<entry key="lombok.with.flagUsage" value="error" />
 								</propertyfile>
 								<propertyfile
 									file="${project.basedir}/src/main/lombok/lombok.config">
