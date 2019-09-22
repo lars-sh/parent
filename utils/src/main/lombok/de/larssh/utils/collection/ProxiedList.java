@@ -20,7 +20,6 @@ import lombok.Getter;
  * @param <E> the type of elements in this list
  */
 public class ProxiedList<E> extends ProxiedCollection<E> implements List<E> {
-
 	/**
 	 * Wrapped list
 	 *

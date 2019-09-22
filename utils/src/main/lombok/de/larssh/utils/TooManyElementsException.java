@@ -5,7 +5,6 @@ package de.larssh.utils;
  * no or exactly one element are expected.
  */
 public class TooManyElementsException extends RuntimeException {
-
 	private static final long serialVersionUID = -1912601313948443590L;
 
 	/**

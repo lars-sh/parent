@@ -23,7 +23,6 @@ import lombok.RequiredArgsConstructor;
  */
 @RequiredArgsConstructor
 public abstract class ProxiedMap<K, V> implements Map<K, V> {
-
 	/**
 	 * Wrapped map
 	 *

@@ -17,7 +17,6 @@ import lombok.Getter;
  * @param <E> the type of elements in this set
  */
 public class ProxiedSet<E> extends ProxiedCollection<E> implements Set<E> {
-
 	/**
 	 * Wrapped set
 	 *

@@ -12,7 +12,6 @@ package de.larssh.utils.function;
  */
 @FunctionalInterface
 public interface DoubleToDoubleFunction {
-
 	/**
 	 * Applies this function to the given argument.
 	 *

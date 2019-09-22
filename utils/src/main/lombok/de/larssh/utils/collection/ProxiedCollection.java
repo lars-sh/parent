@@ -23,7 +23,6 @@ import lombok.RequiredArgsConstructor;
  */
 @RequiredArgsConstructor
 public abstract class ProxiedCollection<E> implements Collection<E> {
-
 	/**
 	 * Wrapped collection
 	 *

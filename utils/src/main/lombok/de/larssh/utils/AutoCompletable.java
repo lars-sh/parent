@@ -35,7 +35,6 @@ import lombok.NoArgsConstructor;
  */
 @NoArgsConstructor
 public abstract class AutoCompletable extends Completable implements AutoCloseable {
-
 	/**
 	 * Calls {@link Completable#complete()} to finish the objects initialization
 	 * phase.

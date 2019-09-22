@@ -4,7 +4,6 @@ package de.larssh.utils;
  * Thrown to indicate that an object has been completed prior modifying.
  */
 public class CompletedException extends RuntimeException {
-
 	private static final long serialVersionUID = -469617111369439014L;
 
 	/**
