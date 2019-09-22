@@ -17,7 +17,8 @@ Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%
 * Checkstyle nearby comment filter for the MultipleStringLiterals check. Use `@SuppressWarnings` instead.
 
 ### Changed
-* Avoid some warnings inside the Maven output
+* Avoid some warnings inside the Maven output.
+* Checkstyle no longer runs on delomboked sources.
 
 ### Fixed
 * TODO

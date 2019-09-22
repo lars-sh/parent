@@ -133,6 +133,7 @@
 		<maven-antrun-plugin.version>1.8</maven-antrun-plugin.version>
 		<maven-archetype-plugin.version>3.1.1</maven-archetype-plugin.version>
 		<maven-assembly-plugin.version>3.1.1</maven-assembly-plugin.version>
+		<maven-checkstyle-plugin.version>3.1.0</maven-checkstyle-plugin.version>
 		<maven-clean-plugin.version>3.1.0</maven-clean-plugin.version>
 		<maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
 		<maven-dependency-plugin.version>3.1.1</maven-dependency-plugin.version>
@@ -157,9 +158,6 @@
 		<spotbugs-maven-plugin.version>3.1.12.1</spotbugs-maven-plugin.version>
 		<tidy-maven-plugin.version>1.1.0</tidy-maven-plugin.version>
 		<versions-maven-plugin.version>2.7</versions-maven-plugin.version>
-
-		<!-- Must not be updated to 3.1.0 as of https://issues.apache.org/jira/browse/MCHECKSTYLE-377 -->
-		<maven-checkstyle-plugin.version>3.0.0</maven-checkstyle-plugin.version>
 	</properties>
 
 	<dependencyManagement>
@@ -799,39 +797,13 @@ TODO: Easy to understand usage example
 	<!-- Filters: Unit Tests -->
 	<module name="SuppressionSingleFilter">
 		<property name="checks" value="ExecutableStatementCount|JavadocVariable|MagicNumber|MethodLength|MultipleStringLiterals" />
-		<property name="files" value="^(.*[/\\])?(src[/\\]test|generated-test-sources)[/\\].*$" />
+		<property name="files" value="^(.*[/\\])?src[/\\]test[/\\].*$" />
 	</module>
 
 	<!-- Filters: Lombok -->
 	<module name="SuppressionSingleFilter">
 		<property name="checks" value="FinalClass|HideUtilityClassConstructor|MissingCtor|MutableException|VisibilityModifier" />
 		<property name="files" value="^(.*[/\\])?src[/\\](main|test)[/\\]lombok[/\\].*$" />
-	</module>
-
-	<!-- Filters: Delombok: Suppress irregular formatting -->
-	<module name="SuppressionSingleFilter">
-		<property name="checks" value="EmptyLineSeparator" />
-		<property name="files" value="^(.*[/\\])?generated-(test-)?sources[/\\]delombok[/\\].*$" />
-	</module>
-
-	<!-- Filters: Delombok: Suppress irregular formatting -->
-	<module name="SuppressionSingleFilter">
-		<property name="id" value="XLineTrailingSpaces" />
-		<property name="files" value="^(.*[/\\])?generated-(test-)?sources[/\\]delombok[/\\].*$" />
-	</module>
-
-	<!-- Filters: Delombok: Suppress import separation checks -->
-	<module name="SuppressionSingleFilter">
-		<property name="checks" value="ImportOrder" />
-		<property name="files" value="^(.*[/\\])?generated-(test-)?sources[/\\]delombok[/\\].*$" />
-		<property name="message" value="^'.*' should be separated from previous imports\.$" />
-	</module>
-
-	<!-- Filters: Delombok: Suppress specific unused imports -->
-	<module name="SuppressionSingleFilter">
-		<property name="checks" value="UnusedImports" />
-		<property name="files" value="^(.*[/\\])?generated-(test-)?sources[/\\]delombok[/\\].*$" />
-		<property name="message" value="^Unused import - lombok\.ToString\.$" />
 	</module>
 
 	<!-- Miscellaneous -->
@@ -1077,13 +1049,6 @@ TODO: Easy to understand usage example
 			<property name="query" value="//ANNOTATION[DOT[IDENT[@text = 'ToString'] and IDENT[@text = 'Include']]]/ANNOTATION_MEMBER_VALUE_PAIR[IDENT[@text = 'rank']]/descendant-or-self::node()" />
 		</module>
 
-		<!-- Filters: Delombok: Suppress checks for annotated with "@lombok.Generated" -->
-		<module name="SuppressionXpathSingleFilter">
-			<property name="checks" value="^.*$" />
-			<property name="files" value="^(.*[/\\])?generated-(test-)?sources[/\\]delombok[/\\].*$" />
-			<property name="query" value="//*[MODIFIERS/ANNOTATION[DOT[IDENT[@text = 'lombok'] and IDENT[@text = 'Generated']]]]/descendant-or-self::node()" />
-		</module>
-
 		<!-- Headers -->
 		<!-- none -->
 
@@ -1106,10 +1071,7 @@ TODO: Easy to understand usage example
 		<!-- Javadoc Comments -->
 		<module name="AtclauseOrder" />
 		<module name="InvalidJavadocPosition" />
-		<module name="JavadocMethod">
-			<property name="validateThrows" value="true" />
-			<property name="allowUndeclaredRTE" value="true" />
-		</module>
+		<module name="JavadocMethod" />
 		<module name="JavadocParagraph">
 			<property name="allowNewlineParagraph" value="false" />
 		</module>
@@ -1918,8 +1880,6 @@ cache:
 								<sourceDirectory>${project.basedir}/src/test/java</sourceDirectory>
 								<sourceDirectory>${project.basedir}/src/main/lombok</sourceDirectory>
 								<sourceDirectory>${project.basedir}/src/test/lombok</sourceDirectory>
-								<sourceDirectory>${project.build.directory}/generated-sources/delombok</sourceDirectory>
-								<sourceDirectory>${project.build.directory}/generated-test-sources/delombok</sourceDirectory>
 							</sourceDirectories>
 						</configuration>
 					</execution>

@@ -404,7 +404,6 @@ public class Strings {
 	 *
 	 * @param binaryValue binary string
 	 * @return binary value
-	 * @throws ArithmeticException on failing fraction part
 	 * @throws ParseException on parse failure
 	 */
 	@SuppressWarnings("checkstyle:MultipleStringLiterals")
