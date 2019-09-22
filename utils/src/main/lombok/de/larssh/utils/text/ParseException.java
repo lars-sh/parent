@@ -4,7 +4,6 @@ package de.larssh.utils.text;
  * Thrown to indicate that a string could not be parsed.
  */
 public class ParseException extends Exception {
-	// @EqualsAndHashCode(callSuper = true, onParam_ = { @Nullable })
 
 	private static final long serialVersionUID = 4898591627790201970L;
 

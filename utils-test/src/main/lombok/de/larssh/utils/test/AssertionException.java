@@ -4,8 +4,6 @@ package de.larssh.utils.test;
  * Thrown to indicate that an assertion failed in an unexpected situation.
  */
 public class AssertionException extends RuntimeException {
-	// @EqualsAndHashCode(callSuper = true, onParam_ = { @Nullable })
-
 	private static final long serialVersionUID = -7622697337052594786L;
 
 	/**
