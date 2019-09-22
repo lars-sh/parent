@@ -2116,6 +2116,7 @@ cache:
 											<entry key="cleanup.sort_members_all" value="false" />
 											<entry key="cleanup.use_anonymous_class_creation"
 												value="false" />
+											<entry key="cleanup.use_autoboxing" value="true" />
 											<entry key="cleanup.use_blocks" value="true" />
 											<entry
 												key="cleanup.use_blocks_only_for_return_and_throw"
@@ -2135,6 +2136,7 @@ cache:
 											<entry
 												key="cleanup.use_this_for_non_static_method_access_only_if_necessary"
 												value="true" />
+											<entry key="cleanup.use_unboxing" value="true" />
 											<entry key="cleanup_profile" value="_de.lars-sh" />
 											<entry key="cleanup_settings_version" value="2" />
 											<entry key="eclipse.preferences.version" value="1" />
@@ -2142,7 +2144,7 @@ cache:
 												key="editor_save_participant_org.eclipse.jdt.ui.postsavelistener.cleanup"
 												value="true" />
 											<entry key="formatter_profile" value="_de.lars-sh" />
-											<entry key="formatter_settings_version" value="16" />
+											<entry key="formatter_settings_version" value="17" />
 											<entry key="org.eclipse.jdt.ui.exception.name"
 												value="e" />
 											<entry key="org.eclipse.jdt.ui.gettersetter.use.is"
@@ -2272,6 +2274,7 @@ cache:
 											<entry key="sp_cleanup.sort_members_all" value="false" />
 											<entry key="sp_cleanup.use_anonymous_class_creation"
 												value="false" />
+											<entry key="sp_cleanup.use_autoboxing" value="true" />
 											<entry key="sp_cleanup.use_blocks" value="true" />
 											<entry
 												key="sp_cleanup.use_blocks_only_for_return_and_throw"
@@ -2291,6 +2294,7 @@ cache:
 											<entry
 												key="sp_cleanup.use_this_for_non_static_method_access_only_if_necessary"
 												value="true" />
+											<entry key="sp_cleanup.use_unboxing" value="true" />
 										</propertyfile>
 										<propertyfile
 											file="${project.basedir}/.settings/org.eclipse.jdt.core.prefs">
@@ -2833,7 +2837,13 @@ cache:
 												key="org.eclipse.jdt.core.formatter.blank_lines_after_imports"
 												value="1" />
 											<entry
+												key="org.eclipse.jdt.core.formatter.blank_lines_after_last_class_body_declaration"
+												value="-1" />
+											<entry
 												key="org.eclipse.jdt.core.formatter.blank_lines_after_package"
+												value="1" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.blank_lines_before_abstract_method"
 												value="1" />
 											<entry
 												key="org.eclipse.jdt.core.formatter.blank_lines_before_field"
@@ -2859,6 +2869,9 @@ cache:
 											<entry
 												key="org.eclipse.jdt.core.formatter.blank_lines_between_import_groups"
 												value="1" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.blank_lines_between_statement_group_in_switch"
+												value="-1" />
 											<entry
 												key="org.eclipse.jdt.core.formatter.blank_lines_between_type_declarations"
 												value="1" />
@@ -3693,7 +3706,22 @@ cache:
 												key="org.eclipse.jdt.core.formatter.never_indent_line_comments_on_first_column"
 												value="false" />
 											<entry
+												key="org.eclipse.jdt.core.formatter.number_of_blank_lines_after_code_block"
+												value="0" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.number_of_blank_lines_at_beginning_of_code_block"
+												value="-1" />
+											<entry
 												key="org.eclipse.jdt.core.formatter.number_of_blank_lines_at_beginning_of_method_body"
+												value="0" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.number_of_blank_lines_at_end_of_code_block"
+												value="-1" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.number_of_blank_lines_at_end_of_method_body"
+												value="-1" />
+											<entry
+												key="org.eclipse.jdt.core.formatter.number_of_blank_lines_before_code_block"
 												value="0" />
 											<entry
 												key="org.eclipse.jdt.core.formatter.number_of_empty_lines_to_preserve"
