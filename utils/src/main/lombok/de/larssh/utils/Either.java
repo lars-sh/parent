@@ -1,6 +1,7 @@
 package de.larssh.utils;
 
 import java.util.Optional;
+import java.util.function.Consumer;
 import java.util.function.Function;
 
 import edu.umd.cs.findbugs.annotations.Nullable;
@@ -104,6 +105,37 @@ public class Either<A, B> {
 	Optional<B> second;
 
 	/**
+	 * Invoke either consumer depending on which value is present..
+	 *
+	 * @param firstConsumer  block to be executed if the first value is present
+	 * @param secondConsumer block to be executed if the second value is present
+	 */
+	public void ifPresent(final Consumer<? super A> firstConsumer, final Consumer<? super B> secondConsumer) {
+		ifFirstIsPresent(firstConsumer);
+		ifSecondIsPresent(secondConsumer);
+	}
+
+	/**
+	 * If the first value is present, invoke the specified consumer with the value,
+	 * otherwise do nothing.
+	 *
+	 * @param consumer block to be executed if the first value is present
+	 */
+	public void ifFirstIsPresent(final Consumer<? super A> consumer) {
+		first.ifPresent(consumer);
+	}
+
+	/**
+	 * If the second value is present, invoke the specified consumer with the value,
+	 * otherwise do nothing.
+	 *
+	 * @param consumer block to be executed if the second value is present
+	 */
+	public void ifSecondIsPresent(final Consumer<? super B> consumer) {
+		second.ifPresent(consumer);
+	}
+
+	/**
 	 * If value is of first type {@code functionA} is applied, else value is of
 	 * second type and {@code functionB} is applied. The resulting value is
 	 * returned.
@@ -119,19 +151,19 @@ public class Either<A, B> {
 	 * long value = either.map(Long::parseLong, Number::longValue);
 	 * </pre>
 	 *
-	 * @param <T>       resulting type
-	 * @param functionA function to map value, if it is of first type
-	 * @param functionB function to map value, if it is of second type
+	 * @param <T>            resulting type
+	 * @param firstFunction  function to map value, if it is of first type
+	 * @param secondFunction function to map value, if it is of second type
 	 * @return result after mapping the value using either {@code functionA} or
 	 *         {@code functionB}
 	 */
 	@Nullable
-	public <T> T map(final Function<? super A, ? extends T> functionA,
-			final Function<? super B, ? extends T> functionB) {
+	public <T> T map(final Function<? super A, ? extends T> firstFunction,
+			final Function<? super B, ? extends T> secondFunction) {
 		if (first.isPresent()) {
-			return first.map(functionA).orElseThrow(IllegalStateException::new);
+			return first.map(firstFunction).orElseThrow(IllegalStateException::new);
 		}
-		return second.map(functionB).orElseThrow(IllegalStateException::new);
+		return second.map(secondFunction).orElseThrow(IllegalStateException::new);
 	}
 
 	/**

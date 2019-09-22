@@ -2,9 +2,11 @@ package de.larssh.utils;
 
 import static de.larssh.utils.test.Assertions.assertEqualsAndHashCode;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.Optional;
+import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Function;
 
 import org.junit.jupiter.api.Test;
@@ -69,15 +71,53 @@ public class EitherTest {
 	}
 
 	/**
+	 * {@link Either#ifPresent(java.util.function.Consumer, java.util.function.Consumer)}
+	 */
+	@Test
+	public void testIfPresent() {
+		final AtomicReference<Character> firstValue = new AtomicReference<>(null);
+		A.ifPresent(c -> firstValue.set(c), i -> assertFalse(true));
+		assertEquals('A', firstValue.get());
+
+		final AtomicReference<Integer> secondValue = new AtomicReference<>(null);
+		B.ifPresent(c -> assertFalse(true), i -> secondValue.set(i));
+		assertEquals(2, secondValue.get());
+	}
+
+	/**
+	 * {@link Either#ifFirstIsPresent(java.util.function.Consumer)}
+	 */
+	@Test
+	public void testIfFirstIsPresent() {
+		final AtomicReference<Character> value = new AtomicReference<>(null);
+		A.ifFirstIsPresent(c -> value.set(c));
+		assertEquals('A', value.get());
+
+		B.ifFirstIsPresent(c -> assertFalse(true));
+	}
+
+	/**
+	 * {@link Either#ifSecondIsPresent(java.util.function.Consumer)}
+	 */
+	@Test
+	public void testIfSecondIsPresent() {
+		A.ifSecondIsPresent(i -> assertFalse(true));
+
+		final AtomicReference<Integer> value = new AtomicReference<>(null);
+		B.ifSecondIsPresent(i -> value.set(i));
+		assertEquals(2, value.get());
+	}
+
+	/**
 	 * {@link Either#map(Function, Function)}
 	 */
 	@Test
 	public void testMap() {
-		final Function<Character, String> mapFirst = c -> Character.toString(c);
-		final Function<Integer, String> mapSecond = i -> Integer.toString(i);
+		final Function<Character, String> firstFunction = c -> Character.toString(c);
+		final Function<Integer, String> secondFunction = i -> Integer.toString(i);
 
-		assertEquals("A", A.map(mapFirst, mapSecond));
-		assertEquals("2", B.map(mapFirst, mapSecond));
+		assertEquals("A", A.map(firstFunction, secondFunction));
+		assertEquals("2", B.map(firstFunction, secondFunction));
 	}
 
 	/**
@@ -85,10 +125,10 @@ public class EitherTest {
 	 */
 	@Test
 	public void testMapFirst() {
-		final Function<Character, Integer> mapFirst = Character::getNumericValue;
+		final Function<Character, Integer> function = Character::getNumericValue;
 
-		assertEquals((Integer) Character.getNumericValue('A'), A.mapFirst(mapFirst));
-		assertEquals((Integer) 2, B.mapFirst(mapFirst));
+		assertEquals((Integer) Character.getNumericValue('A'), A.mapFirst(function));
+		assertEquals((Integer) 2, B.mapFirst(function));
 	}
 
 	/**
@@ -96,9 +136,9 @@ public class EitherTest {
 	 */
 	@Test
 	public void testMapSecond() {
-		final Function<Integer, Character> mapSecond = i -> Character.toChars(i)[0];
+		final Function<Integer, Character> function = i -> Character.toChars(i)[0];
 
-		assertEquals((Character) 'A', A.mapSecond(mapSecond));
-		assertEquals((Character) '\u0002', B.mapSecond(mapSecond));
+		assertEquals((Character) 'A', A.mapSecond(function));
+		assertEquals((Character) '\u0002', B.mapSecond(function));
 	}
 }
