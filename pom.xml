@@ -121,6 +121,7 @@
 		<fb-contrib.version>7.4.3.sb</fb-contrib.version>
 		<findsecbugs.version>1.8.0</findsecbugs.version>
 		<lombok.version>1.18.10</lombok.version>
+		<org-eclipse-jdt-core.version>3.19.0</org-eclipse-jdt-core.version>
 		<pmd.version>6.17.0</pmd.version>
 		<spotbugs.version>3.1.12</spotbugs.version>
 
@@ -400,6 +401,13 @@
 					<groupId>net.revelc.code.formatter</groupId>
 					<artifactId>formatter-maven-plugin</artifactId>
 					<version>${formatter-maven-plugin.version}</version>
+					<dependencies>
+						<dependency>
+							<groupId>org.eclipse.jdt</groupId>
+							<artifactId>org.eclipse.jdt.core</artifactId>
+							<version>${org-eclipse-jdt-core.version}</version>
+						</dependency>
+					</dependencies>
 				</plugin>
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
@@ -1240,6 +1248,7 @@ TODO: Easy to understand usage example
 						</configuration>
 					</execution>
 
+					<!-- formatter.xml -->
 					<execution>
 						<id>formatter-xml</id>
 						<phase>initialize</phase>
