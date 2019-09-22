@@ -1241,7 +1241,7 @@ TODO: Easy to understand usage example
 					</execution>
 
 					<execution>
-						<id>formatter</id>
+						<id>formatter-xml</id>
 						<phase>initialize</phase>
 						<goals>
 							<goal>run</goal>

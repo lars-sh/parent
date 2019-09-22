@@ -22,7 +22,7 @@ Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%
 * Avoid some ignorable warnings inside the Maven output.
 
 ### Fixed
-* TODO
+* Lifecycle mapping documentation inside `README.md`
 
 <a name="0.9.4"></a>
 

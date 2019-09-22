@@ -467,18 +467,22 @@ The following shows at which point in the Maven lifecycle plugins do their work.
 * default
     * validate
         * maven-enforcer-plugin:enforce (default)
-        * jacoco-maven-plugin:prepare-agent (default)
+        * maven-tidy-plugin:check (default)
     * initialize
         * maven-antrun-plugin:run (gitignore-exists)
         * maven-antrun-plugin:run (gitignore)
+        * maven-antrun-plugin:run (project-changelog-md-exists)
+        * maven-antrun-plugin:run (changelog-md)
         * maven-antrun-plugin:run (project-readme-md-exists)
         * maven-antrun-plugin:run (readme-md)
         * maven-antrun-plugin:run (source-directories)
         * maven-antrun-plugin:run (lombok-config)
         * maven-antrun-plugin:run (checkstyle-xml)
+        * maven-antrun-plugin:run (formatter-xml)
         * maven-antrun-plugin:run (pmd-ruleset-xml)
         * maven-antrun-plugin:run (project-travis-yml-exists)
         * maven-antrun-plugin:run (travis-ci)
+        * jacoco-maven-plugin:prepare-agent (default)
     * generate-sources
         * lombok-maven-plugin:delombok (default)
     * process-sources
@@ -510,39 +514,18 @@ The following shows at which point in the Maven lifecycle plugins do their work.
         * maven-javadoc-plugin:jar (default)
         * maven-javadoc-plugin:test-jar (default)
     * pre-integration-test
+        * jacoco-maven-plugin:report (default)
     * integration-test
     * post-integration-test
     * verify
-        * jacoco-maven-plugin:report (default)
+        * maven-pmd-plugin:cpd (default)
+        * maven-pmd-plugin:cpd-check (default)
+        * maven-pmd-plugin:pmd (default)
+        * maven-pmd-plugin:check (default)
+        * maven-spotbugs-plugin:check (default)
+        * maven-dependency-plugin:analyze-only (default)
         * maven-gpg-plugin:sign (default)
     * install
         * maven-install-plugin:install (default-install)
     * deploy
         * maven-deploy-plugin:deploy (default-deploy)
-* site
-    * pre-site
-    * site
-        * site:site (default-site)
-            * maven-checkstyle-plugin:checkstyle
-            * spotbugs-maven-plugin:spotbugs
-            * maven-pmd-plugin:pmd
-            * maven-surefire-report-plugin:report-only
-            * maven-dependency-plugin:analyze-report
-            * versions-maven-plugin:dependency-updates-report
-            * versions-maven-plugin:plugin-updates-report
-            * maven-javadoc-plugin:javadoc-no-fork
-            * maven-jxr-plugin:jxr
-            * maven-jxr-plugin:test-jxr
-            * maven-project-info-reports-plugin:dependencies
-            * maven-project-info-reports-plugin:dependency-info
-            * maven-project-info-reports-plugin:dependency-management
-            * maven-project-info-reports-plugin:distribution-management
-            * maven-project-info-reports-plugin:index
-            * maven-project-info-reports-plugin:licenses
-            * maven-project-info-reports-plugin:plugin-management
-            * maven-project-info-reports-plugin:plugins
-            * maven-project-info-reports-plugin:summary
-            * maven-project-info-reports-plugin:team
-    * post-site
-    * site-deploy
-        * site:deploy
