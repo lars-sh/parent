@@ -5,7 +5,7 @@ Used technologies and main focus are:
 * Maven for up-to-date and consistent dependencies
 * JUnit and JavaDoc as defacto standards
 * Project Lombok to allow writing less boilerplate
-* Checkstyle for clean code
+* Checkstyle and formatter for clean code
 * SpotBugs, PMD and CPD for safe code and following best practices
 * Eclipse Integration to see warnings as easy as possible
 * Until further notice we aim at using Java 8.
@@ -56,6 +56,9 @@ Upgrading existing projects to use this parent POM can be done step by step. As 
 
 ##### Skip Checkstyle
 	<checkstyle.skip>true</checkstyle.skip>
+
+##### Skip Formatter
+	<formatter.skip>true</formatter.skip>
 
 ##### Skip JaCoCo
 	<jacoco.skip>true</jacoco.skip>
@@ -320,6 +323,8 @@ The following files are generated for the build process itself. You should not n
 
 `target/checkstyle.xml` contains the Checkstyle rules. It is overwritten at the Maven goal `generate-source`.
 
+`target/formatter.xml` contains the formatting rules. It is overwritten at the Maven goal `initialize`.
+
 #### Suppress Warnings
 As this POM comes with some code check and validation tools you might need to suppress false-positives.
 
@@ -477,6 +482,7 @@ The following shows at which point in the Maven lifecycle plugins do their work.
         * maven-antrun-plugin:run (travis-ci)
         * lombok-maven-plugin:delombok (default)
     * process-sources
+        * maven-formatter-plugin:validate (default)
     * generate-resources
     * process-resources
         * maven-resources-plugin:resources (default-resources)
