@@ -9,6 +9,7 @@ Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%
 
 ### Added
 * Check code format via command line prior compiling. This simplifies working in teams with different editors.
+* AssertJ test dependency
 * Method de.larssh.utils.Either.ifPresent(firstConsumer, secondConsumer)
 * Method de.larssh.utils.Either.ifFirstIsPresent(consumer)
 * Method de.larssh.utils.Either.ifSecondIsPresent(consumer)
