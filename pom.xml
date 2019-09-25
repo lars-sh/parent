@@ -2272,10 +2272,23 @@ cache:
 			</properties>
 		</profile>
 
+		<!-- Add SpotBugs excludes if the file exists -->
+		<profile>
+			<id>spotbugs-excludes-xml-exists</id>
+			<activation>
+				<file>
+					<exists>${basedir}/spotbugs-excludes.xml</exists>
+				</file>
+			</activation>
+			<properties>
+				<spotbugs.excludeFilterFile>${project.basedir}/spotbugs-excludes.xml</spotbugs.excludeFilterFile>
+			</properties>
+		</profile>
+
 		<!-- JDK 9 and later: Do not show warnings as the bootstrap class path 
 			does not match the current sources version. -->
 		<profile>
-			<id>jdk9-and-later</id>
+			<id>fix-jdk9-and-later</id>
 			<activation>
 				<jdk>(9,)</jdk>
 			</activation>
@@ -2288,7 +2301,7 @@ cache:
 		<!-- JDK 11 and later: Suppress SpotBugs bug RCN_REDUNDANT_NULLCHECK_OF_NONNULL_VALUE 
 			as of https://github.com/spotbugs/spotbugs/issues/756 -->
 		<profile>
-			<id>jdk11-and-later</id>
+			<id>fix-jdk11-and-later</id>
 			<activation>
 				<jdk>(11,)</jdk>
 			</activation>
@@ -2297,16 +2310,17 @@ cache:
 			</properties>
 		</profile>
 
-		<!-- Add SpotBugs excludes if the file exists -->
+		<!-- Travis CI: Sadly the latest JDT Core release is not available via Googles Maven Central mirror. Therefore this workaround makes Travis CI use the previous version of JDT Core. -->
 		<profile>
-			<id>spotbugs-excludes-xml-exists</id>
+			<id>fix-travis-ci</id>
 			<activation>
-				<file>
-					<exists>${basedir}/spotbugs-excludes.xml</exists>
-				</file>
+				<property>
+					<name>env.TRAVIS</name>
+					<value>true</value>
+				</property>
 			</activation>
 			<properties>
-				<spotbugs.excludeFilterFile>${project.basedir}/spotbugs-excludes.xml</spotbugs.excludeFilterFile>
+				<org-eclipse-jdt-core.version>3.18.0</org-eclipse-jdt-core.version>
 			</properties>
 		</profile>
 
