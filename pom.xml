@@ -107,6 +107,7 @@
 		<org.eclipse.jdt.core.compiler.doc.comment.support>enabled</org.eclipse.jdt.core.compiler.doc.comment.support>
 
 		<!-- Versions: Dependencies -->
+		<assertj-core.version>3.11.1</assertj-core.version>
 		<joor.version>0.9.12</joor.version>
 		<junit-jupiter-api.version>5.5.2</junit-jupiter-api.version>
 		<junit-jupiter-engine.version>5.5.2</junit-jupiter-engine.version>
@@ -203,6 +204,12 @@
 		</dependency>
 
 		<!-- Test -->
+		<dependency>
+			<groupId>org.assertj</groupId>
+			<artifactId>assertj-core</artifactId>
+			<version>${assertj-core.version}</version>
+			<scope>test</scope>
+		</dependency>
 		<dependency>
 			<groupId>org.jooq</groupId>
 			<artifactId>joor-java-8</artifactId>
@@ -2146,6 +2153,7 @@ cache:
 
 								<!-- Test -->
 								<ignoredUnusedDeclaredDependency>de.lars-sh:utils-test:jar:${parent.version}</ignoredUnusedDeclaredDependency>
+								<ignoredUnusedDeclaredDependency>org.assertj:assertj-core:jar:${assertj-core.version}</ignoredUnusedDeclaredDependency>
 								<ignoredUnusedDeclaredDependency>org.jooq:joor-java-8:jar:${joor.version}</ignoredUnusedDeclaredDependency>
 								<ignoredUnusedDeclaredDependency>org.junit.jupiter:junit-jupiter-api:jar:${junit-jupiter-api.version}</ignoredUnusedDeclaredDependency>
 								<ignoredUnusedDeclaredDependency>org.junit.jupiter:junit-jupiter-engine:jar:${junit-jupiter-engine.version}</ignoredUnusedDeclaredDependency>
