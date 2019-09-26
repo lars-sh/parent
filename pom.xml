@@ -2418,15 +2418,15 @@ cache:
 										<echo file="${project.basedir}/.checkstyle"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <fileset-config file-format-version="1.2.0" simple-config="false" sync-formatter="false">
 	<local-check-config name="Checkstyle" location=".settings/checkstyle.xml" type="project" description="">
-		<additional-data name="protect-config-file" value="false"/>
+		<additional-data name="protect-config-file" value="false" />
 	</local-check-config>
 	<fileset name="main" enabled="true" check-config-name="Checkstyle" local="true">
-		<file-match-pattern match-pattern="^target/generated-sources/delombok/" include-pattern="true" />
 		<file-match-pattern match-pattern="^src/main/java/" include-pattern="true" />
+		<file-match-pattern match-pattern="^src/main/lombok/" include-pattern="true" />
 	</fileset>
 	<fileset name="test" enabled="true" check-config-name="Checkstyle" local="true">
-		<file-match-pattern match-pattern="^target/generated-test-sources/delombok/" include-pattern="true" />
 		<file-match-pattern match-pattern="^src/test/java/" include-pattern="true" />
+		<file-match-pattern match-pattern="^src/test/lombok/" include-pattern="true" />
 	</fileset>
 </fileset-config>
 ]]></echo>
