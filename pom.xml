@@ -79,6 +79,40 @@
 			is used with the <phase> tag. -->
 		<project.build.packageDependenciesPhase>none</project.build.packageDependenciesPhase>
 
+		<!-- "project.create-gitignore" handles if the projects ".gitignore" file 
+			should be generated. Set to "false" if the file should not be created or 
+			overwritten. Default value is "true". -->
+		<project.create-gitignore>true</project.create-gitignore>
+
+		<!-- "project.create-changelog-md" handles if the projects "CHANGELOG.md" 
+			file should be generated. Set to "false" if the file should not be created 
+			if not existing. Default value is "true". -->
+		<!-- <project.create-changelog-md>true</project.create-changelog-md> -->
+
+		<!-- "project.create-readme-md" handles if the projects "README.md" file 
+			should be generated. Set to "false" if the file should not be created if 
+			not existing. Default value is "true". -->
+		<!-- <project.create-readme-md>true</project.create-readme-md> -->
+
+		<!-- "project.create-source-directories" handles if the projects source 
+			directories shall be created. Set to "false" if the folder should not be 
+			created. Default value is "true", except for packaging types "pom" and "archetype". -->
+		<!-- <project.create-source-directories>true</project.create-source-directories> -->
+
+		<!-- "project.default-sources-folder" is the name if the default source 
+			folders to be created. Default value is "lombok". -->
+		<project.default-sources-folder>lombok</project.default-sources-folder>
+
+		<!-- "project.create-lombok-config" handles if the projects "lombok.config" 
+			files should be generated. Set to "false" if the files should not be created 
+			or overwritten. Default value is "true". -->
+		<!-- <project.create-lombok-config>true</project.create-lombok-config> -->
+
+		<!-- "project.create-travis-yml" handles if the projects ".travis.yml" 
+			file should be generated. Set to "false" if the file should not be created 
+			or overwritten. Default value is "true". -->
+		<project.create-travis-yml>true</project.create-travis-yml>
+
 		<!-- "org.eclipse.jdt.core.compiler.annotation.missingNonNullByDefaultAnnotation" 
 			is meant to be used by child POMs to configure if Eclipse should enforce 
 			@NonNullByDefault annotations on every package. Values can be "error", "warning", 
@@ -568,9 +602,9 @@
 			<plugin>
 				<artifactId>maven-antrun-plugin</artifactId>
 				<executions>
-					<!-- .gitignore -->
+					<!-- configure-project -->
 					<execution>
-						<id>project-gitignore-exists</id>
+						<id>configure-project</id>
 						<phase>initialize</phase>
 						<goals>
 							<goal>run</goal>
@@ -578,11 +612,39 @@
 						<configuration>
 							<exportAntProperties>true</exportAntProperties>
 							<target>
-								<available property="project.gitignore.exists"
-									file="${project.basedir}/.gitignore" />
+								<condition property="project.create-changelog-md"
+									value="false" else="true">
+									<available file="${project.basedir}/CHANGELOG.md" />
+								</condition>
+								<condition property="project.create-readme-md"
+									value="false" else="true">
+									<available file="${project.basedir}/README.md" />
+								</condition>
+								<condition
+									property="project.create-source-directories" value="false"
+									else="true">
+									<or>
+										<equals arg1="project.packaging" arg2="maven-archetype" />
+										<equals arg1="project.packaging" arg2="pom" />
+									</or>
+								</condition>
+								<condition property="project.create-lombok-config"
+									value="false" else="true">
+									<or>
+										<equals arg1="project.packaging" arg2="maven-archetype" />
+										<equals arg1="project.packaging" arg2="pom" />
+									</or>
+								</condition>
+								<condition property="spotbugs.excludeFilterFile"
+									value="${project.basedir}/spotbugs-excludes.xml" else="">
+									<available
+										file="${project.basedir}/spotbugs-excludes.xml" />
+								</condition>
 							</target>
 						</configuration>
 					</execution>
+
+					<!-- .gitignore -->
 					<execution>
 						<id>gitignore</id>
 						<phase>initialize</phase>
@@ -590,7 +652,7 @@
 							<goal>run</goal>
 						</goals>
 						<configuration>
-							<target unless="project.gitignore.exists">
+							<target if="${project.create-gitignore}">
 								<echo message="Create .gitignore" />
 								<echo file="${project.basedir}/.gitignore"><![CDATA[/.settings/
 /src/main/lombok/lombok.config
@@ -607,27 +669,13 @@
 
 					<!-- CHANGELOG.md -->
 					<execution>
-						<id>project-changelog-md-exists</id>
-						<phase>initialize</phase>
-						<goals>
-							<goal>run</goal>
-						</goals>
-						<configuration>
-							<exportAntProperties>true</exportAntProperties>
-							<target>
-								<available property="project.changelog-md.exists"
-									file="${project.basedir}/CHANGELOG.md" />
-							</target>
-						</configuration>
-					</execution>
-					<execution>
 						<id>changelog-md</id>
 						<phase>initialize</phase>
 						<goals>
 							<goal>run</goal>
 						</goals>
 						<configuration>
-							<target unless="project.changelog-md.exists">
+							<target if="${project.create-changelog-md}">
 								<echo message="Create CHANGELOG.md" />
 								<echo file="${project.basedir}/CHANGELOG.md"><![CDATA[# Changelog
 All notable changes to this project will be documented in this file.
@@ -665,27 +713,13 @@ Download at TODO
 
 					<!-- README.md -->
 					<execution>
-						<id>project-readme-md-exists</id>
-						<phase>initialize</phase>
-						<goals>
-							<goal>run</goal>
-						</goals>
-						<configuration>
-							<exportAntProperties>true</exportAntProperties>
-							<target>
-								<available property="project.readme-md.exists"
-									file="${project.basedir}/README.md" />
-							</target>
-						</configuration>
-					</execution>
-					<execution>
 						<id>readme-md</id>
 						<phase>initialize</phase>
 						<goals>
 							<goal>run</goal>
 						</goals>
 						<configuration>
-							<target unless="project.readme-md.exists">
+							<target if="${project.create-readme-md}">
 								<echo message="Create README.md" />
 								<echo file="${project.basedir}/README.md"><![CDATA[# TODO: Project name
 TODO: Short introduction
@@ -697,7 +731,7 @@ TODO: Easy to understand usage example
 						</configuration>
 					</execution>
 
-					<!-- Source directories -->
+					<!-- Source Directories -->
 					<execution>
 						<id>source-directories</id>
 						<phase>initialize</phase>
@@ -705,10 +739,12 @@ TODO: Easy to understand usage example
 							<goal>run</goal>
 						</goals>
 						<configuration>
-							<target>
-								<mkdir dir="${project.basedir}/src/main/lombok" />
+							<target if="${project-create-source-directories}">
+								<mkdir
+									dir="${project.basedir}/src/main/${parent.default-sources-folder}" />
 								<mkdir dir="${project.basedir}/src/main/resources" />
-								<mkdir dir="${project.basedir}/src/test/lombok" />
+								<mkdir
+									dir="${project.basedir}/src/test/${parent.default-sources-folder}" />
 								<mkdir dir="${project.basedir}/src/test/resources" />
 							</target>
 						</configuration>
@@ -722,7 +758,9 @@ TODO: Easy to understand usage example
 							<goal>run</goal>
 						</goals>
 						<configuration>
-							<target>
+							<target if="${project.create-lombok-config}">
+								<mkdir dir="${project.basedir}/src/main/lombok" />
+								<mkdir dir="${project.basedir}/src/test/lombok" />
 								<propertyfile
 									file="${project.basedir}/src/lombok.config">
 									<entry key="config.stopBubbling" value="true" />
@@ -1852,21 +1890,7 @@ TODO: Easy to understand usage example
 						</configuration>
 					</execution>
 
-					<!-- Travis CI -->
-					<execution>
-						<id>project-travis-yml-exists</id>
-						<phase>initialize</phase>
-						<goals>
-							<goal>run</goal>
-						</goals>
-						<configuration>
-							<exportAntProperties>true</exportAntProperties>
-							<target unless="update-travis-yml">
-								<available property="project.travis-yml.exists"
-									file="${project.basedir}/.travis.yml" />
-							</target>
-						</configuration>
-					</execution>
+					<!-- .travis.yml -->
 					<execution>
 						<id>travis-ci</id>
 						<phase>initialize</phase>
@@ -1874,7 +1898,7 @@ TODO: Easy to understand usage example
 							<goal>run</goal>
 						</goals>
 						<configuration>
-							<target unless="project.travis-yml.exists">
+							<target if="${project.create-travis-yml}">
 								<echo message="Create .travis.yml" />
 								<echo file="${project.basedir}/.travis.yml"><![CDATA[language: java
 jdk:
@@ -2280,19 +2304,6 @@ cache:
 			</properties>
 		</profile>
 
-		<!-- Add SpotBugs excludes if the file exists -->
-		<profile>
-			<id>spotbugs-excludes-xml-exists</id>
-			<activation>
-				<file>
-					<exists>${basedir}/spotbugs-excludes.xml</exists>
-				</file>
-			</activation>
-			<properties>
-				<spotbugs.excludeFilterFile>${project.basedir}/spotbugs-excludes.xml</spotbugs.excludeFilterFile>
-			</properties>
-		</profile>
-
 		<!-- JDK 9 and later: Do not show warnings as the bootstrap class path 
 			does not match the current sources version. -->
 		<profile>
@@ -2318,7 +2329,9 @@ cache:
 			</properties>
 		</profile>
 
-		<!-- Travis CI: Sadly the latest JDT Core release is not available via Googles Maven Central mirror. Therefore this workaround makes Travis CI use the previous version of JDT Core. -->
+		<!-- Travis CI: Sadly the latest JDT Core release is not available via 
+			Googles Maven Central mirror. Therefore this workaround makes Travis CI use 
+			the previous version of JDT Core. -->
 		<profile>
 			<id>fix-travis-ci</id>
 			<activation>
@@ -2332,14 +2345,6 @@ cache:
 			</properties>
 		</profile>
 
-		<!-- Update existing .travis.yml files -->
-		<profile>
-			<id>update-travis-yml</id>
-			<properties>
-				<update-travis-yml>true</update-travis-yml>
-			</properties>
-		</profile>
-
 		<!-- Eclipse only: Add lombok sources to class path since delombok goals 
 			are ignored -->
 		<profile>
@@ -2350,7 +2355,6 @@ cache:
 				</property>
 			</activation>
 			<build>
-				<!-- Add lombok sources to Eclipse build path -->
 				<plugins>
 					<plugin>
 						<groupId>org.codehaus.mojo</groupId>

@@ -13,6 +13,7 @@ Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%
 * Method de.larssh.utils.Either.ifPresent(firstConsumer, secondConsumer)
 * Method de.larssh.utils.Either.ifFirstIsPresent(consumer)
 * Method de.larssh.utils.Either.ifSecondIsPresent(consumer)
+* POM properties to configure generation of files and folders
 
 ### Removed
 * Checkstyle nearby comment filter for the MultipleStringLiterals check. Use `@SuppressWarnings` instead.

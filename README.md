@@ -254,16 +254,26 @@ The following profiles can be activated by hand to handle some rare cases.
 
 `-P dirty-package` skips the creation of optional packages
 
-`mvn initialize -P update-eclipse` updates eclipse settings
-
-`mvn initialize -P update-travis-yml` updates existing `.travis.yml` files
-
 #### Maven Properties
 This parent POM either predefines existing Maven Properties or introduces some own.
 
 `project.build.mainClass` is meant to be used by child POMs to configure a default main class, e.g. "de.larssh.Main". Default value: *empty*
 
 `project.build.packageDependenciesPhase` is meant to be used by child POMs to configure if an archive containing dependencies should be created. Values can be `none` (disabled) and `package` (enabled) as this property is used with the <phase> tag. Default value: `none`
+
+`project.create-gitignore` handles if the projects `.gitignore` file should be generated. Set to "false" if the file should not be created or overwritten. Default value is `true`.
+
+`project.create-changelog-md` handles if the projects `CHANGELOG.md` file should be generated. Set to `false` if the file should not be created if not existing. Default value is `true`.
+
+`project.create-readme-md` handles if the projects `README.md` file should be generated. Set to `false` if the file should not be created if not existing. Default value is `true`.
+
+`project.create-source-directories` handles if the projects source directories shall be created. Set to `false` if the folder should not be created. Default value is `true`, except for packaging types `pom` and `archetype`.
+
+`project.default-sources-folder` is the name if the default source folders to be created. Default value is `lombok`.
+
+`project.create-lombok-config` handles if the projects `lombok.config` files should be generated. Set to `false` if the files should not be created or overwritten. Default value is `true`.
+
+`project.create-travis-yml` handles if the projects `.travis.yml` file should be generated. Set to `false` if the file should not be created or overwritten. Default value is `true`.
 
 `org.eclipse.jdt.core.compiler.annotation.missingNonNullByDefaultAnnotation` is meant to be used by child POMs to configure if Eclipse should enforce @NonNullByDefault annotations on every package. Values can be `error`, `warning`, `info` or `ignore` (disabled). Default value: `warning`
 
@@ -419,12 +429,6 @@ To simplify writing unit tests the following dependencies are available for unit
 TODO
 
 #### Jacoco
-TODO
-
-### Project Site
-TODO
-
-#### Dependencies
 TODO
 
 ### Checks
