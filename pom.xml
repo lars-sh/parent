@@ -2329,22 +2329,6 @@ cache:
 			</properties>
 		</profile>
 
-		<!-- Travis CI: Sadly the latest JDT Core release is not available via 
-			Googles Maven Central mirror. Therefore this workaround makes Travis CI use 
-			the previous version of JDT Core. -->
-		<profile>
-			<id>fix-travis-ci</id>
-			<activation>
-				<property>
-					<name>env.TRAVIS</name>
-					<value>true</value>
-				</property>
-			</activation>
-			<properties>
-				<org-eclipse-jdt-core.version>3.18.0</org-eclipse-jdt-core.version>
-			</properties>
-		</profile>
-
 		<!-- Eclipse only: Add lombok sources to class path since delombok goals 
 			are ignored -->
 		<profile>
