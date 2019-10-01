@@ -62,83 +62,47 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
+		<enforcer.requiredMavenVersion>3.3.9</enforcer.requiredMavenVersion>
+		<parent-pom.create-gitignore>true</parent-pom.create-gitignore>
+		<!-- <parent-pom.create-changelog-md>true</parent-pom.create-changelog-md> -->
+		<!-- <parent-pom.create-readme-md>true</parent-pom.create-readme-md> -->
+		<!-- <parent-pom.create-source-directories>true</parent-pom.create-source-directories> -->
+		<project.default-sources-folder>lombok</project.default-sources-folder>
+		<!-- <parent-pom.create-lombok-config>true</parent-pom.create-lombok-config> -->
+		<parent-pom.create-travis-yml>true</parent-pom.create-travis-yml>
+		<eclipse.compiler.missingNonNullByDefaultAnnotation>warning</eclipse.compiler.missingNonNullByDefaultAnnotation>
+		<eclipse.compiler.nonnull.secondary></eclipse.compiler.nonnull.secondary>
+		<eclipse.compiler.nonnullbydefault.secondary></eclipse.compiler.nonnullbydefault.secondary>
+		<eclipse.compiler.nullable.secondary>edu.umd.cs.findbugs.annotations.CheckForNull</eclipse.compiler.nullable.secondary>
+		<eclipse.compiler.javadoc>enabled</eclipse.compiler.javadoc>
+		<checkstyle.config.location>${project.build.directory}/checkstyle.xml</checkstyle.config.location>
+		<checkstyle.consoleOutput>true</checkstyle.consoleOutput>
+		<formatter.configFile>${project.build.directory}/formatter.xml</formatter.configFile>
+		<formatter.lineEnding>LF</formatter.lineEnding>
 		<maven.compiler.failOnWarning>true</maven.compiler.failOnWarning>
 		<maven.compiler.showDeprecation>true</maven.compiler.showDeprecation>
 		<maven.compiler.showWarnings>true</maven.compiler.showWarnings>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
-
-		<!-- "project.build.mainClass" is meant to be used by child POMs to configure 
-			a default main class, e.g. "de.larssh.Main". -->
-		<project.build.mainClass></project.build.mainClass>
-
-		<!-- "project.build.packageDependenciesPhase" is meant to be used by child 
-			POMs to configure if an archive containing dependencies should be created. 
-			Values can be "none" (disabled, default) or "package" (enabled) as this property 
-			is used with the <phase> tag. -->
-		<project.build.packageDependenciesPhase>none</project.build.packageDependenciesPhase>
-
-		<!-- "project.create-gitignore" handles if the projects ".gitignore" file 
-			should be generated. Set to "false" if the file should not be created or 
-			overwritten. Default value is "true". -->
-		<project.create-gitignore>true</project.create-gitignore>
-
-		<!-- "project.create-changelog-md" handles if the projects "CHANGELOG.md" 
-			file should be generated. Set to "false" if the file should not be created 
-			if not existing. Default value is "true". -->
-		<!-- <project.create-changelog-md>true</project.create-changelog-md> -->
-
-		<!-- "project.create-readme-md" handles if the projects "README.md" file 
-			should be generated. Set to "false" if the file should not be created if 
-			not existing. Default value is "true". -->
-		<!-- <project.create-readme-md>true</project.create-readme-md> -->
-
-		<!-- "project.create-source-directories" handles if the projects source 
-			directories shall be created. Set to "false" if the folder should not be 
-			created. Default value is "true", except for packaging types "pom" and "archetype". -->
-		<!-- <project.create-source-directories>true</project.create-source-directories> -->
-
-		<!-- "project.default-sources-folder" is the name if the default source 
-			folders to be created. Default value is "lombok". -->
-		<project.default-sources-folder>lombok</project.default-sources-folder>
-
-		<!-- "project.create-lombok-config" handles if the projects "lombok.config" 
-			files should be generated. Set to "false" if the files should not be created 
-			or overwritten. Default value is "true". -->
-		<!-- <project.create-lombok-config>true</project.create-lombok-config> -->
-
-		<!-- "project.create-travis-yml" handles if the projects ".travis.yml" 
-			file should be generated. Set to "false" if the file should not be created 
-			or overwritten. Default value is "true". -->
-		<project.create-travis-yml>true</project.create-travis-yml>
-
-		<!-- "org.eclipse.jdt.core.compiler.annotation.missingNonNullByDefaultAnnotation" 
-			is meant to be used by child POMs to configure if Eclipse should enforce 
-			@NonNullByDefault annotations on every package. Values can be "error", "warning", 
-			"info" or "ignore" (disabled). -->
-		<org.eclipse.jdt.core.compiler.annotation.missingNonNullByDefaultAnnotation>warning</org.eclipse.jdt.core.compiler.annotation.missingNonNullByDefaultAnnotation>
-
-		<!-- "org.eclipse.jdt.core.compiler.annotation.nonnull.secondary" is meant 
-			to be used by child POMs to configure secondary @NonNull annotations that 
-			Eclipse should handle. Multiple values must be separated by comma. -->
-		<org.eclipse.jdt.core.compiler.annotation.nonnull.secondary></org.eclipse.jdt.core.compiler.annotation.nonnull.secondary>
-
-		<!-- "org.eclipse.jdt.core.compiler.annotation.nonnullbydefault.secondary" 
-			is meant to be used by child POMs to configure secondary @NonNullByDefault 
-			annotations that Eclipse should handle. Multiple values must be separated 
-			by comma. -->
-		<org.eclipse.jdt.core.compiler.annotation.nonnullbydefault.secondary></org.eclipse.jdt.core.compiler.annotation.nonnullbydefault.secondary>
-
-		<!-- "org.eclipse.jdt.core.compiler.annotation.nullable.secondary" is meant 
-			to be used by child POMs to configure secondary @Nullable annotations that 
-			Eclipse should handle. Multiple values must be separated by comma. -->
-		<org.eclipse.jdt.core.compiler.annotation.nullable.secondary>edu.umd.cs.findbugs.annotations.CheckForNull</org.eclipse.jdt.core.compiler.annotation.nullable.secondary>
-
-		<!-- "org.eclipse.jdt.core.compiler.doc.comment.support" is meant to be 
-			used by child POMs to configure if Eclipse should validate JavaDoc comments. 
-			Values can be "enabled" or "disabled". -->
-		<org.eclipse.jdt.core.compiler.doc.comment.support>enabled</org.eclipse.jdt.core.compiler.doc.comment.support>
+		<jar.skipIfEmpty>true</jar.skipIfEmpty>
+		<jar.manifest.addClasspath>true</jar.manifest.addClasspath>
+		<jar.manifest.addDefaultImplementationEntries>true</jar.manifest.addDefaultImplementationEntries>
+		<jar.manifest.addDefaultSpecificationEntries>true</jar.manifest.addDefaultSpecificationEntries>
+		<jar.manifest.mainClass></jar.manifest.mainClass>
+		<shade.packageDependenciesPhase>none</shade.packageDependenciesPhase>
+		<shade.dependencyReducedPomLocation>${project.build.directory}/dependency-reduced-pom.xml</shade.dependencyReducedPomLocation>
+		<maven.javadoc.failOnWarnings>true</maven.javadoc.failOnWarnings>
+		<javadoc.quiet>true</javadoc.quiet>
+		<!-- <cpd.excludeFromFailureFile>${project.basedir}/cpd-excludes.csv</cpd.excludeFromFailureFile> -->
+		<cpd.printFailingErrors>true</cpd.printFailingErrors>
+		<pmd-only.excludeFromFailureFile>${project.basedir}/pmd-excludes.properties</pmd-only.excludeFromFailureFile>
+		<pmd-only.printFailingErrors>true</pmd-only.printFailingErrors>
+		<pmd-only.ruleset>${project.build.directory}/pmd/pmd-ruleset.xml</pmd-only.ruleset>
+		<spotbugs.effort>Max</spotbugs.effort>
+		<spotbugs.threshold>Low</spotbugs.threshold>
+		<dependency.failOnWarning>true</dependency.failOnWarning>
+		<nexus-staging.autoReleaseAfterClose>true</nexus-staging.autoReleaseAfterClose>
+		<!-- <build-helper-maven-plugin.add-lombok-source.phase>generate-sources</build-helper-maven-plugin.add-lombok-source.phase> -->
 
 		<!-- Versions: Dependencies -->
 		<assertj-core.version>3.11.1</assertj-core.version>
@@ -577,7 +541,7 @@
 						<configuration>
 							<rules>
 								<requireMavenVersion>
-									<version>3.3.9</version>
+									<version>${enforcer.requiredMavenVersion}</version>
 								</requireMavenVersion>
 							</rules>
 						</configuration>
@@ -612,33 +576,42 @@
 						<configuration>
 							<exportAntProperties>true</exportAntProperties>
 							<target>
-								<condition property="project.create-changelog-md"
+								<condition property="parent-pom.create-changelog-md"
 									value="false" else="true">
 									<available file="${project.basedir}/CHANGELOG.md" />
 								</condition>
-								<condition property="project.create-readme-md"
+								<condition property="parent-pom.create-readme-md"
 									value="false" else="true">
 									<available file="${project.basedir}/README.md" />
 								</condition>
 								<condition
-									property="project.create-source-directories" value="false"
+									property="parent-pom.create-source-directories" value="false"
 									else="true">
 									<or>
-										<equals arg1="project.packaging" arg2="maven-archetype" />
-										<equals arg1="project.packaging" arg2="pom" />
+										<equals arg1="${project.packaging}" arg2="maven-archetype" />
+										<equals arg1="${project.packaging}" arg2="pom" />
 									</or>
 								</condition>
-								<condition property="project.create-lombok-config"
+								<condition property="parent-pom.create-lombok-config"
 									value="false" else="true">
 									<or>
-										<equals arg1="project.packaging" arg2="maven-archetype" />
-										<equals arg1="project.packaging" arg2="pom" />
+										<equals arg1="${project.packaging}" arg2="maven-archetype" />
+										<equals arg1="${project.packaging}" arg2="pom" />
 									</or>
 								</condition>
 								<condition property="spotbugs.excludeFilterFile"
 									value="${project.basedir}/spotbugs-excludes.xml" else="">
 									<available
 										file="${project.basedir}/spotbugs-excludes.xml" />
+								</condition>
+								<condition property="cpd.excludeFromFailureFile"
+									value="${project.basedir}/cpd-excludes.csv" else="">
+									<available
+										file="${project.basedir}/cpd-excludes.csv" />
+								</condition>
+								<condition property="build-helper-maven-plugin.add-lombok-source.phase"
+									value="generate-sources" else="none">
+									<equals arg1="${parent-pom.default-sources-folder}" arg2="lombok" />
 								</condition>
 							</target>
 						</configuration>
@@ -652,7 +625,7 @@
 							<goal>run</goal>
 						</goals>
 						<configuration>
-							<target if="${project.create-gitignore}">
+							<target if="${parent-pom.create-gitignore}">
 								<echo message="Create .gitignore" />
 								<echo file="${project.basedir}/.gitignore"><![CDATA[/.settings/
 /src/main/lombok/lombok.config
@@ -675,7 +648,7 @@
 							<goal>run</goal>
 						</goals>
 						<configuration>
-							<target if="${project.create-changelog-md}">
+							<target if="${parent-pom.create-changelog-md}">
 								<echo message="Create CHANGELOG.md" />
 								<echo file="${project.basedir}/CHANGELOG.md"><![CDATA[# Changelog
 All notable changes to this project will be documented in this file.
@@ -719,7 +692,7 @@ Download at TODO
 							<goal>run</goal>
 						</goals>
 						<configuration>
-							<target if="${project.create-readme-md}">
+							<target if="${parent-pom.create-readme-md}">
 								<echo message="Create README.md" />
 								<echo file="${project.basedir}/README.md"><![CDATA[# TODO: Project name
 TODO: Short introduction
@@ -739,7 +712,7 @@ TODO: Easy to understand usage example
 							<goal>run</goal>
 						</goals>
 						<configuration>
-							<target if="${project-create-source-directories}">
+							<target if="${parent-pom.create-source-directories}">
 								<mkdir
 									dir="${project.basedir}/src/main/${parent.default-sources-folder}" />
 								<mkdir dir="${project.basedir}/src/main/resources" />
@@ -758,7 +731,7 @@ TODO: Easy to understand usage example
 							<goal>run</goal>
 						</goals>
 						<configuration>
-							<target if="${project.create-lombok-config}">
+							<target if="${parent-pom.create-lombok-config}">
 								<mkdir dir="${project.basedir}/src/main/lombok" />
 								<mkdir dir="${project.basedir}/src/test/lombok" />
 								<propertyfile
@@ -1898,7 +1871,7 @@ TODO: Easy to understand usage example
 							<goal>run</goal>
 						</goals>
 						<configuration>
-							<target if="${project.create-travis-yml}">
+							<target if="${parent-pom.create-travis-yml}">
 								<echo message="Create .travis.yml" />
 								<echo file="${project.basedir}/.travis.yml"><![CDATA[language: java
 jdk:
@@ -1968,8 +1941,6 @@ cache:
 							<goal>check</goal>
 						</goals>
 						<configuration>
-							<configLocation>${project.build.directory}/checkstyle.xml</configLocation>
-							<consoleOutput>true</consoleOutput>
 							<sourceDirectories>
 								<sourceDirectory>${project.basedir}/src/main/java</sourceDirectory>
 								<sourceDirectory>${project.basedir}/src/test/java</sourceDirectory>
@@ -1994,14 +1965,14 @@ cache:
 					</execution>
 				</executions>
 				<configuration>
-					<configFile>${project.build.directory}/formatter.xml</configFile>
+					<configFile>${formatter.configFile}</configFile>
 					<directories>
 						<directory>${project.basedir}/src/main/java</directory>
 						<directory>${project.basedir}/src/test/java</directory>
 						<directory>${project.basedir}/src/main/lombok</directory>
 						<directory>${project.basedir}/src/test/lombok</directory>
 					</directories>
-					<lineEnding>LF</lineEnding>
+					<lineEnding>${formatter.lineEnding}</lineEnding>
 				</configuration>
 			</plugin>
 
@@ -2018,13 +1989,13 @@ cache:
 				<configuration>
 					<archive>
 						<manifest>
-							<addClasspath>true</addClasspath>
-							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-							<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
-							<mainClass>${project.build.mainClass}</mainClass>
+							<addClasspath>${jar.manifest.addClasspath}</addClasspath>
+							<addDefaultImplementationEntries>${jar.manifest.addDefaultImplementationEntries}</addDefaultImplementationEntries>
+							<addDefaultSpecificationEntries>${jar.manifest.addDefaultSpecificationEntries}</addDefaultSpecificationEntries>
+							<mainClass>${jar.manifest.mainClass}</mainClass>
 						</manifest>
 					</archive>
-					<skipIfEmpty>true</skipIfEmpty>
+					<skipIfEmpty>${jar.skipIfEmpty}</skipIfEmpty>
 				</configuration>
 			</plugin>
 
@@ -2033,12 +2004,12 @@ cache:
 				<artifactId>maven-shade-plugin</artifactId>
 				<executions>
 					<execution>
-						<phase>${project.build.packageDependenciesPhase}</phase>
+						<phase>${shade.packageDependenciesPhase}</phase>
 						<goals>
 							<goal>shade</goal>
 						</goals>
 						<configuration>
-							<dependencyReducedPomLocation>${project.build.directory}/dependency-reduced-pom.xml</dependencyReducedPomLocation>
+							<dependencyReducedPomLocation>${shade.dependencyReducedPomLocation}</dependencyReducedPomLocation>
 						</configuration>
 					</execution>
 				</executions>
@@ -2069,8 +2040,7 @@ cache:
 					</execution>
 				</executions>
 				<configuration>
-					<failOnWarnings>true</failOnWarnings>
-					<quiet>true</quiet>
+					<quiet>${javadoc.quiet}</quiet>
 				</configuration>
 			</plugin>
 
@@ -2096,7 +2066,7 @@ cache:
 							<goal>cpd-check</goal>
 						</goals>
 						<configuration>
-							<printFailingErrors>true</printFailingErrors>
+							<printFailingErrors>${cpd.printFailingErrors}</printFailingErrors>
 						</configuration>
 					</execution>
 
@@ -2109,9 +2079,10 @@ cache:
 						</goals>
 						<phase>verify</phase>
 						<configuration>
-							<excludeFromFailureFile>${project.basedir}/pmd-excludes.properties</excludeFromFailureFile>
+							<excludeFromFailureFile>${pmd-only.excludeFromFailureFile}</excludeFromFailureFile>
+							<printFailingErrors>${pmd-only.printFailingErrors}</printFailingErrors>
 							<rulesets>
-								<ruleset>${project.build.directory}/pmd/pmd-ruleset.xml</ruleset>
+								<ruleset>${pmd-only.ruleset}</ruleset>
 							</rulesets>
 						</configuration>
 					</execution>
@@ -2120,9 +2091,6 @@ cache:
 						<goals>
 							<goal>check</goal>
 						</goals>
-						<configuration>
-							<printFailingErrors>true</printFailingErrors>
-						</configuration>
 					</execution>
 				</executions>
 			</plugin>
@@ -2139,8 +2107,6 @@ cache:
 					</execution>
 				</executions>
 				<configuration>
-					<effort>Max</effort>
-					<threshold>Low</threshold>
 					<plugins>
 						<plugin>
 							<groupId>com.h3xstream.findsecbugs</groupId>
@@ -2165,7 +2131,7 @@ cache:
 							<goal>analyze-only</goal>
 						</goals>
 						<configuration>
-							<failOnWarning>true</failOnWarning>
+							<failOnWarning>${dependency.failOnWarning}</failOnWarning>
 							<ignoredUnusedDeclaredDependencies>
 								<!-- Compile -->
 								<ignoredUnusedDeclaredDependency>de.lars-sh:utils:jar:${parent.version}</ignoredUnusedDeclaredDependency>
@@ -2209,7 +2175,7 @@ cache:
 				<configuration>
 					<serverId>sonatype-nexus-staging</serverId>
 					<nexusUrl>https://oss.sonatype.org/</nexusUrl>
-					<autoReleaseAfterClose>true</autoReleaseAfterClose>
+					<autoReleaseAfterClose>${nexus-staging.autoReleaseAfterClose}</autoReleaseAfterClose>
 				</configuration>
 			</plugin>
 		</plugins>
@@ -2265,19 +2231,6 @@ cache:
 	</reporting>
 
 	<profiles>
-		<!-- Add CPD excludes if the file exists -->
-		<profile>
-			<id>cpd-excludes-csv-exists</id>
-			<activation>
-				<file>
-					<exists>${basedir}/cpd-excludes.csv</exists>
-				</file>
-			</activation>
-			<properties>
-				<cpd.excludeFromFailureFile>${project.basedir}/cpd-excludes.csv</cpd.excludeFromFailureFile>
-			</properties>
-		</profile>
-
 		<!-- Skip code checks and tests -->
 		<profile>
 			<id>dirty</id>
@@ -2349,6 +2302,7 @@ cache:
 								<goals>
 									<goal>add-source</goal>
 								</goals>
+								<phase>${build-helper-maven-plugin.add-lombok-source.phase}</phase>
 								<configuration>
 									<sources>
 										<source>${project.basedir}/src/main/lombok</source>
@@ -2360,6 +2314,7 @@ cache:
 								<goals>
 									<goal>add-test-source</goal>
 								</goals>
+								<phase>${build-helper-maven-plugin.add-lombok-source.phase}</phase>
 								<configuration>
 									<sources>
 										<source>${project.basedir}/src/test/lombok</source>
@@ -2767,25 +2722,25 @@ cache:
 												value="enabled" />
 											<entry
 												key="org.eclipse.jdt.core.compiler.annotation.missingNonNullByDefaultAnnotation"
-												value="${org.eclipse.jdt.core.compiler.annotation.missingNonNullByDefaultAnnotation}" />
+												value="${eclipse.compiler.missingNonNullByDefaultAnnotation}" />
 											<entry
 												key="org.eclipse.jdt.core.compiler.annotation.nonnull"
 												value="edu.umd.cs.findbugs.annotations.NonNull" />
 											<entry
 												key="org.eclipse.jdt.core.compiler.annotation.nonnull.secondary"
-												value="${org.eclipse.jdt.core.compiler.annotation.nonnull.secondary}" />
+												value="${eclipse.compiler.nonnull.secondary}" />
 											<entry
 												key="org.eclipse.jdt.core.compiler.annotation.nonnullbydefault"
 												value="de.larssh.utils.annotations.NonNullByDefault" />
 											<entry
 												key="org.eclipse.jdt.core.compiler.annotation.nonnullbydefault.secondary"
-												value="${org.eclipse.jdt.core.compiler.annotation.nonnullbydefault.secondary}" />
+												value="${eclipse.compiler.nonnullbydefault.secondary}" />
 											<entry
 												key="org.eclipse.jdt.core.compiler.annotation.nullable"
 												value="edu.umd.cs.findbugs.annotations.Nullable" />
 											<entry
 												key="org.eclipse.jdt.core.compiler.annotation.nullable.secondary"
-												value="${org.eclipse.jdt.core.compiler.annotation.nullable.secondary}" />
+												value="${eclipse.compiler.nullable.secondary}" />
 											<entry
 												key="org.eclipse.jdt.core.compiler.annotation.nullanalysis"
 												value="enabled" />
