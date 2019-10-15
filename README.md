@@ -332,7 +332,6 @@ This parent POM either predefines existing Maven Properties or introduces some o
 	spotbugs.threshold:                                Low
 	dependency.failOnWarning:                          true
 	nexus-staging.autoReleaseAfterClose:               true
-	build-helper-maven-plugin.add-lombok-source.phase: ${parent-pom.default-sources-folder} equals "lombok" ? generate-sources : none
 
 #### Generated Files
 During the build process some project files are generated. Those files and their creation concept are described below.

@@ -102,7 +102,6 @@
 		<spotbugs.threshold>Low</spotbugs.threshold>
 		<dependency.failOnWarning>true</dependency.failOnWarning>
 		<nexus-staging.autoReleaseAfterClose>true</nexus-staging.autoReleaseAfterClose>
-		<!-- <build-helper-maven-plugin.add-lombok-source.phase>generate-sources</build-helper-maven-plugin.add-lombok-source.phase> -->
 
 		<!-- Versions: Dependencies -->
 		<assertj-core.version>3.11.1</assertj-core.version>
@@ -608,10 +607,6 @@
 									value="${project.basedir}/cpd-excludes.csv" else="">
 									<available
 										file="${project.basedir}/cpd-excludes.csv" />
-								</condition>
-								<condition property="build-helper-maven-plugin.add-lombok-source.phase"
-									value="generate-sources" else="none">
-									<equals arg1="${parent-pom.default-sources-folder}" arg2="lombok" />
 								</condition>
 							</target>
 						</configuration>
@@ -2303,7 +2298,6 @@ cache:
 								<goals>
 									<goal>add-source</goal>
 								</goals>
-								<phase>${build-helper-maven-plugin.add-lombok-source.phase}</phase>
 								<configuration>
 									<sources>
 										<source>${project.basedir}/src/main/lombok</source>
@@ -2315,7 +2309,6 @@ cache:
 								<goals>
 									<goal>add-test-source</goal>
 								</goals>
-								<phase>${build-helper-maven-plugin.add-lombok-source.phase}</phase>
 								<configuration>
 									<sources>
 										<source>${project.basedir}/src/test/lombok</source>
