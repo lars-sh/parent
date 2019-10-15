@@ -48,8 +48,13 @@ Remember to **restart Eclipse** to apply changes to project settings.
 2. Wait until your workspace is built. In case it does not build automatically, remember to trigger it!
 3. **Restart Eclipse** to apply changes to project settings.
 
-#### Skip Validations
+### Skip Validations
 Upgrading existing projects to use this parent POM can be done step by step. As this parent specifies some strict rules, some validations might need to be skipped until others pass. The following sections describe the corresponding Maven Properties.
+
+#### Dirty
+Skip the below checks and tests.
+
+	-P dirty
 
 ##### Skip Tests
 	<skipTests>true</skipTests>
@@ -78,10 +83,10 @@ Upgrading existing projects to use this parent POM can be done step by step. As 
 ##### Skip Tidy
 	<tidy.skip>true</tidy.skip>
 
-##### Dirty
-Skip all the above checks and tests.
+#### Dirty Package
+Skip the creation of optional packages and signing.
 
-	-P dirty
+	-P dirty-package
 
 ##### Skip Sources
 	<maven.source.skip>true</maven.source.skip>
@@ -91,11 +96,6 @@ Skip all the above checks and tests.
 
 ##### Skip GPG Signing
 	<gpg.skip>true</gpg.skip>
-
-##### Dirty Package
-Skip the above creation of optional packages and signing.
-
-	-P dirty-package
 
 ## Ingredients
 Taking your first steps using this POM is as simple as not using it. However it comes with a lot nicely pre-configured *ingredients*.
