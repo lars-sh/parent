@@ -714,10 +714,10 @@ TODO: Easy to understand usage example
 						<configuration>
 							<target if="${parent-pom.create-source-directories}">
 								<mkdir
-									dir="${project.basedir}/src/main/${parent.default-sources-folder}" />
+									dir="${project.basedir}/src/main/${parent-pom.create-source-directories}" />
 								<mkdir dir="${project.basedir}/src/main/resources" />
 								<mkdir
-									dir="${project.basedir}/src/test/${parent.default-sources-folder}" />
+									dir="${project.basedir}/src/test/${parent-pom.create-source-directories}" />
 								<mkdir dir="${project.basedir}/src/test/resources" />
 							</target>
 						</configuration>
