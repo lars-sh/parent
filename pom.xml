@@ -627,7 +627,8 @@
 						<configuration>
 							<target if="${parent-pom.create-gitignore}">
 								<echo message="Create .gitignore" />
-								<echo file="${project.basedir}/.gitignore"><![CDATA[/.settings/
+								<echo file="${project.basedir}/.gitignore"><![CDATA[/.idea/
+/.settings/
 /src/main/lombok/lombok.config
 /src/test/lombok/lombok.config
 /src/lombok.config
@@ -635,6 +636,7 @@
 /.checkstyle
 /.classpath
 /.project
+/*.iml
 ]]></echo>
 							</target>
 						</configuration>
