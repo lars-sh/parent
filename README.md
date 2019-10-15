@@ -43,10 +43,33 @@ Creating a new project has been simplified as much as possible.
 Remember to **restart Eclipse** to apply changes to project settings.
 
 ### Import into Eclipse
-0. Optionally: Run `mvn initialize -P eclipse` to initialize the Eclipse settings. This might solve problems some users experience.
-1. In Eclipse choose `File`, `Import...`, `Existing Maven Projects`, `Next`, point the root directory to your newly created folder and press `Finish`.
-2. Wait until your workspace is built. In case it does not build automatically, remember to trigger it!
-3. **Restart Eclipse** to apply changes to project settings.
+1. If not done earlier, install Project Lombok into Eclipse [using the official installer](https://projectlombok.org/setup/eclipse).
+2. In Eclipse choose `File`, `Import...`
+3. Choose `Existing Maven Projects` and press `Next`.
+4. Point the root directory to your newly created folder and press `Finish`.
+5. Wait until your workspace is built. In case it does not build automatically, remember to trigger it!
+
+#### Eclipse versions prior 2019-09
+**Restart Eclipse** to apply changes to project settings.
+
+In case you notice that Eclipse did not come up with the correct settings close Eclipse and run `mvn initialize -P eclipse` via command line to initialize the Eclipse settings. This might solve problems some users experience.
+
+### Open with IntelliJ IDEA
+1. If not done earlier, [install the Lombok plugin](https://projectlombok.org/setup/intellij).
+2. Open your project inside IntelliJ IDEA.
+3. Make sure the Maven profile `ide-only` is selected.
+4. Choose `File`, `Settings...`
+5. Open the tree element `Build, Execution, Deployment`, `Build Tools`, `Maven`, `Importing`
+6. Select the `Generated sources folders` setting `Don't detect` and press `OK`.
+7. Reimport the Maven project.
+
+#### Configure code formatter
+1. Choose `File`, `Settings...`
+2. Open the tree element `Editor`, `Code Style`, `Java`.
+3. Click the gear beneath the `Scheme` selection and choose `Import Scheme`, `Eclipse XML Profile`.
+4. Open the project directory and select `target/formatter.xml`. Press `OK`.
+
+Remark: When saving the formatter in IntelliJ IDEA you might get `Cannot Save Settings`. In that case some Eclipse formatter settings are not compatible with IntelliJ IDEA and need to be handled manually. Therefore go through each of the tabs and fix the boxes highlighted with a red border.
 
 ### Skip Validations
 Upgrading existing projects to use this parent POM can be done step by step. As this parent specifies some strict rules, some validations might need to be skipped until others pass. The following sections describe the corresponding Maven Properties.

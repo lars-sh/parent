@@ -9,6 +9,7 @@ Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%
 
 ### Added
 * Check code format via command line prior compiling. This simplifies working in teams with different editors.
+* IntelliJ IDEA compatibility instructions as of `README.md`
 * AssertJ test dependency
 * Method de.larssh.utils.Either.ifPresent(firstConsumer, secondConsumer)
 * Method de.larssh.utils.Either.ifFirstIsPresent(consumer)
@@ -17,13 +18,20 @@ Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%
 
 ### Removed
 * Checkstyle nearby comment filter for the MultipleStringLiterals check. Use `@SuppressWarnings` instead.
-* Renamed the Maven property `org.eclipse.jdt.core.compiler.annotation.missingNonNullByDefaultAnnotation`. Use `eclipse.compiler.missingNonNullByDefaultAnnotation` instead.
-* Renamed the Maven property `org.eclipse.jdt.core.compiler.annotation.nonnull.secondary`. Use `eclipse.compiler.nonnull.secondary` instead.
-* Renamed the Maven property `org.eclipse.jdt.core.compiler.annotation.nonnullbydefault.secondary`. Use `eclipse.compiler.nonnullbydefault.secondary` instead.
-* Renamed the Maven property `org.eclipse.jdt.core.compiler.annotation.nullable.secondary`. Use `eclipse.compiler.nullable.secondary` instead.
-* Renamed the Maven property `org.eclipse.jdt.core.compiler.doc.comment.support`. Use `eclipse.compiler.javadoc` instead.
-* Renamed the Maven property `project.build.mainClass`. Use `jar.manifest.mainClass` instead.
-* Renamed the Maven property `project.build.packageDependenciesPhase`. Use `shade.packageDependenciesPhase` instead.
+* Renamed the Maven property `org.eclipse.jdt.core.compiler.annotation.missingNonNullByDefaultAnnotation`.
+ Use `eclipse.compiler.missingNonNullByDefaultAnnotation` instead.
+* Renamed the Maven property `org.eclipse.jdt.core.compiler.annotation.nonnull.secondary`.
+Use `eclipse.compiler.nonnull.secondary` instead.
+* Renamed the Maven property `org.eclipse.jdt.core.compiler.annotation.nonnullbydefault.secondary`.
+Use `eclipse.compiler.nonnullbydefault.secondary` instead.
+* Renamed the Maven property `org.eclipse.jdt.core.compiler.annotation.nullable.secondary`.
+Use `eclipse.compiler.nullable.secondary` instead.
+* Renamed the Maven property `org.eclipse.jdt.core.compiler.doc.comment.support`.
+Use `eclipse.compiler.javadoc` instead.
+* Renamed the Maven property `project.build.mainClass`.
+Use `jar.manifest.mainClass` instead.
+* Renamed the Maven property `project.build.packageDependenciesPhase`.
+Use `shade.packageDependenciesPhase` instead.
 
 
 ### Changed

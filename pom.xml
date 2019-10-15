@@ -2282,10 +2282,9 @@ cache:
 			</properties>
 		</profile>
 
-		<!-- Eclipse only: Add lombok sources to class path since delombok goals 
-			are ignored -->
+		<!-- IDE only: Add lombok sources to class path -->
 		<profile>
-			<id>eclipse-only</id>
+			<id>ide-only</id>
 			<activation>
 				<property>
 					<name>m2e.version</name>
