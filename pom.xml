@@ -587,14 +587,16 @@
 									property="parent-pom.create-source-directories" value="false"
 									else="true">
 									<or>
-										<equals arg1="${project.packaging}" arg2="maven-archetype" />
+										<equals arg1="${project.packaging}"
+											arg2="maven-archetype" />
 										<equals arg1="${project.packaging}" arg2="pom" />
 									</or>
 								</condition>
 								<condition property="parent-pom.create-lombok-config"
 									value="false" else="true">
 									<or>
-										<equals arg1="${project.packaging}" arg2="maven-archetype" />
+										<equals arg1="${project.packaging}"
+											arg2="maven-archetype" />
 										<equals arg1="${project.packaging}" arg2="pom" />
 									</or>
 								</condition>
@@ -605,8 +607,7 @@
 								</condition>
 								<condition property="cpd.excludeFromFailureFile"
 									value="${project.basedir}/cpd-excludes.csv" else="">
-									<available
-										file="${project.basedir}/cpd-excludes.csv" />
+									<available file="${project.basedir}/cpd-excludes.csv" />
 								</condition>
 							</target>
 						</configuration>
@@ -3086,7 +3087,8 @@ cache:
 			</build>
 		</profile>
 
-		<!-- IDEA only: Add lombok library to dependencies and lombok sources to class path -->
+		<!-- IDEA only: Add lombok library to dependencies and lombok sources to 
+			class path -->
 		<profile>
 			<id>idea-only</id>
 			<activation>
