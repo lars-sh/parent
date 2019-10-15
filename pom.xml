@@ -67,7 +67,7 @@
 		<!-- <parent-pom.create-changelog-md>true</parent-pom.create-changelog-md> -->
 		<!-- <parent-pom.create-readme-md>true</parent-pom.create-readme-md> -->
 		<!-- <parent-pom.create-source-directories>true</parent-pom.create-source-directories> -->
-		<project.default-sources-folder>lombok</project.default-sources-folder>
+		<parent-pom.default-sources-folder>lombok</parent-pom.default-sources-folder>
 		<!-- <parent-pom.create-lombok-config>true</parent-pom.create-lombok-config> -->
 		<parent-pom.create-travis-yml>true</parent-pom.create-travis-yml>
 		<eclipse.compiler.missingNonNullByDefaultAnnotation>warning</eclipse.compiler.missingNonNullByDefaultAnnotation>
@@ -716,10 +716,10 @@ TODO: Easy to understand usage example
 						<configuration>
 							<target if="${parent-pom.create-source-directories}">
 								<mkdir
-									dir="${project.basedir}/src/main/${parent-pom.create-source-directories}" />
+									dir="${project.basedir}/src/main/${parent-pom.default-sources-folder}" />
 								<mkdir dir="${project.basedir}/src/main/resources" />
 								<mkdir
-									dir="${project.basedir}/src/test/${parent-pom.create-source-directories}" />
+									dir="${project.basedir}/src/test/${parent-pom.default-sources-folder}" />
 								<mkdir dir="${project.basedir}/src/test/resources" />
 							</target>
 						</configuration>
