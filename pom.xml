@@ -2279,14 +2279,64 @@ cache:
 			</properties>
 		</profile>
 
-		<!-- IDE only: Add lombok sources to class path -->
+		<!-- Eclipse only: Add lombok sources to class path -->
 		<profile>
-			<id>ide-only</id>
+			<id>eclipse-only</id>
 			<activation>
 				<property>
 					<name>m2e.version</name>
 				</property>
 			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>build-helper-maven-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>add-source</id>
+								<goals>
+									<goal>add-source</goal>
+								</goals>
+								<configuration>
+									<sources>
+										<source>${project.basedir}/src/main/lombok</source>
+									</sources>
+								</configuration>
+							</execution>
+							<execution>
+								<id>add-test-source</id>
+								<goals>
+									<goal>add-test-source</goal>
+								</goals>
+								<configuration>
+									<sources>
+										<source>${project.basedir}/src/test/lombok</source>
+									</sources>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+		<!-- IDEA only: Add lombok library to dependencies and lombok sources to class path -->
+		<profile>
+			<id>idea-only</id>
+			<activation>
+				<property>
+					<name>idea.maven.embedder.version</name>
+				</property>
+			</activation>
+			<dependencies>
+				<dependency>
+					<groupId>org.projectlombok</groupId>
+					<artifactId>lombok</artifactId>
+					<version>${lombok.version}</version>
+					<scope>provided</scope>
+				</dependency>
+			</dependencies>
 			<build>
 				<plugins>
 					<plugin>

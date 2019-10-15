@@ -45,28 +45,29 @@ Remember to **restart Eclipse** to apply changes to project settings.
 ### Import into Eclipse
 1. If not done earlier, install Project Lombok into Eclipse [using the official installer](https://projectlombok.org/setup/eclipse).
 2. Run `mvn initialize -P update-eclipse` via command line to initialize the Eclipse settings.
-3. In Eclipse choose `File`, `Import...`
-4. Choose `Existing Maven Projects` and press `Next`.
-5. Point the root directory to your newly created folder and press `Finish`.
-6. Wait until your workspace is built. In case it does not build automatically, remember to trigger it!
+3. In Eclipse choose `File`, `Import...`, `Existing Maven Projects` and press `Next`.
+4. Point the root directory to your newly created folder and press `Finish`.
+
+#### Solve Problems
+* In case of a problem update the Maven project to synchronize the Eclipse configuration with your `pom.xml`.
+* Wait until your workspace is built. In case it does not build automatically, remember trigger it!
 
 ### Open with IntelliJ IDEA
 1. If not done earlier, [install the Lombok plugin](https://projectlombok.org/setup/intellij).
 2. Open your project inside IntelliJ IDEA.
-3. Make sure the Maven profile `ide-only` is selected.
-4. Choose `File`, `Settings...`
-5. Open the tree element `Build, Execution, Deployment`, `Build Tools`, `Maven`, `Importing`
-6. Select the `Generated sources folders` setting `Don't detect` and press `OK`.
-7. Rightclick the folder `target/generated-sources/delombok` and select `Mark Directory as`, `Unmark as Sources Root`.
-8. Reimport the Maven project.
+3. Set the `Generated sources folders` setting to `Don't detect`.
 
-#### Configure code formatter
+#### Code Formatter
 1. Choose `File`, `Settings...`
 2. Open the tree element `Editor`, `Code Style`, `Java`.
 3. Click the gear beneath the `Scheme` selection and choose `Import Scheme`, `Eclipse XML Profile`.
 4. Open the project directory and select `target/formatter.xml`. Press `OK`.
 
 Remark: When saving the formatter in IntelliJ IDEA you might get `Cannot Save Settings`. In that case some Eclipse formatter settings are not compatible with IntelliJ IDEA and need to be handled manually. Therefore go through each of the tabs and fix the boxes highlighted with a red border.
+
+#### Solve Problems
+* In case of a problem reimport the Maven project to synchronize the IDEA settings with your `pom.xml`.
+* In case of a "duplicate classes" error rightclick the folder `target/generated-sources/delombok` and select `Mark Directory as`, `Unmark as Sources Root` to remove it from the class path.
 
 ### Skip Validations
 Upgrading existing projects to use this parent POM can be done step by step. As this parent specifies some strict rules, some validations might need to be skipped until others pass. The following sections describe the corresponding Maven Properties.
