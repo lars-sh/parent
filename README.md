@@ -57,7 +57,8 @@ Remember to **restart Eclipse** to apply changes to project settings.
 4. Choose `File`, `Settings...`
 5. Open the tree element `Build, Execution, Deployment`, `Build Tools`, `Maven`, `Importing`
 6. Select the `Generated sources folders` setting `Don't detect` and press `OK`.
-7. Reimport the Maven project.
+7. Rightclick the folder `target/generated-sources/delombok` and select `Mark Directory as`, `Unmark as Sources Root`.
+8. Reimport the Maven project.
 
 #### Configure code formatter
 1. Choose `File`, `Settings...`
