@@ -622,7 +622,7 @@
 						</goals>
 						<configuration>
 							<target if="${parent-pom.create-gitignore}">
-								<echo message="Create .gitignore" />
+								<echo message="Update .gitignore" />
 								<echo file="${project.basedir}/.gitignore"><![CDATA[/.idea/
 /.settings/
 /src/main/lombok/lombok.config
@@ -842,6 +842,7 @@ TODO: Easy to understand usage example
 						</goals>
 						<configuration>
 							<target>
+								<echo message="Update checkstyle.xml" />
 								<echo file="${project.build.directory}/checkstyle.xml"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE module PUBLIC "-//Checkstyle//DTD Checkstyle Configuration 1.3//EN" "https://checkstyle.org/dtds/configuration_1_3.dtd">
 <module name="Checker">
@@ -1303,7 +1304,7 @@ TODO: Easy to understand usage example
 						</goals>
 						<configuration>
 							<target>
-								<echo message="Create formatter.xml" />
+								<echo message="Update formatter.xml" />
 								<echoxml file="${project.build.directory}/formatter.xml">
 									<profiles version="17">
 										<profile kind="CodeFormatterProfile" name="de.lars-sh"
@@ -2635,7 +2636,7 @@ TODO: Easy to understand usage example
 						</goals>
 						<configuration>
 							<target if="${parent-pom.create-travis-yml}">
-								<echo message="Create .travis.yml" />
+								<echo message="Update .travis.yml" />
 								<echo file="${project.basedir}/.travis.yml"><![CDATA[language: java
 jdk:
   - openjdk8
