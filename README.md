@@ -44,15 +44,11 @@ Remember to **restart Eclipse** to apply changes to project settings.
 
 ### Import into Eclipse
 1. If not done earlier, install Project Lombok into Eclipse [using the official installer](https://projectlombok.org/setup/eclipse).
-2. In Eclipse choose `File`, `Import...`
-3. Choose `Existing Maven Projects` and press `Next`.
-4. Point the root directory to your newly created folder and press `Finish`.
-5. Wait until your workspace is built. In case it does not build automatically, remember to trigger it!
-
-#### Eclipse versions prior 2019-09
-**Restart Eclipse** to apply changes to project settings.
-
-In case you notice that Eclipse did not come up with the correct settings close Eclipse and run `mvn initialize -P eclipse` via command line to initialize the Eclipse settings. This might solve problems some users experience.
+2. Run `mvn initialize -P update-eclipse` via command line to initialize the Eclipse settings.
+3. In Eclipse choose `File`, `Import...`
+4. Choose `Existing Maven Projects` and press `Next`.
+5. Point the root directory to your newly created folder and press `Finish`.
+6. Wait until your workspace is built. In case it does not build automatically, remember to trigger it!
 
 ### Open with IntelliJ IDEA
 1. If not done earlier, [install the Lombok plugin](https://projectlombok.org/setup/intellij).
