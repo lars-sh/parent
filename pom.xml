@@ -149,7 +149,7 @@
 		<versions-maven-plugin.version>2.7</versions-maven-plugin.version>
 
 		<!-- Versions: Plugin Dependencies -->
-		<apache-ant.version>1.10.6</apache-ant.version>
+		<apache-ant.version>1.10.7</apache-ant.version>
 		<checkstyle.version>8.23</checkstyle.version>
 		<fb-contrib.version>7.4.3.sb</fb-contrib.version>
 		<findsecbugs.version>1.8.0</findsecbugs.version>
