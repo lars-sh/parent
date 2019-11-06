@@ -113,16 +113,6 @@
 		<mockito.version>3.1.0</mockito.version>
 		<parent.version>0.9.5-SNAPSHOT</parent.version>
 
-		<!-- Versions: Plugin Dependencies -->
-		<apache-ant.version>1.10.6</apache-ant.version>
-		<checkstyle.version>8.23</checkstyle.version>
-		<fb-contrib.version>7.4.3.sb</fb-contrib.version>
-		<findsecbugs.version>1.8.0</findsecbugs.version>
-		<lombok.version>1.18.10</lombok.version>
-		<org-eclipse-jdt-core.version>3.19.0</org-eclipse-jdt-core.version>
-		<pmd.version>6.17.0</pmd.version>
-		<spotbugs.version>3.1.12</spotbugs.version>
-
 		<!-- Versions: Plugins -->
 		<build-helper-maven-plugin.version>3.0.0</build-helper-maven-plugin.version>
 		<formatter-maven-plugin.version>2.10.0</formatter-maven-plugin.version>
@@ -157,6 +147,16 @@
 		<spotbugs-maven-plugin.version>3.1.12.1</spotbugs-maven-plugin.version>
 		<tidy-maven-plugin.version>1.1.0</tidy-maven-plugin.version>
 		<versions-maven-plugin.version>2.7</versions-maven-plugin.version>
+
+		<!-- Versions: Plugin Dependencies -->
+		<apache-ant.version>1.10.6</apache-ant.version>
+		<checkstyle.version>8.23</checkstyle.version>
+		<fb-contrib.version>7.4.3.sb</fb-contrib.version>
+		<findsecbugs.version>1.8.0</findsecbugs.version>
+		<lombok.version>1.18.10</lombok.version>
+		<org-eclipse-jdt-core.version>3.19.0</org-eclipse-jdt-core.version>
+		<pmd.version>6.17.0</pmd.version>
+		<spotbugs.version>3.1.12</spotbugs.version>
 	</properties>
 
 	<dependencyManagement>
@@ -186,7 +186,7 @@
 				<scope>test</scope>
 			</dependency>
 
-			<!-- Dependencies used inside plugins -->
+			<!-- Plugin Dependencies -->
 			<!-- These dependency definitions should not change anything but forcing 
 				the Maven Dependency Plugin to check their versions. -->
 			<dependency>
