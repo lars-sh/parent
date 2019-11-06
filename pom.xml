@@ -155,7 +155,7 @@
 		<findsecbugs.version>1.8.0</findsecbugs.version>
 		<lombok.version>1.18.10</lombok.version>
 		<org-eclipse-jdt-core.version>3.19.0</org-eclipse-jdt-core.version>
-		<pmd.version>6.17.0</pmd.version>
+		<pmd.version>6.19.0</pmd.version>
 		<spotbugs.version>3.1.12</spotbugs.version>
 	</properties>
 
@@ -2570,6 +2570,9 @@ TODO: Easy to understand usage example
 
 											<!-- Better use long variable names than abbreviations -->
 											<exclude name="UnnecessaryConstructor" />
+
+											<!-- see https://github.com/pmd/pmd/issues/2098 -->
+											<exclude name="UnnecessaryFullyQualifiedName" />
 										</rule>
 
 										<!-- Allow utility class names ending with character 's' -->
@@ -2610,6 +2613,7 @@ TODO: Easy to understand usage example
 											<exclude name="DataflowAnomalyAnalysis" />
 
 											<!-- Deprecated -->
+											<exclude name="InvalidSlf4jMessageFormat" />
 											<exclude name="LoggerIsNotStaticFinal" />
 
 											<!-- See separate rule with different properties -->
@@ -2640,9 +2644,6 @@ TODO: Easy to understand usage example
 
 											<!-- No need to avoid volatile if you know what you are doing -->
 											<exclude name="AvoidUsingVolatile" />
-
-											<!-- Do not avoid usage of interface Runnable -->
-											<exclude name="DoNotUseThreads" />
 
 											<!-- Quite a few false positives -->
 											<exclude name="UseConcurrentHashMap" />
