@@ -150,7 +150,7 @@
 
 		<!-- Versions: Plugin Dependencies -->
 		<apache-ant.version>1.10.7</apache-ant.version>
-		<checkstyle.version>8.23</checkstyle.version>
+		<checkstyle.version>8.26</checkstyle.version>
 		<fb-contrib.version>7.4.3.sb</fb-contrib.version>
 		<findsecbugs.version>1.8.0</findsecbugs.version>
 		<lombok.version>1.18.10</lombok.version>
@@ -1124,6 +1124,7 @@ TODO: Easy to understand usage example
 		<module name="SuperClone" />
 		<module name="SuperFinalize" />
 		<module name="UnnecessaryParentheses" />
+		<module name="UnnecessarySemicolonAfterTypeMemberDeclaration" />
 		<module name="UnnecessarySemicolonInTryWithResources" />
 		<module name="VariableDeclarationUsageDistance" />
 
@@ -1179,6 +1180,7 @@ TODO: Easy to understand usage example
 		<!-- Javadoc Comments -->
 		<module name="AtclauseOrder" />
 		<module name="InvalidJavadocPosition" />
+		<module name="JavadocBlockTagLocation" />
 		<module name="JavadocMethod" />
 		<module name="JavadocParagraph">
 			<property name="allowNewlineParagraph" value="false" />
