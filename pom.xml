@@ -161,31 +161,6 @@
 
 	<dependencyManagement>
 		<dependencies>
-			<!-- de.lars-sh -->
-			<dependency>
-				<groupId>de.lars-sh</groupId>
-				<artifactId>lombok-annotations</artifactId>
-				<version>${lombok-annotations.version}</version>
-				<scope>provided</scope>
-			</dependency>
-			<dependency>
-				<groupId>de.lars-sh</groupId>
-				<artifactId>utils-annotations</artifactId>
-				<version>${parent.version}</version>
-				<scope>provided</scope>
-			</dependency>
-			<dependency>
-				<groupId>de.lars-sh</groupId>
-				<artifactId>utils</artifactId>
-				<version>${parent.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>de.lars-sh</groupId>
-				<artifactId>utils-test</artifactId>
-				<version>${parent.version}</version>
-				<scope>test</scope>
-			</dependency>
-
 			<!-- Plugin Dependencies -->
 			<!-- These dependency definitions should not change anything but forcing 
 				the Maven Dependency Plugin to check their versions. -->
@@ -231,6 +206,7 @@
 		<dependency>
 			<groupId>de.lars-sh</groupId>
 			<artifactId>lombok-annotations</artifactId>
+			<version>${lombok-annotations.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.github.spotbugs</groupId>

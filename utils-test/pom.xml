@@ -47,13 +47,14 @@
 		<dependency>
 			<groupId>de.lars-sh</groupId>
 			<artifactId>utils-annotations</artifactId>
+			<version>${parent.version}</version>
 		</dependency>
 
 		<!-- Compile -->
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-api</artifactId>
-			<version>5.5.2</version>
+			<version>${junit-jupiter-api.version}</version>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
