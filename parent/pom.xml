@@ -47,7 +47,8 @@
 	</ciManagement>
 
 	<dependencies>
-		<!-- Groovy Grape/IVY is not able to load the following dependencies correctly when using "${parent.version}". Therefore static versions are used. -->
+		<!-- Groovy Grape/IVY is not able to load the following dependencies correctly 
+			when using "${parent.version}". Therefore static versions are used. -->
 		<dependency>
 			<groupId>de.lars-sh</groupId>
 			<artifactId>utils-annotations</artifactId>

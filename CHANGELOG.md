@@ -14,6 +14,12 @@ Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%
 * Method de.larssh.utils.Either.ifPresent(firstConsumer, secondConsumer)
 * Method de.larssh.utils.Either.ifFirstIsPresent(consumer)
 * Method de.larssh.utils.Either.ifSecondIsPresent(consumer)
+* Constant de.larssh.utils.SystemUtils.DEFAULT_FILE_NAME_SEPARATOR
+* Constant de.larssh.utils.SystemUtils.DEFAULT_FILE_NAME_SEPARATOR_CHAR
+* Constant de.larssh.utils.SystemUtils.FILE_EXTENSION_SEPARATOR
+* Constant de.larssh.utils.SystemUtils.FILE_EXTENSION_SEPARATOR_CHAR
+* Class de.larssh.collections.Enumerations
+* Class de.larssh.utils.Resources
 * Additional POM properties to configure generation of files and folders
 
 ### Removed

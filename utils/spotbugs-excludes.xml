@@ -21,4 +21,10 @@
 		<Bug pattern="MDM_THREAD_YIELD" />
 		<Class name="de.larssh.utils.time.Stopwatch" />
 	</Match>
+
+	<!-- Path processing as described in JavaDoc -->
+	<Match>
+		<Bug pattern="PATH_TRAVERSAL_IN" />
+		<Class name="de.larssh.utils.Resources" />
+	</Match>
 </FindBugsFilter>

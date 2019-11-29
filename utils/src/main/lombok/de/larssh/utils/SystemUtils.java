@@ -1,5 +1,7 @@
 package de.larssh.utils;
 
+import static de.larssh.utils.Finals.constant;
+
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -47,6 +49,54 @@ import lombok.experimental.UtilityClass;
  */
 @UtilityClass
 public class SystemUtils {
+	/**
+	 * Constant {@code '/'} as system-independent name-separator character for use
+	 * in paths. Remember to use {@link java.io.File#separatorChar} when working
+	 * with system-dependent paths!
+	 *
+	 * <p>
+	 * <b>Why shouldn't I use {@code '/'} directly?</b><br>
+	 * Using {@code '/'} is bad practice, as it holds implementation specific
+	 * information.
+	 */
+	public static final char DEFAULT_FILE_NAME_SEPARATOR_CHAR = constant('/');
+
+	/**
+	 * Constant {@code "/"} as system-independent name-separator character for use
+	 * in paths, represented as a string for convenience. This string contains a
+	 * single character, namely {@link #DEFAULT_FILE_NAME_SEPARATOR_CHAR}. Remember
+	 * to use {@link java.io.File#separator} when working with system-dependent
+	 * paths!
+	 *
+	 * <p>
+	 * <b>Why shouldn't I use {@code "/"} directly?</b><br>
+	 * Using {@code "/"} is bad practice, as it holds implementation specific
+	 * information.
+	 */
+	public static final String DEFAULT_FILE_NAME_SEPARATOR = Character.toString(DEFAULT_FILE_NAME_SEPARATOR_CHAR);
+
+	/**
+	 * Constant {@code '.'} as separator between file name and file extension.
+	 *
+	 * <p>
+	 * <b>Why shouldn't I use {@code '.'} directly?</b><br>
+	 * Using {@code '.'} is bad practice, as it holds implementation specific
+	 * information.
+	 */
+	public static final char FILE_EXTENSION_SEPARATOR_CHAR = constant('.');
+
+	/**
+	 * Constant {@code "."} as separator between file name and file extension,
+	 * represented as a string for convenience. This string contains a single
+	 * character, namely {@link #FILE_EXTENSION_SEPARATOR_CHAR}.
+	 *
+	 * <p>
+	 * <b>Why shouldn't I use {@code "."} directly?</b><br>
+	 * Using {@code "."} is bad practice, as it holds implementation specific
+	 * information.
+	 */
+	public static final String FILE_EXTENSION_SEPARATOR = Character.toString(FILE_EXTENSION_SEPARATOR_CHAR);
+
 	/**
 	 * Java Runtime Environment version
 	 */
