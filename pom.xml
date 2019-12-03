@@ -155,7 +155,7 @@
 		<findsecbugs.version>1.8.0</findsecbugs.version>
 		<lombok.version>1.18.10</lombok.version>
 		<org-eclipse-jdt-core.version>3.19.0</org-eclipse-jdt-core.version>
-		<pmd.version>6.19.0</pmd.version>
+		<pmd.version>6.20.0</pmd.version>
 		<spotbugs.version>3.1.12</spotbugs.version>
 	</properties>
 
@@ -2562,9 +2562,6 @@ TODO: Easy to understand usage example
 
 											<!-- Better use long variable names than abbreviations -->
 											<exclude name="UnnecessaryConstructor" />
-
-											<!-- see https://github.com/pmd/pmd/issues/2098 -->
-											<exclude name="UnnecessaryFullyQualifiedName" />
 										</rule>
 
 										<!-- Allow utility class names ending with character 's' -->
@@ -2572,7 +2569,7 @@ TODO: Easy to understand usage example
 											ref="category/java/codestyle.xml/ClassNamingConventions">
 											<properties>
 												<property name="utilityClassPattern"
-													value="[A-Z][a-zA-Z0-9]+(Utils?|Helper|s)" />
+													value="[A-Z][a-zA-Z0-9]+(s|Helper|Utils?)" />
 											</properties>
 										</rule>
 
@@ -2582,6 +2579,13 @@ TODO: Easy to understand usage example
 											<properties>
 												<property name="ignoredAnnotations"
 													value="com.google.common.annotations.VisibleForTesting|android.support.annotation.VisibleForTesting|de.larssh.utils.annotations.PackagePrivate" />
+											</properties>
+										</rule>
+
+										<!-- Check transform methods -->
+										<rule ref="category/java/codestyle.xml/LinguisticNaming">
+											<properties>
+												<property name="checkTransformMethods" value="true" />
 											</properties>
 										</rule>
 
