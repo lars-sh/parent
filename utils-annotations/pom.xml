@@ -39,6 +39,6 @@
 	</issueManagement>
 	<ciManagement>
 		<system>Travis</system>
-		<url>https://travis-ci.org/lars-sh/parent</url>
+		<url>https://travis-ci.com/lars-sh/parent</url>
 	</ciManagement>
 </project>
