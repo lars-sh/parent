@@ -110,7 +110,7 @@
 		<junit-jupiter-engine.version>5.5.2</junit-jupiter-engine.version>
 		<junit-platform-runner.version>1.5.2</junit-platform-runner.version>
 		<lombok-annotations.version>1.18.10</lombok-annotations.version>
-		<mockito.version>3.2.0</mockito.version>
+		<mockito.version>3.2.4</mockito.version>
 		<parent.version>0.9.6-SNAPSHOT</parent.version>
 
 		<!-- Versions: Plugins -->
@@ -154,7 +154,7 @@
 		<fb-contrib.version>7.4.3.sb</fb-contrib.version>
 		<findsecbugs.version>1.8.0</findsecbugs.version>
 		<lombok.version>1.18.10</lombok.version>
-		<org-eclipse-jdt-core.version>3.19.0</org-eclipse-jdt-core.version>
+		<org-eclipse-jdt-core.version>3.20.0</org-eclipse-jdt-core.version>
 		<pmd.version>6.20.0</pmd.version>
 		<spotbugs.version>3.1.12</spotbugs.version>
 	</properties>
