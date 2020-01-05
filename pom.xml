@@ -1100,6 +1100,7 @@ TODO: Easy to understand usage example
 			<property name="ignoreOccurrenceContext" value="ANNOTATION, STATIC_INIT" />
 		</module>
 		<module name="MultipleVariableDeclarations" />
+		<module name="NoArrayTrailingComma" />
 		<module name="NoClone" />
 		<module name="NoFinalizer" />
 		<module name="OneStatementPerLine">
