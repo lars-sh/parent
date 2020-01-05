@@ -2,6 +2,7 @@ package de.larssh.utils;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.Optional;
 import java.util.OptionalDouble;
@@ -26,6 +27,40 @@ import lombok.experimental.UtilityClass;
  */
 @UtilityClass
 public class Optionals {
+	/**
+	 * Creates a {@link Comparator} to compare {@link Optional}s based on the inner
+	 * types {@link Comparable} implementation.
+	 *
+	 * @param <T> optional value type
+	 * @return comparator for optional
+	 */
+	public static <T extends Comparable<T>> Comparator<Optional<T>> comparator() {
+		return comparator((first, second) -> {
+			if (first == null && second == null) {
+				return 0;
+			}
+			return first == null ? -second.compareTo(first) : first.compareTo(second);
+		});
+	}
+
+	/**
+	 * Wraps a {@link Comparator} to allow compare {@link Optional}s.
+	 *
+	 * <p>
+	 * When comparing {@code comparator} is called with the optionals object if
+	 * present or {@code null}. Therefore it needs to handle null values
+	 * appropriately. Use {@link Comparator#nullsFirst(Comparator)} and
+	 * {@link Comparator#nullsLast(Comparator)} if your comparator does not.
+	 *
+	 * @param <T>        optional value type
+	 * @param comparator optional value comparator
+	 * @return comparator for optional
+	 */
+	public static <T> Comparator<Optional<T>> comparator(final Comparator<T> comparator) {
+		return (first, second) -> comparator.compare(Nullables.map(second, optional -> optional.orElse(null)),
+				Nullables.map(second, optional -> optional.orElse(null)));
+	}
+
 	/**
 	 * If a value is present, apply the provided {@link OptionalDouble}-bearing
 	 * mapping function to it, return that result, otherwise return an empty
