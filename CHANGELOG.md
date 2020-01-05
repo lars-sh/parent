@@ -11,6 +11,9 @@ Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%
 * Method de.larssh.utils.Optionals.comparator()
 * Method de.larssh.utils.Optionals.comparator(Comparator)
 
+### Changed
+* Update formatter and clean-up settings for Eclipse 2019-09
+
 <a name="0.9.5"></a>
 
 ## [0.9.5](https://github.com/lars-sh/parent/compare/35490fbfcecc4c4eace0d3d3f630bd121bd0878a...910893179255a2a139856edf72bc5525bb9f3e40) (2019-12-03)
