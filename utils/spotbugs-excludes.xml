@@ -9,22 +9,33 @@
 	<Match>
 		<Bug pattern="WEM_WEAK_EXCEPTION_MESSAGING" />
 	</Match>
-	
-	<!-- Suppress modifications of Duration.toString output for formatting reasons -->
-	<Match>
-		<Bug pattern="ITU_INAPPROPRIATE_TOSTRING_USE" />
-		<Class name="de.larssh.utils.time.LoggingStopwatch$StringLoggingStopwatchMode" />
-	</Match>
 
-	<!-- Method "waitFor" is really intended to wait for a specified duration. -->
+	<!-- Method "comparator" needs to handle a Comparable in a generic way. -->
 	<Match>
-		<Bug pattern="MDM_THREAD_YIELD" />
-		<Class name="de.larssh.utils.time.Stopwatch" />
+		<Bug pattern="RV_CHECK_COMPARETO_FOR_SPECIFIC_RETURN_VALUE" />
+		<Class name="de.larssh.utils.Optionals" />
+	</Match>
+	<Match>
+		<Bug pattern="RV_NEGATING_RESULT_OF_COMPARETO" />
+		<Class name="de.larssh.utils.Optionals" />
 	</Match>
 
 	<!-- Path processing as described in JavaDoc -->
 	<Match>
 		<Bug pattern="PATH_TRAVERSAL_IN" />
 		<Class name="de.larssh.utils.Resources" />
+	</Match>
+
+	<!-- Suppress modifications of Duration.toString output for formatting reasons -->
+	<Match>
+		<Bug pattern="ITU_INAPPROPRIATE_TOSTRING_USE" />
+		<Class
+			name="de.larssh.utils.time.LoggingStopwatch$StringLoggingStopwatchMode" />
+	</Match>
+
+	<!-- Method "waitFor" is really intended to wait for a specified duration. -->
+	<Match>
+		<Bug pattern="MDM_THREAD_YIELD" />
+		<Class name="de.larssh.utils.time.Stopwatch" />
 	</Match>
 </FindBugsFilter>

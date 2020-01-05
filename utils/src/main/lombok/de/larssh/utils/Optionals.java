@@ -36,10 +36,17 @@ public class Optionals {
 	 */
 	public static <T extends Comparable<T>> Comparator<Optional<T>> comparator() {
 		return comparator((first, second) -> {
-			if (first == null && second == null) {
-				return 0;
+			if (first == null) {
+				if (second == null) {
+					return 0;
+				}
+
+				// The integer value MIN_VALUE cannot be negated in the integer range
+				// as [-MIN_VALUE] is mathematically equal to [MAX_VALUE + 1].
+				final int compare = second.compareTo(null);
+				return compare == Integer.MIN_VALUE ? Integer.MAX_VALUE : -compare;
 			}
-			return first == null ? -second.compareTo(first) : first.compareTo(second);
+			return first.compareTo(second);
 		});
 	}
 
