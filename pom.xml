@@ -3588,7 +3588,7 @@ cache:
 												value="generate" />
 											<entry
 												key="org.eclipse.jdt.core.compiler.doc.comment.support"
-												value="${org.eclipse.jdt.core.compiler.doc.comment.support}" />
+												value="${eclipse.compiler.javadoc}" />
 											<entry
 												key="org.eclipse.jdt.core.compiler.problem.APILeak"
 												value="warning" />
