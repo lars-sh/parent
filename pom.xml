@@ -107,7 +107,7 @@
 		<assertj-core.version>3.14.0</assertj-core.version>
 		<joor.version>0.9.12</joor.version>
 		<junit-jupiter-api.version>5.6.0</junit-jupiter-api.version>
-		<junit-jupiter-engine.version>5.5.2</junit-jupiter-engine.version>
+		<junit-jupiter-engine.version>5.6.0</junit-jupiter-engine.version>
 		<junit-platform-runner.version>1.5.2</junit-platform-runner.version>
 		<lombok-annotations.version>1.18.10</lombok-annotations.version>
 		<mockito.version>3.2.4</mockito.version>
