@@ -13,6 +13,7 @@ Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%
 
 ### Changed
 * Update formatter and clean-up settings for Eclipse 2019-09
+* `de.larssh.utils.net.InsecureConnections.getTrustManagersThatDoNotVerifyCertificates()` is now based on `javax.net.ssl.X509ExtendedTrustManager`
 
 ### Fixed
 * Maven property `eclipse.compiler.javadoc`

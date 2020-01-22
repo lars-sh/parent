@@ -1,10 +1,12 @@
 package de.larssh.utils.net;
 
+import java.net.Socket;
 import java.security.cert.X509Certificate;
 
 import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.SSLEngine;
 import javax.net.ssl.TrustManager;
-import javax.net.ssl.X509TrustManager;
+import javax.net.ssl.X509ExtendedTrustManager;
 
 import edu.umd.cs.findbugs.annotations.Nullable;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
@@ -49,7 +51,7 @@ public class InsecureConnections {
 	 * {@link TrustManager} that <b>does not verify certificates</b>
 	 */
 	@NoArgsConstructor(access = AccessLevel.PRIVATE)
-	private static final class TrustManagerThatDoesNotVerifyCertificates implements X509TrustManager {
+	private static final class TrustManagerThatDoesNotVerifyCertificates extends X509ExtendedTrustManager {
 		/**
 		 * Empty array of acceptable CA issuer certificates
 		 */
@@ -82,8 +84,48 @@ public class InsecureConnections {
 		@Override
 		@SuppressFBWarnings(value = "WEAK_TRUST_MANAGER",
 				justification = "The check is absolutely right. That's why this is part of the utility class InsecureConnections.")
+		public void checkClientTrusted(@SuppressWarnings("unused") @Nullable final X509Certificate[] chain,
+				@SuppressWarnings("unused") @Nullable final String authenticationType,
+				@SuppressWarnings("unused") @Nullable final Socket socket) {
+			// do not verify client certificates
+		}
+
+		/** {@inheritDoc} */
+		@Override
+		@SuppressFBWarnings(value = "WEAK_TRUST_MANAGER",
+				justification = "The check is absolutely right. That's why this is part of the utility class InsecureConnections.")
+		public void checkClientTrusted(@SuppressWarnings("unused") @Nullable final X509Certificate[] chain,
+				@SuppressWarnings("unused") @Nullable final String authenticationType,
+				@SuppressWarnings("unused") @Nullable final SSLEngine engine) {
+			// do not verify client certificates
+		}
+
+		/** {@inheritDoc} */
+		@Override
+		@SuppressFBWarnings(value = "WEAK_TRUST_MANAGER",
+				justification = "The check is absolutely right. That's why this is part of the utility class InsecureConnections.")
 		public void checkServerTrusted(@SuppressWarnings("unused") @Nullable final X509Certificate[] chain,
 				@SuppressWarnings("unused") @Nullable final String authenticationType) {
+			// do not verify server certificates
+		}
+
+		/** {@inheritDoc} */
+		@Override
+		@SuppressFBWarnings(value = "WEAK_TRUST_MANAGER",
+				justification = "The check is absolutely right. That's why this is part of the utility class InsecureConnections.")
+		public void checkServerTrusted(@SuppressWarnings("unused") @Nullable final X509Certificate[] chain,
+				@SuppressWarnings("unused") @Nullable final String authenticationType,
+				@SuppressWarnings("unused") @Nullable final Socket socket) {
+			// do not verify server certificates
+		}
+
+		/** {@inheritDoc} */
+		@Override
+		@SuppressFBWarnings(value = "WEAK_TRUST_MANAGER",
+				justification = "The check is absolutely right. That's why this is part of the utility class InsecureConnections.")
+		public void checkServerTrusted(@SuppressWarnings("unused") @Nullable final X509Certificate[] chain,
+				@SuppressWarnings("unused") @Nullable final String authenticationType,
+				@SuppressWarnings("unused") @Nullable final SSLEngine engine) {
 			// do not verify server certificates
 		}
 
