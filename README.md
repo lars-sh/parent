@@ -1,5 +1,5 @@
 # Parent POM
-This parent POM is made for great Java projects, handling [Eclipse](https://eclipse.org/downloads/) and optional [Project Lombok](https://projectlombok.org/) integration, having consistent [Checkstyle](https://checkstyle.org/) and [SpotBugs](https://spotbugs.github.io/) (successor of FindBugs) definitions in addition to even more Maven pre-configuration.
+This parent POM is made for great Java projects, handling [Eclipse](https://eclipse.org/downloads/) (partly IntelliJ IDEA) and optionally [Project Lombok](https://projectlombok.org/) integration, having consistent [Checkstyle](https://checkstyle.org/) and [SpotBugs](https://spotbugs.github.io/) (successor of FindBugs) definitions in addition to even more Maven pre-configuration.
 
 Used technologies and main focus are:
 * Maven for up-to-date and consistent dependencies
@@ -7,7 +7,7 @@ Used technologies and main focus are:
 * Project Lombok to allow writing less boilerplate
 * Checkstyle and formatter for clean code
 * SpotBugs, PMD and CPD for safe code and following best practices
-* Eclipse Integration to see warnings as easy as possible
+* Eclipse (and partly IntelliJ IDEA) integration to see warnings as easy as possible
 * Until further notice we aim at using Java 8.
 
 Read below descriptions and tips to get started. In case you run into problems [open an issue](https://github.com/lars-sh/parent/issues), in case you'd like to help with this document or one of the submodules feel free to [create pull requests](https://github.com/lars-sh/parent/pulls). There is still much that can be done.
