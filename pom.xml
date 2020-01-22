@@ -70,11 +70,12 @@
 		<parent-pom.default-sources-folder>lombok</parent-pom.default-sources-folder>
 		<!-- <parent-pom.create-lombok-config>true</parent-pom.create-lombok-config> -->
 		<parent-pom.create-travis-yml>true</parent-pom.create-travis-yml>
+		<!-- <eclipse.compiler.codegen.methodParameters>false</eclipse.compiler.codegen.methodParameters> -->
+		<eclipse.compiler.javadoc>enabled</eclipse.compiler.javadoc>
 		<eclipse.compiler.missingNonNullByDefaultAnnotation>warning</eclipse.compiler.missingNonNullByDefaultAnnotation>
 		<eclipse.compiler.nonnull.secondary></eclipse.compiler.nonnull.secondary>
 		<eclipse.compiler.nonnullbydefault.secondary></eclipse.compiler.nonnullbydefault.secondary>
 		<eclipse.compiler.nullable.secondary>edu.umd.cs.findbugs.annotations.CheckForNull</eclipse.compiler.nullable.secondary>
-		<eclipse.compiler.javadoc>enabled</eclipse.compiler.javadoc>
 		<checkstyle.config.location>${project.build.directory}/checkstyle.xml</checkstyle.config.location>
 		<checkstyle.consoleOutput>true</checkstyle.consoleOutput>
 		<formatter.configFile>${project.build.directory}/formatter.xml</formatter.configFile>
@@ -637,6 +638,10 @@
 								<condition property="cpd.excludeFromFailureFile"
 									value="${project.basedir}/cpd-excludes.csv" else="">
 									<available file="${project.basedir}/cpd-excludes.csv" />
+								</condition>
+								<condition property="eclipse.compiler.codegen.methodParameters"
+									value="generate" else="do not generate">
+									<equals arg1="${maven.compiler.parameters}" arg2="true" />
 								</condition>
 							</target>
 						</configuration>
@@ -3568,7 +3573,7 @@ cache:
 												value="enabled" />
 											<entry
 												key="org.eclipse.jdt.core.compiler.codegen.methodParameters"
-												value="do not generate" />
+												value="${eclipse.compiler.codegen.methodParameters}" />
 											<entry
 												key="org.eclipse.jdt.core.compiler.codegen.targetPlatform"
 												value="1.8" />

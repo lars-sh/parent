@@ -10,6 +10,7 @@ Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%
 ### Added
 * Method `de.larssh.utils.Optionals.comparator()`
 * Method `de.larssh.utils.Optionals.comparator(Comparator)`
+* Configure Eclipse to respect the value specified for `maven.compiler.parameters`
 
 ### Changed
 * Update formatter and clean-up settings for Eclipse 2019-09

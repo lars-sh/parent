@@ -292,6 +292,10 @@ This parent POM either predefines existing Maven Properties or introduces some o
 
 `parent-pom.create-travis-yml` handles if the projects `.travis.yml` file should be generated. Set to `false` if the file should not be created or overwritten. Default value is `true`.
 
+`eclipse.compiler.codegen.methodParameters` configures Eclipse to respect the value specified for `maven.compiler.parameters`. Values can be `generate` or `do not generate`. Default value: `do not generate`, except if property `maven.compiler.parameters` equals `true`.
+
+`eclipse.compiler.javadoc` is meant to be used by child POMs to configure if Eclipse should validate JavaDoc comments. Values can be `enabled` or `disabled`. Default value: `enabled`
+
 `eclipse.compiler.missingNonNullByDefaultAnnotation` is meant to be used by child POMs to configure if Eclipse should enforce @NonNullByDefault annotations on every package. Values can be `error`, `warning`, `info` or `ignore` (disabled). Default value: `warning`
 
 `eclipse.compiler.nonnull.secondary` is meant to be used by child POMs to configure secondary @NonNull annotations that Eclipse should handle. Multiple values must be separated by comma. Default value: *empty*
@@ -299,8 +303,6 @@ This parent POM either predefines existing Maven Properties or introduces some o
 `eclipse.compiler.nonnullbydefault.secondary` is meant to be used by child POMs to configure secondary @NonNullByDefault annotations that Eclipse should handle. Multiple values must be separated by comma. Default value: *empty*
 
 `eclipse.compiler.nullable.secondary` is meant to be used by child POMs to configure secondary @Nullable annotations that Eclipse should handle. Multiple values must be separated by comma. Default value: `edu.umd.cs.findbugs.annotations.CheckForNull`
-
-`eclipse.compiler.javadoc` is meant to be used by child POMs to configure if Eclipse should validate JavaDoc comments. Values can be `enabled` or `disabled`. Default value: `enabled`
 
 `jar.manifest.mainClass` is meant to be used by child POMs to configure a default main class, e.g. "de.larssh.Main". Default value: *empty*
 
