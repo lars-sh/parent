@@ -639,7 +639,8 @@
 									value="${project.basedir}/cpd-excludes.csv" else="">
 									<available file="${project.basedir}/cpd-excludes.csv" />
 								</condition>
-								<condition property="eclipse.compiler.codegen.methodParameters"
+								<condition
+									property="eclipse.compiler.codegen.methodParameters"
 									value="generate" else="do not generate">
 									<equals arg1="${maven.compiler.parameters}" arg2="true" />
 								</condition>
@@ -3332,15 +3333,19 @@ cache:
 											<entry key="cleanup.use_lambda" value="true" />
 											<entry key="cleanup.use_parentheses_in_expressions"
 												value="true" />
+											<!-- Eclipse 2019-12 might fail if the following configuration 
+												is "true". -->
 											<entry
 												key="cleanup.use_this_for_non_static_field_access"
-												value="true" />
+												value="false" />
 											<entry
 												key="cleanup.use_this_for_non_static_field_access_only_if_necessary"
 												value="true" />
+											<!-- Eclipse 2019-12 might fail if the following configuration 
+												is "true". -->
 											<entry
 												key="cleanup.use_this_for_non_static_method_access"
-												value="true" />
+												value="false" />
 											<entry
 												key="cleanup.use_this_for_non_static_method_access_only_if_necessary"
 												value="true" />
@@ -3494,15 +3499,19 @@ cache:
 											<entry key="sp_cleanup.use_lambda" value="true" />
 											<entry key="sp_cleanup.use_parentheses_in_expressions"
 												value="true" />
+											<!-- Eclipse 2019-12 might fail if the following configuration 
+												is "true". -->
 											<entry
 												key="sp_cleanup.use_this_for_non_static_field_access"
-												value="true" />
+												value="false" />
 											<entry
 												key="sp_cleanup.use_this_for_non_static_field_access_only_if_necessary"
 												value="true" />
+											<!-- Eclipse 2019-12 might fail if the following configuration 
+												is "true". -->
 											<entry
 												key="sp_cleanup.use_this_for_non_static_method_access"
-												value="true" />
+												value="false" />
 											<entry
 												key="sp_cleanup.use_this_for_non_static_method_access_only_if_necessary"
 												value="true" />

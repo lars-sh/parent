@@ -19,6 +19,7 @@ Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%
 * `de.larssh.utils.net.InsecureConnections.getTrustManagersThatDoNotVerifyCertificates()` is now based on `javax.net.ssl.X509ExtendedTrustManager`
 
 ### Fixed
+* Work around a bug in Eclipse 2019-12 when performing clean up or save actions to handle `this`.
 * Maven property `eclipse.compiler.javadoc`
 
 <a name="0.9.5"></a>
