@@ -39,6 +39,11 @@ import lombok.experimental.UtilityClass;
 @UtilityClass
 public class Strings {
 	/**
+	 * Character to separate strings inside regular expressions
+	 */
+	private static final String PATTERN_STRING_SEPARATOR = "|";
+
+	/**
 	 * Map of binary units to their factor
 	 *
 	 * <ul>
@@ -48,12 +53,15 @@ public class Strings {
 	 * <li>...
 	 * </ul>
 	 */
-	public static final Map<String, BigDecimal> BINARY_UNITS;
+	public static final Map<String, BigDecimal> BINARY_UNITS = unmodifiableMap(getBinaryUnits());
 
 	/**
 	 * Pattern for parsing binary unit strings
 	 */
-	private static final Pattern BINARY_UNIT_PATTERN;
+	private static final Pattern BINARY_UNIT_PATTERN
+			= Pattern.compile("(?i)^\\s*(?<value>[+-]?\\s*(\\d([\\d_]*\\d)?)?\\.?\\d([\\d_]*\\d)?)\\s*((?<unit>"
+					+ BINARY_UNITS.keySet().stream().map(Pattern::quote).collect(joining(PATTERN_STRING_SEPARATOR))
+					+ ")i?)?\\s*$");
 
 	/**
 	 * Map of decimal units to their power of ten
@@ -66,17 +74,15 @@ public class Strings {
 	 * <li>...
 	 * </ul>
 	 */
-	public static final Map<String, Integer> DECIMAL_UNITS;
+	public static final Map<String, Integer> DECIMAL_UNITS = unmodifiableMap(getDecimalUnits());
 
 	/**
 	 * Pattern for parsing decimal unit strings
 	 */
-	private static final Pattern DECIMAL_UNIT_PATTERN;
-
-	/**
-	 * Pattern to retrieve white space characters in binary and decimal unit strings
-	 */
-	private static final Pattern UNIT_WHITE_SPACE_PATTERN = Pattern.compile("[\\s_]+");
+	private static final Pattern DECIMAL_UNIT_PATTERN
+			= Pattern.compile("(?i)^\\s*(?<value>[+-]?\\s*(\\d([\\d_]*\\d)?)?\\.?\\d([\\d_]*\\d)?)\\s*(?<unit>"
+					+ DECIMAL_UNITS.keySet().stream().map(Pattern::quote).collect(joining(PATTERN_STRING_SEPARATOR))
+					+ ")?\\s*$");
 
 	/**
 	 * Constant UTF-8 for usage as default char set.
@@ -122,23 +128,10 @@ public class Strings {
 	 */
 	public static final String NEW_LINE = constant("\n");
 
-	static {
-		// Binary Units + Pattern
-		BINARY_UNITS = unmodifiableMap(getBinaryUnits());
-		final String joinedBinaryUnits = BINARY_UNITS.keySet().stream().map(Pattern::quote).collect(joining("|"));
-		BINARY_UNIT_PATTERN
-				= Pattern.compile("(?i)^\\s*(?<value>[+-]?\\s*(\\d([\\d_]*\\d)?)?\\.?\\d([\\d_]*\\d)?)\\s*((?<unit>"
-						+ joinedBinaryUnits
-						+ ")i?)?\\s*$");
-
-		// Decimal Units + Pattern
-		DECIMAL_UNITS = unmodifiableMap(getDecimalUnits());
-		final String joinedDecimalUnits = DECIMAL_UNITS.keySet().stream().map(Pattern::quote).collect(joining("|"));
-		DECIMAL_UNIT_PATTERN
-				= Pattern.compile("(?i)^\\s*(?<value>[+-]?\\s*(\\d([\\d_]*\\d)?)?\\.?\\d([\\d_]*\\d)?)\\s*(?<unit>"
-						+ joinedDecimalUnits
-						+ ")?\\s*$");
-	}
+	/**
+	 * Pattern to retrieve white space characters in binary and decimal unit strings
+	 */
+	private static final Pattern UNIT_WHITE_SPACE_PATTERN = Pattern.compile("[\\s_]+");
 
 	/**
 	 * Tests if this string ends with the specified suffix, ignoring case
