@@ -2645,7 +2645,7 @@ script: mvn install -Dgpg.skip=true --batch-mode --show-version --update-snapsho
 
 cache:
   directories:
-    - $HOME/.m2
+    - $HOME/.m2/repository
 ]]></echo>
 							</target>
 						</configuration>
