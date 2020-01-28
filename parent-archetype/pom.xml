@@ -43,6 +43,10 @@
 		<url>https://travis-ci.com/lars-sh/parent</url>
 	</ciManagement>
 
+	<properties>
+		<parent-pom.create-travis-yml>false</parent-pom.create-travis-yml>
+	</properties>
+
 	<build>
 		<plugins>
 			<!-- Skip integration tests when using M2E (embedded Maven into Eclipse). -->

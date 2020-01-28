@@ -42,6 +42,10 @@
 		<url>https://travis-ci.com/lars-sh/parent</url>
 	</ciManagement>
 
+	<properties>
+		<parent-pom.create-travis-yml>false</parent-pom.create-travis-yml>
+	</properties>
+
 	<dependencies>
 		<!-- Provided -->
 		<dependency>
