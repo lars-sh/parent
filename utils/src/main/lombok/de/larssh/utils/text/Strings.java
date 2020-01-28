@@ -29,6 +29,7 @@ import java.util.regex.Pattern;
 import java.util.stream.IntStream;
 
 import de.larssh.utils.Optionals;
+import de.larssh.utils.collection.Maps;
 import edu.umd.cs.findbugs.annotations.Nullable;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import lombok.experimental.UtilityClass;
@@ -37,6 +38,7 @@ import lombok.experimental.UtilityClass;
  * This class contains helper methods for {@link String}.
  */
 @UtilityClass
+@SuppressWarnings("PMD.ExcessiveImports")
 public class Strings {
 	/**
 	 * Character to separate strings inside regular expressions
@@ -74,7 +76,32 @@ public class Strings {
 	 * <li>...
 	 * </ul>
 	 */
-	public static final Map<String, Integer> DECIMAL_UNITS = unmodifiableMap(getDecimalUnits());
+	@SuppressWarnings({ "checkstyle:MagicNumber", "checkstyle:MultipleStringLiterals" })
+	@SuppressFBWarnings(value = "PSC_PRESIZE_COLLECTIONS",
+			justification = "this method is called just once (in static initializer); keep code simple")
+	public static final Map<String, Integer> DECIMAL_UNITS = Maps.builder(new LinkedHashMap<String, Integer>())
+			.put("y", -24)
+			.put("z", -21)
+			.put("a", -18)
+			.put("f", -15)
+			.put("p", -12)
+			.put("n", -9)
+			.put("u", -6)
+			.put("μ", -6)
+			.put("m", -3)
+			.put("c", -2)
+			.put("d", -1)
+			.put("da", 1)
+			.put("h", 2)
+			.put("k", 3)
+			.put("M", 6)
+			.put("G", 9)
+			.put("T", 12)
+			.put("P", 15)
+			.put("E", 18)
+			.put("Z", 21)
+			.put("Y", 24)
+			.unmodifiable();
 
 	/**
 	 * Pattern for parsing decimal unit strings
@@ -208,43 +235,6 @@ public class Strings {
 		return IntStream.range(0, binaryUnits.size())
 				.boxed()
 				.collect(toLinkedHashMap(binaryUnits::get, index -> oneThousandTwentyFour.pow(index + 1)));
-	}
-
-	/**
-	 * Returns a map of decimal units to their power of ten for static
-	 * initialization.
-	 *
-	 * @return map map of decimal units to their power of ten
-	 */
-	@SuppressWarnings({ "checkstyle:MagicNumber", "checkstyle:MultipleStringLiterals" })
-	@SuppressFBWarnings(value = "PSC_PRESIZE_COLLECTIONS",
-			justification = "this method is called just once (in static initializer); keep code simple")
-	private static Map<String, Integer> getDecimalUnits() {
-		final Map<String, Integer> decimalUnits = new LinkedHashMap<>();
-
-		decimalUnits.put("y", -24);
-		decimalUnits.put("z", -21);
-		decimalUnits.put("a", -18);
-		decimalUnits.put("f", -15);
-		decimalUnits.put("p", -12);
-		decimalUnits.put("n", -9);
-		decimalUnits.put("u", -6);
-		decimalUnits.put("μ", -6);
-		decimalUnits.put("m", -3);
-		decimalUnits.put("c", -2);
-		decimalUnits.put("d", -1);
-		decimalUnits.put("da", 1);
-		decimalUnits.put("h", 2);
-		decimalUnits.put("k", 3);
-		decimalUnits.put("M", 6);
-		decimalUnits.put("G", 9);
-		decimalUnits.put("T", 12);
-		decimalUnits.put("P", 15);
-		decimalUnits.put("E", 18);
-		decimalUnits.put("Z", 21);
-		decimalUnits.put("Y", 24);
-
-		return decimalUnits;
 	}
 
 	/**
