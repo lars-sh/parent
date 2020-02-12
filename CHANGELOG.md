@@ -11,7 +11,7 @@ Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%
 * TODO
 
 ### Changed
-* TODO
+* Do not execute the delombok plugin unless a lombok sources folder exists
 
 ### Removed
 * TODO

@@ -2680,20 +2680,6 @@ cache:
 				</executions>
 			</plugin>
 
-			<!-- Delombok -->
-			<plugin>
-				<groupId>org.projectlombok</groupId>
-				<artifactId>lombok-maven-plugin</artifactId>
-				<executions>
-					<execution>
-						<goals>
-							<goal>delombok</goal>
-							<goal>testDelombok</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-
 			<!-- Check code style -->
 			<plugin>
 				<artifactId>maven-checkstyle-plugin</artifactId>
@@ -3080,6 +3066,56 @@ cache:
 										<source>${project.basedir}/src/test/lombok</source>
 									</sources>
 								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+		<!-- Delombok: Do not execute the delombok plugin unless a lombok sources folder exists -->
+		<profile>
+			<id>delombok</id>
+			<activation>
+				<file>
+					<exists>src/main/lombok</exists>
+				</file>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.projectlombok</groupId>
+						<artifactId>lombok-maven-plugin</artifactId>
+						<executions>
+							<execution>
+								<goals>
+									<goal>delombok</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+		<!-- Test Delombok: Do not execute the delombok plugin unless a lombok test sources folder exists -->
+		<profile>
+			<id>delombok-test</id>
+			<activation>
+				<file>
+					<exists>src/main/lombok</exists>
+				</file>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.projectlombok</groupId>
+						<artifactId>lombok-maven-plugin</artifactId>
+						<executions>
+							<execution>
+								<goals>
+									<goal>testDelombok</goal>
+								</goals>
 							</execution>
 						</executions>
 					</plugin>
