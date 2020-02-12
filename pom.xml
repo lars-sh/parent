@@ -208,6 +208,7 @@
 			<groupId>de.lars-sh</groupId>
 			<artifactId>lombok-annotations</artifactId>
 			<version>${lombok-annotations.version}</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.github.spotbugs</groupId>
