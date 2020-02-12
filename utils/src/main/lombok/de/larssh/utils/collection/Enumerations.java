@@ -47,7 +47,7 @@ public class Enumerations {
 	@SuppressWarnings("checkstyle:IllegalToken")
 	public static <T> Stream<T> stream(final Enumeration<T> enumeration) {
 		return StreamSupport.stream(
-				Spliterators.spliteratorUnknownSize(iterator(enumeration), Spliterator.ORDERED | Spliterator.IMMUTABLE),
+				Spliterators.spliteratorUnknownSize(iterator(enumeration), Spliterator.IMMUTABLE | Spliterator.ORDERED),
 				false);
 	}
 }
