@@ -205,12 +205,6 @@
 	<dependencies>
 		<!-- Provided -->
 		<dependency>
-			<groupId>de.lars-sh</groupId>
-			<artifactId>lombok-annotations</artifactId>
-			<version>${lombok-annotations.version}</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
 			<groupId>com.github.spotbugs</groupId>
 			<artifactId>spotbugs-annotations</artifactId>
 			<version>${spotbugs.version}</version>
@@ -3081,6 +3075,14 @@ cache:
 					<exists>src/main/lombok</exists>
 				</file>
 			</activation>
+			<dependencies>
+				<dependency>
+					<groupId>de.lars-sh</groupId>
+					<artifactId>lombok-annotations</artifactId>
+					<version>${lombok-annotations.version}</version>
+					<scope>provided</scope>
+				</dependency>
+			</dependencies>
 			<build>
 				<plugins>
 					<plugin>
@@ -3103,9 +3105,17 @@ cache:
 			<id>delombok-test</id>
 			<activation>
 				<file>
-					<exists>src/main/lombok</exists>
+					<exists>src/test/lombok</exists>
 				</file>
 			</activation>
+			<dependencies>
+				<dependency>
+					<groupId>de.lars-sh</groupId>
+					<artifactId>lombok-annotations</artifactId>
+					<version>${lombok-annotations.version}</version>
+					<scope>provided</scope>
+				</dependency>
+			</dependencies>
 			<build>
 				<plugins>
 					<plugin>
