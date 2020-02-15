@@ -153,6 +153,12 @@ While Project Lombok comes pre-configured for Maven builds you still need to run
 4. Check the IDE and click `Install / Update` (bottom right, just above `Quit Installer`).
 5. **Restart your IDE**
 
+#### Excluding Project Lombok
+In the rare case that you might explicitely avoid using lombok add the following properties to your Maven configuration.
+
+	<parent-pom.create-lombok-config>false</parent-pom.create-lombok-config>
+	<parent-pom.default-sources-folder>java</parent-pom.default-sources-folder>
+
 #### The good parts
 Project Lombok consists of many different concepts to avoid boilerplate. The following ones are the most likely to use. See JavaDoc or the [Features page](https://projectlombok.org/features) for further details.
 
@@ -245,12 +251,6 @@ In case you forgot to add that annotation Eclipse shows a warning.
 
 ##### @Nullable
 Add `edu.umd.cs.findbugs.annotations.Nullable` to any method (for its return value) or argument in case it still needs to handle null values. This might be required while handling objects from outside your code or when inheriting classes with nullable values.
-
-#### Excluding Project Lombok
-In the rare case that you might explicitely avoid using lombok add the following properties to your Maven configuration.
-
-	<parent-pom.create-lombok-config>false</parent-pom.create-lombok-config>
-	<parent-pom.default-sources-folder>java</parent-pom.default-sources-folder>
 
 ### Build Process
 Inside your favorite IDE feel free to use its Maven-compatible build infrastrucure, e.g. auto-building in Eclipse. For release artifacts and in case of IDE problems the following Maven commands will help you. More information can be found at the [Maven Lifecycle Reference](https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html#Lifecycle_Reference).
