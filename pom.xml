@@ -766,12 +766,10 @@ TODO: Easy to understand usage example
 									file="${project.basedir}/src/lombok.config">
 									<entry key="config.stopBubbling" value="true" />
 									<entry key="lombok.accessors.flagUsage" value="error" />
-									<entry key="lombok.addLombokGeneratedAnnotation"
-										value="true" />
 									<entry key="lombok.anyConstructor.flagUsage"
 										value="error" />
 									<entry key="lombok.builder.flagUsage" value="error" />
-									<entry key="lombok.cleanup.flagUsage" value="error" />
+									<entry key="lombok.cleanUp.flagUsage" value="error" />
 									<entry key="lombok.data.flagUsage" value="error" />
 									<entry key="lombok.delegate.flagUsage" value="error" />
 									<entry key="lombok.equalsAndHashCode.flagUsage"
@@ -816,6 +814,7 @@ TODO: Easy to understand usage example
 									<entry key="config.stopBubbling" value="true" />
 									<entry key="lombok.addLombokGeneratedAnnotation"
 										value="true" />
+									<entry key="lombok.addNullAnnotations" value="findbugs" />
 									<entry key="lombok.builder.flagUsage" value="error" />
 									<entry key="lombok.cleanUp.flagUsage" value="error" />
 									<entry key="lombok.data.flagUsage" value="error" />
@@ -840,6 +839,7 @@ TODO: Easy to understand usage example
 									<entry key="config.stopBubbling" value="true" />
 									<entry key="lombok.addLombokGeneratedAnnotation"
 										value="true" />
+									<entry key="lombok.addNullAnnotations" value="findbugs" />
 									<entry key="lombok.builder.flagUsage" value="error" />
 									<entry key="lombok.cleanUp.flagUsage" value="error" />
 									<entry key="lombok.data.flagUsage" value="error" />
@@ -2566,7 +2566,6 @@ TODO: Easy to understand usage example
 											<exclude name="DataflowAnomalyAnalysis" />
 
 											<!-- Deprecated -->
-											<exclude name="InvalidSlf4jMessageFormat" />
 											<exclude name="LoggerIsNotStaticFinal" />
 
 											<!-- See separate rule with different properties -->
@@ -3067,7 +3066,8 @@ cache:
 			</build>
 		</profile>
 
-		<!-- Delombok: Do not execute the delombok plugin unless a lombok sources folder exists -->
+		<!-- Delombok: Do not execute the delombok plugin unless a lombok sources 
+			folder exists -->
 		<profile>
 			<id>delombok</id>
 			<activation>
@@ -3100,7 +3100,8 @@ cache:
 			</build>
 		</profile>
 
-		<!-- Test Delombok: Do not execute the delombok plugin unless a lombok test sources folder exists -->
+		<!-- Test Delombok: Do not execute the delombok plugin unless a lombok 
+			test sources folder exists -->
 		<profile>
 			<id>delombok-test</id>
 			<activation>

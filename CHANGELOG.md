@@ -11,6 +11,7 @@ Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%
 * TODO
 
 ### Changed
+* Project Lombok has been configured to add nullable annotations by itself. This simplifies e.g. @EqualsAndHashCode usage.
 * Do not execute the delombok plugin unless a lombok sources folder exists
 
 ### Removed

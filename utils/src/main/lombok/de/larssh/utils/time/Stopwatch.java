@@ -196,7 +196,7 @@ public class Stopwatch {
 	 */
 	@Getter
 	@ToString
-	@EqualsAndHashCode(onParam_ = { @Nullable })
+	@EqualsAndHashCode
 	@RequiredArgsConstructor(access = AccessLevel.PROTECTED)
 	public static class Checkpoint implements Comparable<Checkpoint>, TemporalAccessor {
 		/**

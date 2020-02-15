@@ -34,7 +34,7 @@ import lombok.ToString;
 @Getter
 @ToString
 @RequiredArgsConstructor
-@EqualsAndHashCode(onParam_ = { @Nullable })
+@EqualsAndHashCode
 public class Either<A, B> {
 	/**
 	 * Returns an {@link Either} object describing the given value. One of both
