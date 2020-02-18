@@ -158,6 +158,7 @@
 		<org-eclipse-jdt-core.version>3.20.0</org-eclipse-jdt-core.version>
 		<pmd.version>6.21.0</pmd.version>
 		<spotbugs.version>3.1.12</spotbugs.version>
+		<spotbugs-annotations.version>4.0.0</spotbugs-annotations.version>
 	</properties>
 
 	<dependencyManagement>
@@ -207,7 +208,7 @@
 		<dependency>
 			<groupId>com.github.spotbugs</groupId>
 			<artifactId>spotbugs-annotations</artifactId>
-			<version>${spotbugs.version}</version>
+			<version>${spotbugs-annotations.version}</version>
 			<scope>provided</scope>
 		</dependency>
 
@@ -2879,7 +2880,7 @@ cache:
 								<ignoredUnusedDeclaredDependency>de.lars-sh:utils:jar:${parent.version}</ignoredUnusedDeclaredDependency>
 
 								<!-- Provided -->
-								<ignoredUnusedDeclaredDependency>com.github.spotbugs:spotbugs-annotations:${spotbugs.version}</ignoredUnusedDeclaredDependency>
+								<ignoredUnusedDeclaredDependency>com.github.spotbugs:spotbugs-annotations:${spotbugs-annotations.version}</ignoredUnusedDeclaredDependency>
 								<ignoredUnusedDeclaredDependency>de.lars-sh:lombok-annotations:jar:${lombok-annotations.version}</ignoredUnusedDeclaredDependency>
 								<ignoredUnusedDeclaredDependency>de.lars-sh:utils-annotations:jar:${parent.version}</ignoredUnusedDeclaredDependency>
 
