@@ -34,7 +34,7 @@ public class Optionals {
 	 * @param <T> optional value type
 	 * @return comparator for optional
 	 */
-	public static <T extends Comparable<T>> Comparator<Optional<T>> comparator() {
+	public static <T extends Comparable<T>> Comparator<? super Optional<? extends T>> comparator() {
 		return comparator((first, second) -> {
 			if (first == null) {
 				if (second == null) {
