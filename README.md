@@ -310,6 +310,8 @@ This parent POM either predefines existing Maven Properties or introduces some o
 
 `eclipse.compiler.nullable.secondary` is meant to be used by child POMs to configure secondary @Nullable annotations that Eclipse should handle. Multiple values must be separated by comma. Default value: `edu.umd.cs.findbugs.annotations.CheckForNull`
 
+`eclipse.compiler.nullAnalysis` is meant to be used by child POMs to configure if Eclipse should do annotation based null analysis. Values can be `enabled` or `disabled`. Default value: `enabled`
+
 `jar.manifest.mainClass` is meant to be used by child POMs to configure a default main class, e.g. "de.larssh.Main". Default value: *empty*
 
 `shade.packageDependenciesPhase` is meant to be used by child POMs to configure if an archive containing dependencies should be created. Values can be `none` (disabled) and `package` (enabled) as this property is used with the <phase> tag. Default value: `none`
