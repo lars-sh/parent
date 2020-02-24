@@ -9,6 +9,7 @@ Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%
 
 ### Added
 * Maven property `eclipse.compiler.nullAnalysis` allows to disable the null analysis feature of Eclipse.
+* Maven property `eclipse.compiler.potentialNullReference` allows adjusting the potential null pointer access feature of Eclipse.
 
 ### Changed
 * Project Lombok has been configured to add nullable annotations by itself. This simplifies e.g. @EqualsAndHashCode usage.

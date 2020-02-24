@@ -77,6 +77,7 @@
 		<eclipse.compiler.nonnullbydefault.secondary></eclipse.compiler.nonnullbydefault.secondary>
 		<eclipse.compiler.nullable.secondary>edu.umd.cs.findbugs.annotations.CheckForNull</eclipse.compiler.nullable.secondary>
 		<eclipse.compiler.nullAnalysis>enabled</eclipse.compiler.nullAnalysis>
+		<eclipse.compiler.potentialNullReference>error</eclipse.compiler.potentialNullReference>
 		<checkstyle.config.location>${project.build.directory}/checkstyle.xml</checkstyle.config.location>
 		<checkstyle.consoleOutput>true</checkstyle.consoleOutput>
 		<formatter.configFile>${project.build.directory}/formatter.xml</formatter.configFile>
@@ -3840,7 +3841,7 @@ cache:
 												value="warning" />
 											<entry
 												key="org.eclipse.jdt.core.compiler.problem.potentialNullReference"
-												value="error" />
+												value="${eclipse.compiler.potentialNullReference}" />
 											<entry
 												key="org.eclipse.jdt.core.compiler.problem.potentiallyUnclosedCloseable"
 												value="warning" />

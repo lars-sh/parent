@@ -312,6 +312,8 @@ This parent POM either predefines existing Maven Properties or introduces some o
 
 `eclipse.compiler.nullAnalysis` is meant to be used by child POMs to configure if Eclipse should do annotation based null analysis. Values can be `enabled` or `disabled`. Default value: `enabled`
 
+`eclipse.compiler.potentialNullReference` is meant to be used by child POMs to configure if Eclipse should warn on potential null pointer access. Values can be `error`, `warning`, `info` or `ignore` (disabled). Default value: `error`
+
 `jar.manifest.mainClass` is meant to be used by child POMs to configure a default main class, e.g. "de.larssh.Main". Default value: *empty*
 
 `shade.packageDependenciesPhase` is meant to be used by child POMs to configure if an archive containing dependencies should be created. Values can be `none` (disabled) and `package` (enabled) as this property is used with the <phase> tag. Default value: `none`
