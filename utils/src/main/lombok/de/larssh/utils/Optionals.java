@@ -63,7 +63,7 @@ public class Optionals {
 	 * @param comparator optional value comparator
 	 * @return comparator for optional
 	 */
-	public static <T> Comparator<? super Optional<? extends T>> comparator(final Comparator<T> comparator) {
+	public static <T> Comparator<? super Optional<? extends T>> comparator(final Comparator<? super T> comparator) {
 		return (first, second) -> comparator.compare(Nullables.map(second, optional -> optional.orElse(null)),
 				Nullables.map(second, optional -> optional.orElse(null)));
 	}
@@ -86,7 +86,7 @@ public class Optionals {
 	 *         present, otherwise an empty {@link OptionalDouble}
 	 */
 	public static <T> OptionalDouble flatMapToDouble(final Optional<T> optional,
-			final Function<T, OptionalDouble> mapper) {
+			final Function<? super T, OptionalDouble> mapper) {
 		return optional.isPresent() ? mapper.apply(optional.get()) : OptionalDouble.empty();
 	}
 
@@ -106,7 +106,8 @@ public class Optionals {
 	 *         function to the value of this {@link OptionalInt}, if a value is
 	 *         present, otherwise an empty {@link OptionalInt}
 	 */
-	public static <T> OptionalInt flatMapToInt(final Optional<T> optional, final Function<T, OptionalInt> mapper) {
+	public static <T> OptionalInt flatMapToInt(final Optional<T> optional,
+			final Function<? super T, OptionalInt> mapper) {
 		return optional.isPresent() ? mapper.apply(optional.get()) : OptionalInt.empty();
 	}
 
@@ -127,7 +128,8 @@ public class Optionals {
 	 *         function to the value of this {@link OptionalLong}, if a value is
 	 *         present, otherwise an empty {@link OptionalLong}
 	 */
-	public static <T> OptionalLong flatMapToLong(final Optional<T> optional, final Function<T, OptionalLong> mapper) {
+	public static <T> OptionalLong flatMapToLong(final Optional<T> optional,
+			final Function<? super T, OptionalLong> mapper) {
 		return optional.isPresent() ? mapper.apply(optional.get()) : OptionalLong.empty();
 	}
 
@@ -143,8 +145,9 @@ public class Optionals {
 	 *         {@code isPresent}, an empty {@link Optional} if no element matches
 	 */
 	@SafeVarargs
-	public static <T> Optional<T> getFirst(final Predicate<T> isPresent, final Supplier<T>... suppliers) {
-		for (final Supplier<T> supplier : suppliers) {
+	public static <T> Optional<T> getFirst(final Predicate<? super T> isPresent,
+			final Supplier<? extends T>... suppliers) {
+		for (final Supplier<? extends T> supplier : suppliers) {
 			final T value = supplier.get();
 			if (isPresent.test(value)) {
 				return Optional.ofNullable(value);
@@ -164,7 +167,7 @@ public class Optionals {
 	 *         {@code isPresent}, an empty {@link Optional} if no element matches
 	 */
 	@SafeVarargs
-	public static <T> Optional<T> getFirstValue(final Predicate<T> isPresent, final T... values) {
+	public static <T> Optional<T> getFirstValue(final Predicate<? super T> isPresent, final T... values) {
 		for (final T value : values) {
 			if (isPresent.test(value)) {
 				return Optional.ofNullable(value);
@@ -198,7 +201,7 @@ public class Optionals {
 	 *         {@code mapper} function to the value of {@code optional}, if a value
 	 *         is present, otherwise an empty {@link OptionalDouble}
 	 */
-	public static <T> OptionalDouble mapToDouble(final Optional<T> optional, final ToDoubleFunction<T> mapper) {
+	public static <T> OptionalDouble mapToDouble(final Optional<T> optional, final ToDoubleFunction<? super T> mapper) {
 		return optional.isPresent() ? OptionalDouble.of(mapper.applyAsDouble(optional.get())) : OptionalDouble.empty();
 	}
 
@@ -227,7 +230,7 @@ public class Optionals {
 	 *         {@code mapper} function to the value of {@code optional}, if a value
 	 *         is present, otherwise an empty {@link OptionalInt}
 	 */
-	public static <T> OptionalInt mapToInt(final Optional<T> optional, final ToIntFunction<T> mapper) {
+	public static <T> OptionalInt mapToInt(final Optional<T> optional, final ToIntFunction<? super T> mapper) {
 		return optional.isPresent() ? OptionalInt.of(mapper.applyAsInt(optional.get())) : OptionalInt.empty();
 	}
 
@@ -256,7 +259,7 @@ public class Optionals {
 	 *         {@code mapper} function to the value of {@code optional}, if a value
 	 *         is present, otherwise an empty {@link OptionalLong}
 	 */
-	public static <T> OptionalLong mapToLong(final Optional<T> optional, final ToLongFunction<T> mapper) {
+	public static <T> OptionalLong mapToLong(final Optional<T> optional, final ToLongFunction<? super T> mapper) {
 		return optional.isPresent() ? OptionalLong.of(mapper.applyAsLong(optional.get())) : OptionalLong.empty();
 	}
 
@@ -271,7 +274,7 @@ public class Optionals {
 	 * @return an {@link Optional} with a present value if the specified value is
 	 *         non-null and non-empty, otherwise an empty {@link Optional}
 	 */
-	public static <T> Optional<T> ofNon(final Predicate<T> isEmpty, @Nullable final T value) {
+	public static <T> Optional<T> ofNon(final Predicate<? super T> isEmpty, @Nullable final T value) {
 		return value == null || isEmpty.test(value) ? Optional.empty() : Optional.of(value);
 	}
 
