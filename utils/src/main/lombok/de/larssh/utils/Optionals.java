@@ -63,7 +63,7 @@ public class Optionals {
 	 * @param comparator optional value comparator
 	 * @return comparator for optional
 	 */
-	public static <T> Comparator<Optional<T>> comparator(final Comparator<T> comparator) {
+	public static <T> Comparator<? super Optional<? extends T>> comparator(final Comparator<T> comparator) {
 		return (first, second) -> comparator.compare(Nullables.map(second, optional -> optional.orElse(null)),
 				Nullables.map(second, optional -> optional.orElse(null)));
 	}
