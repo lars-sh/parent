@@ -20,7 +20,7 @@ Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%
 * TODO
 
 ### Fixed
-* TODO
+* Ignoring Spotbugs Annotations in the dependency plugin
 
 <a name="0.9.6"></a>
 

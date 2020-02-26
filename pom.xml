@@ -2882,7 +2882,7 @@ cache:
 								<ignoredUnusedDeclaredDependency>de.lars-sh:utils:jar:${parent.version}</ignoredUnusedDeclaredDependency>
 
 								<!-- Provided -->
-								<ignoredUnusedDeclaredDependency>com.github.spotbugs:spotbugs-annotations:${spotbugs-annotations.version}</ignoredUnusedDeclaredDependency>
+								<ignoredUnusedDeclaredDependency>com.github.spotbugs:spotbugs-annotations:jar:${spotbugs-annotations.version}</ignoredUnusedDeclaredDependency>
 								<ignoredUnusedDeclaredDependency>de.lars-sh:lombok-annotations:jar:${lombok-annotations.version}</ignoredUnusedDeclaredDependency>
 								<ignoredUnusedDeclaredDependency>de.lars-sh:utils-annotations:jar:${parent.version}</ignoredUnusedDeclaredDependency>
 

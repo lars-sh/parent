@@ -69,22 +69,6 @@
 					</execution>
 				</executions>
 			</plugin>
-
-			<plugin>
-				<artifactId>maven-dependency-plugin</artifactId>
-				<executions>
-					<execution>
-						<goals>
-							<goal>analyze-only</goal>
-						</goals>
-						<configuration>
-							<ignoredUnusedDeclaredDependencies>
-								<ignoredUnusedDeclaredDependency>*</ignoredUnusedDeclaredDependency>
-							</ignoredUnusedDeclaredDependencies>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
 		</plugins>
 		<extensions>
 			<extension>
