@@ -1,6 +1,24 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+<a name="0.9.8"></a>
+
+## [0.9.8-SNAPSHOT](https://github.com/lars-sh/parent/compare/c1419c24b7ddb93a75b751e34c2d54d452a07b01...master)
+
+Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%20%28a:parent%20a:parent-archetype%20a:root%20a:utils%20a:utils-annotations%20a:utils-test%29%20AND%20v:0.9.8)
+
+### Added
+* TODO
+
+### Changed
+* TODO
+
+### Removed
+* TODO
+
+### Fixed
+* TODO
+
 <a name="0.9.7"></a>
 
 ## [0.9.7](https://github.com/lars-sh/parent/compare/888c0ccaa1b0d95bd5afce8dcfac8c9accdb296e...c1419c24b7ddb93a75b751e34c2d54d452a07b01) (2020-02-26)
