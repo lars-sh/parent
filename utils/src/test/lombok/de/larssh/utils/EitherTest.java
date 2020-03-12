@@ -1,9 +1,9 @@
 package de.larssh.utils;
 
 import static de.larssh.utils.test.Assertions.assertEqualsAndHashCode;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicReference;
@@ -29,8 +29,8 @@ public class EitherTest {
 	@Test
 	@SuppressWarnings("deprecation")
 	public void testOf() {
-		assertThrows(IllegalArgumentException.class, () -> Either.of('A', 2));
-		assertThrows(NullPointerException.class, () -> Either.of(null, null));
+		assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> Either.of('A', 2));
+		assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> Either.of(null, null));
 	}
 
 	/**
@@ -48,8 +48,8 @@ public class EitherTest {
 	 */
 	@Test
 	public void testToString() {
-		assertEquals("Either(first=Optional[A], second=Optional.empty)", A.toString());
-		assertEquals("Either(first=Optional.empty, second=Optional[2])", B.toString());
+		assertThat(A.toString()).isEqualTo("Either(first=Optional[A], second=Optional.empty)");
+		assertThat(B.toString()).isEqualTo("Either(first=Optional.empty, second=Optional[2])");
 	}
 
 	/**
@@ -57,8 +57,8 @@ public class EitherTest {
 	 */
 	@Test
 	public void testGetFirst() {
-		assertEquals(Optional.of('A'), A.getFirst());
-		assertEquals(Optional.empty(), B.getFirst());
+		assertThat(A.getFirst()).isEqualTo(Optional.of('A'));
+		assertThat(B.getFirst()).isEqualTo(Optional.empty());
 	}
 
 	/**
@@ -66,8 +66,8 @@ public class EitherTest {
 	 */
 	@Test
 	public void testGetSecond() {
-		assertEquals(Optional.empty(), A.getSecond());
-		assertEquals(Optional.of(2), B.getSecond());
+		assertThat(A.getSecond()).isEqualTo(Optional.empty());
+		assertThat(B.getSecond()).isEqualTo(Optional.of(2));
 	}
 
 	/**
@@ -76,12 +76,12 @@ public class EitherTest {
 	@Test
 	public void testIfPresent() {
 		final AtomicReference<Character> firstValue = new AtomicReference<>(null);
-		A.ifPresent(c -> firstValue.set(c), i -> assertFalse(true));
-		assertEquals('A', firstValue.get());
+		A.ifPresent(c -> firstValue.set(c), i -> assertTrue(false));
+		assertThat(firstValue.get()).isEqualTo('A');
 
 		final AtomicReference<Integer> secondValue = new AtomicReference<>(null);
-		B.ifPresent(c -> assertFalse(true), i -> secondValue.set(i));
-		assertEquals(2, secondValue.get());
+		B.ifPresent(c -> assertTrue(false), i -> secondValue.set(i));
+		assertThat(secondValue.get()).isEqualTo(2);
 	}
 
 	/**
@@ -91,9 +91,9 @@ public class EitherTest {
 	public void testIfFirstIsPresent() {
 		final AtomicReference<Character> value = new AtomicReference<>(null);
 		A.ifFirstIsPresent(c -> value.set(c));
-		assertEquals('A', value.get());
+		assertThat(value.get()).isEqualTo('A');
 
-		B.ifFirstIsPresent(c -> assertFalse(true));
+		B.ifFirstIsPresent(c -> assertTrue(false));
 	}
 
 	/**
@@ -101,11 +101,11 @@ public class EitherTest {
 	 */
 	@Test
 	public void testIfSecondIsPresent() {
-		A.ifSecondIsPresent(i -> assertFalse(true));
+		A.ifSecondIsPresent(i -> assertTrue(false));
 
 		final AtomicReference<Integer> value = new AtomicReference<>(null);
 		B.ifSecondIsPresent(i -> value.set(i));
-		assertEquals(2, value.get());
+		assertThat(value.get()).isEqualTo(2);
 	}
 
 	/**
@@ -116,8 +116,8 @@ public class EitherTest {
 		final Function<Character, String> firstFunction = c -> Character.toString(c);
 		final Function<Integer, String> secondFunction = i -> Integer.toString(i);
 
-		assertEquals("A", A.map(firstFunction, secondFunction));
-		assertEquals("2", B.map(firstFunction, secondFunction));
+		assertThat(A.map(firstFunction, secondFunction)).isEqualTo("A");
+		assertThat(B.map(firstFunction, secondFunction)).isEqualTo("2");
 	}
 
 	/**
@@ -127,8 +127,8 @@ public class EitherTest {
 	public void testMapFirst() {
 		final Function<Character, Integer> function = Character::getNumericValue;
 
-		assertEquals((Integer) Character.getNumericValue('A'), A.mapFirst(function));
-		assertEquals((Integer) 2, B.mapFirst(function));
+		assertThat(A.mapFirst(function)).isEqualTo((Integer) Character.getNumericValue('A'));
+		assertThat(B.mapFirst(function)).isEqualTo((Integer) 2);
 	}
 
 	/**
@@ -138,7 +138,7 @@ public class EitherTest {
 	public void testMapSecond() {
 		final Function<Integer, Character> function = i -> Character.toChars(i)[0];
 
-		assertEquals((Character) 'A', A.mapSecond(function));
-		assertEquals((Character) '\u0002', B.mapSecond(function));
+		assertThat(A.mapSecond(function)).isEqualTo((Character) 'A');
+		assertThat(B.mapSecond(function)).isEqualTo((Character) '\u0002');
 	}
 }

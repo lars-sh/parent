@@ -1,9 +1,8 @@
 package de.larssh.utils;
 
 import static de.larssh.utils.function.ThrowingSupplier.throwing;
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 import java.util.function.Supplier;
 
@@ -28,8 +27,8 @@ public class ThrowingSupplierTest {
 	 */
 	@Test
 	public void testThrowing() {
-		assertEquals(A, throwing(A));
-		assertEquals(B, throwing((ThrowingSupplier<?>) B));
+		assertThat(throwing(A)).isEqualTo(A);
+		assertThat(throwing((ThrowingSupplier<?>) B)).isEqualTo(B);
 	}
 
 	/**
@@ -37,8 +36,8 @@ public class ThrowingSupplierTest {
 	 */
 	@Test
 	public void testGet() {
-		assertEquals("A", A.get());
-		assertThrows(TestException.class, B::get);
+		assertThat(A.get()).isEqualTo("A");
+		assertThatExceptionOfType(TestException.class).isThrownBy(B::get);
 	}
 
 	/**
@@ -46,8 +45,12 @@ public class ThrowingSupplierTest {
 	 */
 	@Test
 	public void testGetThrowing() {
-		assertDoesNotThrow(() -> assertEquals("A", A.getThrowing()));
-		assertThrows(TestException.class, ((ThrowingSupplier<?>) B)::getThrowing);
+		try {
+			assertThat(A.getThrowing()).isEqualTo("A");
+		} catch (final Exception e) {
+			throw new SneakyException(e);
+		}
+		assertThatExceptionOfType(TestException.class).isThrownBy(((ThrowingSupplier<?>) B)::getThrowing);
 	}
 
 	/**

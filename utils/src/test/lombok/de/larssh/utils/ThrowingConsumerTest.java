@@ -1,9 +1,8 @@
 package de.larssh.utils;
 
 import static de.larssh.utils.function.ThrowingConsumer.throwing;
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 import java.util.function.Consumer;
 
@@ -17,7 +16,7 @@ import lombok.NoArgsConstructor;
  */
 @NoArgsConstructor
 public class ThrowingConsumerTest {
-	private static final ThrowingConsumer<String> A = a -> assertEquals("A", a);
+	private static final ThrowingConsumer<String> A = a -> assertThat(a).isEqualTo("A");
 
 	private static final Consumer<String> B = throwing(b -> {
 		throw new TestException();
@@ -28,8 +27,8 @@ public class ThrowingConsumerTest {
 	 */
 	@Test
 	public void testThrowing() {
-		assertEquals(A, throwing(A));
-		assertEquals(B, throwing((ThrowingConsumer<?>) B));
+		assertThat(throwing(A)).isEqualTo(A);
+		assertThat(throwing((ThrowingConsumer<?>) B)).isEqualTo(B);
 	}
 
 	/**
@@ -37,9 +36,9 @@ public class ThrowingConsumerTest {
 	 */
 	@Test
 	public void testAccept() {
-		assertDoesNotThrow(() -> A.accept("A"));
-		assertThrows(TestException.class, () -> B.accept(null));
-		assertThrows(TestException.class, () -> B.accept("B"));
+		A.accept("A");
+		assertThatExceptionOfType(TestException.class).isThrownBy(() -> B.accept(null));
+		assertThatExceptionOfType(TestException.class).isThrownBy(() -> B.accept("B"));
 	}
 
 	/**
@@ -47,11 +46,15 @@ public class ThrowingConsumerTest {
 	 */
 	@Test
 	public void testAcceptThrowing() {
-		assertDoesNotThrow(() -> A.acceptThrowing("A"));
+		try {
+			A.acceptThrowing("A");
+		} catch (final Exception e) {
+			throw new SneakyException(e);
+		}
 
 		final ThrowingConsumer<String> b = (ThrowingConsumer<String>) B;
-		assertThrows(TestException.class, () -> b.acceptThrowing(null));
-		assertThrows(TestException.class, () -> b.acceptThrowing("B"));
+		assertThatExceptionOfType(TestException.class).isThrownBy(() -> b.acceptThrowing(null));
+		assertThatExceptionOfType(TestException.class).isThrownBy(() -> b.acceptThrowing("B"));
 	}
 
 	/**
