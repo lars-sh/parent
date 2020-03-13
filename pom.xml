@@ -121,7 +121,7 @@
 		<formatter-maven-plugin.version>2.11.0</formatter-maven-plugin.version>
 		<jacoco-maven-plugin.version>0.8.5</jacoco-maven-plugin.version>
 		<lifecycle-mapping.version>1.0.0</lifecycle-mapping.version>
-		<lombok-maven-plugin.version>1.18.10.0</lombok-maven-plugin.version>
+		<lombok-maven-plugin.version>1.18.12.0</lombok-maven-plugin.version>
 		<maven-antrun-plugin.version>1.8</maven-antrun-plugin.version>
 		<maven-archetype-plugin.version>3.1.2</maven-archetype-plugin.version>
 		<maven-assembly-plugin.version>3.2.0</maven-assembly-plugin.version>
