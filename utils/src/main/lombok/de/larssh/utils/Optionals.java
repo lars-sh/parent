@@ -26,6 +26,7 @@ import lombok.experimental.UtilityClass;
  * This class contains helper methods for {@link Optional}.
  */
 @UtilityClass
+@SuppressWarnings("PMD.GodClass")
 public class Optionals {
 	/**
 	 * Creates a {@link Comparator} to compare {@link Optional}s based on the inner

@@ -38,7 +38,7 @@ import lombok.experimental.UtilityClass;
  * This class contains helper methods for {@link String}.
  */
 @UtilityClass
-@SuppressWarnings("PMD.ExcessiveImports")
+@SuppressWarnings({ "PMD.ExcessiveImports", "PMD.GodClass" })
 public class Strings {
 	/**
 	 * Character to separate strings inside regular expressions
