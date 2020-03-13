@@ -44,6 +44,7 @@ public class ThrowingSupplierTest {
 	 * {@link ThrowingSupplier#getThrowing()}
 	 */
 	@Test
+	@SuppressWarnings("checkstyle:XIllegalCatchDefault")
 	public void testGetThrowing() {
 		try {
 			assertThat(A.getThrowing()).isEqualTo("A");

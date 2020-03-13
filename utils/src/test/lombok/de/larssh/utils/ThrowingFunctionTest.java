@@ -48,6 +48,7 @@ public class ThrowingFunctionTest {
 	 * {@link ThrowingFunction#applyThrowing(Object)}
 	 */
 	@Test
+	@SuppressWarnings("checkstyle:XIllegalCatchDefault")
 	public void testApplyThrowing() {
 		try {
 			A.applyThrowing(null);

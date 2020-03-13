@@ -45,6 +45,7 @@ public class ThrowingConsumerTest {
 	 * {@link ThrowingConsumer#acceptThrowing(Object)}
 	 */
 	@Test
+	@SuppressWarnings("checkstyle:XIllegalCatchDefault")
 	public void testAcceptThrowing() {
 		try {
 			A.acceptThrowing("A");
