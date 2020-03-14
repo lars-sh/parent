@@ -135,6 +135,47 @@ public class Resources {
 	}
 
 	/**
+	 * Validates if {@code path} ends with {@code end} case sensitively.
+	 *
+	 * <p>
+	 * In comparison to {@link Path#endsWith(Path)} this method works purely string
+	 * based instead of taking the paths {@link java.nio.file.FileSystem} into
+	 * account.
+	 *
+	 * @param path the full path with actual character casing
+	 * @param end  the path end as given by the developer
+	 * @return {@code true} if {@code path} ends with {@code end} case sensitively,
+	 *         else {@code false}
+	 */
+	@SuppressFBWarnings(value = "EXS_EXCEPTION_SOFTENING_NO_CONSTRAINTS",
+			justification = "should not happen on regular usage")
+	private static boolean endsPathWithCaseSensitive(final Path path, final Path end) {
+		Path canonicalPath;
+		try {
+			canonicalPath = path.toFile().getCanonicalFile().toPath();
+		} catch (@SuppressWarnings("unused") final UnsupportedOperationException e) {
+			canonicalPath = path;
+		} catch (final IOException e) {
+			// If an I/O error occurs, which is possible because the construction of the
+			// canonical pathname may require file system queries
+			throw new UncheckedIOException(e);
+		}
+
+		final int pathNames = canonicalPath.getNameCount();
+		final int endNames = end.getNameCount();
+		if (pathNames < endNames) {
+			return false;
+		}
+
+		for (int index = endNames - 1; index >= 0; index -= 1) {
+			if (!canonicalPath.getName(pathNames - endNames + index).toString().equals(end.getName(index).toString())) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	/**
 	 * Returns the class loader which was used to load {@code clazz} or the system
 	 * class loader if {@code clazz} was loaded by the system class loader.
 	 *
@@ -202,7 +243,8 @@ public class Resources {
 	public static Optional<Path> getResource(final ClassLoader classLoader, final Path resource) {
 		return Optional.ofNullable(classLoader.getResource(checkAndFixResourcePath(resource)))
 				.map(URL::toString)
-				.map(Resources::createPath);
+				.map(Resources::createPath)
+				.filter(path -> endsPathWithCaseSensitive(path, resource));
 	}
 
 	/**
@@ -260,7 +302,10 @@ public class Resources {
 			throw new UncheckedIOException(e);
 		}
 
-		return Enumerations.stream(enumeration).map(URL::toString).map(Resources::createPath);
+		return Enumerations.stream(enumeration)
+				.map(URL::toString)
+				.map(Resources::createPath)
+				.filter(path -> endsPathWithCaseSensitive(path, resource));
 	}
 
 	/**
