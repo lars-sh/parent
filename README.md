@@ -400,7 +400,7 @@ There are two ways to suppress Checkstyle warnings.
 
 	@SuppressWarnings("checkstyle:MagicNumber")
 
-* Or create a file called `checkstyle-suppressions.xml`. See [SuppressionXPathFilter](http://checkstyle.sourceforge.net/config_filters.html#SuppressionXpathFilter) and [SuppressionFilter](http://checkstyle.sourceforge.net/config_filters.html#SuppressionFilter) for more information. The following lines show an example suppressions file.
+* Or create a file called `checkstyle-suppressions.xml`. See [SuppressionXPathFilter](https://checkstyle.org/config_filters.html#SuppressionXpathFilter) and [SuppressionFilter](https://checkstyle.org/config_filters.html#SuppressionFilter) for more information. The following lines show an example suppressions file.
 
 	<?xml version="1.0" encoding="UTF-8"?>
 	<!DOCTYPE suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN" "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
@@ -429,7 +429,7 @@ There are two ways to suppress SpotBugs warnings.
 * Or create a file called `spotbugs-excludes.xml`. See [Filter](https://spotbugs.readthedocs.io/en/stable/filter.html) for more information.
 
 ##### CPD
-Create a file called `cpd-excludes.csv`. See [Violation Exclusions](http://maven.apache.org/plugins/maven-pmd-plugin/examples/violation-exclusions.html) for more information. The following lines show an example file.
+Create a file called `cpd-excludes.csv`. See [Violation Exclusions](https://maven.apache.org/plugins/maven-pmd-plugin/examples/violation-exclusions.html) for more information. The following lines show an example file.
 
 	com.example.ClassA,com.example.CopyOfClassA
 	com.example.ClassB,com.example.CopyOfClassB
@@ -444,7 +444,7 @@ There are two ways to suppress PMD warnings.
 
 	@SuppressWarnings({ "PMD.EmptyCatchBlock", "PMD.UnusedPrivateField" })
 
-* Or create a file called `pmd-excludes.properties`. See [Violation Exclusions](http://maven.apache.org/plugins/maven-pmd-plugin/examples/violation-exclusions.html) for more information. The following lines show an example file.
+* Or create a file called `pmd-excludes.properties`. See [Violation Exclusions](https://maven.apache.org/plugins/maven-pmd-plugin/examples/violation-exclusions.html) for more information. The following lines show an example file.
 
     com.example.ClassA=UnusedPrivateField
     com.example.ClassB=EmptyCatchBlock,UnusedPrivateField

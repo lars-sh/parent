@@ -1018,7 +1018,7 @@ TODO: Easy to understand usage example
 		<module name="SuppressWarnings">
 			<!--
 			The list of disallowed SuppressWarnings matches the warnings supported by Eclipse JDTs Compiler
-			* see http://help.eclipse.org/index.jsp?topic=/org.eclipse.jdt.doc.user/tasks/task-suppress_warnings.htm
+			* see https://help.eclipse.org/index.jsp?topic=/org.eclipse.jdt.doc.user/tasks/task-suppress_warnings.htm
 			* except "deprecation", "null", "unchecked" and "unused"
 			* plus "PMD"
 			-->

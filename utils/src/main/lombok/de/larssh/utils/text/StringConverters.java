@@ -145,7 +145,7 @@ public class StringConverters {
 	 * <p>
 	 * This method is equivalent to using {@link URLDecoder#decode(String)} with the
 	 * char set {@link StandardCharsets#UTF_8} as the
-	 * <a href= "http://www.w3.org/TR/html40/appendix/notes.html#non-ascii-chars">
+	 * <a href= "https://www.w3.org/TR/html40/appendix/notes.html#non-ascii-chars">
 	 * World Wide Web Consortium Recommendation</a> states that UTF-8 should be
 	 * used.
 	 *
@@ -289,7 +289,7 @@ public class StringConverters {
 	/**
 	 * Translates a string into {@code application/x-www-form-urlencoded} format
 	 * with the char set {@link StandardCharsets#UTF_8} as the
-	 * <a href= "http://www.w3.org/TR/html40/appendix/notes.html#non-ascii-chars">
+	 * <a href= "https://www.w3.org/TR/html40/appendix/notes.html#non-ascii-chars">
 	 * World Wide Web Consortium Recommendation</a> states that UTF-8 should be
 	 * used.
 	 *

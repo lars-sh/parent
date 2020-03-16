@@ -33,7 +33,7 @@ import lombok.experimental.UtilityClass;
  * Method {@link #getSocketFactoryTrusting(Path, String)} highly simplifies
  * trusting custom certificates by creating a {@link SSLSocketFactory} directly
  * from a JKS (Java Key Store) file. Those key stores can be created and
- * maintained using e.g. the <a href="http://keystore-explorer.org/">KeyStore
+ * maintained using e.g. the <a href="https://keystore-explorer.org/">KeyStore
  * Explorer</a>.
  *
  * <pre>
