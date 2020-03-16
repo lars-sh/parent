@@ -113,7 +113,7 @@
 		<junit-jupiter-engine.version>5.6.0</junit-jupiter-engine.version>
 		<junit-platform-runner.version>1.6.0</junit-platform-runner.version>
 		<lombok-annotations.version>1.18.12</lombok-annotations.version>
-		<mockito.version>3.3.0</mockito.version>
+		<mockito.version>3.3.3</mockito.version>
 		<parent.version>0.9.8-SNAPSHOT</parent.version>
 
 		<!-- Versions: Plugins -->
@@ -134,7 +134,7 @@
 		<maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
 		<maven-install-plugin.version>2.5.2</maven-install-plugin.version>
 		<maven-jar-plugin.version>3.2.0</maven-jar-plugin.version>
-		<maven-javadoc-plugin.version>3.1.1</maven-javadoc-plugin.version>
+		<maven-javadoc-plugin.version>3.2.0</maven-javadoc-plugin.version>
 		<maven-jxr-plugin.version>3.0.0</maven-jxr-plugin.version>
 		<maven-plugin-plugin.version>3.6.0</maven-plugin-plugin.version>
 		<maven-pmd-plugin.version>3.13.0</maven-pmd-plugin.version>
