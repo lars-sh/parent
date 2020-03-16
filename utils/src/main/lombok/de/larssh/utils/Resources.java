@@ -52,12 +52,6 @@ public class Resources {
 	private static final Pattern PATTERN_FIX_CURRENT_FOLDER = Pattern.compile("/(\\.?/)+");
 
 	/**
-	 * Pattern to find and fix previous folder indicators where possible
-	 */
-	private static final Pattern PATTERN_FIX_PREVIOUS_FOLDER
-			= Pattern.compile("(?<firstCharacter>^|/)(?!\\.\\./)[^/]+/\\.\\.(/|$)");
-
-	/**
 	 * Pattern to find the path to a JAR inside an URL string with JAR protocol
 	 */
 	private static final Pattern PATTERN_JAR_FROM_URL = Pattern.compile("^jar:(?<pathToJar>.*)![^!]*$");
@@ -75,7 +69,7 @@ public class Resources {
 	 * @return the normalized path
 	 */
 	private static String checkAndFixResourcePath(final Path resource) {
-		String path = resource.toString();
+		String path = resource.normalize().toString();
 
 		// Normalize the file systems separator
 		path = path.replace(resource.getFileSystem().getSeparator(), DEFAULT_FILE_NAME_SEPARATOR);
@@ -83,21 +77,12 @@ public class Resources {
 		// Remove duplicate slashes and current folder indicators
 		path = Strings.replaceAll(path, PATTERN_FIX_CURRENT_FOLDER, DEFAULT_FILE_NAME_SEPARATOR);
 
-		// Resolve previous folder indicators where possible
-		int currentLength = path.length();
-		int previousLength = -1;
-		while (currentLength != previousLength) {
-			previousLength = currentLength;
-			path = Strings.replaceAll(path, PATTERN_FIX_PREVIOUS_FOLDER, "${firstCharacter}");
-			currentLength = path.length();
-		}
-
 		// Check for empty path
 		if (path.isEmpty()) {
 			throw new ResourcePathException("The resource path must not be empty.");
 		}
 
-		// Check for empty path
+		// Check for root path
 		if (DEFAULT_FILE_NAME_SEPARATOR.equals(path)) {
 			throw new ResourcePathException("The resource path must not point to root.");
 		}
