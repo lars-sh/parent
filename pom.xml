@@ -160,7 +160,7 @@
 		<org-eclipse-jdt-core.version>3.20.0</org-eclipse-jdt-core.version>
 		<pmd.version>6.22.0</pmd.version>
 		<spotbugs.version>4.0.0</spotbugs.version>
-		<spotbugs-annotations.version>4.0.0</spotbugs-annotations.version>
+		<spotbugs-annotations.version>4.0.1</spotbugs-annotations.version>
 	</properties>
 
 	<dependencyManagement>
