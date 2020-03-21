@@ -111,7 +111,6 @@
 		<joor.version>0.9.12</joor.version>
 		<junit-jupiter-api.version>5.6.0</junit-jupiter-api.version>
 		<junit-jupiter-engine.version>5.6.0</junit-jupiter-engine.version>
-		<junit-platform-runner.version>1.6.0</junit-platform-runner.version>
 		<lombok-annotations.version>1.18.12</lombok-annotations.version>
 		<mockito.version>3.3.3</mockito.version>
 		<parent.version>0.9.8-SNAPSHOT</parent.version>
@@ -244,20 +243,6 @@
 			<artifactId>mockito-core</artifactId>
 			<version>${mockito.version}</version>
 			<scope>test</scope>
-		</dependency>
-
-		<!-- The JUnit Platform Runner is required up to Eclipse Oxygen. -->
-		<dependency>
-			<groupId>org.junit.platform</groupId>
-			<artifactId>junit-platform-runner</artifactId>
-			<version>${junit-platform-runner.version}</version>
-			<scope>test</scope>
-			<exclusions>
-				<exclusion>
-					<groupId>junit</groupId>
-					<artifactId>junit</artifactId>
-				</exclusion>
-			</exclusions>
 		</dependency>
 	</dependencies>
 
@@ -2893,7 +2878,6 @@ cache:
 								<ignoredUnusedDeclaredDependency>org.jooq:joor-java-8:jar:${joor.version}</ignoredUnusedDeclaredDependency>
 								<ignoredUnusedDeclaredDependency>org.junit.jupiter:junit-jupiter-api:jar:${junit-jupiter-api.version}</ignoredUnusedDeclaredDependency>
 								<ignoredUnusedDeclaredDependency>org.junit.jupiter:junit-jupiter-engine:jar:${junit-jupiter-engine.version}</ignoredUnusedDeclaredDependency>
-								<ignoredUnusedDeclaredDependency>org.junit.platform:junit-platform-runner:jar:${junit-platform-runner.version}</ignoredUnusedDeclaredDependency>
 								<ignoredUnusedDeclaredDependency>org.mockito:mockito-core:jar:${mockito.version}</ignoredUnusedDeclaredDependency>
 							</ignoredUnusedDeclaredDependencies>
 						</configuration>
@@ -3036,6 +3020,21 @@ cache:
 					<name>m2e.version</name>
 				</property>
 			</activation>
+			<dependencies>
+				<!-- Eclipse Neon (version 4.6) and lower are missing the JUnit Platform Runner dependency. -->
+				<dependency>
+					<groupId>org.junit.platform</groupId>
+					<artifactId>junit-platform-runner</artifactId>
+					<version>1.6.0</version>
+					<scope>test</scope>
+					<exclusions>
+						<exclusion>
+							<groupId>junit</groupId>
+							<artifactId>junit</artifactId>
+						</exclusion>
+					</exclusions>
+				</dependency>
+			</dependencies>
 			<build>
 				<plugins>
 					<plugin>
