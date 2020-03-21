@@ -3329,6 +3329,7 @@ cache:
 											<entry
 												key="cleanup.never_use_parentheses_in_expressions"
 												value="true" />
+											<entry key="cleanup.number_suffix" value="true" />
 											<entry key="cleanup.organize_imports" value="true" />
 											<entry key="cleanup.push_down_negation" value="true" />
 											<entry
@@ -3378,6 +3379,7 @@ cache:
 												value="true" />
 											<entry key="cleanup.remove_unused_private_types"
 												value="true" />
+											<entry key="cleanup.simplify_lambda_expression_and_method_ref" value="true" />
 											<entry key="cleanup.sort_members" value="false" />
 											<entry key="cleanup.sort_members_all" value="false" />
 											<entry key="cleanup.use_anonymous_class_creation"
@@ -3387,6 +3389,7 @@ cache:
 											<entry
 												key="cleanup.use_blocks_only_for_return_and_throw"
 												value="false" />
+											<entry key="cleanup.use_directly_map_method" value="true" />
 											<entry key="cleanup.use_lambda" value="true" />
 											<entry key="cleanup.use_parentheses_in_expressions"
 												value="true" />
@@ -3491,6 +3494,7 @@ cache:
 											<entry
 												key="sp_cleanup.never_use_parentheses_in_expressions"
 												value="true" />
+											<entry key="sp_cleanup.number_suffix" value="true" />
 											<entry key="sp_cleanup.on_save_use_additional_actions"
 												value="true" />
 											<entry key="sp_cleanup.organize_imports" value="true" />
@@ -3544,6 +3548,7 @@ cache:
 												value="true" />
 											<entry key="sp_cleanup.remove_unused_private_types"
 												value="true" />
+											<entry key="sp_cleanup.simplify_lambda_expression_and_method_ref" value="true" />
 											<entry key="sp_cleanup.sort_members" value="false" />
 											<entry key="sp_cleanup.sort_members_all" value="false" />
 											<entry key="sp_cleanup.use_anonymous_class_creation"
@@ -3553,6 +3558,7 @@ cache:
 											<entry
 												key="sp_cleanup.use_blocks_only_for_return_and_throw"
 												value="false" />
+											<entry key="sp_cleanup.use_directly_map_method" value="true" />
 											<entry key="sp_cleanup.use_lambda" value="true" />
 											<entry key="sp_cleanup.use_parentheses_in_expressions"
 												value="true" />
