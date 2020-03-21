@@ -3020,6 +3020,10 @@ cache:
 					<name>m2e.version</name>
 				</property>
 			</activation>
+			<properties>
+				<!-- Eclipse 2019-03 (version 4.11) and lower fail on newer Maven JAR Plugin versions. -->
+				<maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
+			</properties>
 			<dependencies>
 				<!-- Eclipse Neon (version 4.6) and lower are missing the JUnit Platform Runner dependency. -->
 				<dependency>
