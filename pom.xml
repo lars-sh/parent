@@ -152,7 +152,7 @@
 
 		<!-- Versions: Plugin Dependencies -->
 		<apache-ant.version>1.10.7</apache-ant.version>
-		<checkstyle.version>8.30</checkstyle.version>
+		<checkstyle.version>8.31</checkstyle.version>
 		<sb-contrib.version>7.4.7</sb-contrib.version>
 		<findsecbugs.version>1.10.1</findsecbugs.version>
 		<lombok.version>1.18.12</lombok.version>
@@ -1106,6 +1106,7 @@ TODO: Easy to understand usage example
 		<module name="SuperClone" />
 		<module name="SuperFinalize" />
 		<module name="UnnecessaryParentheses" />
+		<module name="UnnecessarySemicolonAfterOuterTypeDeclaration" />
 		<module name="UnnecessarySemicolonAfterTypeMemberDeclaration" />
 		<module name="UnnecessarySemicolonInTryWithResources" />
 		<module name="VariableDeclarationUsageDistance" />
@@ -1211,7 +1212,7 @@ TODO: Easy to understand usage example
 			<property name="caseIndent" value="0" />
 			<property name="throwsIndent" value="8" />
 			<property name="arrayInitIndent" value="8" />
-			<property name="lineWrappingIndentation" value="0" />
+			<property name="lineWrappingIndentation" value="8" />
 		</module>
 		<module name="OuterTypeFilename" />
 		<module name="TodoComment">
