@@ -63,6 +63,7 @@
 			<groupId>de.lars-sh</groupId>
 			<artifactId>utils-test</artifactId>
 			<version>0.9.8-SNAPSHOT</version>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 </project>

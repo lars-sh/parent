@@ -32,6 +32,11 @@ public class AetherUtils {
 	/**
 	 * Converts {@code mavenRepository} to an Aether Remote Repository.
 	 *
+	 * <p>
+	 * <b>Note:</b> This method requires
+	 * {@code org.apache.maven.resolver:maven-resolver-util} to be part of your
+	 * dependencies!
+	 *
 	 * @param mavenRepository Maven Artifact Repository
 	 * @return Aether Remote Repository
 	 */
@@ -61,6 +66,11 @@ public class AetherUtils {
 	/**
 	 * Converts {@code mavenAuthentication} to an Aether Authentication.
 	 *
+	 * <p>
+	 * <b>Note:</b> This method requires
+	 * {@code org.apache.maven.resolver:maven-resolver-util} to be part of your
+	 * dependencies!
+	 *
 	 * @param mavenAuthentication Maven Authentication
 	 * @return Aether Authentication
 	 */
@@ -73,6 +83,11 @@ public class AetherUtils {
 
 	/**
 	 * Converts {@code mavenProxy} to an Aether Proxy.
+	 *
+	 * <p>
+	 * <b>Note:</b> This method requires
+	 * {@code org.apache.maven.resolver:maven-resolver-util} to be part of your
+	 * dependencies!
 	 *
 	 * @param mavenProxy Maven Proxy
 	 * @return Aether Proxy
@@ -118,6 +133,11 @@ public class AetherUtils {
 
 	/**
 	 * Retrieves the class path of resolved dependencies.
+	 *
+	 * <p>
+	 * <b>Note:</b> This method requires
+	 * {@code org.apache.maven.resolver:maven-resolver-util} to be part of your
+	 * dependencies!
 	 *
 	 * @param dependencyResult resolved dependencies
 	 * @return class path
