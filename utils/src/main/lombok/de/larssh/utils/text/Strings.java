@@ -5,12 +5,7 @@ import static de.larssh.utils.Finals.constant;
 import static java.util.Arrays.asList;
 import static java.util.Collections.unmodifiableMap;
 import static java.util.stream.Collectors.joining;
-import static java.util.stream.Collectors.toList;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.StringReader;
-import java.io.UncheckedIOException;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.nio.charset.Charset;
@@ -235,22 +230,6 @@ public class Strings {
 		return IntStream.range(0, binaryUnits.size())
 				.boxed()
 				.collect(toLinkedHashMap(binaryUnits::get, index -> oneThousandTwentyFour.pow(index + 1)));
-	}
-
-	/**
-	 * Splits {@code value} into lines using {@link BufferedReader#lines()}.
-	 *
-	 * @param value value to split
-	 * @return list of lines
-	 */
-	@SuppressFBWarnings(value = "EXS_EXCEPTION_SOFTENING_NO_CONSTRAINTS",
-			justification = "converting checked to unchecked exception, that should never be thrown at all")
-	public static List<String> getLines(final String value) {
-		try (BufferedReader reader = new BufferedReader(new StringReader(value))) {
-			return reader.lines().collect(toList());
-		} catch (final IOException e) {
-			throw new UncheckedIOException(e);
-		}
 	}
 
 	/**
