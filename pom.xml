@@ -3320,7 +3320,7 @@ cache:
 												value="true" />
 											<entry key="cleanup.make_parameters_final" value="true" />
 											<entry key="cleanup.make_private_fields_final"
-												value="false" />
+												value="true" />
 											<entry
 												key="cleanup.make_type_abstract_if_missing_method"
 												value="false" />
@@ -3394,16 +3394,12 @@ cache:
 											<entry key="cleanup.use_lambda" value="true" />
 											<entry key="cleanup.use_parentheses_in_expressions"
 												value="true" />
-											<!-- Eclipse 2019-12 might fail if the following configuration 
-												is "true". -->
 											<entry
 												key="cleanup.use_this_for_non_static_field_access"
 												value="false" />
 											<entry
 												key="cleanup.use_this_for_non_static_field_access_only_if_necessary"
 												value="true" />
-											<!-- Eclipse 2019-12 might fail if the following configuration 
-												is "true". -->
 											<entry
 												key="cleanup.use_this_for_non_static_method_access"
 												value="false" />
@@ -3484,7 +3480,7 @@ cache:
 											<entry key="sp_cleanup.make_parameters_final"
 												value="true" />
 											<entry key="sp_cleanup.make_private_fields_final"
-												value="false" />
+												value="true" />
 											<entry
 												key="sp_cleanup.make_type_abstract_if_missing_method"
 												value="false" />
@@ -3563,16 +3559,12 @@ cache:
 											<entry key="sp_cleanup.use_lambda" value="true" />
 											<entry key="sp_cleanup.use_parentheses_in_expressions"
 												value="true" />
-											<!-- Eclipse 2019-12 might fail if the following configuration 
-												is "true". -->
 											<entry
 												key="sp_cleanup.use_this_for_non_static_field_access"
 												value="false" />
 											<entry
 												key="sp_cleanup.use_this_for_non_static_field_access_only_if_necessary"
 												value="true" />
-											<!-- Eclipse 2019-12 might fail if the following configuration 
-												is "true". -->
 											<entry
 												key="sp_cleanup.use_this_for_non_static_method_access"
 												value="false" />
