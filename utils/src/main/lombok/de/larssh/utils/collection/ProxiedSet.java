@@ -22,7 +22,6 @@ public class ProxiedSet<E> extends ProxiedCollection<E> implements Set<E> {
 	 *
 	 * @return wrapped set
 	 */
-	@SuppressWarnings("null")
 	@Getter(AccessLevel.PROTECTED)
 	Set<E> set;
 

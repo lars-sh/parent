@@ -28,7 +28,6 @@ public abstract class ProxiedCollection<E> implements Collection<E> {
 	 *
 	 * @return wrapped collection
 	 */
-	@SuppressWarnings("null")
 	@Getter(AccessLevel.PROTECTED)
 	Collection<E> collection;
 

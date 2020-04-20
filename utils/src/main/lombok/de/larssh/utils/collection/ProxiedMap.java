@@ -28,7 +28,6 @@ public abstract class ProxiedMap<K, V> implements Map<K, V> {
 	 *
 	 * @return wrapped map
 	 */
-	@SuppressWarnings("null")
 	@Getter(AccessLevel.PROTECTED)
 	Map<K, V> map;
 

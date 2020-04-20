@@ -68,6 +68,7 @@ public class Resources {
 	 * @param resource the path to normalize and check
 	 * @return the normalized path
 	 */
+	@SuppressWarnings("resource")
 	private static String checkAndFixResourcePath(final Path resource) {
 		String path = resource.normalize().toString();
 
@@ -103,7 +104,7 @@ public class Resources {
 	 * @param url URL string
 	 * @return path
 	 */
-	@SuppressWarnings("PMD.PreserveStackTrace")
+	@SuppressWarnings({ "PMD.PreserveStackTrace", "resource" })
 	private static Path createPath(final String url) {
 		final URI uri = URI.create(url);
 		try {

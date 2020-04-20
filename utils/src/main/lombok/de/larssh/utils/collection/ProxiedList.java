@@ -25,7 +25,6 @@ public class ProxiedList<E> extends ProxiedCollection<E> implements List<E> {
 	 *
 	 * @return wrapped list
 	 */
-	@SuppressWarnings("null")
 	@Getter(AccessLevel.PROTECTED)
 	List<E> list;
 
