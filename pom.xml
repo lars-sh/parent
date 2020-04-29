@@ -1172,6 +1172,7 @@ TODO: Easy to understand usage example
 		<module name="JavadocBlockTagLocation" />
 		<module name="JavadocContentLocationCheck" />
 		<module name="JavadocMethod" />
+		<module name="JavadocMissingWhitespaceAfterAsteriskCheck" />
 		<module name="JavadocParagraph">
 			<property name="allowNewlineParagraph" value="false" />
 		</module>
@@ -1294,7 +1295,7 @@ TODO: Easy to understand usage example
 			<property name="tokens" value="AT, INC, DEC, UNARY_MINUS, UNARY_PLUS, BNOT, LNOT, DOT, ARRAY_DECLARATOR, INDEX_OP, METHOD_REF" />
 		</module>
 		<module name="NoWhitespaceBefore">
-			<property name="tokens" value="COMMA, SEMI, POST_INC, POST_DEC, ELLIPSIS, GENERIC_END" />
+			<property name="tokens" value="COMMA, SEMI, POST_INC, POST_DEC, GENERIC_END, ELLIPSIS, LABELED_STAT" />
 		</module>
 		<module name="OperatorWrap">
 			<property name="option" value="nl" />
