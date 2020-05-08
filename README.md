@@ -182,11 +182,11 @@ I did not play around with these, though they seem to simplify two quite common 
 #### The bad parts
 The following Project Lombok features are disabled on default to minimize your risk.
 
+##### @Builder
+The annotation `@Builder` is a great helper in writing builder classes. While its compatibility with null checks has been improved greatly, it still fails in Eclipse and IntelliJ IDEA and therefore is not recommended to be used.
+
 ##### @NonNull
 This Lombok annotation adds non-null-checks to method and constructor parameters. Those are simple runtime checks, however we decided to go with compile-time checks as described in the next section.
-
-##### @Builder
-Sadly `@Builder` is incompatible with the default non-nullable concept. See https://github.com/rzwitserloot/lombok/issues/1570 for more up-to-date information.
 
 ##### @Cleanup
 Use try-with-resource statements instead.
