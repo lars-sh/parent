@@ -883,7 +883,7 @@ TODO: Easy to understand usage example
 
 	<!-- Filters: Unit Tests -->
 	<module name="SuppressionSingleFilter">
-		<property name="checks" value="ExecutableStatementCount|JavadocVariable|MagicNumber|MethodLength|MultipleStringLiterals" />
+		<property name="checks" value="ExecutableStatementCount|JavadocPackage|JavadocVariable|MagicNumber|MethodLength|MultipleStringLiterals" />
 		<property name="files" value="^(.*[/\\])?src[/\\]test[/\\].*$" />
 	</module>
 
@@ -892,6 +892,9 @@ TODO: Easy to understand usage example
 		<property name="checks" value="FinalClass|HideUtilityClassConstructor|MissingCtor|MutableException|VisibilityModifier" />
 		<property name="files" value="^(.*[/\\])?src[/\\](main|test)[/\\]lombok[/\\].*$" />
 	</module>
+
+	<!-- Javadoc Comments -->
+	<module name="JavadocPackage" />
 
 	<!-- Miscellaneous -->
 	<module name="NewlineAtEndOfFile">
