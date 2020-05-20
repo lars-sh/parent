@@ -875,12 +875,6 @@ TODO: Easy to understand usage example
 	</module>
 	<module name="SuppressWarningsFilter" />
 
-	<!-- Filters: Formatter (known error): Ignore misaligned if and else blocks as the Eclipse formatter is not able to handle long breaking lines correctly -->
-	<module name="SuppressionSingleFilter">
-		<property name="checks" value="Indentation" />
-		<property name="message" value="^&apos;(if|else)(&apos; child| rcurly&apos;) has incorrect indentation level \d+, expected level should be \d+\.$" />
-	</module>
-
 	<!-- Filters: Unit Tests -->
 	<module name="SuppressionSingleFilter">
 		<property name="checks" value="ExecutableStatementCount|JavadocPackage|JavadocVariable|MagicNumber|MethodLength|MultipleStringLiterals" />
