@@ -893,6 +893,12 @@ TODO: Easy to understand usage example
 		<property name="files" value="^(.*[/\\])?src[/\\](main|test)[/\\]lombok[/\\].*$" />
 	</module>
 
+	<!-- Filters: Lombok -->
+	<module name="SuppressionSingleFilter">
+		<property name="id" value="XNonNullByDefaultAnnotation" />
+		<property name="files" value="^.*[/\\](?!package-info\.java)[^/\\]+$" />
+	</module>
+
 	<!-- Javadoc Comments -->
 	<module name="JavadocPackage" />
 
@@ -1271,6 +1277,14 @@ TODO: Easy to understand usage example
 			<property name="id" value="XLineTabIndentation" />
 			<property name="format" value="^\t* [^*]" />
 			<property name="message" value="Line does not use tab indentation." />
+		</module>
+		<module name="RegexpSinglelineJava">
+			<property name="id" value="XNonNullByDefaultAnnotation" />
+			<property name="format" value="@\s*(de\s*\.\s*larssh\s*\.\s*utils\s*\.\s*annotations\s*\.\s*)?NonNullByDefault(\P{javaJavaIdentifierPart}|$)" />
+			<property name="message" value="Package is not annotated with @NonNullByDefault. Package definitions inside package-info.java files shall be annotated with @NonNullByDefault to avoid default nullness." />
+			<property name="minimum" value="1" />
+			<property name="maximum" value="1" />
+			<property name="ignoreComments" value="true" />
 		</module>
 
 		<!-- Size Violations -->
