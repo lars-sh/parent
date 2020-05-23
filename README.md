@@ -296,7 +296,7 @@ This parent POM either predefines existing Maven Properties or introduces some o
 
 `parent-pom.create-lombok-config` handles if the projects `lombok.config` files should be generated. Set to `false` if the files should not be created or overwritten. Default value is `true`, except for packaging types `pom` and `archetype`.
 
-`parent-pom.create-travis-yml` handles if the projects `.travis.yml` file should be generated. Set to `false` if the file should not be created or overwritten. Default value is `true`.
+`parent-pom.create-travis-yml` handles if the projects `.travis.yml` file should be generated. Set to `false` if the file should not be created or overwritten. Default value is `true`, except if the `.travis.yml` file already exists.
 
 `eclipse.compiler.codegen.methodParameters` configures Eclipse to respect the value specified for `maven.compiler.parameters`. Values can be `generate` or `do not generate`. Default value: `do not generate`, except if property `maven.compiler.parameters` equals `true`.
 

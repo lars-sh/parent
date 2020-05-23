@@ -69,7 +69,7 @@
 		<!-- <parent-pom.create-source-directories>true</parent-pom.create-source-directories> -->
 		<parent-pom.default-sources-folder>lombok</parent-pom.default-sources-folder>
 		<!-- <parent-pom.create-lombok-config>true</parent-pom.create-lombok-config> -->
-		<parent-pom.create-travis-yml>true</parent-pom.create-travis-yml>
+		<!-- <parent-pom.create-travis-yml>true</parent-pom.create-travis-yml> -->
 		<!-- <eclipse.compiler.codegen.methodParameters>false</eclipse.compiler.codegen.methodParameters> -->
 		<eclipse.compiler.javadoc>enabled</eclipse.compiler.javadoc>
 		<eclipse.compiler.missingNonNullByDefaultAnnotation>warning</eclipse.compiler.missingNonNullByDefaultAnnotation>
@@ -612,6 +612,10 @@
 											arg2="maven-archetype" />
 										<equals arg1="${project.packaging}" arg2="pom" />
 									</or>
+								</condition>
+								<condition property="parent-pom.create-travis-yml"
+									value="false" else="true">
+									<available file="${project.basedir}/.travis.yml" />
 								</condition>
 								<condition property="spotbugs.excludeFilterFile"
 									value="${project.basedir}/spotbugs-excludes.xml" else="">
