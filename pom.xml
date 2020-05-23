@@ -9,7 +9,7 @@
 
 	<name>Root POM</name>
 	<description>This POM is meant to be used as root POM. Use de.lars-sh:parent for your own projects.</description>
-	<url>https://github.com/lars-sh/parent</url>
+	<url>https://lars-sh.github.io/parent/</url>
 	<licenses>
 		<license>
 			<name>MIT License</name>
@@ -2940,40 +2940,17 @@ cache:
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
-				<reportSets>
-					<reportSet>
-						<reports>
-							<report>report</report>
-						</reports>
-					</reportSet>
-				</reportSets>
 			</plugin>
 
 			<!-- Check versions -->
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>versions-maven-plugin</artifactId>
-				<reportSets>
-					<reportSet>
-						<reports>
-							<report>dependency-updates-report</report>
-							<report>plugin-updates-report</report>
-						</reports>
-					</reportSet>
-				</reportSets>
 			</plugin>
 
 			<!-- Documentation -->
 			<plugin>
 				<artifactId>maven-javadoc-plugin</artifactId>
-				<reportSets>
-					<reportSet>
-						<reports>
-							<report>javadoc-no-fork</report>
-							<report>test-javadoc-no-fork</report>
-						</reports>
-					</reportSet>
-				</reportSets>
 			</plugin>
 
 			<!-- Cross references -->

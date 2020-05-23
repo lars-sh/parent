@@ -1,6 +1,8 @@
 # Parent POM
 This parent POM is made for great Java projects, handling [Eclipse](https://eclipse.org/downloads/) (partly IntelliJ IDEA) and optionally [Project Lombok](https://projectlombok.org/) integration, having consistent [Checkstyle](https://checkstyle.org/) and [SpotBugs](https://spotbugs.github.io/) (successor of FindBugs) definitions in addition to even more Maven pre-configuration.
 
+[Changelog](CHANGELOG.md)  |  [JavaDoc](https://lars-sh.github.io/parent/apidocs)  |  [Generated Reports](https://lars-sh.github.io/parent/project-reports.html)
+
 Used technologies and main focus are:
 * Maven for up-to-date and consistent dependencies
 * JUnit and JavaDoc as defacto standards
