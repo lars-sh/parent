@@ -286,19 +286,19 @@ The following profiles can be activated by hand to handle some rare cases.
 #### Maven Properties
 This parent POM either predefines existing Maven Properties or introduces some own.
 
+`parent-pom.create-changelog-md` handles if the projects `CHANGELOG.md` file should be generated. Set to `false` if the file should not be created if not existing. Default value is `true`, except if the `CHANGELOG.md` file already exists.
+
 `parent-pom.create-gitignore` handles if the projects `.gitignore` file should be generated. Set to "false" if the file should not be created or overwritten. Default value is `true`.
 
-`parent-pom.create-changelog-md` handles if the projects `CHANGELOG.md` file should be generated. Set to `false` if the file should not be created if not existing. Default value is `true`, except if the `CHANGELOG.md` file already exists.
+`parent-pom.create-lombok-config` handles if the projects `lombok.config` files should be generated. Set to `false` if the files should not be created or overwritten. Default value is `true`, except for packaging types `pom` and `archetype`.
 
 `parent-pom.create-readme-md` handles if the projects `README.md` file should be generated. Set to `false` if the file should not be created if not existing. Default value is `true`, except if the `README.md` file already exists.
 
 `parent-pom.create-source-directories` handles if the projects source directories shall be created. Set to `false` if the folder should not be created. Default value is `true`, except for packaging types `pom` and `archetype`.
 
-`parent-pom.default-sources-folder` is the name if the default source folders to be created. Default value is `lombok`.
-
-`parent-pom.create-lombok-config` handles if the projects `lombok.config` files should be generated. Set to `false` if the files should not be created or overwritten. Default value is `true`, except for packaging types `pom` and `archetype`.
-
 `parent-pom.create-travis-yml` handles if the projects `.travis.yml` file should be generated. Set to `false` if the file should not be created or overwritten. Default value is `true`, except if the `.travis.yml` file already exists.
+
+`parent-pom.default-sources-folder` is the name if the default source folders to be created. Default value is `lombok`.
 
 `eclipse.compiler.codegen.methodParameters` configures Eclipse to respect the value specified for `maven.compiler.parameters`. Values can be `generate` or `do not generate`. Default value: `do not generate`, except if property `maven.compiler.parameters` equals `true`.
 
@@ -310,9 +310,9 @@ This parent POM either predefines existing Maven Properties or introduces some o
 
 `eclipse.compiler.nonnullbydefault.secondary` is meant to be used by child POMs to configure secondary @NonNullByDefault annotations that Eclipse should handle. Multiple values must be separated by comma. Default value: *empty*
 
-`eclipse.compiler.nullable.secondary` is meant to be used by child POMs to configure secondary @Nullable annotations that Eclipse should handle. Multiple values must be separated by comma. Default value: `edu.umd.cs.findbugs.annotations.CheckForNull`
-
 `eclipse.compiler.nullAnalysis` is meant to be used by child POMs to configure if Eclipse should do annotation based null analysis. Values can be `enabled` or `disabled`. Default value: `enabled`
+
+`eclipse.compiler.nullable.secondary` is meant to be used by child POMs to configure secondary @Nullable annotations that Eclipse should handle. Multiple values must be separated by comma. Default value: `edu.umd.cs.findbugs.annotations.CheckForNull`
 
 `eclipse.compiler.potentialNullReference` is meant to be used by child POMs to configure if Eclipse should warn on potential null pointer access. Values can be `error`, `warning`, `info` or `ignore` (disabled). Default value: `error`
 
@@ -320,34 +320,34 @@ This parent POM either predefines existing Maven Properties or introduces some o
 
 `shade.packageDependenciesPhase` is meant to be used by child POMs to configure if an archive containing dependencies should be created. Values can be `none` (disabled) and `package` (enabled) as this property is used with the <phase> tag. Default value: `none`
 
-	project.build.sourceEncoding:                      UTF-8
-	project.reporting.outputEncoding:                  UTF-8
-	enforcer.requiredMavenVersion:                     3.3.9
 	checkstyle.config.location:                        ${project.build.directory}/checkstyle.xml
 	checkstyle.consoleOutput:                          true
+	cpd.excludeFromFailureFile:                        ${project.basedir}/cpd-excludes.csv (if existing)
+	cpd.printFailingErrors:                            true
+	dependency.failOnWarning:                          true
+	enforcer.requiredMavenVersion:                     3.3.9
 	formatter.configFile:                              ${project.build.directory}/formatter.xml
 	formatter.lineEnding:                              LF
+	jar.manifest.addClasspath:                         true
+	jar.manifest.addDefaultImplementationEntries:      true
+	jar.manifest.addDefaultSpecificationEntries:       true
+	jar.skipIfEmpty:                                   true
+	javadoc.quiet:                                     true
 	maven.compiler.failOnWarning:                      true
 	maven.compiler.showDeprecation:                    true
 	maven.compiler.showWarnings:                       true
 	maven.compiler.source:                             1.8
 	maven.compiler.target:                             1.8
-	jar.skipIfEmpty:                                   true
-	jar.manifest.addClasspath:                         true
-	jar.manifest.addDefaultImplementationEntries:      true
-	jar.manifest.addDefaultSpecificationEntries:       true
-	shade.dependencyReducedPomLocation:                ${project.build.directory}/dependency-reduced-pom.xml
 	maven.javadoc.failOnWarnings:                      true
-	javadoc.quiet:                                     true
-	cpd.excludeFromFailureFile:                        ${project.basedir}/cpd-excludes.csv (if existing)
-	cpd.printFailingErrors:                            true
+	nexus-staging.autoReleaseAfterClose:               true
 	pmd-only.excludeFromFailureFile:                   ${project.basedir}/pmd-excludes.properties
 	pmd-only.printFailingErrors:                       true
 	pmd-only.ruleset:                                  ${project.build.directory}/pmd/pmd-ruleset.xml
+	project.build.sourceEncoding:                      UTF-8
+	project.reporting.outputEncoding:                  UTF-8
+	shade.dependencyReducedPomLocation:                ${project.build.directory}/dependency-reduced-pom.xml
 	spotbugs.effort:                                   Max
 	spotbugs.threshold:                                Low
-	dependency.failOnWarning:                          true
-	nexus-staging.autoReleaseAfterClose:               true
 
 #### Generated Files
 During the build process some project files are generated. Those files and their creation concept are described below.
