@@ -20,7 +20,7 @@ under the License.
 <rss version="0.91">
   <channel>
     <title>Utilities for Unit Tests - Checkstyle report</title>
-    <link>https://github.com/lars-sh/parent/tree/master/utils-test</link>
+    <link>https://lars-sh.github.io/parent/utils-test/</link>
     <description>Utilities for Unit Tests - Checkstyle report</description>
     <language>en-us</language>
     <copyright>&#169;2020</copyright>
@@ -30,9 +30,9 @@ under the License.
              Warnings: 0,
              Infos: 0
       </title>
-            <link>https://github.com/lars-sh/parent/tree/master/utils-test/checkstyle.html</link>
+            <link>https://lars-sh.github.io/parent/utils-test//checkstyle.html</link>
       <description>
-        <p>Click <a href="https://github.com/lars-sh/parent/tree/master/utils-test/checkstyle.html">here</a> for the full Checkstyle report.</p>
+        <p>Click <a href="https://lars-sh.github.io/parent/utils-test//checkstyle.html">here</a> for the full Checkstyle report.</p>
 
         <table summary="Files" boder="1">
           <thead>
@@ -46,7 +46,7 @@ under the License.
           <tbody>
                           <tr>
                 <td>
-                  <a href="https://github.com/lars-sh/parent/tree/master/utils-test/checkstyle.html#de.larssh.utils.test.AssertionException.java">de/larssh/utils/test/AssertionException.java</a>
+                  <a href="https://lars-sh.github.io/parent/utils-test//checkstyle.html#de.larssh.utils.test.AssertionException.java">de/larssh/utils/test/AssertionException.java</a>
                 </td>
                 <td>
                   0
@@ -60,7 +60,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/lars-sh/parent/tree/master/utils-test/checkstyle.html#de.larssh.utils.test.Assertions.java">de/larssh/utils/test/Assertions.java</a>
+                  <a href="https://lars-sh.github.io/parent/utils-test//checkstyle.html#de.larssh.utils.test.Assertions.java">de/larssh/utils/test/Assertions.java</a>
                 </td>
                 <td>
                   0
@@ -74,7 +74,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/lars-sh/parent/tree/master/utils-test/checkstyle.html#de.larssh.utils.test.SneakyException.java">de/larssh/utils/test/SneakyException.java</a>
+                  <a href="https://lars-sh.github.io/parent/utils-test//checkstyle.html#de.larssh.utils.test.SneakyException.java">de/larssh/utils/test/SneakyException.java</a>
                 </td>
                 <td>
                   0
@@ -88,7 +88,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/lars-sh/parent/tree/master/utils-test/checkstyle.html#de.larssh.utils.test.package-info.java">de/larssh/utils/test/package-info.java</a>
+                  <a href="https://lars-sh.github.io/parent/utils-test//checkstyle.html#de.larssh.utils.test.package-info.java">de/larssh/utils/test/package-info.java</a>
                 </td>
                 <td>
                   0
@@ -102,7 +102,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/lars-sh/parent/tree/master/utils-test/checkstyle.html#de.larssh.utils.test.AssertEqualsAndHashCodeArguments.java">de/larssh/utils/test/AssertEqualsAndHashCodeArguments.java</a>
+                  <a href="https://lars-sh.github.io/parent/utils-test//checkstyle.html#de.larssh.utils.test.AssertEqualsAndHashCodeArguments.java">de/larssh/utils/test/AssertEqualsAndHashCodeArguments.java</a>
                 </td>
                 <td>
                   0
@@ -116,7 +116,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/lars-sh/parent/tree/master/utils-test/checkstyle.html#LICENSE.txt">LICENSE.txt</a>
+                  <a href="https://lars-sh.github.io/parent/utils-test//checkstyle.html#LICENSE.txt">LICENSE.txt</a>
                 </td>
                 <td>
                   0
@@ -130,7 +130,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/lars-sh/parent/tree/master/utils-test/checkstyle.html#target.maven-archiver.pom.properties">target/maven-archiver/pom.properties</a>
+                  <a href="https://lars-sh.github.io/parent/utils-test//checkstyle.html#target.maven-archiver.pom.properties">target/maven-archiver/pom.properties</a>
                 </td>
                 <td>
                   0
@@ -144,7 +144,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/lars-sh/parent/tree/master/utils-test/checkstyle.html#target.formatter-maven-cache.properties">target/formatter-maven-cache.properties</a>
+                  <a href="https://lars-sh.github.io/parent/utils-test//checkstyle.html#target.formatter-maven-cache.properties">target/formatter-maven-cache.properties</a>
                 </td>
                 <td>
                   0
@@ -158,7 +158,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/lars-sh/parent/tree/master/utils-test/checkstyle.html#de.larssh.utils.test.Reflects.java">de/larssh/utils/test/Reflects.java</a>
+                  <a href="https://lars-sh.github.io/parent/utils-test//checkstyle.html#de.larssh.utils.test.Reflects.java">de/larssh/utils/test/Reflects.java</a>
                 </td>
                 <td>
                   0
@@ -172,7 +172,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/lars-sh/parent/tree/master/utils-test/checkstyle.html#CHANGELOG.md">CHANGELOG.md</a>
+                  <a href="https://lars-sh.github.io/parent/utils-test//checkstyle.html#CHANGELOG.md">CHANGELOG.md</a>
                 </td>
                 <td>
                   0
@@ -186,7 +186,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/lars-sh/parent/tree/master/utils-test/checkstyle.html#README.md">README.md</a>
+                  <a href="https://lars-sh.github.io/parent/utils-test//checkstyle.html#README.md">README.md</a>
                 </td>
                 <td>
                   0

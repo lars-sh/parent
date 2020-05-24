@@ -20,7 +20,7 @@ under the License.
 <rss version="0.91">
   <channel>
     <title>Utility Annotations - Checkstyle report</title>
-    <link>https://github.com/lars-sh/parent/tree/master/utils-annotations</link>
+    <link>https://lars-sh.github.io/parent/utils-annotations/</link>
     <description>Utility Annotations - Checkstyle report</description>
     <language>en-us</language>
     <copyright>&#169;2020</copyright>
@@ -30,9 +30,9 @@ under the License.
              Warnings: 0,
              Infos: 0
       </title>
-            <link>https://github.com/lars-sh/parent/tree/master/utils-annotations/checkstyle.html</link>
+            <link>https://lars-sh.github.io/parent/utils-annotations//checkstyle.html</link>
       <description>
-        <p>Click <a href="https://github.com/lars-sh/parent/tree/master/utils-annotations/checkstyle.html">here</a> for the full Checkstyle report.</p>
+        <p>Click <a href="https://lars-sh.github.io/parent/utils-annotations//checkstyle.html">here</a> for the full Checkstyle report.</p>
 
         <table summary="Files" boder="1">
           <thead>
@@ -46,7 +46,7 @@ under the License.
           <tbody>
                           <tr>
                 <td>
-                  <a href="https://github.com/lars-sh/parent/tree/master/utils-annotations/checkstyle.html#de.larssh.utils.annotations.package-info.java">de/larssh/utils/annotations/package-info.java</a>
+                  <a href="https://lars-sh.github.io/parent/utils-annotations//checkstyle.html#de.larssh.utils.annotations.package-info.java">de/larssh/utils/annotations/package-info.java</a>
                 </td>
                 <td>
                   0
@@ -60,7 +60,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/lars-sh/parent/tree/master/utils-annotations/checkstyle.html#de.larssh.utils.annotations.PackagePrivate.java">de/larssh/utils/annotations/PackagePrivate.java</a>
+                  <a href="https://lars-sh.github.io/parent/utils-annotations//checkstyle.html#de.larssh.utils.annotations.PackagePrivate.java">de/larssh/utils/annotations/PackagePrivate.java</a>
                 </td>
                 <td>
                   0
@@ -74,7 +74,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/lars-sh/parent/tree/master/utils-annotations/checkstyle.html#LICENSE.txt">LICENSE.txt</a>
+                  <a href="https://lars-sh.github.io/parent/utils-annotations//checkstyle.html#LICENSE.txt">LICENSE.txt</a>
                 </td>
                 <td>
                   0
@@ -88,7 +88,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/lars-sh/parent/tree/master/utils-annotations/checkstyle.html#target.maven-archiver.pom.properties">target/maven-archiver/pom.properties</a>
+                  <a href="https://lars-sh.github.io/parent/utils-annotations//checkstyle.html#target.maven-archiver.pom.properties">target/maven-archiver/pom.properties</a>
                 </td>
                 <td>
                   0
@@ -102,7 +102,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/lars-sh/parent/tree/master/utils-annotations/checkstyle.html#de.larssh.utils.annotations.NonNullByDefault.java">de/larssh/utils/annotations/NonNullByDefault.java</a>
+                  <a href="https://lars-sh.github.io/parent/utils-annotations//checkstyle.html#de.larssh.utils.annotations.NonNullByDefault.java">de/larssh/utils/annotations/NonNullByDefault.java</a>
                 </td>
                 <td>
                   0
@@ -116,7 +116,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/lars-sh/parent/tree/master/utils-annotations/checkstyle.html#target.formatter-maven-cache.properties">target/formatter-maven-cache.properties</a>
+                  <a href="https://lars-sh.github.io/parent/utils-annotations//checkstyle.html#target.formatter-maven-cache.properties">target/formatter-maven-cache.properties</a>
                 </td>
                 <td>
                   0
@@ -130,7 +130,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/lars-sh/parent/tree/master/utils-annotations/checkstyle.html#CHANGELOG.md">CHANGELOG.md</a>
+                  <a href="https://lars-sh.github.io/parent/utils-annotations//checkstyle.html#CHANGELOG.md">CHANGELOG.md</a>
                 </td>
                 <td>
                   0
@@ -144,7 +144,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/lars-sh/parent/tree/master/utils-annotations/checkstyle.html#de.larssh.utils.annotations.SuppressJacocoGenerated.java">de/larssh/utils/annotations/SuppressJacocoGenerated.java</a>
+                  <a href="https://lars-sh.github.io/parent/utils-annotations//checkstyle.html#de.larssh.utils.annotations.SuppressJacocoGenerated.java">de/larssh/utils/annotations/SuppressJacocoGenerated.java</a>
                 </td>
                 <td>
                   0
@@ -158,7 +158,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/lars-sh/parent/tree/master/utils-annotations/checkstyle.html#README.md">README.md</a>
+                  <a href="https://lars-sh.github.io/parent/utils-annotations//checkstyle.html#README.md">README.md</a>
                 </td>
                 <td>
                   0
