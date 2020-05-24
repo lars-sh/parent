@@ -320,6 +320,7 @@ This parent POM either predefines existing Maven Properties or introduces some o
 
 `shade.packageDependenciesPhase` is meant to be used by child POMs to configure if an archive containing dependencies should be created. Values can be `none` (disabled) and `package` (enabled) as this property is used with the <phase> tag. Default value: `none`
 
+	aggregate:                                         true
 	checkstyle.config.location:                        ${project.build.directory}/checkstyle.xml
 	checkstyle.consoleOutput:                          true
 	cpd.excludeFromFailureFile:                        ${project.basedir}/cpd-excludes.csv (if existing)
@@ -331,6 +332,7 @@ This parent POM either predefines existing Maven Properties or introduces some o
 	jar.manifest.addClasspath:                         true
 	jar.manifest.addDefaultImplementationEntries:      true
 	jar.manifest.addDefaultSpecificationEntries:       true
+	jar.manifest.mainClass:                            
 	jar.skipIfEmpty:                                   true
 	javadoc.quiet:                                     true
 	maven.compiler.failOnWarning:                      true
@@ -339,13 +341,16 @@ This parent POM either predefines existing Maven Properties or introduces some o
 	maven.compiler.source:                             1.8
 	maven.compiler.target:                             1.8
 	maven.javadoc.failOnWarnings:                      true
+	maven.version.rules:                               file:///${project.build.directory}/versions-ruleset.xml
 	nexus-staging.autoReleaseAfterClose:               true
 	pmd-only.excludeFromFailureFile:                   ${project.basedir}/pmd-excludes.properties
 	pmd-only.printFailingErrors:                       true
 	pmd-only.ruleset:                                  ${project.build.directory}/pmd/pmd-ruleset.xml
+	pmd.analysisCache:                                 true
 	project.build.sourceEncoding:                      UTF-8
 	project.reporting.outputEncoding:                  UTF-8
 	shade.dependencyReducedPomLocation:                ${project.build.directory}/dependency-reduced-pom.xml
+	shade.packageDependenciesPhase:                    none
 	spotbugs.effort:                                   Max
 	spotbugs.threshold:                                Low
 
