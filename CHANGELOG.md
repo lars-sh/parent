@@ -11,13 +11,15 @@ Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%
 * Methods `de.larssh.text.Lines.consecutive(...)`, `de.larssh.text.Lines.grouped(...)` and `de.larssh.text.Lines.lines(...)` with credits to [Olaf Neumann](https://github.com/noxone/commons/tree/develop/commons-io/src/main/java/org/olafneumann/files/LinesReader.java)
 
 ### Changed
-* TODO
+* Improved Maven site generation.
+* Methods of `de.larssh.utils.Resources` force case sensitivity to enforce compatibility between file systems.
 
 ### Removed
 * Method `Strings.lines(String)` (use `Lines.lines(String)` instead)
 
 ### Fixed
-* TODO
+* Checkstyle check XFinalsConstant
+* Changed the dependency scope of the utilities for tests to `test`.
 
 <a name="0.9.7"></a>
 
