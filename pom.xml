@@ -103,7 +103,7 @@
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<maven.javadoc.failOnWarnings>true</maven.javadoc.failOnWarnings>
-		<maven.version.rules>file:/${project.build.directory}/versions-ruleset.xml</maven.version.rules>
+		<maven.version.rules>file:///${project.build.directory}/versions-ruleset.xml</maven.version.rules>
 		<nexus-staging.autoReleaseAfterClose>true</nexus-staging.autoReleaseAfterClose>
 		<pmd-only.excludeFromFailureFile>${project.basedir}/pmd-excludes.properties</pmd-only.excludeFromFailureFile>
 		<pmd-only.printFailingErrors>true</pmd-only.printFailingErrors>
