@@ -13,35 +13,7 @@
 
 	<name>Archetype for Parent POM</name>
 	<description>This archetype package creates a new Maven project consisting of nothing more than a pom.xml file referencing the parent POM project</description>
-	<url>https://github.com/lars-sh/parent/tree/master/parent-archetype</url>
-	<licenses>
-		<license>
-			<name>MIT License</name>
-			<url>https://opensource.org/licenses/MIT</url>
-		</license>
-	</licenses>
-
-	<developers>
-		<developer>
-			<name>Lars Knickrehm</name>
-			<email>mail@lars-sh.de</email>
-			<url>https://lars-sh.de/</url>
-		</developer>
-	</developers>
-
-	<scm>
-		<connection>scm:git:git@github.com:lars-sh/parent.git</connection>
-		<developerConnection>scm:git:git@github.com:lars-sh/parent.git</developerConnection>
-		<url>https://github.com/lars-sh/parent</url>
-	</scm>
-	<issueManagement>
-		<system>GitHub Issues</system>
-		<url>https://github.com/lars-sh/parent/issues</url>
-	</issueManagement>
-	<ciManagement>
-		<system>Travis</system>
-		<url>https://travis-ci.com/lars-sh/parent</url>
-	</ciManagement>
+	<url>https://${parent-pom.github.organization}.github.io/${parent-pom.github.project}/${project.artifactId}/</url>
 
 	<properties>
 		<parent-pom.create-travis-yml>false</parent-pom.create-travis-yml>

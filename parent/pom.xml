@@ -16,35 +16,6 @@
 		Eclipse and optional Project Lombok integration, having consistent Checkstyle 
 		and SpotBugs (successor of FindBugs) definitions in addition to even more 
 		Maven pre-configuration.</description>
-	<url>https://github.com/lars-sh/parent</url>
-	<licenses>
-		<license>
-			<name>MIT License</name>
-			<url>https://opensource.org/licenses/MIT</url>
-		</license>
-	</licenses>
-
-	<developers>
-		<developer>
-			<name>Lars Knickrehm</name>
-			<email>mail@lars-sh.de</email>
-			<url>https://lars-sh.de/</url>
-		</developer>
-	</developers>
-
-	<scm>
-		<connection>scm:git:git@github.com:lars-sh/parent.git</connection>
-		<developerConnection>scm:git:git@github.com:lars-sh/parent.git</developerConnection>
-		<url>https://github.com/lars-sh/parent</url>
-	</scm>
-	<issueManagement>
-		<system>GitHub Issues</system>
-		<url>https://github.com/lars-sh/parent/issues</url>
-	</issueManagement>
-	<ciManagement>
-		<system>Travis</system>
-		<url>https://travis-ci.com/lars-sh/parent</url>
-	</ciManagement>
 
 	<dependencies>
 		<!-- Groovy Grape/IVY is not able to load the following dependencies correctly 
