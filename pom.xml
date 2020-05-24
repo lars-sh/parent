@@ -9,7 +9,7 @@
 
 	<name>Root POM</name>
 	<description>This POM is meant to be used as root POM. Use de.lars-sh:parent for your own projects.</description>
-	<url>https://lars-sh.github.io/parent/</url>
+	<url>https://${parent-pom.github.organization}.github.io/${parent-pom.github.project}/</url>
 	<licenses>
 		<license>
 			<name>MIT License</name>
@@ -34,17 +34,17 @@
 	</modules>
 
 	<scm>
-		<connection>scm:git:git@github.com:lars-sh/parent.git</connection>
-		<developerConnection>scm:git:git@github.com:lars-sh/parent.git</developerConnection>
-		<url>https://github.com/lars-sh/parent</url>
+		<connection>scm:git:git@github.com:${parent-pom.github.organization}/${parent-pom.github.project}.git</connection>
+		<developerConnection>scm:git:git@github.com:${parent-pom.github.organization}/${parent-pom.github.project}.git</developerConnection>
+		<url>https://github.com/${parent-pom.github.organization}/${parent-pom.github.project}</url>
 	</scm>
 	<issueManagement>
 		<system>GitHub Issues</system>
-		<url>https://github.com/lars-sh/parent/issues</url>
+		<url>https://github.com/${parent-pom.github.organization}/${parent-pom.github.project}/issues</url>
 	</issueManagement>
 	<ciManagement>
 		<system>Travis</system>
-		<url>https://travis-ci.com/lars-sh/parent</url>
+		<url>https://travis-ci.com/${parent-pom.github.organization}/${parent-pom.github.project}</url>
 	</ciManagement>
 	<distributionManagement>
 		<snapshotRepository>
@@ -68,6 +68,8 @@
 		<!-- <parent-pom.create-source-directories>true</parent-pom.create-source-directories> -->
 		<!-- <parent-pom.create-travis-yml>true</parent-pom.create-travis-yml> -->
 		<parent-pom.default-sources-folder>lombok</parent-pom.default-sources-folder>
+		<parent-pom.github.organization>lars-sh</parent-pom.github.organization>
+		<parent-pom.github.project>parent</parent-pom.github.project>
 
 		<!-- Eclipse Configuration -->
 		<!-- <eclipse.compiler.codegen.methodParameters>false</eclipse.compiler.codegen.methodParameters> -->
