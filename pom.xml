@@ -60,51 +60,56 @@
 	</distributionManagement>
 
 	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<enforcer.requiredMavenVersion>3.3.9</enforcer.requiredMavenVersion>
-		<parent-pom.create-gitignore>true</parent-pom.create-gitignore>
+		<!-- Parent POM -->
 		<!-- <parent-pom.create-changelog-md>true</parent-pom.create-changelog-md> -->
+		<parent-pom.create-gitignore>true</parent-pom.create-gitignore>
+		<!-- <parent-pom.create-lombok-config>true</parent-pom.create-lombok-config> -->
 		<!-- <parent-pom.create-readme-md>true</parent-pom.create-readme-md> -->
 		<!-- <parent-pom.create-source-directories>true</parent-pom.create-source-directories> -->
-		<parent-pom.default-sources-folder>lombok</parent-pom.default-sources-folder>
-		<!-- <parent-pom.create-lombok-config>true</parent-pom.create-lombok-config> -->
 		<!-- <parent-pom.create-travis-yml>true</parent-pom.create-travis-yml> -->
+		<parent-pom.default-sources-folder>lombok</parent-pom.default-sources-folder>
+
+		<!-- Eclipse Configuration -->
 		<!-- <eclipse.compiler.codegen.methodParameters>false</eclipse.compiler.codegen.methodParameters> -->
 		<eclipse.compiler.javadoc>enabled</eclipse.compiler.javadoc>
 		<eclipse.compiler.missingNonNullByDefaultAnnotation>warning</eclipse.compiler.missingNonNullByDefaultAnnotation>
 		<eclipse.compiler.nonnull.secondary></eclipse.compiler.nonnull.secondary>
 		<eclipse.compiler.nonnullbydefault.secondary></eclipse.compiler.nonnullbydefault.secondary>
-		<eclipse.compiler.nullable.secondary>edu.umd.cs.findbugs.annotations.CheckForNull</eclipse.compiler.nullable.secondary>
 		<eclipse.compiler.nullAnalysis>enabled</eclipse.compiler.nullAnalysis>
+		<eclipse.compiler.nullable.secondary>edu.umd.cs.findbugs.annotations.CheckForNull</eclipse.compiler.nullable.secondary>
 		<eclipse.compiler.potentialNullReference>error</eclipse.compiler.potentialNullReference>
+
+		<!-- Plugins -->
 		<checkstyle.config.location>${project.build.directory}/checkstyle.xml</checkstyle.config.location>
 		<checkstyle.consoleOutput>true</checkstyle.consoleOutput>
+		<!-- <cpd.excludeFromFailureFile>${project.basedir}/cpd-excludes.csv</cpd.excludeFromFailureFile> -->
+		<cpd.printFailingErrors>true</cpd.printFailingErrors>
+		<dependency.failOnWarning>true</dependency.failOnWarning>
+		<enforcer.requiredMavenVersion>3.3.9</enforcer.requiredMavenVersion>
 		<formatter.configFile>${project.build.directory}/formatter.xml</formatter.configFile>
 		<formatter.lineEnding>LF</formatter.lineEnding>
+		<jar.manifest.addClasspath>true</jar.manifest.addClasspath>
+		<jar.manifest.addDefaultImplementationEntries>true</jar.manifest.addDefaultImplementationEntries>
+		<jar.manifest.addDefaultSpecificationEntries>true</jar.manifest.addDefaultSpecificationEntries>
+		<jar.manifest.mainClass></jar.manifest.mainClass>
+		<jar.skipIfEmpty>true</jar.skipIfEmpty>
+		<javadoc.quiet>true</javadoc.quiet>
 		<maven.compiler.failOnWarning>true</maven.compiler.failOnWarning>
 		<maven.compiler.showDeprecation>true</maven.compiler.showDeprecation>
 		<maven.compiler.showWarnings>true</maven.compiler.showWarnings>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
-		<jar.skipIfEmpty>true</jar.skipIfEmpty>
-		<jar.manifest.addClasspath>true</jar.manifest.addClasspath>
-		<jar.manifest.addDefaultImplementationEntries>true</jar.manifest.addDefaultImplementationEntries>
-		<jar.manifest.addDefaultSpecificationEntries>true</jar.manifest.addDefaultSpecificationEntries>
-		<jar.manifest.mainClass></jar.manifest.mainClass>
-		<shade.packageDependenciesPhase>none</shade.packageDependenciesPhase>
-		<shade.dependencyReducedPomLocation>${project.build.directory}/dependency-reduced-pom.xml</shade.dependencyReducedPomLocation>
 		<maven.javadoc.failOnWarnings>true</maven.javadoc.failOnWarnings>
-		<javadoc.quiet>true</javadoc.quiet>
-		<!-- <cpd.excludeFromFailureFile>${project.basedir}/cpd-excludes.csv</cpd.excludeFromFailureFile> -->
-		<cpd.printFailingErrors>true</cpd.printFailingErrors>
+		<nexus-staging.autoReleaseAfterClose>true</nexus-staging.autoReleaseAfterClose>
 		<pmd-only.excludeFromFailureFile>${project.basedir}/pmd-excludes.properties</pmd-only.excludeFromFailureFile>
 		<pmd-only.printFailingErrors>true</pmd-only.printFailingErrors>
 		<pmd-only.ruleset>${project.build.directory}/pmd/pmd-ruleset.xml</pmd-only.ruleset>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<shade.dependencyReducedPomLocation>${project.build.directory}/dependency-reduced-pom.xml</shade.dependencyReducedPomLocation>
+		<shade.packageDependenciesPhase>none</shade.packageDependenciesPhase>
 		<spotbugs.effort>Max</spotbugs.effort>
 		<spotbugs.threshold>Low</spotbugs.threshold>
-		<dependency.failOnWarning>true</dependency.failOnWarning>
-		<nexus-staging.autoReleaseAfterClose>true</nexus-staging.autoReleaseAfterClose>
 
 		<!-- Versions: Dependencies -->
 		<assertj-core.version>3.16.1</assertj-core.version>
