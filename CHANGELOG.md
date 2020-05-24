@@ -19,6 +19,7 @@ Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%
 
 ### Fixed
 * Checkstyle check XFinalsConstant
+* Changed the dependency scope of the utility annotations to `provided`.
 * Changed the dependency scope of the utilities for tests to `test`.
 
 <a name="0.9.7"></a>

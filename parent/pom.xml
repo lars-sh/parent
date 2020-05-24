@@ -24,6 +24,7 @@
 			<groupId>de.lars-sh</groupId>
 			<artifactId>utils-annotations</artifactId>
 			<version>0.9.8-SNAPSHOT</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>de.lars-sh</groupId>
