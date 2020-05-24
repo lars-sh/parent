@@ -160,13 +160,16 @@
 		<pmd.version>6.23.0</pmd.version>
 		<spotbugs.version>4.0.3</spotbugs.version>
 		<spotbugs-annotations.version>4.0.3</spotbugs-annotations.version>
+
+		<!-- Versions: Reporting Skins -->
+		<maven-fluido-skin.version>1.9</maven-fluido-skin.version>
 	</properties>
 
 	<dependencyManagement>
+		<!-- These dependency definitions should not change anything but forcing the
+			Maven Dependency Plugin to check their versions. -->
 		<dependencies>
 			<!-- Plugin Dependencies -->
-			<!-- These dependency definitions should not change anything but forcing 
-				the Maven Dependency Plugin to check their versions. -->
 			<dependency>
 				<groupId>com.github.spotbugs</groupId>
 				<artifactId>spotbugs</artifactId>
@@ -201,6 +204,13 @@
 				<groupId>org.projectlombok</groupId>
 				<artifactId>lombok</artifactId>
 				<version>${lombok.version}</version>
+			</dependency>
+
+			<!-- Skins -->
+			<dependency>
+				<groupId>org.apache.maven.skins</groupId>
+				<artifactId>maven-fluido-skin</artifactId>
+				<version>${maven-fluido-skin.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
