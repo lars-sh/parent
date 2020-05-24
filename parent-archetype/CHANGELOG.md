@@ -1,29 +1,4 @@
 # Changelog
-All notable changes to this project will be documented in this file.
+This package is part of the project [de.lars-sh:parent](../README.md).
 
-<a name="version"></a>
-
-## [Version](Link) (YYYY-mm-dd)
-
-Download at TODO
-
-### Added
-* 
-
-### Changed
-* 
-
-### Deprecated
-* 
-
-### Removed
-* 
-
-### Fixed
-* 
-
-### Security
-* 
-
-### Dependencies
-*
+All notable changes to this project will be documented in its [CHANGELOG.md](../CHANGELOG.md).
