@@ -100,82 +100,82 @@ public class SystemUtils {
 	/**
 	 * Java Runtime Environment version
 	 */
-	public static final String JAVA_VERSION = "java.version";
+	public static final String JAVA_VERSION = constant("java.version");
 
 	/**
 	 * Java Runtime Environment vendor
 	 */
-	public static final String JAVA_VENDOR = "java.vendor";
+	public static final String JAVA_VENDOR = constant("java.vendor");
 
 	/**
 	 * Java vendor URL
 	 */
-	public static final String JAVA_VENDOR_URL = "java.vendor.url";
+	public static final String JAVA_VENDOR_URL = constant("java.vendor.url");
 
 	/**
 	 * Java installation directory
 	 */
-	public static final String JAVA_HOME = "java.home";
+	public static final String JAVA_HOME = constant("java.home");
 
 	/**
 	 * Java Virtual Machine specification version
 	 */
-	public static final String JAVA_VM_SPECIFICATION_VERSION = "java.vm.specification.version";
+	public static final String JAVA_VM_SPECIFICATION_VERSION = constant("java.vm.specification.version");
 
 	/**
 	 * Java Virtual Machine specification vendor
 	 */
-	public static final String JAVA_VM_SPECIFICATION_VENDOR = "java.vm.specification.vendor";
+	public static final String JAVA_VM_SPECIFICATION_VENDOR = constant("java.vm.specification.vendor");
 
 	/**
 	 * Java Virtual Machine specification name
 	 */
-	public static final String JAVA_VM_SPECIFICATION_NAME = "java.vm.specification.name";
+	public static final String JAVA_VM_SPECIFICATION_NAME = constant("java.vm.specification.name");
 
 	/**
 	 * Java Virtual Machine implementation version
 	 */
-	public static final String JAVA_VM_VERSION = "java.vm.version";
+	public static final String JAVA_VM_VERSION = constant("java.vm.version");
 
 	/**
 	 * Java Virtual Machine implementation vendor
 	 */
-	public static final String JAVA_VM_VENDOR = "java.vm.vendor";
+	public static final String JAVA_VM_VENDOR = constant("java.vm.vendor");
 
 	/**
 	 * Java Virtual Machine implementation name
 	 */
-	public static final String JAVA_VM_NAME = "java.vm.name";
+	public static final String JAVA_VM_NAME = constant("java.vm.name");
 
 	/**
 	 * Java Runtime Environment specification version
 	 */
-	public static final String JAVA_SPECIFICATION_VERSION = "java.specification.version";
+	public static final String JAVA_SPECIFICATION_VERSION = constant("java.specification.version");
 
 	/**
 	 * Java Runtime Environment specification vendor
 	 */
-	public static final String JAVA_SPECIFICATION_VENDOR = "java.specification.vendor";
+	public static final String JAVA_SPECIFICATION_VENDOR = constant("java.specification.vendor");
 
 	/**
 	 * Java Runtime Environment specification name
 	 */
-	public static final String JAVA_SPECIFICATION_NAME = "java.specification.name";
+	public static final String JAVA_SPECIFICATION_NAME = constant("java.specification.name");
 
 	/**
 	 * Java class format version number
 	 */
-	public static final String JAVA_CLASS_VERSION = "java.class.version";
+	public static final String JAVA_CLASS_VERSION = constant("java.class.version");
 
 	/**
 	 * Java class path
 	 */
-	public static final String JAVA_CLASS_PATH = "java.class.path";
+	public static final String JAVA_CLASS_PATH = constant("java.class.path");
 
 	/**
 	 * List of paths to search when loading libraries
 	 */
-	public static final String JAVA_LIBRARY_PATH = "java.library.path";
+	public static final String JAVA_LIBRARY_PATH = constant("java.library.path");
 
 	/**
 	 * Default temporary file path
@@ -187,12 +187,12 @@ public class SystemUtils {
 	 * {@link java.nio.file.Files#createTempFile(Path, String, String, java.nio.file.attribute.FileAttribute...)}
 	 * are appropriate alternatives.
 	 */
-	public static final String JAVA_IO_TMPDIR = "java.io.tmpdir";
+	public static final String JAVA_IO_TMPDIR = constant("java.io.tmpdir");
 
 	/**
 	 * Name of JIT compiler to use
 	 */
-	public static final String JAVA_COMPILER = "java.compiler";
+	public static final String JAVA_COMPILER = constant("java.compiler");
 
 	/**
 	 * Path of extension directory or directories
@@ -201,22 +201,22 @@ public class SystemUtils {
 	 *             removed in a future release.
 	 */
 	@Deprecated
-	public static final String JAVA_EXT_DIRS = "java.ext.dirs";
+	public static final String JAVA_EXT_DIRS = constant("java.ext.dirs");
 
 	/**
 	 * Operating system name
 	 */
-	public static final String OS_NAME = "os.name";
+	public static final String OS_NAME = constant("os.name");
 
 	/**
 	 * Operating system architecture
 	 */
-	public static final String OS_ARCH = "os.arch";
+	public static final String OS_ARCH = constant("os.arch");
 
 	/**
 	 * Operating system version
 	 */
-	public static final String OS_VERSION = "os.version";
+	public static final String OS_VERSION = constant("os.version");
 
 	/**
 	 * User's account name
@@ -225,7 +225,7 @@ public class SystemUtils {
 	 * Better not rely on this in case {@link #getUserName()} is an appropriate
 	 * alternative.
 	 */
-	public static final String USER_NAME = "user.name";
+	public static final String USER_NAME = constant("user.name");
 
 	/**
 	 * User's home directory
@@ -234,12 +234,12 @@ public class SystemUtils {
 	 * Better not rely on this in case {@link #getUserHome()} is an appropriate
 	 * alternative.
 	 */
-	public static final String USER_HOME = "user.home";
+	public static final String USER_HOME = constant("user.home");
 
 	/**
 	 * User's current working directory
 	 */
-	public static final String USER_DIR = "user.dir";
+	public static final String USER_DIR = constant("user.dir");
 
 	/**
 	 * Determines the system specific path to the current JVMs binary executable.

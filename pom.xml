@@ -915,7 +915,7 @@ TODO: Easy to understand usage example
 	<module name="RegexpMultiline">
 		<property name="id" value="XFinalsConstant" />
 		<property name="fileExtensions" value="java" />
-		<property name="format" value="\P{javaJavaIdentifierPart}(?!private\s*)\sstatic\s+final\s+\S+\s+\S+\s*=\s*([&quot;0-9\.+\-]|(true|false)[\s;])" />
+		<property name="format" value="[^\p{javaJavaIdentifierPart}\s]\s*(public\s+|protected\s+|)(static\s+final|final\s+static)\s+\S+\s+\S+\s*=\s*(['&quot;0-9\.+\-]|(true|false)\P{javaJavaIdentifierPart})" />
 		<property name="message" value="String and primitive constants should use Finals.constant." />
 	</module>
 	<module name="RegexpMultiline">
