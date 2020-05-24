@@ -1,6 +1,8 @@
 # Utilities
 This package offers generic utilities for many different situations.
 
+[Changelog](../CHANGELOG.md)  |  [JavaDoc](https://lars-sh.github.io/parent/utils/apidocs)  |  [Generated Reports](https://lars-sh.github.io/parent/utils/project-reports.html)
+
 ## Getting started
 The package is part of the project [de.lars-sh:parent](../README.md).
 

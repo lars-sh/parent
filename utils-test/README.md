@@ -1,6 +1,8 @@
 # Utilities for Unit Tests
 This package offers additional utilities for unit tests.
 
+[Changelog](../CHANGELOG.md)  |  [JavaDoc](https://lars-sh.github.io/parent/utils-test/apidocs)  |  [Generated Reports](https://lars-sh.github.io/parent/utils-test/project-reports.html)
+
 ## Getting started
 The package is part of the project [de.lars-sh:parent](../README.md).
 
