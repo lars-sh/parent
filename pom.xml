@@ -1706,10 +1706,6 @@ TODO: Easy to understand usage example
 											<exclude name="AvoidReassigningLoopVariables" />
 											<exclude name="OneDeclarationPerLine" />
 
-											<!-- Bad code style for non-null code -->
-											<exclude name="PositionLiteralsFirstInCaseInsensitiveComparisons" />
-											<exclude name="PositionLiteralsFirstInComparisons" />
-
 											<!-- Simplify JUnit usage -->
 											<exclude name="JUnitAssertionsShouldIncludeMessage" />
 											<exclude name="JUnitTestContainsTooManyAsserts" />
