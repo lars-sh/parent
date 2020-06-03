@@ -1,11 +1,11 @@
 package de.larssh.utils.net;
 
 import static java.util.Arrays.asList;
-import static java.util.Collections.emptyList;
 
 import java.net.InetSocketAddress;
 import java.net.Proxy.Type;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.Optional;
 import java.util.Set;
@@ -231,7 +231,7 @@ public class GlobalProxyConfiguration {
 	 *                                       {@code nonProxyHosts} property
 	 */
 	public void resetNonProxyHosts() {
-		setNonProxyHosts(getDefaultNonProxyHosts().orElseGet(() -> emptyList()));
+		setNonProxyHosts(getDefaultNonProxyHosts().orElseGet(Collections::emptyList));
 	}
 
 	/**
