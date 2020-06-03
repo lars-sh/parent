@@ -1176,14 +1176,14 @@ TODO: Easy to understand usage example
 												<property name="allowNonPrintableEscapes" value="true" />
 											</module>
 											<module name="CommentsIndentation" />
-											<module name="FinalParameters">
-												<property name="tokens" value="METHOD_DEF, CTOR_DEF, LITERAL_CATCH, FOR_EACH_CLAUSE" />
-											</module>
 											<module name="DescendantToken">
 												<property name="tokens" value="ANNOTATION, ASSIGN, BAND_ASSIGN, BOR_ASSIGN, BSR_ASSIGN, BXOR_ASSIGN, DIV_ASSIGN, DO_WHILE, ELIST, FOR_EACH_CLAUSE, LAMBDA, LITERAL_ASSERT, LITERAL_CASE, LITERAL_IF, LITERAL_RETURN, LITERAL_WHILE, MINUS_ASSIGN, MOD_ASSIGN, PLUS_ASSIGN, QUESTION, SL_ASSIGN, SR_ASSIGN, STAR_ASSIGN" />
 												<property name="limitedTokens" value="POST_DEC, POST_INC" />
 												<property name="maximumNumber" value="0" />
 												<property name="maximumMessage" value="The return value of the operators ++ and -- should not be used as they lead to hardly readable code." />
+											</module>
+											<module name="FinalParameters">
+												<property name="tokens" value="METHOD_DEF, CTOR_DEF, LITERAL_CATCH, FOR_EACH_CLAUSE" />
 											</module>
 											<module name="Indentation">
 												<property name="caseIndent" value="0" />
@@ -1191,6 +1191,7 @@ TODO: Easy to understand usage example
 												<property name="arrayInitIndent" value="8" />
 												<property name="lineWrappingIndentation" value="8" />
 											</module>
+											<module name="NoCodeInFile" />
 											<module name="OuterTypeFilename" />
 											<module name="TodoComment">
 												<property name="format" value="^\s*(TODO|XXX|FIXME).*" />
