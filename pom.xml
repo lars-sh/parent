@@ -879,6 +879,12 @@ TODO: Easy to understand usage example
 											<property name="message" value="@CheckForNull should precede keyword &quot;final&quot;." />
 										</module>
 										<module name="RegexpMultiline">
+											<property name="id" value="XCollectionsEmptyConstants" />
+											<property name="fileExtensions" value="java" />
+											<property name="format" value="\P{javaJavaIdentifierPart}Collections\s*\.\s*EMPTY_(LIST|MAP|SET)\P{javaJavaIdentifierPart}" />
+											<property name="message" value="Collections.EMPTY_LIST, EMPTY_MAP and EMPTY_SET shall not be used. Use Collections.emptyList(), emptyMap() and emptySet() instead." />
+										</module>
+										<module name="RegexpMultiline">
 											<property name="id" value="XFinalsConstant" />
 											<property name="fileExtensions" value="java" />
 											<property name="format" value="[^\p{javaJavaIdentifierPart}\s]\s*(public\s+|protected\s+|)(static\s+final|final\s+static)\s+\S+\s+\S+\s*=\s*(['&quot;0-9\.+\-]|(true|false)\P{javaJavaIdentifierPart})" />
