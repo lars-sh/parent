@@ -17,6 +17,10 @@
 		and SpotBugs (successor of FindBugs) definitions in addition to even more 
 		Maven pre-configuration.</description>
 
+	<properties>
+		<parent-pom.github.project>${project.artifactId}</parent-pom.github.project>
+	</properties>
+
 	<dependencies>
 		<!-- Groovy Grape/IVY is not able to load the following dependencies correctly 
 			when using "${parent.version}". Therefore static versions are used. -->

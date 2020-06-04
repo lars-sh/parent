@@ -300,6 +300,10 @@ This parent POM either predefines existing Maven Properties or introduces some o
 
 `parent-pom.default-sources-folder` is the name if the default source folders to be created. Default value is `lombok`.
 
+`parent-pom.github.organization` is the GitHub organization name, used for documentary needs. Default value is `lars-sh`.
+
+`parent-pom.github.project` is the GitHub project name, used for documentary needs. Default value is `${project.artifactId}`.
+
 `eclipse.compiler.codegen.methodParameters` configures Eclipse to respect the value specified for `maven.compiler.parameters`. Values can be `generate` or `do not generate`. Default value: `do not generate`, except if property `maven.compiler.parameters` equals `true`.
 
 `eclipse.compiler.javadoc` is meant to be used by child POMs to configure if Eclipse should validate JavaDoc comments. Values can be `enabled` or `disabled`. Default value: `enabled`
