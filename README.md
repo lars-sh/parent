@@ -1,4 +1,6 @@
 # Parent POM
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Flars-sh%2Fparent.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Flars-sh%2Fparent?ref=badge_shield)
+
 This parent POM is made for great Java projects, handling [Eclipse](https://eclipse.org/downloads/) (partly IntelliJ IDEA) and optionally [Project Lombok](https://projectlombok.org/) integration, having consistent [Checkstyle](https://checkstyle.org/) and [SpotBugs](https://spotbugs.github.io/) (successor of FindBugs) definitions in addition to even more Maven pre-configuration.
 
 [Changelog](CHANGELOG.md)  |  [JavaDoc](https://lars-sh.github.io/parent/apidocs)  |  [Generated Reports](https://lars-sh.github.io/parent/project-reports.html)
@@ -600,3 +602,7 @@ The following shows at which point in the Maven lifecycle plugins do their work.
         * maven-install-plugin:install (default-install)
     * deploy
         * maven-deploy-plugin:deploy (default-deploy)
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Flars-sh%2Fparent.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Flars-sh%2Fparent?ref=badge_large)
