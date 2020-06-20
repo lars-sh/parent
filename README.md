@@ -24,7 +24,9 @@ Creating a new project has been simplified as much as possible.
 1. Open the command line of your choice and navigate to the place where you'd like to create a new project folder.
 2. Run the following command to create your new projects folder and a `pom.xml` file pointing at the Parent POM project.
 
-	mvn archetype:generate -DarchetypeGroupId=de.lars-sh -DarchetypeArtifactId=parent-archetype
+```Shell
+mvn archetype:generate -DarchetypeGroupId=de.lars-sh -DarchetypeArtifactId=parent-archetype
+```
 
 3. Your artifacts will be signed digitally. Follow the configuration instructions at [Working with GPG Signatures](https://central.sonatype.org/pages/working-with-pgp-signatures.html) to set up your personal GPG keys.
 4. Change into the new projects directory and run `mvn verify` to test the POM and your infrastructure.
@@ -32,12 +34,14 @@ Creating a new project has been simplified as much as possible.
 ### With an existing Project
 1. Here's a Maven parent example:
 
-	<parent>
-		<groupId>de.lars-sh</groupId>
-		<artifactId>parent</artifactId>
-		<version><!-- TODO --></version>
-		<relativePath></relativePath>
-	</parent>
+```XML
+<parent>
+	<groupId>de.lars-sh</groupId>
+	<artifactId>parent</artifactId>
+	<version><!-- TODO --></version>
+	<relativePath></relativePath>
+</parent>
+```
 
 2. Your artifacts will be signed digitally. Follow the configuration instructions at [Working with GPG Signatures](https://central.sonatype.org/pages/working-with-pgp-signatures.html) to set up your personal GPG keys.
 3. Change into the projects directory and run `mvn verify` to test the POM and your infrastructure.
@@ -77,48 +81,76 @@ Upgrading existing projects to use this parent POM can be done step by step. As 
 #### Dirty
 Skip the below checks and tests.
 
-	-P dirty
+```
+-P dirty
+```
 
 ##### Skip Tests
-	<skipTests>true</skipTests>
+```XML
+<skipTests>true</skipTests>
+```
 
 ##### Skip Checkstyle
-	<checkstyle.skip>true</checkstyle.skip>
+```XML
+<checkstyle.skip>true</checkstyle.skip>
+```
 
 ##### Skip Formatter
-	<formatter.skip>true</formatter.skip>
+```XML
+<formatter.skip>true</formatter.skip>
+```
 
 ##### Skip JaCoCo
-	<jacoco.skip>true</jacoco.skip>
+```XML
+<jacoco.skip>true</jacoco.skip>
+```
 
 ##### Skip CPD
-	<cpd.skip>true</cpd.skip>
+```XML
+<cpd.skip>true</cpd.skip>
+```
 
 ##### Skip PMD
-	<pmd.skip>true</pmd.skip>
+```XML
+<pmd.skip>true</pmd.skip>
+```
 
 ##### Skip SpotBugs
-	<spotbugs.skip>true</spotbugs.skip>
+```XML
+<spotbugs.skip>true</spotbugs.skip>
+```
 
 ##### Skip Dependency Analysis
-	<mdep.analyze.skip>true</mdep.analyze.skip>
+```XML
+<mdep.analyze.skip>true</mdep.analyze.skip>
+```
 
 ##### Skip Tidy
-	<tidy.skip>true</tidy.skip>
+```XML
+<tidy.skip>true</tidy.skip>
+```
 
 #### Dirty Package
 Skip the creation of optional packages and signing.
 
-	-P dirty-package
+```
+-P dirty-package
+```
 
 ##### Skip Sources
-	<maven.source.skip>true</maven.source.skip>
+```XML
+<maven.source.skip>true</maven.source.skip>
+```
 
 ##### Skip JavaDoc
-	<maven.javadoc.skip>true</maven.javadoc.skip>
+```XML
+<maven.javadoc.skip>true</maven.javadoc.skip>
+```
 
 ##### Skip GPG Signing
-	<gpg.skip>true</gpg.skip>
+```XML
+<gpg.skip>true</gpg.skip>
+```
 
 ## Ingredients
 Taking your first steps using this POM is as simple as not using it. However it comes with a lot nicely pre-configured *ingredients*.
@@ -140,12 +172,14 @@ Therefore all non-static fields in your Lombok sources are private and final ins
 
 Project Lombok examples with generated Java code as comment:
 
-	// private final String name;
-	String name;
+```Java
+// private final String name;
+String name;
 
-	// private String age;
-	@NonFinal
-	String age;
+// private String age;
+@NonFinal
+String age;
+```
 
 #### Configure your IDE
 While Project Lombok comes pre-configured for Maven builds you still need to run its installer once to allow your IDE handle Lombok sources beautifully.
@@ -158,8 +192,10 @@ While Project Lombok comes pre-configured for Maven builds you still need to run
 #### Excluding Project Lombok
 In the rare case that you might explicitely avoid using lombok add the following properties to your Maven configuration.
 
-	<parent-pom.create-lombok-config>false</parent-pom.create-lombok-config>
-	<parent-pom.default-sources-folder>java</parent-pom.default-sources-folder>
+```XML
+<parent-pom.create-lombok-config>false</parent-pom.create-lombok-config>
+<parent-pom.default-sources-folder>java</parent-pom.default-sources-folder>
+```
 
 #### The good parts
 Project Lombok consists of many different concepts to avoid boilerplate. The following ones are the most likely to use. See JavaDoc or the [Features page](https://projectlombok.org/features) for further details.
@@ -205,25 +241,29 @@ Use `de.larssh.utils.Finals.lazy(...)` instead.
 
 Usage example:
 
-	// this::expensive is not called on initialization.
-	Supplier<T> cached = Finals.lazy(this::expensive);
-	
-	// Instead this::expensive is called on get.
-	cached.get();
-	
-	// And its result is cached for all following calls of get.
-	cached.get();
+```Java
+// this::expensive is not called on initialization.
+Supplier<T> cached = Finals.lazy(this::expensive);
+
+// Instead this::expensive is called on get.
+cached.get();
+
+// And its result is cached for all following calls of get.
+cached.get();
+```
 
 ##### @SneakyThrows
 Use `de.larssh.utils.SneakyException` instead.
 
 Usage example:
 
-	try {
-		...
-	} catch (ExceptionToBeThrownInASneakyWay e) {
-		throw new SneakyException(e);
-	}
+```Java
+try {
+	...
+} catch (ExceptionToBeThrownInASneakyWay e) {
+	throw new SneakyException(e);
+}
+```
 
 ##### val
 This is a pseudo-type similar to the `var` statement, but meant for local variables making them final. It is prohibited to not be confused with the `var` statement. In addition Eclipse is configued to make local variables final while formatting and saving.
@@ -246,8 +286,10 @@ As we decided to go with optionals any field or argument can be *non-null by def
 
 Therefore create a file called `package-info.java` inside your package and insert the following code. That's all.
 
-	@de.larssh.utils.annotations.NonNullByDefault
-	package TODO;
+```Java
+@de.larssh.utils.annotations.NonNullByDefault
+package ...;
+```
 
 In case you forgot to add that annotation Eclipse shows a warning.
 
@@ -324,39 +366,41 @@ This parent POM either predefines existing Maven Properties or introduces some o
 
 `shade.packageDependenciesPhase` is meant to be used by child POMs to configure if an archive containing dependencies should be created. Values can be `none` (disabled) and `package` (enabled) as this property is used with the <phase> tag. Default value: `none`
 
-	aggregate:                                         true
-	checkstyle.config.location:                        ${project.build.directory}/checkstyle.xml
-	checkstyle.consoleOutput:                          true
-	cpd.excludeFromFailureFile:                        ${project.basedir}/cpd-excludes.csv (if existing)
-	cpd.printFailingErrors:                            true
-	dependency.failOnWarning:                          true
-	enforcer.requiredMavenVersion:                     3.3.9
-	formatter.configFile:                              ${project.build.directory}/formatter.xml
-	formatter.lineEnding:                              LF
-	jar.manifest.addClasspath:                         true
-	jar.manifest.addDefaultImplementationEntries:      true
-	jar.manifest.addDefaultSpecificationEntries:       true
-	jar.manifest.mainClass:                            
-	jar.skipIfEmpty:                                   true
-	javadoc.quiet:                                     true
-	maven.compiler.failOnWarning:                      true
-	maven.compiler.showDeprecation:                    true
-	maven.compiler.showWarnings:                       true
-	maven.compiler.source:                             1.8
-	maven.compiler.target:                             1.8
-	maven.javadoc.failOnWarnings:                      true
-	maven.version.rules:                               file:///${project.build.directory}/versions-ruleset.xml
-	nexus-staging.autoReleaseAfterClose:               true
-	pmd-only.excludeFromFailureFile:                   ${project.basedir}/pmd-excludes.properties
-	pmd-only.printFailingErrors:                       true
-	pmd-only.ruleset:                                  ${project.build.directory}/pmd/pmd-ruleset.xml
-	pmd.analysisCache:                                 true
-	project.build.sourceEncoding:                      UTF-8
-	project.reporting.outputEncoding:                  UTF-8
-	shade.dependencyReducedPomLocation:                ${project.build.directory}/dependency-reduced-pom.xml
-	shade.packageDependenciesPhase:                    none
-	spotbugs.effort:                                   Max
-	spotbugs.threshold:                                Low
+```
+aggregate:                                         true
+checkstyle.config.location:                        ${project.build.directory}/checkstyle.xml
+checkstyle.consoleOutput:                          true
+cpd.excludeFromFailureFile:                        ${project.basedir}/cpd-excludes.csv (if existing)
+cpd.printFailingErrors:                            true
+dependency.failOnWarning:                          true
+enforcer.requiredMavenVersion:                     3.3.9
+formatter.configFile:                              ${project.build.directory}/formatter.xml
+formatter.lineEnding:                              LF
+jar.manifest.addClasspath:                         true
+jar.manifest.addDefaultImplementationEntries:      true
+jar.manifest.addDefaultSpecificationEntries:       true
+jar.manifest.mainClass:                            
+jar.skipIfEmpty:                                   true
+javadoc.quiet:                                     true
+maven.compiler.failOnWarning:                      true
+maven.compiler.showDeprecation:                    true
+maven.compiler.showWarnings:                       true
+maven.compiler.source:                             1.8
+maven.compiler.target:                             1.8
+maven.javadoc.failOnWarnings:                      true
+maven.version.rules:                               file:///${project.build.directory}/versions-ruleset.xml
+nexus-staging.autoReleaseAfterClose:               true
+pmd-only.excludeFromFailureFile:                   ${project.basedir}/pmd-excludes.properties
+pmd-only.printFailingErrors:                       true
+pmd-only.ruleset:                                  ${project.build.directory}/pmd/pmd-ruleset.xml
+pmd.analysisCache:                                 true
+project.build.sourceEncoding:                      UTF-8
+project.reporting.outputEncoding:                  UTF-8
+shade.dependencyReducedPomLocation:                ${project.build.directory}/dependency-reduced-pom.xml
+shade.packageDependenciesPhase:                    none
+spotbugs.effort:                                   Max
+spotbugs.threshold:                                Low
+```
 
 #### Generated Files
 During the build process some project files are generated. Those files and their creation concept are described below.
@@ -409,22 +453,26 @@ As this POM comes with some code check and validation tools you might need to su
 There are two ways to suppress Checkstyle warnings.
 * Either go the recommended way by using the `SuppressWarnings` annotation as shown below.
 
-	@SuppressWarnings("checkstyle:MagicNumber")
+```Java
+@SuppressWarnings("checkstyle:MagicNumber")
+```
 
 * Or create a file called `checkstyle-suppressions.xml`. See [SuppressionXPathFilter](https://checkstyle.org/config_filters.html#SuppressionXpathFilter) and [SuppressionFilter](https://checkstyle.org/config_filters.html#SuppressionFilter) for more information. The following lines show an example suppressions file.
 
-	<?xml version="1.0" encoding="UTF-8"?>
-	<!DOCTYPE suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN" "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
-	<suppressions>
-		<!-- Allow magic numbers inside static initialization blocks -->
-		<suppress-xpath checks="MagicNumberCheck" query="//STATIC_INIT/descendant-or-self::node()" />
-		
-		<!-- Lombok: Suppress specific unused imports -->
-		<suppress checks="UnusedImports" message="^Unused import - lombok\.ToString\.$" />
-		
-		<!-- Unit Tests -->
-		<suppress checks="JavadocPackage" files="^.*[/\\]generated-test-sources[/\\].*$" />
-	</suppressions>
+```XML
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suppressions PUBLIC "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN" "https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd">
+<suppressions>
+	<!-- Allow magic numbers inside static initialization blocks -->
+	<suppress-xpath checks="MagicNumberCheck" query="//STATIC_INIT/descendant-or-self::node()" />
+	
+	<!-- Lombok: Suppress specific unused imports -->
+	<suppress checks="UnusedImports" message="^Unused import - lombok\.ToString\.$" />
+	
+	<!-- Unit Tests -->
+	<suppress checks="JavadocPackage" files="^.*[/\\]generated-test-sources[/\\].*$" />
+</suppressions>
+```
 
 ##### SpotBugs
 More information about SpotBugs warnings can be found at one of the below resources.
@@ -435,15 +483,19 @@ More information about SpotBugs warnings can be found at one of the below resour
 There are two ways to suppress SpotBugs warnings.
 * Either go the recommended way by using the `SuppressFBWarnings` annotation as shown below. Inserting a `justification` information is mandatory.
 
-	@SuppressFBWarnings(value = "REC_CATCH_EXCEPTION", justification = "catching any exception at execution root")
+```Java
+@SuppressFBWarnings(value = "REC_CATCH_EXCEPTION", justification = "catching any exception at execution root")
+```
 
 * Or create a file called `spotbugs-excludes.xml`. See [Filter](https://spotbugs.readthedocs.io/en/stable/filter.html) for more information.
 
 ##### CPD
 Create a file called `cpd-excludes.csv`. See [Violation Exclusions](https://maven.apache.org/plugins/maven-pmd-plugin/examples/violation-exclusions.html) for more information. The following lines show an example file.
 
-	com.example.ClassA,com.example.CopyOfClassA
-	com.example.ClassB,com.example.CopyOfClassB
+```CSV
+com.example.ClassA,com.example.CopyOfClassA
+com.example.ClassB,com.example.CopyOfClassB
+```
 
 Remark: While the notation inside the CPD exclude files seems class-path-alike, matching is based on the scheme `pathOfFileWithDuplicate.replace('/', '.').replace('\\', '.').contains(classPathAlikeExclude)`. Therefore subclasses cannot be matched in an exact manner. Use the files path (replacing slashes with dots) instead.
 
@@ -451,14 +503,20 @@ Remark: While the notation inside the CPD exclude files seems class-path-alike, 
 There are two ways to suppress PMD warnings.
 * Either go the recommended way by using the `java.lang.SuppressWarnings` annotation as shown below.
 
-	@SuppressWarnings("PMD.EmptyCatchBlock")
+```Java
+@SuppressWarnings("PMD.EmptyCatchBlock")
+```
 
-	@SuppressWarnings({ "PMD.EmptyCatchBlock", "PMD.UnusedPrivateField" })
+```Java
+@SuppressWarnings({ "PMD.EmptyCatchBlock", "PMD.UnusedPrivateField" })
+```
 
 * Or create a file called `pmd-excludes.properties`. See [Violation Exclusions](https://maven.apache.org/plugins/maven-pmd-plugin/examples/violation-exclusions.html) for more information. The following lines show an example file.
 
-    com.example.ClassA=UnusedPrivateField
-    com.example.ClassB=EmptyCatchBlock,UnusedPrivateField
+```JavaProperties
+com.example.ClassA=UnusedPrivateField
+com.example.ClassB=EmptyCatchBlock,UnusedPrivateField
+```
 
 ##### JaCoCo
 Use the `de.larssh.utils.annotations.SuppressJacocoGenerated` annotation to indicate that JaCoCo should ignore the annotated type, constructor or method.
@@ -471,11 +529,13 @@ The only runtime dependency (Maven scope: `compile`) used is `de.lars-sh:utils`,
 
 While it's highly dicouraged you might need to remove that dependency in rare cases. Maven does not allow exluding dependencies from parent POMs however you can change the dependencies scope to `test` in such case.
 
-	<dependency>
-		<groupId>de.lars-sh</groupId>
-		<artifactId>utils</artifactId>
-		<scope>test</scope>
-	</dependency>
+```XML
+<dependency>
+	<groupId>de.lars-sh</groupId>
+	<artifactId>utils</artifactId>
+	<scope>test</scope>
+</dependency>
+```
 
 ##### Compile-time Dependencies
 The following dependencies are used at compile-time (Maven scope: `provided`) only:
@@ -524,8 +584,10 @@ By default the Maven output contains no timestamp. This tip describes how to cha
 1. Open `<maven-install-directory>/conf/logging/simplelogger.properties` in your favorite folder.
 2. Add/modify the following properties:
 
-	org.slf4j.simpleLogger.showDateTime=true
-	org.slf4j.simpleLogger.dateTimeFormat=HH:mm:ss,SSS
+```JavaProperties
+org.slf4j.simpleLogger.showDateTime=true
+org.slf4j.simpleLogger.dateTimeFormat=HH:mm:ss,SSS
+```
 
 ### Build Process: Maven Lifecycle
 The following shows at which point in the Maven lifecycle plugins do their work.

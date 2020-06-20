@@ -8,11 +8,13 @@ The package is part of the project [de.lars-sh:parent](../README.md).
 
 In case you want to use this package separately, here's a Maven dependency example:
 
-	<dependency>
-		<groupId>de.lars-sh</groupId>
-		<artifactId>utils-annotations</artifactId>
-		<version><!-- TODO --></version>
-		<scope>provided</scope>
-	</dependency>
+```XML
+<dependency>
+	<groupId>de.lars-sh</groupId>
+	<artifactId>utils-annotations</artifactId>
+	<version><!-- TODO --></version>
+	<scope>provided</scope>
+</dependency>
+```
 
 To learn more about the available annotations check out the JavaDoc.
