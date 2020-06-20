@@ -8,4 +8,6 @@ The package is part of the project [de.lars-sh:parent](../README.md).
 
 To run this archetype in its latest version open your command line and type:
 
-	mvn archetype:generate -DarchetypeGroupId=de.lars-sh -DarchetypeArtifactId=parent-archetype
+```Shell
+mvn archetype:generate -DarchetypeGroupId=de.lars-sh -DarchetypeArtifactId=parent-archetype
+```
