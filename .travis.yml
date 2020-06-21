@@ -7,7 +7,7 @@ cache:
     - $HOME/.m2/repository
 
 install: mvn clean install --activate-profiles dirty,dirty-package --update-snapshots --batch-mode --show-version 2>&1 | tee mvn.txt
-script: >
+script: |
   mvn verify site --define gpg.skip=true --batch-mode --show-version 2>&1 | tee --append mvn.txt
   
   #
