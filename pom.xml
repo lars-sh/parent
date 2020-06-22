@@ -818,18 +818,18 @@ TODO: Easy to understand usage example
 						</configuration>
 					</execution>
 
-					<!-- apidocs -->
+					<!-- apidocs-package-list -->
 					<!-- Avoid warnings and errors about missing apidocs directories when there are no sources to be documented. -->
 					<execution>
-						<id>apidocs</id>
+						<id>apidocs-package-list</id>
 						<phase>initialize</phase>
 						<goals>
 							<goal>run</goal>
 						</goals>
 						<configuration>
 							<target unless="${maven.javadoc.skip}">
-								<mkdir dir="${project.build.directory}/apidocs" />
-								<mkdir dir="${project.build.directory}/testapidocs" />
+								<touch file="${project.build.directory}/apidocs/package-list" mkdirs="true" />
+								<touch file="${project.build.directory}/testapidocs/package-list" mkdirs="true" />
 							</target>
 						</configuration>
 					</execution>
