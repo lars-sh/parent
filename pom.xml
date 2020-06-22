@@ -2202,6 +2202,7 @@ cache:
 		<profile>
 			<id>dirty</id>
 			<properties>
+				<archetype.test.skip>true</archetype.test.skip>
 				<checkstyle.skip>true</checkstyle.skip>
 				<cpd.skip>true</cpd.skip>
 				<formatter.skip>true</formatter.skip>
