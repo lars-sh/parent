@@ -818,6 +818,22 @@ TODO: Easy to understand usage example
 						</configuration>
 					</execution>
 
+					<!-- apidocs-package-list -->
+					<!-- Avoid warnings and errors about missing apidocs directories when there are no sources to be documented. -->
+					<execution>
+						<id>apidocs-package-list</id>
+						<phase>initialize</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<target unless="${maven.javadoc.skip}">
+								<touch file="${project.build.directory}/apidocs/package-list" mkdirs="true" />
+								<touch file="${project.build.directory}/testapidocs/package-list" mkdirs="true" />
+							</target>
+						</configuration>
+					</execution>
+
 					<!-- checkstyle.xml -->
 					<execution>
 						<id>checkstyle-xml</id>
@@ -1947,9 +1963,9 @@ cache:
 							<goal>report</goal>
 						</goals>
 
-						<!-- The "report" goal should be executed before the (optional) "check" 
-							goal to make sure developers have the report to analyze the check results 
-							with. By default the "check" goal is executed at the "verify" phase. The 
+						<!-- The "report" goal should be executed before the (optional) "check"
+							goal to make sure developers have the report to analyze the check results
+							with. By default the "check" goal is executed at the "verify" phase. The
 							"post-integration-test" phase is the last phase before that. -->
 						<phase>post-integration-test</phase>
 					</execution>
@@ -2225,7 +2241,7 @@ cache:
 			</properties>
 		</profile>
 
-		<!-- JDK 9 and later: Do not show warnings as the bootstrap class path 
+		<!-- JDK 9 and later: Do not show warnings as the bootstrap class path
 			does not match the current sources version. -->
 		<profile>
 			<id>fix-jdk9-and-later</id>
@@ -2238,7 +2254,7 @@ cache:
 			</properties>
 		</profile>
 
-		<!-- JDK 11 and later: Suppress SpotBugs bug RCN_REDUNDANT_NULLCHECK_OF_NONNULL_VALUE 
+		<!-- JDK 11 and later: Suppress SpotBugs bug RCN_REDUNDANT_NULLCHECK_OF_NONNULL_VALUE
 			as of https://github.com/spotbugs/spotbugs/issues/756 -->
 		<profile>
 			<id>fix-jdk11-and-later</id>
@@ -2422,7 +2438,7 @@ cache:
 			</build>
 		</profile>
 
-		<!-- Test Delombok: Do not execute the delombok plugin unless a lombok 
+		<!-- Test Delombok: Do not execute the delombok plugin unless a lombok
 			test sources folder exists -->
 		<profile>
 			<id>delombok-test</id>
