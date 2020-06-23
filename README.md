@@ -338,7 +338,7 @@ This parent POM either predefines existing Maven Properties or introduces some o
 
 `parent-pom.create-source-directories` handles if the projects source directories shall be created. Set to `false` if the folder should not be created. Default value is `true`, except for packaging types `pom` and `archetype`.
 
-`parent-pom.create-travis-yml` handles if the projects `.travis.yml` file should be generated. Set to `false` if the file should not be created or overwritten. Default value is `true`, except if the `.travis.yml` file already exists.
+`parent-pom.create-travis-yml` handles if the projects `.travis.yml` file should be generated. Set to `false` if the file should not be created or overwritten. Default value is `true`.
 
 `parent-pom.default-sources-folder` is the name if the default source folders to be created. Default value is `lombok`.
 

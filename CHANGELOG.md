@@ -9,9 +9,11 @@ Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%
 
 ### Added
 * Methods `de.larssh.text.Lines.consecutive(...)`, `de.larssh.text.Lines.grouped(...)` and `de.larssh.text.Lines.lines(...)` with credits to [Olaf Neumann](https://github.com/noxone/commons/tree/develop/commons-io/src/main/java/org/olafneumann/files/LinesReader.java)
+* Travis CI validates its Maven output for previously silent errors and warnings.
 
 ### Changed
 * Improved Maven site generation.
+* Maven property `parent-pom.create-travis-yml` changed to be `true` by default to override existing files
 * Methods of `de.larssh.utils.Resources` force case sensitivity to enforce compatibility between file systems.
 
 ### Removed
