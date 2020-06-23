@@ -18,12 +18,15 @@ script: |
   #
   # Suppressions:
   # - The PMD Maven Plugin tries to perform Java type resolution on POM typed projects.
+  # - The JavaDoc creation on JDK 9 and later log errors about a missing "javadoc-bundle-option" folder.
   #
   if cat mvn.txt \
     | grep --perl-regexp "(?i)\\[(ERR|WARN)" \
     \
     | grep --invert-match --perl-regexp "^\\[WARNING\\] The project parent does not seem to be compiled\\. PMD results might be inaccurate\\.$" \
     | grep --invert-match --perl-regexp "^\\[WARNING\\] Auxclasspath entry .*[/\\\\]parent[/\\\\]target[/\\\\]classes doesn't exist, ignoring it$" \
+    \
+    | grep --invert-match --perl-regexp "^\\[ERROR\\] Error fetching link: .*[/\\\\]target[/\\\\]javadoc-bundle-options\\. Ignored it\\.$" \
   ; then
     exit 1
   fi
