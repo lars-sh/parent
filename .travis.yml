@@ -34,8 +34,6 @@ script: |
     | grep --invert-match --perl-regexp "^\\[WARNING\\] Auxclasspath entry .*[/\\\\]parent[/\\\\]target[/\\\\]classes doesn't exist, ignoring it$" \
     \
     | grep --invert-match --perl-regexp "^\\[ERROR\\] Error fetching link: .*[/\\\\]target[/\\\\]javadoc-bundle-options\\. Ignored it\\.$" \
-    \
-    | grep --invert-match --perl-regexp "Checksum validation failed" \
   ; then
     exit 1
   fi
