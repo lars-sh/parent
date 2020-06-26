@@ -35,8 +35,7 @@ script: |
     \
     | grep --invert-match --perl-regexp "^\\[ERROR\\] Error fetching link: .*[/\\\\]target[/\\\\]javadoc-bundle-options\\. Ignored it\\.$" \
     \
-    | grep --invert-match "[WARNING] Checksum validation failed, expected bd4d05e97ec9dc0a5494412055df8f36bc8dbc27 but is 9eaf096e9f2b4ed7d5f866b09b5121f6eb85963a from google-maven-central for https://maven-central.storage-download.googleapis.com/maven2/com/fasterxml/jackson/core/jackson-annotations/2.10.0/jackson-annotations-2.10.0.pom" \
-    | grep --invert-match "[WARNING] Could not validate integrity of download from https://maven-central.storage-download.googleapis.com/maven2/com/fasterxml/jackson/core/jackson-annotations/2.10.0/jackson-annotations-2.10.0.pom: Checksum validation failed, expected bd4d05e97ec9dc0a5494412055df8f36bc8dbc27 but is 9eaf096e9f2b4ed7d5f866b09b5121f6eb85963a" \
+    | grep --invert-match --perl-regexp "Checksum validation failed" \
   ; then
     exit 1
   fi
