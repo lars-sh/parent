@@ -114,6 +114,7 @@
 		<shade.dependencyReducedPomLocation>${project.build.directory}/dependency-reduced-pom.xml</shade.dependencyReducedPomLocation>
 		<shade.packageDependenciesPhase>none</shade.packageDependenciesPhase>
 		<spotbugs.effort>Max</spotbugs.effort>
+		<spotbugs.excludeFilterFile>${spotbugs.excludeFilterFile.user}${spotbugs.excludeFilterFile.fix-jkd11-and-later}</spotbugs.excludeFilterFile>
 		<spotbugs.threshold>Low</spotbugs.threshold>
 
 		<!-- Versions: Dependencies -->
@@ -604,7 +605,7 @@
 										<equals arg1="${project.packaging}" arg2="pom" />
 									</or>
 								</condition>
-								<condition property="spotbugs.excludeFilterFile" value="${project.basedir}/spotbugs-excludes.xml" else="">
+								<condition property="spotbugs.excludeFilterFile.user" value="${project.basedir}/spotbugs-excludes.xml" else="">
 									<available file="${project.basedir}/spotbugs-excludes.xml" />
 								</condition>
 								<condition property="cpd.excludeFromFailureFile" value="${project.basedir}/cpd-excludes.csv" else="">
@@ -2259,8 +2260,37 @@ cache:
 				<jdk>(11,)</jdk>
 			</activation>
 			<properties>
-				<!--<spotbugs.skip>true</spotbugs.skip>-->
+				<spotbugs.excludeFilterFile.fix-jdk11-and-later>${project.build.directory}/spotbugs-excludes-fix-jdk11-and-later.xml</spotbugs.excludeFilterFile.fix-jdk11-and-later>
 			</properties>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>fix-jdk11-and-later</id>
+								<phase>initialize</phase>
+								<goals>
+									<goal>run</goal>
+								</goals>
+								<configuration>
+									<target>
+										<!-- spotbugs-excludes-fix-jdk11-and-later.xml -->
+										<echo level="info" message="Update spotbugs-excludes-fix-jdk11-and-later.xml" />
+										<echoxml file="${project.build.directory}/spotbugs-excludes-fix-jdk11-and-later.xml">
+											<FindBugsFilter>
+												<Match>
+													<Bug pattern="RCN_REDUNDANT_NULLCHECK_OF_NONNULL_VALUE" />
+												</Match>
+											</FindBugsFilter>
+										</echoxml>
+									</target>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
 		</profile>
 
 		<!-- Eclipse only: Add lombok sources to class path -->
