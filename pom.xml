@@ -1906,14 +1906,41 @@ TODO: Easy to understand usage example
 								<echo file="${project.basedir}/.travis.yml"><![CDATA[language: java
 jdk:
   - openjdk8
-  - openjdk11
-
-install: skip
-script: mvn install -Dgpg.skip=true --batch-mode --show-version --update-snapshots
-
+  - openjdk14
 cache:
   directories:
     - $HOME/.m2/repository
+
+install: mvn clean install --activate-profiles dirty,dirty-package --update-snapshots --batch-mode --show-version 2>&1 | tee mvn.txt
+script: |
+  mvn verify site --define gpg.skip=true --batch-mode --show-version 2>&1 | tee --append mvn.txt
+  
+  #
+  # The below if statement checks the Maven output for warning and error logs.
+  #
+  # How to suppress warnings: Add lines similar to the below one.
+  # > | grep --invert-match "..." \
+  #
+  # Suppressions:
+  # - ...
+  #
+  if cat mvn.txt \
+    | grep --perl-regexp "(?i)\\[(ERR|WARN)" \
+  ; then
+    exit 1
+  fi
+
+after_success:
+  - cp ./CHANGELOG.md ./target/site/CHANGELOG.md
+  - cp ./README.md ./target/site/README.md
+  - rm ./target/site/index.html
+deploy:
+  provider: pages
+  local_dir: ./target/site
+  edge: true
+  on:
+    branch: master
+    jdk: openjdk8
 ]]></echo>
 							</target>
 						</configuration>
