@@ -2259,7 +2259,7 @@ cache:
 				<jdk>(11,)</jdk>
 			</activation>
 			<properties>
-				<spotbugs.skip>true</spotbugs.skip>
+				<!--<spotbugs.skip>true</spotbugs.skip>-->
 			</properties>
 		</profile>
 
