@@ -7,6 +7,13 @@ jdk:
   - openjdk12
   - openjdk13
   - openjdk14
+  - oraclejdk8
+  - oraclejdk9
+  - oraclejdk10
+  - oraclejdk11
+  - oraclejdk12
+  - oraclejdk13
+  - oraclejdk14
 cache:
   directories:
     - $HOME/.m2/repository
