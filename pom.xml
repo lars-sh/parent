@@ -115,6 +115,8 @@
 		<shade.packageDependenciesPhase>none</shade.packageDependenciesPhase>
 		<spotbugs.effort>Max</spotbugs.effort>
 		<spotbugs.excludeFilterFile>${spotbugs.excludeFilterFile.user}${spotbugs.excludeFilterFile.fix-jdk11-and-later}</spotbugs.excludeFilterFile>
+		<spotbugs.excludeFilterFile.fix-jdk11-and-later></spotbugs.excludeFilterFile.fix-jdk11-and-later>
+		<!-- <spotbugs.excludeFilterFile.user></spotbugs.excludeFilterFile.user> -->
 		<spotbugs.threshold>Low</spotbugs.threshold>
 
 		<!-- Versions: Dependencies -->
