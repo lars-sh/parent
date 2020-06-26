@@ -114,7 +114,7 @@
 		<shade.dependencyReducedPomLocation>${project.build.directory}/dependency-reduced-pom.xml</shade.dependencyReducedPomLocation>
 		<shade.packageDependenciesPhase>none</shade.packageDependenciesPhase>
 		<spotbugs.effort>Max</spotbugs.effort>
-		<spotbugs.excludeFilterFile>${spotbugs.excludeFilterFile.user}${spotbugs.excludeFilterFile.fix-jkd11-and-later}</spotbugs.excludeFilterFile>
+		<spotbugs.excludeFilterFile>${spotbugs.excludeFilterFile.user}${spotbugs.excludeFilterFile.fix-jdk11-and-later}</spotbugs.excludeFilterFile>
 		<spotbugs.threshold>Low</spotbugs.threshold>
 
 		<!-- Versions: Dependencies -->
@@ -2275,7 +2275,7 @@ cache:
 				<jdk>(11,)</jdk>
 			</activation>
 			<properties>
-				<spotbugs.excludeFilterFile.fix-jdk11-and-later>${project.build.directory}/spotbugs-excludes-fix-jdk11-and-later.xml</spotbugs.excludeFilterFile.fix-jdk11-and-later>
+				<spotbugs.excludeFilterFile.fix-jdk11-and-later>,${project.build.directory}/spotbugs-excludes-fix-jdk11-and-later.xml</spotbugs.excludeFilterFile.fix-jdk11-and-later>
 			</properties>
 			<build>
 				<plugins>
