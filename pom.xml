@@ -66,7 +66,7 @@
 		<!-- <parent-pom.create-lombok-config>true</parent-pom.create-lombok-config> -->
 		<!-- <parent-pom.create-readme-md>true</parent-pom.create-readme-md> -->
 		<!-- <parent-pom.create-source-directories>true</parent-pom.create-source-directories> -->
-		<parent-pom.create-travis-yml>true</parent-pom.create-travis-yml>
+		<!-- <parent-pom.create-travis-yml>true</parent-pom.create-travis-yml> -->
 		<parent-pom.default-sources-folder>lombok</parent-pom.default-sources-folder>
 		<parent-pom.github.organization>lars-sh</parent-pom.github.organization>
 		<parent-pom.github.project>parent</parent-pom.github.project>
@@ -600,6 +600,15 @@
 										<equals arg1="${project.packaging}" arg2="maven-archetype" />
 										<equals arg1="${project.packaging}" arg2="pom" />
 									</or>
+								</condition>
+								<condition property="parent-pom.create-travis-yml" value="false" else="true">
+									<and>
+										<equals arg1="${project.groupId}" arg2="de.lars-sh" />
+										<or>
+											<equals arg1="${project.artifactId}" arg2="parent" />
+											<equals arg1="${project.artifactId}" arg2="root" />
+										</or>
+									</and>
 								</condition>
 								<condition property="parent-pom.create-lombok-config" value="false" else="true">
 									<or>
