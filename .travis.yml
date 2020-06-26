@@ -69,7 +69,7 @@ after_success:
   - cp ./utils-test/README.md ./target/site/utils-test/README.md
   - rm ./target/site/utils-test/index.html
 deploy:
-  provider: pages:git
+  provider: pages
   local_dir: ./target/site
   edge: true
   on:
