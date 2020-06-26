@@ -607,7 +607,7 @@
 										<equals arg1="${project.packaging}" arg2="pom" />
 									</or>
 								</condition>
-								<condition property="spotbugs.excludeFilterFile.user" value="${project.basedir}/spotbugs-excludes.xml" else="">
+								<condition property="spotbugs.excludeFilterFile.user" value="${project.basedir}/spotbugs-excludes.xml," else="">
 									<available file="${project.basedir}/spotbugs-excludes.xml" />
 								</condition>
 								<condition property="cpd.excludeFromFailureFile" value="${project.basedir}/cpd-excludes.csv" else="">
@@ -2277,7 +2277,7 @@ cache:
 				<jdk>(11,)</jdk>
 			</activation>
 			<properties>
-				<spotbugs.excludeFilterFile.fix-jdk11-and-later>,${project.build.directory}/spotbugs-excludes-fix-jdk11-and-later.xml</spotbugs.excludeFilterFile.fix-jdk11-and-later>
+				<spotbugs.excludeFilterFile.fix-jdk11-and-later>${project.build.directory}/spotbugs-excludes-fix-jdk11-and-later.xml,</spotbugs.excludeFilterFile.fix-jdk11-and-later>
 			</properties>
 			<build>
 				<plugins>
