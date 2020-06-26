@@ -2305,6 +2305,21 @@ deploy:
 			</properties>
 		</profile>
 
+		<!-- JDK 11, Versions Maven Plugin: Fails with:
+			- Could not validate integrity of download from [...]: Checksum
+			  validation failed, expected [...] but is [...] from [...] for [...]
+			- repository metadata for: 'artifact [...]' could not be retrieved
+			  from repository: [...] due to an error: Transfer failed for [...] -->
+		<profile>
+			<id>fix-jdk11</id>
+			<activation>
+				<jdk>11</jdk>
+			</activation>
+			<properties>
+				<versions.skip>true</versions.skip>
+			</properties>
+		</profile>
+
 		<!-- JDK 11 and later: Suppress SpotBugs bug RCN_REDUNDANT_NULLCHECK_OF_NONNULL_VALUE
 			as of https://github.com/spotbugs/spotbugs/issues/756 -->
 		<profile>
