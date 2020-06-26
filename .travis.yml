@@ -7,8 +7,8 @@ jdk:
   - openjdk12
   - openjdk13
   - openjdk14
-  - openjdk15
-  - openjdk16
+#  - openjdk15 # Missing lombok compatibility
+#  - openjdk16 # Missing lombok compatibility
 cache:
   directories:
     - $HOME/.m2/repository
