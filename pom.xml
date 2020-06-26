@@ -154,7 +154,7 @@
 		<maven-release-plugin.version>2.5.3</maven-release-plugin.version>
 		<maven-resources-plugin.version>3.1.0</maven-resources-plugin.version>
 		<maven-shade-plugin.version>3.2.4</maven-shade-plugin.version>
-		<maven-site-plugin.version>3.9.0</maven-site-plugin.version>
+		<maven-site-plugin.version>3.9.1</maven-site-plugin.version>
 		<maven-source-plugin.version>3.2.1</maven-source-plugin.version>
 		<maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
 		<maven-surefire-report-plugin.version>2.22.2</maven-surefire-report-plugin.version>
@@ -171,8 +171,8 @@
 		<lombok.version>1.18.12</lombok.version>
 		<org-eclipse-jdt-core.version>3.21.0</org-eclipse-jdt-core.version>
 		<pmd.version>6.24.0</pmd.version>
-		<spotbugs.version>4.0.4</spotbugs.version>
-		<spotbugs-annotations.version>4.0.5</spotbugs-annotations.version>
+		<spotbugs.version>4.0.6</spotbugs.version>
+		<spotbugs-annotations.version>4.0.6</spotbugs-annotations.version>
 
 		<!-- Versions: Reporting Skins -->
 		<maven-fluido-skin.version>1.9</maven-fluido-skin.version>
