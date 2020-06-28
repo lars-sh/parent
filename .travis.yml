@@ -25,13 +25,15 @@ script: |
 
 after_success:
   - rm ./target/site/index.html
+  - cp ./CHANGELOG.md ./target/site/CHANGELOG.md
+  - cp ./README.md ./target/site/README.md
+  
+  # Modules
+  - cp -R ./parent/target/site ./target/site/parent
+  - cp -R ./parent-archetype/target/site ./target/site/parent-archetype
   - cp -R ./utils/target/site ./target/site/utils
   - cp -R ./utils-annotations/target/site ./target/site/utils-annotations
   - cp -R ./utils-test/target/site ./target/site/utils-test
-  - cp -R ./parent/target/site ./target/site/parent
-  - cp -R ./parent-archetype/target/site ./target/site/parent-archetype
-  - cp ./CHANGELOG.md ./target/site/CHANGELOG.md
-  - cp ./README.md ./target/site/README.md
 deploy:
   provider: pages
   local_dir: ./target/site
