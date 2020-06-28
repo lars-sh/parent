@@ -1,67 +1,41 @@
 language: java
 jdk:
   - openjdk8
+  - openjdk9
+  - openjdk10
+  - openjdk11
+  - openjdk12
+  - openjdk13
   - openjdk14
 cache:
   directories:
     - $HOME/.m2/repository
 
-install: mvn clean install --activate-profiles dirty,dirty-package --update-snapshots --batch-mode --show-version 2>&1 | tee mvn.txt
+install: mvn clean install --activate-profiles dirty,dirty-package --update-snapshots --batch-mode --show-version 2>&1 | tee mvnout.txt
 script: |
-  mvn verify site --define gpg.skip=true --batch-mode --show-version 2>&1 | tee --append mvn.txt
+  mvn verify site --define gpg.skip=true --batch-mode --show-version 2>&1 | tee --append mvnout.txt
   
-  #
-  # The below if statement checks the Maven output for warning and error logs.
-  #
-  # How to suppress warnings: Add lines similar to the below one.
-  # > | grep --invert-match "..." \
-  #
-  # Suppressions:
-  # - The PMD Maven Plugin tries to perform Java type resolution on POM typed projects.
-  # - The JavaDoc creation on JDK 9 and later log errors about a missing "javadoc-bundle-option" folder.
-  #
-  if cat mvn.txt \
-    | grep --perl-regexp "(?i)\\[(ERR|WARN)" \
-    \
-    | grep --invert-match --perl-regexp "^\\[WARNING\\] The project parent does not seem to be compiled\\. PMD results might be inaccurate\\.$" \
-    | grep --invert-match --perl-regexp "^\\[WARNING\\] Auxclasspath entry .*[/\\\\]parent[/\\\\]target[/\\\\]classes doesn't exist, ignoring it$" \
-    \
-    | grep --invert-match --perl-regexp "^\\[ERROR\\] Error fetching link: .*[/\\\\]target[/\\\\]javadoc-bundle-options\\. Ignored it\\.$" \
-  ; then
+  mvnout=`cat mvnout.txt | grep --perl-regexp "(?i)\\[(ERR|WARN)" | ./target/travis-parent-suppressions.sh`
+  if [ -n "${mvnout}" ]; then
+    echo ""
+    echo "The Maven output contains the following unknown warnings and errors:"
+    echo "${mvnout}"
     exit 1
   fi
 
 after_success:
+  - rm ./target/site/index.html
   - cp ./CHANGELOG.md ./target/site/CHANGELOG.md
   - cp ./README.md ./target/site/README.md
-  - rm ./target/site/index.html
-# Parent POM
+  
+  # Modules
   - cp -R ./parent/target/site ./target/site/parent
-  - cp ./parent/CHANGELOG.md ./target/site/parent/CHANGELOG.md
-  - cp ./parent/README.md ./target/site/parent/README.md
-  - rm ./target/site/parent/index.html
-# Archetype for Parent POM
   - cp -R ./parent-archetype/target/site ./target/site/parent-archetype
-  - cp ./parent-archetype/CHANGELOG.md ./target/site/parent-archetype/CHANGELOG.md
-  - cp ./parent-archetype/README.md ./target/site/parent-archetype/README.md
-  - rm ./target/site/parent-archetype/index.html
-# Utilities
   - cp -R ./utils/target/site ./target/site/utils
-  - cp ./utils/CHANGELOG.md ./target/site/utils/CHANGELOG.md
-  - cp ./utils/README.md ./target/site/utils/README.md
-  - rm ./target/site/utils/index.html
-# Utility Annotations
   - cp -R ./utils-annotations/target/site ./target/site/utils-annotations
-  - cp ./utils-annotations/CHANGELOG.md ./target/site/utils-annotations/CHANGELOG.md
-  - cp ./utils-annotations/README.md ./target/site/utils-annotations/README.md
-  - rm ./target/site/utils-annotations/index.html
-# Utilities for Tests
   - cp -R ./utils-test/target/site ./target/site/utils-test
-  - cp ./utils-test/CHANGELOG.md ./target/site/utils-test/CHANGELOG.md
-  - cp ./utils-test/README.md ./target/site/utils-test/README.md
-  - rm ./target/site/utils-test/index.html
 deploy:
-  provider: pages:git
+  provider: pages
   local_dir: ./target/site
   edge: true
   on:

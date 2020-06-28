@@ -18,7 +18,7 @@
 		<menu name="Overview">
 			<item name="Introduction" href="index.html" />
 			<item name="Changelog" href="../CHANGELOG.html" />
-			<item name="JavaDoc" href="apidocs" />
+			<item name="JavaDoc" href="../apidocs" />
 		</menu>
 		<menu ref="modules" />
 		<menu ref="reports" />
