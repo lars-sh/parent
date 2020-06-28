@@ -7,34 +7,19 @@ jdk:
   - openjdk12
   - openjdk13
   - openjdk14
-#  - openjdk15 # Missing lombok 1.18.12 compatibility
-#  - openjdk16 # Missing lombok 1.18.12 compatibility
 cache:
   directories:
     - $HOME/.m2/repository
 
-install: mvn clean install --activate-profiles dirty,dirty-package --update-snapshots --batch-mode --show-version 2>&1 | tee mvn.txt
+install: mvn clean install --activate-profiles dirty,dirty-package --update-snapshots --batch-mode --show-version 2>&1 | tee mvnout.txt
 script: |
-  mvn verify site --define gpg.skip=true --batch-mode --show-version 2>&1 | tee --append mvn.txt
+  mvn verify site --define gpg.skip=true --batch-mode --show-version 2>&1 | tee --append mvnout.txt
   
-  #
-  # The below if statement checks the Maven output for warning and error logs.
-  #
-  # How to suppress warnings: Add lines similar to the below one.
-  # > | grep --invert-match "..." \
-  #
-  # Suppressions:
-  # - The PMD Maven Plugin tries to perform Java type resolution on POM typed projects.
-  # - The JavaDoc creation on JDK 9 and later log errors about a missing "javadoc-bundle-option" folder.
-  #
-  if cat mvn.txt \
-    | grep --perl-regexp "(?i)\\[(ERR|WARN)" \
-    \
-    | grep --invert-match --perl-regexp "^\\[WARNING\\] The project parent does not seem to be compiled\\. PMD results might be inaccurate\\.$" \
-    | grep --invert-match --perl-regexp "^\\[WARNING\\] Auxclasspath entry .*[/\\\\]parent[/\\\\]target[/\\\\]classes doesn't exist, ignoring it$" \
-    \
-    | grep --invert-match --perl-regexp "^\\[ERROR\\] Error fetching link: .*[/\\\\]target[/\\\\]javadoc-bundle-options\\. Ignored it\\.$" \
-  ; then
+  mvnout=`cat mvnout.txt | grep --perl-regexp "(?i)\\[(ERR|WARN)" | ./target/travis-parent-suppressions.sh`
+  if [ -n "${mvnout}" ]; then
+    echo ""
+    echo "The Maven output contains the following unknown warnings and errors:"
+    echo "${mvnout}"
     exit 1
   fi
 
