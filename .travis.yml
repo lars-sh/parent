@@ -24,34 +24,14 @@ script: |
   fi
 
 after_success:
+  - rm ./target/site/index.html
+  - cp -R ./utils/target/site ./target/site/utils
+  - cp -R ./utils-annotations/target/site ./target/site/utils-annotations
+  - cp -R ./utils-test/target/site ./target/site/utils-test
+  - cp -R ./parent/target/site ./target/site/parent
+  - cp -R ./parent-archetype/target/site ./target/site/parent-archetype
   - cp ./CHANGELOG.md ./target/site/CHANGELOG.md
   - cp ./README.md ./target/site/README.md
-  - rm ./target/site/index.html
-# Parent POM
-  - cp -R ./parent/target/site ./target/site/parent
-  - cp ./parent/CHANGELOG.md ./target/site/parent/CHANGELOG.md
-  - cp ./parent/README.md ./target/site/parent/README.md
-  - rm ./target/site/parent/index.html
-# Archetype for Parent POM
-  - cp -R ./parent-archetype/target/site ./target/site/parent-archetype
-  - cp ./parent-archetype/CHANGELOG.md ./target/site/parent-archetype/CHANGELOG.md
-  - cp ./parent-archetype/README.md ./target/site/parent-archetype/README.md
-  - rm ./target/site/parent-archetype/index.html
-# Utilities
-  - cp -R ./utils/target/site ./target/site/utils
-  - cp ./utils/CHANGELOG.md ./target/site/utils/CHANGELOG.md
-  - cp ./utils/README.md ./target/site/utils/README.md
-  - rm ./target/site/utils/index.html
-# Utility Annotations
-  - cp -R ./utils-annotations/target/site ./target/site/utils-annotations
-  - cp ./utils-annotations/CHANGELOG.md ./target/site/utils-annotations/CHANGELOG.md
-  - cp ./utils-annotations/README.md ./target/site/utils-annotations/README.md
-  - rm ./target/site/utils-annotations/index.html
-# Utilities for Tests
-  - cp -R ./utils-test/target/site ./target/site/utils-test
-  - cp ./utils-test/CHANGELOG.md ./target/site/utils-test/CHANGELOG.md
-  - cp ./utils-test/README.md ./target/site/utils-test/README.md
-  - rm ./target/site/utils-test/index.html
 deploy:
   provider: pages
   local_dir: ./target/site
