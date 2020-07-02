@@ -10,7 +10,7 @@ Used technologies and main focus are:
 * Checkstyle and formatter for clean code
 * SpotBugs, PMD and CPD for safe code and following best practices
 * Eclipse (and partly IntelliJ IDEA) integration to see warnings as easy as possible
-* Until further notice we aim at using Java 8.
+* Until further notice we aim at code compatibility with Java 8.
 
 Read below descriptions and tips to get started. In case you run into problems [open an issue](https://github.com/lars-sh/parent/issues), in case you'd like to help with this document or one of the submodules feel free to [create pull requests](https://github.com/lars-sh/parent/pulls). There is still much that can be done.
 
