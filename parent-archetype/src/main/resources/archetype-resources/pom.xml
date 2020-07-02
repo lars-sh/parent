@@ -6,6 +6,7 @@
 		<groupId>de.lars-sh</groupId>
 		<artifactId>parent</artifactId>
 		<version>0.9.8-SNAPSHOT</version>
+		<relativePath></relativePath>
 	</parent>
 
 	<groupId>${groupId}</groupId>

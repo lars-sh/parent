@@ -23,6 +23,7 @@ Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%
 * Checkstyle check XFinalsConstant
 * Changed the dependency scope of the utility annotations to `provided`.
 * Changed the dependency scope of the utilities for tests to `test`.
+* Relative Path of the Parent POM inside Parent Archetype
 
 <a name="0.9.7"></a>
 
