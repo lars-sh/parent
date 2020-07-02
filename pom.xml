@@ -1902,8 +1902,8 @@ Download at TODO
 						<configuration>
 							<target if="${parent-pom.create-readme-md}">
 								<echo level="info" message="Create README.md" />
-								<echo file="${project.basedir}/README.md"><![CDATA[# TODO: Project name
-TODO: Short introduction
+								<echo file="${project.basedir}/README.md"><![CDATA[# ${project.name}
+${project.description}
 
 ## Getting started
 TODO: Easy to understand usage example
