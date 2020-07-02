@@ -15,6 +15,7 @@ Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%
 * Improved Maven site generation.
 * Maven property `parent-pom.create-travis-yml` changed to be `true` by default to override existing files
 * Methods of `de.larssh.utils.Resources` force case sensitivity to enforce compatibility between file systems.
+* Activate spotbugs for JDK 11 and later
 
 ### Removed
 * Method `Strings.lines(String)` (use `Lines.lines(String)` instead)
@@ -23,6 +24,8 @@ Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%
 * Checkstyle check XFinalsConstant
 * Changed the dependency scope of the utility annotations to `provided`.
 * Changed the dependency scope of the utilities for tests to `test`.
+* Compatibility with OpenJDK 9 to 13
+* Relative Path of the Parent POM inside Parent Archetype
 
 <a name="0.9.7"></a>
 

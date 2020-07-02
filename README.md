@@ -10,12 +10,12 @@ Used technologies and main focus are:
 * Checkstyle and formatter for clean code
 * SpotBugs, PMD and CPD for safe code and following best practices
 * Eclipse (and partly IntelliJ IDEA) integration to see warnings as easy as possible
-* Until further notice we aim at using Java 8.
+* Until further notice we aim at code compatibility with Java 8.
 
 Read below descriptions and tips to get started. In case you run into problems [open an issue](https://github.com/lars-sh/parent/issues), in case you'd like to help with this document or one of the submodules feel free to [create pull requests](https://github.com/lars-sh/parent/pulls). There is still much that can be done.
 
 ## Preconditions
-This POM is made for development using Maven and Eclipse Photon or later by handling some of its settings to comply with the projects settings. However you can use this POM together with any other IDE for sure.
+This POM is made for development using Maven and Eclipse by handling some of its settings to comply with the projects settings. However you can use this POM together with any other IDE (such as IntelliJ IDEA) for sure.
 
 ## Getting started
 ### With a new Project
@@ -49,21 +49,29 @@ mvn archetype:generate -DarchetypeGroupId=de.lars-sh -DarchetypeArtifactId=paren
 Remember to **restart Eclipse** to apply changes to project settings.
 
 ### Import into Eclipse
-1. If not done earlier, install Project Lombok into Eclipse [using the official installer](https://projectlombok.org/setup/eclipse).
+1. If not done earlier, install Project Lombok into Eclipse [using the official installer](https://projectlombok.org/setup/eclipse) by calling `mvn de.lars-sh:jar-runner-maven-plugin:run -Dartifact=org.projectlombok:lombok:LATEST` on the command line.
+
 2. Run `mvn initialize -P update-eclipse` via command line to initialize the Eclipse settings.
 3. In Eclipse choose `File`, `Import...`, `Existing Maven Projects` and press `Next`.
 4. Point the root directory to your newly created folder and press `Finish`.
 
 #### Solve Problems
-* In case of a problem update the Maven project to synchronize the Eclipse configuration with your `pom.xml`.
-* Wait until your workspace is built. In case it does not build automatically, remember trigger it!
+* In case of a problem update the Maven project (`Alt + F5`) to synchronize the Eclipse configuration with your `pom.xml`.
+* Wait until your workspace is built. In case it does not build automatically, remember to trigger it!
 
 ### Open with IntelliJ IDEA
 1. If not done earlier, [install the Lombok plugin](https://projectlombok.org/setup/intellij).
 2. Open your project inside IntelliJ IDEA.
 3. Set the `Generated sources folders` setting to `Don't detect`.
 
+#### Solve Problems
+* In case of a problem reimport the Maven project to synchronize the IDEA settings with your `pom.xml`.
+* In case of a "duplicate classes" error rightclick the folder `target/generated-sources/delombok` and select `Mark Directory as`, `Unmark as Sources Root` to remove it from the class path.
+
 #### Code Formatter
+There are multiple ways to set up the formatter as defined by this Parent POM. You might use the built-in formatter as described below or take the [Eclipse Code Formatter plugin](https://plugins.jetbrains.com/plugin/6546) (recommended).
+
+##### Internal Code Formatter
 1. Choose `File`, `Settings...`
 2. Open the tree element `Editor`, `Code Style`, `Java`.
 3. Click the gear beneath the `Scheme` selection and choose `Import Scheme`, `Eclipse XML Profile`.
@@ -71,9 +79,8 @@ Remember to **restart Eclipse** to apply changes to project settings.
 
 Remark: When saving the formatter in IntelliJ IDEA you might get `Cannot Save Settings`. In that case some Eclipse formatter settings are not compatible with IntelliJ IDEA and need to be handled manually. Therefore go through each of the tabs and fix the boxes highlighted with a red border.
 
-#### Solve Problems
-* In case of a problem reimport the Maven project to synchronize the IDEA settings with your `pom.xml`.
-* In case of a "duplicate classes" error rightclick the folder `target/generated-sources/delombok` and select `Mark Directory as`, `Unmark as Sources Root` to remove it from the class path.
+#### Save Actions
+Even some of the predefined Save Actions can be configured inside IntelliJ IDEA through the [Save Actions plugin](https://plugins.jetbrains.com/plugin/7642).
 
 ### Skip Validations
 Upgrading existing projects to use this parent POM can be done step by step. As this parent specifies some strict rules, some validations might need to be skipped until others pass. The following sections describe the corresponding Maven Properties.
@@ -88,6 +95,11 @@ Skip the below checks and tests.
 ##### Skip Tests
 ```XML
 <skipTests>true</skipTests>
+```
+
+For projects of packaging type `maven-archetype` tests can be skipped using:
+```XML
+<archetype.test.skip>true</archetype.test.skip>
 ```
 
 ##### Skip Checkstyle
@@ -183,7 +195,7 @@ String age;
 
 #### Configure your IDE
 While Project Lombok comes pre-configured for Maven builds you still need to run its installer once to allow your IDE handle Lombok sources beautifully.
-1. Therefore execute  `mvn de.lars-sh:jar-runner-maven-plugin:run -Dartifact=org.projectlombok:lombok:LATEST`.
+1. Therefore execute `mvn de.lars-sh:jar-runner-maven-plugin:run -Dartifact=org.projectlombok:lombok:LATEST`.
 2. A window pops up explaining the installer. The installer might appear damaged on high-DPI monitors and buttons might not be readable. Therefore follow the hints in parenthesis below.
 3. In case you do not see your IDE, choose `Specify location...` (bottom left) and select the IDEs path.
 4. Check the IDE and click `Install / Update` (bottom right, just above `Quit Installer`).
@@ -266,10 +278,10 @@ try {
 ```
 
 ##### val
-This is a pseudo-type similar to the `var` statement, but meant for local variables making them final. It is prohibited to not be confused with the `var` statement. In addition Eclipse is configued to make local variables final while formatting and saving.
+This is a pseudo-type similar to the `var` statement, but meant for local variables making them final. It is prohibited to not be confused with the `var` statement. In addition Eclipse is configured to make local variables final while formatting and saving.
 
 ##### var
-Use the `var` statement supported by Java 9 and upper.
+Use the `var` statement supported by Java 9 and later.
 
 ### Null Values
 When Java was introduced it came with null values, which can be compared to a reference into no-where. It's often used for missing values or simply as additional or special value. Though null values need to be handled by developers, leading to `NullPointerException`s whenever they are not.
@@ -303,7 +315,7 @@ Inside your favorite IDE feel free to use its Maven-compatible build infrastrucu
 
 `mvn install` compiles and packages your project. Afterwards the packaged artifacts are installed to your local repository. Use `mvn verify` instead to compile and package without installing or `mvn compile` to compile only.
 
-`mvn site` runs additional reports on your project. Open `target/site/index.html` to check its results.
+`mvn site` runs additional reports on your project. Open `target/site/index.html` to check its results afterwards.
 
 #### JAR Generation
 Wherever possible the following four JAR files are packaged:
@@ -324,6 +336,8 @@ The following profiles can be activated by hand to handle some rare cases.
 `-P dirty` skips code checks and tests
 
 `-P dirty-package` skips the creation of optional packages
+
+Additional profiles might be activated based on the build environment to guarantee compatibility.
 
 #### Maven Properties
 This parent POM either predefines existing Maven Properties or introduces some own.
@@ -405,13 +419,13 @@ spotbugs.threshold:                                Low
 #### Generated Files
 During the build process some project files are generated. Those files and their creation concept are described below.
 
-`.gitignore` tells [Git](https://git-scm.com/) which files to ignore. It is overwritten at every run. We plan to change this behaviour in future releases.
+`.gitignore` tells [Git](https://git-scm.com/) which files to ignore. It is overwritten at every run to keep it up-to-date. Use the Maven property `parent-pom.create-gitignore` to suppress writing this file.
 
-`.travis.yml` tells [Travis](https://travis-ci.org/) which kind of project to build. It is created only if it does not exist.
+`.travis.yml` tells [Travis](https://travis-ci.org/) which kind of project to build. It is overwritten at every run to keep it up-to-date. Use the Maven property `parent-pom.create-travis-yml` to suppress writing this file.
 
-`CHANGELOG.md` and `README.md` are *your* places. Insert your changes, a short project introduction, getting started information and user documentation. Templates are created only if the file does not exist.
+`CHANGELOG.md` and `README.md` are *your* places. Insert your changes, a short project introduction, getting started information and user documentation. Templates are created only if the files do not exist, yet.
 
-`LICENSE.txt` is **not** created. You need to create one yourself! See the section about JAR Generation above for more information.
+`LICENSE.txt` is **not** created. You need to create one yourself! See the section about JAR Generation for more information.
 
 ##### Project Lombok
 Project Lombok sources are meant to be used inside `lombok` folders only. Its usage is restricted to prevent you from using functionality that might lead to problems. Outside Project Lombok is prohibited at all.
@@ -440,11 +454,17 @@ Our Eclipse Integration mostly synchronizes settings of Maven plugins with your 
 ##### Build Process
 The following files are generated for the build process itself. You should not need to know them for your regular work.
 
-`target/pmd/pmd-ruleset.xml` contains the PMD rule set. It is overwritten at the Maven goal `initialize`.
-
 `target/checkstyle.xml` contains the Checkstyle rules. It is overwritten at the Maven goal `initialize`.
 
 `target/formatter.xml` contains the formatting rules. It is overwritten at the Maven goal `initialize`.
+
+`target/pmd/pmd-ruleset.xml` contains the PMD rule set. It is overwritten at the Maven goal `initialize`.
+
+`target/spotbugs-excludes-fix-jdk11-and-later.xml` contains Spotbugs eclusions for compatibility with JDK11 and later. It is overwritten at the Maven goal `initialize` while executing Maven with Java 11 and later.
+
+`target/travis-suppressions-parent.sh` contains a script that filters the Maven errors and warnings output when processed by Travis CI based on a list of global suppressions. It is overwritten at the Maven goal `initialize`.
+
+`target/versions-ruleset.xml` contains a rule set used by the Maven Versions Plugin to ignore pre-release versions. It is overwritten at the Maven goal `initialize`.
 
 #### Suppress Warnings
 As this POM comes with some code check and validation tools you might need to suppress false-positives.
@@ -521,6 +541,25 @@ com.example.ClassB=EmptyCatchBlock,UnusedPrivateField
 ##### JaCoCo
 Use the `de.larssh.utils.annotations.SuppressJacocoGenerated` annotation to indicate that JaCoCo should ignore the annotated type, constructor or method.
 
+##### Travis CI
+Create a file called `travis-suppressions.sh` that filters the Maven errors and warnings output on `stdin` when processed by Travis CI. The following lines show an example file.
+
+```Shell
+# Suppress lines that contain the word "first"
+function suppressFirst() {
+	cat < /dev/stdin | grep --invert-match "first"
+}
+
+# Suppress lines that contain the word "second"
+function suppressSeconf() {
+	cat < /dev/stdin | grep --invert-match "second"
+}
+
+cat < /dev/stdin \
+| suppressFirst \
+| suppressSecond
+```
+
 #### Dependencies
 We aim at using up-to-date dependencies and Maven plugins and minimizing runtime dependencies while still increasing safety and development ease.
 
@@ -548,6 +587,7 @@ The following dependencies are used at compile-time (Maven scope: `provided`) on
 To simplify writing unit tests the following dependencies are available for unit tests.
 
 * `de.lars-sh:utils-test`
+* [AssertJ](https://assertj.github.io/doc/) (fluent assertion API, `org.assertj:assertj-core`)
 * [jOOR](https://github.com/jOOQ/jOOR) (fluent reflection API, `org.jooq:joor-java-8`)
 * [JUnit](https://junit.org/) (`org.junit.jupiter:junt-jupiter-api`, `org.junit.jupiter:junt-jupiter-engine`, `org.junit.platform:junt-platform-runner`)
 * [Mockito](https://site.mockito.org/) (`org.mockito:mockito-core`)
@@ -588,77 +628,3 @@ By default the Maven output contains no timestamp. This tip describes how to cha
 org.slf4j.simpleLogger.showDateTime=true
 org.slf4j.simpleLogger.dateTimeFormat=HH:mm:ss,SSS
 ```
-
-### Build Process: Maven Lifecycle
-The following shows at which point in the Maven lifecycle plugins do their work.
-
-* clean
-    * pre-clean
-    * clean
-        * maven-clean-plugin:clean (default-clean)
-    * post-clean
-* default
-    * validate
-        * maven-enforcer-plugin:enforce (default)
-        * maven-tidy-plugin:check (default)
-    * initialize
-        * maven-antrun-plugin:run (gitignore-exists)
-        * maven-antrun-plugin:run (gitignore)
-        * maven-antrun-plugin:run (project-changelog-md-exists)
-        * maven-antrun-plugin:run (changelog-md)
-        * maven-antrun-plugin:run (project-readme-md-exists)
-        * maven-antrun-plugin:run (readme-md)
-        * maven-antrun-plugin:run (source-directories)
-        * maven-antrun-plugin:run (lombok-config)
-        * maven-antrun-plugin:run (checkstyle-xml)
-        * maven-antrun-plugin:run (formatter-xml)
-        * maven-antrun-plugin:run (pmd-ruleset-xml)
-        * maven-antrun-plugin:run (project-travis-yml-exists)
-        * maven-antrun-plugin:run (travis-ci)
-        * jacoco-maven-plugin:prepare-agent (default)
-    * generate-sources
-        * lombok-maven-plugin:delombok (default)
-    * process-sources
-        * maven-checkstyle-plugin:check (default)
-        * maven-formatter-plugin:validate (default)
-    * generate-resources
-    * process-resources
-        * maven-resources-plugin:resources (default-resources)
-    * compile
-        * maven-compiler-plugin:compile (default-compile)
-    * process-classes
-    * generate-test-sources
-        * lombok-maven-plugin:testDelombok (default)
-    * process-test-sources
-    * generate-test-resources
-    * process-test-resources
-        * maven-resources-plugin:testResources (default-testResources)
-    * test-compile
-        * maven-compiler-plugin:testCompile (default-testCompile)
-    * process-test-classes
-    * test
-        * maven-surefire-plugin:test (default-test)
-    * prepare-package
-    * package
-        * maven-jar-plugin:jar (default-jar)
-        * maven-jar-plugin:test-jar (default)
-        * maven-source-plugin:jar-no-fork (default)
-        * maven-source-plugin:test-jar-no-fork (default)
-        * maven-javadoc-plugin:jar (default)
-        * maven-javadoc-plugin:test-jar (default)
-    * pre-integration-test
-        * jacoco-maven-plugin:report (default)
-    * integration-test
-    * post-integration-test
-    * verify
-        * maven-pmd-plugin:cpd (default)
-        * maven-pmd-plugin:cpd-check (default)
-        * maven-pmd-plugin:pmd (default)
-        * maven-pmd-plugin:check (default)
-        * maven-spotbugs-plugin:check (default)
-        * maven-dependency-plugin:analyze-only (default)
-        * maven-gpg-plugin:sign (default)
-    * install
-        * maven-install-plugin:install (default-install)
-    * deploy
-        * maven-deploy-plugin:deploy (default-deploy)
