@@ -165,7 +165,7 @@
 
 		<!-- Versions: Plugin Dependencies -->
 		<apache-ant.version>1.10.8</apache-ant.version>
-		<checkstyle.version>8.33</checkstyle.version>
+		<checkstyle.version>8.34</checkstyle.version>
 		<sb-contrib.version>7.4.7</sb-contrib.version>
 		<findsecbugs.version>1.10.1</findsecbugs.version>
 		<lombok.version>1.18.12</lombok.version>
