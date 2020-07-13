@@ -12,6 +12,11 @@ import lombok.experimental.UtilityClass;
 @UtilityClass
 public class Patterns {
 	/**
+	 * Pattern that matches every character to be escaped inside a pattern.
+	 */
+	private static final Pattern QUOTE_PATTERN = Pattern.compile("[\\\\\\[\\].^$?*+{}|()]");
+
+	/**
 	 * Attempts to find the first subsequence of the input sequence that matches the
 	 * given pattern.
 	 *
@@ -46,5 +51,29 @@ public class Patterns {
 	public static Optional<Matcher> matches(final Pattern pattern, final CharSequence input) {
 		final Matcher matcher = pattern.matcher(input);
 		return matcher.matches() ? Optional.of(matcher) : Optional.empty();
+	}
+
+	/**
+	 * Returns a pattern string matching exactly {@code input}.
+	 *
+	 * <p>
+	 * This method escapes character-wise, while the original
+	 * {@link Pattern#quote(String)} uses escapes sequences using {@code \Q} and
+	 * {@code \E}.
+	 *
+	 * <p>
+	 * <b>Example:</b> {@code C:\test.txt} results in {@code C:\\test\.txt}.
+	 *
+	 * @param input the string to be literalized
+	 * @return the literal string replacement
+	 */
+	public static String quote(final CharSequence input) {
+		return Strings.replaceAll(input, QUOTE_PATTERN, "\\\\$0")
+				.replace("\t", "\\t")
+				.replace("\n", "\\n")
+				.replace("\r", "\\r")
+				.replace("\f", "\\f")
+				.replace("\u0007", "\\a")
+				.replace("\u001b", "\\e");
 	}
 }
