@@ -46,7 +46,7 @@ public class Maps {
 	 * @param <V> type of the maps value
 	 * @return a map builder
 	 */
-	public <K, V> Builder<Map<K, V>, K, V> builder() {
+	public <K, V> Builder<K, V> builder() {
 		return builder(new HashMap<>());
 	}
 
@@ -84,7 +84,7 @@ public class Maps {
 	 * @param map the map to be wrapped
 	 * @return a map builder wrapping {@code map}
 	 */
-	public <M extends Map<K, V>, K, V> Builder<M, K, V> builder(final M map) {
+	public <K, V> Builder<K, V> builder(final Map<K, V> map) {
 		return new Builder<>(map);
 	}
 
@@ -135,18 +135,18 @@ public class Maps {
 	 * @param <V> type of the maps value
 	 */
 	@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
-	public static class Builder<M extends Map<K, V>, K, V> {
+	public static class Builder<K, V> {
 		/**
 		 * The wrapped map
 		 */
-		M map;
+		Map<K, V> map;
 
 		/**
 		 * Check out {@link Map#clear()}.
 		 *
 		 * @return this builder
 		 */
-		public Builder<M, K, V> clear() {
+		public Builder<K, V> clear() {
 			get().clear();
 			return this;
 		}
@@ -159,7 +159,7 @@ public class Maps {
 		 * @param remappingFunction the function to compute a value
 		 * @return this builder
 		 */
-		public Builder<M, K, V> compute(@Nullable final K key,
+		public Builder<K, V> compute(@Nullable final K key,
 				final BiFunction<? super K, ? super V, ? extends V> remappingFunction) {
 			get().compute(key, remappingFunction);
 			return this;
@@ -172,7 +172,7 @@ public class Maps {
 		 * @param mappingFunction the function to compute a value
 		 * @return this builder
 		 */
-		public Builder<M, K, V> computeIfAbsent(@Nullable final K key,
+		public Builder<K, V> computeIfAbsent(@Nullable final K key,
 				final Function<? super K, ? extends V> mappingFunction) {
 			get().computeIfAbsent(key, mappingFunction);
 			return this;
@@ -186,7 +186,7 @@ public class Maps {
 		 * @param remappingFunction the function to compute a value
 		 * @return this builder
 		 */
-		public Builder<M, K, V> computeIfPresent(@Nullable final K key,
+		public Builder<K, V> computeIfPresent(@Nullable final K key,
 				final BiFunction<? super K, ? super V, ? extends V> remappingFunction) {
 			get().computeIfPresent(key, remappingFunction);
 			return this;
@@ -197,7 +197,7 @@ public class Maps {
 		 *
 		 * @return the map
 		 */
-		public M get() {
+		public Map<K, V> get() {
 			return map;
 		}
 
@@ -213,7 +213,7 @@ public class Maps {
 		 * @param remappingFunction the function to recompute a value if present
 		 * @return this builder
 		 */
-		public Builder<M, K, V> merge(@Nullable final K key,
+		public Builder<K, V> merge(@Nullable final K key,
 				@Nullable final V value,
 				final BiFunction<? super V, ? super V, ? extends V> remappingFunction) {
 			get().merge(key, value, remappingFunction);
@@ -227,7 +227,7 @@ public class Maps {
 		 * @param value value to be associated with the specified key
 		 * @return this builder
 		 */
-		public Builder<M, K, V> put(@Nullable final K key, @Nullable final V value) {
+		public Builder<K, V> put(@Nullable final K key, @Nullable final V value) {
 			get().put(key, value);
 			return this;
 		}
@@ -238,7 +238,7 @@ public class Maps {
 		 * @param map mappings to be stored in this map
 		 * @return this builder
 		 */
-		public Builder<M, K, V> putAll(final Map<? extends K, ? extends V> map) {
+		public Builder<K, V> putAll(final Map<? extends K, ? extends V> map) {
 			get().putAll(map);
 			return this;
 		}
@@ -250,7 +250,7 @@ public class Maps {
 		 * @param value value to be associated with the specified key
 		 * @return this builder
 		 */
-		public Builder<M, K, V> putIfAbsent(@Nullable final K key, @Nullable final V value) {
+		public Builder<K, V> putIfAbsent(@Nullable final K key, @Nullable final V value) {
 			get().putIfAbsent(key, value);
 			return this;
 		}
@@ -261,7 +261,7 @@ public class Maps {
 		 * @param key key whose mapping is to be removed from the map
 		 * @return this builder
 		 */
-		public Builder<M, K, V> remove(@Nullable final K key) {
+		public Builder<K, V> remove(@Nullable final K key) {
 			get().remove(key);
 			return this;
 		}
@@ -273,7 +273,7 @@ public class Maps {
 		 * @param value value expected to be associated with the specified key
 		 * @return this builder
 		 */
-		public Builder<M, K, V> remove(@Nullable final K key, @Nullable final V value) {
+		public Builder<K, V> remove(@Nullable final K key, @Nullable final V value) {
 			get().remove(key, value);
 			return this;
 		}
@@ -285,7 +285,7 @@ public class Maps {
 		 * @param value value to be associated with the specified key
 		 * @return this builder
 		 */
-		public Builder<M, K, V> replace(@Nullable final K key, @Nullable final V value) {
+		public Builder<K, V> replace(@Nullable final K key, @Nullable final V value) {
 			get().replace(key, value);
 			return this;
 		}
@@ -298,7 +298,7 @@ public class Maps {
 		 * @param newValue value to be associated with the specified key
 		 * @return this builder
 		 */
-		public Builder<M, K, V> replace(@Nullable final K key, @Nullable final V oldValue, @Nullable final V newValue) {
+		public Builder<K, V> replace(@Nullable final K key, @Nullable final V oldValue, @Nullable final V newValue) {
 			get().replace(key, oldValue, newValue);
 			return this;
 		}
@@ -309,7 +309,7 @@ public class Maps {
 		 * @param function the function to apply to each entry
 		 * @return this builder
 		 */
-		public Builder<M, K, V> replaceAll(final BiFunction<? super K, ? super V, ? extends V> function) {
+		public Builder<K, V> replaceAll(final BiFunction<? super K, ? super V, ? extends V> function) {
 			get().replaceAll(function);
 			return this;
 		}

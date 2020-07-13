@@ -11,7 +11,7 @@ Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%
 * Method `de.larssh.utils.text.Patterns.quote(input)`
 
 ### Changed
-TODO
+* Method `Maps.Builder#get()` is not typed any longer to simplify generics of `Maps.Builder`
 
 ### Removed
 TODO
