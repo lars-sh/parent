@@ -1517,6 +1517,7 @@
 											<!-- See separate rule with different properties -->
 											<exclude name="AvoidReassigningLoopVariables" />
 											<exclude name="OneDeclarationPerLine" />
+											<exclude name="UnusedAssignment" />
 
 											<!-- Bad code style for non-null code -->
 											<exclude name="LiteralsFirstInComparisons" />
@@ -1538,6 +1539,13 @@
 										<rule ref="category/java/bestpractices.xml/OneDeclarationPerLine">
 											<properties>
 												<property name="strictMode" value="true" />
+											</properties>
+										</rule>
+
+										<!-- Check for unused prefix increment -->
+										<rule ref="category/java/bestpractices.xml/UnusedAssignment">
+											<properties>
+												<property name="checkUnusedPrefixIncrement" value="true" />
 											</properties>
 										</rule>
 
