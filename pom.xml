@@ -170,7 +170,7 @@
 		<findsecbugs.version>1.10.1</findsecbugs.version>
 		<lombok.version>1.18.12</lombok.version>
 		<org-eclipse-jdt-core.version>3.22.0</org-eclipse-jdt-core.version>
-		<pmd.version>6.25.0</pmd.version>
+		<pmd.version>6.26.0</pmd.version>
 		<spotbugs.version>4.0.6</spotbugs.version>
 		<spotbugs-annotations.version>4.0.6</spotbugs-annotations.version>
 
@@ -1517,6 +1517,7 @@
 											<!-- See separate rule with different properties -->
 											<exclude name="AvoidReassigningLoopVariables" />
 											<exclude name="OneDeclarationPerLine" />
+											<exclude name="UnusedAssignment" />
 
 											<!-- Bad code style for non-null code -->
 											<exclude name="LiteralsFirstInComparisons" />
@@ -1538,6 +1539,13 @@
 										<rule ref="category/java/bestpractices.xml/OneDeclarationPerLine">
 											<properties>
 												<property name="strictMode" value="true" />
+											</properties>
+										</rule>
+
+										<!-- Check for unused prefix increment -->
+										<rule ref="category/java/bestpractices.xml/UnusedAssignment">
+											<properties>
+												<property name="checkUnusedPrefixIncrement" value="true" />
 											</properties>
 										</rule>
 
@@ -1655,7 +1663,6 @@
 										</rule>
 
 										<rule ref="category/java/performance.xml">
-											<exclude name="AvoidInstantiatingObjectsInLoops" />
 											<exclude name="ConsecutiveAppendsShouldReuse" />
 
 											<!-- Bad code style: Do not depend on compiler defaults -->

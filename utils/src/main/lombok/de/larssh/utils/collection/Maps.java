@@ -78,7 +78,6 @@ public class Maps {
 	 *         .get();
 	 * </pre>
 	 *
-	 * @param <M> type of the map
 	 * @param <K> type of the maps key
 	 * @param <V> type of the maps value
 	 * @param map the map to be wrapped
@@ -130,7 +129,6 @@ public class Maps {
 	 * Check out {@link Maps#builder()} and {@link Maps#builder(Map)} for more
 	 * information.
 	 *
-	 * @param <M> type of the map
 	 * @param <K> type of the maps key
 	 * @param <V> type of the maps value
 	 */
