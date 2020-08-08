@@ -12,9 +12,6 @@ cache:
     - $HOME/.m2/repository
 
 install: |
-  env
-  exit 1
-  
   set -o errexit -o pipefail
   mvn clean install --activate-profiles dirty,dirty-package --update-snapshots --batch-mode --show-version 2>&1 | tee mvnout.txt
 script: |

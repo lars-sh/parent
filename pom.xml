@@ -1697,7 +1697,7 @@ function suppressPmdWarnings() {
 
 # JDK9 and later: The JavaDoc creation logs errors about missing "javadoc-bundle-option" folders.
 function suppressJdk9AndLaterWarnings() {
-	if [ "${JDK_VERSION}" -ge 9 ]; then
+	if [ ${JDK_VERSION} -ge 9 ]; then
 		cat < /dev/stdin \
 		| grep --invert-match --perl-regexp "^\\[ERROR\\] Error fetching link: .*[/\\\\]target[/\\\\]javadoc-bundle-options\\. Ignored it\\.$"
 	else
@@ -1707,13 +1707,15 @@ function suppressJdk9AndLaterWarnings() {
 
 # JDK 11
 function suppressJdk11Warnings() {
-	if [ "${JDK_VERSION}" = 11 ]; then
+	if [ ${JDK_VERSION} = 11 ]; then
 		cat < /dev/stdin \
 		| grep --invert-match --perl-regexp "^\\[WARNING\\] .*Checksum validation failed.*$"
 	else
 		cat < /dev/stdin
 	fi
 }
+
+JDK_VERSION=`echo ${TRAVIS_JDK_VERSION} | grep --only-matching --perl-regexp \\\\d+`
 
 cat < /dev/stdin \
 | suppressUserDefined \
