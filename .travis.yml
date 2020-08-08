@@ -12,7 +12,7 @@ cache:
     - $HOME/.m2/repository
 
 install: |
-  echo "JDK_VERSION: '${JDK_VERSION}'"
+  env
   exit 1
   
   set -o errexit -o pipefail
