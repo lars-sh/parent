@@ -12,6 +12,9 @@ cache:
     - $HOME/.m2/repository
 
 install: |
+  echo "JDK_VERSION: '${JDK_VERSION}'"
+  exit 1
+  
   set -o errexit -o pipefail
   mvn clean install --activate-profiles dirty,dirty-package --update-snapshots --batch-mode --show-version 2>&1 | tee mvnout.txt
 script: |
