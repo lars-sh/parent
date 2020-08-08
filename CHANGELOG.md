@@ -13,11 +13,8 @@ Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%
 ### Changed
 * Method `Maps.Builder#get()` is not typed any longer to simplify generics of `Maps.Builder`
 
-### Removed
-TODO
-
 ### Fixed
-TODO
+* Travis didn't fail, even though Maven failed building
 
 <a name="0.9.8"></a>
 
