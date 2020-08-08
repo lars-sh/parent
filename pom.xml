@@ -1705,23 +1705,12 @@ function suppressJdk9AndLaterWarnings() {
 	fi
 }
 
-# JDK 11
-function suppressJdk11Warnings() {
-	if [ ${JDK_VERSION} = 11 ]; then
-		cat < /dev/stdin \
-		| grep --invert-match --perl-regexp "^\\[WARNING\\] .*Checksum validation failed.*$"
-	else
-		cat < /dev/stdin
-	fi
-}
-
 JDK_VERSION=`echo ${TRAVIS_JDK_VERSION} | grep --only-matching --perl-regexp \\\\d+`
 
 cat < /dev/stdin \
 | suppressUserDefined \
 | suppressPmdWarnings \
-| suppressJdk9AndLaterWarnings \
-| suppressJdk11Warnings
+| suppressJdk9AndLaterWarnings
 ]]></echo>
 
 								<!-- versions-ruleset.xml -->
