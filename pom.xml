@@ -1695,9 +1695,22 @@ function suppressPmdWarnings() {
 	| grep --invert-match --perl-regexp "^\\[WARNING\\] Auxclasspath entry .*[/\\\\]parent[/\\\\]target[/\\\\]classes doesn't exist, ignoring it$"
 }
 
+# JDK14: The JavaDoc creation logs errors about missing "javadoc-bundle-option" folders.
+function suppressJdk14Warnings() {
+	if [ ${JDK_VERSION} -ge 14 ]; then
+		cat < /dev/stdin \
+		| grep --invert-match --perl-regexp "^\\[ERROR\\] Error fetching link: .*[/\\\\]target[/\\\\]javadoc-bundle-options\\. Ignored it\\.$"
+	else
+		cat < /dev/stdin
+	fi
+}
+
+JDK_VERSION=`echo ${TRAVIS_JDK_VERSION} | grep --only-matching --perl-regexp \\\\d+`
+
 cat < /dev/stdin \
 | suppressUserDefined \
-| suppressPmdWarnings
+| suppressPmdWarnings \
+| suppressJdk14Warnings
 ]]></echo>
 
 								<!-- versions-ruleset.xml -->
