@@ -15,6 +15,7 @@ Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%
 
 ### Fixed
 * Travis didn't fail, even though Maven failed building
+* PMD checks are no longer processed in aggregate mode unless building reports.
 
 <a name="0.9.8"></a>
 
