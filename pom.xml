@@ -1965,7 +1965,9 @@ TODO: Easy to understand usage example
 								<echo level="info" message="Update .travis.yml" />
 								<echo file="${project.basedir}/.travis.yml"><![CDATA[language: java
 jdk:
+  # Supported versions as of https://en.wikipedia.org/wiki/Java_version_history
   - openjdk8
+  - openjdk11
   - openjdk14
 cache:
   directories:
