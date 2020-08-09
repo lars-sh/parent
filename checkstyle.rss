@@ -46,7 +46,7 @@ under the License.
           <tbody>
                           <tr>
                 <td>
-                  <a href="https://lars-sh.github.io/parent//checkstyle.html#utils-annotations..cache.formatter-maven-cache.properties">utils-annotations/.cache/formatter-maven-cache.properties</a>
+                  <a href="https://lars-sh.github.io/parent//checkstyle.html#utils-test.target.formatter-cache.formatter-maven-cache.properties">utils-test/target/formatter-cache/formatter-maven-cache.properties</a>
                 </td>
                 <td>
                   0
@@ -61,6 +61,20 @@ under the License.
                           <tr>
                 <td>
                   <a href="https://lars-sh.github.io/parent//checkstyle.html#parent-archetype.target.maven-archiver.pom.properties">parent-archetype/target/maven-archiver/pom.properties</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://lars-sh.github.io/parent//checkstyle.html#utils-annotations.target.formatter-cache.formatter-maven-cache.properties">utils-annotations/target/formatter-cache/formatter-maven-cache.properties</a>
                 </td>
                 <td>
                   0
@@ -103,20 +117,6 @@ under the License.
                           <tr>
                 <td>
                   <a href="https://lars-sh.github.io/parent//checkstyle.html#utils-test.target.maven-archiver.pom.properties">utils-test/target/maven-archiver/pom.properties</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://lars-sh.github.io/parent//checkstyle.html#utils..cache.formatter-maven-cache.properties">utils/.cache/formatter-maven-cache.properties</a>
                 </td>
                 <td>
                   0
@@ -186,20 +186,6 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://lars-sh.github.io/parent//checkstyle.html#utils-test..cache.formatter-maven-cache.properties">utils-test/.cache/formatter-maven-cache.properties</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="https://lars-sh.github.io/parent//checkstyle.html#parent-archetype.target.test-classes.projects.it-basic.archetype.properties">parent-archetype/target/test-classes/projects/it-basic/archetype.properties</a>
                 </td>
                 <td>
@@ -229,6 +215,20 @@ under the License.
                           <tr>
                 <td>
                   <a href="https://lars-sh.github.io/parent//checkstyle.html#parent-archetype.target.test-classes.projects.it-basic.project.parent-archetype-test.target.maven-archiver.pom.properties">parent-archetype/target/test-classes/projects/it-basic/project/parent-archetype-test/target/maven-archiver/pom.properties</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://lars-sh.github.io/parent//checkstyle.html#utils.target.formatter-cache.formatter-maven-cache.properties">utils/target/formatter-cache/formatter-maven-cache.properties</a>
                 </td>
                 <td>
                   0

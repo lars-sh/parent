@@ -384,10 +384,12 @@ This parent POM either predefines existing Maven Properties or introduces some o
 aggregate:                                         true
 checkstyle.config.location:                        ${project.build.directory}/checkstyle.xml
 checkstyle.consoleOutput:                          true
+cpd.aggregate:                                     false
 cpd.excludeFromFailureFile:                        ${project.basedir}/cpd-excludes.csv (if existing)
 cpd.printFailingErrors:                            true
 dependency.failOnWarning:                          true
 enforcer.requiredMavenVersion:                     3.3.9
+formatter.cachedir:                                ${project.build.directory}/formatter-cache
 formatter.configFile:                              ${project.build.directory}/formatter.xml
 formatter.lineEnding:                              LF
 jar.manifest.addClasspath:                         true
@@ -404,9 +406,10 @@ maven.compiler.target:                             1.8
 maven.javadoc.failOnWarnings:                      true
 maven.version.rules:                               file:///${project.build.directory}/versions-ruleset.xml
 nexus-staging.autoReleaseAfterClose:               true
+pmd.aggregate:                                     false
 pmd-only.excludeFromFailureFile:                   ${project.basedir}/pmd-excludes.properties
 pmd-only.printFailingErrors:                       true
-pmd-only.ruleset:                                  ${project.build.directory}/pmd/pmd-ruleset.xml
+pmd-only.ruleset:                                  ${project.build.directory}/pmd-ruleset.xml
 pmd.analysisCache:                                 true
 project.build.sourceEncoding:                      UTF-8
 project.reporting.outputEncoding:                  UTF-8
