@@ -389,6 +389,7 @@ cpd.excludeFromFailureFile:                        ${project.basedir}/cpd-exclud
 cpd.printFailingErrors:                            true
 dependency.failOnWarning:                          true
 enforcer.requiredMavenVersion:                     3.3.9
+formatter.cachedir:                                ${project.build.directory}/formatter-cache
 formatter.configFile:                              ${project.build.directory}/formatter.xml
 formatter.lineEnding:                              LF
 jar.manifest.addClasspath:                         true
@@ -408,7 +409,7 @@ nexus-staging.autoReleaseAfterClose:               true
 pmd.aggregate:                                     false
 pmd-only.excludeFromFailureFile:                   ${project.basedir}/pmd-excludes.properties
 pmd-only.printFailingErrors:                       true
-pmd-only.ruleset:                                  ${project.build.directory}/pmd/pmd-ruleset.xml
+pmd-only.ruleset:                                  ${project.build.directory}/pmd-ruleset.xml
 pmd.analysisCache:                                 true
 project.build.sourceEncoding:                      UTF-8
 project.reporting.outputEncoding:                  UTF-8

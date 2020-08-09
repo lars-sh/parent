@@ -90,6 +90,7 @@
 		<cpd.printFailingErrors>true</cpd.printFailingErrors>
 		<dependency.failOnWarning>true</dependency.failOnWarning>
 		<enforcer.requiredMavenVersion>3.3.9</enforcer.requiredMavenVersion>
+		<formatter.cachedir>${project.build.directory}/formatter-cache</formatter.cachedir>
 		<formatter.configFile>${project.build.directory}/formatter.xml</formatter.configFile>
 		<formatter.lineEnding>LF</formatter.lineEnding>
 		<jar.manifest.addClasspath>true</jar.manifest.addClasspath>
@@ -109,7 +110,7 @@
 		<pmd.aggregate>false</pmd.aggregate>
 		<pmd-only.excludeFromFailureFile>${project.basedir}/pmd-excludes.properties</pmd-only.excludeFromFailureFile>
 		<pmd-only.printFailingErrors>true</pmd-only.printFailingErrors>
-		<pmd-only.ruleset>${project.build.directory}/pmd/pmd-ruleset.xml</pmd-only.ruleset>
+		<pmd-only.ruleset>${project.build.directory}/pmd-ruleset.xml</pmd-only.ruleset>
 		<pmd.analysisCache>true</pmd.analysisCache>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -497,6 +498,7 @@
 						</dependency>
 					</dependencies>
 					<configuration>
+						<cachedir>${formatter.cachedir}</cachedir>
 						<configFile>${formatter.configFile}</configFile>
 						<directories>
 							<directory>${project.basedir}/src/main/java</directory>
@@ -1509,9 +1511,8 @@
 								</echoxml>
 
 								<!-- pmd-ruleset.xml -->
-								<mkdir dir="${project.build.directory}/pmd" />
 								<echo level="info" message="Update pmd-ruleset.xml" />
-								<echoxml file="${project.build.directory}/pmd/pmd-ruleset.xml">
+								<echoxml file="${project.build.directory}/pmd-ruleset.xml">
 									<ruleset name="de.lars-sh">
 										<description></description>
 
