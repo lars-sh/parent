@@ -168,6 +168,7 @@ public class Resources {
 	 * @param clazz the class
 	 * @return either the classes class loader or the system class loader
 	 */
+	@SuppressWarnings("PMD.UseProperClassLoader")
 	private static ClassLoader getClassLoader(final Class<?> clazz) {
 		return Nullables.orElseGet(clazz.getClassLoader(), ClassLoader::getSystemClassLoader);
 	}

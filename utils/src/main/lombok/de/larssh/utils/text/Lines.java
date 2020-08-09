@@ -309,6 +309,7 @@ public class Lines {
 			/** {@inheritDoc} */
 			@Nullable
 			@Override
+			@SuppressWarnings("PMD.AvoidInstantiatingObjectsInLoops")
 			protected Entry<K, List<V>> computeNext() {
 				while (lines.hasNext()) {
 					final V line = lines.next();
