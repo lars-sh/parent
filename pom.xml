@@ -1697,9 +1697,9 @@ function suppressPmdWarnings() {
 	| grep --invert-match --perl-regexp "^\\[WARNING\\] Auxclasspath entry .*[/\\\\]parent[/\\\\]target[/\\\\]classes doesn't exist, ignoring it$"
 }
 
-# JDK9 and later: The JavaDoc creation logs errors about missing "javadoc-bundle-option" folders.
-function suppressJdk9AndLaterWarnings() {
-	if [ "${JDK_VERSION}" -ge 9 ]; then
+# JDK14: The JavaDoc creation logs errors about missing "javadoc-bundle-option" folders.
+function suppressJdk14Warnings() {
+	if [ ${JDK_VERSION} -ge 14 ]; then
 		cat < /dev/stdin \
 		| grep --invert-match --perl-regexp "^\\[ERROR\\] Error fetching link: .*[/\\\\]target[/\\\\]javadoc-bundle-options\\. Ignored it\\.$"
 	else
@@ -1707,21 +1707,12 @@ function suppressJdk9AndLaterWarnings() {
 	fi
 }
 
-# JDK 11
-function suppressJdk11Warnings() {
-	if [ "${JDK_VERSION}" = 11 ]; then
-		cat < /dev/stdin \
-		| grep --invert-match --perl-regexp "^\\[WARNING\\] .*Checksum validation failed.*$"
-	else
-		cat < /dev/stdin
-	fi
-}
+JDK_VERSION=`echo ${TRAVIS_JDK_VERSION} | grep --only-matching --perl-regexp \\\\d+`
 
 cat < /dev/stdin \
 | suppressUserDefined \
 | suppressPmdWarnings \
-| suppressJdk9AndLaterWarnings \
-| suppressJdk11Warnings
+| suppressJdk14Warnings
 ]]></echo>
 
 								<!-- versions-ruleset.xml -->
@@ -1976,7 +1967,9 @@ TODO: Easy to understand usage example
 								<echo level="info" message="Update .travis.yml" />
 								<echo file="${project.basedir}/.travis.yml"><![CDATA[language: java
 jdk:
+  # Supported versions as of https://en.wikipedia.org/wiki/Java_version_history
   - openjdk8
+  - openjdk11
   - openjdk14
 cache:
   directories:
@@ -1988,14 +1981,20 @@ install: |
 script: |
   set -o errexit -o pipefail
   mvn verify site --define gpg.skip=true --batch-mode --show-version 2>&1 | tee --append mvnout.txt
+  set +o errexit +o pipefail
   
+  echo ""
+  echo "[INFO] Checking for Maven warnings and errors..."
   chmod +x ./target/travis-suppressions-parent.sh
   mvnout=`cat mvnout.txt | grep --perl-regexp "(?i)\\[(ERR|WARN)" | ./target/travis-suppressions-parent.sh`
+  
   if [ -n "${mvnout}" ]; then
-    echo ""
-    echo "The Maven output contains the following unknown warnings and errors:"
+    echo "[WARNING] The Maven output contains the following unknown warnings and errors:"
     echo "${mvnout}"
     exit 1
+  else
+    echo "[INFO] No unknown warnings and errors found."
+    echo "${mvnout}"
   fi
 
 after_success:

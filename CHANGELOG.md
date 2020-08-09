@@ -12,6 +12,7 @@ Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%
 
 ### Changed
 * Method `Maps.Builder#get()` is not typed any longer to simplify generics of `Maps.Builder`
+* Updated the list of JDKs to be used by Travis CI based on the list of currently supported JDKs.
 
 ### Fixed
 * Travis didn't fail, even though Maven failed building
