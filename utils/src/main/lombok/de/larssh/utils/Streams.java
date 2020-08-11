@@ -25,7 +25,7 @@ public class Streams {
 	 * @return the output stream of entries with index and input stream value
 	 * @throws ArithmeticException Stream index overflow
 	 */
-	public static final <T> Stream<Entry<Integer, T>> indexed(final Stream<T> stream) {
+	public static <T> Stream<Entry<Integer, T>> indexed(final Stream<T> stream) {
 		final AtomicInteger nextIndex = new AtomicInteger(0);
 		return stream.map(value -> {
 			final int index = nextIndex.getAndUpdate(i -> {
@@ -52,7 +52,7 @@ public class Streams {
 	 *         value
 	 * @throws ArithmeticException Stream index overflow
 	 */
-	public static final <T> Stream<Entry<Long, T>> indexedLong(final Stream<T> stream) {
+	public static <T> Stream<Entry<Long, T>> indexedLong(final Stream<T> stream) {
 		final AtomicLong nextIndex = new AtomicLong(0);
 		return stream.map(value -> {
 			final long index = nextIndex.getAndUpdate(i -> {
