@@ -18,6 +18,7 @@ Parent POM/utils,de.larssh.utils,Resources,338,0,16,0,55,0,33,0,25,0
 Parent POM/utils,de.larssh.utils,Either,8,94,3,7,1,18,3,13,0,11
 Parent POM/utils,de.larssh.utils,Nullables,76,0,18,0,19,0,18,0,9,0
 Parent POM/utils,de.larssh.utils,AutoCompletable,3,0,0,0,2,0,1,0,1,0
+Parent POM/utils,de.larssh.utils,Streams,62,0,4,0,14,0,8,0,6,0
 Parent POM/utils,de.larssh.utils.maven,AetherUtils,165,0,6,0,21,0,14,0,11,0
 Parent POM/utils,de.larssh.utils.maven,DependencyScope,70,0,0,0,7,0,1,0,1,0
 Parent POM/utils,de.larssh.utils.collection,ProxiedMap,68,0,0,0,17,0,15,0,15,0

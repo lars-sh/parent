@@ -9,6 +9,8 @@ Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%
 
 ### Added
 * Method `de.larssh.utils.text.Patterns.quote(input)`
+* Method `de.larssh.utils.Streams.indexed(stream)`
+* Method `de.larssh.utils.Streams.indexedLong(stream)`
 
 ### Changed
 * Method `Maps.Builder#get()` is not typed any longer to simplify generics of `Maps.Builder`
