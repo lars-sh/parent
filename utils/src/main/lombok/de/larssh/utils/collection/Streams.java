@@ -1,11 +1,10 @@
-package de.larssh.utils;
+package de.larssh.utils.collection;
 
 import java.util.Map.Entry;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Stream;
 
-import de.larssh.utils.collection.Maps;
 import lombok.experimental.UtilityClass;
 
 /**
