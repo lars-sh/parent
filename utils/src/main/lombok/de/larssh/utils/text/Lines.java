@@ -1,6 +1,6 @@
 package de.larssh.utils.text;
 
-import static com.google.common.collect.Iterators.peekingIterator;
+import static de.larssh.utils.collection.Iterators.peekableIterator;
 import static java.util.stream.Collectors.toList;
 
 import java.io.BufferedReader;
@@ -12,19 +12,14 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.Spliterator;
-import java.util.Spliterators;
 import java.util.function.BiFunction;
 import java.util.function.BiPredicate;
 import java.util.function.Function;
 import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
 
-import com.google.common.collect.AbstractIterator;
-import com.google.common.collect.PeekingIterator;
-
+import de.larssh.utils.collection.Iterators;
 import de.larssh.utils.collection.Maps;
-import edu.umd.cs.findbugs.annotations.Nullable;
+import de.larssh.utils.collection.PeekableIterator;
 import lombok.experimental.UtilityClass;
 
 /**
@@ -142,10 +137,6 @@ public class Lines {
 	 * <b>Tip:</b> {@code lines} must not necessarily consist of elements of type
 	 * {@link String}.
 	 *
-	 * <p>
-	 * <b>Note:</b> This method requires {@code com.google.guava:guava} to be part
-	 * of your dependencies!
-	 *
 	 * @param <T>               type of line (most probably {@link String})
 	 * @param lines             the lines
 	 * @param isNextConsecutive when returning {@code true} the input line is added
@@ -156,7 +147,7 @@ public class Lines {
 	 */
 	public static <T> Stream<List<T>> consecutive(final Iterable<T> lines,
 			final BiPredicate<List<T>, T> isNextConsecutive) {
-		return consecutive(StreamSupport.stream(lines.spliterator(), false), isNextConsecutive);
+		return consecutive(lines.iterator(), isNextConsecutive);
 	}
 
 	/**
@@ -171,38 +162,30 @@ public class Lines {
 	 * <b>Tip:</b> {@code lines} must not necessarily consist of elements of type
 	 * {@link String}.
 	 *
-	 * <p>
-	 * <b>Note:</b> This method requires {@code com.google.guava:guava} to be part
-	 * of your dependencies!
-	 *
 	 * @param <T>               type of line (most probably {@link String})
-	 * @param lines             the lines
+	 * @param linesIterator     the lines
 	 * @param isNextConsecutive when returning {@code true} the input line is added
 	 *                          to an output list, else a new list gets created. The
 	 *                          first argument is the previous list of lines,
 	 *                          whereas the second argument is the current line.
 	 * @return stream of lists containing consecutive lines
 	 */
-	@SuppressWarnings("checkstyle:IllegalToken")
-	public static <T> Stream<List<T>> consecutive(final Iterator<T> lines,
+	public static <T> Stream<List<T>> consecutive(final Iterator<T> linesIterator,
 			final BiPredicate<List<T>, T> isNextConsecutive) {
-		final PeekingIterator<T> iterator = peekingIterator(lines);
-		return StreamSupport.stream(Spliterators.spliteratorUnknownSize(new AbstractIterator<List<T>>() {
-			/** {@inheritDoc} */
-			@Nullable
-			@Override
-			protected List<T> computeNext() {
-				if (!iterator.hasNext()) {
-					return endOfData();
-				}
+		final PeekableIterator<T> peekableLinesIterator = peekableIterator(linesIterator);
 
-				final List<T> lines = new ArrayList<>();
-				do {
-					lines.add(iterator.next());
-				} while (iterator.hasNext() && isNextConsecutive.test(lines, iterator.peek()));
-				return lines;
+		return Iterators.stream(state -> {
+			final List<T> lines = new ArrayList<>();
+			while (peekableLinesIterator.hasNext()) {
+				lines.add(peekableLinesIterator.next());
+
+				// Fail fast if the peeked line is not consecutive
+				if (!isNextConsecutive.test(lines, peekableLinesIterator.peek())) {
+					return lines;
+				}
 			}
-		}, Spliterator.NONNULL | Spliterator.ORDERED), false);
+			return lines.isEmpty() ? state.endOfData() : lines;
+		});
 	}
 
 	/**
@@ -216,10 +199,6 @@ public class Lines {
 	 * <p>
 	 * <b>Tip:</b> {@code lines} must not necessarily consist of elements of type
 	 * {@link String}.
-	 *
-	 * <p>
-	 * <b>Note:</b> This method requires {@code com.google.guava:guava} to be part
-	 * of your dependencies!
 	 *
 	 * @param <T>               type of line (most probably {@link String})
 	 * @param lines             the lines
@@ -247,10 +226,6 @@ public class Lines {
 	 * <b>Tip:</b> {@code lines} must not necessarily consist of elements of type
 	 * {@link String}.
 	 *
-	 * <p>
-	 * <b>Note:</b> This method requires {@code com.google.guava:guava} to be part
-	 * of your dependencies!
-	 *
 	 * @param <K>         type of the group key
 	 * @param <V>         type of line
 	 * @param lines       the lines
@@ -265,7 +240,7 @@ public class Lines {
 	public static <K, V> Stream<Entry<K, List<V>>> grouped(final Iterable<V> lines,
 			final Function<V, K> getGroupKey,
 			final BiFunction<List<V>, V, GroupedLineType> getLineType) {
-		return grouped(StreamSupport.stream(lines.spliterator(), false), getGroupKey, getLineType);
+		return grouped(lines.iterator(), getGroupKey, getLineType);
 	}
 
 	/**
@@ -280,10 +255,6 @@ public class Lines {
 	 * <p>
 	 * <b>Tip:</b> {@code lines} must not necessarily consist of elements of type
 	 * {@link String}.
-	 *
-	 * <p>
-	 * <b>Note:</b> This method requires {@code com.google.guava:guava} to be part
-	 * of your dependencies!
 	 *
 	 * @param <K>         type of the group key
 	 * @param <V>         type of line
@@ -296,49 +267,39 @@ public class Lines {
 	 * @return stream of entries with the group key as key and the grouped lines as
 	 *         value
 	 */
-	@SuppressWarnings({ "checkstyle:AnonInnerLength", "checkstyle:IllegalToken" })
 	public static <K, V> Stream<Entry<K, List<V>>> grouped(final Iterator<V> lines,
 			final Function<V, K> getGroupKey,
 			final BiFunction<List<V>, V, GroupedLineType> getLineType) {
-		return StreamSupport.stream(Spliterators.spliteratorUnknownSize(new AbstractIterator<Entry<K, List<V>>>() {
-			/**
-			 * Buffer of not-closed groups of lines
-			 */
-			Map<K, List<V>> groups = new LinkedHashMap<>();
+		// Buffer of so-far not-closed groups of lines
+		final Map<K, List<V>> groups = new LinkedHashMap<>();
 
-			/** {@inheritDoc} */
-			@Nullable
-			@Override
-			@SuppressWarnings("PMD.AvoidInstantiatingObjectsInLoops")
-			protected Entry<K, List<V>> computeNext() {
-				while (lines.hasNext()) {
-					final V line = lines.next();
-					final K groupKey = getGroupKey.apply(line);
+		return Iterators.stream(state -> {
+			while (lines.hasNext()) {
+				final V line = lines.next();
+				final K groupKey = getGroupKey.apply(line);
 
-					List<V> groupOfCurrentLine = groups.computeIfAbsent(groupKey, key -> new ArrayList<>());
-					final GroupedLineType lineType = getLineType.apply(groupOfCurrentLine, line);
+				List<V> groupOfCurrentLine = groups.computeIfAbsent(groupKey, key -> new ArrayList<>());
+				final GroupedLineType lineType = getLineType.apply(groupOfCurrentLine, line);
 
-					if (lineType == GroupedLineType.END) {
-						groupOfCurrentLine.add(line);
-						return Maps.entry(groupKey, groups.remove(groupKey));
-					}
-					if (lineType == GroupedLineType.START && !groupOfCurrentLine.isEmpty()) {
-						groupOfCurrentLine = new ArrayList<>();
-						groupOfCurrentLine.add(line);
-						return Maps.entry(groupKey, groups.put(groupKey, groupOfCurrentLine));
-					}
-
+				if (lineType == GroupedLineType.END) {
 					groupOfCurrentLine.add(line);
+					return Maps.entry(groupKey, groups.remove(groupKey));
+				}
+				if (lineType == GroupedLineType.START && !groupOfCurrentLine.isEmpty()) {
+					groupOfCurrentLine = new ArrayList<>();
+					groupOfCurrentLine.add(line);
+					return Maps.entry(groupKey, groups.put(groupKey, groupOfCurrentLine));
 				}
 
-				if (groups.isEmpty()) {
-					return endOfData();
-				}
-
-				final K groupKey = groups.keySet().iterator().next();
-				return Maps.entry(groupKey, groups.remove(groupKey));
+				groupOfCurrentLine.add(line);
 			}
-		}, Spliterator.NONNULL | Spliterator.ORDERED), false);
+
+			if (groups.isEmpty()) {
+				return state.endOfData();
+			}
+			final K groupKey = groups.keySet().iterator().next();
+			return Maps.entry(groupKey, groups.remove(groupKey));
+		});
 	}
 
 	/**
@@ -353,10 +314,6 @@ public class Lines {
 	 * <p>
 	 * <b>Tip:</b> {@code lines} must not necessarily consist of elements of type
 	 * {@link String}.
-	 *
-	 * <p>
-	 * <b>Note:</b> This method requires {@code com.google.guava:guava} to be part
-	 * of your dependencies!
 	 *
 	 * @param <K>         type of the group key
 	 * @param <V>         type of line

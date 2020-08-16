@@ -19,6 +19,7 @@ Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%
 
 ### Changed
 * Method `Maps.Builder#get()` is not typed any longer to simplify generics of `Maps.Builder`
+* Methods inside `de.larssh.utils.text.Lines` no longer require Google Guava to be part of your dependencies.
 * Updated the list of JDKs to be used by Travis CI based on the list of currently supported JDKs.
 
 ### Fixed
