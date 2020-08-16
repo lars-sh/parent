@@ -5,14 +5,10 @@ import java.util.NoSuchElementException;
 import java.util.Spliterator;
 import java.util.Spliterators;
 import java.util.function.Function;
-import java.util.function.Supplier;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
-import de.larssh.utils.SneakyException;
 import edu.umd.cs.findbugs.annotations.Nullable;
-import lombok.AccessLevel;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.NonFinal;
 import lombok.experimental.UtilityClass;
@@ -98,7 +94,6 @@ public class Iterators {
 	 *
 	 * @param <E> the type of the iterator elements
 	 */
-	@Getter(AccessLevel.PROTECTED)
 	@RequiredArgsConstructor
 	private static class ElementsSupplierIterator<E> implements PeekableIterator<E> {
 		/**
@@ -110,21 +105,38 @@ public class Iterators {
 		Function<ElementsSupplierState<E>, E> elementsSupplier;
 
 		/**
-		 * The end of data supplier to be passed to the elements supplier.
+		 * The next element supplied by {@link #elementsSupplier} if {@link #state} is
+		 * {@link State#PEEKED}, else undefined.
 		 */
-		ElementsSupplierState<E> state = new ElementsSupplierState<>();
+		@NonFinal
+		@Nullable
+		E peekedElement = null;
+
+		/**
+		 * TODO
+		 */
+		@NonFinal
+		State state = State.NOT_PEEKED;
+
+		/**
+		 * TODO: The end of data supplier to be passed to the elements supplier.
+		 */
+		ElementsSupplierState<E> stateHandler = () -> {
+			state = State.END_OF_DATA;
+			return null;
+		};
 
 		/** {@inheritDoc} */
 		@Override
 		@SuppressWarnings("checkstyle:XIllegalCatchDefault")
 		public final boolean hasNext() {
-			if (getState().isEnd()) {
-				return false;
+			if (state == State.NOT_PEEKED) {
+				peekedElement = elementsSupplier.apply(stateHandler);
+				if (state == State.NOT_PEEKED) {
+					state = State.PEEKED;
+				}
 			}
-			if (!getState().isPeeked()) {
-				getState().peek(() -> getElementsSupplier().apply(getState()));
-			}
-			return getState().isPeeked();
+			return state == State.PEEKED;
 		}
 
 		/** {@inheritDoc} */
@@ -132,7 +144,10 @@ public class Iterators {
 		@Override
 		public final E next() {
 			final E next = peek();
-			getState().unsetPeeked();
+			if (state == State.PEEKED) {
+				state = State.NOT_PEEKED;
+			}
+			peekedElement = null;
 			return next;
 		}
 
@@ -144,13 +159,14 @@ public class Iterators {
 			if (!hasNext()) {
 				throw new NoSuchElementException();
 			}
-			return getState().getPeekedElement();
+			return peekedElement;
 		}
 	}
 
 	/**
-	 * Implementation of the elements supplier state. An instance of this class is
-	 * passed to the elements supplier at the time of calculating the next element.
+	 * TODO: Implementation of the elements supplier state. An instance of this
+	 * class is passed to the elements supplier at the time of calculating the next
+	 * element.
 	 *
 	 * <p>
 	 * It is used to mark the iteration's end. Check out {@link #iterator(Function)}
@@ -158,61 +174,13 @@ public class Iterators {
 	 *
 	 * @param <E> the type of the iterator elements
 	 */
-	@Getter(AccessLevel.PRIVATE)
-	@RequiredArgsConstructor(access = AccessLevel.PRIVATE)
-	public static class ElementsSupplierState<E> {
-		/**
-		 * Specifies if the iterators end has been reached and no more elements can be
-		 * read.
-		 *
-		 * <p>
-		 * It has no effect if {@link #illegalState} is {@code true}.
-		 */
-		@NonFinal
-		boolean end = false;
-
-		/**
-		 * Specifies if in an illegal state
-		 */
-		@NonFinal
-		boolean illegalState = false;
-
-		/**
-		 * Optional cause of an illegal state.
-		 *
-		 * <p>
-		 * This field <b>might</b> be non-null in case {@link #illegalState} is
-		 * {@code true}, else undefined.
-		 */
-		@NonFinal
-		@Nullable
-		Throwable illegalStateCause = null;
-
-		/**
-		 * Specifies if the next element has been peeked by calling
-		 * {@link #elementsSupplier}.
-		 *
-		 * <p>
-		 * It has no effect if {@link #illegalState} is {@code true} and <b>must</b> be
-		 * {@code false} if {@link #end} is {@code true}.
-		 */
-		@NonFinal
-		boolean peeked = false;
-
-		/**
-		 * The next element supplied by {@link #elementsSupplier} if {@link #peeked} is
-		 * {@code true}, else undefined.
-		 */
-		@NonFinal
-		@Nullable
-		E peekedElement = null;
-
+	public interface ElementsSupplierState<E> {
 		/**
 		 * Marks the iteration's end, the so called <i>end of data</i>.
 		 *
 		 * <p>
-		 * Once this has been called the return value of the elements supplier will not
-		 * be taken into account.
+		 * If this has been called the return value of the elements supplier will not be
+		 * taken into account.
 		 *
 		 * <p>
 		 * Check out {@link #iterator(Function)} for an usage example.
@@ -221,45 +189,26 @@ public class Iterators {
 		 * @return any valid value, probably {@code null}
 		 */
 		@Nullable
-		public E endOfData() {
-			if (!isIllegalState()) {
-				throw new IllegalStateException(
-						"Must not call \"endOfData\" outside of the elements supplier iteration process.");
-			}
-			end = true;
-			return null;
-		}
+		E endOfData();
+	}
+
+	/**
+	 * TODO
+	 */
+	private enum State {
+		/**
+		 * TODO
+		 */
+		END_OF_DATA,
 
 		/**
-		 * Try peeking and remember the cause in case of an exception
-		 *
-		 * @param <E>
-		 * @param elementsSupplier
-		 * @return
+		 * TODO
 		 */
-		private void peek(final Supplier<E> elementsSupplier) {
-			if (isIllegalState()) {
-				throw new IllegalStateException(
-						"The iterator cannot be accessed. Either it is currently reading the next element or the previous read operation failed.",
-						getIllegalStateCause());
-			}
+		NOT_PEEKED,
 
-			try {
-				illegalState = true;
-				peekedElement = elementsSupplier.get();
-				illegalState = false;
-
-				// Reset peeked flag and make sure it is "false" upon the end flag is "true".
-				peeked = !isEnd();
-			} catch (final Exception e) {
-				illegalStateCause = e;
-				throw new SneakyException(e);
-			}
-		}
-
-		private void unsetPeeked() {
-			peeked = false;
-			peekedElement = null;
-		}
+		/**
+		 * TODO
+		 */
+		PEEKED;
 	}
 }
