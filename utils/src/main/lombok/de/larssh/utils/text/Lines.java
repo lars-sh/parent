@@ -267,6 +267,7 @@ public class Lines {
 	 * @return stream of entries with the group key as key and the grouped lines as
 	 *         value
 	 */
+	@SuppressWarnings("PMD.AvoidInstantiatingObjectsInLoops")
 	public static <K, V> Stream<Entry<K, List<V>>> grouped(final Iterator<V> lines,
 			final Function<V, K> getGroupKey,
 			final BiFunction<List<V>, V, GroupedLineType> getLineType) {
