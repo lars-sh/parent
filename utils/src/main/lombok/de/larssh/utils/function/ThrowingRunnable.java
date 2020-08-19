@@ -13,6 +13,7 @@ import de.larssh.utils.SneakyException;
  * This is a <a href="package-summary.html">functional interface</a> whose
  * functional method is {@link #runThrowing()}.
  */
+@FunctionalInterface
 public interface ThrowingRunnable extends Runnable {
 	/**
 	 * Short-hand method to cast any {@link ThrowingRunnable} as {@link Runnable}.
