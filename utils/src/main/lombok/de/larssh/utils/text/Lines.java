@@ -20,6 +20,7 @@ import java.util.stream.Stream;
 import de.larssh.utils.collection.Iterators;
 import de.larssh.utils.collection.Maps;
 import de.larssh.utils.collection.PeekableIterator;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import lombok.experimental.UtilityClass;
 
 /**
@@ -170,6 +171,8 @@ public class Lines {
 	 *                          whereas the second argument is the current line.
 	 * @return stream of lists containing consecutive lines
 	 */
+	@SuppressFBWarnings(value = "PSC_PRESIZE_COLLECTIONS",
+			justification = "No reasonable way to calculate a size estimation for \"lines\"")
 	public static <T> Stream<List<T>> consecutive(final Iterator<T> linesIterator,
 			final BiPredicate<List<T>, T> isNextConsecutive) {
 		final PeekableIterator<T> peekableLinesIterator = peekableIterator(linesIterator);
