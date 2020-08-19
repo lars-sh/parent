@@ -27,12 +27,12 @@ public class Iterators {
 	 * every second element only.
 	 *
 	 * <pre>
-	 * Iterator&lt;T&gt; oldIterator = ...;
-	 * Iterator&lt;T&gt; newIterator = Iterators.iterator(state -> {
-	 *     if (!oldIterator.hasNext() && !oldIterator.hasNext()) {
+	 * Iterator&lt;E&gt; oldIterator = ...;
+	 * Iterator&lt;E&gt; newIterator = Iterators.iterator(state -&gt; {
+	 *     if (!oldIterator.hasNext() &amp;&amp; !oldIterator.hasNext()) {
 	 *         return state.endOfData();
 	 *     }
-	 *     return oldIterator.next();;
+	 *     return oldIterator.next();
 	 * });
 	 * </pre>
 	 *
@@ -40,7 +40,8 @@ public class Iterators {
 	 * @param elementsSupplier the elements supplier with the state as parameter
 	 * @return a {@link PeekableIterator} wrapping {@code elementsSupplier}
 	 */
-	public static <E> PeekableIterator<E> iterator(final Function<ElementsSupplierState<E>, E> elementsSupplier) {
+	public static <E> PeekableIterator<E> iterator(
+			final Function<ElementsSupplierStateHandler<E>, E> elementsSupplier) {
 		return new ElementsSupplierIterator<>(elementsSupplier);
 	}
 
@@ -70,7 +71,7 @@ public class Iterators {
 	 * @param elementsSupplier the elements supplier with the state as parameter
 	 * @return a {@code Stream} with the elements of {@code elementsSupplier}
 	 */
-	public static <E> Stream<E> stream(final Function<ElementsSupplierState<E>, E> elementsSupplier) {
+	public static <E> Stream<E> stream(final Function<ElementsSupplierStateHandler<E>, E> elementsSupplier) {
 		return stream(iterator(elementsSupplier));
 	}
 
@@ -102,27 +103,28 @@ public class Iterators {
 		 * <p>
 		 * Check out {@link #iterator(Function)} for more information.
 		 */
-		Function<ElementsSupplierState<E>, E> elementsSupplier;
+		Function<ElementsSupplierStateHandler<E>, E> elementsSupplier;
 
 		/**
 		 * The next element supplied by {@link #elementsSupplier} if {@link #state} is
-		 * {@link State#PEEKED}, else undefined.
+		 * {@link ElementsSupplierState#PEEKED}, else undefined.
 		 */
 		@NonFinal
 		@Nullable
 		E peekedElement = null;
 
 		/**
-		 * TODO
+		 * The iterator's current inner state
 		 */
 		@NonFinal
-		State state = State.NOT_PEEKED;
+		ElementsSupplierState state = ElementsSupplierState.CALL_FOR_NEXT;
 
 		/**
-		 * TODO: The end of data supplier to be passed to the elements supplier.
+		 * Implementation of {@link ElementsSupplierStateHandler} to update this
+		 * iterator's current state
 		 */
-		ElementsSupplierState<E> stateHandler = () -> {
-			state = State.END_OF_DATA;
+		ElementsSupplierStateHandler<E> stateHandler = () -> {
+			state = ElementsSupplierState.END_OF_DATA;
 			return null;
 		};
 
@@ -130,22 +132,23 @@ public class Iterators {
 		@Override
 		@SuppressWarnings("checkstyle:XIllegalCatchDefault")
 		public final boolean hasNext() {
-			if (state == State.NOT_PEEKED) {
+			if (state == ElementsSupplierState.CALL_FOR_NEXT) {
 				peekedElement = elementsSupplier.apply(stateHandler);
-				if (state == State.NOT_PEEKED) {
-					state = State.PEEKED;
+				if (state == ElementsSupplierState.CALL_FOR_NEXT) {
+					state = ElementsSupplierState.PEEKED;
 				}
 			}
-			return state == State.PEEKED;
+			return state == ElementsSupplierState.PEEKED;
 		}
 
 		/** {@inheritDoc} */
 		@Nullable
 		@Override
+		@SuppressWarnings("PMD.NullAssignment")
 		public final E next() {
 			final E next = peek();
-			if (state == State.PEEKED) {
-				state = State.NOT_PEEKED;
+			if (state == ElementsSupplierState.PEEKED) {
+				state = ElementsSupplierState.CALL_FOR_NEXT;
 			}
 			peekedElement = null;
 			return next;
@@ -164,17 +167,39 @@ public class Iterators {
 	}
 
 	/**
-	 * TODO: Implementation of the elements supplier state. An instance of this
-	 * class is passed to the elements supplier at the time of calculating the next
-	 * element.
-	 *
-	 * <p>
-	 * It is used to mark the iteration's end. Check out {@link #iterator(Function)}
-	 * for more information.
+	 * This enumeration contains the possible inner states of
+	 * {@link ElementsSupplierIterator}.
+	 */
+	@SuppressWarnings("PMD.UnnecessaryModifier")
+	private enum ElementsSupplierState {
+		/**
+		 * Status of iterators, that need to call the elements supplier once information
+		 * about the next element is required.
+		 */
+		CALL_FOR_NEXT,
+
+		/**
+		 * Status representing the end of data. The elements supplier must not be called
+		 * any longer. This is an end state and must not change once reached.
+		 */
+		END_OF_DATA,
+
+		/**
+		 * Status of iterators, that peeked the next element already.
+		 */
+		PEEKED;
+	}
+
+	/**
+	 * An instance of this is passed to the elements supplier at the time of
+	 * calculating the next element. It is used to mark the iteration's end. Check
+	 * out {@link #endOfData()} for more information.
 	 *
 	 * @param <E> the type of the iterator elements
 	 */
-	public interface ElementsSupplierState<E> {
+	@FunctionalInterface
+	@SuppressWarnings("PMD.UnnecessaryModifier")
+	public interface ElementsSupplierStateHandler<E> {
 		/**
 		 * Marks the iteration's end, the so called <i>end of data</i>.
 		 *
@@ -185,30 +210,9 @@ public class Iterators {
 		 * <p>
 		 * Check out {@link #iterator(Function)} for an usage example.
 		 *
-		 * @param <T> the type of the iterator elements
 		 * @return any valid value, probably {@code null}
 		 */
 		@Nullable
 		E endOfData();
-	}
-
-	/**
-	 * TODO
-	 */
-	private enum State {
-		/**
-		 * TODO
-		 */
-		END_OF_DATA,
-
-		/**
-		 * TODO
-		 */
-		NOT_PEEKED,
-
-		/**
-		 * TODO
-		 */
-		PEEKED;
 	}
 }
