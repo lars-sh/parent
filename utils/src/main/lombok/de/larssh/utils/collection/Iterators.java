@@ -23,6 +23,9 @@ public class Iterators {
 	 * probably the simplest way of writing an iterator.
 	 *
 	 * <p>
+	 * Note: This iterator is <b>not</b> thread safe.
+	 *
+	 * <p>
 	 * <b>Usage example:</b> The following shows how to create an iterator returning
 	 * every second element only.
 	 *
@@ -47,6 +50,9 @@ public class Iterators {
 
 	/**
 	 * Wraps {@code iterator} into a {@link PeekableIterator}.
+	 *
+	 * <p>
+	 * Note: The resulting iterator is <b>not</b> thread safe.
 	 *
 	 * @param <E>      the type of the iterator elements
 	 * @param iterator the iterator
@@ -146,7 +152,11 @@ public class Iterators {
 		@Override
 		@SuppressWarnings("PMD.NullAssignment")
 		public final E next() {
-			final E next = peek();
+			// Method "hasNext" peeks the next element (if required)
+			if (!hasNext()) {
+				throw new NoSuchElementException();
+			}
+			final E next = peekedElement;
 			if (state == ElementsSupplierState.PEEKED) {
 				state = ElementsSupplierState.CALL_FOR_NEXT;
 			}
