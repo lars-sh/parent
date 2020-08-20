@@ -26,11 +26,16 @@
 		<Class name="de.larssh.utils.Resources" />
 	</Match>
 
+	<!-- Method "consecutive" has no reasonable way to calculate the next element's lines size. -->
+	<Match>
+		<Bug pattern="PSC_PRESIZE_COLLECTIONS" />
+		<Class name="de.larssh.utils.text.Lines" />
+	</Match>
+
 	<!-- Suppress modifications of Duration.toString output for formatting reasons -->
 	<Match>
 		<Bug pattern="ITU_INAPPROPRIATE_TOSTRING_USE" />
-		<Class
-			name="de.larssh.utils.time.LoggingStopwatch$StringLoggingStopwatchMode" />
+		<Class name="de.larssh.utils.time.LoggingStopwatch$StringLoggingStopwatchMode" />
 	</Match>
 
 	<!-- Method "waitFor" is really intended to wait for a specified duration. -->
