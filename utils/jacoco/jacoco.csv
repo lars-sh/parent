@@ -18,24 +18,27 @@ Utilities,de.larssh.utils,Resources,338,0,16,0,55,0,33,0,25,0
 Utilities,de.larssh.utils,Either,8,94,3,7,1,18,3,13,0,11
 Utilities,de.larssh.utils,Nullables,76,0,18,0,19,0,18,0,9,0
 Utilities,de.larssh.utils,AutoCompletable,3,0,0,0,2,0,1,0,1,0
-Utilities,de.larssh.utils,Streams,62,0,4,0,14,0,8,0,6,0
 Utilities,de.larssh.utils.maven,AetherUtils,165,0,6,0,21,0,14,0,11,0
 Utilities,de.larssh.utils.maven,DependencyScope,70,0,0,0,7,0,1,0,1,0
+Utilities,de.larssh.utils.collection,Iterators.ElementsSupplierIterator,63,0,12,0,17,0,10,0,4,0
 Utilities,de.larssh.utils.collection,ProxiedMap,68,0,0,0,17,0,15,0,15,0
+Utilities,de.larssh.utils.collection,PeekableIterator,4,0,0,0,1,0,1,0,1,0
 Utilities,de.larssh.utils.collection,Maps.Builder,105,0,0,0,28,0,15,0,15,0
 Utilities,de.larssh.utils.collection,ProxiedCollection,73,0,0,0,17,0,16,0,16,0
-Utilities,de.larssh.utils.collection,Enumerations.new Iterator() {...},14,0,0,0,3,0,3,0,3,0
 Utilities,de.larssh.utils.collection,ProxiedList,69,0,0,0,16,0,13,0,13,0
 Utilities,de.larssh.utils.collection,ProxiedSet,16,0,0,0,5,0,3,0,3,0
-Utilities,de.larssh.utils.collection,Enumerations,12,0,0,0,2,0,2,0,2,0
+Utilities,de.larssh.utils.collection,Streams,62,0,4,0,14,0,8,0,6,0
+Utilities,de.larssh.utils.collection,Enumerations,17,0,2,0,2,0,4,0,3,0
+Utilities,de.larssh.utils.collection,Iterators.ElementsSupplierState,34,0,0,0,4,0,1,0,1,0
 Utilities,de.larssh.utils.collection,Maps,27,0,0,0,4,0,4,0,4,0
+Utilities,de.larssh.utils.collection,Iterators,34,0,4,0,6,0,7,0,5,0
 Utilities,de.larssh.utils.net,GlobalProxyConfiguration,162,0,0,0,25,0,10,0,10,0
 Utilities,de.larssh.utils.net,InsecureConnections.TrustManagerThatDoesNotVerifyCertificates,18,0,0,0,10,0,9,0,9,0
 Utilities,de.larssh.utils.net,SecureConnections,97,0,2,0,25,0,9,0,8,0
 Utilities,de.larssh.utils.net,InsecureConnections,14,0,0,0,3,0,4,0,4,0
 Utilities,de.larssh.utils.text,StringConverters,297,0,36,0,57,0,28,0,10,0
 Utilities,de.larssh.utils.text,NumericTextComparator.NumericTextComparatorContext,383,0,72,0,64,0,47,0,11,0
-Utilities,de.larssh.utils.text,Lines,73,0,2,0,10,0,9,0,8,0
+Utilities,de.larssh.utils.text,Lines,176,0,18,0,35,0,20,0,11,0
 Utilities,de.larssh.utils.text,SentenceFormatter,217,0,16,0,43,0,14,0,6,0
 Utilities,de.larssh.utils.text,SplitLimit,13,0,0,0,2,0,1,0,1,0
 Utilities,de.larssh.utils.text,NumericTextComparator,31,0,6,0,5,0,5,0,2,0
@@ -43,9 +46,7 @@ Utilities,de.larssh.utils.text,Lines.GroupedLineType,34,0,0,0,4,0,1,0,1,0
 Utilities,de.larssh.utils.text,Patterns,51,0,4,0,6,0,6,0,4,0
 Utilities,de.larssh.utils.text,ParseException,14,0,0,0,4,0,2,0,2,0
 Utilities,de.larssh.utils.text,Characters,45,0,12,0,9,0,10,0,4,0
-Utilities,de.larssh.utils.text,Lines.new AbstractIterator() {...},41,0,6,0,7,0,5,0,2,0
 Utilities,de.larssh.utils.text,Strings,609,0,42,0,74,0,46,0,25,0
-Utilities,de.larssh.utils.text,Lines.new AbstractIterator() {...},110,0,10,0,20,0,8,0,3,0
 Utilities,de.larssh.utils.time,LoggingStopwatch,98,0,2,0,20,0,12,0,11,0
 Utilities,de.larssh.utils.time,LoggingStopwatch.StringLoggingStopwatchMode,170,0,10,0,27,0,17,0,12,0
 Utilities,de.larssh.utils.time,Stopwatch,152,0,16,0,21,0,18,0,10,0

@@ -13,6 +13,7 @@ import de.larssh.utils.SneakyException;
  * This is a &lt;a href=&quot;package-summary.html&quot;&gt;functional interface&lt;/a&gt; whose
  * functional method is {@link #runThrowing()}.
  */
+@FunctionalInterface
 public interface ThrowingRunnable extends Runnable {
 	/**
 	 * Short-hand method to cast any {@link ThrowingRunnable} as {@link Runnable}.
@@ -21,7 +22,7 @@ public interface ThrowingRunnable extends Runnable {
 	 * @return hidden throwing runnable
 	 */
 	static Runnable throwing(final ThrowingRunnable runnable) {
-<span class="nc" id="L24">		return runnable;</span>
+<span class="nc" id="L25">		return runnable;</span>
 	}
 
 	/**
@@ -42,11 +43,11 @@ public interface ThrowingRunnable extends Runnable {
 	@SuppressWarnings({ &quot;checkstyle:IllegalCatch&quot;, &quot;PMD.AvoidCatchingGenericException&quot; })
 	default void run() {
 		try {
-<span class="nc" id="L45">			runThrowing();</span>
-<span class="nc" id="L46">		} catch (final Exception e) {</span>
-<span class="nc" id="L47">			throw new SneakyException(e);</span>
-<span class="nc" id="L48">		}</span>
-<span class="nc" id="L49">	}</span>
+<span class="nc" id="L46">			runThrowing();</span>
+<span class="nc" id="L47">		} catch (final Exception e) {</span>
+<span class="nc" id="L48">			throw new SneakyException(e);</span>
+<span class="nc" id="L49">		}</span>
+<span class="nc" id="L50">	}</span>
 
 	/**
 	 * Runs this runnable, allow throwing any kind of {@link Exception}.

@@ -8,12 +8,18 @@ All notable changes to this project will be documented in this file.
 Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%20%28a:parent%20a:parent-archetype%20a:root%20a:utils%20a:utils-annotations%20a:utils-test%29%20AND%20v:0.9.9)
 
 ### Added
+* Interface `de.larssh.utils.collection.PeekableIterator`
+* Method `de.larssh.utils.collection.Iterators.iterator(elements supplier)`
+* Method `de.larssh.utils.collection.Iterators.peekableIterator(iterator)`
+* Method `de.larssh.utils.collection.Iterators.stream(iterator)`
+* Method `de.larssh.utils.collection.Iterators.stream(elements supplier)`
+* Method `de.larssh.utils.collection.Streams.indexed(stream)`
+* Method `de.larssh.utils.collection.Streams.indexedLong(stream)`
 * Method `de.larssh.utils.text.Patterns.quote(input)`
-* Method `de.larssh.utils.Streams.indexed(stream)`
-* Method `de.larssh.utils.Streams.indexedLong(stream)`
 
 ### Changed
 * Method `Maps.Builder#get()` is not typed any longer to simplify generics of `Maps.Builder`
+* Methods inside `de.larssh.utils.text.Lines` no longer require Google Guava to be part of your dependencies.
 * Updated the list of JDKs to be used by Travis CI based on the list of currently supported JDKs.
 
 ### Fixed
