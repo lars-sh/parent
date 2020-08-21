@@ -11,7 +11,7 @@ Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%
 TODO
 
 ### Changed
-TODO
+* Suppressing additional SpotBugs null checks when using JDK 11 and later as they might fail when using try-with-resource statements as of https://github.com/spotbugs/spotbugs/issues/259 and https://github.com/spotbugs/spotbugs/issues/756
 
 ### Removed
 TODO
