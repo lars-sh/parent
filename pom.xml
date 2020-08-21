@@ -1700,7 +1700,7 @@ function suppressPmdWarnings() {
 
 # JDK14: The JavaDoc creation logs errors about missing "javadoc-bundle-option" folders.
 function suppressJdk14Warnings() {
-	if [ ${JDK_VERSION} -ge 14 ]; then
+	if [ ${JDK_VERSION} -eq 14 ]; then
 		cat < /dev/stdin \
 		| grep --invert-match --perl-regexp "^\\[ERROR\\] Error fetching link: .*[/\\\\]target[/\\\\]javadoc-bundle-options\\. Ignored it\\.$"
 	else
