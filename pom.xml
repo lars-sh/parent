@@ -168,7 +168,7 @@
 
 		<!-- Versions: Plugin Dependencies -->
 		<apache-ant.version>1.10.8</apache-ant.version>
-		<checkstyle.version>8.35</checkstyle.version>
+		<checkstyle.version>8.36</checkstyle.version>
 		<sb-contrib.version>7.4.7</sb-contrib.version>
 		<findsecbugs.version>1.10.1</findsecbugs.version>
 		<lombok.version>1.18.12</lombok.version>
@@ -1031,6 +1031,7 @@
 											<module name="CatchParameterName" />
 											<module name="ClassTypeParameterName" />
 											<module name="ConstantName" />
+											<module name="IllegalIdentifierName" />
 											<module name="InterfaceTypeParameterName" />
 											<module name="LambdaParameterName" />
 											<module name="LocalFinalVariableName" />
@@ -1042,6 +1043,8 @@
 											<module name="ParameterName">
 												<property name="format" value="^(?!arg\d*$)[a-z][a-zA-Z0-9]*$" />
 											</module>
+											<module name="PatternVariableName" />
+											<module name="RecordTypeParameterName" />
 											<module name="StaticVariableName" />
 											<module name="TypeName" />
 
