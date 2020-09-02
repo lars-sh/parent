@@ -173,7 +173,7 @@
 		<findsecbugs.version>1.10.1</findsecbugs.version>
 		<lombok.version>1.18.12</lombok.version>
 		<org-eclipse-jdt-core.version>3.22.0</org-eclipse-jdt-core.version>
-		<pmd.version>6.26.0</pmd.version>
+		<pmd.version>6.27.0</pmd.version>
 		<spotbugs.version>4.1.2</spotbugs.version>
 		<spotbugs-annotations.version>4.1.2</spotbugs-annotations.version>
 
@@ -1630,7 +1630,6 @@
 
 										<rule ref="category/java/errorprone.xml">
 											<exclude name="BeanMembersShouldSerialize" />
-											<exclude name="DataflowAnomalyAnalysis" />
 
 											<!-- Deprecated -->
 											<exclude name="LoggerIsNotStaticFinal" />
@@ -1638,6 +1637,7 @@
 											<!-- See separate rule with different properties -->
 											<exclude name="AvoidDuplicateLiterals" />
 											<exclude name="AvoidLiteralsInIfCondition" />
+											<exclude name="CloseResource" />
 										</rule>
 
 										<!-- Ignore annotations -->
@@ -1651,6 +1651,13 @@
 										<rule ref="category/java/errorprone.xml/AvoidLiteralsInIfCondition">
 											<properties>
 												<property name="ignoreMagicNumbers" value="-1, 0, 1, 2" />
+											</properties>
+										</rule>
+
+										<!-- Avoid calling close outside of finally blocks -->
+										<rule ref="category/java/errorprone.xml/CloseResource">
+											<properties>
+												<property name="closeNotInFinally" value="true" />
 											</properties>
 										</rule>
 
