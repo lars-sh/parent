@@ -123,17 +123,17 @@
 		<spotbugs.threshold>Low</spotbugs.threshold>
 
 		<!-- Versions: Dependencies -->
-		<assertj-core.version>3.16.1</assertj-core.version>
+		<assertj-core.version>3.17.1</assertj-core.version>
 		<joor.version>0.9.13</joor.version>
 		<junit-jupiter-api.version>5.6.2</junit-jupiter-api.version>
 		<junit-jupiter-engine.version>5.6.2</junit-jupiter-engine.version>
 		<lombok-annotations.version>1.18.12</lombok-annotations.version>
-		<mockito.version>3.5.2</mockito.version>
+		<mockito.version>3.5.9</mockito.version>
 		<parent.version>0.9.10-SNAPSHOT</parent.version>
 
 		<!-- Versions: Plugins -->
 		<build-helper-maven-plugin.version>3.2.0</build-helper-maven-plugin.version>
-		<formatter-maven-plugin.version>2.12.1</formatter-maven-plugin.version>
+		<formatter-maven-plugin.version>2.12.2</formatter-maven-plugin.version>
 		<jacoco-maven-plugin.version>0.8.5</jacoco-maven-plugin.version>
 		<lifecycle-mapping.version>1.0.0</lifecycle-mapping.version>
 		<lombok-maven-plugin.version>1.18.12.0</lombok-maven-plugin.version>
