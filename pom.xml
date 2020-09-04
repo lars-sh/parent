@@ -1721,9 +1721,9 @@ function suppressJdk14Warnings() {
 JDK_VERSION=`echo ${TRAVIS_JDK_VERSION} | grep --only-matching --perl-regexp \\\\d+`
 
 cat < /dev/stdin \
-| suppressUserDefined
-#| suppressPmdWarnings \
-#| suppressJdk14Warnings
+| suppressUserDefined \
+| suppressPmdWarnings \
+| suppressJdk14Warnings
 ]]></echo>
 
 								<!-- versions-ruleset.xml -->
@@ -2002,6 +2002,7 @@ script: |
   if [ -n "${mvnout}" ]; then
     echo "[WARNING] The Maven output contains the following unknown warnings and errors:"
     echo "${mvnout}"
+    # Not using "exit 1" to avoid truncated output as described at https://travis-ci.community/t/7159
     false
   else
     echo "[INFO] No unknown warnings and errors found."
