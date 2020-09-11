@@ -14,8 +14,6 @@ package de.larssh.utils;
  * </ul>
  */
 public final class SneakyException extends RuntimeException {
-	private static final long serialVersionUID = 1;
-
 	/**
 	 * Rethrows {@code throwable}, hiding it from compiler checks.
 	 *

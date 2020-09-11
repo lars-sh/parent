@@ -8,9 +8,10 @@ All notable changes to this project will be documented in this file.
 Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%20%28a:parent%20a:parent-archetype%20a:root%20a:utils%20a:utils-annotations%20a:utils-test%29%20AND%20v:0.9.10)
 
 ### Added
-TODO
+* Checkstyle check `XAvoidSerialVersionUID`, warning on usage of `serialVersionUID`.
 
 ### Changed
+* [Avoid using serialVersionUID](https://github.com/rzwitserloot/lombok/wiki/WHY-NOT:-serialVersionUID).
 * Suppressing additional SpotBugs null checks when using JDK 11 and later as they might fail when using try-with-resource statements as of https://github.com/spotbugs/spotbugs/issues/259 and https://github.com/spotbugs/spotbugs/issues/756
 * Missing dependency scopes inside the `utils` project
 

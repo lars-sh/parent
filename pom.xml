@@ -117,8 +117,9 @@
 		<shade.dependencyReducedPomLocation>${project.build.directory}/dependency-reduced-pom.xml</shade.dependencyReducedPomLocation>
 		<shade.packageDependenciesPhase>none</shade.packageDependenciesPhase>
 		<spotbugs.effort>Max</spotbugs.effort>
-		<spotbugs.excludeFilterFile>${spotbugs.excludeFilterFile.user}${spotbugs.excludeFilterFile.fix-jdk11-and-later}</spotbugs.excludeFilterFile>
+		<spotbugs.excludeFilterFile>${spotbugs.excludeFilterFile.fix-jdk11-and-later}${spotbugs.excludeFilterFile.global}${spotbugs.excludeFilterFile.user}</spotbugs.excludeFilterFile>
 		<spotbugs.excludeFilterFile.fix-jdk11-and-later></spotbugs.excludeFilterFile.fix-jdk11-and-later>
+		<spotbugs.excludeFilterFile.global>${project.build.directory}/spotbugs-excludes-global.xml,</spotbugs.excludeFilterFile.global>
 		<!-- <spotbugs.excludeFilterFile.user></spotbugs.excludeFilterFile.user> -->
 		<spotbugs.threshold>Low</spotbugs.threshold>
 
@@ -705,6 +706,12 @@
 											<property name="fileExtensions" value="config,java,properties,xml" />
 											<property name="format" value="^\t* [^*]" />
 											<property name="message" value="Line does not use tab indentation." />
+										</module>
+										<module name="RegexpSingleline">
+											<property name="id" value="XAvoidSerialVersionUID" />
+											<property name="fileExtensions" value="java" />
+											<property name="format" value="(^|\P{javaJavaIdentifierPart})serialVersionUID(\P{javaJavaIdentifierPart}|$)" />
+											<property name="message" value="Avoid using serialVersionUID as of https://github.com/rzwitserloot/lombok/wiki/WHY-NOT:-serialVersionUID" />
 										</module>
 										<module name="RegexpMultiline">
 											<property name="id" value="XNullableAnnotation" />
@@ -1632,10 +1639,12 @@
 										</rule>
 
 										<rule ref="category/java/errorprone.xml">
-											<exclude name="BeanMembersShouldSerialize" />
-
 											<!-- Deprecated -->
 											<exclude name="LoggerIsNotStaticFinal" />
+
+											<!-- Avoid using serialVersionUID as of https://github.com/rzwitserloot/lombok/wiki/WHY-NOT:-serialVersionUID -->
+											<exclude name="BeanMembersShouldSerialize" />
+											<exclude name="MissingSerialVersionUID" />
 
 											<!-- See separate rule with different properties -->
 											<exclude name="AvoidDuplicateLiterals" />
@@ -1687,6 +1696,20 @@
 
 										<rule ref="category/java/security.xml" />
 									</ruleset>
+								</echoxml>
+
+								<!-- spotbugs-excludes-global.xml -->
+								<echo level="info" message="Update spotbugs-excludes-global.xml" />
+								<echoxml file="${project.build.directory}/spotbugs-excludes-global.xml">
+									<FindBugsFilter>
+										<!-- Avoid using serialVersionUID as of https://github.com/rzwitserloot/lombok/wiki/WHY-NOT:-serialVersionUID -->
+										<Match>
+											<Bug pattern="IMC_IMMATURE_CLASS_BAD_SERIALVERSIONUID" />
+										</Match>
+										<Match>
+											<Bug pattern="SE_NO_SERIALVERSIONID" />
+										</Match>
+									</FindBugsFilter>
 								</echoxml>
 
 								<!-- travis-suppressions-parent.sh -->
@@ -2971,7 +2994,7 @@ deploy:
 											<entry key="org.eclipse.jdt.core.compiler.problem.missingJavadocTagsVisibility" value="private" />
 											<entry key="org.eclipse.jdt.core.compiler.problem.missingOverrideAnnotation" value="warning" />
 											<entry key="org.eclipse.jdt.core.compiler.problem.missingOverrideAnnotationForInterfaceMethodImplementation" value="enabled" />
-											<entry key="org.eclipse.jdt.core.compiler.problem.missingSerialVersion" value="warning" />
+											<entry key="org.eclipse.jdt.core.compiler.problem.missingSerialVersion" value="ignore" />
 											<entry key="org.eclipse.jdt.core.compiler.problem.missingSynchronizedOnInheritedMethod" value="warning" />
 											<entry key="org.eclipse.jdt.core.compiler.problem.noEffectAssignment" value="warning" />
 											<entry key="org.eclipse.jdt.core.compiler.problem.noImplicitStringConversion" value="warning" />

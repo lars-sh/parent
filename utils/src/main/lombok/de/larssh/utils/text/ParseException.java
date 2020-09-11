@@ -4,8 +4,6 @@ package de.larssh.utils.text;
  * Thrown to indicate that a string could not be parsed.
  */
 public class ParseException extends Exception {
-	private static final long serialVersionUID = -1910494468127523686L;
-
 	/**
 	 * Constructs a new {@link ParseException} with the given message, formatting as
 	 * described at {@link Strings#format(String, Object...)}.

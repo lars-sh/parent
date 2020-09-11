@@ -1,6 +1,5 @@
 package de.larssh.utils.text;
 
-import java.io.Serializable;
 import java.util.Comparator;
 
 import de.larssh.utils.annotations.PackagePrivate;
@@ -50,9 +49,7 @@ import lombok.experimental.NonFinal;
 @Getter
 @PackagePrivate
 @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
-final class NumericTextComparator implements Comparator<String>, Serializable {
-	private static final long serialVersionUID = 1882417254984172719L;
-
+final class NumericTextComparator implements Comparator<String> {
 	/**
 	 * Singleton instance of {@link NumericTextComparator} to compare strings case
 	 * insensitive.

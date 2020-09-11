@@ -68,6 +68,6 @@ public class ThrowingFunctionTest {
 	 */
 	@NoArgsConstructor
 	private static class TestException extends Exception {
-		private static final long serialVersionUID = 1;
+		/* empty exception */
 	}
 }
