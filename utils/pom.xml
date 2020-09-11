@@ -24,6 +24,7 @@
 			<groupId>de.lars-sh</groupId>
 			<artifactId>utils-annotations</artifactId>
 			<version>${parent.version}</version>
+			<scope>provided</scope>
 		</dependency>
 
 		<!-- Optional -->
@@ -60,6 +61,7 @@
 			<groupId>de.lars-sh</groupId>
 			<artifactId>utils-test</artifactId>
 			<version>${parent.version}</version>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 </project>

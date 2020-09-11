@@ -12,6 +12,7 @@ TODO
 
 ### Changed
 * Suppressing additional SpotBugs null checks when using JDK 11 and later as they might fail when using try-with-resource statements as of https://github.com/spotbugs/spotbugs/issues/259 and https://github.com/spotbugs/spotbugs/issues/756
+* Missing dependency scopes inside the `utils` project
 
 ### Removed
 TODO
