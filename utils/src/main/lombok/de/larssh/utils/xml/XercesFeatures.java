@@ -48,6 +48,7 @@ import lombok.experimental.UtilityClass;
  * features documentation</a>.
  */
 @UtilityClass
+@SuppressWarnings("PMD.ClassNamingConventions")
 public class XercesFeatures {
 	/**
 	 * General Features
@@ -666,6 +667,7 @@ public class XercesFeatures {
 	 * DOM Features
 	 */
 	@UtilityClass
+	@SuppressWarnings("PMD.ShortClassName")
 	public static class DOM {
 		/**
 		 * {@code true} (default): Lazily expand the DOM nodes.
@@ -728,6 +730,7 @@ public class XercesFeatures {
 	 * SAX Features
 	 */
 	@UtilityClass
+	@SuppressWarnings("PMD.ShortClassName")
 	public static class SAX {
 		/**
 		 * {@code true}: Report the original prefixed names and attributes used for
