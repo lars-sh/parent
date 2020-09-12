@@ -9,7 +9,10 @@ Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%
 
 ### Added
 * Checkstyle check `XAvoidSerialVersionUID`, warning on usage of `serialVersionUID`.
-* Constants for Xerces features (see `de.larssh.utils.xml.XercesFeatures`)
+* Xerces features as constants inside `de.larssh.utils.xml.XercesFeatures`
+* Xerces properties as typed instances inside `de.larssh.utils.xml.XercesProperties`
+* Class `de.larssh.utils.xml.XmlProperty`
+* Class `de.larssh.utils.xml.WritableXmlProperty`
 
 ### Changed
 * [Avoid using serialVersionUID](https://github.com/rzwitserloot/lombok/wiki/WHY-NOT:-serialVersionUID).
