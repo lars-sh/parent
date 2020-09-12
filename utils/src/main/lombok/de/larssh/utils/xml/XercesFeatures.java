@@ -71,8 +71,8 @@ public class XercesFeatures {
 		 * Note: If the validation feature is set to {@code true}, then the document
 		 * must contain a grammar that supports the use of namespaces.
 		 *
-		 * @see {@link http://xml.org/sax/features/namespace-prefixes} and
-		 *      {@link http://xml.org/sax/features/validation}
+		 * @see SAX#NAMESPACE_PREFIXES
+		 * @see #VALIDATION
 		 */
 		public static final String NAMESPACES = Finals.constant("http://xml.org/sax/features/namespaces");
 
@@ -95,9 +95,9 @@ public class XercesFeatures {
 		 * {@link org.xml.sax.ext.EntityResolver2#getExternalSubset(String, String)}
 		 * will not be called when the document contains no {@code DOCTYPE} declaration.
 		 *
-		 * @see {@link http://apache.org/xml/features/disallow-doctype-decl} and
-		 *      {@link http://xml.org/sax/features/validation} and
-		 *      {@link http://apache.org/xml/features/nonvalidating/load-external-dtd}
+		 * @see #DISALLOW_DOCTYPE_DECLARATION
+		 * @see #VALIDATION
+		 * @see #NONVALIDATING_LOAD_EXTERNAL_DTD
 		 * @since Xerces-J 2.7.0
 		 */
 		public static final String USE_ENTITY_RESOLVER_2
@@ -119,9 +119,9 @@ public class XercesFeatures {
 		 * document specifies a grammar that grammar might be parsed but no validation
 		 * of the document contents will be performed.
 		 *
-		 * @see {@link http://apache.org/xml/features/validation/dynamic} and
-		 *      {@link http://xml.org/sax/features/namespaces} and
-		 *      {@link http://apache.org/xml/features/nonvalidating/load-external-dtd}
+		 * @see #VALIDATION_DYNAMIC
+		 * @see #NAMESPACES
+		 * @see #NONVALIDATING_LOAD_EXTERNAL_DTD
 		 */
 		public static final String VALIDATION = Finals.constant("http://xml.org/sax/features/validation");
 
@@ -133,9 +133,10 @@ public class XercesFeatures {
 		 * {@code false} (default): Validation is determined by the state of the
 		 * validation feature.
 		 *
-		 * @see {@link http://xml.org/sax/features/validation}
+		 * @see #VALIDATION
 		 */
-		public static final String DYNAMIC = Finals.constant("http://apache.org/xml/features/validation/dynamic");
+		public static final String VALIDATION_DYNAMIC
+				= Finals.constant("http://apache.org/xml/features/validation/dynamic");
 
 		/**
 		 * {@code true}: Turn on XML Schema validation by inserting an XML Schema
@@ -156,11 +157,12 @@ public class XercesFeatures {
 		 * or memory intensive such as unique particle attribution will only occur if
 		 * the schema full checking feature is set to {@code true}.
 		 *
-		 * @see {@link http://xml.org/sax/features/validation} and
-		 *      {@link http://apache.org/xml/features/validation/dynamic} and
-		 *      {@link http://xml.org/sax/features/namespaces}
+		 * @see #VALIDATION
+		 * @see #VALIDATION_DYNAMIC
+		 * @see #NAMESPACES
 		 */
-		public static final String SCHEMA = Finals.constant("http://apache.org/xml/features/validation/schema");
+		public static final String VALIDATION_SCHEMA
+				= Finals.constant("http://apache.org/xml/features/validation/schema");
 
 		/**
 		 * {@code true}: Enable full schema grammar constraint checking, including
@@ -176,7 +178,7 @@ public class XercesFeatures {
 		 * that are time-consuming or memory intensive. It does not affect the level of
 		 * checking performed on document instances that use Schema grammars.
 		 */
-		public static final String SCHEMA_FULL_CHECKING
+		public static final String VALIDATION_SCHEMA_FULL_CHECKING
 				= Finals.constant("http://apache.org/xml/features/validation/schema-full-checking");
 
 		/**
@@ -193,11 +195,11 @@ public class XercesFeatures {
 		 * Note: XML Schema normalized values will be exposed only if both schema
 		 * validation and validation features are set to {@code true}.
 		 *
-		 * @see {@link http://xml.org/sax/features/validation} and
-		 *      {@link http://apache.org/xml/features/validation/schema} and
-		 *      {@link http://apache.org/xml/features/validation/schema/element-default}
+		 * @see #VALIDATION
+		 * @see #VALIDATION_SCHEMA
+		 * @see #VALIDATION_SCHEMA_ELEMENT_DEFAULT
 		 */
-		public static final String NORMALIZED_VALUE
+		public static final String VALIDATION_SCHEMA_NORMALIZED_VALUE
 				= Finals.constant("http://apache.org/xml/features/validation/schema/normalized-value");
 
 		/**
@@ -214,11 +216,11 @@ public class XercesFeatures {
 		 * Note: XML Schema default values will be send via {@code characters()} if both
 		 * schema validation and validation features are set to {@code true}.
 		 *
-		 * @see {@link http://xml.org/sax/features/validation} and
-		 *      {@link http://apache.org/xml/features/validation/schema} and
-		 *      {@link http://apache.org/xml/features/validation/schema/normalized-value}
+		 * @see #VALIDATION
+		 * @see #VALIDATION_SCHEMA
+		 * @see #VALIDATION_SCHEMA_NORMALIZED_VALUE
 		 */
-		public static final String ELEMENT_DEFAULT
+		public static final String VALIDATION_SCHEMA_ELEMENT_DEFAULT
 				= Finals.constant("http://apache.org/xml/features/validation/schema/element-default");
 
 		/**
@@ -233,10 +235,10 @@ public class XercesFeatures {
 		 * <p>
 		 * Note: This feature can be turned off to improve parsing performance.
 		 *
-		 * @see {@link http://xml.org/sax/features/validation} and
-		 *      {@link http://apache.org/xml/features/validation/schema}
+		 * @see #VALIDATION
+		 * @see #VALIDATION_SCHEMA
 		 */
-		public static final String AUGMENT_POST_SCHEMA_VALIDATION_INFOSET
+		public static final String VALIDATION_SCHEMA_AUGMENT_POST_SCHEMA_VALIDATION_INFOSET
 				= Finals.constant("http://apache.org/xml/features/validation/schema/augment-psvi");
 
 		/**
@@ -251,11 +253,11 @@ public class XercesFeatures {
 		 * <p>
 		 * Access: read-only (parsing), read-write (not parsing)
 		 *
-		 * @see {@link http://xml.org/sax/features/validation} and
-		 *      {@link http://apache.org/xml/features/validation/schema}
+		 * @see #VALIDATION
+		 * @see #VALIDATION_SCHEMA
 		 * @since Xerces-J 2.8.0
 		 */
-		public static final String IGNORE_XSI_TYPE_UNTIL_ELEMENT_DECLARATION
+		public static final String VALIDATION_SCHEMA_IGNORE_XSI_TYPE_UNTIL_ELEMENT_DECLARATION
 				= Finals.constant("http://apache.org/xml/features/validation/schema/ignore-xsi-type-until-elemdecl");
 
 		/**
@@ -269,9 +271,9 @@ public class XercesFeatures {
 		 * <p>
 		 * Access: read-only (parsing), read-write (not parsing)
 		 *
-		 * @see {@link http://xml.org/sax/features/validation} and
-		 *      {@link http://apache.org/xml/features/validation/schema} and
-		 *      {@link http://apache.org/xml/features/validate-annotations}
+		 * @see #VALIDATION
+		 * @see #VALIDATION_SCHEMA
+		 * @see #VALIDATE_ANNOTATIONS
 		 * @since Xerces-J 2.7.0
 		 */
 		public static final String GENERATE_SYNTHETIC_ANNOTATIONS
@@ -287,9 +289,9 @@ public class XercesFeatures {
 		 * <p>
 		 * Access: read-only (parsing), read-write (not parsing)
 		 *
-		 * @see {@link http://xml.org/sax/features/validation} and
-		 *      {@link http://apache.org/xml/features/validation/schema} and
-		 *      {@link http://apache.org/xml/features/generate-synthetic-annotations}
+		 * @see #VALIDATION
+		 * @see #VALIDATION_SCHEMA
+		 * @see #GENERATE_SYNTHETIC_ANNOTATIONS
 		 * @since Xerces-J 2.7.0
 		 */
 		public static final String VALIDATE_ANNOTATIONS
@@ -321,7 +323,7 @@ public class XercesFeatures {
 		 * <p>
 		 * Access: read-only (parsing), read-write (not parsing)
 		 *
-		 * @see {@link http://xml.org/sax/features/external-parameter-entities}
+		 * @see #EXTERNAL_PARAMETER_ENTITIES
 		 */
 		public static final String EXTERNAL_GENERAL_ENTITIES
 				= Finals.constant("http://xml.org/sax/features/external-general-entities");
@@ -337,7 +339,7 @@ public class XercesFeatures {
 		 * <p>
 		 * Access: read-only (parsing), read-write (not parsing)
 		 *
-		 * @see {@link http://xml.org/sax/features/external-general-entities}
+		 * @see #EXTERNAL_GENERAL_ENTITIES
 		 */
 		public static final String EXTERNAL_PARAMETER_ENTITIES
 				= Finals.constant("http://xml.org/sax/features/external-parameter-entities");
@@ -361,7 +363,7 @@ public class XercesFeatures {
 		 *
 		 * @since Xerces-J 2.8.0
 		 */
-		public static final String BALANCE_SYNTAX_TREES
+		public static final String VALIDATION_BALANCE_SYNTAX_TREES
 				= Finals.constant("http://apache.org/xml/features/validation/balance-syntax-trees");
 
 		/**
@@ -378,11 +380,11 @@ public class XercesFeatures {
 		 * <p>
 		 * Note: This feature only applies to schema validation.
 		 *
-		 * @see {@link http://xml.org/sax/features/validation} and
-		 *      {@link http://apache.org/xml/features/validation/schema}
+		 * @see #VALIDATION
+		 * @see #VALIDATION_SCHEMA
 		 * @since Xerces-J 2.8.0
 		 */
-		public static final String ID_IDREF_CHECKING
+		public static final String VALIDATION_ID_IDREF_CHECKING
 				= Finals.constant("http://apache.org/xml/features/validation/id-idref-checking");
 
 		/**
@@ -394,11 +396,11 @@ public class XercesFeatures {
 		 * <p>
 		 * Access: read-only (parsing), read-write (not parsing)
 		 *
-		 * @see {@link http://xml.org/sax/features/validation} and
-		 *      {@link http://apache.org/xml/features/validation/schema}
+		 * @see #VALIDATION
+		 * @see #VALIDATION_SCHEMA
 		 * @since Xerces-J 2.8.0
 		 */
-		public static final String IDENTITY_CONSTRAINT_CHECKING
+		public static final String VALIDATION_IDENTITY_CONSTRAINT_CHECKING
 				= Finals.constant("http://apache.org/xml/features/validation/identity-constraint-checking");
 
 		/**
@@ -417,11 +419,11 @@ public class XercesFeatures {
 		 * document falls within the XPath subset, then the use of default Xerces CTA
 		 * XPath processor may result in an efficient schema processing.
 		 *
-		 * @see {@link http://xml.org/sax/features/validation} and
-		 *      {@link http://apache.org/xml/features/validation/schema}
+		 * @see #VALIDATION
+		 * @see #VALIDATION_SCHEMA
 		 * @since Xerces-J 2.12.0
 		 */
-		public static final String CTA_FULL_XPATH_CHECKING
+		public static final String VALIDATION_CTA_FULL_XPATH_CHECKING
 				= Finals.constant("http://apache.org/xml/features/validation/cta-full-xpath-checking");
 
 		/**
@@ -441,11 +443,11 @@ public class XercesFeatures {
 		 * their absence, presence or do string processing on them for the purpose of
 		 * XSD validation.
 		 *
-		 * @see {@link http://xml.org/sax/features/validation} and
-		 *      {@link http://apache.org/xml/features/validation/schema}
+		 * @see #VALIDATION
+		 * @see #VALIDATION_SCHEMA
 		 * @since Xerces-J 2.12.0
 		 */
-		public static final String ASSERT_COMMENTS_AND_PI_CHECKING
+		public static final String VALIDATION_ASSERT_COMMENTS_AND_PI_CHECKING
 				= Finals.constant("http://apache.org/xml/features/validation/assert-comments-and-pi-checking");
 
 		/**
@@ -462,11 +464,11 @@ public class XercesFeatures {
 		 * <p>
 		 * Note: This feature only applies to schema validation.
 		 *
-		 * @see {@link http://xml.org/sax/features/validation} and
-		 *      {@link http://apache.org/xml/features/validation/schema}
+		 * @see #VALIDATION
+		 * @see #VALIDATION_SCHEMA
 		 * @since Xerces-J 2.8.0
 		 */
-		public static final String UNPARSED_ENTITY_CHECKING
+		public static final String VALIDATION_UNPARSED_ENTITY_CHECKING
 				= Finals.constant("http://apache.org/xml/features/validation/unparsed-entity-checking");
 
 		/**
@@ -476,7 +478,7 @@ public class XercesFeatures {
 		 * {@code false} (default): Do not report a warning when a duplicate attribute
 		 * is re-declared.
 		 */
-		public static final String WARN_ON_DUPLICATE_ATTDEF
+		public static final String VALIDATION_WARN_ON_DUPLICATE_ATTRIBUTE_DEFINITION
 				= Finals.constant("http://apache.org/xml/features/validation/warn-on-duplicate-attdef");
 
 		/**
@@ -487,7 +489,7 @@ public class XercesFeatures {
 		 * {@code false} (default): Do not report a warning if an element referenced in
 		 * a content model is not declared.
 		 */
-		public static final String WARN_ON_UNDECLARED_ELEMDEF
+		public static final String VALIDATION_WARN_ON_UNDECLARED_ELEMENT_DEFINITION
 				= Finals.constant("http://apache.org/xml/features/validation/warn-on-undeclared-elemdef");
 
 		/**
@@ -497,7 +499,7 @@ public class XercesFeatures {
 		 * {@code false} (default): Do not report warning for duplicate entity
 		 * declaration.
 		 */
-		public static final String WARN_ON_DUPLICATE_ENTITYDEF
+		public static final String WARN_ON_DUPLICATE_ENTITY_DEFINITION
 				= Finals.constant("http://apache.org/xml/features/warn-on-duplicate-entitydef");
 
 		/**
@@ -543,10 +545,10 @@ public class XercesFeatures {
 		 * <p>
 		 * Note: This feature is always on when validation is on.
 		 *
-		 * @see {@link http://xml.org/sax/features/validation} and
-		 *      {@link http://apache.org/xml/features/nonvalidating/load-external-dtd}
+		 * @see #VALIDATION
+		 * @see #NONVALIDATING_LOAD_EXTERNAL_DTD
 		 */
-		public static final String LOAD_DTD_GRAMMAR
+		public static final String NONVALIDATING_LOAD_DTD_GRAMMAR
 				= Finals.constant("http://apache.org/xml/features/nonvalidating/load-dtd-grammar");
 
 		/**
@@ -558,10 +560,10 @@ public class XercesFeatures {
 		 * <p>
 		 * Note: This feature is always on when validation is on.
 		 *
-		 * @see {@link http://xml.org/sax/features/validation} and
-		 *      {@link http://apache.org/xml/features/nonvalidating/load-dtd-grammar}
+		 * @see #VALIDATION
+		 * @see #NONVALIDATING_LOAD_DTD_GRAMMAR
 		 */
-		public static final String LOAD_EXTERNAL_DTD
+		public static final String NONVALIDATING_LOAD_EXTERNAL_DTD
 				= Finals.constant("http://apache.org/xml/features/nonvalidating/load-external-dtd");
 
 		/**
@@ -571,9 +573,9 @@ public class XercesFeatures {
 		 * <p>
 		 * {@code false} (default): Does not notify of character reference boundaries.
 		 *
-		 * @see {@link http://apache.org/xml/features/scanner/notify-builtin-refs}
+		 * @see #SCANNER_NOTIFY_BUILTIN_REFERENCES
 		 */
-		public static final String NOTIFY_CHAR_REFS
+		public static final String SCANNER_NOTIFY_CHARACTER_REFERENCES
 				= Finals.constant("http://apache.org/xml/features/scanner/notify-char-refs");
 
 		/**
@@ -584,9 +586,9 @@ public class XercesFeatures {
 		 * <p>
 		 * {@code false} (default): Does not notify of built-in entity boundaries.
 		 *
-		 * @see {@link http://apache.org/xml/features/scanner/notify-char-refs}
+		 * @see #SCANNER_NOTIFY_CHARACTER_REFERENCES
 		 */
-		public static final String NOTIFY_BUILTIN_REFS
+		public static final String SCANNER_NOTIFY_BUILTIN_REFERENCES
 				= Finals.constant("http://apache.org/xml/features/scanner/notify-builtin-refs");
 
 		/**
@@ -598,7 +600,7 @@ public class XercesFeatures {
 		 *
 		 * @since Xerces-J 2.3.0
 		 */
-		public static final String DISALLOW_DOCTYPE_DECL
+		public static final String DISALLOW_DOCTYPE_DECLARATION
 				= Finals.constant("http://apache.org/xml/features/disallow-doctype-decl");
 
 		/**
@@ -625,8 +627,8 @@ public class XercesFeatures {
 		 * <p>
 		 * {@code false} (default): Do not perform XInclude processing.
 		 *
-		 * @see {@link http://apache.org/xml/features/xinclude/fixup-base-uris} and
-		 *      {@link http://apache.org/xml/features/xinclude/fixup-language}
+		 * @see #XINCLUDE_FIXUP_BASE_URIS
+		 * @see #XINCLUDE_FIXUP_LANGUAGE
 		 * @since Xerces-J 2.7.0
 		 */
 		public static final String XINCLUDE = Finals.constant("http://apache.org/xml/features/xinclude");
@@ -639,10 +641,10 @@ public class XercesFeatures {
 		 * {@code false}: Do not perform base URI fixup. The XInclude processor will not
 		 * add {@code xml:base} attributes.
 		 *
-		 * @see {@link http://apache.org/xml/features/xinclude}
+		 * @see #XINCLUDE
 		 * @since Xerces-J 2.7.0
 		 */
-		public static final String FIXUP_BASE_URIS
+		public static final String XINCLUDE_FIXUP_BASE_URIS
 				= Finals.constant("http://apache.org/xml/features/xinclude/fixup-base-uris");
 
 		/**
@@ -653,10 +655,10 @@ public class XercesFeatures {
 		 * {@code false}: Do not perform language fixup. The XInclude processor will not
 		 * add {@code xml:lang} attributes.
 		 *
-		 * @see {@link http://apache.org/xml/features/xinclude}
+		 * @see #XINCLUDE
 		 * @since Xerces-J 2.7.0
 		 */
-		public static final String FIXUP_LANGUAGE
+		public static final String XINCLUDE_FIXUP_LANGUAGE
 				= Finals.constant("http://apache.org/xml/features/xinclude/fixup-language");
 	}
 
@@ -700,7 +702,7 @@ public class XercesFeatures {
 		 * {@link org.w3c.dom.EntityReference} nodes in the DOM tree. The document will
 		 * always contain the entity reference child nodes.
 		 */
-		public static final String CREATE_ENTITY_REF_NODES
+		public static final String CREATE_ENTITY_REFERENCE_NODES
 				= Finals.constant("http://apache.org/xml/features/dom/create-entity-ref-nodes");
 
 		/**
@@ -768,7 +770,7 @@ public class XercesFeatures {
 		 *
 		 * @since Xerces-J 2.7.0
 		 */
-		public static final String PARAMETER_ENTITIES
+		public static final String LEXICAL_HANDLER_PARAMETER_ENTITIES
 				= Finals.constant("http://xml.org/sax/features/lexical-handler/parameter-entities");
 
 		/**
@@ -843,7 +845,7 @@ public class XercesFeatures {
 		 *
 		 * @since Xerces-J 2.7.0
 		 */
-		public static final String USE_ATTRIBUTES2 = Finals.constant("http://xml.org/sax/features/use-attributes2");
+		public static final String USE_ATTRIBUTES_2 = Finals.constant("http://xml.org/sax/features/use-attributes2");
 
 		/**
 		 * {@code true}: The {@link org.xml.sax.Locator} objects passed by the parser in
@@ -864,7 +866,7 @@ public class XercesFeatures {
 		 *
 		 * @since Xerces-J 2.7.0
 		 */
-		public static final String USE_LOCATOR2 = Finals.constant("http://xml.org/sax/features/use-locator2");
+		public static final String USE_LOCATOR_2 = Finals.constant("http://xml.org/sax/features/use-locator2");
 
 		/**
 		 * {@code true}: When the namespace-prefixes feature is set to {@code true},
@@ -875,8 +877,8 @@ public class XercesFeatures {
 		 * {@code false} (default): Namespace declaration attributes are reported as
 		 * having no namespace.
 		 *
-		 * @see {@link http://xml.org/sax/features/namespaces} and
-		 *      {@link http://xml.org/sax/features/namespace-prefixes}
+		 * @see General#NAMESPACES
+		 * @see #NAMESPACE_PREFIXES
 		 * @since Xerces-J 2.7.0
 		 */
 		public static final String XMLNS_URIS = Finals.constant("http://xml.org/sax/features/xmlns-uris");
