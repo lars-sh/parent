@@ -2793,7 +2793,9 @@ deploy:
 											<entry key="cleanup.never_use_blocks" value="false" />
 											<entry key="cleanup.never_use_parentheses_in_expressions" value="true" />
 											<entry key="cleanup.number_suffix" value="true" />
+											<entry key="cleanup.objects_equals" value="true" />
 											<entry key="cleanup.organize_imports" value="true" />
+											<entry key="cleanup.precompile_regex" value="true" />
 											<entry key="cleanup.push_down_negation" value="true" />
 											<entry key="cleanup.qualify_static_field_accesses_with_declaring_class" value="false" />
 											<entry key="cleanup.qualify_static_member_accesses_through_instances_with_declaring_class" value="true" />
@@ -2878,7 +2880,9 @@ deploy:
 											<entry key="sp_cleanup.never_use_parentheses_in_expressions" value="true" />
 											<entry key="sp_cleanup.number_suffix" value="true" />
 											<entry key="sp_cleanup.on_save_use_additional_actions" value="true" />
+											<entry key="sp_cleanup.objects_equals" value="true" />
 											<entry key="sp_cleanup.organize_imports" value="true" />
+											<entry key="sp_cleanup.precompile_regex" value="true" />
 											<entry key="sp_cleanup.push_down_negation" value="true" />
 											<entry key="sp_cleanup.qualify_static_field_accesses_with_declaring_class" value="false" />
 											<entry key="sp_cleanup.qualify_static_member_accesses_through_instances_with_declaring_class" value="true" />
