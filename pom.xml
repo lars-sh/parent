@@ -2417,16 +2417,7 @@ deploy:
 										<echoxml file="${project.build.directory}/spotbugs-excludes-fix-jdk11-and-later.xml">
 											<FindBugsFilter>
 												<Match>
-													<Bug pattern="NP_LOAD_OF_KNOWN_NULL_VALUE" />
-												</Match>
-												<Match>
 													<Bug pattern="RCN_REDUNDANT_NULLCHECK_OF_NONNULL_VALUE" />
-												</Match>
-												<Match>
-													<Bug pattern="RCN_REDUNDANT_NULLCHECK_OF_NULL_VALUE" />
-												</Match>
-												<Match>
-													<Bug pattern="RCN_REDUNDANT_NULLCHECK_WOULD_HAVE_BEEN_A_NPE" />
 												</Match>
 											</FindBugsFilter>
 										</echoxml>
