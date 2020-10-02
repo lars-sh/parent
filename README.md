@@ -389,7 +389,6 @@ cpd.excludeFromFailureFile:                        ${project.basedir}/cpd-exclud
 cpd.printFailingErrors:                            true
 dependency.failOnWarning:                          true
 enforcer.requiredMavenVersion:                     3.3.9
-formatter.cachedir:                                ${project.build.directory}/formatter-cache
 formatter.configFile:                              ${project.build.directory}/formatter.xml
 formatter.lineEnding:                              LF
 jar.manifest.addClasspath:                         true

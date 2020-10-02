@@ -74,20 +74,6 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://lars-sh.github.io/parent/utils-annotations//checkstyle.html#target.formatter-cache.formatter-maven-cache.properties">target/formatter-cache/formatter-maven-cache.properties</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="https://lars-sh.github.io/parent/utils-annotations//checkstyle.html#LICENSE.txt">LICENSE.txt</a>
                 </td>
                 <td>
@@ -117,6 +103,20 @@ under the License.
                           <tr>
                 <td>
                   <a href="https://lars-sh.github.io/parent/utils-annotations//checkstyle.html#de.larssh.utils.annotations.NonNullByDefault.java">de/larssh/utils/annotations/NonNullByDefault.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://lars-sh.github.io/parent/utils-annotations//checkstyle.html#target.formatter-maven-cache.properties">target/formatter-maven-cache.properties</a>
                 </td>
                 <td>
                   0
