@@ -1,6 +1,7 @@
 package de.larssh.utils.xml;
 
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.SAXParser;
 
 import org.xml.sax.SAXNotRecognizedException;
 import org.xml.sax.SAXNotSupportedException;
@@ -12,18 +13,18 @@ import lombok.RequiredArgsConstructor;
 
 /**
  * Allows reading attributes of {@link DocumentBuilderFactory} and properties of
- * {@link XMLReader} in a typed way.
+ * {@link SAXParser} and {@link XMLReader} in a typed way.
  *
  * <p>
  * While this class offers read support only, the extended class
- * {@link WritableXmlProperty} shall be used for read-write accessible
+ * {@link XmlReadingWritableProperty} shall be used for read-write accessible
  * properties.
  *
- * @param <T> the properties type
+ * @param <T> the property type
  */
 @Getter
 @RequiredArgsConstructor
-public class XmlProperty<T> {
+public class XmlReadingProperty<T> {
 	/**
 	 * Property Name
 	 *
@@ -48,16 +49,36 @@ public class XmlProperty<T> {
 	}
 
 	/**
+	 * Returns the particular property requested for in the underlying
+	 * implementation of {@link XMLReader}.
+	 *
+	 * @param saxParser the SAX parser
+	 * @return the current value of the property
+	 * @throws SAXNotRecognizedException when the underlying {@link XMLReader} does
+	 *                                   not recognize the property name.
+	 * @throws SAXNotSupportedException  when the underlying {@link XMLReader}
+	 *                                   recognizes the property name but doesn't
+	 *                                   support the property.
+	 *
+	 * @see XMLReader#getProperty
+	 */
+	@Nullable
+	@SuppressWarnings("unchecked")
+	public T get(final SAXParser saxParser) throws SAXNotRecognizedException, SAXNotSupportedException {
+		return (T) saxParser.getProperty(getName());
+	}
+
+	/**
 	 * Look up the value of a property.
 	 *
 	 * <p>
-	 * It is possible for an {@code XMLReader} to recognize a property name but
+	 * It is possible for a {@link XMLReader} to recognize a property name but
 	 * temporarily be unable to return its value. Some property values may be
 	 * available only in specific contexts, such as before, during, or after a
 	 * parse.
 	 *
 	 * <p>
-	 * {@code XMLReader}s are not required to recognize any specific property names.
+	 * {@link XMLReader}s are not required to recognize any specific property names.
 	 *
 	 * @param xmlReader the XML reader
 	 * @return the current value of the property
