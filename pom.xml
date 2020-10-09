@@ -90,7 +90,6 @@
 		<cpd.printFailingErrors>true</cpd.printFailingErrors>
 		<dependency.failOnWarning>true</dependency.failOnWarning>
 		<enforcer.requiredMavenVersion>3.3.9</enforcer.requiredMavenVersion>
-		<formatter.cachedir>${project.build.directory}/formatter-cache</formatter.cachedir>
 		<formatter.configFile>${project.build.directory}/formatter.xml</formatter.configFile>
 		<formatter.lineEnding>LF</formatter.lineEnding>
 		<jar.manifest.addClasspath>true</jar.manifest.addClasspath>
@@ -126,16 +125,16 @@
 		<!-- Versions: Dependencies -->
 		<assertj-core.version>3.17.2</assertj-core.version>
 		<joor.version>0.9.13</joor.version>
-		<junit-jupiter-api.version>5.6.2</junit-jupiter-api.version>
-		<junit-jupiter-engine.version>5.6.2</junit-jupiter-engine.version>
+		<junit-jupiter-api.version>5.7.0</junit-jupiter-api.version>
+		<junit-jupiter-engine.version>5.7.0</junit-jupiter-engine.version>
 		<lombok-annotations.version>1.18.12</lombok-annotations.version>
-		<mockito.version>3.5.10</mockito.version>
+		<mockito.version>3.5.13</mockito.version>
 		<parent.version>0.9.10-SNAPSHOT</parent.version>
 
 		<!-- Versions: Plugins -->
 		<build-helper-maven-plugin.version>3.2.0</build-helper-maven-plugin.version>
-		<formatter-maven-plugin.version>2.12.2</formatter-maven-plugin.version>
-		<jacoco-maven-plugin.version>0.8.5</jacoco-maven-plugin.version>
+		<formatter-maven-plugin.version>2.13.0</formatter-maven-plugin.version>
+		<jacoco-maven-plugin.version>0.8.6</jacoco-maven-plugin.version>
 		<lifecycle-mapping.version>1.0.0</lifecycle-mapping.version>
 		<lombok-maven-plugin.version>1.18.12.0</lombok-maven-plugin.version>
 		<maven-antrun-plugin.version>3.0.0</maven-antrun-plugin.version>
@@ -163,20 +162,20 @@
 		<maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
 		<maven-surefire-report-plugin.version>2.22.2</maven-surefire-report-plugin.version>
 		<nexus-staging-maven-plugin.version>1.6.8</nexus-staging-maven-plugin.version>
-		<spotbugs-maven-plugin.version>4.0.4</spotbugs-maven-plugin.version>
+		<spotbugs-maven-plugin.version>4.1.3</spotbugs-maven-plugin.version>
 		<tidy-maven-plugin.version>1.1.0</tidy-maven-plugin.version>
 		<versions-maven-plugin.version>2.8.1</versions-maven-plugin.version>
 
 		<!-- Versions: Plugin Dependencies -->
 		<apache-ant.version>1.10.8</apache-ant.version>
-		<checkstyle.version>8.36</checkstyle.version>
+		<checkstyle.version>8.36.2</checkstyle.version>
 		<sb-contrib.version>7.4.7</sb-contrib.version>
 		<findsecbugs.version>1.10.1</findsecbugs.version>
 		<lombok.version>1.18.12</lombok.version>
-		<org-eclipse-jdt-core.version>3.22.0</org-eclipse-jdt-core.version>
-		<pmd.version>6.27.0</pmd.version>
-		<spotbugs.version>4.1.2</spotbugs.version>
-		<spotbugs-annotations.version>4.1.2</spotbugs-annotations.version>
+		<org-eclipse-jdt-core.version>3.23.0</org-eclipse-jdt-core.version>
+		<pmd.version>6.28.0</pmd.version>
+		<spotbugs.version>4.1.3</spotbugs.version>
+		<spotbugs-annotations.version>4.1.3</spotbugs-annotations.version>
 
 		<!-- Versions: Reporting Skins -->
 		<maven-fluido-skin.version>1.9</maven-fluido-skin.version>
@@ -2417,16 +2416,7 @@ deploy:
 										<echoxml file="${project.build.directory}/spotbugs-excludes-fix-jdk11-and-later.xml">
 											<FindBugsFilter>
 												<Match>
-													<Bug pattern="NP_LOAD_OF_KNOWN_NULL_VALUE" />
-												</Match>
-												<Match>
 													<Bug pattern="RCN_REDUNDANT_NULLCHECK_OF_NONNULL_VALUE" />
-												</Match>
-												<Match>
-													<Bug pattern="RCN_REDUNDANT_NULLCHECK_OF_NULL_VALUE" />
-												</Match>
-												<Match>
-													<Bug pattern="RCN_REDUNDANT_NULLCHECK_WOULD_HAVE_BEEN_A_NPE" />
 												</Match>
 											</FindBugsFilter>
 										</echoxml>
@@ -2456,7 +2446,7 @@ deploy:
 				<dependency>
 					<groupId>org.junit.platform</groupId>
 					<artifactId>junit-platform-runner</artifactId>
-					<version>1.6.2</version>
+					<version>1.7.0</version>
 					<scope>test</scope>
 					<exclusions>
 						<exclusion>
