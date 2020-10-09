@@ -20,6 +20,16 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class TransformerOutputProperty<T> {
 	/**
+	 * Boolean output property value representing {@code false}
+	 */
+	private static final String BOOLEAN_VALUE_FALSE = "no";
+
+	/**
+	 * Boolean output property value representing {@code true}
+	 */
+	private static final String BOOLEAN_VALUE_TRUE = "yes";
+
+	/**
 	 * Creates a boolean {@link TransformerOutputProperty}.
 	 *
 	 * <p>
@@ -31,8 +41,8 @@ public class TransformerOutputProperty<T> {
 	 */
 	public static TransformerOutputProperty<Boolean> booleanOutputProperty(final String name) {
 		return new TransformerOutputProperty<>(name, //
-				value -> value ? "yes" : "no",
-				"yes"::equalsIgnoreCase);
+				value -> value ? BOOLEAN_VALUE_TRUE : BOOLEAN_VALUE_FALSE,
+				BOOLEAN_VALUE_TRUE::equalsIgnoreCase);
 	}
 
 	/**
@@ -116,7 +126,7 @@ public class TransformerOutputProperty<T> {
 	 * @throws IllegalArgumentException if the property is not supported
 	 * @see TransformerOutputProperties
 	 */
-	public T get(final Transformer transformer) throws IllegalArgumentException {
+	public T get(final Transformer transformer) {
 		return getDeserializer().apply(transformer.getOutputProperty(getName()));
 	}
 
@@ -147,7 +157,7 @@ public class TransformerOutputProperty<T> {
 	 *                                  qualified with a namespace
 	 * @see TransformerOutputProperties
 	 */
-	public void set(final Transformer transformer, final T value) throws IllegalArgumentException {
+	public void set(final Transformer transformer, final T value) {
 		transformer.setOutputProperty(getName(), getSerializer().apply(value));
 	}
 }

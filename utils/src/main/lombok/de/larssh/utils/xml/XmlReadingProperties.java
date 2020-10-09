@@ -2,12 +2,8 @@ package de.larssh.utils.xml;
 
 import java.util.Locale;
 
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.SAXParser;
-
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
-import org.xml.sax.XMLReader;
 import org.xml.sax.ext.DeclHandler;
 import org.xml.sax.ext.LexicalHandler;
 
@@ -15,12 +11,23 @@ import lombok.experimental.UtilityClass;
 
 /**
  * A collection of attributes/properties to be used for instances of
- * {@link DocumentBuilderFactory}, {@link SAXParser} and {@link XMLReader}.
+ * {@link javax.xml.parsers.DocumentBuilderFactory},
+ * {@link javax.xml.parsers.SAXParser} and {@link org.xml.sax.XMLReader}.
  */
 @UtilityClass
 @SuppressWarnings("PMD.ClassNamingConventions")
 public class XmlReadingProperties {
 	/**
+	 * Xerces Properties
+	 *
+	 * <p>
+	 * Based on <a href=
+	 * "http://svn.apache.org/viewvc/xerces/site/trunk/production/xerces2-j/properties.html?r1=1872634">revision
+	 * 1872634</a> of the
+	 * <a href="https://xerces.apache.org/xerces2-j/properties.html">official Xerces
+	 * properties documentation</a>
+	 *
+	 * <p>
 	 * If you have created a DOM document builder or a SAX parser using the JAXP
 	 * interfaces, the following instructions tell you how to set properties on
 	 * document builders and SAX parsers created from the JAXP interfaces.

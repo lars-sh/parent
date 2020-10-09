@@ -14,7 +14,7 @@ public class TransformerFactoryFeatures {
 	/**
 	 * Feature for secure processing.
 	 *
-	 * @see XmlConstants#FEATURE_SECURE_PROCESSING
+	 * @see XMLConstants#FEATURE_SECURE_PROCESSING
 	 */
 	public static final String SECURE_PROCESSING = XMLConstants.FEATURE_SECURE_PROCESSING;
 }

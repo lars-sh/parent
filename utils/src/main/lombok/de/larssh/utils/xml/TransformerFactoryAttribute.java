@@ -35,7 +35,7 @@ public class TransformerFactoryAttribute<T> {
 	 *                                  attribute
 	 */
 	@SuppressWarnings("unchecked")
-	public T get(final TransformerFactory transformerFactory) throws IllegalArgumentException {
+	public T get(final TransformerFactory transformerFactory) {
 		return (T) transformerFactory.getAttribute(getName());
 	}
 
@@ -53,7 +53,7 @@ public class TransformerFactoryAttribute<T> {
 	 * @throws IllegalArgumentException if implementation does not recognize the
 	 *                                  attribute
 	 */
-	public void set(final TransformerFactory transformerFactory, final T value) throws IllegalArgumentException {
+	public void set(final TransformerFactory transformerFactory, final T value) {
 		transformerFactory.setAttribute(getName(), value);
 	}
 }

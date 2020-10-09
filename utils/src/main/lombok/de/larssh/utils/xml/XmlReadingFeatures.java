@@ -1,21 +1,27 @@
 package de.larssh.utils.xml;
 
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.SAXParser;
-
-import org.xml.sax.XMLReader;
-
 import de.larssh.utils.Finals;
 import lombok.experimental.UtilityClass;
 
 /**
  * A collection of features to be used for instances of
- * {@link DocumentBuilderFactory}, {@link SAXParser} and {@link XMLReader}.
+ * {@link javax.xml.parsers.DocumentBuilderFactory},
+ * {@link javax.xml.parsers.SAXParser} and {@link org.xml.sax.XMLReader}.
  */
 @UtilityClass
 @SuppressWarnings("PMD.ClassNamingConventions")
 public class XmlReadingFeatures {
 	/**
+	 * Xerces Features
+	 *
+	 * <p>
+	 * Based on <a href=
+	 * "http://svn.apache.org/viewvc/xerces/site/trunk/production/xerces2-j/features.html?r1=1872634">revision
+	 * 1872634</a> of the
+	 * <a href="https://xerces.apache.org/xerces2-j/features.html">official Xerces
+	 * features documentation</a>
+	 *
+	 * <p>
 	 * If you have created a DOM document builder or a SAX parser using the JAXP
 	 * interfaces, the following instructions tell you how to set features on
 	 * document builders and SAX parsers created from the JAXP interfaces.

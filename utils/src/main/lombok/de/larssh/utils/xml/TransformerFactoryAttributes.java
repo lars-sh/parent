@@ -7,6 +7,7 @@ import lombok.experimental.UtilityClass;
  * {@link javax.xml.transform.TransformerFactory}.
  */
 @UtilityClass
+@SuppressWarnings("PMD.ClassNamingConventions")
 public class TransformerFactoryAttributes {
 	/**
 	 * Xalan Attributes

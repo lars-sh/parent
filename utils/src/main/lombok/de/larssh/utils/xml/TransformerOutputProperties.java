@@ -15,6 +15,7 @@ import lombok.experimental.UtilityClass;
  * {@link javax.xml.transform.Transformer}.
  */
 @UtilityClass
+@SuppressWarnings("PMD.ClassNamingConventions")
 public class TransformerOutputProperties {
 	/**
 	 * JDK Output Properties
@@ -23,6 +24,7 @@ public class TransformerOutputProperties {
 	 * Based on {@link XMLConstants}
 	 */
 	@UtilityClass
+	@SuppressWarnings("PMD.ShortClassName")
 	public static class JDK {
 		/**
 		 * Restrict access to external DTDs and external Entity References to the
@@ -67,10 +69,12 @@ public class TransformerOutputProperties {
 	/**
 	 * XML 1.0 Output Properties
 	 *
+	 * <p>
 	 * Based on <a href="https://www.w3.org/TR/1999/REC-xslt-19991116#output">XSL
 	 * Transformations (XSLT) 1.0</a>
 	 */
 	@UtilityClass
+	@SuppressWarnings("PMD.ShortClassName")
 	public static class XML {
 		/**
 		 * The value of the method property identifies the overall method that should be
@@ -171,9 +175,9 @@ public class TransformerOutputProperties {
 	public static class Xalan {
 		/**
 		 * The content handling class specifies the default name of the Java class that
-		 * implements the {@link org.xml.sax.ContentHandle} interface and recieves calls
-		 * during result tree serialization. If you specify an alternate Java class it
-		 * must implement the ContentHandler interface.
+		 * implements the {@link org.xml.sax.ContentHandler} interface and receives
+		 * calls during result tree serialization. If you specify an alternate Java
+		 * class it must implement the ContentHandler interface.
 		 *
 		 * <p>
 		 * The default value for XML is {@code org.apache.xml.serializer.ToXMLStream},
