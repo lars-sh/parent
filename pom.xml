@@ -2436,7 +2436,7 @@ deploy:
 				<jdk>15</jdk>
 			</activation>
 			<properties>
-				<doclint>all,-group:missing</doclint>
+				<doclint>all,-missing</doclint>
 			</properties>
 		</profile>
 
