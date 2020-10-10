@@ -9,6 +9,7 @@ Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%
 
 ### Added
 * Checkstyle check `XAvoidSerialVersionUID`, warning on usage of `serialVersionUID`.
+* Collection of XML processing attributes, features and properties inside package `de.larssh.utils.xml`
 
 ### Changed
 * [Avoid using serialVersionUID](https://github.com/rzwitserloot/lombok/wiki/WHY-NOT:-serialVersionUID).
