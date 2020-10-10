@@ -1740,12 +1740,23 @@ function suppressJdk14Warnings() {
 	fi
 }
 
+# JDK15: The JavaDoc creation logs errors about missing "javadoc-bundle-option" folders.
+function suppressJdk15Warnings() {
+	if [ ${JDK_VERSION} -eq 15 ]; then
+		cat < /dev/stdin \
+		| grep --invert-match --perl-regexp "^\\[ERROR\\] Error fetching link: .*[/\\\\]target[/\\\\]javadoc-bundle-options\\. Ignored it\\.$"
+	else
+		cat < /dev/stdin
+	fi
+}
+
 JDK_VERSION=`echo ${TRAVIS_JDK_VERSION} | grep --only-matching --perl-regexp \\\\d+`
 
 cat < /dev/stdin \
 | suppressUserDefined \
 | suppressPmdWarnings \
-| suppressJdk14Warnings
+| suppressJdk14Warnings \
+| suppressJdk15Warnings
 ]]></echo>
 
 								<!-- versions-ruleset.xml -->
