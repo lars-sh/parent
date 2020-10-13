@@ -498,7 +498,6 @@
 						</dependency>
 					</dependencies>
 					<configuration>
-						<cachedir>${formatter.cachedir}</cachedir>
 						<configFile>${formatter.configFile}</configFile>
 						<directories>
 							<directory>${project.basedir}/src/main/java</directory>
