@@ -1,0 +1,10 @@
+/.idea/
+/.settings/
+/src/main/lombok/lombok.config
+/src/test/lombok/lombok.config
+/src/lombok.config
+/target/
+/.checkstyle
+/.classpath
+/.project
+/*.iml
