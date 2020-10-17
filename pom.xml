@@ -4,7 +4,7 @@
 
 	<groupId>de.lars-sh</groupId>
 	<artifactId>root</artifactId>
-	<version>0.9.10-SNAPSHOT</version>
+	<version>0.9.10</version>
 	<packaging>pom</packaging>
 
 	<name>Root POM</name>
@@ -129,7 +129,7 @@
 		<junit-jupiter-engine.version>5.7.0</junit-jupiter-engine.version>
 		<lombok-annotations.version>1.18.16</lombok-annotations.version>
 		<mockito.version>3.5.13</mockito.version>
-		<parent.version>0.9.10-SNAPSHOT</parent.version>
+		<parent.version>0.9.10</parent.version>
 
 		<!-- Versions: Plugins -->
 		<build-helper-maven-plugin.version>3.2.0</build-helper-maven-plugin.version>
