@@ -1126,8 +1126,8 @@
 								<!-- formatter.xml -->
 								<echo level="info" message="Update formatter.xml" />
 								<echoxml file="${project.build.directory}/formatter.xml">
-									<profiles version="18">
-										<profile kind="CodeFormatterProfile" name="de.lars-sh" version="19">
+									<profiles version="20">
+										<profile kind="CodeFormatterProfile" name="de.lars-sh" version="20">
 											<setting id="org.eclipse.jdt.core.formatter.align_assignment_statements_on_columns" value="false" />
 											<setting id="org.eclipse.jdt.core.formatter.align_fields_grouping_blank_lines" value="2147483647" />
 											<setting id="org.eclipse.jdt.core.formatter.align_type_members_on_columns" value="false" />
@@ -2850,7 +2850,7 @@ deploy:
 											<entry key="eclipse.preferences.version" value="1" />
 											<entry key="editor_save_participant_org.eclipse.jdt.ui.postsavelistener.cleanup" value="true" />
 											<entry key="formatter_profile" value="_de.lars-sh" />
-											<entry key="formatter_settings_version" value="19" />
+											<entry key="formatter_settings_version" value="20" />
 											<entry key="org.eclipse.jdt.ui.exception.name" value="e" />
 											<entry key="org.eclipse.jdt.ui.gettersetter.use.is" value="true" />
 											<entry key="org.eclipse.jdt.ui.ignorelowercasenames" value="true" />
@@ -2964,6 +2964,7 @@ deploy:
 											<entry key="org.eclipse.jdt.core.compiler.debug.sourceFile" value="generate" />
 											<entry key="org.eclipse.jdt.core.compiler.doc.comment.support" value="${eclipse.compiler.javadoc}" />
 											<entry key="org.eclipse.jdt.core.compiler.problem.APILeak" value="warning" />
+											<entry key="org.eclipse.jdt.core.compiler.problem.annotatedTypeArgumentToUnannotated" value="warning" />
 											<entry key="org.eclipse.jdt.core.compiler.problem.annotationSuperInterface" value="warning" />
 											<entry key="org.eclipse.jdt.core.compiler.problem.assertIdentifier" value="error" />
 											<entry key="org.eclipse.jdt.core.compiler.problem.autoboxing" value="ignore" />
