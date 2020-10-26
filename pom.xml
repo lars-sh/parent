@@ -123,7 +123,7 @@
 		<spotbugs.threshold>Low</spotbugs.threshold>
 
 		<!-- Versions: Dependencies -->
-		<assertj-core.version>3.17.2</assertj-core.version>
+		<assertj-core.version>3.18.0</assertj-core.version>
 		<joor.version>0.9.13</joor.version>
 		<junit-jupiter-api.version>5.7.0</junit-jupiter-api.version>
 		<junit-jupiter-engine.version>5.7.0</junit-jupiter-engine.version>
