@@ -55,7 +55,7 @@ public class Resources {
 	/**
 	 * Pattern to find the path to a JAR inside an URL string with JAR protocol
 	 */
-	private static final Pattern PATTERN_JAR_FROM_URL = Pattern.compile("(?i)^jar:(?<pathToJar>.*?)(![^!]*)?$");
+	private static final Pattern PATTERN_JAR_FROM_URL = Pattern.compile("(?i)^jar:(?<pathToJar>.*)![^!]*$");
 
 	/**
 	 * Normalizes and checks {@code resource} as path for accessing resources
