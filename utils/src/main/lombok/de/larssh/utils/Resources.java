@@ -54,12 +54,7 @@ public class Resources {
 	/**
 	 * Pattern to find the path to a JAR inside an URL string with JAR protocol
 	 */
-	private static final Pattern PATTERN_JAR_FROM_URL = Pattern.compile("^jar:(?<pathToJar>.*)![^!]*$");
-
-	/**
-	 * URL protocol for JAR files (Java archives)
-	 */
-	private static final String URL_PROTOCOL_JAR = "jar";
+	private static final Pattern PATTERN_JAR_FROM_URL = Pattern.compile("(?i)^jar:(?<pathToJar>.*?)(![^!]*)?$");
 
 	/**
 	 * Normalizes and checks {@code resource} as path for accessing resources
@@ -203,9 +198,9 @@ public class Resources {
 	 * @return path to the the JAR file
 	 */
 	public static Optional<Path> getPathToJar(final Class<?> clazz) {
-		return getUrlToClass(clazz).filter(url -> URL_PROTOCOL_JAR.equalsIgnoreCase(url.getProtocol()))
-				.map(URL::toString)
-				.map(url -> Strings.replaceFirst(url, PATTERN_JAR_FROM_URL, "${pathToJar}"))
+		return getUrlToClass(clazz).map(URL::toString)
+				.flatMap(url -> Pattern.matcher(url, PATTERN_JAR_FROM_URL))
+				.map(matcher -> matcher.group("pathToJar"))
 				.map(Resources::createPath);
 	}
 
