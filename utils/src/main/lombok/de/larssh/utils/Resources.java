@@ -22,6 +22,7 @@ import java.util.regex.Pattern;
 import java.util.stream.Stream;
 
 import de.larssh.utils.collection.Enumerations;
+import de.larssh.utils.text.Patterns;
 import de.larssh.utils.text.Strings;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import lombok.experimental.UtilityClass;
@@ -199,7 +200,7 @@ public class Resources {
 	 */
 	public static Optional<Path> getPathToJar(final Class<?> clazz) {
 		return getUrlToClass(clazz).map(URL::toString)
-				.flatMap(url -> Pattern.matcher(url, PATTERN_JAR_FROM_URL))
+				.flatMap(url -> Patterns.matches(PATTERN_JAR_FROM_URL, url))
 				.map(matcher -> matcher.group("pathToJar"))
 				.map(Resources::createPath);
 	}
