@@ -14,7 +14,7 @@ Utilities,de.larssh.utils,CompletedException,5,0,0,0,2,0,1,0,1,0
 Utilities,de.larssh.utils,Completable,12,0,2,0,5,0,3,0,2,0
 Utilities,de.larssh.utils,OptionalInts,167,0,34,0,17,0,35,0,18,0
 Utilities,de.larssh.utils,OptionalDoubles,175,0,34,0,17,0,35,0,18,0
-Utilities,de.larssh.utils,Resources,338,0,16,0,55,0,33,0,25,0
+Utilities,de.larssh.utils,Resources,336,0,16,0,55,0,33,0,25,0
 Utilities,de.larssh.utils,Either,8,94,3,7,1,18,3,13,0,11
 Utilities,de.larssh.utils,Nullables,76,0,18,0,19,0,18,0,9,0
 Utilities,de.larssh.utils,AutoCompletable,3,0,0,0,2,0,1,0,1,0
