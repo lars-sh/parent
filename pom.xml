@@ -963,6 +963,7 @@
 											<module name="JavadocBlockTagLocation" />
 											<module name="JavadocContentLocationCheck" />
 											<module name="JavadocMethod" />
+											<module name="JavadocMissingLeadingAsterisk" />
 											<module name="JavadocMissingWhitespaceAfterAsteriskCheck" />
 											<module name="JavadocParagraph">
 												<property name="allowNewlineParagraph" value="false" />
