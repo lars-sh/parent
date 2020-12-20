@@ -1,9 +1,27 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+<a name="0.9.11"></a>
+
+## [0.9.11-SNAPSHOT](https://github.com/lars-sh/parent/compare/0a877872f94acddb1e4bfaf53585dbf0e69f83aa...master)
+
+Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%20%28a:parent%20a:parent-archetype%20a:root%20a:utils%20a:utils-annotations%20a:utils-test%29%20AND%20v:0.9.11)
+
+### Added
+TODO
+
+### Changed
+TODO
+
+### Removed
+TODO
+
+### Fixed
+TODO
+
 <a name="0.9.10"></a>
 
-## [0.9.10-SNAPSHOT](https://github.com/lars-sh/parent/compare/3e680a221a2e8913a7d4d15500a6eea0092a9d17...master)
+## [0.9.10](https://github.com/lars-sh/parent/compare/3e680a221a2e8913a7d4d15500a6eea0092a9d17...0a877872f94acddb1e4bfaf53585dbf0e69f83aa) (2020-10-18)
 
 Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%20%28a:parent%20a:parent-archetype%20a:root%20a:utils%20a:utils-annotations%20a:utils-test%29%20AND%20v:0.9.10)
 
@@ -15,12 +33,6 @@ Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%
 * [Avoid using serialVersionUID](https://github.com/rzwitserloot/lombok/wiki/WHY-NOT:-serialVersionUID).
 * Suppressing additional SpotBugs null checks when using JDK 11 and later as they might fail when using try-with-resource statements as of https://github.com/spotbugs/spotbugs/issues/259 and https://github.com/spotbugs/spotbugs/issues/756
 * Missing dependency scopes inside the `utils` project
-
-### Removed
-TODO
-
-### Fixed
-TODO
 
 <a name="0.9.9"></a>
 

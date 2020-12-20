@@ -4,7 +4,7 @@
 
 	<groupId>de.lars-sh</groupId>
 	<artifactId>root</artifactId>
-	<version>0.9.10-SNAPSHOT</version>
+	<version>0.9.11-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<name>Root POM</name>
@@ -122,20 +122,20 @@
 		<spotbugs.threshold>Low</spotbugs.threshold>
 
 		<!-- Versions: Dependencies -->
-		<assertj-core.version>3.17.2</assertj-core.version>
+		<assertj-core.version>3.18.1</assertj-core.version>
 		<joor.version>0.9.13</joor.version>
 		<junit-jupiter-api.version>5.7.0</junit-jupiter-api.version>
 		<junit-jupiter-engine.version>5.7.0</junit-jupiter-engine.version>
 		<lombok-annotations.version>1.18.16</lombok-annotations.version>
-		<mockito.version>3.5.13</mockito.version>
-		<parent.version>0.9.10-SNAPSHOT</parent.version>
+		<mockito.version>3.6.28</mockito.version>
+		<parent.version>0.9.11-SNAPSHOT</parent.version>
 
 		<!-- Versions: Plugins -->
 		<build-helper-maven-plugin.version>3.2.0</build-helper-maven-plugin.version>
 		<formatter-maven-plugin.version>2.13.0</formatter-maven-plugin.version>
 		<jacoco-maven-plugin.version>0.8.6</jacoco-maven-plugin.version>
 		<lifecycle-mapping.version>1.0.0</lifecycle-mapping.version>
-		<lombok-maven-plugin.version>1.18.12.0</lombok-maven-plugin.version>
+		<lombok-maven-plugin.version>1.18.16.0</lombok-maven-plugin.version>
 		<maven-antrun-plugin.version>3.0.0</maven-antrun-plugin.version>
 		<maven-archetype-plugin.version>3.2.0</maven-archetype-plugin.version>
 		<maven-assembly-plugin.version>3.3.0</maven-assembly-plugin.version>
@@ -151,7 +151,7 @@
 		<maven-javadoc-plugin.version>3.2.0</maven-javadoc-plugin.version>
 		<maven-jxr-plugin.version>3.0.0</maven-jxr-plugin.version>
 		<maven-plugin-plugin.version>3.6.0</maven-plugin-plugin.version>
-		<maven-pmd-plugin.version>3.13.0</maven-pmd-plugin.version>
+		<maven-pmd-plugin.version>3.14.0</maven-pmd-plugin.version>
 		<maven-project-info-reports-plugin.version>3.1.1</maven-project-info-reports-plugin.version>
 		<maven-release-plugin.version>2.5.3</maven-release-plugin.version>
 		<maven-resources-plugin.version>3.2.0</maven-resources-plugin.version>
@@ -161,20 +161,20 @@
 		<maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
 		<maven-surefire-report-plugin.version>2.22.2</maven-surefire-report-plugin.version>
 		<nexus-staging-maven-plugin.version>1.6.8</nexus-staging-maven-plugin.version>
-		<spotbugs-maven-plugin.version>4.1.3</spotbugs-maven-plugin.version>
+		<spotbugs-maven-plugin.version>4.1.4</spotbugs-maven-plugin.version>
 		<tidy-maven-plugin.version>1.1.0</tidy-maven-plugin.version>
 		<versions-maven-plugin.version>2.8.1</versions-maven-plugin.version>
 
 		<!-- Versions: Plugin Dependencies -->
 		<apache-ant.version>1.10.8</apache-ant.version>
-		<checkstyle.version>8.36.2</checkstyle.version>
+		<checkstyle.version>8.38</checkstyle.version>
 		<sb-contrib.version>7.4.7</sb-contrib.version>
-		<findsecbugs.version>1.10.1</findsecbugs.version>
+		<findsecbugs.version>1.11.0</findsecbugs.version>
 		<lombok.version>1.18.16</lombok.version>
-		<org-eclipse-jdt-core.version>3.23.0</org-eclipse-jdt-core.version>
-		<pmd.version>6.28.0</pmd.version>
-		<spotbugs.version>4.1.4</spotbugs.version>
-		<spotbugs-annotations.version>4.1.4</spotbugs-annotations.version>
+		<org-eclipse-jdt-core.version>3.24.0</org-eclipse-jdt-core.version>
+		<pmd.version>6.30.0</pmd.version>
+		<spotbugs.version>4.2.0</spotbugs.version>
+		<spotbugs-annotations.version>4.2.0</spotbugs-annotations.version>
 
 		<!-- Versions: Reporting Skins -->
 		<maven-fluido-skin.version>1.9</maven-fluido-skin.version>
@@ -962,6 +962,7 @@
 											<module name="JavadocBlockTagLocation" />
 											<module name="JavadocContentLocationCheck" />
 											<module name="JavadocMethod" />
+											<module name="JavadocMissingLeadingAsterisk" />
 											<module name="JavadocMissingWhitespaceAfterAsteriskCheck" />
 											<module name="JavadocParagraph">
 												<property name="allowNewlineParagraph" value="false" />
@@ -1125,20 +1126,28 @@
 								<!-- formatter.xml -->
 								<echo level="info" message="Update formatter.xml" />
 								<echoxml file="${project.build.directory}/formatter.xml">
-									<profiles version="18">
-										<profile kind="CodeFormatterProfile" name="de.lars-sh" version="19">
+									<profiles version="20">
+										<profile kind="CodeFormatterProfile" name="de.lars-sh" version="20">
 											<setting id="org.eclipse.jdt.core.formatter.align_assignment_statements_on_columns" value="false" />
 											<setting id="org.eclipse.jdt.core.formatter.align_fields_grouping_blank_lines" value="2147483647" />
 											<setting id="org.eclipse.jdt.core.formatter.align_type_members_on_columns" value="false" />
 											<setting id="org.eclipse.jdt.core.formatter.align_variable_declarations_on_columns" value="false" />
 											<setting id="org.eclipse.jdt.core.formatter.align_with_spaces" value="false" />
 											<setting id="org.eclipse.jdt.core.formatter.alignment_for_additive_operator" value="48" />
+											<setting id="org.eclipse.jdt.core.formatter.alignment_for_annotations_on_enum_constant" value="49" />
+											<setting id="org.eclipse.jdt.core.formatter.alignment_for_annotations_on_field" value="49" />
+											<setting id="org.eclipse.jdt.core.formatter.alignment_for_annotations_on_local_variable" value="49" />
+											<setting id="org.eclipse.jdt.core.formatter.alignment_for_annotations_on_method" value="49" />
+											<setting id="org.eclipse.jdt.core.formatter.alignment_for_annotations_on_package" value="49" />
+											<setting id="org.eclipse.jdt.core.formatter.alignment_for_annotations_on_parameter" value="0" />
+											<setting id="org.eclipse.jdt.core.formatter.alignment_for_annotations_on_type" value="49" />
 											<setting id="org.eclipse.jdt.core.formatter.alignment_for_arguments_in_allocation_expression" value="80" />
 											<setting id="org.eclipse.jdt.core.formatter.alignment_for_arguments_in_annotation" value="80" />
 											<setting id="org.eclipse.jdt.core.formatter.alignment_for_arguments_in_enum_constant" value="80" />
 											<setting id="org.eclipse.jdt.core.formatter.alignment_for_arguments_in_explicit_constructor_call" value="80" />
 											<setting id="org.eclipse.jdt.core.formatter.alignment_for_arguments_in_method_invocation" value="80" />
 											<setting id="org.eclipse.jdt.core.formatter.alignment_for_arguments_in_qualified_allocation_expression" value="80" />
+											<setting id="org.eclipse.jdt.core.formatter.alignment_for_assertion_message" value="16" />
 											<setting id="org.eclipse.jdt.core.formatter.alignment_for_assignment" value="16" />
 											<setting id="org.eclipse.jdt.core.formatter.alignment_for_binary_expression" value="48" />
 											<setting id="org.eclipse.jdt.core.formatter.alignment_for_bitwise_operator" value="48" />
@@ -1169,6 +1178,7 @@
 											<setting id="org.eclipse.jdt.core.formatter.alignment_for_superinterfaces_in_type_declaration" value="16" />
 											<setting id="org.eclipse.jdt.core.formatter.alignment_for_throws_clause_in_constructor_declaration" value="16" />
 											<setting id="org.eclipse.jdt.core.formatter.alignment_for_throws_clause_in_method_declaration" value="16" />
+											<setting id="org.eclipse.jdt.core.formatter.alignment_for_type_annotations" value="0" />
 											<setting id="org.eclipse.jdt.core.formatter.alignment_for_type_arguments" value="0" />
 											<setting id="org.eclipse.jdt.core.formatter.alignment_for_type_parameters" value="0" />
 											<setting id="org.eclipse.jdt.core.formatter.alignment_for_union_type_in_multicatch" value="80" />
@@ -1502,6 +1512,7 @@
 											<setting id="org.eclipse.jdt.core.formatter.use_on_off_tags" value="true" />
 											<setting id="org.eclipse.jdt.core.formatter.use_tabs_only_for_leading_indentations" value="false" />
 											<setting id="org.eclipse.jdt.core.formatter.wrap_before_additive_operator" value="true" />
+											<setting id="org.eclipse.jdt.core.formatter.wrap_before_assertion_message_operator" value="false" />
 											<setting id="org.eclipse.jdt.core.formatter.wrap_before_assignment_operator" value="true" />
 											<setting id="org.eclipse.jdt.core.formatter.wrap_before_binary_operator" value="true" />
 											<setting id="org.eclipse.jdt.core.formatter.wrap_before_bitwise_operator" value="true" />
@@ -2465,6 +2476,37 @@ deploy:
 											</action>
 										</pluginExecution>
 
+										<!-- Ignore checkstyle goals -->
+										<pluginExecution>
+											<pluginExecutionFilter>
+												<groupId>org.apache.maven.plugins</groupId>
+												<artifactId>maven-checkstyle-plugin</artifactId>
+												<versionRange>${maven-checkstyle-plugin.version}</versionRange>
+												<goals>
+													<goal>check</goal>
+												</goals>
+											</pluginExecutionFilter>
+											<action>
+												<ignore />
+											</action>
+										</pluginExecution>
+
+										<!-- Ignore Maven Plugin plugin goals -->
+										<pluginExecution>
+											<pluginExecutionFilter>
+												<groupId>org.apache.maven.plugins</groupId>
+												<artifactId>maven-plugin-plugin</artifactId>
+												<versionRange>${maven-plugin-plugin.version}</versionRange>
+												<goals>
+													<goal>descriptor</goal>
+													<goal>helpmojo</goal>
+												</goals>
+											</pluginExecutionFilter>
+											<action>
+												<ignore></ignore>
+											</action>
+										</pluginExecution>
+
 										<!-- Ignore tidy goals -->
 										<pluginExecution>
 											<pluginExecutionFilter>
@@ -2489,21 +2531,6 @@ deploy:
 												<goals>
 													<goal>delombok</goal>
 													<goal>testDelombok</goal>
-												</goals>
-											</pluginExecutionFilter>
-											<action>
-												<ignore />
-											</action>
-										</pluginExecution>
-
-										<!-- Ignore checkstyle goals -->
-										<pluginExecution>
-											<pluginExecutionFilter>
-												<groupId>org.apache.maven.plugins</groupId>
-												<artifactId>maven-checkstyle-plugin</artifactId>
-												<versionRange>${maven-checkstyle-plugin.version}</versionRange>
-												<goals>
-													<goal>check</goal>
 												</goals>
 											</pluginExecutionFilter>
 											<action>
@@ -2717,7 +2744,9 @@ deploy:
 											<entry key="effort" value="max" />
 											<entry key="filter_settings" value="Low|BAD_PRACTICE,CORRECTNESS,EXPERIMENTAL,I18N,MALICIOUS_CODE,MT_CORRECTNESS,PERFORMANCE,SECURITY,STYLE|false|20" />
 											<entry key="filter_settings_neg" value="NOISE|" />
-											<entry key="includefilter0" value="spotbugs-exclude.xml|true" />
+											<entry key="excludefilter0" value="spotbugs-excludes.xml|true" />
+											<entry key="excludefilter1" value="target/spotbugs-excludes-global.xml|true" />
+											<entry key="excludefilter2" value="target/spotbugs-excludes-fix-jdk11-and-later.xml|true" />
 											<entry key="run_at_full_build" value="true" />
 										</propertyfile>
 										<propertyfile file="${project.basedir}/.settings/org.eclipse.core.resources.prefs">
@@ -2747,32 +2776,54 @@ deploy:
 											<entry key="cleanup.always_use_parentheses_in_expressions" value="false" />
 											<entry key="cleanup.always_use_this_for_non_static_field_access" value="false" />
 											<entry key="cleanup.always_use_this_for_non_static_method_access" value="false" />
+											<entry key="cleanup.arrays_fill" value="true" />
+											<entry key="cleanup.bitwise_conditional_expression" value="false" />
+											<entry key="cleanup.boolean_literal" value="true" />
+											<entry key="cleanup.break_loop" value="true" />
+											<entry key="cleanup.collection_cloning" value="true" />
+											<entry key="cleanup.comparison_statement" value="true" />
 											<entry key="cleanup.convert_functional_interfaces" value="true" />
 											<entry key="cleanup.convert_to_enhanced_for_loop" value="true" />
 											<entry key="cleanup.convert_to_enhanced_for_loop_if_loop_var_used" value="false" />
+											<entry key="cleanup.convert_to_switch_expressions" value="true" />
 											<entry key="cleanup.correct_indentation" value="true" />
+											<entry key="cleanup.double_negation" value="true" />
+											<entry key="cleanup.else_if" value="true" />
+											<entry key="cleanup.embedded_if" value="true" />
+											<entry key="cleanup.evaluate_nullable" value="true" />
 											<entry key="cleanup.format_source_code" value="true" />
 											<entry key="cleanup.format_source_code_changes_only" value="false" />
+											<entry key="cleanup.hash" value="true" />
+											<entry key="cleanup.if_condition" value="true" />
 											<entry key="cleanup.insert_inferred_type_arguments" value="false" />
+											<entry key="cleanup.instanceof" value="false" />
+											<entry key="cleanup.join" value="true" />
 											<entry key="cleanup.lazy_logical_operator" value="true" />
 											<entry key="cleanup.make_local_variable_final" value="true" />
 											<entry key="cleanup.make_parameters_final" value="true" />
 											<entry key="cleanup.make_private_fields_final" value="true" />
 											<entry key="cleanup.make_type_abstract_if_missing_method" value="false" />
 											<entry key="cleanup.make_variable_declarations_final" value="true" />
+											<entry key="cleanup.map_cloning" value="true" />
 											<entry key="cleanup.merge_conditional_blocks" value="true" />
 											<entry key="cleanup.never_use_blocks" value="false" />
 											<entry key="cleanup.never_use_parentheses_in_expressions" value="true" />
+											<entry key="cleanup.no_string_creation" value="true" />
+											<entry key="cleanup.no_super" value="true" />
 											<entry key="cleanup.number_suffix" value="true" />
 											<entry key="cleanup.objects_equals" value="true" />
 											<entry key="cleanup.organize_imports" value="true" />
+											<entry key="cleanup.overridden_assignment" value="true" />
 											<entry key="cleanup.precompile_regex" value="true" />
+											<entry key="cleanup.primitive_serialization" value="true" />
+											<entry key="cleanup.pull_up_assignment" value="true" />
 											<entry key="cleanup.push_down_negation" value="true" />
 											<entry key="cleanup.qualify_static_field_accesses_with_declaring_class" value="false" />
 											<entry key="cleanup.qualify_static_member_accesses_through_instances_with_declaring_class" value="true" />
 											<entry key="cleanup.qualify_static_member_accesses_through_subtypes_with_declaring_class" value="false" />
 											<entry key="cleanup.qualify_static_member_accesses_with_declaring_class" value="true" />
 											<entry key="cleanup.qualify_static_method_accesses_with_declaring_class" value="false" />
+											<entry key="cleanup.redundant_falling_through_block_end" value="true" />
 											<entry key="cleanup.remove_private_constructors" value="true" />
 											<entry key="cleanup.remove_redundant_modifiers" value="true" />
 											<entry key="cleanup.remove_redundant_semicolons" value="true" />
@@ -2792,6 +2843,11 @@ deploy:
 											<entry key="cleanup.simplify_lambda_expression_and_method_ref" value="true" />
 											<entry key="cleanup.sort_members" value="false" />
 											<entry key="cleanup.sort_members_all" value="false" />
+											<entry key="cleanup.strictly_equal_or_different" value="true" />
+											<entry key="cleanup.stringbuilder" value="false" />
+											<entry key="cleanup.switch" value="true" />
+											<entry key="cleanup.ternary_operator" value="true" />
+											<entry key="cleanup.try_with_resource" value="true" />
 											<entry key="cleanup.use_anonymous_class_creation" value="false" />
 											<entry key="cleanup.use_autoboxing" value="true" />
 											<entry key="cleanup.use_blocks" value="true" />
@@ -2804,13 +2860,15 @@ deploy:
 											<entry key="cleanup.use_this_for_non_static_method_access" value="false" />
 											<entry key="cleanup.use_this_for_non_static_method_access_only_if_necessary" value="true" />
 											<entry key="cleanup.use_unboxing" value="true" />
-											<entry key="cleanup_profile" value="_de.lars-sh" />
 											<entry key="cleanup.use_var" value="true" />
+											<entry key="cleanup.useless_continue" value="true" />
+											<entry key="cleanup.useless_return" value="true" />
+											<entry key="cleanup_profile" value="_de.lars-sh" />
 											<entry key="cleanup_settings_version" value="2" />
 											<entry key="eclipse.preferences.version" value="1" />
 											<entry key="editor_save_participant_org.eclipse.jdt.ui.postsavelistener.cleanup" value="true" />
 											<entry key="formatter_profile" value="_de.lars-sh" />
-											<entry key="formatter_settings_version" value="19" />
+											<entry key="formatter_settings_version" value="20" />
 											<entry key="org.eclipse.jdt.ui.exception.name" value="e" />
 											<entry key="org.eclipse.jdt.ui.gettersetter.use.is" value="true" />
 											<entry key="org.eclipse.jdt.ui.ignorelowercasenames" value="true" />
@@ -2833,33 +2891,55 @@ deploy:
 											<entry key="sp_cleanup.always_use_parentheses_in_expressions" value="false" />
 											<entry key="sp_cleanup.always_use_this_for_non_static_field_access" value="false" />
 											<entry key="sp_cleanup.always_use_this_for_non_static_method_access" value="false" />
+											<entry key="sp_cleanup.arrays_fill" value="true" />
+											<entry key="sp_cleanup.bitwise_conditional_expression" value="false" />
+											<entry key="sp_cleanup.boolean_literal" value="true" />
+											<entry key="sp_cleanup.break_loop" value="true" />
+											<entry key="sp_cleanup.collection_cloning" value="true" />
+											<entry key="sp_cleanup.comparison_statement" value="true" />
 											<entry key="sp_cleanup.convert_functional_interfaces" value="true" />
 											<entry key="sp_cleanup.convert_to_enhanced_for_loop" value="true" />
 											<entry key="sp_cleanup.convert_to_enhanced_for_loop_if_loop_var_used" value="false" />
+											<entry key="sp_cleanup.convert_to_switch_expressions" value="true" />
 											<entry key="sp_cleanup.correct_indentation" value="true" />
+											<entry key="sp_cleanup.double_negation" value="true" />
+											<entry key="sp_cleanup.else_if" value="true" />
+											<entry key="sp_cleanup.embedded_if" value="true" />
+											<entry key="sp_cleanup.evaluate_nullable" value="true" />
 											<entry key="sp_cleanup.format_source_code" value="true" />
 											<entry key="sp_cleanup.format_source_code_changes_only" value="false" />
+											<entry key="sp_cleanup.hash" value="true" />
+											<entry key="sp_cleanup.if_condition" value="true" />
 											<entry key="sp_cleanup.insert_inferred_type_arguments" value="false" />
+											<entry key="sp_cleanup.instanceof" value="false" />
+											<entry key="sp_cleanup.join" value="true" />
 											<entry key="sp_cleanup.lazy_logical_operator" value="true" />
 											<entry key="sp_cleanup.make_local_variable_final" value="true" />
 											<entry key="sp_cleanup.make_parameters_final" value="true" />
 											<entry key="sp_cleanup.make_private_fields_final" value="true" />
 											<entry key="sp_cleanup.make_type_abstract_if_missing_method" value="false" />
 											<entry key="sp_cleanup.make_variable_declarations_final" value="true" />
+											<entry key="sp_cleanup.map_cloning" value="true" />
 											<entry key="sp_cleanup.merge_conditional_blocks" value="true" />
 											<entry key="sp_cleanup.never_use_blocks" value="false" />
 											<entry key="sp_cleanup.never_use_parentheses_in_expressions" value="true" />
+											<entry key="sp_cleanup.no_string_creation" value="true" />
+											<entry key="sp_cleanup.no_super" value="true" />
 											<entry key="sp_cleanup.number_suffix" value="true" />
-											<entry key="sp_cleanup.on_save_use_additional_actions" value="true" />
 											<entry key="sp_cleanup.objects_equals" value="true" />
+											<entry key="sp_cleanup.on_save_use_additional_actions" value="true" />
 											<entry key="sp_cleanup.organize_imports" value="true" />
+											<entry key="sp_cleanup.overridden_assignment" value="true" />
 											<entry key="sp_cleanup.precompile_regex" value="true" />
+											<entry key="sp_cleanup.primitive_serialization" value="true" />
+											<entry key="sp_cleanup.pull_up_assignment" value="true" />
 											<entry key="sp_cleanup.push_down_negation" value="true" />
 											<entry key="sp_cleanup.qualify_static_field_accesses_with_declaring_class" value="false" />
 											<entry key="sp_cleanup.qualify_static_member_accesses_through_instances_with_declaring_class" value="true" />
 											<entry key="sp_cleanup.qualify_static_member_accesses_through_subtypes_with_declaring_class" value="false" />
 											<entry key="sp_cleanup.qualify_static_member_accesses_with_declaring_class" value="true" />
 											<entry key="sp_cleanup.qualify_static_method_accesses_with_declaring_class" value="false" />
+											<entry key="sp_cleanup.redundant_falling_through_block_end" value="true" />
 											<entry key="sp_cleanup.remove_private_constructors" value="true" />
 											<entry key="sp_cleanup.remove_redundant_modifiers" value="true" />
 											<entry key="sp_cleanup.remove_redundant_semicolons" value="true" />
@@ -2879,6 +2959,11 @@ deploy:
 											<entry key="sp_cleanup.simplify_lambda_expression_and_method_ref" value="true" />
 											<entry key="sp_cleanup.sort_members" value="false" />
 											<entry key="sp_cleanup.sort_members_all" value="false" />
+											<entry key="sp_cleanup.strictly_equal_or_different" value="true" />
+											<entry key="sp_cleanup.stringbuilder" value="false" />
+											<entry key="sp_cleanup.switch" value="true" />
+											<entry key="sp_cleanup.ternary_operator" value="true" />
+											<entry key="sp_cleanup.try_with_resource" value="true" />
 											<entry key="sp_cleanup.use_anonymous_class_creation" value="false" />
 											<entry key="sp_cleanup.use_autoboxing" value="true" />
 											<entry key="sp_cleanup.use_blocks" value="true" />
@@ -2892,6 +2977,8 @@ deploy:
 											<entry key="sp_cleanup.use_this_for_non_static_method_access_only_if_necessary" value="true" />
 											<entry key="sp_cleanup.use_unboxing" value="true" />
 											<entry key="sp_cleanup.use_var" value="true" />
+											<entry key="sp_cleanup.useless_continue" value="true" />
+											<entry key="sp_cleanup.useless_return" value="true" />
 										</propertyfile>
 										<propertyfile file="${project.basedir}/.settings/org.eclipse.jdt.core.prefs">
 											<entry key="eclipse.preferences.version" value="1" />
@@ -2924,6 +3011,7 @@ deploy:
 											<entry key="org.eclipse.jdt.core.compiler.debug.sourceFile" value="generate" />
 											<entry key="org.eclipse.jdt.core.compiler.doc.comment.support" value="${eclipse.compiler.javadoc}" />
 											<entry key="org.eclipse.jdt.core.compiler.problem.APILeak" value="warning" />
+											<entry key="org.eclipse.jdt.core.compiler.problem.annotatedTypeArgumentToUnannotated" value="warning" />
 											<entry key="org.eclipse.jdt.core.compiler.problem.annotationSuperInterface" value="warning" />
 											<entry key="org.eclipse.jdt.core.compiler.problem.assertIdentifier" value="error" />
 											<entry key="org.eclipse.jdt.core.compiler.problem.autoboxing" value="ignore" />
@@ -3040,12 +3128,20 @@ deploy:
 											<entry key="org.eclipse.jdt.core.formatter.align_variable_declarations_on_columns" value="false" />
 											<entry key="org.eclipse.jdt.core.formatter.align_with_spaces" value="false" />
 											<entry key="org.eclipse.jdt.core.formatter.alignment_for_additive_operator" value="48" />
+											<entry key="org.eclipse.jdt.core.formatter.alignment_for_annotations_on_enum_constant" value="49" />
+											<entry key="org.eclipse.jdt.core.formatter.alignment_for_annotations_on_field" value="49" />
+											<entry key="org.eclipse.jdt.core.formatter.alignment_for_annotations_on_local_variable" value="49" />
+											<entry key="org.eclipse.jdt.core.formatter.alignment_for_annotations_on_method" value="49" />
+											<entry key="org.eclipse.jdt.core.formatter.alignment_for_annotations_on_package" value="49" />
+											<entry key="org.eclipse.jdt.core.formatter.alignment_for_annotations_on_parameter" value="0" />
+											<entry key="org.eclipse.jdt.core.formatter.alignment_for_annotations_on_type" value="49" />
 											<entry key="org.eclipse.jdt.core.formatter.alignment_for_arguments_in_allocation_expression" value="80" />
 											<entry key="org.eclipse.jdt.core.formatter.alignment_for_arguments_in_annotation" value="80" />
 											<entry key="org.eclipse.jdt.core.formatter.alignment_for_arguments_in_enum_constant" value="80" />
 											<entry key="org.eclipse.jdt.core.formatter.alignment_for_arguments_in_explicit_constructor_call" value="80" />
 											<entry key="org.eclipse.jdt.core.formatter.alignment_for_arguments_in_method_invocation" value="80" />
 											<entry key="org.eclipse.jdt.core.formatter.alignment_for_arguments_in_qualified_allocation_expression" value="80" />
+											<entry key="org.eclipse.jdt.core.formatter.alignment_for_assertion_message" value="16" />
 											<entry key="org.eclipse.jdt.core.formatter.alignment_for_assignment" value="16" />
 											<entry key="org.eclipse.jdt.core.formatter.alignment_for_binary_expression" value="48" />
 											<entry key="org.eclipse.jdt.core.formatter.alignment_for_bitwise_operator" value="48" />
@@ -3076,6 +3172,7 @@ deploy:
 											<entry key="org.eclipse.jdt.core.formatter.alignment_for_superinterfaces_in_type_declaration" value="16" />
 											<entry key="org.eclipse.jdt.core.formatter.alignment_for_throws_clause_in_constructor_declaration" value="16" />
 											<entry key="org.eclipse.jdt.core.formatter.alignment_for_throws_clause_in_method_declaration" value="16" />
+											<entry key="org.eclipse.jdt.core.formatter.alignment_for_type_annotations" value="0" />
 											<entry key="org.eclipse.jdt.core.formatter.alignment_for_type_arguments" value="0" />
 											<entry key="org.eclipse.jdt.core.formatter.alignment_for_type_parameters" value="0" />
 											<entry key="org.eclipse.jdt.core.formatter.alignment_for_union_type_in_multicatch" value="80" />
@@ -3409,6 +3506,7 @@ deploy:
 											<entry key="org.eclipse.jdt.core.formatter.use_on_off_tags" value="true" />
 											<entry key="org.eclipse.jdt.core.formatter.use_tabs_only_for_leading_indentations" value="false" />
 											<entry key="org.eclipse.jdt.core.formatter.wrap_before_additive_operator" value="true" />
+											<entry key="org.eclipse.jdt.core.formatter.wrap_before_assertion_message_operator" value="false" />
 											<entry key="org.eclipse.jdt.core.formatter.wrap_before_assignment_operator" value="true" />
 											<entry key="org.eclipse.jdt.core.formatter.wrap_before_binary_operator" value="true" />
 											<entry key="org.eclipse.jdt.core.formatter.wrap_before_bitwise_operator" value="true" />
