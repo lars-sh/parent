@@ -1468,7 +1468,7 @@
 											<setting id="org.eclipse.jdt.core.formatter.keep_annotation_declaration_on_one_line" value="one_line_if_empty" />
 											<setting id="org.eclipse.jdt.core.formatter.keep_anonymous_type_declaration_on_one_line" value="one_line_if_empty" />
 											<setting id="org.eclipse.jdt.core.formatter.keep_code_block_on_one_line" value="one_line_if_empty" />
-											<setting id="org.eclipse.jdt.core.formatter.keep_else_statement_on_same_line" value="true" />
+											<setting id="org.eclipse.jdt.core.formatter.keep_else_statement_on_same_line" value="false" />
 											<setting id="org.eclipse.jdt.core.formatter.keep_empty_array_initializer_on_one_line" value="false" />
 											<setting id="org.eclipse.jdt.core.formatter.keep_enum_constant_declaration_on_one_line" value="one_line_if_empty" />
 											<setting id="org.eclipse.jdt.core.formatter.keep_enum_declaration_on_one_line" value="one_line_if_empty" />
@@ -3501,7 +3501,7 @@ deploy:
 											<entry key="org.eclipse.jdt.core.formatter.keep_annotation_declaration_on_one_line" value="one_line_if_empty" />
 											<entry key="org.eclipse.jdt.core.formatter.keep_anonymous_type_declaration_on_one_line" value="one_line_if_empty" />
 											<entry key="org.eclipse.jdt.core.formatter.keep_code_block_on_one_line" value="one_line_if_empty" />
-											<entry key="org.eclipse.jdt.core.formatter.keep_else_statement_on_same_line" value="true" />
+											<entry key="org.eclipse.jdt.core.formatter.keep_else_statement_on_same_line" value="false" />
 											<entry key="org.eclipse.jdt.core.formatter.keep_empty_array_initializer_on_one_line" value="false" />
 											<entry key="org.eclipse.jdt.core.formatter.keep_enum_constant_declaration_on_one_line" value="one_line_if_empty" />
 											<entry key="org.eclipse.jdt.core.formatter.keep_enum_declaration_on_one_line" value="one_line_if_empty" />
