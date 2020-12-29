@@ -10,8 +10,11 @@ Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%
 ### Added
 * Creation of a GitHub native Dependabot configuration file
 Use the Maven property `parent-pom.create-dependabot-yml` to suppress writing this file.
+* Class `de.larssh.utils.io.MultiInputStream`
+* Class `de.larssh.utils.io.MultiReader`
 
 ### Changed
+* Moved class `Resources` to new package `de.larssh.utils.io`
 * Update formatter and clean-up settings for Eclipse 2020-12
 
 ### Fixed

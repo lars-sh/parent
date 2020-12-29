@@ -121,7 +121,9 @@ import lombok.experimental.UtilityClass;
  *
  * <p>
  * Based on your your needs you might need to combine the methods
- * {@code lines(...)}, {@code consecutive(...)} and {@code grouped(...)}.
+ * {@code lines(...)}, {@code consecutive(...)} and {@code grouped(...)}. In
+ * addition {@link de.larssh.utils.io.MultiReader} might be helpful to parse
+ * data, which is spread over multiple files.
  */
 @UtilityClass
 public class Lines {

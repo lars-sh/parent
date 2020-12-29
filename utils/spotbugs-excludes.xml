@@ -23,7 +23,7 @@
 	<!-- Path processing as described in JavaDoc -->
 	<Match>
 		<Bug pattern="PATH_TRAVERSAL_IN" />
-		<Class name="de.larssh.utils.Resources" />
+		<Class name="de.larssh.utils.io.Resources" />
 	</Match>
 
 	<!-- Method "consecutive" has no reasonable way to calculate the next element's lines size. -->

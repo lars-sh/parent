@@ -1,4 +1,4 @@
-package de.larssh.utils;
+package de.larssh.utils.io;
 
 import de.larssh.utils.text.Strings;
 
