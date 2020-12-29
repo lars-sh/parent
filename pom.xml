@@ -62,6 +62,7 @@
 	<properties>
 		<!-- Parent POM -->
 		<!-- <parent-pom.create-changelog-md>true</parent-pom.create-changelog-md> -->
+		<!-- <parent-pom.create-dependabot-yml>true</parent-pom.create-dependabot-yml> -->
 		<parent-pom.create-gitignore>true</parent-pom.create-gitignore>
 		<!-- <parent-pom.create-lombok-config>true</parent-pom.create-lombok-config> -->
 		<!-- <parent-pom.create-readme-md>true</parent-pom.create-readme-md> -->
@@ -595,6 +596,21 @@
 								<condition property="parent-pom.create-changelog-md" value="false" else="true">
 									<available file="${project.basedir}/CHANGELOG.md" />
 								</condition>
+								<condition property="parent-pom.create-dependabot-yml" value="false" else="true">
+									<or>
+										<available file="${project.basedir}/.github/dependabot.yml" />
+										<and>
+											<equals arg1="${project.groupId}" arg2="de.lars-sh" />
+											<equals arg1="${project.artifactId}" arg2="parent" />
+										</and>
+									</or>
+								</condition>
+								<condition property="parent-pom.create-lombok-config" value="false" else="true">
+									<or>
+										<equals arg1="${project.packaging}" arg2="maven-archetype" />
+										<equals arg1="${project.packaging}" arg2="pom" />
+									</or>
+								</condition>
 								<condition property="parent-pom.create-readme-md" value="false" else="true">
 									<available file="${project.basedir}/README.md" />
 								</condition>
@@ -612,12 +628,6 @@
 											<equals arg1="${project.artifactId}" arg2="root" />
 										</or>
 									</and>
-								</condition>
-								<condition property="parent-pom.create-lombok-config" value="false" else="true">
-									<or>
-										<equals arg1="${project.packaging}" arg2="maven-archetype" />
-										<equals arg1="${project.packaging}" arg2="pom" />
-									</or>
 								</condition>
 								<condition property="spotbugs.excludeFilterFile.user" value="${project.basedir}/spotbugs-excludes.xml," else="">
 									<available file="${project.basedir}/spotbugs-excludes.xml" />
@@ -1850,6 +1860,30 @@ Download at TODO
 
 ### Dependencies
 *
+]]></echo>
+							</target>
+						</configuration>
+					</execution>
+
+					<!-- .github/dependabot.yml  -->
+					<execution>
+						<id>dependabot</id>
+						<phase>initialize</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<target if="${parent-pom.create-dependabot-yml}">
+								<mkdir dir="${project.basedir}/.github" />
+								<echo level="info" message="Update .github/dependabot.yml" />
+								<echo file="${project.basedir}/.github/dependabot.yml"><![CDATA[version: 2
+updates:
+- package-ecosystem: maven
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "04:00"
+  open-pull-requests-limit: 10
 ]]></echo>
 							</target>
 						</configuration>

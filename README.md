@@ -344,6 +344,8 @@ This parent POM either predefines existing Maven Properties or introduces some o
 
 `parent-pom.create-changelog-md` handles if the projects `CHANGELOG.md` file should be generated. Set to `false` if the file should not be created if not existing. Default value is `true`, except if the `CHANGELOG.md` file already exists.
 
+`parent-pom.create-dependabot-yml` handles if the projects `.github/dependabot.yml` file should be generated. Set to `false` if the file should not be created or overwritten. Default value is `true`.
+
 `parent-pom.create-gitignore` handles if the projects `.gitignore` file should be generated. Set to "false" if the file should not be created or overwritten. Default value is `true`.
 
 `parent-pom.create-lombok-config` handles if the projects `lombok.config` files should be generated. Set to `false` if the files should not be created or overwritten. Default value is `true`, except for packaging types `pom` and `archetype`.
@@ -420,6 +422,8 @@ spotbugs.threshold:                                Low
 
 #### Generated Files
 During the build process some project files are generated. Those files and their creation concept are described below.
+
+`.github/dependabot.yml` tells [Dependabot](https://dependabot.com/) which project dependencies to check. Use the Maven property `parent-pom.create-dependabot-yml` to suppress writing this file.
 
 `.gitignore` tells [Git](https://git-scm.com/) which files to ignore. It is overwritten at every run to keep it up-to-date. Use the Maven property `parent-pom.create-gitignore` to suppress writing this file.
 
