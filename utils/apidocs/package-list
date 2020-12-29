@@ -2,6 +2,7 @@ de.larssh.utils
 de.larssh.utils.collection
 de.larssh.utils.dom
 de.larssh.utils.function
+de.larssh.utils.io
 de.larssh.utils.maven
 de.larssh.utils.net
 de.larssh.utils.text
