@@ -43,8 +43,8 @@
 		<url>https://github.com/${parent-pom.github.organization}/${parent-pom.github.project}/issues</url>
 	</issueManagement>
 	<ciManagement>
-		<system>Travis</system>
-		<url>https://travis-ci.com/${parent-pom.github.organization}/${parent-pom.github.project}</url>
+		<system>GitHub Actions</system>
+		<url>https://github.com/${parent-pom.github.organization}/${parent-pom.github.project}/actions</url>
 	</ciManagement>
 	<distributionManagement>
 		<snapshotRepository>
@@ -67,7 +67,7 @@
 		<!-- <parent-pom.create-lombok-config>true</parent-pom.create-lombok-config> -->
 		<!-- <parent-pom.create-readme-md>true</parent-pom.create-readme-md> -->
 		<!-- <parent-pom.create-source-directories>true</parent-pom.create-source-directories> -->
-		<!-- <parent-pom.create-travis-yml>true</parent-pom.create-travis-yml> -->
+		<parent-pom.create-travis-yml>false</parent-pom.create-travis-yml>
 		<parent-pom.default-sources-folder>lombok</parent-pom.default-sources-folder>
 		<parent-pom.github.organization>lars-sh</parent-pom.github.organization>
 		<parent-pom.github.project>parent</parent-pom.github.project>
@@ -619,15 +619,6 @@
 										<equals arg1="${project.packaging}" arg2="maven-archetype" />
 										<equals arg1="${project.packaging}" arg2="pom" />
 									</or>
-								</condition>
-								<condition property="parent-pom.create-travis-yml" value="false" else="true">
-									<and>
-										<equals arg1="${project.groupId}" arg2="de.lars-sh" />
-										<or>
-											<equals arg1="${project.artifactId}" arg2="parent" />
-											<equals arg1="${project.artifactId}" arg2="root" />
-										</or>
-									</and>
 								</condition>
 								<condition property="spotbugs.excludeFilterFile.user" value="${project.basedir}/spotbugs-excludes.xml," else="">
 									<available file="${project.basedir}/spotbugs-excludes.xml" />
@@ -1578,7 +1569,7 @@ function suppressJdk15Warnings() {
 	fi
 }
 
-JDK_VERSION=`echo ${TRAVIS_JDK_VERSION} | grep --only-matching --perl-regexp \\\\d+`
+JDK_VERSION=`echo "$1" | grep --only-matching --perl-regexp \\\\d+`
 
 cat < /dev/stdin \
 | suppressUserDefined \
@@ -2072,7 +2063,7 @@ script: |
   echo ""
   echo "[INFO] Checking for Maven warnings and errors..."
   chmod +x ./target/mvn-suppressions-parent.sh
-  mvnout=`cat mvnout.txt | grep --perl-regexp "(?i)\\[(ERR|WARN)" | ./target/mvn-suppressions-parent.sh`
+  mvnout=`cat mvnout.txt | grep --perl-regexp "(?i)\\[(ERR|WARN)" | ./target/mvn-suppressions-parent.sh "${TRAVIS_JDK_VERSION}"`
   
   if [ -n "${mvnout}" ]; then
     echo "[WARNING] The Maven output contains the following unknown warnings and errors:"
