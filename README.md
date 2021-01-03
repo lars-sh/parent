@@ -346,6 +346,8 @@ This parent POM either predefines existing Maven Properties or introduces some o
 
 `parent-pom.create-dependabot-yml` handles if the projects `.github/dependabot.yml` file should be generated. Set to `false` if the file should not be created or overwritten. Default value is `true`.
 
+`parent-pom.create-github-workflow-yml` handles if the projects `.github/workflows/push-and-pull_request.yml` file should be generated. Set to `false` if the file should not be created or overwritten. Default value is `true`.
+
 `parent-pom.create-gitignore` handles if the projects `.gitignore` file should be generated. Set to "false" if the file should not be created or overwritten. Default value is `true`.
 
 `parent-pom.create-lombok-config` handles if the projects `lombok.config` files should be generated. Set to `false` if the files should not be created or overwritten. Default value is `true`, except for packaging types `pom` and `archetype`.
@@ -354,7 +356,7 @@ This parent POM either predefines existing Maven Properties or introduces some o
 
 `parent-pom.create-source-directories` handles if the projects source directories shall be created. Set to `false` if the folder should not be created. Default value is `true`, except for packaging types `pom` and `archetype`.
 
-`parent-pom.create-travis-yml` handles if the projects `.travis.yml` file should be generated. Set to `false` if the file should not be created or overwritten. Default value is `true`.
+`parent-pom.create-travis-yml` handles if the projects `.travis.yml` file should be generated. Set to `true` if the file shall be created or overwritten. Default value is `false`.
 
 `parent-pom.default-sources-folder` is the name if the default source folders to be created. Default value is `lombok`.
 
@@ -425,9 +427,11 @@ During the build process some project files are generated. Those files and their
 
 `.github/dependabot.yml` tells [Dependabot](https://dependabot.com/) which project dependencies to check. Use the Maven property `parent-pom.create-dependabot-yml` to suppress writing this file.
 
+`.github/workflows/push-and-pull_request.yml` tells [GitHub Actions](https://github.com/features/actions) which kind of project to build. It is overwritten at every run to keep it up-to-date. Use the Maven property `parent-pom.create-github-workflow-yml` to suppress writing this file.
+
 `.gitignore` tells [Git](https://git-scm.com/) which files to ignore. It is overwritten at every run to keep it up-to-date. Use the Maven property `parent-pom.create-gitignore` to suppress writing this file.
 
-`.travis.yml` tells [Travis](https://travis-ci.org/) which kind of project to build. It is overwritten at every run to keep it up-to-date. Use the Maven property `parent-pom.create-travis-yml` to suppress writing this file.
+`.travis.yml` tells [Travis CI](https://travis-ci.org/) which kind of project to build. To write this file, set the Maven property `parent-pom.create-travis-yml` to `true`.
 
 `CHANGELOG.md` and `README.md` are *your* places. Insert your changes, a short project introduction, getting started information and user documentation. Templates are created only if the files do not exist, yet.
 
@@ -464,11 +468,11 @@ The following files are generated for the build process itself. You should not n
 
 `target/formatter.xml` contains the formatting rules. It is overwritten at the Maven goal `initialize`.
 
+`target/mvn-suppressions-parent.sh` contains a script that filters the Maven errors and warnings output when processed by GitHub Actions and Travis CI based on a list of global suppressions. It is overwritten at the Maven goal `initialize`.
+
 `target/pmd/pmd-ruleset.xml` contains the PMD rule set. It is overwritten at the Maven goal `initialize`.
 
 `target/spotbugs-excludes-fix-jdk11-and-later.xml` contains Spotbugs eclusions for compatibility with JDK11 and later. It is overwritten at the Maven goal `initialize` while executing Maven with Java 11 and later.
-
-`target/travis-suppressions-parent.sh` contains a script that filters the Maven errors and warnings output when processed by Travis CI based on a list of global suppressions. It is overwritten at the Maven goal `initialize`.
 
 `target/versions-ruleset.xml` contains a rule set used by the Maven Versions Plugin to ignore pre-release versions. It is overwritten at the Maven goal `initialize`.
 
@@ -547,8 +551,8 @@ com.example.ClassB=EmptyCatchBlock,UnusedPrivateField
 ##### JaCoCo
 Use the `de.larssh.utils.annotations.SuppressJacocoGenerated` annotation to indicate that JaCoCo should ignore the annotated type, constructor or method.
 
-##### Travis CI
-Create a file called `travis-suppressions.sh` that filters the Maven errors and warnings output on `stdin` when processed by Travis CI. The following lines show an example file.
+##### Maven Output (GitHub Actions and Travis CI)
+Create a file called `mvn-suppressions.sh`, that filters the Maven errors and warnings output on `stdin` when processed by GitHub Actions and Travis CI. The following lines show an example file.
 
 ```Shell
 # Suppress lines that contain the word "first"
