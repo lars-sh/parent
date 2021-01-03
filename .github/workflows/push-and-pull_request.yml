@@ -34,7 +34,7 @@ jobs:
           mvn clean install --activate-profiles dirty,dirty-package --update-snapshots --batch-mode --show-version 2>&1 | tee mvnout.txt
           set +o errexit +o pipefail
       - name: Test, Verify, Deploy
-        if: ${{ github.event_name == 'push' && github.branch_name == 'master' && matrix.java-version == '1.8' }}
+        if: ${{ github.event_name == 'push' && github.branch_name == 'refs/heads/master' && matrix.java-version == '1.8' }}
         run: |
           set -o errexit -o pipefail
           mvn deploy site --define gpg.skip=true --batch-mode --show-version 2>&1 | tee --append mvnout.txt
@@ -42,7 +42,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Test, Verify
-        if: ${{ github.event_name != 'push' || github.branch_name != 'master' || matrix.java-version != '1.8' }}
+        if: ${{ github.event_name != 'push' || github.branch_name != 'refs/heads/master' || matrix.java-version != '1.8' }}
         run: |
           set -o errexit -o pipefail
           mvn verify site --define gpg.skip=true --batch-mode --show-version 2>&1 | tee --append mvnout.txt
@@ -65,7 +65,7 @@ jobs:
         env:
           JDK_VERSION: ${{ matrix.java-version }}
       - name: Prepare Site
-        if: ${{ github.event_name == 'push' && github.branch_name == 'master' && matrix.java-version == '1.8' }}
+        if: ${{ github.event_name == 'push' && github.branch_name == 'refs/heads/master' && matrix.java-version == '1.8' }}
         run: |
           rm ./target/site/index.html
           cp ./CHANGELOG.md ./target/site/CHANGELOG.md
@@ -78,7 +78,7 @@ jobs:
           cp -R ./utils-annotations/target/site ./target/site/utils-annotations
           cp -R ./utils-test/target/site ./target/site/utils-test
       - name: Deploy Site
-        if: ${{ github.event_name == 'push' && github.branch_name == 'master' && matrix.java-version == '1.8' }}
+        if: ${{ github.event_name == 'push' && github.branch_name == 'refs/heads/master' && matrix.java-version == '1.8' }}
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
