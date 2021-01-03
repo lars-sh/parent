@@ -52,7 +52,7 @@ jobs:
       - name: Check Output
         run: |
           chmod +x ./target/mvn-suppressions-parent.sh
-          mvnout=`cat mvnout.txt | grep --perl-regexp "(?i)\\[(ERR|WARN)" | ./target/mvn-suppressions-parent.sh "${{ matrix.java-version }}"`
+          mvnout=`cat mvnout.txt | grep --perl-regexp "(?i)\\[(ERR|WARN)" | ./target/mvn-suppressions-parent.sh "$JDK_VERSION"`
           
           if [ -n "${mvnout}" ]; then
             echo "[ERROR] The Maven output contains the following unknown warnings and errors:" >&2
@@ -62,6 +62,8 @@ jobs:
             echo "[INFO] No unknown warnings and errors found."
             echo "${mvnout}"
           fi
+        env:
+          JDK_VERSION: ${{ matrix.java-version }}
       - name: Prepare Site
         if: ${{ github.event_name == 'push' && github.branch_name == 'master' && matrix.java-version == '1.8' }}
         run: |
