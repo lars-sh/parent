@@ -17,7 +17,7 @@
 
 	<properties>
 		<parent-pom.create-dependabot-yml>false</parent-pom.create-dependabot-yml>
-		<parent-pom.create-travis-yml>false</parent-pom.create-travis-yml>
+		<parent-pom.create-github-workflow-yml>false</parent-pom.create-github-workflow-yml>
 	</properties>
 
 	<build>

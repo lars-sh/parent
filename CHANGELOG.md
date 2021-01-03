@@ -8,8 +8,10 @@ All notable changes to this project will be documented in this file.
 Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%20%28a:parent%20a:parent-archetype%20a:root%20a:utils%20a:utils-annotations%20a:utils-test%29%20AND%20v:0.9.11)
 
 ### Added
-* Creation of a GitHub native Dependabot configuration file
-Use the Maven property `parent-pom.create-dependabot-yml` to suppress writing this file.
+* Creation of GitHub Action configuration instead of Travis CI file.  
+  You can still enable the creation of `.travis.yml` by setting the Maven property `parent-pom.create-travis-yml` to `true`.
+* Creation of a GitHub native Dependabot configuration file  
+  Use the Maven property `parent-pom.create-dependabot-yml` to suppress writing this file.
 * Class `de.larssh.utils.io.MultiInputStream`
 * Class `de.larssh.utils.io.MultiReader`
 
