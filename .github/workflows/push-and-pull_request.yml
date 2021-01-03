@@ -15,6 +15,7 @@ jobs:
           - 11
           - 14
 
+    name: Build with JDK ${{ matrix.java-version }}
     steps:
       - name: Cache Dependencies
         uses: actions/cache@v2
