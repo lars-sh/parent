@@ -1539,6 +1539,54 @@
 									</profiles>
 								</echoxml>
 
+								<!-- mvn-suppressions-parent.sh -->
+								<echo level="info" message="Create mvn-suppressions-parent.sh" />
+								<echo file="${project.build.directory}/mvn-suppressions-parent.sh"><![CDATA[# User Defined Suppressions
+function suppressUserDefined() {
+	if [ -f ./mvn-suppressions.sh ]; then
+		cat < /dev/stdin \
+		| ./mvn-suppressions.sh
+	else
+		cat < /dev/stdin
+	fi
+}
+
+# PMD: The Maven Plugin tries to perform Java type resolution on POM typed projects.
+function suppressPmdWarnings() {
+	cat < /dev/stdin \
+	| grep --invert-match --perl-regexp "^\\[WARNING\\] The project parent does not seem to be compiled\\. PMD results might be inaccurate\\.$" \
+	| grep --invert-match --perl-regexp "^\\[WARNING\\] Auxclasspath entry .*[/\\\\]parent[/\\\\]target[/\\\\]classes doesn't exist, ignoring it$"
+}
+
+# JDK14: The JavaDoc creation logs errors about missing "javadoc-bundle-option" folders.
+function suppressJdk14Warnings() {
+	if [ ${JDK_VERSION} -eq 14 ]; then
+		cat < /dev/stdin \
+		| grep --invert-match --perl-regexp "^\\[ERROR\\] Error fetching link: .*[/\\\\]target[/\\\\]javadoc-bundle-options\\. Ignored it\\.$"
+	else
+		cat < /dev/stdin
+	fi
+}
+
+# JDK15: The JavaDoc creation logs errors about missing "javadoc-bundle-option" folders.
+function suppressJdk15Warnings() {
+	if [ ${JDK_VERSION} -eq 15 ]; then
+		cat < /dev/stdin \
+		| grep --invert-match --perl-regexp "^\\[ERROR\\] Error fetching link: .*[/\\\\]target[/\\\\]javadoc-bundle-options\\. Ignored it\\.$"
+	else
+		cat < /dev/stdin
+	fi
+}
+
+JDK_VERSION=`echo ${TRAVIS_JDK_VERSION} | grep --only-matching --perl-regexp \\\\d+`
+
+cat < /dev/stdin \
+| suppressUserDefined \
+| suppressPmdWarnings \
+| suppressJdk14Warnings \
+| suppressJdk15Warnings
+]]></echo>
+
 								<!-- pmd-ruleset.xml -->
 								<echo level="info" message="Update pmd-ruleset.xml" />
 								<echoxml file="${project.build.directory}/pmd-ruleset.xml">
@@ -1730,54 +1778,6 @@
 										</Match>
 									</FindBugsFilter>
 								</echoxml>
-
-								<!-- travis-suppressions-parent.sh -->
-								<echo level="info" message="Create travis-suppressions-parent.sh" />
-								<echo file="${project.build.directory}/travis-suppressions-parent.sh"><![CDATA[# User Defined Suppressions
-function suppressUserDefined() {
-	if [ -f ./travis-suppressions.sh ]; then
-		cat < /dev/stdin \
-		| ./travis-suppressions.sh
-	else
-		cat < /dev/stdin
-	fi
-}
-
-# PMD: The Maven Plugin tries to perform Java type resolution on POM typed projects.
-function suppressPmdWarnings() {
-	cat < /dev/stdin \
-	| grep --invert-match --perl-regexp "^\\[WARNING\\] The project parent does not seem to be compiled\\. PMD results might be inaccurate\\.$" \
-	| grep --invert-match --perl-regexp "^\\[WARNING\\] Auxclasspath entry .*[/\\\\]parent[/\\\\]target[/\\\\]classes doesn't exist, ignoring it$"
-}
-
-# JDK14: The JavaDoc creation logs errors about missing "javadoc-bundle-option" folders.
-function suppressJdk14Warnings() {
-	if [ ${JDK_VERSION} -eq 14 ]; then
-		cat < /dev/stdin \
-		| grep --invert-match --perl-regexp "^\\[ERROR\\] Error fetching link: .*[/\\\\]target[/\\\\]javadoc-bundle-options\\. Ignored it\\.$"
-	else
-		cat < /dev/stdin
-	fi
-}
-
-# JDK15: The JavaDoc creation logs errors about missing "javadoc-bundle-option" folders.
-function suppressJdk15Warnings() {
-	if [ ${JDK_VERSION} -eq 15 ]; then
-		cat < /dev/stdin \
-		| grep --invert-match --perl-regexp "^\\[ERROR\\] Error fetching link: .*[/\\\\]target[/\\\\]javadoc-bundle-options\\. Ignored it\\.$"
-	else
-		cat < /dev/stdin
-	fi
-}
-
-JDK_VERSION=`echo ${TRAVIS_JDK_VERSION} | grep --only-matching --perl-regexp \\\\d+`
-
-cat < /dev/stdin \
-| suppressUserDefined \
-| suppressPmdWarnings \
-| suppressJdk14Warnings \
-| suppressJdk15Warnings
-]]></echo>
 
 								<!-- versions-ruleset.xml -->
 								<echo level="info" message="Update versions-ruleset.xml" />
@@ -2071,8 +2071,8 @@ script: |
   
   echo ""
   echo "[INFO] Checking for Maven warnings and errors..."
-  chmod +x ./target/travis-suppressions-parent.sh
-  mvnout=`cat mvnout.txt | grep --perl-regexp "(?i)\\[(ERR|WARN)" | ./target/travis-suppressions-parent.sh`
+  chmod +x ./target/mvn-suppressions-parent.sh
+  mvnout=`cat mvnout.txt | grep --perl-regexp "(?i)\\[(ERR|WARN)" | ./target/mvn-suppressions-parent.sh`
   
   if [ -n "${mvnout}" ]; then
     echo "[WARNING] The Maven output contains the following unknown warnings and errors:"

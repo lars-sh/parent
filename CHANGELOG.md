@@ -15,6 +15,7 @@ Use the Maven property `parent-pom.create-dependabot-yml` to suppress writing th
 
 ### Changed
 * Moved class `Resources` to new package `de.larssh.utils.io`
+* Rename file `travis-suppressions.sh` to `mvn-suppressions.sh`
 * Update formatter and clean-up settings for Eclipse 2020-12
 
 ### Fixed
