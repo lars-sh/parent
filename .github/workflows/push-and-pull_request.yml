@@ -44,7 +44,7 @@ jobs:
         if: ${{ github.event_name != 'push' || github.branch_name != 'master' || matrix.java-version != '1.8' }}
         run: |
           set -o errexit -o pipefail
-          mvn deploy site --define gpg.skip=true --batch-mode --show-version 2>&1 | tee --append mvnout.txt
+          mvn verify site --define gpg.skip=true --batch-mode --show-version 2>&1 | tee --append mvnout.txt
           set +o errexit +o pipefail
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
