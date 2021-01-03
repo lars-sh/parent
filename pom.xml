@@ -63,6 +63,7 @@
 		<!-- Parent POM -->
 		<!-- <parent-pom.create-changelog-md>true</parent-pom.create-changelog-md> -->
 		<!-- <parent-pom.create-dependabot-yml>true</parent-pom.create-dependabot-yml> -->
+		<!-- <parent-pom.create-github-workflow-yml>true</parent-pom.create-github-workflow-yml> -->
 		<parent-pom.create-gitignore>true</parent-pom.create-gitignore>
 		<!-- <parent-pom.create-lombok-config>true</parent-pom.create-lombok-config> -->
 		<!-- <parent-pom.create-readme-md>true</parent-pom.create-readme-md> -->
@@ -597,13 +598,22 @@
 									<available file="${project.basedir}/CHANGELOG.md" />
 								</condition>
 								<condition property="parent-pom.create-dependabot-yml" value="false" else="true">
-									<or>
-										<available file="${project.basedir}/.github/dependabot.yml" />
-										<and>
-											<equals arg1="${project.groupId}" arg2="de.lars-sh" />
+									<and>
+										<equals arg1="${project.groupId}" arg2="de.lars-sh" />
+										<or>
 											<equals arg1="${project.artifactId}" arg2="parent" />
-										</and>
-									</or>
+											<equals arg1="${project.artifactId}" arg2="root" />
+										</or>
+									</and>
+								</condition>
+								<condition property="parent-pom.create-github-workflow-yml" value="false" else="true">
+									<and>
+										<equals arg1="${project.groupId}" arg2="de.lars-sh" />
+										<or>
+											<equals arg1="${project.artifactId}" arg2="parent" />
+											<equals arg1="${project.artifactId}" arg2="root" />
+										</or>
+									</and>
 								</condition>
 								<condition property="parent-pom.create-lombok-config" value="false" else="true">
 									<or>
@@ -1877,6 +1887,97 @@ updates:
     directory: /
     schedule:
       interval: daily
+]]></echo>
+							</target>
+						</configuration>
+					</execution>
+
+					<!-- .github/workflows/push-and-pull_request.yml -->
+					<execution>
+						<id>github-workflow</id>
+						<phase>initialize</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<target if="${parent-pom.create-github-workflow-yml}">
+								<echo level="info" message="Update .github/workflows/push-and-pull_request.yml" />
+								<echo file="${project.basedir}/.github/workflows/push-and-pull_request.yml"><![CDATA[name: Build on Push and Pull Request
+on:
+  - push
+  - pull_request
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        # Supported versions as of https://en.wikipedia.org/wiki/Java_version_history
+        java-version:
+          - 1.8
+          - 11
+          - 14
+
+    name: Build with JDK ${{ matrix.java-version }}
+    steps:
+      - name: Cache Dependencies
+        uses: actions/cache@v2
+        with:
+          key: maven-dependencies
+          path: ~/.m2/repository
+      - name: Check out
+        uses: actions/checkout@v2
+      - name: Set up JDK ${{ matrix.java-version }}
+        uses: actions/setup-java@v1
+        with:
+          java-version: ${{ matrix.java-version }}
+      - name: Clean, Build, Install
+        run: |
+          set -o errexit -o pipefail
+          mvn clean install --activate-profiles dirty,dirty-package --update-snapshots --batch-mode --show-version 2>&1 | tee mvnout.txt
+          set +o errexit +o pipefail
+      - name: Test, Verify, Deploy
+        if: ${{ github.event_name == 'push' && github.branch_name == 'master' && matrix.java-version == '1.8' }}
+        run: |
+          set -o errexit -o pipefail
+          mvn deploy site --define gpg.skip=true --batch-mode --show-version 2>&1 | tee --append mvnout.txt
+          set +o errexit +o pipefail
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Test, Verify
+        if: ${{ github.event_name != 'push' || github.branch_name != 'master' || matrix.java-version != '1.8' }}
+        run: |
+          set -o errexit -o pipefail
+          mvn verify site --define gpg.skip=true --batch-mode --show-version 2>&1 | tee --append mvnout.txt
+          set +o errexit +o pipefail
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Check Output
+        run: |
+          chmod +x ./target/mvn-suppressions-parent.sh
+          mvnout=`cat mvnout.txt | grep --perl-regexp "(?i)\\[(ERR|WARN)" | ./target/mvn-suppressions-parent.sh "${{ matrix.java-version }}"`
+          
+          if [ -n "${mvnout}" ]; then
+            echo "[ERROR] The Maven output contains the following unknown warnings and errors:" >&2
+            echo "${mvnout}"
+            false
+          else
+            echo "[INFO] No unknown warnings and errors found."
+            echo "${mvnout}"
+          fi
+      - name: Prepare Site
+        if: ${{ github.event_name == 'push' && github.branch_name == 'master' && matrix.java-version == '1.8' }}
+        run: |
+          rm ./target/site/index.html
+          cp ./CHANGELOG.md ./target/site/CHANGELOG.md
+          cp ./README.md ./target/site/README.md
+      - name: Deploy Site
+        if: ${{ github.event_name == 'push' && github.branch_name == 'master' && matrix.java-version == '1.8' }}
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./target/site
 ]]></echo>
 							</target>
 						</configuration>
