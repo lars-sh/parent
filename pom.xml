@@ -1878,12 +1878,10 @@ Download at TODO
 								<echo level="info" message="Update .github/dependabot.yml" />
 								<echo file="${project.basedir}/.github/dependabot.yml"><![CDATA[version: 2
 updates:
-- package-ecosystem: maven
-  directory: "/"
-  schedule:
-    interval: daily
-    time: "04:00"
-  open-pull-requests-limit: 10
+  - package-ecosystem: maven
+    directory: /
+    schedule:
+      interval: daily
 ]]></echo>
 							</target>
 						</configuration>
