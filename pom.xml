@@ -1551,7 +1551,7 @@ function suppressPmdWarnings() {
 
 # JDK14: The JavaDoc creation logs errors about missing "javadoc-bundle-option" folders.
 function suppressJdk14Warnings() {
-	if [ ${JDK_VERSION} -eq 14 ]; then
+	if [ "${JDK_VERSION}" -eq 14 ]; then
 		cat < /dev/stdin \
 		| grep --invert-match --perl-regexp "^\\[ERROR\\] Error fetching link: .*[/\\\\]target[/\\\\]javadoc-bundle-options\\. Ignored it\\.$"
 	else
@@ -1561,7 +1561,7 @@ function suppressJdk14Warnings() {
 
 # JDK15: The JavaDoc creation logs errors about missing "javadoc-bundle-option" folders.
 function suppressJdk15Warnings() {
-	if [ ${JDK_VERSION} -eq 15 ]; then
+	if [ "${JDK_VERSION}" -eq 15 ]; then
 		cat < /dev/stdin \
 		| grep --invert-match --perl-regexp "^\\[ERROR\\] Error fetching link: .*[/\\\\]target[/\\\\]javadoc-bundle-options\\. Ignored it\\.$"
 	else
@@ -1570,12 +1570,16 @@ function suppressJdk15Warnings() {
 }
 
 JDK_VERSION=`echo "$1" | grep --only-matching --perl-regexp \\\\d+`
-
-cat < /dev/stdin \
-| suppressUserDefined \
-| suppressPmdWarnings \
-| suppressJdk14Warnings \
-| suppressJdk15Warnings
+if [ -z "${JDK_VERSION}" ]; then
+	echo "[ERROR] The given JDK version is empty. Given value: \"$1\"" >&2
+	false
+else
+	cat < /dev/stdin \
+	| suppressUserDefined \
+	| suppressPmdWarnings \
+	| suppressJdk14Warnings \
+	| suppressJdk15Warnings
+fi
 ]]></echo>
 
 								<!-- pmd-ruleset.xml -->
@@ -2066,7 +2070,7 @@ script: |
   mvnout=`cat mvnout.txt | grep --perl-regexp "(?i)\\[(ERR|WARN)" | ./target/mvn-suppressions-parent.sh "${TRAVIS_JDK_VERSION}"`
   
   if [ -n "${mvnout}" ]; then
-    echo "[WARNING] The Maven output contains the following unknown warnings and errors:"
+    echo "[ERROR] The Maven output contains the following unknown warnings and errors:" >&2
     echo "${mvnout}"
     # Not using "exit 1" to avoid truncated output as described at https://travis-ci.community/t/7159
     false

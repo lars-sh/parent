@@ -55,7 +55,7 @@ jobs:
           mvnout=`cat mvnout.txt | grep --perl-regexp "(?i)\\[(ERR|WARN)" | ./target/mvn-suppressions-parent.sh "${{ matrix.java-version }}"`
           
           if [ -n "${mvnout}" ]; then
-            echo "[WARNING] The Maven output contains the following unknown warnings and errors:"
+            echo "[ERROR] The Maven output contains the following unknown warnings and errors:" >&2
             echo "${mvnout}"
             false
           else
