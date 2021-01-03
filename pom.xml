@@ -1579,7 +1579,7 @@ function suppressJdk15Warnings() {
 	fi
 }
 
-JDK_VERSION=`echo "$1" | grep --only-matching --perl-regexp \\\\d+`
+JDK_VERSION=`echo "$1" | grep --only-matching --perl-regexp "^(1\\\\.)?\\\\K\\\\d+$"`
 if [ -z "${JDK_VERSION}" ]; then
 	echo "[ERROR] The given JDK version is empty. Given value: \"$1\"" >&2
 	false
