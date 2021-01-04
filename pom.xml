@@ -53,7 +53,7 @@
 			<url>https://maven.pkg.github.com/${parent-pom.github.organization}/${parent-pom.github.project}</url>
 		</snapshotRepository>
 		<repository>
-			<id>sonatype-nexus-staging</id>
+			<id>ossrh</id>
 			<name>Sonatype Nexus Releases</name>
 			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
 		</repository>
