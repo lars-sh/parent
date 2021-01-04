@@ -8,16 +8,21 @@ All notable changes to this project will be documented in this file.
 Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%20%28a:parent%20a:parent-archetype%20a:root%20a:utils%20a:utils-annotations%20a:utils-test%29%20AND%20v:0.9.11)
 
 ### Added
-TODO
+* Creation of GitHub Action configuration instead of Travis CI file.  
+  You can still enable the creation of `.travis.yml` by setting the Maven property `parent-pom.create-travis-yml` to `true`.
+* Creation of a GitHub native Dependabot configuration file  
+  Use the Maven property `parent-pom.create-dependabot-yml` to suppress writing this file.
+* Class `de.larssh.utils.io.MultiInputStream`
+* Class `de.larssh.utils.io.MultiReader`
 
 ### Changed
-TODO
-
-### Removed
-TODO
+* Moved class `Resources` to new package `de.larssh.utils.io`
+* Rename file `travis-suppressions.sh` to `mvn-suppressions.sh`
+* Update formatter and clean-up settings for Eclipse 2020-12
 
 ### Fixed
-TODO
+* Fix formatting of multiline `else if` statements
+* Fix creation of the Spotbugs Eclipse plugin configuration
 
 <a name="0.9.10"></a>
 

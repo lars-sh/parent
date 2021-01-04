@@ -1,0 +1,86 @@
+name: Build on Push and Pull Request
+on:
+  - push
+  - pull_request
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        # Supported versions as of https://en.wikipedia.org/wiki/Java_version_history
+        java-version:
+          - 1.8
+          - 11
+          - 14
+
+    name: Build with JDK ${{ matrix.java-version }}
+    steps:
+      - name: Cache Dependencies
+        uses: actions/cache@v2
+        with:
+          key: maven-dependencies
+          path: ~/.m2/repository
+      - name: Check out
+        uses: actions/checkout@v2
+      - name: Set up JDK ${{ matrix.java-version }}
+        uses: actions/setup-java@v1
+        with:
+          java-version: ${{ matrix.java-version }}
+      - name: Clean, Build, Install
+        run: |
+          set -o errexit -o pipefail
+          mvn clean install --activate-profiles dirty,dirty-package --update-snapshots --batch-mode --show-version 2>&1 | tee mvnout.txt
+          set +o errexit +o pipefail
+      - name: Test, Verify, Deploy
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' && matrix.java-version == '1.8' }}
+        run: |
+          set -o errexit -o pipefail
+          mvn deploy site --define gpg.skip=true --batch-mode --show-version 2>&1 | tee --append mvnout.txt
+          set +o errexit +o pipefail
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Test, Verify
+        if: ${{ github.event_name != 'push' || github.ref != 'refs/heads/master' || matrix.java-version != '1.8' }}
+        run: |
+          set -o errexit -o pipefail
+          mvn verify site --define gpg.skip=true --batch-mode --show-version 2>&1 | tee --append mvnout.txt
+          set +o errexit +o pipefail
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Check Output
+        run: |
+          chmod +x ./target/mvn-suppressions-parent.sh
+          mvnout=`cat mvnout.txt | grep --perl-regexp "(?i)\\[(ERR|WARN)" | ./target/mvn-suppressions-parent.sh "$JDK_VERSION"`
+          
+          if [ -n "${mvnout}" ]; then
+            echo "[ERROR] The Maven output contains the following unknown warnings and errors:" >&2
+            echo "${mvnout}"
+            false
+          else
+            echo "[INFO] No unknown warnings and errors found."
+            echo "${mvnout}"
+          fi
+        env:
+          JDK_VERSION: ${{ matrix.java-version }}
+      - name: Prepare Site
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' && matrix.java-version == '1.8' }}
+        run: |
+          rm ./target/site/index.html
+          cp ./CHANGELOG.md ./target/site/CHANGELOG.md
+          cp ./README.md ./target/site/README.md
+          
+          # Modules
+          cp -R ./parent/target/site ./target/site/parent
+          cp -R ./parent-archetype/target/site ./target/site/parent-archetype
+          cp -R ./utils/target/site ./target/site/utils
+          cp -R ./utils-annotations/target/site ./target/site/utils-annotations
+          cp -R ./utils-test/target/site ./target/site/utils-test
+      - name: Deploy Site
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' && matrix.java-version == '1.8' }}
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./target/site
+          enable_jekyll: true

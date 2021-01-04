@@ -1,4 +1,4 @@
-package de.larssh.utils;
+package de.larssh.utils.io;
 
 import static de.larssh.utils.SystemUtils.DEFAULT_FILE_NAME_SEPARATOR;
 import static de.larssh.utils.SystemUtils.DEFAULT_FILE_NAME_SEPARATOR_CHAR;
@@ -21,6 +21,7 @@ import java.util.jar.Manifest;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
 
+import de.larssh.utils.Nullables;
 import de.larssh.utils.collection.Enumerations;
 import de.larssh.utils.text.Patterns;
 import de.larssh.utils.text.Strings;

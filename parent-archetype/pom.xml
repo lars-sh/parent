@@ -16,7 +16,8 @@
 	<url>https://${parent-pom.github.organization}.github.io/${parent-pom.github.project}/${project.artifactId}/</url>
 
 	<properties>
-		<parent-pom.create-travis-yml>false</parent-pom.create-travis-yml>
+		<parent-pom.create-dependabot-yml>false</parent-pom.create-dependabot-yml>
+		<parent-pom.create-github-workflow-yml>false</parent-pom.create-github-workflow-yml>
 	</properties>
 
 	<build>

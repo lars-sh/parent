@@ -43,14 +43,14 @@
 		<url>https://github.com/${parent-pom.github.organization}/${parent-pom.github.project}/issues</url>
 	</issueManagement>
 	<ciManagement>
-		<system>Travis</system>
-		<url>https://travis-ci.com/${parent-pom.github.organization}/${parent-pom.github.project}</url>
+		<system>GitHub Actions</system>
+		<url>https://github.com/${parent-pom.github.organization}/${parent-pom.github.project}/actions</url>
 	</ciManagement>
 	<distributionManagement>
 		<snapshotRepository>
-			<id>sonatype-nexus-snapshots</id>
-			<name>Sonatype Nexus Snapshots</name>
-			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+			<id>github</id>
+			<name>GitHub Packages</name>
+			<url>https://maven.pkg.github.com/${parent-pom.github.organization}/${parent-pom.github.project}</url>
 		</snapshotRepository>
 		<repository>
 			<id>sonatype-nexus-staging</id>
@@ -62,11 +62,13 @@
 	<properties>
 		<!-- Parent POM -->
 		<!-- <parent-pom.create-changelog-md>true</parent-pom.create-changelog-md> -->
+		<!-- <parent-pom.create-dependabot-yml>true</parent-pom.create-dependabot-yml> -->
+		<!-- <parent-pom.create-github-workflow-yml>true</parent-pom.create-github-workflow-yml> -->
 		<parent-pom.create-gitignore>true</parent-pom.create-gitignore>
 		<!-- <parent-pom.create-lombok-config>true</parent-pom.create-lombok-config> -->
 		<!-- <parent-pom.create-readme-md>true</parent-pom.create-readme-md> -->
 		<!-- <parent-pom.create-source-directories>true</parent-pom.create-source-directories> -->
-		<!-- <parent-pom.create-travis-yml>true</parent-pom.create-travis-yml> -->
+		<parent-pom.create-travis-yml>false</parent-pom.create-travis-yml>
 		<parent-pom.default-sources-folder>lombok</parent-pom.default-sources-folder>
 		<parent-pom.github.organization>lars-sh</parent-pom.github.organization>
 		<parent-pom.github.project>parent</parent-pom.github.project>
@@ -161,13 +163,13 @@
 		<maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
 		<maven-surefire-report-plugin.version>2.22.2</maven-surefire-report-plugin.version>
 		<nexus-staging-maven-plugin.version>1.6.8</nexus-staging-maven-plugin.version>
-		<spotbugs-maven-plugin.version>4.1.4</spotbugs-maven-plugin.version>
+		<spotbugs-maven-plugin.version>4.2.0</spotbugs-maven-plugin.version>
 		<tidy-maven-plugin.version>1.1.0</tidy-maven-plugin.version>
 		<versions-maven-plugin.version>2.8.1</versions-maven-plugin.version>
 
 		<!-- Versions: Plugin Dependencies -->
-		<apache-ant.version>1.10.8</apache-ant.version>
-		<checkstyle.version>8.38</checkstyle.version>
+		<apache-ant.version>1.10.9</apache-ant.version>
+		<checkstyle.version>8.39</checkstyle.version>
 		<sb-contrib.version>7.4.7</sb-contrib.version>
 		<findsecbugs.version>1.11.0</findsecbugs.version>
 		<lombok.version>1.18.16</lombok.version>
@@ -594,16 +596,16 @@
 								<condition property="parent-pom.create-changelog-md" value="false" else="true">
 									<available file="${project.basedir}/CHANGELOG.md" />
 								</condition>
-								<condition property="parent-pom.create-readme-md" value="false" else="true">
-									<available file="${project.basedir}/README.md" />
+								<condition property="parent-pom.create-dependabot-yml" value="false" else="true">
+									<and>
+										<equals arg1="${project.groupId}" arg2="de.lars-sh" />
+										<or>
+											<equals arg1="${project.artifactId}" arg2="parent" />
+											<equals arg1="${project.artifactId}" arg2="root" />
+										</or>
+									</and>
 								</condition>
-								<condition property="parent-pom.create-source-directories" value="false" else="true">
-									<or>
-										<equals arg1="${project.packaging}" arg2="maven-archetype" />
-										<equals arg1="${project.packaging}" arg2="pom" />
-									</or>
-								</condition>
-								<condition property="parent-pom.create-travis-yml" value="false" else="true">
+								<condition property="parent-pom.create-github-workflow-yml" value="false" else="true">
 									<and>
 										<equals arg1="${project.groupId}" arg2="de.lars-sh" />
 										<or>
@@ -613,6 +615,15 @@
 									</and>
 								</condition>
 								<condition property="parent-pom.create-lombok-config" value="false" else="true">
+									<or>
+										<equals arg1="${project.packaging}" arg2="maven-archetype" />
+										<equals arg1="${project.packaging}" arg2="pom" />
+									</or>
+								</condition>
+								<condition property="parent-pom.create-readme-md" value="false" else="true">
+									<available file="${project.basedir}/README.md" />
+								</condition>
+								<condition property="parent-pom.create-source-directories" value="false" else="true">
 									<or>
 										<equals arg1="${project.packaging}" arg2="maven-archetype" />
 										<equals arg1="${project.packaging}" arg2="pom" />
@@ -1467,7 +1478,7 @@
 											<setting id="org.eclipse.jdt.core.formatter.keep_annotation_declaration_on_one_line" value="one_line_if_empty" />
 											<setting id="org.eclipse.jdt.core.formatter.keep_anonymous_type_declaration_on_one_line" value="one_line_if_empty" />
 											<setting id="org.eclipse.jdt.core.formatter.keep_code_block_on_one_line" value="one_line_if_empty" />
-											<setting id="org.eclipse.jdt.core.formatter.keep_else_statement_on_same_line" value="true" />
+											<setting id="org.eclipse.jdt.core.formatter.keep_else_statement_on_same_line" value="false" />
 											<setting id="org.eclipse.jdt.core.formatter.keep_empty_array_initializer_on_one_line" value="false" />
 											<setting id="org.eclipse.jdt.core.formatter.keep_enum_constant_declaration_on_one_line" value="one_line_if_empty" />
 											<setting id="org.eclipse.jdt.core.formatter.keep_enum_declaration_on_one_line" value="one_line_if_empty" />
@@ -1527,6 +1538,58 @@
 										</profile>
 									</profiles>
 								</echoxml>
+
+								<!-- mvn-suppressions-parent.sh -->
+								<echo level="info" message="Create mvn-suppressions-parent.sh" />
+								<echo file="${project.build.directory}/mvn-suppressions-parent.sh"><![CDATA[# User Defined Suppressions
+function suppressUserDefined() {
+	if [ -f ./mvn-suppressions.sh ]; then
+		cat < /dev/stdin \
+		| ./mvn-suppressions.sh
+	else
+		cat < /dev/stdin
+	fi
+}
+
+# PMD: The Maven Plugin tries to perform Java type resolution on POM typed projects.
+function suppressPmdWarnings() {
+	cat < /dev/stdin \
+	| grep --invert-match --perl-regexp "^\\[WARNING\\] The project parent does not seem to be compiled\\. PMD results might be inaccurate\\.$" \
+	| grep --invert-match --perl-regexp "^\\[WARNING\\] Auxclasspath entry .*[/\\\\]parent[/\\\\]target[/\\\\]classes doesn't exist, ignoring it$"
+}
+
+# JDK14: The JavaDoc creation logs errors about missing "javadoc-bundle-option" folders.
+function suppressJdk14Warnings() {
+	if [ "${JDK_VERSION}" -eq 14 ]; then
+		cat < /dev/stdin \
+		| grep --invert-match --perl-regexp "^\\[ERROR\\] Error fetching link: .*[/\\\\]target[/\\\\]javadoc-bundle-options\\. Ignored it\\.$"
+	else
+		cat < /dev/stdin
+	fi
+}
+
+# JDK15: The JavaDoc creation logs errors about missing "javadoc-bundle-option" folders.
+function suppressJdk15Warnings() {
+	if [ "${JDK_VERSION}" -eq 15 ]; then
+		cat < /dev/stdin \
+		| grep --invert-match --perl-regexp "^\\[ERROR\\] Error fetching link: .*[/\\\\]target[/\\\\]javadoc-bundle-options\\. Ignored it\\.$"
+	else
+		cat < /dev/stdin
+	fi
+}
+
+JDK_VERSION=`echo "$1" | grep --only-matching --perl-regexp "^(1\\\\.)?\\\\K\\\\d+$"`
+if [ -z "${JDK_VERSION}" ]; then
+	echo "[ERROR] The given JDK version is empty. Given value: \"$1\"" >&2
+	false
+else
+	cat < /dev/stdin \
+	| suppressUserDefined \
+	| suppressPmdWarnings \
+	| suppressJdk14Warnings \
+	| suppressJdk15Warnings
+fi
+]]></echo>
 
 								<!-- pmd-ruleset.xml -->
 								<echo level="info" message="Update pmd-ruleset.xml" />
@@ -1720,54 +1783,6 @@
 									</FindBugsFilter>
 								</echoxml>
 
-								<!-- travis-suppressions-parent.sh -->
-								<echo level="info" message="Create travis-suppressions-parent.sh" />
-								<echo file="${project.build.directory}/travis-suppressions-parent.sh"><![CDATA[# User Defined Suppressions
-function suppressUserDefined() {
-	if [ -f ./travis-suppressions.sh ]; then
-		cat < /dev/stdin \
-		| ./travis-suppressions.sh
-	else
-		cat < /dev/stdin
-	fi
-}
-
-# PMD: The Maven Plugin tries to perform Java type resolution on POM typed projects.
-function suppressPmdWarnings() {
-	cat < /dev/stdin \
-	| grep --invert-match --perl-regexp "^\\[WARNING\\] The project parent does not seem to be compiled\\. PMD results might be inaccurate\\.$" \
-	| grep --invert-match --perl-regexp "^\\[WARNING\\] Auxclasspath entry .*[/\\\\]parent[/\\\\]target[/\\\\]classes doesn't exist, ignoring it$"
-}
-
-# JDK14: The JavaDoc creation logs errors about missing "javadoc-bundle-option" folders.
-function suppressJdk14Warnings() {
-	if [ ${JDK_VERSION} -eq 14 ]; then
-		cat < /dev/stdin \
-		| grep --invert-match --perl-regexp "^\\[ERROR\\] Error fetching link: .*[/\\\\]target[/\\\\]javadoc-bundle-options\\. Ignored it\\.$"
-	else
-		cat < /dev/stdin
-	fi
-}
-
-# JDK15: The JavaDoc creation logs errors about missing "javadoc-bundle-option" folders.
-function suppressJdk15Warnings() {
-	if [ ${JDK_VERSION} -eq 15 ]; then
-		cat < /dev/stdin \
-		| grep --invert-match --perl-regexp "^\\[ERROR\\] Error fetching link: .*[/\\\\]target[/\\\\]javadoc-bundle-options\\. Ignored it\\.$"
-	else
-		cat < /dev/stdin
-	fi
-}
-
-JDK_VERSION=`echo ${TRAVIS_JDK_VERSION} | grep --only-matching --perl-regexp \\\\d+`
-
-cat < /dev/stdin \
-| suppressUserDefined \
-| suppressPmdWarnings \
-| suppressJdk14Warnings \
-| suppressJdk15Warnings
-]]></echo>
-
 								<!-- versions-ruleset.xml -->
 								<echo level="info" message="Update versions-ruleset.xml" />
 								<echoxml file="${project.build.directory}/versions-ruleset.xml">
@@ -1849,6 +1864,122 @@ Download at TODO
 
 ### Dependencies
 *
+]]></echo>
+							</target>
+						</configuration>
+					</execution>
+
+					<!-- .github/dependabot.yml  -->
+					<execution>
+						<id>dependabot</id>
+						<phase>initialize</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<target if="${parent-pom.create-dependabot-yml}">
+								<mkdir dir="${project.basedir}/.github" />
+								<echo level="info" message="Update .github/dependabot.yml" />
+								<echo file="${project.basedir}/.github/dependabot.yml"><![CDATA[version: 2
+updates:
+  - package-ecosystem: maven
+    directory: /
+    schedule:
+      interval: daily
+]]></echo>
+							</target>
+						</configuration>
+					</execution>
+
+					<!-- .github/workflows/push-and-pull_request.yml -->
+					<execution>
+						<id>github-workflow</id>
+						<phase>initialize</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<target if="${parent-pom.create-github-workflow-yml}">
+								<echo level="info" message="Update .github/workflows/push-and-pull_request.yml" />
+								<echo file="${project.basedir}/.github/workflows/push-and-pull_request.yml"><![CDATA[name: Build on Push and Pull Request
+on:
+  - push
+  - pull_request
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        # Supported versions as of https://en.wikipedia.org/wiki/Java_version_history
+        java-version:
+          - 1.8
+          - 11
+          - 14
+
+    name: Build with JDK ${{ matrix.java-version }}
+    steps:
+      - name: Cache Dependencies
+        uses: actions/cache@v2
+        with:
+          key: maven-dependencies
+          path: ~/.m2/repository
+      - name: Check out
+        uses: actions/checkout@v2
+      - name: Set up JDK ${{ matrix.java-version }}
+        uses: actions/setup-java@v1
+        with:
+          java-version: ${{ matrix.java-version }}
+      - name: Clean, Build, Install
+        run: |
+          set -o errexit -o pipefail
+          mvn clean install --activate-profiles dirty,dirty-package --update-snapshots --batch-mode --show-version 2>&1 | tee mvnout.txt
+          set +o errexit +o pipefail
+      - name: Test, Verify, Deploy
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' && matrix.java-version == '1.8' }}
+        run: |
+          set -o errexit -o pipefail
+          mvn deploy site --define gpg.skip=true --batch-mode --show-version 2>&1 | tee --append mvnout.txt
+          set +o errexit +o pipefail
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Test, Verify
+        if: ${{ github.event_name != 'push' || github.ref != 'refs/heads/master' || matrix.java-version != '1.8' }}
+        run: |
+          set -o errexit -o pipefail
+          mvn verify site --define gpg.skip=true --batch-mode --show-version 2>&1 | tee --append mvnout.txt
+          set +o errexit +o pipefail
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Check Output
+        run: |
+          chmod +x ./target/mvn-suppressions-parent.sh
+          mvnout=`cat mvnout.txt | grep --perl-regexp "(?i)\\[(ERR|WARN)" | ./target/mvn-suppressions-parent.sh "$JDK_VERSION"`
+          
+          if [ -n "${mvnout}" ]; then
+            echo "[ERROR] The Maven output contains the following unknown warnings and errors:" >&2
+            echo "${mvnout}"
+            false
+          else
+            echo "[INFO] No unknown warnings and errors found."
+            echo "${mvnout}"
+          fi
+        env:
+          JDK_VERSION: ${{ matrix.java-version }}
+      - name: Prepare Site
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' && matrix.java-version == '1.8' }}
+        run: |
+          rm ./target/site/index.html
+          cp ./CHANGELOG.md ./target/site/CHANGELOG.md
+          cp ./README.md ./target/site/README.md
+      - name: Deploy Site
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' && matrix.java-version == '1.8' }}
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./target/site
+          enable_jekyll: true
 ]]></echo>
 							</target>
 						</configuration>
@@ -2038,11 +2169,11 @@ script: |
   
   echo ""
   echo "[INFO] Checking for Maven warnings and errors..."
-  chmod +x ./target/travis-suppressions-parent.sh
-  mvnout=`cat mvnout.txt | grep --perl-regexp "(?i)\\[(ERR|WARN)" | ./target/travis-suppressions-parent.sh`
+  chmod +x ./target/mvn-suppressions-parent.sh
+  mvnout=`cat mvnout.txt | grep --perl-regexp "(?i)\\[(ERR|WARN)" | ./target/mvn-suppressions-parent.sh "${TRAVIS_JDK_VERSION}"`
   
   if [ -n "${mvnout}" ]; then
-    echo "[WARNING] The Maven output contains the following unknown warnings and errors:"
+    echo "[ERROR] The Maven output contains the following unknown warnings and errors:" >&2
     echo "${mvnout}"
     # Not using "exit 1" to avoid truncated output as described at https://travis-ci.community/t/7159
     false
@@ -3461,7 +3592,7 @@ deploy:
 											<entry key="org.eclipse.jdt.core.formatter.keep_annotation_declaration_on_one_line" value="one_line_if_empty" />
 											<entry key="org.eclipse.jdt.core.formatter.keep_anonymous_type_declaration_on_one_line" value="one_line_if_empty" />
 											<entry key="org.eclipse.jdt.core.formatter.keep_code_block_on_one_line" value="one_line_if_empty" />
-											<entry key="org.eclipse.jdt.core.formatter.keep_else_statement_on_same_line" value="true" />
+											<entry key="org.eclipse.jdt.core.formatter.keep_else_statement_on_same_line" value="false" />
 											<entry key="org.eclipse.jdt.core.formatter.keep_empty_array_initializer_on_one_line" value="false" />
 											<entry key="org.eclipse.jdt.core.formatter.keep_enum_constant_declaration_on_one_line" value="one_line_if_empty" />
 											<entry key="org.eclipse.jdt.core.formatter.keep_enum_declaration_on_one_line" value="one_line_if_empty" />
