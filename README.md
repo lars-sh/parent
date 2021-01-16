@@ -48,6 +48,21 @@ mvn archetype:generate -DarchetypeGroupId=de.lars-sh -DarchetypeArtifactId=paren
 
 Remember to **restart Eclipse** to apply changes to project settings.
 
+#### Snapshot Builds
+Snapshot builds are finally provided through [GitHub Packages](https://github.com/lars-sh/parent/packages). To use one of them, configure the version of the parent dependency accordingly and add the below noted repository to your POM.
+
+Beside having the possibility, please keep in mind, that snapshot builds might be either instable or even broken from time to time.
+
+```XML
+<repositories>
+	<repository>
+		<id>github-lars-sh-parent</id>
+		<name>GitHub Packages of de.lars-sh:parent</name>
+		<url>https://maven.pkg.github.com/lars-sh/parent</url>
+	</repository>
+</repositories>
+```
+
 ### Import into Eclipse
 1. If not done earlier, install Project Lombok into Eclipse [using the official installer](https://projectlombok.org/setup/eclipse) by calling `mvn de.lars-sh:jar-runner-maven-plugin:run -Dartifact=org.projectlombok:lombok:LATEST` on the command line.
 
