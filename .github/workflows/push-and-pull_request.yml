@@ -40,6 +40,8 @@ jobs:
           snapshot_version=`mvn help:evaluate --quiet --define expression=project.version --define forceStdout | grep --perl-regexp "-SNAPSHOT$"`
           if [ -n "${snapshot_version}" ]; then
             echo "::set-output name=is-snapshot::true"
+          else
+            echo "::set-output name=is-snapshot::false"
           fi
       - name: Test, Verify, Deploy
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' && matrix.java-version == '1.8' && steps.install.outputs.is-snapshot == 'true' }}
