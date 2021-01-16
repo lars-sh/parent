@@ -42,7 +42,7 @@ jobs:
           project_version=`mvn help:evaluate --quiet --define expression=project.version --define forceStdout`
           echo "Version: ${project_version}"
           
-          snapshot_version=`echo "${project_version}" | grep --perl-regexp "-SNAPSHOT$"`
+          snapshot_version=`echo "${project_version}" | grep --perl-regexp --regexp="-SNAPSHOT$"`
           if [ -n "${snapshot_version}" ]; then
             echo "Identified as snapshot version"
             echo "::set-output name=is-snapshot::true"
