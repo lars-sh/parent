@@ -8,10 +8,13 @@ All notable changes to this project will be documented in this file.
 Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%20%28a:parent%20a:parent-archetype%20a:root%20a:utils%20a:utils-annotations%20a:utils-test%29%20AND%20v:0.9.12)
 
 ### Added
-TODO
+* Creation of a GitHub Action for release deployment to OSSRH (Maven Central via Sonartype Nexus).  
+  You can enable this feature by setting the Maven property `parent-pom.create-github-release-yml` to `true`.
 
 ### Changed
-TODO
+* GitHub snapshot builds are signed by default.
+  This might require additional action to specify the private key and its passphrase in GitHub. Checkout the [Readme](README.md) for more information.
+* Providing snapshot builds through GitHub Packages
 
 ### Fixed
 TODO

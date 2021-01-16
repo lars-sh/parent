@@ -63,6 +63,7 @@
 		<!-- Parent POM -->
 		<!-- <parent-pom.create-changelog-md>true</parent-pom.create-changelog-md> -->
 		<!-- <parent-pom.create-dependabot-yml>true</parent-pom.create-dependabot-yml> -->
+		<!-- <parent-pom.create-github-release-yml>false</parent-pom.create-github-release-yml> -->
 		<!-- <parent-pom.create-github-workflow-yml>true</parent-pom.create-github-workflow-yml> -->
 		<parent-pom.create-gitignore>true</parent-pom.create-gitignore>
 		<!-- <parent-pom.create-lombok-config>true</parent-pom.create-lombok-config> -->
@@ -604,6 +605,12 @@
 											<equals arg1="${project.artifactId}" arg2="parent" />
 											<equals arg1="${project.artifactId}" arg2="root" />
 										</or>
+									</and>
+								</condition>
+								<condition property="parent-pom.create-github-release-yml" value="true" else="false">
+									<and>
+										<equals arg1="${project.groupId}" arg2="de.lars-sh" />
+										<equals arg1="${project.artifactId}" arg2="root" />
 									</and>
 								</condition>
 								<condition property="parent-pom.create-github-workflow-yml" value="false" else="true">
@@ -1932,19 +1939,22 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: ${{ matrix.java-version }}
+          gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
+          gpg-passphrase: GPG_PASSPHRASE
       - name: Clean, Build, Install
         run: |
           set -o errexit -o pipefail
           mvn clean install --activate-profiles dirty,dirty-package --update-snapshots --batch-mode --show-version 2>&1 | tee mvnout.txt
           set +o errexit +o pipefail
       - name: Test, Verify, Deploy
-        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' && matrix.java-version == '1.8' }}
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' && matrix.java-version == '1.8' }} # TODO: Run for snapshot versions only!
         run: |
           set -o errexit -o pipefail
-          mvn deploy site --define gpg.skip=true --batch-mode --show-version 2>&1 | tee --append mvnout.txt
+          mvn deploy site --batch-mode --show-version 2>&1 | tee --append mvnout.txt
           set +o errexit +o pipefail
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
       - name: Test, Verify
         if: ${{ github.event_name != 'push' || github.ref != 'refs/heads/master' || matrix.java-version != '1.8' }}
         run: |
@@ -1981,6 +1991,49 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./target/site
           enable_jekyll: true
+]]></echo>
+							</target>
+						</configuration>
+					</execution>
+
+					<!-- .github/workflows/release.yml -->
+					<execution>
+						<id>github-release</id>
+						<phase>initialize</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<target if="${parent-pom.create-github-release-yml}">
+								<echo level="info" message="Update .github/workflows/release.yml" />
+								<echo file="${project.basedir}/.github/workflows/release.yml"><![CDATA[name: Deploy on Release
+on:
+  release:
+    types:
+      - created
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@v2
+      - name: Set up JDK and Maven Central Repository
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+          gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
+          gpg-passphrase: GPG_PASSPHRASE
+          server-id: ossrh
+          server-username: OSSRH_USERNAME
+          server-password: OSSRH_TOKEN
+      - name: Deploy
+        run: mvn clean deploy --batch-mode --show-version
+        env:
+          GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+          OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
+          OSSRH_TOKEN: ${{ secrets.OSSRH_TOKEN }}
 ]]></echo>
 							</target>
 						</configuration>
