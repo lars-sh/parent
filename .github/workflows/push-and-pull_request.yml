@@ -51,7 +51,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
       - name: Test, Verify
-        if: ${{ github.event_name != 'push' || github.ref != 'refs/heads/master' || matrix.java-version != '1.8' }}
+        if: ${{ github.event_name != 'push' || github.ref != 'refs/heads/master' || matrix.java-version != '1.8' && steps.install.outputs.is-snapshot != 'true' }}
         run: |
           set -o errexit -o pipefail
           mvn verify site --define gpg.skip=true --batch-mode --show-version 2>&1 | tee --append mvnout.txt
@@ -74,7 +74,7 @@ jobs:
         env:
           JDK_VERSION: ${{ matrix.java-version }}
       - name: Prepare Site
-        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' && matrix.java-version == '1.8' }}
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' && matrix.java-version == '1.8' && steps.install.outputs.is-snapshot == 'true' }}
         run: |
           rm ./target/site/index.html
           cp ./CHANGELOG.md ./target/site/CHANGELOG.md
@@ -87,7 +87,7 @@ jobs:
           cp -R ./utils-annotations/target/site ./target/site/utils-annotations
           cp -R ./utils-test/target/site ./target/site/utils-test
       - name: Deploy Site
-        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' && matrix.java-version == '1.8' }}
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' && matrix.java-version == '1.8' && steps.install.outputs.is-snapshot == 'true' }}
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
