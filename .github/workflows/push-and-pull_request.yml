@@ -30,13 +30,19 @@ jobs:
           java-version: ${{ matrix.java-version }}
           gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
           gpg-passphrase: GPG_PASSPHRASE
-      - name: Clean, Build, Install
+      - id: install
+        name: Clean, Build, Install
         run: |
           set -o errexit -o pipefail
           mvn clean install --activate-profiles dirty,dirty-package --update-snapshots --batch-mode --show-version 2>&1 | tee mvnout.txt
           set +o errexit +o pipefail
+          
+          snapshot_version=`mvn help:evaluate --quiet --define expression=project.version --define forceStdout | grep --perl-regexp "-SNAPSHOT$"`
+          if [ -n "${snapshot_version}" ]; then
+            echo "::set-output name=is-snapshot::true"
+          fi
       - name: Test, Verify, Deploy
-        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' && matrix.java-version == '1.8' }}
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' && matrix.java-version == '1.8' && steps.install.outputs.is-snapshot == 'true' }}
         run: |
           set -o errexit -o pipefail
           mvn deploy site --batch-mode --show-version 2>&1 | tee --append mvnout.txt
