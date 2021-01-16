@@ -30,8 +30,7 @@ jobs:
           java-version: ${{ matrix.java-version }}
           gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
           gpg-passphrase: GPG_PASSPHRASE
-      - id: install
-        name: Clean, Build, Install
+      - name: Clean, Build, Install
         run: |
           set -o errexit -o pipefail
           mvn clean install --activate-profiles dirty,dirty-package --update-snapshots --batch-mode --show-version 2>&1 | tee mvnout.txt
