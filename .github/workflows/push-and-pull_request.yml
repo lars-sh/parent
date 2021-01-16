@@ -36,15 +36,22 @@ jobs:
           set -o errexit -o pipefail
           mvn clean install --activate-profiles dirty,dirty-package --update-snapshots --batch-mode --show-version 2>&1 | tee mvnout.txt
           set +o errexit +o pipefail
+      - id: version
+        name: Evaluate Version
+        run: |
+          project_version=`mvn help:evaluate --quiet --define expression=project.version --define forceStdout`
+          echo "Version: ${project_version}"
           
-          snapshot_version=`mvn help:evaluate --quiet --define expression=project.version --define forceStdout | grep --perl-regexp "-SNAPSHOT$"`
+          snapshot_version=`echo "${project_version}" | grep --perl-regexp "-SNAPSHOT$"`
           if [ -n "${snapshot_version}" ]; then
+            echo "Identified as snapshot version"
             echo "::set-output name=is-snapshot::true"
           else
+            echo "Identified as release version"
             echo "::set-output name=is-snapshot::false"
           fi
       - name: Test, Verify, Deploy
-        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' && matrix.java-version == '1.8' && steps.install.outputs.is-snapshot == 'true' }}
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' && matrix.java-version == '1.8' && steps.version.outputs.is-snapshot == 'true' }}
         run: |
           set -o errexit -o pipefail
           mvn deploy site --batch-mode --show-version 2>&1 | tee --append mvnout.txt
