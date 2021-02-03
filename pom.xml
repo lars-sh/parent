@@ -1773,9 +1773,6 @@ fi
 
 											<!-- Bad code style: Do not depend on compiler defaults -->
 											<exclude name="RedundantFieldInitializer" />
-
-											<!-- Bad code style: Write what you meant to do -->
-											<exclude name="SimplifyStartsWith" />
 										</rule>
 
 										<rule ref="category/java/security.xml" />
