@@ -1073,6 +1073,7 @@
 												<property name="format" value="^(?!arg\d*$)[a-z][a-zA-Z0-9]*$" />
 											</module>
 											<module name="PatternVariableName" />
+											<module name="RecordComponentName" />
 											<module name="RecordTypeParameterName" />
 											<module name="StaticVariableName" />
 											<module name="TypeName" />
