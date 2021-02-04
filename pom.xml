@@ -172,7 +172,7 @@
 
 		<!-- Versions: Plugin Dependencies -->
 		<apache-ant.version>1.10.9</apache-ant.version>
-		<checkstyle.version>8.39</checkstyle.version>
+		<checkstyle.version>8.40</checkstyle.version>
 		<sb-contrib.version>7.4.7</sb-contrib.version>
 		<findsecbugs.version>1.11.0</findsecbugs.version>
 		<lombok.version>1.18.18</lombok.version>
@@ -1073,6 +1073,7 @@
 												<property name="format" value="^(?!arg\d*$)[a-z][a-zA-Z0-9]*$" />
 											</module>
 											<module name="PatternVariableName" />
+											<module name="RecordComponentName" />
 											<module name="RecordTypeParameterName" />
 											<module name="StaticVariableName" />
 											<module name="TypeName" />
