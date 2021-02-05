@@ -1,0 +1,28 @@
+name: Build on Push
+on:
+  - push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        java-version:
+          - 1.8
+          - 9
+          - 10
+          - 11
+          - 12
+          - 13
+          - 14
+          - 15
+    name: Build with JDK ${{ matrix.java-version }}
+    steps:
+      - name: Check out
+        uses: actions/checkout@v2
+      - name: Set up JDK ${{ matrix.java-version }}
+        uses: actions/setup-java@v1
+        with:
+          java-version: ${{ matrix.java-version }}
+      - name: Clean, Verify
+        run: mvn clean verify --update-snapshots --batch-mode --show-version
