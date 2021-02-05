@@ -28,21 +28,38 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: ${{ matrix.java-version }}
+          gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
+          gpg-passphrase: GPG_PASSPHRASE
       - name: Clean, Build, Install
         run: |
           set -o errexit -o pipefail
           mvn clean install --activate-profiles dirty,dirty-package --update-snapshots --batch-mode --show-version 2>&1 | tee mvnout.txt
           set +o errexit +o pipefail
+      - id: version
+        name: Evaluate Version
+        run: |
+          project_version=`mvn help:evaluate --quiet --define expression=project.version --define forceStdout`
+          echo "Version: ${project_version}"
+          
+          snapshot_version=`echo "${project_version}" | grep --perl-regexp --regexp="-SNAPSHOT$"`
+          if [ -n "${snapshot_version}" ]; then
+            echo "Identified as snapshot version"
+            echo "::set-output name=is-snapshot::true"
+          else
+            echo "Identified as release version"
+            echo "::set-output name=is-snapshot::false"
+          fi
       - name: Test, Verify, Deploy
-        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' && matrix.java-version == '1.8' }}
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' && matrix.java-version == '1.8' && steps.version.outputs.is-snapshot == 'true' }}
         run: |
           set -o errexit -o pipefail
-          mvn deploy site --define gpg.skip=true --batch-mode --show-version 2>&1 | tee --append mvnout.txt
+          mvn deploy site --batch-mode --show-version 2>&1 | tee --append mvnout.txt
           set +o errexit +o pipefail
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
       - name: Test, Verify
-        if: ${{ github.event_name != 'push' || github.ref != 'refs/heads/master' || matrix.java-version != '1.8' }}
+        if: ${{ github.event_name != 'push' || github.ref != 'refs/heads/master' || matrix.java-version != '1.8' && steps.install.outputs.is-snapshot != 'true' }}
         run: |
           set -o errexit -o pipefail
           mvn verify site --define gpg.skip=true --batch-mode --show-version 2>&1 | tee --append mvnout.txt
@@ -65,7 +82,7 @@ jobs:
         env:
           JDK_VERSION: ${{ matrix.java-version }}
       - name: Prepare Site
-        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' && matrix.java-version == '1.8' }}
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' && matrix.java-version == '1.8' && steps.install.outputs.is-snapshot == 'true' }}
         run: |
           rm ./target/site/index.html
           cp ./CHANGELOG.md ./target/site/CHANGELOG.md
@@ -78,7 +95,7 @@ jobs:
           cp -R ./utils-annotations/target/site ./target/site/utils-annotations
           cp -R ./utils-test/target/site ./target/site/utils-test
       - name: Deploy Site
-        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' && matrix.java-version == '1.8' }}
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' && matrix.java-version == '1.8' && steps.install.outputs.is-snapshot == 'true' }}
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}

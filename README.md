@@ -48,6 +48,21 @@ mvn archetype:generate -DarchetypeGroupId=de.lars-sh -DarchetypeArtifactId=paren
 
 Remember to **restart Eclipse** to apply changes to project settings.
 
+#### Snapshot Builds
+Snapshot builds are finally provided through [GitHub Packages](https://github.com/lars-sh/parent/packages). To use one of them, configure the version of the parent dependency accordingly and add the below noted repository to your POM.
+
+Beside having the possibility, please keep in mind, that snapshot builds might be either instable or even broken from time to time.
+
+```XML
+<repositories>
+	<repository>
+		<id>github-lars-sh-parent</id>
+		<name>GitHub Packages of de.lars-sh:parent</name>
+		<url>https://maven.pkg.github.com/lars-sh/parent</url>
+	</repository>
+</repositories>
+```
+
 ### Import into Eclipse
 1. If not done earlier, install Project Lombok into Eclipse [using the official installer](https://projectlombok.org/setup/eclipse) by calling `mvn de.lars-sh:jar-runner-maven-plugin:run -Dartifact=org.projectlombok:lombok:LATEST` on the command line.
 
@@ -81,6 +96,22 @@ Remark: When saving the formatter in IntelliJ IDEA you might get `Cannot Save Se
 
 #### Save Actions
 Even some of the predefined Save Actions can be configured inside IntelliJ IDEA through the [Save Actions plugin](https://plugins.jetbrains.com/plugin/7642).
+
+### GitHub Actions
+By default a GitHub Action for pushes and pull requests is created, which executes your Maven project and fails on any kind of warning or error.
+  You can disable the creation of that GitHub Action using the Maven Property `parent-pom.create-github-workflow-yml`.
+
+A second GitHub Action for releases can be enabled manually using the Maven Property `parent-pom.create-github-release-yml`. That workflow is triggered on creation of releases and deploys the selected commit to Maven Central.
+
+For both you will need to configure secrets inside your GitHub project. You can do that at `Settings` > `Secrets` > `New repository secret`.
+
+`GPG_PRIVATE_KEY` is mandatory and needs to be a GPG private key to sign your deployment artifacts, both snapshots and releases.
+
+`GPG_PASSPHRASE` is the passphrase for the specified private key and can be omitted if your private key comes with an empty passphrase.
+
+`OSSRH_USERNAME` is your OSSRH (Maven Central via Sonartype Nexus) username. It is used for the release action only.
+
+`OSSRH_TOKEN` is an OSSRH (Maven Central via Sonartype Nexus) token. It is used for the release action only.
 
 ### Skip Validations
 Upgrading existing projects to use this parent POM can be done step by step. As this parent specifies some strict rules, some validations might need to be skipped until others pass. The following sections describe the corresponding Maven Properties.
@@ -345,6 +376,8 @@ This parent POM either predefines existing Maven Properties or introduces some o
 `parent-pom.create-changelog-md` handles if the projects `CHANGELOG.md` file should be generated. Set to `false` if the file should not be created if not existing. Default value is `true`, except if the `CHANGELOG.md` file already exists.
 
 `parent-pom.create-dependabot-yml` handles if the projects `.github/dependabot.yml` file should be generated. Set to `false` if the file should not be created or overwritten. Default value is `true`.
+
+`parent-pom.create-github-release-yml` handles if the projects `.github/workflows/release.yml` file should be generated. Set to `true` if the file should be created or overwritten. Default value is `false`.
 
 `parent-pom.create-github-workflow-yml` handles if the projects `.github/workflows/push-and-pull_request.yml` file should be generated. Set to `false` if the file should not be created or overwritten. Default value is `true`.
 

@@ -4,7 +4,7 @@
 
 	<groupId>de.lars-sh</groupId>
 	<artifactId>root</artifactId>
-	<version>0.9.11-SNAPSHOT</version>
+	<version>0.9.12-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<name>Root POM</name>
@@ -53,7 +53,7 @@
 			<url>https://maven.pkg.github.com/${parent-pom.github.organization}/${parent-pom.github.project}</url>
 		</snapshotRepository>
 		<repository>
-			<id>sonatype-nexus-staging</id>
+			<id>ossrh</id>
 			<name>Sonatype Nexus Releases</name>
 			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
 		</repository>
@@ -63,6 +63,7 @@
 		<!-- Parent POM -->
 		<!-- <parent-pom.create-changelog-md>true</parent-pom.create-changelog-md> -->
 		<!-- <parent-pom.create-dependabot-yml>true</parent-pom.create-dependabot-yml> -->
+		<!-- <parent-pom.create-github-release-yml>false</parent-pom.create-github-release-yml> -->
 		<!-- <parent-pom.create-github-workflow-yml>true</parent-pom.create-github-workflow-yml> -->
 		<parent-pom.create-gitignore>true</parent-pom.create-gitignore>
 		<!-- <parent-pom.create-lombok-config>true</parent-pom.create-lombok-config> -->
@@ -124,13 +125,13 @@
 		<spotbugs.threshold>Low</spotbugs.threshold>
 
 		<!-- Versions: Dependencies -->
-		<assertj-core.version>3.18.1</assertj-core.version>
+		<assertj-core.version>3.19.0</assertj-core.version>
 		<joor.version>0.9.13</joor.version>
-		<junit-jupiter-api.version>5.7.0</junit-jupiter-api.version>
-		<junit-jupiter-engine.version>5.7.0</junit-jupiter-engine.version>
+		<junit-jupiter-api.version>5.7.1</junit-jupiter-api.version>
+		<junit-jupiter-engine.version>5.7.1</junit-jupiter-engine.version>
 		<lombok-annotations.version>1.18.16</lombok-annotations.version>
-		<mockito.version>3.6.28</mockito.version>
-		<parent.version>0.9.11-SNAPSHOT</parent.version>
+		<mockito.version>3.7.7</mockito.version>
+		<parent.version>0.9.12-SNAPSHOT</parent.version>
 
 		<!-- Versions: Plugins -->
 		<build-helper-maven-plugin.version>3.2.0</build-helper-maven-plugin.version>
@@ -141,13 +142,14 @@
 		<maven-antrun-plugin.version>3.0.0</maven-antrun-plugin.version>
 		<maven-archetype-plugin.version>3.2.0</maven-archetype-plugin.version>
 		<maven-assembly-plugin.version>3.3.0</maven-assembly-plugin.version>
-		<maven-checkstyle-plugin.version>3.1.1</maven-checkstyle-plugin.version>
+		<maven-checkstyle-plugin.version>3.1.2</maven-checkstyle-plugin.version>
 		<maven-clean-plugin.version>3.1.0</maven-clean-plugin.version>
 		<maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
 		<maven-dependency-plugin.version>3.1.2</maven-dependency-plugin.version>
 		<maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
 		<maven-enforcer-plugin.version>1.4.1</maven-enforcer-plugin.version>
 		<maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
+		<maven-help-plugin.version>3.2.0</maven-help-plugin.version>
 		<maven-install-plugin.version>2.5.2</maven-install-plugin.version>
 		<maven-jar-plugin.version>3.2.0</maven-jar-plugin.version>
 		<maven-javadoc-plugin.version>3.2.0</maven-javadoc-plugin.version>
@@ -169,14 +171,14 @@
 
 		<!-- Versions: Plugin Dependencies -->
 		<apache-ant.version>1.10.9</apache-ant.version>
-		<checkstyle.version>8.39</checkstyle.version>
+		<checkstyle.version>8.40</checkstyle.version>
 		<sb-contrib.version>7.4.7</sb-contrib.version>
 		<findsecbugs.version>1.11.0</findsecbugs.version>
-		<lombok.version>1.18.16</lombok.version>
+		<lombok.version>1.18.18</lombok.version>
 		<org-eclipse-jdt-core.version>3.24.0</org-eclipse-jdt-core.version>
-		<pmd.version>6.30.0</pmd.version>
-		<spotbugs.version>4.2.0</spotbugs.version>
-		<spotbugs-annotations.version>4.2.0</spotbugs-annotations.version>
+		<pmd.version>6.31.0</pmd.version>
+		<spotbugs.version>4.2.1</spotbugs.version>
+		<spotbugs-annotations.version>4.2.1</spotbugs-annotations.version>
 
 		<!-- Versions: Reporting Skins -->
 		<maven-fluido-skin.version>1.9</maven-fluido-skin.version>
@@ -375,6 +377,10 @@
 					<version>${maven-gpg-plugin.version}</version>
 				</plugin>
 				<plugin>
+					<artifactId>maven-help-plugin</artifactId>
+					<version>${maven-help-plugin.version}</version>
+				</plugin>
+				<plugin>
 					<artifactId>maven-install-plugin</artifactId>
 					<version>${maven-install-plugin.version}</version>
 				</plugin>
@@ -546,7 +552,7 @@
 					<artifactId>nexus-staging-maven-plugin</artifactId>
 					<version>${nexus-staging-maven-plugin.version}</version>
 					<configuration>
-						<serverId>sonatype-nexus-staging</serverId>
+						<serverId>ossrh</serverId>
 						<nexusUrl>https://oss.sonatype.org/</nexusUrl>
 						<autoReleaseAfterClose>${nexus-staging.autoReleaseAfterClose}</autoReleaseAfterClose>
 					</configuration>
@@ -603,6 +609,12 @@
 											<equals arg1="${project.artifactId}" arg2="parent" />
 											<equals arg1="${project.artifactId}" arg2="root" />
 										</or>
+									</and>
+								</condition>
+								<condition property="parent-pom.create-github-release-yml" value="true" else="false">
+									<and>
+										<equals arg1="${project.groupId}" arg2="de.lars-sh" />
+										<equals arg1="${project.artifactId}" arg2="root" />
 									</and>
 								</condition>
 								<condition property="parent-pom.create-github-workflow-yml" value="false" else="true">
@@ -1060,6 +1072,7 @@
 												<property name="format" value="^(?!arg\d*$)[a-z][a-zA-Z0-9]*$" />
 											</module>
 											<module name="PatternVariableName" />
+											<module name="RecordComponentName" />
 											<module name="RecordTypeParameterName" />
 											<module name="StaticVariableName" />
 											<module name="TypeName" />
@@ -1760,9 +1773,6 @@ fi
 
 											<!-- Bad code style: Do not depend on compiler defaults -->
 											<exclude name="RedundantFieldInitializer" />
-
-											<!-- Bad code style: Write what you meant to do -->
-											<exclude name="SimplifyStartsWith" />
 										</rule>
 
 										<rule ref="category/java/security.xml" />
@@ -1931,21 +1941,38 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: ${{ matrix.java-version }}
+          gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
+          gpg-passphrase: GPG_PASSPHRASE
       - name: Clean, Build, Install
         run: |
           set -o errexit -o pipefail
           mvn clean install --activate-profiles dirty,dirty-package --update-snapshots --batch-mode --show-version 2>&1 | tee mvnout.txt
           set +o errexit +o pipefail
+      - id: version
+        name: Evaluate Version
+        run: |
+          project_version=`mvn help:evaluate --quiet --define expression=project.version --define forceStdout`
+          echo "Version: ${project_version}"
+          
+          snapshot_version=`echo "${project_version}" | grep --perl-regexp --regexp="-SNAPSHOT$"`
+          if [ -n "${snapshot_version}" ]; then
+            echo "Identified as snapshot version"
+            echo "::set-output name=is-snapshot::true"
+          else
+            echo "Identified as release version"
+            echo "::set-output name=is-snapshot::false"
+          fi
       - name: Test, Verify, Deploy
-        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' && matrix.java-version == '1.8' }}
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' && matrix.java-version == '1.8' && steps.version.outputs.is-snapshot == 'true' }}
         run: |
           set -o errexit -o pipefail
-          mvn deploy site --define gpg.skip=true --batch-mode --show-version 2>&1 | tee --append mvnout.txt
+          mvn deploy site --batch-mode --show-version 2>&1 | tee --append mvnout.txt
           set +o errexit +o pipefail
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
       - name: Test, Verify
-        if: ${{ github.event_name != 'push' || github.ref != 'refs/heads/master' || matrix.java-version != '1.8' }}
+        if: ${{ github.event_name != 'push' || github.ref != 'refs/heads/master' || matrix.java-version != '1.8' && steps.install.outputs.is-snapshot != 'true' }}
         run: |
           set -o errexit -o pipefail
           mvn verify site --define gpg.skip=true --batch-mode --show-version 2>&1 | tee --append mvnout.txt
@@ -1968,18 +1995,61 @@ jobs:
         env:
           JDK_VERSION: ${{ matrix.java-version }}
       - name: Prepare Site
-        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' && matrix.java-version == '1.8' }}
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' && matrix.java-version == '1.8' && steps.install.outputs.is-snapshot == 'true' }}
         run: |
           rm ./target/site/index.html
           cp ./CHANGELOG.md ./target/site/CHANGELOG.md
           cp ./README.md ./target/site/README.md
       - name: Deploy Site
-        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' && matrix.java-version == '1.8' }}
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' && matrix.java-version == '1.8' && steps.install.outputs.is-snapshot == 'true' }}
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./target/site
           enable_jekyll: true
+]]></echo>
+							</target>
+						</configuration>
+					</execution>
+
+					<!-- .github/workflows/release.yml -->
+					<execution>
+						<id>github-release</id>
+						<phase>initialize</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<target if="${parent-pom.create-github-release-yml}">
+								<echo level="info" message="Update .github/workflows/release.yml" />
+								<echo file="${project.basedir}/.github/workflows/release.yml"><![CDATA[name: Deploy on Release
+on:
+  release:
+    types:
+      - created
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@v2
+      - name: Set up JDK and Maven Central Repository
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+          gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
+          gpg-passphrase: GPG_PASSPHRASE
+          server-id: ossrh
+          server-username: OSSRH_USERNAME
+          server-password: OSSRH_TOKEN
+      - name: Deploy
+        run: mvn clean deploy --batch-mode --show-version
+        env:
+          GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+          OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
+          OSSRH_TOKEN: ${{ secrets.OSSRH_TOKEN }}
 ]]></echo>
 							</target>
 						</configuration>
@@ -2569,7 +2639,7 @@ deploy:
 				<dependency>
 					<groupId>org.junit.platform</groupId>
 					<artifactId>junit-platform-runner</artifactId>
-					<version>1.7.0</version>
+					<version>1.7.1</version>
 					<scope>test</scope>
 					<exclusions>
 						<exclusion>
