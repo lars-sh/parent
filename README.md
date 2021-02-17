@@ -581,6 +581,47 @@ com.example.ClassA=UnusedPrivateField
 com.example.ClassB=EmptyCatchBlock,UnusedPrivateField
 ```
 
+##### Maven Dependency Plugin
+The Maven Dependency Plugin performs bytecode-level analysis and therefore might cause incomplete results. You can force dependencies as used using:
+
+```XML
+<build>
+	<pluginManagement>
+		<plugins>
+			<plugin>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<configuration>
+					<usedDependencies>
+						<usedDependency>[groupId]:[artifactId]</usedDependency>
+					</usedDependencies>
+				</configuration>
+			</plugin>
+		</plugins>
+	</pluginManagement>
+</build>
+```
+
+In case you really need to suppress a dependency warning from either the "declared but unused" or the "used but undeclared" list, use the `ignoredDependencies` property, which is further described [on the Maven Dependency Plugin page](http://maven.apache.org/plugins/maven-dependency-plugin/analyze-only-mojo.html#ignoredDependencies).
+
+```XML
+<build>
+	<pluginManagement>
+		<plugins>
+			<plugin>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<configuration>
+					<ignoredDependencies>
+						<ignoredDependency>[groupId]:[artifactId]:[type]:[version]</ignoredDependency>
+					</ignoredDependencies>
+				</configuration>
+			</plugin>
+		</plugins>
+	</pluginManagement>
+</build>
+```
+
+*Warning:* Do not use the `ignoredUnusedDeclaredDependencies` property, as that's already in use by this Parent POM.
+
 ##### JaCoCo
 Use the `de.larssh.utils.annotations.SuppressJacocoGenerated` annotation to indicate that JaCoCo should ignore the annotated type, constructor or method.
 
