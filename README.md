@@ -97,6 +97,22 @@ Remark: When saving the formatter in IntelliJ IDEA you might get `Cannot Save Se
 #### Save Actions
 Even some of the predefined Save Actions can be configured inside IntelliJ IDEA through the [Save Actions plugin](https://plugins.jetbrains.com/plugin/7642).
 
+### GitHub Actions
+By default a GitHub Action for pushes and pull requests is created, which executes your Maven project and fails on any kind of warning or error.
+  You can disable the creation of that GitHub Action using the Maven Property `parent-pom.create-github-workflow-yml`.
+
+A second GitHub Action for releases can be enabled manually using the Maven Property `parent-pom.create-github-release-yml`. That workflow is triggered on creation of releases and deploys the selected commit to Maven Central.
+
+For both you will need to configure secrets inside your GitHub project. You can do that at `Settings` > `Secrets` > `New repository secret`.
+
+`GPG_PRIVATE_KEY` is mandatory and needs to be a GPG private key to sign your deployment artifacts, both snapshots and releases.
+
+`GPG_PASSPHRASE` is the passphrase for the specified private key and can be omitted if your private key comes with an empty passphrase.
+
+`OSSRH_USERNAME` is your OSSRH (Maven Central via Sonartype Nexus) username. It is used for the release action only.
+
+`OSSRH_TOKEN` is an OSSRH (Maven Central via Sonartype Nexus) token. It is used for the release action only.
+
 ### Skip Validations
 Upgrading existing projects to use this parent POM can be done step by step. As this parent specifies some strict rules, some validations might need to be skipped until others pass. The following sections describe the corresponding Maven Properties.
 
@@ -361,6 +377,8 @@ This parent POM either predefines existing Maven Properties or introduces some o
 
 `parent-pom.create-dependabot-yml` handles if the projects `.github/dependabot.yml` file should be generated. Set to `false` if the file should not be created or overwritten. Default value is `true`.
 
+`parent-pom.create-github-release-yml` handles if the projects `.github/workflows/release.yml` file should be generated. Set to `true` if the file should be created or overwritten. Default value is `false`.
+
 `parent-pom.create-github-workflow-yml` handles if the projects `.github/workflows/push-and-pull_request.yml` file should be generated. Set to `false` if the file should not be created or overwritten. Default value is `true`.
 
 `parent-pom.create-gitignore` handles if the projects `.gitignore` file should be generated. Set to "false" if the file should not be created or overwritten. Default value is `true`.
@@ -558,10 +576,51 @@ There are two ways to suppress PMD warnings.
 
 * Or create a file called `pmd-excludes.properties`. See [Violation Exclusions](https://maven.apache.org/plugins/maven-pmd-plugin/examples/violation-exclusions.html) for more information. The following lines show an example file.
 
-```Java Properties
+```INI
 com.example.ClassA=UnusedPrivateField
 com.example.ClassB=EmptyCatchBlock,UnusedPrivateField
 ```
+
+##### Maven Dependency Plugin
+The Maven Dependency Plugin performs bytecode-level analysis and therefore might cause incomplete results. You can force dependencies as used using:
+
+```XML
+<build>
+	<pluginManagement>
+		<plugins>
+			<plugin>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<configuration>
+					<usedDependencies>
+						<usedDependency>[groupId]:[artifactId]</usedDependency>
+					</usedDependencies>
+				</configuration>
+			</plugin>
+		</plugins>
+	</pluginManagement>
+</build>
+```
+
+In case you really need to suppress a dependency warning from either the "declared but unused" or the "used but undeclared" list, use the `ignoredDependencies` property, which is further described [on the Maven Dependency Plugin page](http://maven.apache.org/plugins/maven-dependency-plugin/analyze-only-mojo.html#ignoredDependencies).
+
+```XML
+<build>
+	<pluginManagement>
+		<plugins>
+			<plugin>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<configuration>
+					<ignoredDependencies>
+						<ignoredDependency>[groupId]:[artifactId]:[type]:[version]</ignoredDependency>
+					</ignoredDependencies>
+				</configuration>
+			</plugin>
+		</plugins>
+	</pluginManagement>
+</build>
+```
+
+*Warning:* Do not use the `ignoredUnusedDeclaredDependencies` property, as that's already in use by the Parent POM.
 
 ##### JaCoCo
 Use the `de.larssh.utils.annotations.SuppressJacocoGenerated` annotation to indicate that JaCoCo should ignore the annotated type, constructor or method.
@@ -649,7 +708,7 @@ By default the Maven output contains no timestamp. This tip describes how to cha
 1. Open `<maven-install-directory>/conf/logging/simplelogger.properties` in your favorite folder.
 2. Add/modify the following properties:
 
-```Java Properties
+```INI
 org.slf4j.simpleLogger.showDateTime=true
 org.slf4j.simpleLogger.dateTimeFormat=HH:mm:ss,SSS
 ```
