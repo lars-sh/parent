@@ -576,7 +576,7 @@ There are two ways to suppress PMD warnings.
 
 * Or create a file called `pmd-excludes.properties`. See [Violation Exclusions](https://maven.apache.org/plugins/maven-pmd-plugin/examples/violation-exclusions.html) for more information. The following lines show an example file.
 
-```Java Properties
+```INI
 com.example.ClassA=UnusedPrivateField
 com.example.ClassB=EmptyCatchBlock,UnusedPrivateField
 ```
@@ -620,7 +620,7 @@ In case you really need to suppress a dependency warning from either the "declar
 </build>
 ```
 
-*Warning:* Do not use the `ignoredUnusedDeclaredDependencies` property, as that's already in use by this Parent POM.
+*Warning:* Do not use the `ignoredUnusedDeclaredDependencies` property, as that's already in use by the Parent POM.
 
 ##### JaCoCo
 Use the `de.larssh.utils.annotations.SuppressJacocoGenerated` annotation to indicate that JaCoCo should ignore the annotated type, constructor or method.
@@ -708,7 +708,7 @@ By default the Maven output contains no timestamp. This tip describes how to cha
 1. Open `<maven-install-directory>/conf/logging/simplelogger.properties` in your favorite folder.
 2. Add/modify the following properties:
 
-```Java Properties
+```INI
 org.slf4j.simpleLogger.showDateTime=true
 org.slf4j.simpleLogger.dateTimeFormat=HH:mm:ss,SSS
 ```
