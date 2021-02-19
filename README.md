@@ -17,6 +17,42 @@ Read below descriptions and tips to get started. In case you run into problems [
 ## Preconditions
 This POM is made for development using Maven and Eclipse by handling some of its settings to comply with the projects settings. However you can use this POM together with any other IDE (such as IntelliJ IDEA) for sure.
 
+# Contents
+* [Getting started](#getting-started)
+  * [With a new Project](#with-a-new-Project)
+  * [With an existing Project](#with-an-existing-project)
+  * [Import into Eclipse](#import-into-eclipse)
+  * [Open with IntelliJ IDEA](#open-with-intellij-idea)
+    * [Solve Problems](#solve-problems)
+    * [Code Formatter](#code-formatter)
+    * [Save Actions](#save-actions)
+  * [GitHub Actions](#github-actions)
+  * [Skip Validations](#akip-validations)
+* [Ingredients](#ingredients)
+  * [Project Lombok](#project-lombok)
+    * [Getting started](#getting-started-1)
+    * [First steps](#first-steps)
+    * [Configure your IDE](#configure-your-ide)
+    * [Excluding Project Lombok](#excluding-project-lombok)
+    * [The good parts](#the-good-parts)
+    * [The bad parts](#the-bad-parts)
+  * [Null Values](#null-values)
+  * [Build Process](#build-process)
+    * [JAR Generation](#jar-generation)
+    * [Maven Profiles](#maven-profiles)
+    * [Maven Properties](#maven-properties)
+    * [Non-Generated Files](#non-generated-files)
+    * [Generated Files](#generated-files)
+    * [Suppress Warnings](#suppress-warnings)
+    * [Dependencies](#dependencies)
+  * [Unit Tests and Jacoco](#unit-tests)
+  * [Checks (Checkstyle, CPD, PMD and Spotbugs)](#checks)
+  * [Documentation (JavaDoc)](#documentation)
+  * [Publishing at Maven Central](#publishing-at-maven-central)
+* [Appendix](#appendix)
+  * [Maven Tips](#maven-tips)
+    * [Log Timestamp](#log-timestamp)
+
 ## Getting started
 ### With a new Project
 Creating a new project has been simplified as much as possible.
@@ -455,19 +491,6 @@ spotbugs.effort:                                   Max
 spotbugs.threshold:                                Low
 ```
 
-#### Generated Files
-During the build process some project files are generated. Those files and their creation concept are described below.
-
-`CHANGELOG.md` and `README.md` are *your* places. Insert your changes, a short project introduction, getting started information and user documentation. Templates are created only if the files do not exist, yet.
-
-`.github/dependabot.yml` tells [Dependabot](https://dependabot.com/) which project dependencies to check. Use the Maven property `parent-pom.create-dependabot-yml` to suppress writing this file.
-
-`.github/workflows/push-and-pull_request.yml` tells [GitHub Actions](https://github.com/features/actions) which kind of project to build. It is overwritten at every run to keep it up-to-date. Use the Maven property `parent-pom.create-github-workflow-yml` to suppress writing this file.
-
-`.gitignore` tells [Git](https://git-scm.com/) which files to ignore. It is overwritten at every run to keep it up-to-date. Use the Maven property `parent-pom.create-gitignore` to suppress writing this file.
-
-`.travis.yml` tells [Travis CI](https://travis-ci.org/) which kind of project to build. To write this file, set the Maven property `parent-pom.create-travis-yml` to `true`.
-
 #### Non-Generated Files
 Some files are not generated automatically, but can be used to control the build process once created manually. Those files and how to fill them is described below.
 
@@ -482,6 +505,19 @@ Some files are not generated automatically, but can be used to control the build
 `pmd-excludes.properties` allows to suppress CPD findings. See the below section about suppressions for more information.
 
 `spotbugs-excludes.xml` allows to suppress Spotbugs findings. See the below section about suppressions for more information.
+
+#### Generated Files
+During the build process some project files are generated. Those files and their creation concept are described below.
+
+`CHANGELOG.md` and `README.md` are *your* places. Insert your changes, a short project introduction, getting started information and user documentation. Templates are created only if the files do not exist, yet.
+
+`.github/dependabot.yml` tells [Dependabot](https://dependabot.com/) which project dependencies to check. Use the Maven property `parent-pom.create-dependabot-yml` to suppress writing this file.
+
+`.github/workflows/push-and-pull_request.yml` tells [GitHub Actions](https://github.com/features/actions) which kind of project to build. It is overwritten at every run to keep it up-to-date. Use the Maven property `parent-pom.create-github-workflow-yml` to suppress writing this file.
+
+`.gitignore` tells [Git](https://git-scm.com/) which files to ignore. It is overwritten at every run to keep it up-to-date. Use the Maven property `parent-pom.create-gitignore` to suppress writing this file.
+
+`.travis.yml` tells [Travis CI](https://travis-ci.org/) which kind of project to build. To write this file, set the Maven property `parent-pom.create-travis-yml` to `true`.
 
 ##### Project Lombok
 Project Lombok sources are meant to be used inside `lombok` folders only. Its usage is restricted to prevent you from using functionality that might lead to problems. Outside Project Lombok is prohibited at all.
