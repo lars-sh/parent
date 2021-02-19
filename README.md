@@ -355,7 +355,7 @@ Wherever possible the following four JAR files are packaged:
 * JavaDoc (*-javadoc.jar)
 * Unit tests (*-test.jar)
 
-JAR files contain your CHANGELOG.md, README.md and the to-be-created LICENSE.txt file inside their META-INF folder. Those two are meant to be used for documentation. See the below section about generated files for further information.
+JAR files contain your CHANGELOG.md, README.md and the to-be-created LICENSE.txt file inside their `META-INF` folder. Those two are meant to be used for documentation. See the below section about generated files for further information.
 
 In addition the JARs manifest includes a generated Class-Path to simplify execution and version information.
 
@@ -458,6 +458,8 @@ spotbugs.threshold:                                Low
 #### Generated Files
 During the build process some project files are generated. Those files and their creation concept are described below.
 
+`CHANGELOG.md` and `README.md` are *your* places. Insert your changes, a short project introduction, getting started information and user documentation. Templates are created only if the files do not exist, yet.
+
 `.github/dependabot.yml` tells [Dependabot](https://dependabot.com/) which project dependencies to check. Use the Maven property `parent-pom.create-dependabot-yml` to suppress writing this file.
 
 `.github/workflows/push-and-pull_request.yml` tells [GitHub Actions](https://github.com/features/actions) which kind of project to build. It is overwritten at every run to keep it up-to-date. Use the Maven property `parent-pom.create-github-workflow-yml` to suppress writing this file.
@@ -466,9 +468,20 @@ During the build process some project files are generated. Those files and their
 
 `.travis.yml` tells [Travis CI](https://travis-ci.org/) which kind of project to build. To write this file, set the Maven property `parent-pom.create-travis-yml` to `true`.
 
-`CHANGELOG.md` and `README.md` are *your* places. Insert your changes, a short project introduction, getting started information and user documentation. Templates are created only if the files do not exist, yet.
+#### Non-Generated Files
+Some files are not generated automatically, but can be used to control the build process once created manually. Those files and how to fill them is described below.
 
-`LICENSE.txt` is **not** created. You need to create one yourself! See the section about JAR Generation for more information.
+`checkstyle-rules.xml` allows to add custom rules to the Parent POM's Checkstyle configuration. The file contains all elements, that you'd probably put into the `Checker` module of a Checkstyle configuration. Therefore it might not be valid XML!
+
+`checkstyle-suppressions.xml` allows to suppress Checkstyle findings. See the below section about suppressions for more information.
+
+`cpd-excludes.csv` allows to suppress CPD findings. See the below section about suppressions for more information.
+
+`LICENSE.txt` is put into the generated JAR's `META-INF` folder. It is meant to be used for documentation.
+
+`pmd-excludes.properties` allows to suppress CPD findings. See the below section about suppressions for more information.
+
+`spotbugs-excludes.xml` allows to suppress Spotbugs findings. See the below section about suppressions for more information.
 
 ##### Project Lombok
 Project Lombok sources are meant to be used inside `lombok` folders only. Its usage is restricted to prevent you from using functionality that might lead to problems. Outside Project Lombok is prohibited at all.
@@ -686,7 +699,7 @@ TODO
 TODO
 
 #### Checkstyle, CPD, PMD and Spotbugs
-TODO: These are run at compile time. Describe Eclipse plugins.
+TODO: These are run at compile time. Eclipse plugins are configured where possible.
 
 ### Documentation
 TODO: JavaDoc is run at compile time.

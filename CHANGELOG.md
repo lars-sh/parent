@@ -10,6 +10,7 @@ Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%
 ### Added
 * Creation of a GitHub Action for release deployment to OSSRH (Maven Central via Sonartype Nexus).  
   You can enable this feature by setting the Maven property `parent-pom.create-github-release-yml` to `true`.
+* Possibility to add custom Checkstyle rules on a per-project basis.
 
 ### Changed
 * GitHub snapshot builds are signed by default.
