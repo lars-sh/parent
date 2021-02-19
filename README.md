@@ -18,25 +18,22 @@ Read below descriptions and tips to get started. In case you run into problems [
 This POM is made for development using Maven and Eclipse by handling some of its settings to comply with the projects settings. However you can use this POM together with any other IDE (such as IntelliJ IDEA) for sure.
 
 # Contents
-* [Getting started](#getting-started)
+* [Getting Started](#getting-started)
   * [With a new Project](#with-a-new-Project)
   * [With an existing Project](#with-an-existing-project)
   * [Import into Eclipse](#import-into-eclipse)
   * [Open with IntelliJ IDEA](#open-with-intellij-idea)
-    * [Solve Problems](#solve-problems)
-    * [Code Formatter](#code-formatter)
-    * [Save Actions](#save-actions)
   * [GitHub Actions](#github-actions)
   * [Skip Validations](#akip-validations)
 * [Ingredients](#ingredients)
   * [Project Lombok](#project-lombok)
-    * [Getting started](#getting-started-1)
-    * [First steps](#first-steps)
+    * [Introduction](#introduction)
+    * [First Steps](#first-steps)
     * [Configure your IDE](#configure-your-ide)
     * [Excluding Project Lombok](#excluding-project-lombok)
-    * [The good parts](#the-good-parts)
-    * [The bad parts](#the-bad-parts)
-  * [Null Values](#null-values)
+    * [The Good Parts](#the-good-parts)
+    * [The Bad Parts](#the-bad-parts)
+  * [Null Values and Null Checks](#null-values)
   * [Build Process](#build-process)
     * [JAR Generation](#jar-generation)
     * [Maven Profiles](#maven-profiles)
@@ -53,7 +50,7 @@ This POM is made for development using Maven and Eclipse by handling some of its
   * [Maven Tips](#maven-tips)
     * [Log Timestamp](#log-timestamp)
 
-## Getting started
+## Getting Started
 ### With a new Project
 Creating a new project has been simplified as much as possible.
 
@@ -237,14 +234,14 @@ Taking your first steps using this POM is as simple as not using it. However it 
 ### Project Lombok
 Or simply *Lombok* - is a Java library, that aims at minimizing boilerplate code, such as getters and setters or `equals` and `hashCode` without additional runtime dependencies.
 
-#### Getting started
+#### Introduction
 Usage of Project Lombok is highly appreciated as it allows saving a lot boilerplate code to help focusing on the relevant parts of your code. Using this POM you are offered the folder `src/main/lombok` for your Lombok sources.
 
 For existing Java sources you can create the folder `src/main/java`, which is not affected by Lombok. Sources of both folders can operate with each other. The `src/test` folder is structured just the same way.
 
 At compile-time instead of Project Lombok its counterpart [Delombok](https://projectlombok.org/features/delombok) is used to generate Java sources from your Lombok sources inside `target/generated-sources/delombok` in case you need those for yourself to understand what's going on, for debugging purposes, for documentation or even for revision control.
 
-#### First steps
+#### First Steps
 Most Project Lombok features are annotation based. However Lombok comes with some additional functionality making your code even more safe. This POM activates them.
 
 Therefore all non-static fields in your Lombok sources are private and final instead of package-private and non-final. To change the visibility of fields use `public`, `protected` or `@PackagePrivate`. To make a field modifiable use `@NonFinal`.
@@ -276,7 +273,7 @@ In the rare case that you might explicitely avoid using lombok add the following
 <parent-pom.default-sources-folder>java</parent-pom.default-sources-folder>
 ```
 
-#### The good parts
+#### The Good Parts
 Project Lombok consists of many different concepts to avoid boilerplate. The following ones are the most likely to use. See JavaDoc or the [Features page](https://projectlombok.org/features) for further details.
 
 ##### @NoArgsConstructor, @RequiredArgsConstructor, @AllArgsConstructor
@@ -296,7 +293,7 @@ Warning: This annotations forces all methods inside its class to be static. In t
 ##### @Log
 I did not play around with these, though they seem to simplify two quite common cases.
 
-#### The bad parts
+#### The Bad Parts
 The following Project Lombok features are disabled on default to minimize your risk.
 
 ##### @Builder
