@@ -67,6 +67,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Check Output
+        shell: bash {0}
         run: |
           chmod +x ./target/mvn-suppressions-parent.sh
           mvnout=`cat mvnout.txt | grep --perl-regexp "(?i)\\[(ERR|WARN)" | ./target/mvn-suppressions-parent.sh "$JDK_VERSION"`
