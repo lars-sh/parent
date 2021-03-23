@@ -1924,7 +1924,7 @@ jobs:
         java-version:
           - 1.8
           - 11
-          - 16
+          - 15 # As of https://github.com/lars-sh/parent/issues/240 JDK 16 does not work.
 
     name: Build with JDK ${{ matrix.java-version }}
     steps:
