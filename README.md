@@ -672,7 +672,7 @@ In case you really need to suppress a dependency warning from either the "declar
 Use the `de.larssh.utils.annotations.SuppressJacocoGenerated` annotation to indicate that JaCoCo should ignore the annotated type, constructor or method.
 
 ##### Maven Output (GitHub Actions and Travis CI)
-Create a file called `mvn-suppressions.sh`, that filters the Maven errors and warnings output on `stdin` when processed by GitHub Actions and Travis CI. The following lines show an example file.
+Create a file called `mvn-suppressions.sh`, that filters the Maven errors and warnings output on `stdin` when processed by GitHub Actions and Travis CI. Remember to give the file execution permissions, e.g. using `git update-index --chmod=+x mvn-suppressions.sh`. The following lines show an example file.
 
 ```Shell
 # Suppress lines that contain the word "first"
