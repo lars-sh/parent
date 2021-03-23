@@ -1581,18 +1581,8 @@ function suppressPmdWarnings() {
 }
 
 # JDK14: The JavaDoc creation logs errors about missing "javadoc-bundle-option" folders.
-function suppressJdk14Warnings() {
-	if [ "${JDK_VERSION}" -eq 14 ]; then
-		cat < /dev/stdin \
-		| grep --invert-match --perl-regexp "^\\[ERROR\\] Error fetching link: .*[/\\\\]target[/\\\\]javadoc-bundle-options\\. Ignored it\\.$"
-	else
-		cat < /dev/stdin
-	fi
-}
-
-# JDK15: The JavaDoc creation logs errors about missing "javadoc-bundle-option" folders.
-function suppressJdk15Warnings() {
-	if [ "${JDK_VERSION}" -eq 15 ]; then
+function suppressJdk14And15Warnings() {
+	if [ "${JDK_VERSION}" -eq 14 ] || [ "${JDK_VERSION}" -eq 15 ]; then
 		cat < /dev/stdin \
 		| grep --invert-match --perl-regexp "^\\[ERROR\\] Error fetching link: .*[/\\\\]target[/\\\\]javadoc-bundle-options\\. Ignored it\\.$"
 	else
@@ -1608,8 +1598,7 @@ else
 	cat < /dev/stdin \
 	| suppressUserDefined \
 	| suppressPmdWarnings \
-	| suppressJdk14Warnings \
-	| suppressJdk15Warnings
+	| suppressJdk14And15Warnings
 fi
 ]]></echo>
 
@@ -1935,7 +1924,7 @@ jobs:
         java-version:
           - 1.8
           - 11
-          - 14
+          - 16
 
     name: Build with JDK ${{ matrix.java-version }}
     steps:
@@ -2233,7 +2222,7 @@ jdk:
   # Supported versions as of https://en.wikipedia.org/wiki/Java_version_history
   - openjdk8
   - openjdk11
-  - openjdk15
+  - openjdk16
 cache:
   directories:
     - $HOME/.m2/repository
