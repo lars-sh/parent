@@ -16,6 +16,7 @@ Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%
 * GitHub snapshot builds are signed by default.
   This might require additional action to specify the private key and its passphrase in GitHub. Checkout the [Readme](README.md) for more information.
 * Providing snapshot builds through GitHub Packages
+* Using JDK15 for builds instead of JDK14.
 
 ### Fixed
 TODO
