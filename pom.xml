@@ -277,13 +277,6 @@
 		</dependency>
 	</dependencies>
 
-	<repositories>
-		<repository>
-			<id>projectlombok.org</id>
-			<url>https://projectlombok.org/edge-releases</url>
-		</repository>
-	</repositories>
-
 	<build>
 		<resources>
 			<resource>
@@ -2674,6 +2667,19 @@ deploy:
 			<properties>
 				<lombok.version>edge-SNAPSHOT</lombok.version>
 			</properties>
+
+			<repositories>
+				<repository>
+					<id>projectlombok.org</id>
+					<url>https://projectlombok.org/edge-releases</url>
+				</repository>
+			</repositories>
+			<pluginRepositories>
+				<pluginRepository>
+					<id>projectlombok.org</id>
+					<url>https://projectlombok.org/edge-releases</url>
+				</pluginRepository>
+			</pluginRepositories>
 		</profile>
 
 		<!-- Enable or disable the use of custom checkstyle rules -->
