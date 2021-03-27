@@ -2666,7 +2666,32 @@ deploy:
 			</activation>
 			<properties>
 				<lombok.version>edge-SNAPSHOT</lombok.version>
+				<maven.compiler.fork>true</maven.compiler.fork>
 			</properties>
+
+			<build>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<artifactId>maven-compiler-plugin</artifactId>
+							<version>${maven-compiler-plugin.version}</version>
+							<configuration>
+								<compilerArgs>
+									<compilerArg>-J--add-opens=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED</compilerArg>
+									<compilerArg>-J--add-opens=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED</compilerArg>
+									<compilerArg>-J--add-opens=jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED</compilerArg>
+									<compilerArg>-J--add-opens=jdk.compiler/com.sun.tools.javac.main=ALL-UNNAMED</compilerArg>
+									<compilerArg>-J--add-opens=jdk.compiler/com.sun.tools.javac.model=ALL-UNNAMED</compilerArg>
+									<compilerArg>-J--add-opens=jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED</compilerArg>
+									<compilerArg>-J--add-opens=jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED</compilerArg>
+									<compilerArg>-J--add-opens=jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED</compilerArg>
+									<compilerArg>-J--add-opens=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED</compilerArg>
+								</compilerArgs>
+							</configuration>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+			</build>
 
 			<repositories>
 				<repository>
