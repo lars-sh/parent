@@ -2831,6 +2831,25 @@ deploy:
 												<ignore></ignore>
 											</action>
 										</pluginExecution>
+										
+										<!-- Execute Properties goals on configuration and non-incremental builds -->
+										<pluginExecution>
+											<pluginExecutionFilter>										
+												<groupId>org.codehaus.mojo</groupId>
+												<artifactId>properties-maven-plugin</artifactId>
+												<versionRange>${properties-maven-plugin.version}</versionRange>
+												<goals>
+													<goal>set-system-properties</goal>
+												</goals>
+											</pluginExecutionFilter>
+											<action>
+												<execute>
+													<runOnConfiguration>true</runOnConfiguration>
+													<runOnIncremental>false</runOnIncremental>
+												</execute>
+											</action>
+										</pluginExecution>
+										
 
 										<!-- Ignore tidy goals -->
 										<pluginExecution>
