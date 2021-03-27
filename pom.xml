@@ -1924,7 +1924,7 @@ jobs:
         java-version:
           - 1.8
           - 11
-          - 15 # As of https://github.com/lars-sh/parent/issues/240 JDK 16 does not work.
+          - 16
 
     name: Build with JDK ${{ matrix.java-version }}
     steps:
@@ -2221,7 +2221,7 @@ jdk:
   # Supported versions as of https://en.wikipedia.org/wiki/Java_version_history
   - openjdk8
   - openjdk11
-  - openjdk15
+  - openjdk16
 cache:
   directories:
     - $HOME/.m2/repository
@@ -2656,6 +2656,24 @@ deploy:
 			<properties>
 				<doclint>all,-missing</doclint>
 			</properties>
+		</profile>
+
+		<!-- JDK 16, Lombok -->
+		<profile>
+			<id>fix-jdk16</id>
+			<activation>
+				<jdk>16</jdk>
+			</activation>
+			<properties>
+				<lombok.version>edge-SNAPSHOT</lombok.version>
+			</properties>
+
+			<repositories>
+				<repository>
+					<id>projectlombok.org</id>
+					<url>https://projectlombok.org/edge-releases</url>
+				</repository>
+			</repositories>
 		</profile>
 
 		<!-- Enable or disable the use of custom checkstyle rules -->
