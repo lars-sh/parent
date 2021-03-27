@@ -2680,6 +2680,7 @@ deploy:
 									<compilerArg>-J--add-opens=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED</compilerArg>
 									<compilerArg>-J--add-opens=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED</compilerArg>
 									<compilerArg>-J--add-opens=jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED</compilerArg>
+									<compilerArg>-J--add-opens=jdk.compiler/com.sun.tools.javac.jvm=ALL-UNNAMED</compilerArg>
 									<compilerArg>-J--add-opens=jdk.compiler/com.sun.tools.javac.main=ALL-UNNAMED</compilerArg>
 									<compilerArg>-J--add-opens=jdk.compiler/com.sun.tools.javac.model=ALL-UNNAMED</compilerArg>
 									<compilerArg>-J--add-opens=jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED</compilerArg>
