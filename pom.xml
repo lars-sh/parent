@@ -1580,7 +1580,17 @@ function suppressPmdWarnings() {
 	| grep --invert-match --perl-regexp "^\\[WARNING\\] Auxclasspath entry .*[/\\\\]parent[/\\\\]target[/\\\\]classes doesn't exist, ignoring it$"
 }
 
-# JDK14: The JavaDoc creation logs errors about missing "javadoc-bundle-option" folders.
+# JDK8: Checksums of github repositories cannot be validated successfully from time to time.
+function suppressJdk8Warnings() {
+	if [ "${JDK_VERSION}" -eq 8 ]; then
+		cat < /dev/stdin \
+		| grep --invert-match --perl-regexp "^\\[WARNING\\] Checksum validation failed, expected [a-z0-9]+ but is [a-z0-9]+ from github for https://maven.pkg.github.com/.+/maven-metadata.xml$"
+	else
+		cat < /dev/stdin
+	fi
+}
+
+# JDK14 and JDK15: The JavaDoc creation logs errors about missing "javadoc-bundle-option" folders.
 function suppressJdk14And15Warnings() {
 	if [ "${JDK_VERSION}" -eq 14 ] || [ "${JDK_VERSION}" -eq 15 ]; then
 		cat < /dev/stdin \
@@ -1598,6 +1608,7 @@ else
 	cat < /dev/stdin \
 	| suppressUserDefined \
 	| suppressPmdWarnings \
+	| suppressJdk8Warnings \
 	| suppressJdk14And15Warnings
 fi
 ]]></echo>
