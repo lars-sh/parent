@@ -1159,8 +1159,8 @@
 								<!-- formatter.xml -->
 								<echo level="info" message="Update formatter.xml" />
 								<echoxml file="${project.build.directory}/formatter.xml">
-									<profiles version="20">
-										<profile kind="CodeFormatterProfile" name="de.lars-sh" version="20">
+									<profiles version="21">
+										<profile kind="CodeFormatterProfile" name="de.lars-sh" version="21">
 											<setting id="org.eclipse.jdt.core.formatter.align_assignment_statements_on_columns" value="false" />
 											<setting id="org.eclipse.jdt.core.formatter.align_fields_grouping_blank_lines" value="2147483647" />
 											<setting id="org.eclipse.jdt.core.formatter.align_type_members_on_columns" value="false" />
@@ -3101,7 +3101,9 @@ deploy:
 											<entry key="cleanup.boolean_literal" value="true" />
 											<entry key="cleanup.break_loop" value="true" />
 											<entry key="cleanup.collection_cloning" value="true" />
+											<entry key="cleanup.comparing_on_criteria" value="true" />
 											<entry key="cleanup.comparison_statement" value="true" />
+											<entry key="cleanup.controlflow_merge" value="true" />
 											<entry key="cleanup.convert_functional_interfaces" value="true" />
 											<entry key="cleanup.convert_to_enhanced_for_loop" value="true" />
 											<entry key="cleanup.convert_to_enhanced_for_loop_if_loop_var_used" value="false" />
@@ -3111,12 +3113,14 @@ deploy:
 											<entry key="cleanup.else_if" value="true" />
 											<entry key="cleanup.embedded_if" value="true" />
 											<entry key="cleanup.evaluate_nullable" value="true" />
+											<entry key="cleanup.extract_increment" value="true" />
 											<entry key="cleanup.format_source_code" value="true" />
 											<entry key="cleanup.format_source_code_changes_only" value="false" />
 											<entry key="cleanup.hash" value="true" />
 											<entry key="cleanup.if_condition" value="true" />
 											<entry key="cleanup.insert_inferred_type_arguments" value="false" />
-											<entry key="cleanup.instanceof" value="false" />
+											<entry key="cleanup.instanceof" value="true" />
+											<entry key="cleanup.invert_equals" value="false" />
 											<entry key="cleanup.join" value="true" />
 											<entry key="cleanup.lazy_logical_operator" value="true" />
 											<entry key="cleanup.make_local_variable_final" value="true" />
@@ -3126,6 +3130,7 @@ deploy:
 											<entry key="cleanup.make_variable_declarations_final" value="true" />
 											<entry key="cleanup.map_cloning" value="true" />
 											<entry key="cleanup.merge_conditional_blocks" value="true" />
+											<entry key="cleanup.multi_catch" value="true" />
 											<entry key="cleanup.never_use_blocks" value="false" />
 											<entry key="cleanup.never_use_parentheses_in_expressions" value="true" />
 											<entry key="cleanup.no_string_creation" value="true" />
@@ -3134,7 +3139,10 @@ deploy:
 											<entry key="cleanup.objects_equals" value="true" />
 											<entry key="cleanup.organize_imports" value="true" />
 											<entry key="cleanup.overridden_assignment" value="true" />
+											<entry key="cleanup.plain_replacement" value="true" />
 											<entry key="cleanup.precompile_regex" value="true" />
+											<entry key="cleanup.primitive_comparison" value="true" />
+											<entry key="cleanup.primitive_parsing" value="true" />
 											<entry key="cleanup.primitive_serialization" value="true" />
 											<entry key="cleanup.pull_up_assignment" value="true" />
 											<entry key="cleanup.push_down_negation" value="true" />
@@ -3143,6 +3151,7 @@ deploy:
 											<entry key="cleanup.qualify_static_member_accesses_through_subtypes_with_declaring_class" value="false" />
 											<entry key="cleanup.qualify_static_member_accesses_with_declaring_class" value="true" />
 											<entry key="cleanup.qualify_static_method_accesses_with_declaring_class" value="false" />
+											<entry key="cleanup.reduce_indentation" value="true" />
 											<entry key="cleanup.redundant_falling_through_block_end" value="true" />
 											<entry key="cleanup.remove_private_constructors" value="true" />
 											<entry key="cleanup.remove_redundant_modifiers" value="true" />
@@ -3161,13 +3170,19 @@ deploy:
 											<entry key="cleanup.remove_unused_private_methods" value="true" />
 											<entry key="cleanup.remove_unused_private_types" value="true" />
 											<entry key="cleanup.simplify_lambda_expression_and_method_ref" value="true" />
+											<entry key="cleanup.single_used_field" value="true" />
 											<entry key="cleanup.sort_members" value="false" />
 											<entry key="cleanup.sort_members_all" value="false" />
+											<entry key="cleanup.standard_comparison" value="false" />
+											<entry key="cleanup.static_inner_class" value="true" />
 											<entry key="cleanup.strictly_equal_or_different" value="true" />
 											<entry key="cleanup.stringbuilder" value="false" />
+											<entry key="cleanup.substring" value="true" />
 											<entry key="cleanup.switch" value="true" />
 											<entry key="cleanup.ternary_operator" value="true" />
 											<entry key="cleanup.try_with_resource" value="true" />
+											<entry key="cleanup.unlooped_while" value="true" />
+											<entry key="cleanup.unreachable_block" value="false" />
 											<entry key="cleanup.use_anonymous_class_creation" value="false" />
 											<entry key="cleanup.use_autoboxing" value="true" />
 											<entry key="cleanup.use_blocks" value="true" />
@@ -3188,7 +3203,7 @@ deploy:
 											<entry key="eclipse.preferences.version" value="1" />
 											<entry key="editor_save_participant_org.eclipse.jdt.ui.postsavelistener.cleanup" value="true" />
 											<entry key="formatter_profile" value="_de.lars-sh" />
-											<entry key="formatter_settings_version" value="20" />
+											<entry key="formatter_settings_version" value="21" />
 											<entry key="org.eclipse.jdt.ui.exception.name" value="e" />
 											<entry key="org.eclipse.jdt.ui.gettersetter.use.is" value="true" />
 											<entry key="org.eclipse.jdt.ui.ignorelowercasenames" value="true" />
@@ -3216,7 +3231,9 @@ deploy:
 											<entry key="sp_cleanup.boolean_literal" value="true" />
 											<entry key="sp_cleanup.break_loop" value="true" />
 											<entry key="sp_cleanup.collection_cloning" value="true" />
+											<entry key="sp_cleanup.comparing_on_criteria" value="true" />
 											<entry key="sp_cleanup.comparison_statement" value="true" />
+											<entry key="sp_cleanup.controlflow_merge" value="true" />
 											<entry key="sp_cleanup.convert_functional_interfaces" value="true" />
 											<entry key="sp_cleanup.convert_to_enhanced_for_loop" value="true" />
 											<entry key="sp_cleanup.convert_to_enhanced_for_loop_if_loop_var_used" value="false" />
@@ -3226,12 +3243,14 @@ deploy:
 											<entry key="sp_cleanup.else_if" value="true" />
 											<entry key="sp_cleanup.embedded_if" value="true" />
 											<entry key="sp_cleanup.evaluate_nullable" value="true" />
+											<entry key="sp_cleanup.extract_increment" value="true" />
 											<entry key="sp_cleanup.format_source_code" value="true" />
 											<entry key="sp_cleanup.format_source_code_changes_only" value="false" />
 											<entry key="sp_cleanup.hash" value="true" />
 											<entry key="sp_cleanup.if_condition" value="true" />
 											<entry key="sp_cleanup.insert_inferred_type_arguments" value="false" />
-											<entry key="sp_cleanup.instanceof" value="false" />
+											<entry key="sp_cleanup.instanceof" value="true" />
+											<entry key="sp_cleanup.invert_equals" value="false" />
 											<entry key="sp_cleanup.join" value="true" />
 											<entry key="sp_cleanup.lazy_logical_operator" value="true" />
 											<entry key="sp_cleanup.make_local_variable_final" value="true" />
@@ -3241,6 +3260,7 @@ deploy:
 											<entry key="sp_cleanup.make_variable_declarations_final" value="true" />
 											<entry key="sp_cleanup.map_cloning" value="true" />
 											<entry key="sp_cleanup.merge_conditional_blocks" value="true" />
+											<entry key="sp_cleanup.multi_catch" value="true" />
 											<entry key="sp_cleanup.never_use_blocks" value="false" />
 											<entry key="sp_cleanup.never_use_parentheses_in_expressions" value="true" />
 											<entry key="sp_cleanup.no_string_creation" value="true" />
@@ -3250,7 +3270,10 @@ deploy:
 											<entry key="sp_cleanup.on_save_use_additional_actions" value="true" />
 											<entry key="sp_cleanup.organize_imports" value="true" />
 											<entry key="sp_cleanup.overridden_assignment" value="true" />
+											<entry key="sp_cleanup.plain_replacement" value="true" />
 											<entry key="sp_cleanup.precompile_regex" value="true" />
+											<entry key="sp_cleanup.primitive_comparison" value="true" />
+											<entry key="sp_cleanup.primitive_parsing" value="true" />
 											<entry key="sp_cleanup.primitive_serialization" value="true" />
 											<entry key="sp_cleanup.pull_up_assignment" value="true" />
 											<entry key="sp_cleanup.push_down_negation" value="true" />
@@ -3259,6 +3282,7 @@ deploy:
 											<entry key="sp_cleanup.qualify_static_member_accesses_through_subtypes_with_declaring_class" value="false" />
 											<entry key="sp_cleanup.qualify_static_member_accesses_with_declaring_class" value="true" />
 											<entry key="sp_cleanup.qualify_static_method_accesses_with_declaring_class" value="false" />
+											<entry key="sp_cleanup.reduce_indentation" value="true" />
 											<entry key="sp_cleanup.redundant_falling_through_block_end" value="true" />
 											<entry key="sp_cleanup.remove_private_constructors" value="true" />
 											<entry key="sp_cleanup.remove_redundant_modifiers" value="true" />
@@ -3277,13 +3301,19 @@ deploy:
 											<entry key="sp_cleanup.remove_unused_private_methods" value="true" />
 											<entry key="sp_cleanup.remove_unused_private_types" value="true" />
 											<entry key="sp_cleanup.simplify_lambda_expression_and_method_ref" value="true" />
+											<entry key="sp_cleanup.single_used_field" value="true" />
 											<entry key="sp_cleanup.sort_members" value="false" />
 											<entry key="sp_cleanup.sort_members_all" value="false" />
+											<entry key="sp_cleanup.standard_comparison" value="false" />
+											<entry key="sp_cleanup.static_inner_class" value="true" />
 											<entry key="sp_cleanup.strictly_equal_or_different" value="true" />
 											<entry key="sp_cleanup.stringbuilder" value="false" />
+											<entry key="sp_cleanup.substring" value="true" />
 											<entry key="sp_cleanup.switch" value="true" />
 											<entry key="sp_cleanup.ternary_operator" value="true" />
 											<entry key="sp_cleanup.try_with_resource" value="true" />
+											<entry key="sp_cleanup.unlooped_while" value="true" />
+											<entry key="sp_cleanup.unreachable_block" value="false" />
 											<entry key="sp_cleanup.use_anonymous_class_creation" value="false" />
 											<entry key="sp_cleanup.use_autoboxing" value="true" />
 											<entry key="sp_cleanup.use_blocks" value="true" />
