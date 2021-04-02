@@ -2584,7 +2584,7 @@ deploy:
 		<profile>
 			<id>fix-jdk9-and-later</id>
 			<activation>
-				<jdk>(9,)</jdk>
+				<jdk>[9,)</jdk>
 			</activation>
 			<properties>
 				<maven.compiler.showDeprecation>false</maven.compiler.showDeprecation>
@@ -2623,7 +2623,7 @@ deploy:
 		<profile>
 			<id>fix-jdk11-and-later</id>
 			<activation>
-				<jdk>(11,)</jdk>
+				<jdk>[11,)</jdk>
 			</activation>
 			<properties>
 				<spotbugs.excludeFilterFile.fix-jdk11-and-later>${project.build.directory}/spotbugs-excludes-fix-jdk11-and-later.xml,</spotbugs.excludeFilterFile.fix-jdk11-and-later>
@@ -2662,7 +2662,7 @@ deploy:
 		<profile>
 			<id>fix-jdk15-and-16</id>
 			<activation>
-				<jdk>(15,16)</jdk>
+				<jdk>[15,16]</jdk>
 			</activation>
 			<properties>
 				<doclint>all,-missing</doclint>
