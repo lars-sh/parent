@@ -1590,8 +1590,8 @@ function suppressJdk8Warnings() {
 	fi
 }
 
-# JDK14 and JDK15: The JavaDoc creation logs errors about missing "javadoc-bundle-option" folders.
-function suppressJdk14And15Warnings() {
+# JDK14 to JDK16: The JavaDoc creation logs errors about missing "javadoc-bundle-option" folders.
+function suppressJdk14To16Warnings() {
 	if [ "${JDK_VERSION}" -eq 14 ] || [ "${JDK_VERSION}" -eq 15 ]; then
 		cat < /dev/stdin \
 		| grep --invert-match --perl-regexp "^\\[ERROR\\] Error fetching link: .*[/\\\\]target[/\\\\]javadoc-bundle-options\\. Ignored it\\.$"
@@ -1609,7 +1609,7 @@ else
 	| suppressUserDefined \
 	| suppressPmdWarnings \
 	| suppressJdk8Warnings \
-	| suppressJdk14And15Warnings
+	| suppressJdk14To16Warnings
 fi
 ]]></echo>
 
@@ -1935,7 +1935,7 @@ jobs:
         java-version:
           - 1.8
           - 11
-          - 15 # As of https://github.com/lars-sh/parent/issues/240 JDK 16 does not work.
+          - 16
 
     name: Build with JDK ${{ matrix.java-version }}
     steps:
@@ -2232,7 +2232,7 @@ jdk:
   # Supported versions as of https://en.wikipedia.org/wiki/Java_version_history
   - openjdk8
   - openjdk11
-  - openjdk15
+  - openjdk16
 cache:
   directories:
     - $HOME/.m2/repository
@@ -2658,11 +2658,11 @@ deploy:
 			</build>
 		</profile>
 
-		<!-- JDK 15, Maven Javadoc Plugin: Logs warnings on missing JavaDoc comments inside generated code -->
+		<!-- JDK 15 and 16, Maven Javadoc Plugin: Logs warnings on missing JavaDoc comments inside generated code -->
 		<profile>
-			<id>fix-jdk15</id>
+			<id>fix-jdk15-and-16</id>
 			<activation>
-				<jdk>15</jdk>
+				<jdk>(15,16)</jdk>
 			</activation>
 			<properties>
 				<doclint>all,-missing</doclint>
