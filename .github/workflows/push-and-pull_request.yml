@@ -37,6 +37,7 @@ jobs:
           set +o errexit +o pipefail
       - id: version
         name: Evaluate Version
+        shell: bash {0}
         run: |
           project_version=`mvn help:evaluate --quiet --define expression=project.version --define forceStdout`
           echo "Version: ${project_version}"
