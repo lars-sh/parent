@@ -82,7 +82,7 @@ mvn archetype:generate -DarchetypeGroupId=de.lars-sh -DarchetypeArtifactId=paren
 Remember to **restart Eclipse** to apply changes to project settings.
 
 #### Snapshot Builds
-Snapshot builds are finally provided through [GitHub Packages](https://github.com/lars-sh/parent/packages). To use one of them, configure the version of the parent dependency accordingly and add the below noted repository to your POM.
+Snapshot builds are provided through [GitHub Packages](https://github.com/lars-sh/parent/packages). To use one of them, configure the version of the parent dependency accordingly and add the below noted repository to your POM.
 
 Beside having the possibility, please keep in mind, that snapshot builds might be either instable or even broken from time to time.
 
