@@ -27,6 +27,7 @@ jobs:
       - name: Set up JDK ${{ matrix.java-version }}
         uses: actions/setup-java@v2
         with:
+          distribution: adopt
           java-version: ${{ matrix.java-version }}
           gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
           gpg-passphrase: GPG_PASSPHRASE
