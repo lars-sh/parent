@@ -2679,7 +2679,7 @@ deploy:
 		<profile>
 			<id>fix-jdk15-and-16</id>
 			<activation>
-				<jdk>[15,16]</jdk>
+				<jdk>[15,17)</jdk>
 			</activation>
 			<properties>
 				<doclint>all,-missing</doclint>
