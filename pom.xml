@@ -154,7 +154,7 @@
 		<maven-install-plugin.version>2.5.2</maven-install-plugin.version>
 		<maven-jar-plugin.version>3.2.0</maven-jar-plugin.version>
 		<maven-javadoc-plugin.version>3.2.0</maven-javadoc-plugin.version>
-		<maven-jxr-plugin.version>3.0.0</maven-jxr-plugin.version>
+		<maven-jxr-plugin.version>3.1.1</maven-jxr-plugin.version>
 		<maven-plugin-plugin.version>3.6.0</maven-plugin-plugin.version>
 		<maven-pmd-plugin.version>3.14.0</maven-pmd-plugin.version>
 		<maven-project-info-reports-plugin.version>3.1.1</maven-project-info-reports-plugin.version>
@@ -2526,6 +2526,14 @@ deploy:
 			</plugin>
 			<plugin>
 				<artifactId>maven-jxr-plugin</artifactId>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>jxr-no-fork</report>
+							<report>test-jxr-no-fork</report>
+						</reports>
+					</reportSet>
+				</reportSets>
 			</plugin>
 
 			<!-- Verification -->
@@ -2671,7 +2679,7 @@ deploy:
 		<profile>
 			<id>fix-jdk15-and-16</id>
 			<activation>
-				<jdk>[15,16]</jdk>
+				<jdk>[15,17)</jdk>
 			</activation>
 			<properties>
 				<doclint>all,-missing</doclint>
