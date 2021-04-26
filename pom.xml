@@ -2523,6 +2523,14 @@ deploy:
 			<!-- Sources -->
 			<plugin>
 				<artifactId>maven-javadoc-plugin</artifactId>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>aggregate-no-fork</report>
+							<report>test-aggregate-no-fork</report>
+						</reports>
+					</reportSet>
+				</reportSets>
 			</plugin>
 			<plugin>
 				<artifactId>maven-jxr-plugin</artifactId>
@@ -2551,6 +2559,13 @@ deploy:
 			<!-- Tests -->
 			<plugin>
 				<artifactId>maven-surefire-report-plugin</artifactId>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>report-only</report>
+						</reports>
+					</reportSet>
+				</reportSets>
 			</plugin>
 			<plugin>
 				<groupId>org.jacoco</groupId>
