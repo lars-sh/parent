@@ -1,7 +1,9 @@
 name: Build on Push and Pull Request
 on:
-  - push
-  - pull_request
+  push:
+    branches:
+      - master
+  pull_request:
 
 jobs:
   build:
