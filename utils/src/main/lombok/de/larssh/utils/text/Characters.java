@@ -1,9 +1,11 @@
 package de.larssh.utils.text;
 
+import lombok.experimental.UtilityClass;
+
 /**
  * This class contains helper methods for {@link Character}.
  */
-// @UtilityClass
+@UtilityClass
 public class Characters {
 	/**
 	 * Difference between the ASCII (and Unicode) positions of the upper and lower

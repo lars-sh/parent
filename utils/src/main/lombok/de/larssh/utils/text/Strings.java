@@ -604,13 +604,12 @@ public class Strings {
 		int index = 0;
 		final int length = value.length();
 
+		boolean found = false;
 		char lower = ' ';
-		for (; index < length; index += 1) {
+		for (; index < length && !found; index += 1) {
 			final char character = value.charAt(index);
 			lower = Characters.toLowerCaseAscii(character);
-			if (character != lower) {
-				break;
-			}
+			found = character != lower;
 		}
 		if (index >= length) {
 			return value;
@@ -672,13 +671,12 @@ public class Strings {
 		int index = 0;
 		final int length = value.length();
 
+		boolean found = false;
 		char upper = ' ';
-		for (; index < length; index += 1) {
+		for (; index < length && !found; index += 1) {
 			final char character = value.charAt(index);
 			upper = Characters.toUpperCaseAscii(character);
-			if (character != upper) {
-				break;
-			}
+			found = character != upper;
 		}
 		if (index >= length) {
 			return value;
