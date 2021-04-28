@@ -165,7 +165,7 @@ public class Strings {
 	 *         a suffix of the character sequence represented by this object,
 	 *         ignoring case considerations; {@code false} otherwise.
 	 */
-	public static boolean endsWithIgnoreCase(final String value, final String suffix) {
+	public static boolean endsWithIgnoreCase(final CharSequence value, final CharSequence suffix) {
 		return startsWithIgnoreCase(value, suffix, value.length() - suffix.length());
 	}
 
@@ -180,7 +180,7 @@ public class Strings {
 	 *         ignoring case considerations in the ASCII range; {@code false}
 	 *         otherwise.
 	 */
-	public static boolean endsWithIgnoreCaseAscii(final String value, final String suffix) {
+	public static boolean endsWithIgnoreCaseAscii(final CharSequence value, final CharSequence suffix) {
 		return startsWithIgnoreCaseAscii(value, suffix, value.length() - suffix.length());
 	}
 
@@ -384,7 +384,7 @@ public class Strings {
 	 * @throws ParseException on parse failure
 	 */
 	@SuppressWarnings("checkstyle:MultipleStringLiterals")
-	public static BigInteger parseBinaryUnit(final String binaryValue) throws ParseException {
+	public static BigInteger parseBinaryUnit(final CharSequence binaryValue) throws ParseException {
 		final Optional<Matcher> matcher = Patterns.matches(BINARY_UNIT_PATTERN, binaryValue);
 		if (!matcher.isPresent()) {
 			throw new ParseException("Value [%s] does not match binary unit pattern.", binaryValue);
@@ -445,7 +445,7 @@ public class Strings {
 	 * @throws ParseException on parse failure
 	 */
 	@SuppressWarnings("checkstyle:MultipleStringLiterals")
-	public static BigDecimal parseDecimalUnit(final String decimalValue) throws ParseException {
+	public static BigDecimal parseDecimalUnit(final CharSequence decimalValue) throws ParseException {
 		final Optional<Matcher> matcher = Patterns.matches(DECIMAL_UNIT_PATTERN, decimalValue);
 		if (!matcher.isPresent()) {
 			throw new ParseException("Value [%s] does not match decimal unit pattern.", decimalValue);
@@ -519,7 +519,7 @@ public class Strings {
 	 *         a prefix of the character sequence represented by this string,
 	 *         ignoring case considerations; {@code false} otherwise.
 	 */
-	public static boolean startsWithIgnoreCase(final String value, final String prefix) {
+	public static boolean startsWithIgnoreCase(final CharSequence value, final CharSequence prefix) {
 		return startsWithIgnoreCase(value, prefix, 0);
 	}
 
@@ -536,7 +536,7 @@ public class Strings {
 	 *         otherwise. The result is {@code false} if {@code offset} is negative
 	 *         or greater than the length of this {@code String} object.
 	 */
-	public static boolean startsWithIgnoreCase(final String value, final String prefix, final int offset) {
+	public static boolean startsWithIgnoreCase(final CharSequence value, final CharSequence prefix, final int offset) {
 		final int prefixLength = prefix.length();
 		if (offset < 0 || offset + prefixLength > value.length()) {
 			return false;
@@ -561,7 +561,7 @@ public class Strings {
 	 *         ignoring case considerations in the ASCII range; {@code false}
 	 *         otherwise.
 	 */
-	public static boolean startsWithIgnoreCaseAscii(final String value, final String prefix) {
+	public static boolean startsWithIgnoreCaseAscii(final CharSequence value, final CharSequence prefix) {
 		return startsWithIgnoreCaseAscii(value, prefix, 0);
 	}
 
@@ -579,7 +579,9 @@ public class Strings {
 	 *         {@code offset} is negative or greater than the length of this
 	 *         {@code String} object.
 	 */
-	public static boolean startsWithIgnoreCaseAscii(final String value, final String prefix, final int offset) {
+	public static boolean startsWithIgnoreCaseAscii(final CharSequence value,
+			final CharSequence prefix,
+			final int offset) {
 		final int prefixLength = prefix.length();
 		if (offset < 0 || offset + prefixLength > value.length()) {
 			return false;
@@ -600,7 +602,7 @@ public class Strings {
 	 * @param value string to convert
 	 * @return converted string
 	 */
-	public static String toLowerCaseAscii(final String value) {
+	public static String toLowerCaseAscii(final CharSequence value) {
 		final int length = value.length();
 		int index = 0;
 
@@ -612,7 +614,7 @@ public class Strings {
 			found = character != lower;
 		}
 		if (index >= length) {
-			return value;
+			return value.toString();
 		}
 
 		final StringBuilder builder = new StringBuilder(length);
@@ -667,7 +669,7 @@ public class Strings {
 	 * @param value string to convert
 	 * @return converted string
 	 */
-	public static String toUpperCaseAscii(final String value) {
+	public static String toUpperCaseAscii(final CharSequence value) {
 		final int length = value.length();
 		int index = 0;
 
@@ -679,7 +681,7 @@ public class Strings {
 			found = character != upper;
 		}
 		if (index >= length) {
-			return value;
+			return value.toString();
 		}
 
 		final StringBuilder builder = new StringBuilder(length);
@@ -718,13 +720,14 @@ public class Strings {
 	 * @param value value
 	 * @return left trimmed value
 	 */
-	public static String trimStart(final String value) {
-		int start = 0;
+	public static String trimStart(final CharSequence value) {
 		final int length = value.length();
+
+		int start = 0;
 		while (start < length && Characters.isAsciiWhitespace(value.charAt(start))) {
 			start += 1;
 		}
-		return value.substring(start);
+		return value.subSequence(start, length).toString();
 	}
 
 	/**
@@ -742,11 +745,11 @@ public class Strings {
 	 * @param value value
 	 * @return left trimmed value
 	 */
-	public static String trimEnd(final String value) {
+	public static String trimEnd(final CharSequence value) {
 		int end = value.length();
 		while (end > 0 && Characters.isAsciiWhitespace(value.charAt(end - 1))) {
 			end -= 1;
 		}
-		return value.substring(0, end);
+		return value.subSequence(0, end).toString();
 	}
 }
