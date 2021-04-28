@@ -155,6 +155,40 @@ public class Strings {
 	 */
 	private static final Pattern UNIT_WHITE_SPACE_PATTERN = Pattern.compile("[\\s_]+");
 
+	public static int compareIgnoreCaseAscii(final CharSequence first, final CharSequence second) {
+		final int firstLength = first.length();
+		final int secondLength = second.length();
+		final int minLength = Math.min(firstLength, secondLength);
+
+		for (int index = 0; index < minLength; index += 1) {
+			final int compare = Characters.compareIgnoreCaseAscii(first.charAt(index), second.charAt(index));
+			if (compare != 0) {
+				return compare;
+			}
+		}
+
+		if (firstLength == secondLength) {
+			return 0;
+		}
+		return firstLength < secondLength ? -1 : 1;
+	}
+
+	public static boolean containsIgnoreCase(final CharSequence string, final CharSequence substring) {
+		return indexOfIgnoreCase(string, substring) != -1;
+	}
+
+	public static boolean containsIgnoreCaseAscii(final CharSequence string, final CharSequence substring) {
+		return indexOfIgnoreCaseAscii(string, substring) != -1;
+	}
+
+	public static boolean equalsIgnoreCaseAscii(@Nullable final CharSequence first,
+			@Nullable final CharSequence second) {
+		if (first == null || second == null) {
+			return first == second;
+		}
+		return compareIgnoreCaseAscii(first, second) == 0;
+	}
+
 	/**
 	 * Tests if this string ends with the specified suffix, ignoring case
 	 * considerations.
@@ -245,6 +279,76 @@ public class Strings {
 		return IntStream.range(0, binaryUnits.size())
 				.boxed()
 				.collect(toLinkedHashMap(binaryUnits::get, index -> oneThousandTwentyFour.pow(index + 1)));
+	}
+
+	public static int indexOfIgnoreCase(final CharSequence string, final CharSequence substring) {
+		return indexOfIgnoreCase(string, substring, 0);
+	}
+
+	public static int indexOfIgnoreCase(final CharSequence string, final CharSequence substring, final int fromIndex) {
+		final int stringLength = string.length();
+
+		// Fix index
+		int index;
+		if (fromIndex < 0) {
+			index = 0;
+		} else if (fromIndex >= stringLength) {
+			index = stringLength;
+		} else {
+			index = fromIndex;
+		}
+
+		// Get first substring character
+		if (substring.isEmpty()) {
+			return index;
+		}
+		final char substringFirst = substring.charAt(0);
+
+		// Perform the search
+		final int maxIndex = stringLength - substring.length();
+		for (; index <= maxIndex; index += 1) {
+			if (Characters.equalsIgnoreCase(string.charAt(index), substringFirst)
+					&& startsWithIgnoreCase(string, substring, index)) {
+				return index;
+			}
+		}
+		return -1;
+	}
+
+	public static int indexOfIgnoreCaseAscii(final CharSequence string, final CharSequence substring) {
+		return indexOfIgnoreCaseAscii(string, substring, 0);
+	}
+
+	public static int indexOfIgnoreCaseAscii(final CharSequence string,
+			final CharSequence substring,
+			final int fromIndex) {
+		final int stringLength = string.length();
+
+		// Fix index
+		int index;
+		if (fromIndex < 0) {
+			index = 0;
+		} else if (fromIndex >= stringLength) {
+			index = stringLength;
+		} else {
+			index = fromIndex;
+		}
+
+		// Get first substring character
+		if (substring.isEmpty()) {
+			return index;
+		}
+		final char substringFirst = substring.charAt(0);
+
+		// Perform the search
+		final int maxIndex = stringLength - substring.length();
+		for (; index <= maxIndex; index += 1) {
+			if (Characters.equalsIgnoreCaseAscii(string.charAt(index), substringFirst)
+					&& startsWithIgnoreCaseAscii(string, substring, index)) {
+				return index;
+			}
+		}
+		return -1;
 	}
 
 	/**
