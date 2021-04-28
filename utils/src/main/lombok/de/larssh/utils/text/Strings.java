@@ -601,11 +601,11 @@ public class Strings {
 	 * @return converted string
 	 */
 	public static String toLowerCaseAscii(final String value) {
-		int index = 0;
 		final int length = value.length();
+		int index = 0;
 
-		boolean found = false;
 		char lower = ' ';
+		boolean found = false;
 		for (; index < length && !found; index += 1) {
 			final char character = value.charAt(index);
 			lower = Characters.toLowerCaseAscii(character);
@@ -668,11 +668,11 @@ public class Strings {
 	 * @return converted string
 	 */
 	public static String toUpperCaseAscii(final String value) {
-		int index = 0;
 		final int length = value.length();
+		int index = 0;
 
-		boolean found = false;
 		char upper = ' ';
+		boolean found = false;
 		for (; index < length && !found; index += 1) {
 			final char character = value.charAt(index);
 			upper = Characters.toUpperCaseAscii(character);
