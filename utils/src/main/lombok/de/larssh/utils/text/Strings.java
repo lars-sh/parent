@@ -170,6 +170,21 @@ public class Strings {
 	}
 
 	/**
+	 * Tests if this string ends with the specified suffix, ignoring case
+	 * considerations in the ASCII range.
+	 *
+	 * @param value  string to compare against
+	 * @param suffix the suffix.
+	 * @return {@code true} if the character sequence represented by the argument is
+	 *         a suffix of the character sequence represented by this object,
+	 *         ignoring case considerations in the ASCII range; {@code false}
+	 *         otherwise.
+	 */
+	public static boolean endsWithIgnoreCaseAscii(final String value, final String suffix) {
+		return startsWithIgnoreCaseAscii(value, suffix, value.length() - suffix.length());
+	}
+
+	/**
 	 * Tells whether or not a subsequence {@code input} matches {@code pattern}.
 	 *
 	 * <p>
@@ -381,8 +396,7 @@ public class Strings {
 		}
 
 		final String unit = matcher.get().group("unit");
-		final BigDecimal multiplicator
-				= unit == null ? BigDecimal.ONE : BINARY_UNITS.get(Strings.toNeutralUpperCase(unit));
+		final BigDecimal multiplicator = unit == null ? BigDecimal.ONE : BINARY_UNITS.get(toUpperCaseAscii(unit));
 
 		return new BigDecimal(replaceAll(value, UNIT_WHITE_SPACE_PATTERN, "")).multiply(multiplicator)
 				.toBigIntegerExact();
@@ -448,8 +462,8 @@ public class Strings {
 				.getFirst(Objects::nonNull,
 						() -> unit == null ? 0 : null,
 						() -> DECIMAL_UNITS.get(unit),
-						() -> DECIMAL_UNITS.get(Strings.toNeutralUpperCase(unit)),
-						() -> DECIMAL_UNITS.get(Strings.toNeutralLowerCase(unit)))
+						() -> DECIMAL_UNITS.get(toUpperCaseAscii(unit)),
+						() -> DECIMAL_UNITS.get(toLowerCaseAscii(unit)))
 				.orElseThrow(() -> new ParseException("Found unexpected decimal unit [%s].", unit));
 
 		return new BigDecimal(replaceAll(value, UNIT_WHITE_SPACE_PATTERN, "")).scaleByPowerOfTen(powerOfTen);
@@ -537,6 +551,81 @@ public class Strings {
 	}
 
 	/**
+	 * Tests if this string starts with the specified prefix, ignoring case
+	 * considerations in the ASCII range.
+	 *
+	 * @param value  string to compare against
+	 * @param prefix the prefix.
+	 * @return {@code true} if the character sequence represented by the argument is
+	 *         a prefix of the character sequence represented by this string,
+	 *         ignoring case considerations in the ASCII range; {@code false}
+	 *         otherwise.
+	 */
+	public static boolean startsWithIgnoreCaseAscii(final String value, final String prefix) {
+		return startsWithIgnoreCaseAscii(value, prefix, 0);
+	}
+
+	/**
+	 * Tests if the substring of this string beginning at the specified index starts
+	 * with the specified prefix, ignoring case considerations in the ASCII range.
+	 *
+	 * @param value  string to compare against
+	 * @param prefix the prefix.
+	 * @param offset where to begin looking in this string.
+	 * @return {@code true} if the character sequence represented by the argument is
+	 *         a prefix of the substring of this object starting at index
+	 *         {@code offset}, ignoring case considerations in the ASCII range;
+	 *         {@code false} otherwise. The result is {@code false} if
+	 *         {@code offset} is negative or greater than the length of this
+	 *         {@code String} object.
+	 */
+	public static boolean startsWithIgnoreCaseAscii(final String value, final String prefix, final int offset) {
+		final int prefixLength = prefix.length();
+		if (offset < 0 || offset + prefixLength > value.length()) {
+			return false;
+		}
+
+		for (int index = 0; index < prefixLength; index += 1) {
+			if (!Characters.equalsIgnoreCaseAscii(value.charAt(offset + index), prefix.charAt(index))) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	/**
+	 * Converts all of the ASCII upper case characters in {@code value} to lower
+	 * case.
+	 *
+	 * @param value string to convert
+	 * @return converted string
+	 */
+	public static String toLowerCaseAscii(final String value) {
+		int index = 0;
+		final int length = value.length();
+
+		char lower = ' ';
+		for (; index < length; index += 1) {
+			final char character = value.charAt(index);
+			lower = Characters.toLowerCaseAscii(character);
+			if (character != lower) {
+				break;
+			}
+		}
+		if (index >= length) {
+			return value;
+		}
+
+		final StringBuilder builder = new StringBuilder(length);
+		builder.append(value, 0, index - 1);
+		builder.append(lower);
+		for (; index < length; index += 1) {
+			builder.append(Characters.toLowerCaseAscii(value.charAt(index)));
+		}
+		return builder.toString();
+	}
+
+	/**
 	 * Converts all of the characters in {@code value} to lower case using
 	 * {@link #DEFAULT_LOCALE}. This method is equivalent to
 	 * {@code toLowerCase(Locale.ROOT)}.
@@ -544,7 +633,7 @@ public class Strings {
 	 * @param value string to convert
 	 * @return converted string
 	 */
-	public static String toNeutralLowerCase(final String value) {
+	public static String toLowerCaseNeutral(final String value) {
 		return value.toLowerCase(DEFAULT_LOCALE);
 	}
 
@@ -556,7 +645,7 @@ public class Strings {
 	 * @param value string to convert
 	 * @return converted string
 	 */
-	public static String toNeutralTitleCase(final String value) {
+	public static String toTitleCaseNeutral(final String value) {
 		if (value.isEmpty()) {
 			return value;
 		}
@@ -573,6 +662,38 @@ public class Strings {
 	}
 
 	/**
+	 * Converts all of the ASCII lower case characters in {@code value} to upper
+	 * case.
+	 *
+	 * @param value string to convert
+	 * @return converted string
+	 */
+	public static String toUpperCaseAscii(final String value) {
+		int index = 0;
+		final int length = value.length();
+
+		char upper = ' ';
+		for (; index < length; index += 1) {
+			final char character = value.charAt(index);
+			upper = Characters.toUpperCaseAscii(character);
+			if (character != upper) {
+				break;
+			}
+		}
+		if (index >= length) {
+			return value;
+		}
+
+		final StringBuilder builder = new StringBuilder(length);
+		builder.append(value, 0, index - 1);
+		builder.append(upper);
+		for (; index < length; index += 1) {
+			builder.append(Characters.toUpperCaseAscii(value.charAt(index)));
+		}
+		return builder.toString();
+	}
+
+	/**
 	 * Converts all of the characters in {@code value} to upper case using
 	 * {@link #DEFAULT_LOCALE}. This method is equivalent to
 	 * {@code toUpperCase(Locale.ROOT)}.
@@ -580,7 +701,7 @@ public class Strings {
 	 * @param value string to convert
 	 * @return converted string
 	 */
-	public static String toNeutralUpperCase(final String value) {
+	public static String toUpperCaseNeutral(final String value) {
 		return value.toUpperCase(DEFAULT_LOCALE);
 	}
 
