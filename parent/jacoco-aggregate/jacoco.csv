@@ -48,7 +48,7 @@ Parent POM/utils,de.larssh.utils.text,Lines.GroupedLineType,34,0,0,0,4,0,1,0,1,0
 Parent POM/utils,de.larssh.utils.text,Patterns,51,0,4,0,6,0,6,0,4,0
 Parent POM/utils,de.larssh.utils.text,ParseException,14,0,0,0,4,0,2,0,2,0
 Parent POM/utils,de.larssh.utils.text,Characters,106,0,32,0,14,0,25,0,9,0
-Parent POM/utils,de.larssh.utils.text,Strings,791,0,70,0,115,0,65,0,30,0
+Parent POM/utils,de.larssh.utils.text,Strings,796,0,70,0,115,0,65,0,30,0
 Parent POM/utils,de.larssh.utils.time,LoggingStopwatch,98,0,2,0,20,0,12,0,11,0
 Parent POM/utils,de.larssh.utils.time,LoggingStopwatch.StringLoggingStopwatchMode,170,0,10,0,27,0,17,0,12,0
 Parent POM/utils,de.larssh.utils.time,Stopwatch,152,0,16,0,21,0,18,0,10,0
