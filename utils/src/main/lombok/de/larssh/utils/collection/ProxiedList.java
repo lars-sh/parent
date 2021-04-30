@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.ListIterator;
 
+import edu.umd.cs.findbugs.annotations.CheckForNull;
 import edu.umd.cs.findbugs.annotations.Nullable;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -56,10 +57,22 @@ public abstract class ProxiedList<E> extends ProxiedCollection<E> implements Lis
 	}
 
 	/** {@inheritDoc} */
+	@Override
+	public boolean equals(@CheckForNull final Object object) {
+		return getList().equals(object);
+	}
+
+	/** {@inheritDoc} */
 	@Nullable
 	@Override
 	public E get(final int index) {
 		return getList().get(index);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public int hashCode() {
+		return getList().hashCode();
 	}
 
 	/** {@inheritDoc} */
