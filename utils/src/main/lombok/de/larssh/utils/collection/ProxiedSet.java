@@ -2,7 +2,6 @@ package de.larssh.utils.collection;
 
 import java.util.Set;
 
-import edu.umd.cs.findbugs.annotations.CheckForNull;
 import lombok.AccessLevel;
 import lombok.Getter;
 
@@ -39,17 +38,5 @@ public abstract class ProxiedSet<E> extends ProxiedCollection<E> implements Set<
 		super(set);
 
 		this.set = set;
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public boolean equals(@CheckForNull final Object object) {
-		return getSet().equals(object);
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public int hashCode() {
-		return getSet().hashCode();
 	}
 }
