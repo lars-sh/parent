@@ -299,7 +299,7 @@ public class Strings {
 		}
 
 		// Get first substring character
-		if (substring.isEmpty()) {
+		if (substring.length() == 0) {
 			return index;
 		}
 		final char substringFirst = substring.charAt(0);
@@ -335,7 +335,7 @@ public class Strings {
 		}
 
 		// Get first substring character
-		if (substring.isEmpty()) {
+		if (substring.length() == 0) {
 			return index;
 		}
 		final char substringFirst = substring.charAt(0);
