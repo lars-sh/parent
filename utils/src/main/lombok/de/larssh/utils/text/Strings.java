@@ -155,6 +155,15 @@ public class Strings {
 	 */
 	private static final Pattern UNIT_WHITE_SPACE_PATTERN = Pattern.compile("[\\s_]+");
 
+	/**
+	 * Compares two strings, ignoring case differences in the ASCII range.
+	 *
+	 * @param first  the first string to compare
+	 * @param second the second string to compare
+	 * @return a positive integer, zero, or a negative integer as {@code first} is
+	 *         greater than, equal to, or less than {@code second}, ignoring case
+	 *         considerations in the ASCII range.
+	 */
 	public static int compareIgnoreCaseAscii(final CharSequence first, final CharSequence second) {
 		final int firstLength = first.length();
 		final int secondLength = second.length();
@@ -173,14 +182,43 @@ public class Strings {
 		return firstLength < secondLength ? -1 : 1;
 	}
 
+	/**
+	 * Tests if {@code value} contains {@code substring}, ignoring case
+	 * considerations.
+	 *
+	 * @param string    the string to search in
+	 * @param substring the sequence to search for
+	 * @return {@code true} if {@code value} contains {@code substring}, ignoring
+	 *         case considerations, else {@code false}
+	 */
 	public static boolean containsIgnoreCase(final CharSequence string, final CharSequence substring) {
 		return indexOfIgnoreCase(string, substring) != -1;
 	}
 
+	/**
+	 * Tests if {@code value} contains {@code substring}, ignoring case
+	 * considerations in the ACII range.
+	 *
+	 * @param string    the string to search in
+	 * @param substring the sequence to search for
+	 * @return {@code true} if {@code value} contains {@code substring}, ignoring
+	 *         case considerations in the ACII range, else {@code false}
+	 */
 	public static boolean containsIgnoreCaseAscii(final CharSequence string, final CharSequence substring) {
 		return indexOfIgnoreCaseAscii(string, substring) != -1;
 	}
 
+	/**
+	 * Compares {@code first} to {@code second}, ignoring case considerations in the
+	 * ASCII range. Two strings are considered equal ignoring case if they are of
+	 * the same length and corresponding characters in the two strings are equal
+	 * ignoring case in the ASCII range.
+	 *
+	 * @param first  the first of both strings to compare
+	 * @param second the second of both strings to compare
+	 * @return {@code true} if {@code first} and {@code second} are considered
+	 *         equal, ignoring case in the ACII range, else {@code false}
+	 */
 	public static boolean equalsIgnoreCaseAscii(@Nullable final CharSequence first,
 			@Nullable final CharSequence second) {
 		if (first == null || second == null) {
@@ -190,29 +228,28 @@ public class Strings {
 	}
 
 	/**
-	 * Tests if this string ends with the specified suffix, ignoring case
+	 * Tests if {@code value} ends with the specified suffix, ignoring case
 	 * considerations.
 	 *
 	 * @param value  string to compare against
-	 * @param suffix the suffix.
-	 * @return {@code true} if the character sequence represented by the argument is
-	 *         a suffix of the character sequence represented by this object,
-	 *         ignoring case considerations; {@code false} otherwise.
+	 * @param suffix the suffix
+	 * @return {@code true} if {@code prefix} is a suffix of the character sequence
+	 *         represented by {@code value}, ignoring case considerations, else
+	 *         {@code false}
 	 */
 	public static boolean endsWithIgnoreCase(final CharSequence value, final CharSequence suffix) {
 		return startsWithIgnoreCase(value, suffix, value.length() - suffix.length());
 	}
 
 	/**
-	 * Tests if this string ends with the specified suffix, ignoring case
+	 * Tests if {@code value} ends with the specified suffix, ignoring case
 	 * considerations in the ASCII range.
 	 *
 	 * @param value  string to compare against
-	 * @param suffix the suffix.
-	 * @return {@code true} if the character sequence represented by the argument is
-	 *         a suffix of the character sequence represented by this object,
-	 *         ignoring case considerations in the ASCII range; {@code false}
-	 *         otherwise.
+	 * @param suffix the suffix
+	 * @return {@code true} if {@code prefix} is a suffix of the character sequence
+	 *         represented by {@code value}, ignoring case considerations in the
+	 *         ASCII range, else {@code false}
 	 */
 	public static boolean endsWithIgnoreCaseAscii(final CharSequence value, final CharSequence suffix) {
 		return startsWithIgnoreCaseAscii(value, suffix, value.length() - suffix.length());
@@ -281,10 +318,31 @@ public class Strings {
 				.collect(toLinkedHashMap(binaryUnits::get, index -> oneThousandTwentyFour.pow(index + 1)));
 	}
 
+	/**
+	 * Returns the index within {@code string} of the first occurrence of
+	 * {@code substring}, ignoring case considerations.
+	 *
+	 * @param string    the string to search in
+	 * @param substring the substring to search for
+	 * @return the index of the first occurrence of {@code substring}, ignoring case
+	 *         considerations, or {@code -1} if there is no such occurrence
+	 */
 	public static int indexOfIgnoreCase(final CharSequence string, final CharSequence substring) {
 		return indexOfIgnoreCase(string, substring, 0);
 	}
 
+	/**
+	 * Returns the index within {@code string} of the first occurrence of
+	 * {@code substring}, ignoring case considerations, starting at the specified
+	 * index.
+	 *
+	 * @param string    the string to search in
+	 * @param substring the substring to search for
+	 * @param fromIndex the index from which to start the search
+	 * @return the index of the first occurrence of {@code substring}, ignoring case
+	 *         considerations, starting at the specified index, or {@code -1} if
+	 *         there is no such occurrence
+	 */
 	public static int indexOfIgnoreCase(final CharSequence string, final CharSequence substring, final int fromIndex) {
 		final int stringLength = string.length();
 
@@ -315,10 +373,32 @@ public class Strings {
 		return -1;
 	}
 
+	/**
+	 * Returns the index within {@code string} of the first occurrence of
+	 * {@code substring}, ignoring case considerations in the ASCII range.
+	 *
+	 * @param string    the string to search in
+	 * @param substring the substring to search for
+	 * @return the index of the first occurrence of {@code substring}, ignoring case
+	 *         considerations in the ASCII range, or {@code -1} if there is no such
+	 *         occurrence
+	 */
 	public static int indexOfIgnoreCaseAscii(final CharSequence string, final CharSequence substring) {
 		return indexOfIgnoreCaseAscii(string, substring, 0);
 	}
 
+	/**
+	 * Returns the index within {@code string} of the first occurrence of
+	 * {@code substring}, ignoring case considerations in the ASCII range, starting
+	 * at the specified index.
+	 *
+	 * @param string    the string to search in
+	 * @param substring the substring to search for
+	 * @param fromIndex the index from which to start the search
+	 * @return the index of the first occurrence of {@code substring}, ignoring case
+	 *         considerations in the ASCII range, starting at the specified index,
+	 *         or {@code -1} if there is no such occurrence
+	 */
 	public static int indexOfIgnoreCaseAscii(final CharSequence string,
 			final CharSequence substring,
 			final int fromIndex) {
@@ -614,31 +694,30 @@ public class Strings {
 	}
 
 	/**
-	 * Tests if this string starts with the specified prefix, ignoring case
+	 * Tests if {@code value} starts with {@code prefix} ignoring case
 	 * considerations.
 	 *
 	 * @param value  string to compare against
-	 * @param prefix the prefix.
-	 * @return {@code true} if the character sequence represented by the argument is
-	 *         a prefix of the character sequence represented by this string,
-	 *         ignoring case considerations; {@code false} otherwise.
+	 * @param prefix the prefix
+	 * @return {@code true} if {@code prefix} is a prefix of {@code value}, ignoring
+	 *         case considerations, else {@code false}
 	 */
 	public static boolean startsWithIgnoreCase(final CharSequence value, final CharSequence prefix) {
 		return startsWithIgnoreCase(value, prefix, 0);
 	}
 
 	/**
-	 * Tests if the substring of this string beginning at the specified index starts
-	 * with the specified prefix, ignoring case considerations.
+	 * Tests if the substring of {@code value} beginning at {@code offset} starts
+	 * with {@code prefix}, ignoring case considerations.
 	 *
 	 * @param value  string to compare against
-	 * @param prefix the prefix.
-	 * @param offset where to begin looking in this string.
-	 * @return {@code true} if the character sequence represented by the argument is
-	 *         a prefix of the substring of this object starting at index
-	 *         {@code offset}, ignoring case considerations; {@code false}
-	 *         otherwise. The result is {@code false} if {@code offset} is negative
-	 *         or greater than the length of this {@code String} object.
+	 * @param prefix the prefix
+	 * @param offset where to begin looking in {@code value}
+	 * @return {@code true} if {@code prefix} is a prefix of the substring of
+	 *         {@code value} starting at {@code offset}, ignoring case
+	 *         considerations, else {@code false}. The result is {@code false} if
+	 *         {@code offset} is negative or greater than the length of
+	 *         {@code value}.
 	 */
 	public static boolean startsWithIgnoreCase(final CharSequence value, final CharSequence prefix, final int offset) {
 		final int prefixLength = prefix.length();
@@ -655,33 +734,32 @@ public class Strings {
 	}
 
 	/**
-	 * Tests if this string starts with the specified prefix, ignoring case
+	 * Tests if {@code value} starts with the specified prefix, ignoring case
 	 * considerations in the ASCII range.
 	 *
 	 * @param value  string to compare against
-	 * @param prefix the prefix.
-	 * @return {@code true} if the character sequence represented by the argument is
-	 *         a prefix of the character sequence represented by this string,
-	 *         ignoring case considerations in the ASCII range; {@code false}
-	 *         otherwise.
+	 * @param prefix the prefix
+	 * @return {@code true} if {@code prefix} is a prefix of the character sequence
+	 *         represented by {@code value}, ignoring case considerations in the
+	 *         ASCII range, else {@code false}
 	 */
 	public static boolean startsWithIgnoreCaseAscii(final CharSequence value, final CharSequence prefix) {
 		return startsWithIgnoreCaseAscii(value, prefix, 0);
 	}
 
 	/**
-	 * Tests if the substring of this string beginning at the specified index starts
-	 * with the specified prefix, ignoring case considerations in the ASCII range.
+	 * Tests if the substring of {@code value} beginning at the specified index
+	 * starts with the specified prefix, ignoring case considerations in the ASCII
+	 * range.
 	 *
 	 * @param value  string to compare against
-	 * @param prefix the prefix.
-	 * @param offset where to begin looking in this string.
-	 * @return {@code true} if the character sequence represented by the argument is
-	 *         a prefix of the substring of this object starting at index
-	 *         {@code offset}, ignoring case considerations in the ASCII range;
-	 *         {@code false} otherwise. The result is {@code false} if
-	 *         {@code offset} is negative or greater than the length of this
-	 *         {@code String} object.
+	 * @param prefix the prefix
+	 * @param offset where to begin looking in {@code value}.
+	 * @return {@code true} if {@code prefix} is a prefix of the substring of
+	 *         {@code value} starting at index {@code offset}, ignoring case
+	 *         considerations in the ASCII range, else {@code false}. The result is
+	 *         {@code false} if {@code offset} is negative or greater than the
+	 *         length of this {@code String} object.
 	 */
 	public static boolean startsWithIgnoreCaseAscii(final CharSequence value,
 			final CharSequence prefix,

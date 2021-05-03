@@ -45,14 +45,14 @@ public class Characters {
 	 * {@code Characters.toUpperCaseAscii(character)}.
 	 *
 	 * <p>
-	 * Note that this method does <i>not</i> change characters outside of the ASCII
-	 * range.
+	 * Note that this method does <i>not</i> ignore the case for characters outside
+	 * of the ASCII range.
 	 *
 	 * @param first  the first {@code char} to compare
 	 * @param second the second {@code char} to compare
 	 * @return a positive integer, zero, or a negative integer as {@code first}
 	 *         {@code char} is greater than, equal to, or less than {@code second}
-	 *         {@code char}, ignoring case considerations.
+	 *         {@code char}, ignoring case considerations in the ASCII range.
 	 */
 	public static int compareIgnoreCaseAscii(final char first, final char second) {
 		return first == second ? 0 : toUpperCaseAscii(first) - toUpperCaseAscii(second);
