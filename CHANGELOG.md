@@ -8,7 +8,8 @@ All notable changes to this project will be documented in this file.
 Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%20%28a:parent%20a:parent-archetype%20a:root%20a:utils%20a:utils-annotations%20a:utils-test%29%20AND%20v:0.9.13)
 
 ### Added
-* Methods to handle lower and upper case handling on an ASCII basis: `de.larssh.utils.text.Characters.*Ascii*` an `de.larssh.utils.text.Strings.*Ascii`
+* Methods to handle lower and upper case handling on an ASCII basis: `de.larssh.utils.text.Characters.*Ascii*` and `de.larssh.utils.text.Strings.*Ascii`
+* Structures to handle CSV data (`de.larssh.utils.text.Csv`) and corresponding methods in `de.larssh.utils.text.StringConverters`
 
 ### Changed
 * Renamed methods `de.larssh.utils.text.Strings.toNeutral*` to `de.larssh.utils.text.Strings.to*Neutral` to match the naming of the new ASCII methods.
