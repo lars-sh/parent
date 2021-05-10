@@ -33,7 +33,7 @@ import lombok.experimental.UtilityClass;
  * This class contains helper methods for {@link String}.
  */
 @UtilityClass
-@SuppressWarnings({ "PMD.ExcessiveImports", "PMD.GodClass" })
+@SuppressWarnings({ "PMD.CyclomaticComplexity", "PMD.ExcessiveImports", "PMD.GodClass" })
 public class Strings {
 	/**
 	 * Character to separate strings inside regular expressions
@@ -219,6 +219,7 @@ public class Strings {
 	 * @return {@code true} if {@code first} and {@code second} are considered
 	 *         equal, ignoring case in the ACII range, else {@code false}
 	 */
+	@SuppressWarnings("PMD.CompareObjectsWithEquals")
 	public static boolean equalsIgnoreCaseAscii(@Nullable final CharSequence first,
 			@Nullable final CharSequence second) {
 		if (first == null || second == null) {
@@ -320,6 +321,50 @@ public class Strings {
 
 	/**
 	 * Returns the index within {@code string} of the first occurrence of
+	 * {@code substring}, ignoring e.g. case considerations using a custom character
+	 * comparison method, starting at the specified index.
+	 *
+	 * @param string    the string to search in
+	 * @param substring the substring to search for
+	 * @param fromIndex the index from which to start the search
+	 * @param equals    the character comparison method
+	 * @return the index of the first occurrence of {@code substring}, starting at
+	 *         the specified index, or {@code -1} if there is no such occurrence
+	 */
+	private static int indexOf(final CharSequence string,
+			final CharSequence substring,
+			final int fromIndex,
+			final BiCharPredicate equals) {
+		final int stringLength = string.length();
+
+		// Fix index
+		int index;
+		if (fromIndex < 0) {
+			index = 0;
+		} else if (fromIndex >= stringLength) {
+			index = stringLength;
+		} else {
+			index = fromIndex;
+		}
+
+		// Get first substring character
+		if (substring.length() == 0) {
+			return index;
+		}
+		final char substringFirst = substring.charAt(0);
+
+		// Perform the search
+		final int maxIndex = stringLength - substring.length();
+		for (; index <= maxIndex; index += 1) {
+			if (equals.test(string.charAt(index), substringFirst) && startsWith(string, substring, index, equals)) {
+				return index;
+			}
+		}
+		return -1;
+	}
+
+	/**
+	 * Returns the index within {@code string} of the first occurrence of
 	 * {@code substring}, ignoring case considerations.
 	 *
 	 * @param string    the string to search in
@@ -344,33 +389,7 @@ public class Strings {
 	 *         there is no such occurrence
 	 */
 	public static int indexOfIgnoreCase(final CharSequence string, final CharSequence substring, final int fromIndex) {
-		final int stringLength = string.length();
-
-		// Fix index
-		int index;
-		if (fromIndex < 0) {
-			index = 0;
-		} else if (fromIndex >= stringLength) {
-			index = stringLength;
-		} else {
-			index = fromIndex;
-		}
-
-		// Get first substring character
-		if (substring.length() == 0) {
-			return index;
-		}
-		final char substringFirst = substring.charAt(0);
-
-		// Perform the search
-		final int maxIndex = stringLength - substring.length();
-		for (; index <= maxIndex; index += 1) {
-			if (Characters.equalsIgnoreCase(string.charAt(index), substringFirst)
-					&& startsWithIgnoreCase(string, substring, index)) {
-				return index;
-			}
-		}
-		return -1;
+		return indexOf(string, substring, fromIndex, Characters::equalsIgnoreCase);
 	}
 
 	/**
@@ -402,33 +421,7 @@ public class Strings {
 	public static int indexOfIgnoreCaseAscii(final CharSequence string,
 			final CharSequence substring,
 			final int fromIndex) {
-		final int stringLength = string.length();
-
-		// Fix index
-		int index;
-		if (fromIndex < 0) {
-			index = 0;
-		} else if (fromIndex >= stringLength) {
-			index = stringLength;
-		} else {
-			index = fromIndex;
-		}
-
-		// Get first substring character
-		if (substring.length() == 0) {
-			return index;
-		}
-		final char substringFirst = substring.charAt(0);
-
-		// Perform the search
-		final int maxIndex = stringLength - substring.length();
-		for (; index <= maxIndex; index += 1) {
-			if (Characters.equalsIgnoreCaseAscii(string.charAt(index), substringFirst)
-					&& startsWithIgnoreCaseAscii(string, substring, index)) {
-				return index;
-			}
-		}
-		return -1;
+		return indexOf(string, substring, fromIndex, Characters::equalsIgnoreCaseAscii);
 	}
 
 	/**
@@ -694,6 +687,37 @@ public class Strings {
 	}
 
 	/**
+	 * Tests if the substring of {@code value} beginning at {@code offset} starts
+	 * with {@code prefix}, ignoring e.g. case considerations using a custom
+	 * character comparison method.
+	 *
+	 * @param value  string to compare against
+	 * @param prefix the prefix
+	 * @param offset where to begin looking in {@code value}
+	 * @param equals the character comparison method
+	 * @return {@code true} if {@code prefix} is a prefix of the substring of
+	 *         {@code value} starting at {@code offset}, else {@code false}. The
+	 *         result is {@code false} if {@code offset} is negative or greater than
+	 *         the length of {@code value}.
+	 */
+	private static boolean startsWith(final CharSequence value,
+			final CharSequence prefix,
+			final int offset,
+			final BiCharPredicate equals) {
+		final int prefixLength = prefix.length();
+		if (offset < 0 || offset + prefixLength > value.length()) {
+			return false;
+		}
+
+		for (int index = 0; index < prefixLength; index += 1) {
+			if (!equals.test(value.charAt(offset + index), prefix.charAt(index))) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	/**
 	 * Tests if {@code value} starts with {@code prefix} ignoring case
 	 * considerations.
 	 *
@@ -720,17 +744,7 @@ public class Strings {
 	 *         {@code value}.
 	 */
 	public static boolean startsWithIgnoreCase(final CharSequence value, final CharSequence prefix, final int offset) {
-		final int prefixLength = prefix.length();
-		if (offset < 0 || offset + prefixLength > value.length()) {
-			return false;
-		}
-
-		for (int index = 0; index < prefixLength; index += 1) {
-			if (!Characters.equalsIgnoreCase(value.charAt(offset + index), prefix.charAt(index))) {
-				return false;
-			}
-		}
-		return true;
+		return startsWith(value, prefix, offset, Characters::equalsIgnoreCase);
 	}
 
 	/**
@@ -764,17 +778,7 @@ public class Strings {
 	public static boolean startsWithIgnoreCaseAscii(final CharSequence value,
 			final CharSequence prefix,
 			final int offset) {
-		final int prefixLength = prefix.length();
-		if (offset < 0 || offset + prefixLength > value.length()) {
-			return false;
-		}
-
-		for (int index = 0; index < prefixLength; index += 1) {
-			if (!Characters.equalsIgnoreCaseAscii(value.charAt(offset + index), prefix.charAt(index))) {
-				return false;
-			}
-		}
-		return true;
+		return startsWith(value, prefix, offset, Characters::equalsIgnoreCaseAscii);
 	}
 
 	/**
@@ -933,5 +937,27 @@ public class Strings {
 			end -= 1;
 		}
 		return value.subSequence(0, end).toString();
+	}
+
+	/**
+	 * Represents a predicate (boolean-valued function) of two primitive
+	 * {@code char} arguments.
+	 *
+	 * <p>
+	 * This is a functional interface whose functional method is
+	 * {@link #test(char, char)}.
+	 */
+	@FunctionalInterface
+	@SuppressWarnings("PMD.UnnecessaryModifier")
+	private interface BiCharPredicate {
+		/**
+		 * Evaluates this predicate on the given arguments.
+		 *
+		 * @param first  the first input argument
+		 * @param second the second input argument
+		 * @return {@code true} if the input arguments match the predicate, otherwise
+		 *         {@code false}
+		 */
+		boolean test(char first, char second);
 	}
 }
