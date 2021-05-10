@@ -12,6 +12,7 @@ Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%
 * Structures to handle CSV data (`de.larssh.utils.text.Csv`) and corresponding methods in `de.larssh.utils.text.StringConverters`
 
 ### Changed
+* Renamed constants of `de.larssh.utils.text.SplitLimit` to be more precise
 * Renamed methods `de.larssh.utils.text.Strings.toNeutral*` to `de.larssh.utils.text.Strings.to*Neutral` to match the naming of the new ASCII methods.
 * Most methods inside `de.larssh.utils.text.Strings` allow to pass any kind of `CharSequence`, not just `String`.
 
