@@ -179,7 +179,7 @@ public class GlobalProxyConfiguration {
 	 */
 	public Set<String> getNonProxyHosts() {
 		return new LinkedHashSet<>(asList(Nullables.orElse(System.getProperty(getNonProxyHostsPropertyOrThrow()), "")
-				.split("\\|", SplitLimit.NONE_AND_NO_EMPTY_TRAILING)));
+				.split("\\|", SplitLimit.NO_LIMIT_AND_STRIP_EMPTY_TRAILING)));
 	}
 
 	/**
