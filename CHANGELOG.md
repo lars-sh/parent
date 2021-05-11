@@ -20,7 +20,7 @@ Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%
 TODO
 
 ### Removed
-TODO
+* `de.larssh.utils.test.Assertions#assertEqualsAndHashCode` as most `equals` and `hashCode` implementations don't need to be tested in a that specific way.
 
 <a name="0.9.12"></a>
 
