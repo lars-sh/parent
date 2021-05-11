@@ -15,12 +15,13 @@ Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%
 * Renamed constants of `de.larssh.utils.text.SplitLimit` to be more precise
 * Renamed methods `de.larssh.utils.text.Strings.toNeutral*` to `de.larssh.utils.text.Strings.to*Neutral` to match the naming of the new ASCII methods.
 * Most methods inside `de.larssh.utils.text.Strings` allow to pass any kind of `CharSequence`, not just `String`.
+* Allow underscores in the name of test methods.
 
 ### Fixed
 TODO
 
 ### Removed
-TODO
+* `de.larssh.utils.test.Assertions#assertEqualsAndHashCode` as most `equals` and `hashCode` implementations don't need to be tested in a that specific way.
 
 <a name="0.9.12"></a>
 

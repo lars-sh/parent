@@ -25,7 +25,7 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2021</copyright>
     <item>
-      <title>File: 11,
+      <title>File: 8,
              Errors: 0,
              Warnings: 0,
              Infos: 0
@@ -46,34 +46,6 @@ under the License.
           <tbody>
                           <tr>
                 <td>
-                  <a href="https://lars-sh.github.io/parent/utils-test//checkstyle.html#de.larssh.utils.test.AssertionException.java">de/larssh/utils/test/AssertionException.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://lars-sh.github.io/parent/utils-test//checkstyle.html#de.larssh.utils.test.Assertions.java">de/larssh/utils/test/Assertions.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="https://lars-sh.github.io/parent/utils-test//checkstyle.html#de.larssh.utils.test.SneakyException.java">de/larssh/utils/test/SneakyException.java</a>
                 </td>
                 <td>
@@ -89,20 +61,6 @@ under the License.
                           <tr>
                 <td>
                   <a href="https://lars-sh.github.io/parent/utils-test//checkstyle.html#de.larssh.utils.test.package-info.java">de/larssh/utils/test/package-info.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://lars-sh.github.io/parent/utils-test//checkstyle.html#de.larssh.utils.test.AssertEqualsAndHashCodeArguments.java">de/larssh/utils/test/AssertEqualsAndHashCodeArguments.java</a>
                 </td>
                 <td>
                   0
