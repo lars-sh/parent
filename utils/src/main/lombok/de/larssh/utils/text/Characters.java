@@ -42,7 +42,7 @@ public class Characters {
 	/**
 	 * Compares two {@code char} values, ignoring case differences in the ASCII
 	 * range. This method eliminates case differences by calling
-	 * {@code Characters.toUpperCaseAscii(character)}.
+	 * {@code Characters.toLowerCaseAscii(character)}.
 	 *
 	 * <p>
 	 * Note that this method does <i>not</i> ignore the case for characters outside
@@ -55,7 +55,7 @@ public class Characters {
 	 *         {@code char}, ignoring case considerations in the ASCII range.
 	 */
 	public static int compareIgnoreCaseAscii(final char first, final char second) {
-		return first == second ? 0 : toUpperCaseAscii(first) - toUpperCaseAscii(second);
+		return first == second ? 0 : toLowerCaseAscii(first) - toLowerCaseAscii(second);
 	}
 
 	/**
