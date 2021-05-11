@@ -1,7 +1,5 @@
 package de.larssh.utils.text;
 
-import static java.util.Collections.unmodifiableList;
-
 import java.io.IOException;
 import java.io.Reader;
 import java.util.ArrayList;
@@ -20,21 +18,6 @@ import lombok.ToString;
 @PackagePrivate
 @RequiredArgsConstructor
 class CsvParser {
-	/**
-	 * Creates a new {@link CsvRow} and adds it to {@code csv}. The created list of
-	 * values for the new row is empty and cannot be modified via {@link CsvRow} to
-	 * prevent later modifications. For initial filling a modifiable reference to
-	 * that list is returned.
-	 *
-	 * @param csv the object representing the CSV data structure
-	 * @return the modifiable list to insert values into the created row
-	 */
-	private static List<String> addRow(final Csv csv) {
-		final List<String> modifiableList = new ArrayList<>();
-		csv.add(new CsvRow(csv, csv.size(), unmodifiableList(modifiableList)));
-		return modifiableList;
-	}
-
 	/**
 	 * Asserts the validity of {@code separator} and {@escaper} as CSV control
 	 * characters.
@@ -65,6 +48,30 @@ class CsvParser {
 	}
 
 	/**
+	 * Tries to read a new line from {@code reader}. This method accepts either of
+	 * {@code \n}, {@code \r\n} or {@code \r} as new line sequence.
+	 *
+	 * @param reader a {@link PeekableReader} as data input
+	 * @return {@code true} if a new line was read., else {@code false}
+	 * @throws IOException if an I/O error occurs
+	 */
+	@PackagePrivate
+	static boolean readNewLine(final PeekableReader reader) throws IOException {
+		if (!reader.hasNext()) {
+			return false;
+		}
+		final char character = reader.peek();
+		if (character != '\r' && character != '\n') {
+			return false;
+		}
+		reader.next();
+		if (character == '\r' && reader.hasNext() && reader.peek() == '\n') {
+			reader.next();
+		}
+		return true;
+	}
+
+	/**
 	 * The CSV separator character
 	 */
 	char separator;
@@ -82,7 +89,8 @@ class CsvParser {
 	 * @return {@code true} if {@character} is either the separator character or a
 	 *         new line character, else {@code false}
 	 */
-	private boolean isSeparatorOrNewLine(final char character) {
+	@PackagePrivate
+	boolean isSeparatorOrNewLine(final char character) {
 		return character == separator || character == '\r' || character == '\n';
 	}
 
@@ -122,7 +130,8 @@ class CsvParser {
 			return csv.unmodifiable();
 		}
 
-		List<String> currentRow = addRow(csv);
+		List<String> currentRow = new CsvRow(csv, csv.size(), new ArrayList<>());
+		csv.add(currentRow);
 		while (reader.hasNext()) {
 			if (readNewLine(reader)) {
 				// Ignore a trailing new line
@@ -131,7 +140,8 @@ class CsvParser {
 				}
 
 				// Add new row
-				currentRow = addRow(csv);
+				currentRow = new CsvRow(csv, csv.size(), new ArrayList<>());
+				csv.add(currentRow);
 			} else {
 				// Parse the next value and add it to the current row
 				currentRow.add(parseValue(reader));
@@ -158,8 +168,9 @@ class CsvParser {
 	 * @return the parsed CSV value
 	 * @throws IOException if an I/O error occurs
 	 */
+	@PackagePrivate
 	@SuppressWarnings("PMD.PrematureDeclaration")
-	private String parseValue(final PeekableReader reader) throws IOException {
+	String parseValue(final PeekableReader reader) throws IOException {
 		final StringBuilder builder = new StringBuilder();
 
 		// Check if the given value is escaped. Leading whitespaces need to be read to
@@ -195,30 +206,31 @@ class CsvParser {
 	}
 
 	/**
-	 * Checks if control characters need to be handled in their special ways.
+	 * Checks if control characters need to be handled.
 	 *
 	 * <p>
-	 * For non-escaped values control characters always need to be in their special
-	 * ways. For escaped values the value needs to be "closed" using the escaping
-	 * character.
+	 * For non-escaped values control characters always need to be handled. For
+	 * escaped values the value needs to be "closed" using the escaping character
+	 * prior handling following control characters.
 	 *
 	 * @param reader    a {@link PeekableReader} as data input
 	 * @param isEscaped {@code true} if the current value is escaped, else
 	 *                  {@code false}
-	 * @return {@code true} if control characters need to be in their special ways,
-	 *         else {@code false}
+	 * @return {@code true} if control characters need to be handled, else
+	 *         {@code false}
 	 * @throws IOException if an I/O error occurs
 	 */
-	private boolean readEscaperAndIsControlCharHandling(final PeekableReader reader, final boolean isEscaped)
+	@PackagePrivate
+	boolean readEscaperAndIsControlCharHandling(final PeekableReader reader, final boolean isEscaped)
 			throws IOException {
 		if (!isEscaped) {
 			return true;
 		}
-		if (reader.peek() != escaper) {
+		if (!reader.hasNext() || reader.peek() != escaper) {
 			return false;
 		}
 		reader.next();
-		return reader.hasNext() && reader.peek() != escaper;
+		return !reader.hasNext() || reader.peek() != escaper;
 	}
 
 	/**
@@ -227,7 +239,7 @@ class CsvParser {
 	 *
 	 * <p>
 	 * The reader is forwarded to the first character of the value. In case of an
-	 * escaped value, the escaping character has already been read.
+	 * escaped value, the escaping character is read.
 	 *
 	 * <p>
 	 * Leading whitespaces are trimmed in case of an escaped value, else they are
@@ -239,8 +251,9 @@ class CsvParser {
 	 *         escaped, else {@code false}
 	 * @throws IOException if an I/O error occurs
 	 */
+	@PackagePrivate
 	@SuppressWarnings("PMD.PrematureDeclaration")
-	private boolean readLeadingWhitespacesAndIsEscaped(final PeekableReader reader, final StringBuilder builder)
+	boolean readLeadingWhitespacesAndIsEscaped(final PeekableReader reader, final StringBuilder builder)
 			throws IOException {
 		final String whitespaces = readWhitespaces(reader);
 
@@ -254,31 +267,8 @@ class CsvParser {
 	}
 
 	/**
-	 * Tries to read a new line from {@code reader}. This method accepts either of
-	 * {@code \n}, {@code \r\n} or {@code \r} as new line sequence.
-	 *
-	 * @param reader a {@link PeekableReader} as data input
-	 * @return {@code true} if a new line was read., else {@code false}
-	 * @throws IOException if an I/O error occurs
-	 */
-	private boolean readNewLine(final PeekableReader reader) throws IOException {
-		if (!reader.hasNext()) {
-			return false;
-		}
-		final char character = reader.peek();
-		if (character != '\r' && character != '\n') {
-			return false;
-		}
-		reader.next();
-		if (character == '\r' && reader.hasNext() && reader.peek() == '\n') {
-			reader.next();
-		}
-		return true;
-	}
-
-	/**
-	 * Reads whitespace characters without a special meaning (see below) starting at
-	 * the current position of the reader.
+	 * Reads whitespace characters without a special meaning starting at the current
+	 * position of the reader.
 	 *
 	 * <p>
 	 * Whitespace characters are defined using
@@ -290,7 +280,8 @@ class CsvParser {
 	 * @return the read whitespace characters
 	 * @throws IOException if an I/O error occurs
 	 */
-	private String readWhitespaces(final PeekableReader reader) throws IOException {
+	@PackagePrivate
+	String readWhitespaces(final PeekableReader reader) throws IOException {
 		final StringBuilder builder = new StringBuilder();
 		while (reader.hasNext()) {
 			final char character = reader.peek();
