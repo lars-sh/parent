@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.Reader;
 import java.util.NoSuchElementException;
 
+import de.larssh.utils.Nullables;
 import edu.umd.cs.findbugs.annotations.Nullable;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.NonFinal;
@@ -29,13 +30,26 @@ public class PeekableReader extends Reader {
 	 * undefined.
 	 */
 	@NonFinal
-	int peekedElement = -1;
+	int peekedCharacter = -1;
 
 	/**
 	 * The reader's current inner state
 	 */
 	@NonFinal
 	ReaderState state = ReaderState.CALL_FOR_NEXT;
+
+	/**
+	 * The peeked character at the time of calling {@link #mark(int)} the last time.
+	 */
+	@NonFinal
+	int markedPeekedCharacter = -1;
+
+	/**
+	 * The reader's current inner state at the time of calling {@link #mark(int)}
+	 * the last time.
+	 */
+	@NonFinal
+	ReaderState markedState = ReaderState.CALL_FOR_NEXT;
 
 	/** {@inheritDoc} */
 	@Override
@@ -54,10 +68,24 @@ public class PeekableReader extends Reader {
 	 */
 	public final boolean hasNext() throws IOException {
 		if (state == ReaderState.CALL_FOR_NEXT) {
-			peekedElement = reader.read();
-			state = peekedElement == -1 ? ReaderState.END_OF_DATA : ReaderState.PEEKED;
+			peekedCharacter = reader.read();
+			state = peekedCharacter == -1 ? ReaderState.END_OF_DATA : ReaderState.PEEKED;
 		}
 		return state == ReaderState.PEEKED;
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public void mark(final int readAheadLimit) throws IOException {
+		reader.mark(readAheadLimit);
+		markedPeekedCharacter = peekedCharacter;
+		markedState = state;
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean markSupported() {
+		return reader.markSupported();
 	}
 
 	/**
@@ -75,8 +103,8 @@ public class PeekableReader extends Reader {
 		if (state == ReaderState.PEEKED) {
 			state = ReaderState.CALL_FOR_NEXT;
 		}
-		final char next = (char) peekedElement;
-		peekedElement = -1;
+		final char next = (char) peekedCharacter;
+		peekedCharacter = -1;
 		return next;
 	}
 
@@ -93,14 +121,64 @@ public class PeekableReader extends Reader {
 		if (!hasNext()) {
 			throw new NoSuchElementException();
 		}
-		return (char) peekedElement;
+		return (char) peekedCharacter;
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public int read(@Nullable final char[] cbuf, final int off, final int len) throws IOException {
+	public int read() throws IOException {
+		if (state == ReaderState.PEEKED) {
+			state = ReaderState.CALL_FOR_NEXT;
+			return (char) peekedCharacter;
+		}
+		return super.read();
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public int read(@Nullable final char[] buffer, final int offset, final int length) throws IOException {
+		if (state == ReaderState.CALL_FOR_NEXT) {
+			return reader.read(buffer, offset, length);
+		}
+		if (state == ReaderState.END_OF_DATA) {
+			return -1;
+		}
+
+		// Error handling as of JavaDoc
+		final char[] nonNullableBuffer = Nullables.orElseThrow(buffer);
+		if (offset < 0 || length < 0 || offset + length > nonNullableBuffer.length) {
+			throw new IndexOutOfBoundsException();
+		}
+
+		// Early exit: Avoid further processing in case no character were requested
+		if (length == 0) {
+			return 0;
+		}
+
+		// Insert peeked character as first character
+		nonNullableBuffer[offset] = (char) peekedCharacter;
 		state = ReaderState.CALL_FOR_NEXT;
-		return reader.read(cbuf, off, len);
+
+		// No need to read further characters if just one character were requested
+		if (length == 1) {
+			return 1;
+		}
+
+		// Read further characters and handle possible end of data
+		final int noOfCharacters = reader.read(buffer, offset + 1, length - 1);
+		if (noOfCharacters < 0) {
+			state = ReaderState.END_OF_DATA;
+			return 1;
+		}
+		return noOfCharacters + 1;
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public void reset() throws IOException {
+		reader.reset();
+		this.peekedCharacter = markedPeekedCharacter;
+		state = markedState;
 	}
 
 	/**
