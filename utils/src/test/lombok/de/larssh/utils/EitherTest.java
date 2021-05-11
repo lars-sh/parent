@@ -1,7 +1,8 @@
 package de.larssh.utils;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.assertj.core.api.Assertions.assertThatNullPointerException;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.fail;
 
@@ -47,7 +48,7 @@ public class EitherTest {
 	@Test
 	@SuppressWarnings("deprecation")
 	public void testOf_throwIfBoth() {
-		assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> Either.of('A', 2));
+		assertThatIllegalArgumentException().isThrownBy(() -> Either.of('A', 2));
 	}
 
 	/**
@@ -57,7 +58,7 @@ public class EitherTest {
 	@Test
 	@SuppressWarnings("deprecation")
 	public void testOf_throwIfNone() {
-		assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> Either.of(null, null));
+		assertThatNullPointerException().isThrownBy(() -> Either.of(null, null));
 	}
 
 	/**

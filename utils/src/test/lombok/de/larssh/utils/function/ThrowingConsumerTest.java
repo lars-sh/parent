@@ -2,8 +2,8 @@ package de.larssh.utils.function;
 
 import static de.larssh.utils.function.ThrowingConsumer.throwing;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 import java.util.function.Consumer;
 
@@ -48,7 +48,7 @@ public class ThrowingConsumerTest {
 	 */
 	@Test
 	public void testAccept_consumeNull() {
-		assertDoesNotThrow(() -> CONSUME_VALUE.accept(null));
+		assertThatCode(() -> CONSUME_VALUE.accept(null)).doesNotThrowAnyException();
 	}
 
 	/**
@@ -57,7 +57,7 @@ public class ThrowingConsumerTest {
 	 */
 	@Test
 	public void testAccept_consumeValue() {
-		assertDoesNotThrow(() -> CONSUME_VALUE.accept("A"));
+		assertThatCode(() -> CONSUME_VALUE.accept("A")).doesNotThrowAnyException();
 	}
 
 	/**
@@ -74,7 +74,7 @@ public class ThrowingConsumerTest {
 	 */
 	@Test
 	public void testAcceptThrowing_consumeNull() {
-		assertDoesNotThrow(() -> CONSUME_VALUE.acceptThrowing(null));
+		assertThatCode(() -> CONSUME_VALUE.acceptThrowing(null)).doesNotThrowAnyException();
 	}
 
 	/**
@@ -83,7 +83,7 @@ public class ThrowingConsumerTest {
 	 */
 	@Test
 	public void testAcceptThrowing_consumeValue() {
-		assertDoesNotThrow(() -> CONSUME_VALUE.acceptThrowing("A"));
+		assertThatCode(() -> CONSUME_VALUE.acceptThrowing("A")).doesNotThrowAnyException();
 	}
 
 	/**
