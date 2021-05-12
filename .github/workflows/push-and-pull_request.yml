@@ -25,7 +25,7 @@ jobs:
           key: maven-dependencies
           path: ~/.m2/repository
       - name: Check out
-        uses: actions/checkout@v2
+        uses: actions/checkout@v2.3.4
       - name: Set up JDK ${{ matrix.java-version }}
         uses: actions/setup-java@v2
         with:
