@@ -2,10 +2,6 @@ package de.larssh.utils.collection;
 
 import java.util.Set;
 
-import edu.umd.cs.findbugs.annotations.CheckForNull;
-import lombok.AccessLevel;
-import lombok.Getter;
-
 /**
  * An abstract {@link Set} implementation pointing to a given set object.
  *
@@ -19,10 +15,7 @@ import lombok.Getter;
 public abstract class ProxiedSet<E> extends ProxiedCollection<E> implements Set<E> {
 	/**
 	 * Wrapped set
-	 *
-	 * @return wrapped set
 	 */
-	@Getter(AccessLevel.PROTECTED)
 	Set<E> set;
 
 	/**
@@ -35,21 +28,32 @@ public abstract class ProxiedSet<E> extends ProxiedCollection<E> implements Set<
 	 *
 	 * @param set the set to proxy
 	 */
-	public ProxiedSet(final Set<E> set) {
+	protected ProxiedSet(final Set<E> set) {
 		super(set);
 
 		this.set = set;
 	}
 
-	/** {@inheritDoc} */
-	@Override
-	public boolean equals(@CheckForNull final Object object) {
-		return getSet().equals(object);
+	/**
+	 * Verifies if this object is modifiable and either returns the wrapped set or
+	 * throws an appropriate exception.
+	 *
+	 * @return the wrapped set if this object is modifiable
+	 * @throws UnsupportedOperationException if this object is unmodifiable
+	 */
+	protected Set<E> getModifiableSet() {
+		if (isModifiable()) {
+			return set;
+		}
+		throw new UnsupportedOperationException();
 	}
 
-	/** {@inheritDoc} */
-	@Override
-	public int hashCode() {
-		return getSet().hashCode();
+	/**
+	 * Returns the wrapped set without verifying if modifying it is prohibited.
+	 *
+	 * @return the wrapped set
+	 */
+	protected Set<E> getUnmodifiableSet() {
+		return set;
 	}
 }

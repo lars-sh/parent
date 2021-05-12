@@ -5,7 +5,6 @@ import java.util.Optional;
 
 import de.larssh.utils.annotations.PackagePrivate;
 import de.larssh.utils.collection.ProxiedList;
-import edu.umd.cs.findbugs.annotations.CheckForNull;
 import lombok.Getter;
 
 /**
@@ -14,7 +13,8 @@ import lombok.Getter;
  *
  * <p>
  * Objects of this type include a back-reference to the parent {@link Csv}
- * object and the current row's index.
+ * object and the current row's index. If the parent object is marked
+ * unmodifiable, its rows are unmodifiable, too.
  *
  * <p>
  * For convenience the method {@link #get(String)} allows to retrieve values by
@@ -62,12 +62,6 @@ public class CsvRow extends ProxiedList<String> {
 		this.rowIndex = rowIndex;
 	}
 
-	/** {@inheritDoc} */
-	@Override
-	public boolean equals(@CheckForNull final Object object) {
-		return getList().equals(object);
-	}
-
 	/**
 	 * Returns the current row's value of the column specified by {@code header}.
 	 * Valid headers are specified by the first row of the CSV. In case
@@ -89,8 +83,8 @@ public class CsvRow extends ProxiedList<String> {
 
 	/** {@inheritDoc} */
 	@Override
-	public int hashCode() {
-		return getList().hashCode();
+	public boolean isModifiable() {
+		return getCsv().isModifiable();
 	}
 
 	/**

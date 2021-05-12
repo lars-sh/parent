@@ -11,12 +11,9 @@ import java.util.List;
 import de.larssh.utils.Finals;
 import de.larssh.utils.Nullables;
 import de.larssh.utils.collection.ProxiedList;
-import edu.umd.cs.findbugs.annotations.CheckForNull;
 import edu.umd.cs.findbugs.annotations.NonNull;
 import edu.umd.cs.findbugs.annotations.Nullable;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
-import lombok.Getter;
-import lombok.experimental.NonFinal;
 
 /**
  * This class represents CSV data, consisting of rows of values, implementing
@@ -31,7 +28,6 @@ import lombok.experimental.NonFinal;
  * {@link #unmodifiable()}. Afterwards applying modifying actions on that
  * instance results in an {@link UnsupportedOperationException}.
  */
-@Getter
 @SuppressWarnings("PMD.ShortClassName")
 public class Csv extends ProxiedList<CsvRow> {
 	/**
@@ -59,14 +55,6 @@ public class Csv extends ProxiedList<CsvRow> {
 	public static Csv parse(final Reader reader, final char separator, final char escaper) throws IOException {
 		return new CsvParser(separator, escaper).parse(reader);
 	}
-
-	/**
-	 * Flag specifying if this instance can be modified
-	 *
-	 * @return {@code true} if this instance is modifiable, else {@code false}
-	 */
-	@NonFinal
-	boolean modifiable = true;
 
 	/**
 	 * This class represents CSV data, consisting of rows of values, implementing
@@ -131,7 +119,7 @@ public class Csv extends ProxiedList<CsvRow> {
 	 * @throws UnsupportedOperationException if this CSV object is unmodifiable
 	 */
 	public boolean add(final List<String> element) {
-		return getListIfModifiable().add(new CsvRow(this, size(), element));
+		return super.add(new CsvRow(this, size(), element));
 	}
 
 	/** {@inheritDoc} */
@@ -177,16 +165,10 @@ public class Csv extends ProxiedList<CsvRow> {
 	}
 
 	/** {@inheritDoc} */
-	@Override
-	public boolean equals(@CheckForNull final Object object) {
-		return getList().equals(object);
-	}
-
-	/** {@inheritDoc} */
 	@NonNull
 	@Override
 	public CsvRow get(final int index) {
-		return getList().get(index);
+		return getUnmodifiableList().get(index);
 	}
 
 	/**
@@ -197,26 +179,6 @@ public class Csv extends ProxiedList<CsvRow> {
 	 */
 	public List<String> getHeaders() {
 		return isEmpty() ? emptyList() : get(0);
-	}
-
-	/**
-	 * Verifies if this object is modifiable and either returns the wrapped list or
-	 * throws an appropriate exception.
-	 *
-	 * @return the wrapped list if this object is modifiable
-	 * @throws UnsupportedOperationException if this object is unmodifiable
-	 */
-	private List<CsvRow> getListIfModifiable() {
-		if (isModifiable()) {
-			return getList();
-		}
-		throw new UnsupportedOperationException();
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public int hashCode() {
-		return getList().hashCode();
 	}
 
 	/** {@inheritDoc} */
@@ -233,7 +195,7 @@ public class Csv extends ProxiedList<CsvRow> {
 	@NonNull
 	@Override
 	public CsvRow set(final int index, @Nullable final CsvRow element) {
-		return getListIfModifiable().set(index, new CsvRow(this, index, Nullables.orElseThrow(element)));
+		return getModifiableList().set(index, new CsvRow(this, index, Nullables.orElseThrow(element)));
 	}
 
 	/**
@@ -271,7 +233,7 @@ public class Csv extends ProxiedList<CsvRow> {
 	 * @return this objects
 	 */
 	public Csv unmodifiable() {
-		modifiable = false;
+		setModifiable(false);
 		return this;
 	}
 }

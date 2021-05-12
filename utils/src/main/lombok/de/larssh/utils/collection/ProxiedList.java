@@ -4,10 +4,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.ListIterator;
 
-import edu.umd.cs.findbugs.annotations.CheckForNull;
 import edu.umd.cs.findbugs.annotations.Nullable;
-import lombok.AccessLevel;
-import lombok.Getter;
 
 /**
  * An abstract {@link List} implementation pointing to a given list object.
@@ -22,10 +19,7 @@ import lombok.Getter;
 public abstract class ProxiedList<E> extends ProxiedCollection<E> implements List<E> {
 	/**
 	 * Wrapped list
-	 *
-	 * @return wrapped list
 	 */
-	@Getter(AccessLevel.PROTECTED)
 	List<E> list;
 
 	/**
@@ -38,7 +32,7 @@ public abstract class ProxiedList<E> extends ProxiedCollection<E> implements Lis
 	 *
 	 * @param list the list to proxy
 	 */
-	public ProxiedList(final List<E> list) {
+	protected ProxiedList(final List<E> list) {
 		super(list);
 
 		this.list = list;
@@ -47,75 +41,92 @@ public abstract class ProxiedList<E> extends ProxiedCollection<E> implements Lis
 	/** {@inheritDoc} */
 	@Override
 	public void add(final int index, @Nullable final E element) {
-		getList().add(index, element);
+		getModifiableList().add(index, element);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public boolean addAll(final int index, @Nullable final Collection<? extends E> collection) {
-		return getList().addAll(index, collection);
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public boolean equals(@CheckForNull final Object object) {
-		return getList().equals(object);
+		return getModifiableList().addAll(index, collection);
 	}
 
 	/** {@inheritDoc} */
 	@Nullable
 	@Override
 	public E get(final int index) {
-		return getList().get(index);
+		return getUnmodifiableList().get(index);
 	}
 
-	/** {@inheritDoc} */
-	@Override
-	public int hashCode() {
-		return getList().hashCode();
+	/**
+	 * Verifies if this object is modifiable and either returns the wrapped list or
+	 * throws an appropriate exception.
+	 *
+	 * @return the wrapped list if this object is modifiable
+	 * @throws UnsupportedOperationException if this object is unmodifiable
+	 */
+	protected List<E> getModifiableList() {
+		if (isModifiable()) {
+			return list;
+		}
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * Returns the wrapped list without verifying if modifying it is prohibited.
+	 *
+	 * @return the wrapped list
+	 */
+	protected List<E> getUnmodifiableList() {
+		return list;
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public int indexOf(@Nullable final Object object) {
-		return getList().indexOf(object);
+		return getUnmodifiableList().indexOf(object);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public int lastIndexOf(@Nullable final Object object) {
-		return getList().lastIndexOf(object);
+		return getUnmodifiableList().lastIndexOf(object);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public ListIterator<E> listIterator() {
-		return getList().listIterator();
+		// Remark: This implementation might allow callers to modify an unmodifiable
+		// list as of now.
+		return getUnmodifiableList().listIterator();
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public ListIterator<E> listIterator(final int index) {
-		return getList().listIterator(index);
+		// Remark: This implementation might allow callers to modify an unmodifiable
+		// list as of now.
+		return getUnmodifiableList().listIterator(index);
 	}
 
 	/** {@inheritDoc} */
 	@Nullable
 	@Override
 	public E remove(final int index) {
-		return getList().remove(index);
+		return getModifiableList().remove(index);
 	}
 
 	/** {@inheritDoc} */
 	@Nullable
 	@Override
 	public E set(final int index, @Nullable final E element) {
-		return getList().set(index, element);
+		return getModifiableList().set(index, element);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public List<E> subList(final int fromIndex, final int toIndex) {
-		return getList().subList(fromIndex, toIndex);
+		// Remark: This implementation might allow callers to modify an unmodifiable
+		// list as of now.
+		return getUnmodifiableList().subList(fromIndex, toIndex);
 	}
 }

@@ -136,6 +136,7 @@ public class PeekableReader extends Reader {
 
 	/** {@inheritDoc} */
 	@Override
+	@SuppressWarnings("PMD.CyclomaticComplexity")
 	public int read(@Nullable final char[] buffer, final int offset, final int length) throws IOException {
 		if (state == ReaderState.CALL_FOR_NEXT) {
 			return reader.read(buffer, offset, length);
@@ -166,7 +167,7 @@ public class PeekableReader extends Reader {
 
 		// Read further characters and handle possible end of data
 		final int noOfCharacters = reader.read(buffer, offset + 1, length - 1);
-		if (noOfCharacters < 0) {
+		if (noOfCharacters == -1) {
 			state = ReaderState.END_OF_DATA;
 			return 1;
 		}

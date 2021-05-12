@@ -120,6 +120,7 @@ class CsvParser {
 	 *                                  {@escaper} value
 	 * @throws IOException              if an I/O error occurs
 	 */
+	@SuppressWarnings("PMD.AvoidInstantiatingObjectsInLoops")
 	private Csv parse(final PeekableReader reader) throws IOException {
 		assertCsvInput(separator, escaper);
 
