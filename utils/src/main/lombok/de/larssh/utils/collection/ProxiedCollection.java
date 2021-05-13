@@ -33,6 +33,7 @@ public abstract class ProxiedCollection<E> implements Collection<E> {
 	/**
 	 * Flag specifying if this instance can be modified
 	 *
+	 * @param modifiable flag
 	 * @return {@code true} if this instance is modifiable, else {@code false}
 	 */
 	@NonFinal

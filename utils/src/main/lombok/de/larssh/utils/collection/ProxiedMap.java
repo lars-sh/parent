@@ -33,6 +33,7 @@ public abstract class ProxiedMap<K, V> implements Map<K, V> {
 	/**
 	 * Flag specifying if this instance can be modified
 	 *
+	 * @param modifiable flag
 	 * @return {@code true} if this instance is modifiable, else {@code false}
 	 */
 	@NonFinal
