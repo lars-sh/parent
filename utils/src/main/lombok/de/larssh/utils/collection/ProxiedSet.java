@@ -34,26 +34,18 @@ public abstract class ProxiedSet<E> extends ProxiedCollection<E> implements Set<
 		this.set = set;
 	}
 
-	/**
-	 * Verifies if this object is modifiable and either returns the wrapped set or
-	 * throws an appropriate exception.
-	 *
-	 * @return the wrapped set if this object is modifiable
-	 * @throws UnsupportedOperationException if this object is unmodifiable
-	 */
-	protected Set<E> getModifiableSet() {
+	/** {@inheritDoc} */
+	@Override
+	protected Set<E> getWrappedIfModifiable() {
 		if (isModifiable()) {
 			return set;
 		}
 		throw new UnsupportedOperationException();
 	}
 
-	/**
-	 * Returns the wrapped set without verifying if modifying it is prohibited.
-	 *
-	 * @return the wrapped set
-	 */
-	protected Set<E> getUnmodifiableSet() {
+	/** {@inheritDoc} */
+	@Override
+	protected Set<E> getWrappedForRead() {
 		return set;
 	}
 }

@@ -14,6 +14,9 @@ import de.larssh.utils.collection.ProxiedList;
 import edu.umd.cs.findbugs.annotations.NonNull;
 import edu.umd.cs.findbugs.annotations.Nullable;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.experimental.NonFinal;
 
 /**
  * This class represents CSV data, consisting of rows of values, implementing
@@ -55,6 +58,16 @@ public class Csv extends ProxiedList<CsvRow> {
 	public static Csv parse(final Reader reader, final char separator, final char escaper) throws IOException {
 		return new CsvParser(separator, escaper).parse(reader);
 	}
+
+	/**
+	 * Flag specifying if this instance can be modified
+	 *
+	 * @param modifiable flag
+	 * @return {@code true} if this instance is modifiable, else {@code false}
+	 */
+	@NonFinal
+	@Getter(AccessLevel.PUBLIC)
+	boolean modifiable = true;
 
 	/**
 	 * This class represents CSV data, consisting of rows of values, implementing
@@ -168,7 +181,7 @@ public class Csv extends ProxiedList<CsvRow> {
 	@NonNull
 	@Override
 	public CsvRow get(final int index) {
-		return getUnmodifiableList().get(index);
+		return getWrappedForRead().get(index);
 	}
 
 	/**
@@ -195,7 +208,7 @@ public class Csv extends ProxiedList<CsvRow> {
 	@NonNull
 	@Override
 	public CsvRow set(final int index, @Nullable final CsvRow element) {
-		return getModifiableList().set(index, new CsvRow(this, index, Nullables.orElseThrow(element)));
+		return getWrappedIfModifiable().set(index, new CsvRow(this, index, Nullables.orElseThrow(element)));
 	}
 
 	/**
@@ -233,7 +246,7 @@ public class Csv extends ProxiedList<CsvRow> {
 	 * @return this objects
 	 */
 	public Csv unmodifiable() {
-		setModifiable(false);
+		modifiable = false;
 		return this;
 	}
 }

@@ -11,7 +11,8 @@ Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%
 * Methods to handle lower and upper case handling on an ASCII basis: `de.larssh.utils.text.Characters.*Ascii*` and `de.larssh.utils.text.Strings.*Ascii`
 * Structures to handle CSV data (`de.larssh.utils.text.Csv`) and corresponding methods in `de.larssh.utils.text.StringConverters`
 * Support being unmodifiable on demand for `de.larssh.utils.collection.Proxied*`
-  Therefore protected getters were renamed to `getUnmodifiable*` (for read access) and `getModifiable*` (for check for write access).
+  Therefore protected getters were renamed to `getProxied*` and now differentiate between read-only access and the need to check for write access.
+  In addition a method `isModifiable` is forced to be implemented.
 
 ### Changed
 * Renamed constants of `de.larssh.utils.text.SplitLimit` to be more precise
