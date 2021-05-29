@@ -1606,16 +1606,6 @@ function suppressJdk8Warnings() {
 	fi
 }
 
-# JDK14 to JDK16: The JavaDoc creation logs errors about missing "javadoc-bundle-option" folders.
-function suppressJdk14To16Warnings() {
-	if [ "${JDK_VERSION}" -ge 14 ] && [ "${JDK_VERSION}" -le 16 ]; then
-		cat < /dev/stdin \
-		| grep --invert-match --perl-regexp "^\\[ERROR\\] Error fetching link: .*[/\\\\]target[/\\\\]javadoc-bundle-options\\. Ignored it\\.$"
-	else
-		cat < /dev/stdin
-	fi
-}
-
 JDK_VERSION=`echo "$1" | grep --only-matching --perl-regexp "^(1\\\\.)?\\\\K\\\\d+$"`
 if [ -z "${JDK_VERSION}" ]; then
 	echo "[ERROR] The given JDK version is empty. Given value: \"$1\"" >&2
@@ -1624,8 +1614,7 @@ else
 	cat < /dev/stdin \
 	| suppressUserDefined \
 	| suppressPmdWarnings \
-	| suppressJdk8Warnings \
-	| suppressJdk14To16Warnings
+	| suppressJdk8Warnings
 fi
 ]]></echo>
 
