@@ -92,6 +92,7 @@
 		<!-- <cpd.excludeFromFailureFile>${project.basedir}/cpd-excludes.csv</cpd.excludeFromFailureFile> -->
 		<cpd.printFailingErrors>true</cpd.printFailingErrors>
 		<dependency.failOnWarning>true</dependency.failOnWarning>
+		<dependency.ignoreUnusedRuntime>true</dependency.ignoreUnusedRuntime>
 		<enforcer.requiredMavenVersion>3.3.9</enforcer.requiredMavenVersion>
 		<formatter.configFile>${project.build.directory}/formatter.xml</formatter.configFile>
 		<formatter.lineEnding>LF</formatter.lineEnding>
@@ -2474,6 +2475,7 @@ deploy:
 						</goals>
 						<configuration>
 							<failOnWarning>${dependency.failOnWarning}</failOnWarning>
+							<ignoreUnusedRuntime>${dependency.ignoreUnusedRuntime}</ignoreUnusedRuntime>
 							<ignoredUnusedDeclaredDependencies>
 								<!-- Compile -->
 								<ignoredUnusedDeclaredDependency>de.lars-sh:utils:jar:${parent.version}</ignoredUnusedDeclaredDependency>
