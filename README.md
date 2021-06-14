@@ -458,6 +458,7 @@ cpd.aggregate:                                     false
 cpd.excludeFromFailureFile:                        ${project.basedir}/cpd-excludes.csv (if existing)
 cpd.printFailingErrors:                            true
 dependency.failOnWarning:                          true
+dependency.ignoreUnusedRuntime:                    true
 enforcer.requiredMavenVersion:                     3.3.9
 formatter.configFile:                              ${project.build.directory}/formatter.xml
 formatter.lineEnding:                              LF
