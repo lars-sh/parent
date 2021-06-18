@@ -42,11 +42,11 @@ Utilities,de.larssh.utils.collection,ProxiedIterator,34,0,2,0,10,0,8,0,7,0
 Utilities,de.larssh.utils.collection,PeekableIterator,4,0,0,0,1,0,1,0,1,0
 Utilities,de.larssh.utils.collection,ProxiedMap.ProxiedEntry,30,0,2,0,7,0,6,0,5,0
 Utilities,de.larssh.utils.collection,ProxiedList,85,0,2,0,18,0,14,0,13,0
-Utilities,de.larssh.utils.collection,ProxiedSet,20,0,2,0,7,0,4,0,3,0
 Utilities,de.larssh.utils.collection,Streams,62,0,4,0,14,0,8,0,6,0
+Utilities,de.larssh.utils.collection,ProxiedSet,20,0,2,0,7,0,4,0,3,0
 Utilities,de.larssh.utils.collection,Iterators.ElementsSupplierState,34,0,0,0,4,0,1,0,1,0
-Utilities,de.larssh.utils.collection,Maps,27,0,0,0,4,0,4,0,4,0
 Utilities,de.larssh.utils.collection,Iterators,34,0,4,0,6,0,7,0,5,0
+Utilities,de.larssh.utils.collection,Maps,27,0,0,0,4,0,4,0,4,0
 Utilities,de.larssh.utils.net,SecureConnections,97,0,2,0,25,0,9,0,8,0
 Utilities,de.larssh.utils.net,InsecureConnections,14,0,0,0,3,0,4,0,4,0
 Utilities,de.larssh.utils.net,GlobalProxyConfiguration,162,0,0,0,25,0,10,0,10,0
