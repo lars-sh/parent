@@ -55,7 +55,7 @@ public class InsecureConnections {
 		/**
 		 * Empty array of acceptable CA issuer certificates
 		 */
-		private static final X509Certificate[] ACCEPTED_ISSUERS = new X509Certificate[0];
+		private static final X509Certificate[] ACCEPTED_ISSUERS = {};
 
 		/**
 		 * Singleton instance

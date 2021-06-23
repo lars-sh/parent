@@ -33,8 +33,8 @@ import lombok.ToString;
  */
 @Getter
 @ToString
-@RequiredArgsConstructor
 @EqualsAndHashCode
+@RequiredArgsConstructor
 public class Either<A, B> {
 	/**
 	 * Returns an {@link Either} object describing the given value. One of both
