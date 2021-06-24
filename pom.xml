@@ -3226,7 +3226,7 @@ deploy:
 											<entry key="cleanup.remove_unused_private_members" value="false" />
 											<entry key="cleanup.remove_unused_private_methods" value="true" />
 											<entry key="cleanup.remove_unused_private_types" value="true" />
-											<entry key="cleanup.return_expression" value="false" />
+											<entry key="cleanup.return_expression" value="true" />
 											<entry key="cleanup.simplify_lambda_expression_and_method_ref" value="true" />
 											<entry key="cleanup.single_used_field" value="true" />
 											<entry key="cleanup.sort_members" value="false" />
@@ -3375,7 +3375,7 @@ deploy:
 											<entry key="sp_cleanup.remove_unused_private_members" value="false" />
 											<entry key="sp_cleanup.remove_unused_private_methods" value="true" />
 											<entry key="sp_cleanup.remove_unused_private_types" value="true" />
-											<entry key="sp_cleanup.return_expression" value="false" />
+											<entry key="sp_cleanup.return_expression" value="true" />
 											<entry key="sp_cleanup.simplify_lambda_expression_and_method_ref" value="true" />
 											<entry key="sp_cleanup.single_used_field" value="true" />
 											<entry key="sp_cleanup.sort_members" value="false" />
