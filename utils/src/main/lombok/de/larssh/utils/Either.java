@@ -41,9 +41,6 @@ public class Either<A, B> {
 	 * parameters has to be non null (means being set), the other one has to be null
 	 * (means being not set).
 	 *
-	 * @deprecated This is a convenience method for special cases only. Use
-	 *             {@link #ofFirst} and {@link #ofSecond} where possible.
-	 *
 	 * @param <A>    type of first value
 	 * @param <B>    type of second value
 	 * @param first  value of first type or {@code null}
@@ -51,6 +48,8 @@ public class Either<A, B> {
 	 * @return an {@link Either} object with the given value
 	 * @throws NullPointerException     if both parameters are {@code null}
 	 * @throws IllegalArgumentException if both parameters are non-{@code null}
+	 * @deprecated This is a convenience method for special cases only. Use
+	 *             {@link #ofFirst} and {@link #ofSecond} where possible.
 	 */
 	@Deprecated
 	@SuppressWarnings({ "PMD.AvoidThrowingNullPointerException", "PMD.ShortMethodName" })
