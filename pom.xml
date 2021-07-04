@@ -137,7 +137,7 @@
 
 		<!-- Versions: Plugins -->
 		<build-helper-maven-plugin.version>3.2.0</build-helper-maven-plugin.version>
-		<formatter-maven-plugin.version>2.15.0</formatter-maven-plugin.version>
+		<formatter-maven-plugin.version>2.16.0</formatter-maven-plugin.version>
 		<jacoco-maven-plugin.version>0.8.7</jacoco-maven-plugin.version>
 		<lifecycle-mapping.version>1.0.0</lifecycle-mapping.version>
 		<lombok-maven-plugin.version>1.18.20.0</lombok-maven-plugin.version>
@@ -2614,6 +2614,17 @@ deploy:
 				<gpg.skip>true</gpg.skip>
 				<maven.javadoc.skip>true</maven.javadoc.skip>
 				<maven.source.skip>true</maven.source.skip>
+			</properties>
+		</profile>
+
+		<!-- JDK 10 and lower: Fallback to old Formatter Maven Plugin as of internal Eclipse Platform dependencies with newer/incompatible class file versions -->
+		<profile>
+			<id>fix-jdk8</id>
+			<activation>
+				<jdk>(,11)</jdk>
+			</activation>
+			<properties>
+				<formatter-maven-plugin.version>2.15.0</formatter-maven-plugin.version>
 			</properties>
 		</profile>
 
