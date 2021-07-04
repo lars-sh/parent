@@ -2617,6 +2617,31 @@ deploy:
 			</properties>
 		</profile>
 
+		<!-- JDK 10 and lower: Fallback to older Eclipse Platform dependencies as of newer class file versions -->
+		<profile>
+			<id>fix-jdk8</id>
+			<activation>
+				<jdk>(,11)</jdk>
+			</activation>
+			<build>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<groupId>net.revelc.code.formatter</groupId>
+							<artifactId>formatter-maven-plugin</artifactId>
+							<dependencies>
+					 			<dependency>
+							        <groupId>org.eclipse.platform</groupId>
+							        <artifactId>org.eclipse.text</artifactId>
+							        <version>3.11.0</version>
+						      	</dependency>
+							</dependencies>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+			</build>
+		</profile>
+
 		<!-- JDK 9 and later: Do not show warnings as the bootstrap class path
 			does not match the current sources version. -->
 		<profile>
