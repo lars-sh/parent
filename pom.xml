@@ -2631,9 +2631,9 @@ deploy:
 							<artifactId>formatter-maven-plugin</artifactId>
 							<dependencies>
 					 			<dependency>
-							        <groupId>org.eclipse.platform</groupId>
-							        <artifactId>org.eclipse.text</artifactId>
-							        <version>3.11.0</version>
+  <groupId>org.eclipse.platform</groupId>
+  <artifactId>org.eclipse.text</artifactId>
+  <version>3.11.0</version>
 						      	</dependency>
 							</dependencies>
 						</plugin>
