@@ -173,7 +173,7 @@
 		<versions-maven-plugin.version>2.8.1</versions-maven-plugin.version>
 
 		<!-- Versions: Plugin Dependencies -->
-		<apache-ant.version>1.10.10</apache-ant.version>
+		<apache-ant.version>1.10.11</apache-ant.version>
 		<checkstyle.version>8.44</checkstyle.version>
 		<sb-contrib.version>7.4.7</sb-contrib.version>
 		<findsecbugs.version>1.11.0</findsecbugs.version>
