@@ -1581,11 +1581,14 @@
 								<echo level="info" message="Create mvn-suppressions-parent.sh" />
 								<echo file="${project.build.directory}/mvn-suppressions-parent.sh"><![CDATA[# User Defined Suppressions
 function suppressUserDefined() {
-	if [ -f ./mvn-suppressions.sh ]; then
+	if [ ! -f ./mvn-suppressions.sh ]; then
+		cat < /dev/stdin
+	elif [ -x ./mvn-suppressions.sh ]; then
+		echo "[ERROR] The file \"mvn-suppressions.sh\" exists, but is not executable. You can make it executable using: \"git update-index --chmod=+x mvn-suppressions.sh\"" >&2
+		false
+	else
 		cat < /dev/stdin \
 		| ./mvn-suppressions.sh
-	else
-		cat < /dev/stdin
 	fi
 }
 
