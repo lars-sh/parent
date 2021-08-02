@@ -1145,6 +1145,7 @@
 		<module name="NoWhitespaceBefore">
 			<property name="tokens" value="COMMA, SEMI, POST_INC, POST_DEC, GENERIC_END, ELLIPSIS, LABELED_STAT" />
 		</module>
+		<module name="NoWhitespaceBeforeCaseDefaultColon" />
 		<module name="OperatorWrap">
 			<property name="option" value="nl" />
 			<property name="tokens" value="QUESTION, COLON, EQUAL, NOT_EQUAL, DIV, PLUS, MINUS, STAR, MOD, SR, BSR, GE, GT, SL, LE, LT, BXOR, BOR, LOR, BAND, LAND, LITERAL_INSTANCEOF, TYPE_EXTENSION_AND, ASSIGN, DIV_ASSIGN, PLUS_ASSIGN, MINUS_ASSIGN, STAR_ASSIGN, MOD_ASSIGN, SR_ASSIGN, BSR_ASSIGN, SL_ASSIGN, BXOR_ASSIGN, BOR_ASSIGN, BAND_ASSIGN, METHOD_REF" />
