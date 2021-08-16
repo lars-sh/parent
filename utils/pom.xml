@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>de.lars-sh</groupId>
 		<artifactId>root</artifactId>
-		<version>0.9.12-SNAPSHOT</version>
+		<version>0.9.13-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>utils</artifactId>
@@ -32,28 +32,28 @@
 		<dependency>
 			<groupId>org.apache.maven</groupId>
 			<artifactId>maven-artifact</artifactId>
-			<version>3.6.3</version>
+			<version>3.8.2</version>
 			<scope>provided</scope>
 			<optional>true</optional>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.maven</groupId>
 			<artifactId>maven-core</artifactId>
-			<version>3.6.3</version>
+			<version>3.8.2</version>
 			<scope>provided</scope>
 			<optional>true</optional>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.maven.resolver</groupId>
 			<artifactId>maven-resolver-api</artifactId>
-			<version>1.6.1</version>
+			<version>1.7.1</version>
 			<scope>provided</scope>
 			<optional>true</optional>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.maven.resolver</groupId>
 			<artifactId>maven-resolver-util</artifactId>
-			<version>1.6.1</version>
+			<version>1.7.1</version>
 			<optional>true</optional>
 		</dependency>
 

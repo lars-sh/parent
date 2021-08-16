@@ -1,30 +1,51 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+<a name="0.9.13"></a>
+
+## [0.9.13-SNAPSHOT](https://github.com/lars-sh/parent/compare/244da485b4b6225726946e4ab751034eda07a46c...master)
+
+Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%20%28a:parent%20a:parent-archetype%20a:root%20a:utils%20a:utils-annotations%20a:utils-test%29%20AND%20v:0.9.13)
+
+### Added
+* Methods to handle lower and upper case handling on an ASCII basis: `de.larssh.utils.text.Characters.*Ascii*` and `de.larssh.utils.text.Strings.*Ascii`
+* Structures to handle CSV data (`de.larssh.utils.text.Csv`) and corresponding methods in `de.larssh.utils.text.StringConverters`
+* Support being unmodifiable on demand for `de.larssh.utils.collection.Proxied*`
+  Therefore protected getters were renamed to `getProxied*` and now differentiate between read-only access and the need to check for write access.
+  In addition a method `isModifiable` is forced to be implemented.
+
+### Changed
+* Renamed constants of `de.larssh.utils.text.SplitLimit` to be more precise
+* Renamed methods `de.larssh.utils.text.Strings.toNeutral*` to `de.larssh.utils.text.Strings.to*Neutral` to match the naming of the new ASCII methods.
+* Most methods inside `de.larssh.utils.text.Strings` allow to pass any kind of `CharSequence`, not just `String`.
+* Allow underscores in the name of test methods.
+
+### Fixed
+TODO
+
+### Removed
+* `de.larssh.utils.test.Assertions#assertEqualsAndHashCode` as most `equals` and `hashCode` implementations don't need to be tested in a that specific way.
+
 <a name="0.9.12"></a>
 
-## [0.9.11-SNAPSHOT](https://github.com/lars-sh/parent/compare/8ba38d6ee1c58c02e5011e40d013b94cfaf59957...master)
+## [0.9.12](https://github.com/lars-sh/parent/compare/8ba38d6ee1c58c02e5011e40d013b94cfaf59957...244da485b4b6225726946e4ab751034eda07a46c) (2021-04-03)
 
 Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%20%28a:parent%20a:parent-archetype%20a:root%20a:utils%20a:utils-annotations%20a:utils-test%29%20AND%20v:0.9.12)
 
 ### Added
 * Creation of a GitHub Action for release deployment to OSSRH (Maven Central via Sonartype Nexus).  
   You can enable this feature by setting the Maven property `parent-pom.create-github-release-yml` to `true`.
+* Possibility to add custom Checkstyle rules on a per-project basis.
 
 ### Changed
 * GitHub snapshot builds are signed by default.
   This might require additional action to specify the private key and its passphrase in GitHub. Checkout the [Readme](README.md) for more information.
 * Providing snapshot builds through GitHub Packages
-
-### Fixed
-TODO
-
-### Removed
-TODO
+* Using JDK16 for builds instead of JDK14.
 
 <a name="0.9.11"></a>
 
-## [0.9.11](https://github.com/lars-sh/parent/compare/0a877872f94acddb1e4bfaf53585dbf0e69f83aa...8ba38d6ee1c58c02e5011e40d013b94cfaf59957)
+## [0.9.11](https://github.com/lars-sh/parent/compare/0a877872f94acddb1e4bfaf53585dbf0e69f83aa...8ba38d6ee1c58c02e5011e40d013b94cfaf59957) (2021-01-04)
 
 Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%20%28a:parent%20a:parent-archetype%20a:root%20a:utils%20a:utils-annotations%20a:utils-test%29%20AND%20v:0.9.11)
 

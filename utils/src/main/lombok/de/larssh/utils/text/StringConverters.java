@@ -1,11 +1,17 @@
 package de.larssh.utils.text;
 
+import static java.util.stream.Collectors.joining;
+
+import java.io.IOException;
+import java.io.Reader;
+import java.io.StringReader;
 import java.io.UncheckedIOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
+import java.util.Collection;
 
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import lombok.experimental.UtilityClass;
@@ -58,85 +64,27 @@ public class StringConverters {
 	}
 
 	/**
-	 * Decodes {@code value} as single CSV value if {@code value} starts with
-	 * {@code escaper}. Otherwise {@code value} is returned as-is.
+	 * Parses the CSV data given by {@code data}.
 	 *
 	 * <p>
-	 * <b>Examples:</b>
-	 * <table>
-	 * <caption>Examples</caption>
-	 * <tr>
-	 * <th>Parameter</th>
-	 * <th>Return Value</th>
-	 * </tr>
-	 * <tr>
-	 * <td>EMPTY</td>
-	 * <td>EMPTY</td>
-	 * </tr>
-	 * <tr>
-	 * <td>abc</td>
-	 * <td>abc</td>
-	 * </tr>
-	 * <tr>
-	 * <td>""</td>
-	 * <td>EMPTY</td>
-	 * </tr>
-	 * <tr>
-	 * <td>"abc"</td>
-	 * <td>abc</td>
-	 * </tr>
-	 * <tr>
-	 * <td>"abc""xyz"</td>
-	 * <td>abc"xyz</td>
-	 * </tr>
-	 * <tr>
-	 * <td>""""</td>
-	 * <td>"</td>
-	 * </tr>
-	 * </table>
+	 * To process {@link Reader} input, refer to
+	 * {@link Csv#parse(Reader, char, char)}.
 	 *
-	 * @param value   the value to be decoded
-	 * @param escaper the escaping character
-	 * @return the decoded value
-	 * @throws ParseException if the CSV value ends unexpectedly or some occurrence
-	 *                        of {@code escaper} is not escaped correctly
+	 * @param data      the CSV input data
+	 * @param separator the CSV separator character
+	 * @param escaper   the CSV escaping character
+	 * @return an object representing the parsed CSV data
+	 * @throws IllegalArgumentException on illegal {@code separator} or
+	 *                                  {@code escaper} value
 	 */
-	@SuppressWarnings("PMD.CyclomaticComplexity")
-	public static String decodeCsv(final String value, final char escaper) throws ParseException {
-		if (value.isEmpty() || value.charAt(0) != escaper) {
-			return value;
+	@SuppressFBWarnings(value = "EXS_EXCEPTION_SOFTENING_NO_CONSTRAINTS",
+			justification = "converting checked to unchecked exception, that should never be thrown at all")
+	public static Csv decodeCsv(final String data, final char separator, final char escaper) {
+		try (Reader reader = new StringReader(data)) {
+			return Csv.parse(reader, separator, escaper);
+		} catch (final IOException e) {
+			throw new UncheckedIOException(e);
 		}
-
-		final int length = value.length();
-		if (length < 2) {
-			throw new ParseException(
-					"Value starts with the escape character. Expected a matching trailing character, but found none.");
-		}
-		if (value.charAt(length - 1) != escaper) {
-			throw new ParseException(
-					"Value starts with the escape character. Expected a matching trailing character, but found [%s].",
-					value.charAt(length - 1));
-		}
-
-		int index = 1;
-		final StringBuilder builder = new StringBuilder(length - 2);
-		while (index < length - 1) {
-			final char character = value.charAt(index);
-			if (character == escaper) {
-				index += 1;
-				if (index >= length - 1) {
-					throw new ParseException("Unexpected end after escape character in [%s].", value);
-				}
-				if (value.charAt(index) != escaper) {
-					throw new ParseException("Unexpected character \"%s\" at index %d after escape character.",
-							value.charAt(index),
-							index);
-				}
-			}
-			builder.append(character);
-			index += 1;
-		}
-		return builder.length() == length ? value : builder.toString();
 	}
 
 	/**
@@ -210,6 +158,50 @@ public class StringConverters {
 	}
 
 	/**
+	 * Encodes {@code data} as CSV document. Occurrences of special characters are
+	 * encoded using {@code escaper} and values are separated using
+	 * {@code separator}.
+	 *
+	 * <p>
+	 * For more information on single value escaping see
+	 * {@link #encodeCsvValue(String, char, char)}.
+	 *
+	 * @param data      the data to be encoded
+	 * @param separator the CSV separator character
+	 * @param escaper   the CSV escaping character
+	 * @return the encoded CSV document
+	 */
+	public static String encodeCsv(final Collection<? extends Collection<String>> data,
+			final char separator,
+			final char escaper) {
+		return data.stream() //
+				.map(row -> encodeCsvRow(row, separator, escaper))
+				.collect(joining(Strings.NEW_LINE));
+	}
+
+	/**
+	 * Encodes {@code values} as one CSV row. Occurrences of special characters are
+	 * encoded using {@code escaper} and values are separated using
+	 * {@code separator}.
+	 *
+	 * <p>
+	 * For more information on single value escaping see
+	 * {@link #encodeCsvValue(String, char, char)}.
+	 *
+	 * @param values    the values to be encoded
+	 * @param separator the CSV separator character
+	 * @param escaper   the CSV escaping character
+	 * @return the encoded CSV row
+	 */
+	public static String encodeCsvRow(final Collection<? extends String> values,
+			final char separator,
+			final char escaper) {
+		return values.stream()
+				.map(value -> encodeCsvValue(value, separator, escaper))
+				.collect(joining(Character.toString(separator)));
+	}
+
+	/**
 	 * Encodes {@code value} into a single CSV value. All occurrences of
 	 * {@code escaper} are escaped (doubled). If {@code value} contains
 	 * inappropriate characters, it is surrounded by {@code escaper}.
@@ -246,42 +238,42 @@ public class StringConverters {
 	 * </table>
 	 *
 	 * @param value     the value to be encoded
-	 * @param escaper   the escaping character
-	 * @param separator the separator character
+	 * @param separator the CSV separator character
+	 * @param escaper   the CSV escaping character
 	 * @return the encoded value
 	 */
 	@SuppressWarnings("PMD.CyclomaticComplexity")
-	public static String encodeCsv(final String value, final char escaper, final char separator) {
-		if (escaper == separator) {
-			throw new IllegalArgumentException("Escape character and separator must not be equal.");
-		}
+	public static String encodeCsvValue(final String value, final char separator, final char escaper) {
+		CsvParser.assertCsvInput(separator, escaper);
 
 		final int length = value.length();
-		final StringBuilder builder = new StringBuilder(length);
+		int index = 0;
 
-		builder.append(escaper);
-
-		int beginIndex = 0;
-		boolean changed = false;
-		for (int index = 0; index < length; index += 1) {
+		boolean needsEscaping = false;
+		for (; index < length && !needsEscaping; index += 1) {
 			final char character = value.charAt(index);
 			if (character == escaper) {
-				if (beginIndex < index) {
-					builder.append(value, beginIndex, index);
-				}
-				beginIndex = index + 1;
-
-				builder.append(escaper).append(escaper);
-				changed = true;
+				needsEscaping = true;
+				index -= 1;
 			} else if (character == separator || character == '\r' || character == '\n') {
-				changed = true;
+				needsEscaping = true;
 			}
 		}
-		if (!changed) {
+		if (!needsEscaping) {
 			return value;
 		}
-		if (beginIndex < length) {
-			builder.append(value, beginIndex, length);
+
+		final StringBuilder builder = new StringBuilder(length + 2);
+		builder.append(escaper);
+		if (index > 0) {
+			builder.append(value, 0, index);
+		}
+		for (; index < length; index += 1) {
+			final char character = value.charAt(index);
+			if (character == escaper) {
+				builder.append(escaper);
+			}
+			builder.append(character);
 		}
 		return builder.append(escaper).toString();
 	}

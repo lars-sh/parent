@@ -4,10 +4,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.ListIterator;
 
-import edu.umd.cs.findbugs.annotations.CheckForNull;
 import edu.umd.cs.findbugs.annotations.Nullable;
-import lombok.AccessLevel;
-import lombok.Getter;
 
 /**
  * An abstract {@link List} implementation pointing to a given list object.
@@ -22,10 +19,7 @@ import lombok.Getter;
 public abstract class ProxiedList<E> extends ProxiedCollection<E> implements List<E> {
 	/**
 	 * Wrapped list
-	 *
-	 * @return wrapped list
 	 */
-	@Getter(AccessLevel.PROTECTED)
 	List<E> list;
 
 	/**
@@ -38,7 +32,7 @@ public abstract class ProxiedList<E> extends ProxiedCollection<E> implements Lis
 	 *
 	 * @param list the list to proxy
 	 */
-	public ProxiedList(final List<E> list) {
+	protected ProxiedList(final List<E> list) {
 		super(list);
 
 		this.list = list;
@@ -47,75 +41,93 @@ public abstract class ProxiedList<E> extends ProxiedCollection<E> implements Lis
 	/** {@inheritDoc} */
 	@Override
 	public void add(final int index, @Nullable final E element) {
-		getList().add(index, element);
+		getWrappedIfModifiable().add(index, element);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public boolean addAll(final int index, @Nullable final Collection<? extends E> collection) {
-		return getList().addAll(index, collection);
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public boolean equals(@CheckForNull final Object object) {
-		return getList().equals(object);
+		return getWrappedIfModifiable().addAll(index, collection);
 	}
 
 	/** {@inheritDoc} */
 	@Nullable
 	@Override
 	public E get(final int index) {
-		return getList().get(index);
+		return getWrappedForRead().get(index);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public int hashCode() {
-		return getList().hashCode();
+	protected List<E> getWrappedIfModifiable() {
+		if (isModifiable()) {
+			return list;
+		}
+		throw new UnsupportedOperationException();
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	protected List<E> getWrappedForRead() {
+		return list;
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public int indexOf(@Nullable final Object object) {
-		return getList().indexOf(object);
+		return getWrappedForRead().indexOf(object);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public int lastIndexOf(@Nullable final Object object) {
-		return getList().lastIndexOf(object);
+		return getWrappedForRead().lastIndexOf(object);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public ListIterator<E> listIterator() {
-		return getList().listIterator();
+		return new ProxiedListIterator<E>(getWrappedForRead().listIterator()) {
+			@Override
+			public boolean isModifiable() {
+				return ProxiedList.this.isModifiable();
+			}
+		};
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public ListIterator<E> listIterator(final int index) {
-		return getList().listIterator(index);
+		return new ProxiedListIterator<E>(getWrappedForRead().listIterator(index)) {
+			@Override
+			public boolean isModifiable() {
+				return ProxiedList.this.isModifiable();
+			}
+		};
 	}
 
 	/** {@inheritDoc} */
 	@Nullable
 	@Override
 	public E remove(final int index) {
-		return getList().remove(index);
+		return getWrappedIfModifiable().remove(index);
 	}
 
 	/** {@inheritDoc} */
 	@Nullable
 	@Override
 	public E set(final int index, @Nullable final E element) {
-		return getList().set(index, element);
+		return getWrappedIfModifiable().set(index, element);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public List<E> subList(final int fromIndex, final int toIndex) {
-		return getList().subList(fromIndex, toIndex);
+		return new ProxiedList<E>(getWrappedForRead().subList(fromIndex, toIndex)) {
+			@Override
+			public boolean isModifiable() {
+				return ProxiedList.this.isModifiable();
+			}
+		};
 	}
 }

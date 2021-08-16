@@ -1,9 +1,10 @@
 package de.larssh.utils;
 
-import static de.larssh.utils.test.Assertions.assertEqualsAndHashCode;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.assertj.core.api.Assertions.assertThatNullPointerException;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicReference;
@@ -11,134 +12,202 @@ import java.util.function.Function;
 
 import org.junit.jupiter.api.Test;
 
-import de.larssh.utils.test.AssertEqualsAndHashCodeArguments;
 import lombok.NoArgsConstructor;
 
 /**
- * {@link Either}
+ * Tests for {@link Either}
  */
 @NoArgsConstructor
 public class EitherTest {
-	private static final Either<Character, Integer> A = Either.ofFirst('A');
+	private static final Either<Character, Integer> FIRST_VALUE = Either.ofFirst('A');
 
-	private static final Either<Character, Integer> B = Either.ofSecond(2);
+	private static final Either<Character, Integer> SECOND_VALUE = Either.ofSecond(2);
 
 	/**
-	 * {@link Either#of(Object, Object)}
+	 * Test {@link Either#of(Object, Object)}: Creating with first value
 	 */
 	@Test
 	@SuppressWarnings("deprecation")
-	public void testOf() {
-		assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> Either.of('A', 2));
-		assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> Either.of(null, null));
+	public void testOf_createWithFirstValue() {
+		assertDoesNotThrow(() -> Either.of('A', null));
 	}
 
 	/**
-	 * {@link Either#equals(Object)} and {@link Either#hashCode()}
+	 * Test {@link Either#of(Object, Object)}: Creating with second value
 	 */
 	@Test
-	public void testEqualsAndHashCode() {
-		assertEqualsAndHashCode(a -> Either.ofFirst(a[0]), new AssertEqualsAndHashCodeArguments().add('A', 'B', false));
-		assertEqualsAndHashCode(a -> Either.ofSecond(a[0]),
-				new AssertEqualsAndHashCodeArguments().add('B', 'C', false));
+	@SuppressWarnings("deprecation")
+	public void testOf_createWithSecondValue() {
+		assertDoesNotThrow(() -> Either.of(null, 2));
 	}
 
 	/**
-	 * {@link Either#toString()}
+	 * Test {@link Either#of(Object, Object)}: Creating with two values, expecting
+	 * exception to be thrown
 	 */
 	@Test
-	public void testToString() {
-		assertThat(A.toString()).isEqualTo("Either(first=Optional[A], second=Optional.empty)");
-		assertThat(B.toString()).isEqualTo("Either(first=Optional.empty, second=Optional[2])");
+	@SuppressWarnings("deprecation")
+	public void testOf_throwIfBoth() {
+		assertThatIllegalArgumentException().isThrownBy(() -> Either.of('A', 2));
 	}
 
 	/**
-	 * {@link Either#getFirst()}
+	 * Test {@link Either#of(Object, Object)}: Creating with no value, expecting
+	 * exception to be thrown
 	 */
 	@Test
-	public void testGetFirst() {
-		assertThat(A.getFirst()).isEqualTo(Optional.of('A'));
-		assertThat(B.getFirst()).isEqualTo(Optional.empty());
+	@SuppressWarnings("deprecation")
+	public void testOf_throwIfNone() {
+		assertThatNullPointerException().isThrownBy(() -> Either.of(null, null));
 	}
 
 	/**
-	 * {@link Either#getSecond()}
+	 * Test {@link Either#getFirst()}: Expecting empty
 	 */
 	@Test
-	public void testGetSecond() {
-		assertThat(A.getSecond()).isEqualTo(Optional.empty());
-		assertThat(B.getSecond()).isEqualTo(Optional.of(2));
+	public void testGetFirst_returnEmpty() {
+		assertThat(SECOND_VALUE.getFirst()).isEmpty();
 	}
 
 	/**
-	 * {@link Either#ifPresent(java.util.function.Consumer, java.util.function.Consumer)}
+	 * Test {@link Either#getFirst()}: Expecting value
 	 */
 	@Test
-	public void testIfPresent() {
+	public void testGetFirst_returnValue() {
+		assertThat(FIRST_VALUE.getFirst()).isEqualTo(Optional.of('A'));
+	}
+
+	/**
+	 * Test {@link Either#getSecond()}: Expecting empty
+	 */
+	@Test
+	public void testGetSecond_returnEmpty() {
+		assertThat(FIRST_VALUE.getSecond()).isEmpty();
+	}
+
+	/**
+	 * Test {@link Either#getSecond()}: Expecting value
+	 */
+	@Test
+	public void testGetSecond_returnValue() {
+		assertThat(SECOND_VALUE.getSecond()).isEqualTo(Optional.of(2));
+	}
+
+	/**
+	 * Test
+	 * {@link Either#ifPresent(java.util.function.Consumer, java.util.function.Consumer)}:
+	 * Expecting first supplier to be called
+	 */
+	@Test
+	public void testIfPresent_ifFirstIsPresent() {
 		final AtomicReference<Character> firstValue = new AtomicReference<>(null);
-		A.ifPresent(c -> firstValue.set(c), i -> assertTrue(false));
+		FIRST_VALUE.ifPresent(firstValue::set, value -> fail());
 		assertThat(firstValue.get()).isEqualTo('A');
+	}
 
+	/**
+	 * Test
+	 * {@link Either#ifPresent(java.util.function.Consumer, java.util.function.Consumer)}:
+	 * Expecting second supplier to be called
+	 */
+	@Test
+	public void testIfPresent_ifSecondIsPresent() {
 		final AtomicReference<Integer> secondValue = new AtomicReference<>(null);
-		B.ifPresent(c -> assertTrue(false), i -> secondValue.set(i));
+		SECOND_VALUE.ifPresent(value -> fail(), secondValue::set);
 		assertThat(secondValue.get()).isEqualTo(2);
 	}
 
 	/**
-	 * {@link Either#ifFirstIsPresent(java.util.function.Consumer)}
+	 * Test {@link Either#ifFirstIsPresent(java.util.function.Consumer)}: Expecting
+	 * not to be called
 	 */
 	@Test
-	public void testIfFirstIsPresent() {
-		final AtomicReference<Character> value = new AtomicReference<>(null);
-		A.ifFirstIsPresent(c -> value.set(c));
-		assertThat(value.get()).isEqualTo('A');
-
-		B.ifFirstIsPresent(c -> assertTrue(false));
+	public void testIfFirstIsPresent_fsNotPresent() {
+		SECOND_VALUE.ifFirstIsPresent(value -> fail());
 	}
 
 	/**
-	 * {@link Either#ifSecondIsPresent(java.util.function.Consumer)}
+	 * Test {@link Either#ifFirstIsPresent(java.util.function.Consumer)}: Expecting
+	 * to be called
 	 */
 	@Test
-	public void testIfSecondIsPresent() {
-		A.ifSecondIsPresent(i -> assertTrue(false));
+	public void testIfFirstIsPresent_fsPresent() {
+		final AtomicReference<Character> value = new AtomicReference<>(null);
+		FIRST_VALUE.ifFirstIsPresent(value::set);
+		assertThat(value.get()).isEqualTo('A');
+	}
 
+	/**
+	 * Test {@link Either#ifSecondIsPresent(java.util.function.Consumer)}: Expecting
+	 * not to be called
+	 */
+	@Test
+	public void testIfSecondIsPresent_ifNotPresent() {
+		FIRST_VALUE.ifSecondIsPresent(value -> fail());
+	}
+
+	/**
+	 * Test {@link Either#ifSecondIsPresent(java.util.function.Consumer)}: Expecting
+	 * to be called
+	 */
+	@Test
+	public void testIfSecondIsPresent_ifPresent() {
 		final AtomicReference<Integer> value = new AtomicReference<>(null);
-		B.ifSecondIsPresent(i -> value.set(i));
+		SECOND_VALUE.ifSecondIsPresent(value::set);
 		assertThat(value.get()).isEqualTo(2);
 	}
 
 	/**
-	 * {@link Either#map(Function, Function)}
+	 * Test {@link Either#map(Function, Function)}: Expecting first to be mapped
 	 */
 	@Test
-	public void testMap() {
-		final Function<Character, String> firstFunction = c -> Character.toString(c);
-		final Function<Integer, String> secondFunction = i -> Integer.toString(i);
-
-		assertThat(A.map(firstFunction, secondFunction)).isEqualTo("A");
-		assertThat(B.map(firstFunction, secondFunction)).isEqualTo("2");
+	public void testMap_ifFirstIsPresent() {
+		final Function<Character, String> firstFunction = value -> Character.toString(value);
+		final Function<Integer, String> secondFunction = value -> Integer.toString(value);
+		assertThat(FIRST_VALUE.map(firstFunction, secondFunction)).isEqualTo("A");
 	}
 
 	/**
-	 * {@link Either#mapFirst(Function)}
+	 * Test {@link Either#map(Function, Function)}: Expecting second to be mapped
 	 */
 	@Test
-	public void testMapFirst() {
-		final Function<Character, Integer> function = Character::getNumericValue;
-
-		assertThat(A.mapFirst(function)).isEqualTo((Integer) Character.getNumericValue('A'));
-		assertThat(B.mapFirst(function)).isEqualTo((Integer) 2);
+	public void testMap_ifSecondIsPresent() {
+		final Function<Character, String> firstFunction = value -> Character.toString(value);
+		final Function<Integer, String> secondFunction = value -> Integer.toString(value);
+		assertThat(SECOND_VALUE.map(firstFunction, secondFunction)).isEqualTo("2");
 	}
 
 	/**
-	 * {@link Either#mapSecond(Function)}
+	 * Test {@link Either#mapFirst(Function)}: Expecting not to be mapped
 	 */
 	@Test
-	public void testMapSecond() {
-		final Function<Integer, Character> function = i -> Character.toChars(i)[0];
+	public void testMapFirst_ifNotPresent() {
+		assertThat(SECOND_VALUE.mapFirst(Character::getNumericValue)).isEqualTo(2);
+	}
 
-		assertThat(A.mapSecond(function)).isEqualTo((Character) 'A');
-		assertThat(B.mapSecond(function)).isEqualTo((Character) '\u0002');
+	/**
+	 * Test {@link Either#mapFirst(Function)}: Expecting to be mapped
+	 */
+	@Test
+	public void testMapFirst_ifPresent() {
+		assertThat(FIRST_VALUE.mapFirst(Character::getNumericValue)).isEqualTo(Character.getNumericValue('A'));
+	}
+
+	/**
+	 * Test {@link Either#mapSecond(Function)}: Expecting not to be mapped
+	 */
+	@Test
+	public void testMapSecond_ifNotPresent() {
+		final Function<Integer, Character> function = value -> Character.toChars(value)[0];
+		assertThat(SECOND_VALUE.mapSecond(function)).isEqualTo('\u0002');
+	}
+
+	/**
+	 * Test {@link Either#mapSecond(Function)}: Expecting to be mapped
+	 */
+	@Test
+	public void testMapSecond_ifPresent() {
+		final Function<Integer, Character> function = value -> Character.toChars(value)[0];
+		assertThat(FIRST_VALUE.mapSecond(function)).isEqualTo('A');
 	}
 }

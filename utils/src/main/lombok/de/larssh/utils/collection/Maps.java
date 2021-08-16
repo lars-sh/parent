@@ -12,6 +12,7 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 
 import edu.umd.cs.findbugs.annotations.Nullable;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.UtilityClass;
@@ -195,6 +196,8 @@ public class Maps {
 		 *
 		 * @return the map
 		 */
+		@SuppressFBWarnings(value = "EI_EXPOSE_REP",
+				justification = "This builder is meant to return the internal modifiable map.")
 		public Map<K, V> get() {
 			return map;
 		}

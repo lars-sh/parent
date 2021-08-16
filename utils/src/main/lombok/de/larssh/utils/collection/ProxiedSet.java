@@ -2,10 +2,6 @@ package de.larssh.utils.collection;
 
 import java.util.Set;
 
-import edu.umd.cs.findbugs.annotations.CheckForNull;
-import lombok.AccessLevel;
-import lombok.Getter;
-
 /**
  * An abstract {@link Set} implementation pointing to a given set object.
  *
@@ -19,10 +15,7 @@ import lombok.Getter;
 public abstract class ProxiedSet<E> extends ProxiedCollection<E> implements Set<E> {
 	/**
 	 * Wrapped set
-	 *
-	 * @return wrapped set
 	 */
-	@Getter(AccessLevel.PROTECTED)
 	Set<E> set;
 
 	/**
@@ -35,7 +28,7 @@ public abstract class ProxiedSet<E> extends ProxiedCollection<E> implements Set<
 	 *
 	 * @param set the set to proxy
 	 */
-	public ProxiedSet(final Set<E> set) {
+	protected ProxiedSet(final Set<E> set) {
 		super(set);
 
 		this.set = set;
@@ -43,13 +36,16 @@ public abstract class ProxiedSet<E> extends ProxiedCollection<E> implements Set<
 
 	/** {@inheritDoc} */
 	@Override
-	public boolean equals(@CheckForNull final Object object) {
-		return getSet().equals(object);
+	protected Set<E> getWrappedIfModifiable() {
+		if (isModifiable()) {
+			return set;
+		}
+		throw new UnsupportedOperationException();
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public int hashCode() {
-		return getSet().hashCode();
+	protected Set<E> getWrappedForRead() {
+		return set;
 	}
 }

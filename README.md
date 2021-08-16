@@ -17,7 +17,40 @@ Read below descriptions and tips to get started. In case you run into problems [
 ## Preconditions
 This POM is made for development using Maven and Eclipse by handling some of its settings to comply with the projects settings. However you can use this POM together with any other IDE (such as IntelliJ IDEA) for sure.
 
-## Getting started
+# Contents
+* [Getting Started](#getting-started)
+  * [With a new Project](#with-a-new-Project)
+  * [With an existing Project](#with-an-existing-project)
+  * [Import into Eclipse](#import-into-eclipse)
+  * [Open with IntelliJ IDEA](#open-with-intellij-idea)
+  * [GitHub Actions](#github-actions)
+  * [Skip Validations](#akip-validations)
+* [Ingredients](#ingredients)
+  * [Project Lombok](#project-lombok)
+    * [Introduction](#introduction)
+    * [First Steps](#first-steps)
+    * [Configure your IDE](#configure-your-ide)
+    * [Excluding Project Lombok](#excluding-project-lombok)
+    * [The Good Parts](#the-good-parts)
+    * [The Bad Parts](#the-bad-parts)
+  * [Null Values and Null Checks](#null-values)
+  * [Build Process](#build-process)
+    * [JAR Generation](#jar-generation)
+    * [Maven Profiles](#maven-profiles)
+    * [Maven Properties](#maven-properties)
+    * [Non-Generated Files](#non-generated-files)
+    * [Generated Files](#generated-files)
+    * [Suppress Warnings](#suppress-warnings)
+    * [Dependencies](#dependencies)
+  * [Unit Tests and Jacoco](#unit-tests)
+  * [Checks (Checkstyle, CPD, PMD and Spotbugs)](#checks)
+  * [Documentation (JavaDoc)](#documentation)
+  * [Publishing at Maven Central](#publishing-at-maven-central)
+* [Appendix](#appendix)
+  * [Maven Tips](#maven-tips)
+    * [Log Timestamp](#log-timestamp)
+
+## Getting Started
 ### With a new Project
 Creating a new project has been simplified as much as possible.
 
@@ -49,7 +82,7 @@ mvn archetype:generate -DarchetypeGroupId=de.lars-sh -DarchetypeArtifactId=paren
 Remember to **restart Eclipse** to apply changes to project settings.
 
 #### Snapshot Builds
-Snapshot builds are finally provided through [GitHub Packages](https://github.com/lars-sh/parent/packages). To use one of them, configure the version of the parent dependency accordingly and add the below noted repository to your POM.
+Snapshot builds are provided through [GitHub Packages](https://github.com/lars-sh/parent/packages). To use one of them, configure the version of the parent dependency accordingly and add the below noted repository to your POM.
 
 Beside having the possibility, please keep in mind, that snapshot builds might be either instable or even broken from time to time.
 
@@ -201,14 +234,14 @@ Taking your first steps using this POM is as simple as not using it. However it 
 ### Project Lombok
 Or simply *Lombok* - is a Java library, that aims at minimizing boilerplate code, such as getters and setters or `equals` and `hashCode` without additional runtime dependencies.
 
-#### Getting started
+#### Introduction
 Usage of Project Lombok is highly appreciated as it allows saving a lot boilerplate code to help focusing on the relevant parts of your code. Using this POM you are offered the folder `src/main/lombok` for your Lombok sources.
 
 For existing Java sources you can create the folder `src/main/java`, which is not affected by Lombok. Sources of both folders can operate with each other. The `src/test` folder is structured just the same way.
 
 At compile-time instead of Project Lombok its counterpart [Delombok](https://projectlombok.org/features/delombok) is used to generate Java sources from your Lombok sources inside `target/generated-sources/delombok` in case you need those for yourself to understand what's going on, for debugging purposes, for documentation or even for revision control.
 
-#### First steps
+#### First Steps
 Most Project Lombok features are annotation based. However Lombok comes with some additional functionality making your code even more safe. This POM activates them.
 
 Therefore all non-static fields in your Lombok sources are private and final instead of package-private and non-final. To change the visibility of fields use `public`, `protected` or `@PackagePrivate`. To make a field modifiable use `@NonFinal`.
@@ -240,7 +273,7 @@ In the rare case that you might explicitely avoid using lombok add the following
 <parent-pom.default-sources-folder>java</parent-pom.default-sources-folder>
 ```
 
-#### The good parts
+#### The Good Parts
 Project Lombok consists of many different concepts to avoid boilerplate. The following ones are the most likely to use. See JavaDoc or the [Features page](https://projectlombok.org/features) for further details.
 
 ##### @NoArgsConstructor, @RequiredArgsConstructor, @AllArgsConstructor
@@ -260,7 +293,7 @@ Warning: This annotations forces all methods inside its class to be static. In t
 ##### @Log
 I did not play around with these, though they seem to simplify two quite common cases.
 
-#### The bad parts
+#### The Bad Parts
 The following Project Lombok features are disabled on default to minimize your risk.
 
 ##### @Builder
@@ -355,7 +388,7 @@ Wherever possible the following four JAR files are packaged:
 * JavaDoc (*-javadoc.jar)
 * Unit tests (*-test.jar)
 
-JAR files contain your CHANGELOG.md, README.md and the to-be-created LICENSE.txt file inside their META-INF folder. Those two are meant to be used for documentation. See the below section about generated files for further information.
+JAR files contain your CHANGELOG.md, README.md and the to-be-created LICENSE.txt file inside their `META-INF` folder. Those two are meant to be used for documentation. See the below section about generated files for further information.
 
 In addition the JARs manifest includes a generated Class-Path to simplify execution and version information.
 
@@ -425,6 +458,7 @@ cpd.aggregate:                                     false
 cpd.excludeFromFailureFile:                        ${project.basedir}/cpd-excludes.csv (if existing)
 cpd.printFailingErrors:                            true
 dependency.failOnWarning:                          true
+dependency.ignoreUnusedRuntime:                    true
 enforcer.requiredMavenVersion:                     3.3.9
 formatter.configFile:                              ${project.build.directory}/formatter.xml
 formatter.lineEnding:                              LF
@@ -455,8 +489,25 @@ spotbugs.effort:                                   Max
 spotbugs.threshold:                                Low
 ```
 
+#### Non-Generated Files
+Some files are not generated automatically, but can be used to control the build process once created manually. Those files and how to fill them is described below.
+
+`checkstyle-rules.xml` allows to add custom rules to the Parent POM's Checkstyle configuration. The file contains all elements, that you'd probably put into the `Checker` module of a Checkstyle configuration. Therefore it might not be valid XML!
+
+`checkstyle-suppressions.xml` allows to suppress Checkstyle findings. See the below section about suppressions for more information.
+
+`cpd-excludes.csv` allows to suppress CPD findings. See the below section about suppressions for more information.
+
+`LICENSE.txt` is put into the generated JAR's `META-INF` folder. It is meant to be used for documentation.
+
+`pmd-excludes.properties` allows to suppress CPD findings. See the below section about suppressions for more information.
+
+`spotbugs-excludes.xml` allows to suppress Spotbugs findings. See the below section about suppressions for more information.
+
 #### Generated Files
 During the build process some project files are generated. Those files and their creation concept are described below.
+
+`CHANGELOG.md` and `README.md` are *your* places. Insert your changes, a short project introduction, getting started information and user documentation. Templates are created only if the files do not exist, yet.
 
 `.github/dependabot.yml` tells [Dependabot](https://dependabot.com/) which project dependencies to check. Use the Maven property `parent-pom.create-dependabot-yml` to suppress writing this file.
 
@@ -465,10 +516,6 @@ During the build process some project files are generated. Those files and their
 `.gitignore` tells [Git](https://git-scm.com/) which files to ignore. It is overwritten at every run to keep it up-to-date. Use the Maven property `parent-pom.create-gitignore` to suppress writing this file.
 
 `.travis.yml` tells [Travis CI](https://travis-ci.org/) which kind of project to build. To write this file, set the Maven property `parent-pom.create-travis-yml` to `true`.
-
-`CHANGELOG.md` and `README.md` are *your* places. Insert your changes, a short project introduction, getting started information and user documentation. Templates are created only if the files do not exist, yet.
-
-`LICENSE.txt` is **not** created. You need to create one yourself! See the section about JAR Generation for more information.
 
 ##### Project Lombok
 Project Lombok sources are meant to be used inside `lombok` folders only. Its usage is restricted to prevent you from using functionality that might lead to problems. Outside Project Lombok is prohibited at all.
@@ -576,16 +623,57 @@ There are two ways to suppress PMD warnings.
 
 * Or create a file called `pmd-excludes.properties`. See [Violation Exclusions](https://maven.apache.org/plugins/maven-pmd-plugin/examples/violation-exclusions.html) for more information. The following lines show an example file.
 
-```Java Properties
+```INI
 com.example.ClassA=UnusedPrivateField
 com.example.ClassB=EmptyCatchBlock,UnusedPrivateField
 ```
+
+##### Maven Dependency Plugin
+The Maven Dependency Plugin performs bytecode-level analysis and therefore might cause incomplete results. You can force dependencies as used using:
+
+```XML
+<build>
+	<pluginManagement>
+		<plugins>
+			<plugin>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<configuration>
+					<usedDependencies>
+						<usedDependency>[groupId]:[artifactId]</usedDependency>
+					</usedDependencies>
+				</configuration>
+			</plugin>
+		</plugins>
+	</pluginManagement>
+</build>
+```
+
+In case you really need to suppress a dependency warning from either the "declared but unused" or the "used but undeclared" list, use the `ignoredDependencies` property, which is further described [on the Maven Dependency Plugin page](http://maven.apache.org/plugins/maven-dependency-plugin/analyze-only-mojo.html#ignoredDependencies).
+
+```XML
+<build>
+	<pluginManagement>
+		<plugins>
+			<plugin>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<configuration>
+					<ignoredDependencies>
+						<ignoredDependency>[groupId]:[artifactId]:[type]:[version]</ignoredDependency>
+					</ignoredDependencies>
+				</configuration>
+			</plugin>
+		</plugins>
+	</pluginManagement>
+</build>
+```
+
+*Warning:* Do not use the `ignoredUnusedDeclaredDependencies` property, as that's already in use by the Parent POM.
 
 ##### JaCoCo
 Use the `de.larssh.utils.annotations.SuppressJacocoGenerated` annotation to indicate that JaCoCo should ignore the annotated type, constructor or method.
 
 ##### Maven Output (GitHub Actions and Travis CI)
-Create a file called `mvn-suppressions.sh`, that filters the Maven errors and warnings output on `stdin` when processed by GitHub Actions and Travis CI. The following lines show an example file.
+Create a file called `mvn-suppressions.sh`, that filters the Maven errors and warnings output on `stdin` when processed by GitHub Actions and Travis CI. Remember to give the file execution permissions, e.g. using `git update-index --chmod=+x mvn-suppressions.sh`. The following lines show an example file.
 
 ```Shell
 # Suppress lines that contain the word "first"
@@ -645,7 +733,7 @@ TODO
 TODO
 
 #### Checkstyle, CPD, PMD and Spotbugs
-TODO: These are run at compile time. Describe Eclipse plugins.
+TODO: These are run at compile time. Eclipse plugins are configured where possible.
 
 ### Documentation
 TODO: JavaDoc is run at compile time.
@@ -667,7 +755,7 @@ By default the Maven output contains no timestamp. This tip describes how to cha
 1. Open `<maven-install-directory>/conf/logging/simplelogger.properties` in your favorite folder.
 2. Add/modify the following properties:
 
-```Java Properties
+```INI
 org.slf4j.simpleLogger.showDateTime=true
 org.slf4j.simpleLogger.dateTimeFormat=HH:mm:ss,SSS
 ```

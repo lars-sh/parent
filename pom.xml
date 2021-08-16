@@ -4,7 +4,7 @@
 
 	<groupId>de.lars-sh</groupId>
 	<artifactId>root</artifactId>
-	<version>0.9.12-SNAPSHOT</version>
+	<version>0.9.13-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<name>Root POM</name>
@@ -92,6 +92,7 @@
 		<!-- <cpd.excludeFromFailureFile>${project.basedir}/cpd-excludes.csv</cpd.excludeFromFailureFile> -->
 		<cpd.printFailingErrors>true</cpd.printFailingErrors>
 		<dependency.failOnWarning>true</dependency.failOnWarning>
+		<dependency.ignoreUnusedRuntime>true</dependency.ignoreUnusedRuntime>
 		<enforcer.requiredMavenVersion>3.3.9</enforcer.requiredMavenVersion>
 		<formatter.configFile>${project.build.directory}/formatter.xml</formatter.configFile>
 		<formatter.lineEnding>LF</formatter.lineEnding>
@@ -125,38 +126,38 @@
 		<spotbugs.threshold>Low</spotbugs.threshold>
 
 		<!-- Versions: Dependencies -->
-		<assertj-core.version>3.19.0</assertj-core.version>
-		<joor.version>0.9.13</joor.version>
-		<junit-jupiter-api.version>5.7.1</junit-jupiter-api.version>
-		<junit-jupiter-engine.version>5.7.1</junit-jupiter-engine.version>
-		<lombok-annotations.version>1.18.16</lombok-annotations.version>
-		<mockito.version>3.7.7</mockito.version>
-		<parent.version>0.9.12-SNAPSHOT</parent.version>
+		<assertj-core.version>3.20.2</assertj-core.version>
+		<joor.version>0.9.14</joor.version>
+		<junit-jupiter-api.version>5.7.2</junit-jupiter-api.version>
+		<junit-jupiter-engine.version>5.7.2</junit-jupiter-engine.version>
+		<lombok-annotations.version>1.18.20</lombok-annotations.version>
+		<mockito.version>3.11.2</mockito.version>
+		<parent.version>0.9.13-SNAPSHOT</parent.version>
 
 		<!-- Versions: Plugins -->
 		<build-helper-maven-plugin.version>3.2.0</build-helper-maven-plugin.version>
-		<formatter-maven-plugin.version>2.13.0</formatter-maven-plugin.version>
-		<jacoco-maven-plugin.version>0.8.6</jacoco-maven-plugin.version>
+		<formatter-maven-plugin.version>2.16.0</formatter-maven-plugin.version>
+		<jacoco-maven-plugin.version>0.8.7</jacoco-maven-plugin.version>
 		<lifecycle-mapping.version>1.0.0</lifecycle-mapping.version>
-		<lombok-maven-plugin.version>1.18.16.0</lombok-maven-plugin.version>
+		<lombok-maven-plugin.version>1.18.20.0</lombok-maven-plugin.version>
 		<maven-antrun-plugin.version>3.0.0</maven-antrun-plugin.version>
 		<maven-archetype-plugin.version>3.2.0</maven-archetype-plugin.version>
 		<maven-assembly-plugin.version>3.3.0</maven-assembly-plugin.version>
 		<maven-checkstyle-plugin.version>3.1.2</maven-checkstyle-plugin.version>
 		<maven-clean-plugin.version>3.1.0</maven-clean-plugin.version>
 		<maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
-		<maven-dependency-plugin.version>3.1.2</maven-dependency-plugin.version>
+		<maven-dependency-plugin.version>3.2.0</maven-dependency-plugin.version>
 		<maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
-		<maven-enforcer-plugin.version>1.4.1</maven-enforcer-plugin.version>
-		<maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
+		<maven-enforcer-plugin.version>3.0.0</maven-enforcer-plugin.version>
+		<maven-gpg-plugin.version>3.0.1</maven-gpg-plugin.version>
 		<maven-help-plugin.version>3.2.0</maven-help-plugin.version>
 		<maven-install-plugin.version>2.5.2</maven-install-plugin.version>
 		<maven-jar-plugin.version>3.2.0</maven-jar-plugin.version>
-		<maven-javadoc-plugin.version>3.2.0</maven-javadoc-plugin.version>
-		<maven-jxr-plugin.version>3.0.0</maven-jxr-plugin.version>
-		<maven-plugin-plugin.version>3.6.0</maven-plugin-plugin.version>
+		<maven-javadoc-plugin.version>3.3.0</maven-javadoc-plugin.version>
+		<maven-jxr-plugin.version>3.1.1</maven-jxr-plugin.version>
+		<maven-plugin-plugin.version>3.6.1</maven-plugin-plugin.version>
 		<maven-pmd-plugin.version>3.14.0</maven-pmd-plugin.version>
-		<maven-project-info-reports-plugin.version>3.1.1</maven-project-info-reports-plugin.version>
+		<maven-project-info-reports-plugin.version>3.1.2</maven-project-info-reports-plugin.version>
 		<maven-release-plugin.version>2.5.3</maven-release-plugin.version>
 		<maven-resources-plugin.version>3.2.0</maven-resources-plugin.version>
 		<maven-shade-plugin.version>3.2.4</maven-shade-plugin.version>
@@ -165,20 +166,21 @@
 		<maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
 		<maven-surefire-report-plugin.version>2.22.2</maven-surefire-report-plugin.version>
 		<nexus-staging-maven-plugin.version>1.6.8</nexus-staging-maven-plugin.version>
-		<spotbugs-maven-plugin.version>4.2.0</spotbugs-maven-plugin.version>
+		<properties-maven-plugin.version>1.0.0</properties-maven-plugin.version>
+		<spotbugs-maven-plugin.version>4.3.0</spotbugs-maven-plugin.version>
 		<tidy-maven-plugin.version>1.1.0</tidy-maven-plugin.version>
 		<versions-maven-plugin.version>2.8.1</versions-maven-plugin.version>
 
 		<!-- Versions: Plugin Dependencies -->
-		<apache-ant.version>1.10.9</apache-ant.version>
-		<checkstyle.version>8.40</checkstyle.version>
+		<apache-ant.version>1.10.11</apache-ant.version>
+		<checkstyle.version>8.45.1</checkstyle.version>
 		<sb-contrib.version>7.4.7</sb-contrib.version>
 		<findsecbugs.version>1.11.0</findsecbugs.version>
-		<lombok.version>1.18.18</lombok.version>
-		<org-eclipse-jdt-core.version>3.24.0</org-eclipse-jdt-core.version>
-		<pmd.version>6.31.0</pmd.version>
-		<spotbugs.version>4.2.1</spotbugs.version>
-		<spotbugs-annotations.version>4.2.1</spotbugs-annotations.version>
+		<lombok.version>1.18.20</lombok.version>
+		<org-eclipse-jdt-core.version>3.26.0</org-eclipse-jdt-core.version>
+		<pmd.version>6.37.0</pmd.version>
+		<spotbugs.version>4.3.0</spotbugs.version>
+		<spotbugs-annotations.version>4.3.0</spotbugs-annotations.version>
 
 		<!-- Versions: Reporting Skins -->
 		<maven-fluido-skin.version>1.9</maven-fluido-skin.version>
@@ -522,6 +524,11 @@
 				</plugin>
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>properties-maven-plugin</artifactId>
+					<version>${properties-maven-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>tidy-maven-plugin</artifactId>
 					<version>${tidy-maven-plugin.version}</version>
 				</plugin>
@@ -589,7 +596,7 @@
 			<plugin>
 				<artifactId>maven-antrun-plugin</artifactId>
 				<executions>
-					<!-- configure-project -->
+					<!-- Configure Project -->
 					<execution>
 						<id>configure-project</id>
 						<phase>initialize</phase>
@@ -653,505 +660,523 @@
 
 								<!-- checkstyle.xml -->
 								<echo level="info" message="Update checkstyle.xml" />
-								<echo file="${project.build.directory}/checkstyle.xml">&lt;!DOCTYPE module PUBLIC "-//Checkstyle//DTD Checkstyle Configuration 1.3//EN" "https://checkstyle.org/dtds/configuration_1_3.dtd"&gt;</echo>
-								<echoxml file="${project.build.directory}/checkstyle.xml" append="true">
-									<module name="Checker">
-										<property name="localeCountry" value="US" />
-										<property name="localeLanguage" value="en" />
-										<property name="charset" value="UTF-8" />
+								<echo file="${project.build.directory}/checkstyle.xml"><![CDATA[<!DOCTYPE module PUBLIC "-//Checkstyle//DTD Checkstyle Configuration 1.3//EN" "https://checkstyle.org/dtds/configuration_1_3.dtd" [
+	<!ENTITY customCheckstyleRules SYSTEM "${project.basedir}/checkstyle-rules.xml">
+]>
+<module name="Checker">
+	<property name="localeCountry" value="US" />
+	<property name="localeLanguage" value="en" />
+	<property name="charset" value="UTF-8" />
 
-										<!-- File Filters -->
-										<module name="SuppressionFilter">
-											<property name="file" value="${project.basedir}/checkstyle-suppressions.xml" />
-											<property name="optional" value="true" />
-										</module>
-										<module name="SuppressWarningsFilter" />
+	&customCheckstyleRules;
 
-										<!-- Filters: package-info.java -->
-										<module name="SuppressionSingleFilter">
-											<property name="id" value="XNonNullByDefaultAnnotation" />
-											<property name="files" value="^.*[/\\](?!package-info\.java)[^/\\]+$" />
-										</module>
+	<!-- File Filters -->
+	<module name="SuppressionFilter">
+		<property name="file" value="${project.basedir}/checkstyle-suppressions.xml" />
+		<property name="optional" value="true" />
+	</module>
+	<module name="SuppressWarningsFilter" />
 
-										<!-- Filters: Unit Tests -->
-										<module name="SuppressionSingleFilter">
-											<property name="checks" value="ExecutableStatementCount|JavadocPackage|JavadocVariable|MagicNumber|MethodLength|MultipleStringLiterals" />
-											<property name="files" value="^(.*[/\\])?src[/\\]test[/\\].*$" />
-										</module>
+	<!-- Filters: package-info.java -->
+	<module name="SuppressionSingleFilter">
+		<property name="id" value="XNonNullByDefaultAnnotation" />
+		<property name="files" value="^.*[/\\](?!package-info\.java)[^/\\]+$" />
+	</module>
 
-										<!-- Filters: Lombok -->
-										<module name="SuppressionSingleFilter">
-											<property name="checks" value="FinalClass|HideUtilityClassConstructor|MissingCtor|MutableException|VisibilityModifier" />
-											<property name="files" value="^(.*[/\\])?src[/\\](main|test)[/\\]lombok[/\\].*$" />
-										</module>
+	<!-- Filters: Unit Tests -->
+	<module name="SuppressionSingleFilter">
+		<property name="id" value="XMethodNameMain" />
+		<property name="files" value="^(.*[/\\])?src[/\\]test[/\\].*$" />
+	</module>
+	<module name="SuppressionSingleFilter">
+		<property name="id" value="XMethodNameTest" />
+		<property name="files" value="^(.*[/\\])?src[/\\]main[/\\].*$" />
+	</module>
+	<module name="SuppressionSingleFilter">
+		<property name="checks" value="ExecutableStatementCount|JavadocPackage|JavadocVariable|MagicNumber|MethodLength|MultipleStringLiterals" />
+		<property name="files" value="^(.*[/\\])?src[/\\]test[/\\].*$" />
+	</module>
 
-										<!-- Javadoc Comments -->
-										<module name="JavadocPackage" />
+	<!-- Filters: Lombok -->
+	<module name="SuppressionSingleFilter">
+		<property name="checks" value="FinalClass|HideUtilityClassConstructor|MissingCtor|MutableException|VisibilityModifier" />
+		<property name="files" value="^(.*[/\\])?src[/\\](main|test)[/\\]lombok[/\\].*$" />
+	</module>
 
-										<!-- Miscellaneous -->
-										<module name="NewlineAtEndOfFile">
-											<property name="lineSeparator" value="lf" />
-											<property name="fileExtensions" value="java" />
-										</module>
-										<module name="Translation" />
-										<module name="UniqueProperties" />
+	<!-- Javadoc Comments -->
+	<module name="JavadocPackage" />
 
-										<!-- Regexp -->
-										<module name="RegexpMultiline">
-											<property name="id" value="XCheckForNullAnnotation" />
-											<property name="fileExtensions" value="java" />
-											<property name="format" value="\P{javaJavaIdentifierPart}final\s([^,\(\);]*\s)?@\s*(edu\s*\.\s*umd\s*\.\s*cs\s*\.\s*findbugs\s*\.\s*annotations\s*\.\s*)?CheckForNull\s" />
-											<property name="message" value="@CheckForNull should precede keyword &quot;final&quot;." />
-										</module>
-										<module name="RegexpMultiline">
-											<property name="id" value="XCollectionsEmptyConstants" />
-											<property name="fileExtensions" value="java" />
-											<property name="format" value="\P{javaJavaIdentifierPart}Collections\s*\.\s*EMPTY_(LIST|MAP|SET)\P{javaJavaIdentifierPart}" />
-											<property name="message" value="Collections.EMPTY_LIST, EMPTY_MAP and EMPTY_SET shall not be used. Use Collections.emptyList(), emptyMap() and emptySet() instead." />
-										</module>
-										<module name="RegexpMultiline">
-											<property name="id" value="XFinalsConstant" />
-											<property name="fileExtensions" value="java" />
-											<property name="format" value="[^\p{javaJavaIdentifierPart}\s]\s*(public\s+|protected\s+|)(static\s+final|final\s+static)\s+\S+\s+\S+\s*=\s*(['&quot;0-9\.+\-]|(true|false)\P{javaJavaIdentifierPart})" />
-											<property name="message" value="String and primitive constants should use Finals.constant." />
-										</module>
-										<module name="RegexpMultiline">
-											<property name="id" value="XFinalsConstantPrivate" />
-											<property name="fileExtensions" value="java" />
-											<property name="format" value="\P{javaJavaIdentifierPart}private\s+static\s+final\s+\S+\s+\S+\s*=\s*(de\s*\.\s*larssh\s*\.\s*utils\s*\.\s*)?(Finals\s*\.\s*)?constant\s*\(" />
-											<property name="message" value="Finals.constant should not be used for private constants." />
-										</module>
-										<module name="RegexpSingleline">
-											<property name="id" value="XLineTabIndentation" />
-											<property name="fileExtensions" value="config,java,properties,xml" />
-											<property name="format" value="^\t* [^*]" />
-											<property name="message" value="Line does not use tab indentation." />
-										</module>
-										<module name="RegexpSingleline">
-											<property name="id" value="XAvoidSerialVersionUID" />
-											<property name="fileExtensions" value="java" />
-											<property name="format" value="(^|\P{javaJavaIdentifierPart})serialVersionUID(\P{javaJavaIdentifierPart}|$)" />
-											<property name="message" value="Avoid using serialVersionUID as of https://github.com/rzwitserloot/lombok/wiki/WHY-NOT:-serialVersionUID" />
-										</module>
-										<module name="RegexpMultiline">
-											<property name="id" value="XNullableAnnotation" />
-											<property name="fileExtensions" value="java" />
-											<property name="format" value="\P{javaJavaIdentifierPart}final\s([^,\(\)\{;]*\s)?@\s*(edu\s*\.\s*umd\s*\.\s*cs\s*\.\s*findbugs\s*\.\s*annotations\s*\.\s*)?Nullable\s" />
-											<property name="message" value="@Nullable should precede keyword &quot;final&quot;." />
-										</module>
-										<module name="RegexpMultiline">
-											<property name="id" value="XOptionalDouble" />
-											<property name="fileExtensions" value="java" />
-											<property name="format" value="\P{javaJavaIdentifierPart}Optional\s*&lt;\s*Double\s*&gt;" />
-											<property name="message" value="Optional&lt;Double&gt; must not be used. Use OptionalDouble instead." />
-										</module>
-										<module name="RegexpMultiline">
-											<property name="id" value="XOptionalInteger" />
-											<property name="fileExtensions" value="java" />
-											<property name="format" value="\P{javaJavaIdentifierPart}Optional\s*&lt;\s*Integer\s*&gt;" />
-											<property name="message" value="Optional&lt;Integer&gt; must not be used. Use OptionalInt instead." />
-										</module>
-										<module name="RegexpMultiline">
-											<property name="id" value="XOptionalLong" />
-											<property name="fileExtensions" value="java" />
-											<property name="format" value="\P{javaJavaIdentifierPart}Optional\s*&lt;\s*Long\s*&gt;" />
-											<property name="message" value="Optional&lt;Long&gt; must not be used. Use OptionalLong instead." />
-										</module>
-										<module name="RegexpMultiline">
-											<property name="id" value="XPatternSplit" />
-											<property name="fileExtensions" value="java" />
-											<property name="format" value="\.\s*split\s*\(\s*([^&quot;\(,\)]+|&quot;([^\\&quot;]+|\\.)*&quot;|\([^\)]*\))++\s*\)" />
-											<property name="message" value="String.split and Pattern.split(input) must not be used. Use Pattern.split(input, limit) instead and think about the limit. Use StringLimit.NONE to not discard trailing empty strings." />
-										</module>
-										<module name="RegexpMultiline">
-											<property name="id" value="XStringMatches" />
-											<property name="fileExtensions" value="java" />
-											<property name="format" value="\.\s*matches\s*\(\s*([^&quot;\(,\)]+|&quot;([^\\&quot;]+|\\.)*&quot;|\([^\)]*\))++\s*\)" />
-											<property name="message" value="String.matches must not be used. Use Strings.matches instead. This is likely to be a false positive if String.matches is not called." />
-										</module>
-										<module name="RegexpMultiline">
-											<property name="id" value="XStringReplaceAll" />
-											<property name="fileExtensions" value="java" />
-											<property name="format" value="&quot;\s*\.\s*replaceAll\s*\(|(?!\P{javaJavaIdentifierPart}Strings).{8}\.\s*replaceAll\s*\(\s*([^&quot;\(,\)]+|&quot;([^\\&quot;]+|\\.)*&quot;|\([^\)]*\))*+\s*," />
-											<property name="message" value="String.replaceAll must not be used. Use Strings.replaceAll instead. This is likely to be a false positive if String.replaceAll is not called." />
-										</module>
-										<module name="RegexpMultiline">
-											<property name="id" value="XStringReplaceFirst" />
-											<property name="fileExtensions" value="java" />
-											<property name="format" value="&quot;\s*\.\s*replaceFirst\s*\(|(?!\P{javaJavaIdentifierPart}Strings).{8}\.\s*replaceFirst\s*\(\s*([^&quot;\(,\)]+|&quot;([^\\&quot;]+|\\.)*&quot;|\([^\)]*\))*+\s*," />
-											<property name="message" value="String.replaceFirst must not be used. Use Strings.replaceFirst instead. This is likely to be a false positive if String.replaceFirst is not called." />
-										</module>
-										<module name="RegexpMultiline">
-											<property name="id" value="XStringSplit" />
-											<property name="fileExtensions" value="java" />
-											<property name="format" value="&quot;\s*\.\s*split\s*\(" />
-											<property name="message" value="String.split must not be used. Use Pattern.split(input, limit) instead. This is likely to be a false positive if String.split is not called." />
-										</module>
-										<module name="RegexpMultiline">
-											<property name="id" value="XSuperWithoutParameters" />
-											<property name="fileExtensions" value="java" />
-											<property name="format" value="\P{javaJavaIdentifierPart}super\s*\(\s*\)" />
-											<property name="message" value="Avoid using super() as it is called implicitly." />
-										</module>
-										<module name="RegexpMultiline">
-											<property name="id" value="XSuppressFBWarnings" />
-											<property name="fileExtensions" value="java" />
-											<property name="format" value="@\s*SuppressFBWarnings\s*\(((?![^)]*\s*justification\s*=)|[^)]*\s*justification\s*=\s*&quot;(\s*|TODO)&quot;)" />
-											<property name="message" value="SuppressFBWarnings requires justification parameter. It must not be empty or TODO." />
-										</module>
+	<!-- Miscellaneous -->
+	<module name="NewlineAtEndOfFile">
+		<property name="lineSeparator" value="lf" />
+		<property name="fileExtensions" value="java" />
+	</module>
+	<module name="Translation" />
+	<module name="UniqueProperties" />
 
-										<!-- Size Violations -->
-										<module name="FileLength" />
+	<!-- Regexp -->
+	<module name="RegexpMultiline">
+		<property name="id" value="XCheckForNullAnnotation" />
+		<property name="fileExtensions" value="java" />
+		<property name="format" value="\P{javaJavaIdentifierPart}final\s([^,\(\);]*\s)?@\s*(edu\s*\.\s*umd\s*\.\s*cs\s*\.\s*findbugs\s*\.\s*annotations\s*\.\s*)?CheckForNull\s" />
+		<property name="message" value="@CheckForNull should precede keyword &quot;final&quot;." />
+	</module>
+	<module name="RegexpMultiline">
+		<property name="id" value="XCollectionsEmptyConstants" />
+		<property name="fileExtensions" value="java" />
+		<property name="format" value="\P{javaJavaIdentifierPart}Collections\s*\.\s*EMPTY_(LIST|MAP|SET)\P{javaJavaIdentifierPart}" />
+		<property name="message" value="Collections.EMPTY_LIST, EMPTY_MAP and EMPTY_SET shall not be used. Use Collections.emptyList(), emptyMap() and emptySet() instead." />
+	</module>
+	<module name="RegexpMultiline">
+		<property name="id" value="XFinalsConstant" />
+		<property name="fileExtensions" value="java" />
+		<property name="format" value="[^\p{javaJavaIdentifierPart}\s]\s*(public\s+|protected\s+|)(static\s+final|final\s+static)\s+\S+\s+\S+\s*=\s*(['&quot;0-9\.+\-]|(true|false)\P{javaJavaIdentifierPart})" />
+		<property name="message" value="String and primitive constants should use Finals.constant." />
+	</module>
+	<module name="RegexpMultiline">
+		<property name="id" value="XFinalsConstantPrivate" />
+		<property name="fileExtensions" value="java" />
+		<property name="format" value="\P{javaJavaIdentifierPart}private\s+static\s+final\s+\S+\s+\S+\s*=\s*(de\s*\.\s*larssh\s*\.\s*utils\s*\.\s*)?(Finals\s*\.\s*)?constant\s*\(" />
+		<property name="message" value="Finals.constant should not be used for private constants." />
+	</module>
+	<module name="RegexpSingleline">
+		<property name="id" value="XLineTabIndentation" />
+		<property name="fileExtensions" value="config,java,properties,xml" />
+		<property name="format" value="^\t* [^*]" />
+		<property name="message" value="Line does not use tab indentation." />
+	</module>
+	<module name="RegexpSingleline">
+		<property name="id" value="XAvoidSerialVersionUID" />
+		<property name="fileExtensions" value="java" />
+		<property name="format" value="(^|\P{javaJavaIdentifierPart})serialVersionUID(\P{javaJavaIdentifierPart}|$)" />
+		<property name="message" value="Avoid using serialVersionUID as of https://github.com/rzwitserloot/lombok/wiki/WHY-NOT:-serialVersionUID" />
+	</module>
+	<module name="RegexpMultiline">
+		<property name="id" value="XNullableAnnotation" />
+		<property name="fileExtensions" value="java" />
+		<property name="format" value="\P{javaJavaIdentifierPart}final\s([^,\(\)\{;]*\s)?@\s*(edu\s*\.\s*umd\s*\.\s*cs\s*\.\s*findbugs\s*\.\s*annotations\s*\.\s*)?Nullable\s" />
+		<property name="message" value="@Nullable should precede keyword &quot;final&quot;." />
+	</module>
+	<module name="RegexpMultiline">
+		<property name="id" value="XOptionalDouble" />
+		<property name="fileExtensions" value="java" />
+		<property name="format" value="\P{javaJavaIdentifierPart}Optional\s*&lt;\s*Double\s*&gt;" />
+		<property name="message" value="Optional&lt;Double&gt; must not be used. Use OptionalDouble instead." />
+	</module>
+	<module name="RegexpMultiline">
+		<property name="id" value="XOptionalInteger" />
+		<property name="fileExtensions" value="java" />
+		<property name="format" value="\P{javaJavaIdentifierPart}Optional\s*&lt;\s*Integer\s*&gt;" />
+		<property name="message" value="Optional&lt;Integer&gt; must not be used. Use OptionalInt instead." />
+	</module>
+	<module name="RegexpMultiline">
+		<property name="id" value="XOptionalLong" />
+		<property name="fileExtensions" value="java" />
+		<property name="format" value="\P{javaJavaIdentifierPart}Optional\s*&lt;\s*Long\s*&gt;" />
+		<property name="message" value="Optional&lt;Long&gt; must not be used. Use OptionalLong instead." />
+	</module>
+	<module name="RegexpMultiline">
+		<property name="id" value="XPatternSplit" />
+		<property name="fileExtensions" value="java" />
+		<property name="format" value="\.\s*split\s*\(\s*([^&quot;\(,\)]+|&quot;([^\\&quot;]+|\\.)*&quot;|\([^\)]*\))++\s*\)" />
+		<property name="message" value="String.split and Pattern.split(input) must not be used. Use Pattern.split(input, limit) instead and think about the limit. Use StringLimit.NONE to not discard trailing empty strings." />
+	</module>
+	<module name="RegexpMultiline">
+		<property name="id" value="XStringMatches" />
+		<property name="fileExtensions" value="java" />
+		<property name="format" value="\.\s*matches\s*\(\s*([^&quot;\(,\)]+|&quot;([^\\&quot;]+|\\.)*&quot;|\([^\)]*\))++\s*\)" />
+		<property name="message" value="String.matches must not be used. Use Strings.matches instead. This is likely to be a false positive if String.matches is not called." />
+	</module>
+	<module name="RegexpMultiline">
+		<property name="id" value="XStringReplaceAll" />
+		<property name="fileExtensions" value="java" />
+		<property name="format" value="&quot;\s*\.\s*replaceAll\s*\(|(?!\P{javaJavaIdentifierPart}Strings).{8}\.\s*replaceAll\s*\(\s*([^&quot;\(,\)]+|&quot;([^\\&quot;]+|\\.)*&quot;|\([^\)]*\))*+\s*," />
+		<property name="message" value="String.replaceAll must not be used. Use Strings.replaceAll instead. This is likely to be a false positive if String.replaceAll is not called." />
+	</module>
+	<module name="RegexpMultiline">
+		<property name="id" value="XStringReplaceFirst" />
+		<property name="fileExtensions" value="java" />
+		<property name="format" value="&quot;\s*\.\s*replaceFirst\s*\(|(?!\P{javaJavaIdentifierPart}Strings).{8}\.\s*replaceFirst\s*\(\s*([^&quot;\(,\)]+|&quot;([^\\&quot;]+|\\.)*&quot;|\([^\)]*\))*+\s*," />
+		<property name="message" value="String.replaceFirst must not be used. Use Strings.replaceFirst instead. This is likely to be a false positive if String.replaceFirst is not called." />
+	</module>
+	<module name="RegexpMultiline">
+		<property name="id" value="XStringSplit" />
+		<property name="fileExtensions" value="java" />
+		<property name="format" value="&quot;\s*\.\s*split\s*\(" />
+		<property name="message" value="String.split must not be used. Use Pattern.split(input, limit) instead. This is likely to be a false positive if String.split is not called." />
+	</module>
+	<module name="RegexpMultiline">
+		<property name="id" value="XSuperWithoutParameters" />
+		<property name="fileExtensions" value="java" />
+		<property name="format" value="\P{javaJavaIdentifierPart}super\s*\(\s*\)" />
+		<property name="message" value="Avoid using super() as it is called implicitly." />
+	</module>
+	<module name="RegexpMultiline">
+		<property name="id" value="XSuppressFBWarnings" />
+		<property name="fileExtensions" value="java" />
+		<property name="format" value="@\s*SuppressFBWarnings\s*\(((?![^)]*\s*justification\s*=)|[^)]*\s*justification\s*=\s*&quot;(\s*|TODO)&quot;)" />
+		<property name="message" value="SuppressFBWarnings requires justification parameter. It must not be empty or TODO." />
+	</module>
 
-										<module name="TreeWalker">
-											<property name="tabWidth" value="4" />
+	<!-- Size Violations -->
+	<module name="FileLength" />
 
-											<!-- Annotations -->
-											<module name="AnnotationLocation">
-												<property name="allowSamelineSingleParameterlessAnnotation" value="false" />
-											</module>
-											<module name="AnnotationUseStyle" />
-											<module name="MissingDeprecated" />
-											<module name="MissingOverride" />
-											<module name="SuppressWarnings">
-												<!--
-												The list of disallowed SuppressWarnings matches the warnings supported by Eclipse JDTs Compiler
-												* see https://help.eclipse.org/index.jsp?topic=/org.eclipse.jdt.doc.user/tasks/task-suppress_warnings.htm
-												* except "deprecation", "null", "unchecked" and "unused"
-												* plus "PMD"
-												-->
-												<property name="format" value="^(all|boxing|cast|fallthrough|finally|hiding|incomplete-switch|nls|PMD|rawtypes|resource|restriction|restriction|removal|serial|static-access|static-method|super|synthetic-access|sync-override|unqualified-field-access|unlikely-arg-type)$" />
-											</module>
-											<module name="SuppressWarningsHolder" />
+	<module name="TreeWalker">
+		<property name="tabWidth" value="4" />
 
-											<!-- Block Checks -->
-											<module name="AvoidNestedBlocks" />
-											<module name="EmptyBlock">
-												<property name="option" value="text" />
-											</module>
-											<module name="EmptyCatchBlock">
-												<property name="exceptionVariableName" value="ignore" />
-											</module>
-											<module name="LeftCurly" />
-											<module name="NeedBraces">
-												<property name="allowSingleLineStatement" value="true" />
-											</module>
-											<module name="RightCurly" />
+		<!-- Annotations -->
+		<module name="AnnotationLocation">
+			<property name="allowSamelineSingleParameterlessAnnotation" value="false" />
+		</module>
+		<module name="AnnotationUseStyle" />
+		<module name="MissingDeprecated" />
+		<module name="MissingOverride" />
+		<module name="SuppressWarnings">
+			<!--
+			The list of disallowed SuppressWarnings matches the warnings supported by Eclipse JDTs Compiler
+			* see https://help.eclipse.org/index.jsp?topic=/org.eclipse.jdt.doc.user/tasks/task-suppress_warnings.htm
+			* except "deprecation", "null", "unchecked" and "unused"
+			* plus "PMD"
+			-->
+			<property name="format" value="^(all|boxing|cast|fallthrough|finally|hiding|incomplete-switch|nls|PMD|rawtypes|resource|restriction|restriction|removal|serial|static-access|static-method|super|synthetic-access|sync-override|unqualified-field-access|unlikely-arg-type)$" />
+		</module>
+		<module name="SuppressWarningsHolder" />
 
-											<!-- Class Design -->
-											<module name="FinalClass" />
-											<module name="HideUtilityClassConstructor" />
-											<module name="InnerTypeLast" />
-											<module name="InterfaceIsType" />
-											<module name="MutableException" />
-											<module name="OneTopLevelClass" />
-											<module name="ThrowsCount" />
-											<module name="VisibilityModifier" />
+		<!-- Block Checks -->
+		<module name="AvoidNestedBlocks" />
+		<module name="EmptyBlock">
+			<property name="option" value="text" />
+		</module>
+		<module name="EmptyCatchBlock">
+			<property name="exceptionVariableName" value="ignore" />
+		</module>
+		<module name="LeftCurly" />
+		<module name="NeedBraces">
+			<property name="allowSingleLineStatement" value="true" />
+		</module>
+		<module name="RightCurly" />
 
-											<!-- Coding -->
-											<module name="AvoidNoArgumentSuperConstructorCall" />
-											<module name="CovariantEquals" />
-											<module name="DefaultComesLast">
-												<property name="skipIfLastAndSharedWithCase" value="true" />
-											</module>
-											<module name="EmptyStatement" />
-											<module name="EqualsHashCode" />
-											<module name="FallThrough">
-												<property name="checkLastCaseGroup" value="true" />
-											</module>
-											<module name="FinalLocalVariable">
-												<property name="validateEnhancedForLoopVariable" value="true" />
-												<property name="tokens" value="VARIABLE_DEF, PARAMETER_DEF" />
-											</module>
-											<module name="IllegalCatch">
-												<property name="id" value="XIllegalCatchDefault" />
-											</module>
-											<module name="IllegalCatch">
-												<property name="id" value="XIllegalCatchCustom" />
-												<property name="illegalClassNames" value="java.lang.NullPointerException" />
-											</module>
-											<module name="IllegalInstantiation">
-												<property name="classes" value="java.lang.StringBuffer, java.util.Hashtable, java.util.Vector, org.xml.sax.SAXException, org.xml.sax.SAXParseException" />
-											</module>
-											<module name="IllegalThrows" />
-											<module name="IllegalToken">
-												<property name="tokens" value="BAND, BOR, DEC, EMPTY_STAT, INC, LABELED_STAT, LITERAL_ASSERT, LITERAL_BREAK, LITERAL_CONTINUE, UNARY_PLUS" />
-											</module>
-											<module name="IllegalTokenText">
-												<property name="format" value="^(ASCII|ISO-8859-1|US-ASCII|UTF-16|UTF-16BE|UTF-16LE|UTF-8)$" />
-												<property name="ignoreCase" value="true" />
-												<property name="message" value="Consider using StandardCharsets instead of charset strings." />
-												<property name="tokens" value="STRING_LITERAL" />
-											</module>
-											<module name="IllegalType">
-												<property name="id" value="XIllegalTypeDefault" />
-												<property name="tokens" value="ANNOTATION_FIELD_DEF, INTERFACE_DEF, METHOD_CALL, METHOD_DEF, METHOD_REF, PARAMETER_DEF, VARIABLE_DEF" />
-											</module>
-											<module name="IllegalType">
-												<property name="id" value="XIllegalTypeCustom" />
-												<property name="illegalClassNames" value="java.lang.StringBuffer, StringBuffer" />
-												<property name="tokens" value="ANNOTATION_FIELD_DEF, INTERFACE_DEF, METHOD_CALL, METHOD_DEF, METHOD_REF, PARAMETER_DEF, VARIABLE_DEF" />
-											</module>
-											<module name="InnerAssignment" />
-											<module name="MagicNumber">
-												<property name="ignoreHashCodeMethod" value="true" />
-											</module>
-											<module name="MissingCtor" />
-											<module name="MissingSwitchDefault" />
-											<module name="MultipleStringLiterals">
-												<property name="ignoreStringsRegexp" value="^&quot;(|.+ is marked @NonNull but is null)&quot;$" />
-												<property name="ignoreOccurrenceContext" value="ANNOTATION, STATIC_INIT" />
-											</module>
-											<module name="MultipleVariableDeclarations" />
-											<module name="NoArrayTrailingComma" />
-											<module name="NoClone" />
-											<module name="NoEnumTrailingComma" />
-											<module name="NoFinalizer" />
-											<module name="OneStatementPerLine">
-												<property name="treatTryResourcesAsStatement" value="true" />
-											</module>
-											<module name="OverloadMethodsDeclarationOrder" />
-											<module name="PackageDeclaration" />
-											<module name="ParameterAssignment" />
-											<module name="SimplifyBooleanExpression" />
-											<module name="SimplifyBooleanReturn" />
-											<module name="StringLiteralEquality" />
-											<module name="SuperClone" />
-											<module name="SuperFinalize" />
-											<module name="UnnecessaryParentheses" />
-											<module name="UnnecessarySemicolonAfterOuterTypeDeclaration" />
-											<module name="UnnecessarySemicolonAfterTypeMemberDeclaration" />
-											<module name="UnnecessarySemicolonInTryWithResources" />
-											<module name="VariableDeclarationUsageDistance" />
+		<!-- Class Design -->
+		<module name="FinalClass" />
+		<module name="HideUtilityClassConstructor" />
+		<module name="InnerTypeLast" />
+		<module name="InterfaceIsType" />
+		<module name="MutableException" />
+		<module name="OneTopLevelClass" />
+		<module name="ThrowsCount" />
+		<module name="VisibilityModifier" />
 
-											<!-- Filters -->
-											<module name="SuppressionXpathFilter">
-												<property name="file" value="${project.basedir}/checkstyle-suppressions.xml" />
-												<property name="optional" value="true" />
-											</module>
+		<!-- Coding -->
+		<module name="AvoidNoArgumentSuperConstructorCall" />
+		<module name="CovariantEquals" />
+		<module name="DefaultComesLast">
+			<property name="skipIfLastAndSharedWithCase" value="true" />
+		</module>
+		<module name="EmptyStatement" />
+		<module name="EqualsHashCode" />
+		<module name="FallThrough">
+			<property name="checkLastCaseGroup" value="true" />
+		</module>
+		<module name="FinalLocalVariable">
+			<property name="validateEnhancedForLoopVariable" value="true" />
+			<property name="tokens" value="VARIABLE_DEF, PARAMETER_DEF" />
+		</module>
+		<module name="IllegalCatch">
+			<property name="id" value="XIllegalCatchDefault" />
+		</module>
+		<module name="IllegalCatch">
+			<property name="id" value="XIllegalCatchCustom" />
+			<property name="illegalClassNames" value="java.lang.NullPointerException" />
+		</module>
+		<module name="IllegalInstantiation">
+			<property name="classes" value="java.lang.StringBuffer, java.util.Hashtable, java.util.Vector, org.xml.sax.SAXException, org.xml.sax.SAXParseException" />
+		</module>
+		<module name="IllegalThrows" />
+		<module name="IllegalToken">
+			<property name="tokens" value="BAND, BOR, DEC, EMPTY_STAT, INC, LABELED_STAT, LITERAL_ASSERT, LITERAL_BREAK, LITERAL_CONTINUE, UNARY_PLUS" />
+		</module>
+		<module name="IllegalTokenText">
+			<property name="format" value="^(ASCII|ISO-8859-1|US-ASCII|UTF-16|UTF-16BE|UTF-16LE|UTF-8)$" />
+			<property name="ignoreCase" value="true" />
+			<property name="message" value="Consider using StandardCharsets instead of charset strings." />
+			<property name="tokens" value="STRING_LITERAL" />
+		</module>
+		<module name="IllegalType">
+			<property name="id" value="XIllegalTypeDefault" />
+			<property name="tokens" value="ANNOTATION_FIELD_DEF, INTERFACE_DEF, METHOD_CALL, METHOD_DEF, METHOD_REF, PARAMETER_DEF, VARIABLE_DEF" />
+		</module>
+		<module name="IllegalType">
+			<property name="id" value="XIllegalTypeCustom" />
+			<property name="illegalClassNames" value="java.lang.StringBuffer, StringBuffer" />
+			<property name="tokens" value="ANNOTATION_FIELD_DEF, INTERFACE_DEF, METHOD_CALL, METHOD_DEF, METHOD_REF, PARAMETER_DEF, VARIABLE_DEF" />
+		</module>
+		<module name="InnerAssignment" />
+		<module name="MagicNumber">
+			<property name="ignoreHashCodeMethod" value="true" />
+		</module>
+		<module name="MissingCtor" />
+		<module name="MissingSwitchDefault" />
+		<module name="MultipleStringLiterals">
+			<property name="ignoreStringsRegexp" value="^&quot;(|.+ is marked @NonNull but is null)&quot;$" />
+			<property name="ignoreOccurrenceContext" value="ANNOTATION, STATIC_INIT" />
+		</module>
+		<module name="MultipleVariableDeclarations" />
+		<module name="NoArrayTrailingComma" />
+		<module name="NoClone" />
+		<module name="NoEnumTrailingComma" />
+		<module name="NoFinalizer" />
+		<module name="OneStatementPerLine">
+			<property name="treatTryResourcesAsStatement" value="true" />
+		</module>
+		<module name="OverloadMethodsDeclarationOrder" />
+		<module name="PackageDeclaration" />
+		<module name="ParameterAssignment" />
+		<module name="SimplifyBooleanExpression" />
+		<module name="SimplifyBooleanReturn" />
+		<module name="StringLiteralEquality" />
+		<module name="SuperClone" />
+		<module name="SuperFinalize" />
+		<module name="UnnecessaryParentheses" />
+		<module name="UnnecessarySemicolonAfterOuterTypeDeclaration" />
+		<module name="UnnecessarySemicolonAfterTypeMemberDeclaration" />
+		<module name="UnnecessarySemicolonInTryWithResources" />
+		<module name="VariableDeclarationUsageDistance" />
 
-											<!-- Filters: Allow postfix incrementor and decrementor inside for iterators -->
-											<module name="SuppressionXpathSingleFilter">
-												<property name="checks" value="DescendantToken" />
-												<property name="query" value="//FOR_ITERATOR/descendant-or-self::node()" />
-											</module>
+		<!-- Filters -->
+		<module name="SuppressionXpathFilter">
+			<property name="file" value="${project.basedir}/checkstyle-suppressions.xml" />
+			<property name="optional" value="true" />
+		</module>
 
-											<!-- Filters: Allow break statements as last statement inside case -->
-											<module name="SuppressionXpathSingleFilter">
-												<property name="checks" value="IllegalToken" />
-												<property name="query" value="//CASE_GROUP[LITERAL_CASE]/SLIST/LITERAL_BREAK[last()]" />
-											</module>
+		<!-- Filters: Allow postfix incrementor and decrementor inside for iterators -->
+		<module name="SuppressionXpathSingleFilter">
+			<property name="checks" value="DescendantToken" />
+			<property name="query" value="//FOR_ITERATOR/descendant-or-self::node()" />
+		</module>
 
-											<!-- Filters: Allow multi catch while disallowing bitwise OR -->
-											<module name="SuppressionXpathSingleFilter">
-												<property name="checks" value="IllegalToken" />
-												<property name="query" value="//LITERAL_CATCH/PARAMETER_DEF//BOR" />
-											</module>
+		<!-- Filters: Allow break statements as last statement inside case -->
+		<module name="SuppressionXpathSingleFilter">
+			<property name="checks" value="IllegalToken" />
+			<property name="query" value="//CASE_GROUP[LITERAL_CASE]/SLIST/LITERAL_BREAK[last()]" />
+		</module>
 
-											<!-- Filters: Allow magic numbers inside static initialization blocks -->
-											<module name="SuppressionXpathSingleFilter">
-												<property name="checks" value="MagicNumber" />
-												<property name="query" value="//STATIC_INIT/descendant-or-self::node()" />
-											</module>
+		<!-- Filters: Allow multi catch while disallowing bitwise OR -->
+		<module name="SuppressionXpathSingleFilter">
+			<property name="checks" value="IllegalToken" />
+			<property name="query" value="//LITERAL_CATCH/PARAMETER_DEF//BOR" />
+		</module>
 
-											<!-- Filters: Lombok: Allow @Tostring.Include member "rank" to have any magic number -->
-											<module name="SuppressionXpathSingleFilter">
-												<property name="checks" value="MagicNumber" />
-												<property name="query" value="//ANNOTATION[DOT[IDENT[@text = 'ToString'] and IDENT[@text = 'Include']]]/ANNOTATION_MEMBER_VALUE_PAIR[IDENT[@text = 'rank']]/descendant-or-self::node()" />
-											</module>
+		<!-- Filters: Allow magic numbers inside static initialization blocks -->
+		<module name="SuppressionXpathSingleFilter">
+			<property name="checks" value="MagicNumber" />
+			<property name="query" value="//STATIC_INIT/descendant-or-self::node()" />
+		</module>
 
-											<!-- Headers -->
-											<!-- none -->
+		<!-- Filters: Lombok: Allow @Tostring.Include member "rank" to have any magic number -->
+		<module name="SuppressionXpathSingleFilter">
+			<property name="checks" value="MagicNumber" />
+			<property name="query" value="//ANNOTATION[DOT[IDENT[@text = 'ToString'] and IDENT[@text = 'Include']]]/ANNOTATION_MEMBER_VALUE_PAIR[IDENT[@text = 'rank']]/descendant-or-self::node()" />
+		</module>
 
-											<!-- Imports -->
-											<module name="AvoidStarImport" />
-											<module name="IllegalImport" />
-											<module name="ImportOrder">
-												<property name="option" value="top" />
-												<property name="groups" value="java., javax., org., com." />
-												<property name="separated" value="true" />
-												<property name="separatedStaticGroups" value="true" />
-												<property name="caseSensitive" value="true" />
-												<property name="sortStaticImportsAlphabetically" value="true" />
-											</module>
-											<module name="RedundantImport" />
-											<module name="UnusedImports">
-												<property name="processJavadoc" value="false" />
-											</module>
+		<!-- Headers -->
+		<!-- none -->
 
-											<!-- Javadoc Comments -->
-											<module name="AtclauseOrder" />
-											<module name="InvalidJavadocPosition" />
-											<module name="JavadocBlockTagLocation" />
-											<module name="JavadocContentLocationCheck" />
-											<module name="JavadocMethod" />
-											<module name="JavadocMissingLeadingAsterisk" />
-											<module name="JavadocMissingWhitespaceAfterAsteriskCheck" />
-											<module name="JavadocParagraph">
-												<property name="allowNewlineParagraph" value="false" />
-											</module>
-											<module name="JavadocStyle">
-												<property name="checkFirstSentence" value="false" />
-												<property name="checkEmptyJavadoc" value="true" />
-											</module>
-											<module name="JavadocTagContinuationIndentation" />
-											<module name="JavadocType" />
-											<module name="JavadocVariable" />
-											<module name="MissingJavadocMethod">
-												<property name="allowedAnnotations" value="" />
-												<property name="scope" value="private" />
-											</module>
-											<module name="MissingJavadocPackage" />
-											<module name="MissingJavadocType">
-												<property name="scope" value="private" />
-											</module>
-											<module name="NonEmptyAtclauseDescription" />
-											<module name="SingleLineJavadoc" />
+		<!-- Imports -->
+		<module name="AvoidStarImport" />
+		<module name="IllegalImport" />
+		<module name="ImportOrder">
+			<property name="option" value="top" />
+			<property name="groups" value="java., javax., org., com." />
+			<property name="separated" value="true" />
+			<property name="separatedStaticGroups" value="true" />
+			<property name="caseSensitive" value="true" />
+			<property name="sortStaticImportsAlphabetically" value="true" />
+		</module>
+		<module name="RedundantImport" />
+		<module name="UnusedImports">
+			<property name="processJavadoc" value="false" />
+		</module>
 
-											<!-- Metrics -->
-											<!-- none -->
+		<!-- Javadoc Comments -->
+		<module name="AtclauseOrder" />
+		<module name="InvalidJavadocPosition" />
+		<module name="JavadocBlockTagLocation" />
+		<module name="JavadocContentLocationCheck" />
+		<module name="JavadocMethod" />
+		<module name="JavadocMissingLeadingAsterisk" />
+		<module name="JavadocMissingWhitespaceAfterAsteriskCheck" />
+		<module name="JavadocParagraph">
+			<property name="allowNewlineParagraph" value="false" />
+		</module>
+		<module name="JavadocStyle">
+			<property name="checkFirstSentence" value="false" />
+			<property name="checkEmptyJavadoc" value="true" />
+		</module>
+		<module name="JavadocTagContinuationIndentation" />
+		<module name="JavadocType" />
+		<module name="JavadocVariable" />
+		<module name="MissingJavadocMethod">
+			<property name="allowedAnnotations" value="" />
+			<property name="scope" value="private" />
+		</module>
+		<module name="MissingJavadocPackage" />
+		<module name="MissingJavadocType">
+			<property name="scope" value="private" />
+		</module>
+		<module name="NonEmptyAtclauseDescription" />
+		<module name="SingleLineJavadoc" />
 
-											<!-- Miscellaneous -->
-											<module name="ArrayTypeStyle" />
-											<module name="AvoidDoubleBraceInitialization" />
-											<module name="AvoidEscapedUnicodeCharacters">
-												<property name="allowEscapesForControlCharacters" value="true" />
-												<property name="allowByTailComment" value="true" />
-												<property name="allowNonPrintableEscapes" value="true" />
-											</module>
-											<module name="CommentsIndentation" />
-											<module name="DescendantToken">
-												<property name="tokens" value="ANNOTATION, ASSIGN, BAND_ASSIGN, BOR_ASSIGN, BSR_ASSIGN, BXOR_ASSIGN, DIV_ASSIGN, DO_WHILE, ELIST, FOR_EACH_CLAUSE, LAMBDA, LITERAL_ASSERT, LITERAL_CASE, LITERAL_IF, LITERAL_RETURN, LITERAL_WHILE, MINUS_ASSIGN, MOD_ASSIGN, PLUS_ASSIGN, QUESTION, SL_ASSIGN, SR_ASSIGN, STAR_ASSIGN" />
-												<property name="limitedTokens" value="POST_DEC, POST_INC" />
-												<property name="maximumNumber" value="0" />
-												<property name="maximumMessage" value="The return value of the operators ++ and -- should not be used as they lead to hardly readable code." />
-											</module>
-											<module name="FinalParameters">
-												<property name="tokens" value="METHOD_DEF, CTOR_DEF, LITERAL_CATCH, FOR_EACH_CLAUSE" />
-											</module>
-											<module name="Indentation">
-												<property name="caseIndent" value="0" />
-												<property name="throwsIndent" value="8" />
-												<property name="arrayInitIndent" value="8" />
-												<property name="lineWrappingIndentation" value="8" />
-											</module>
-											<module name="NoCodeInFile" />
-											<module name="OuterTypeFilename" />
-											<module name="TodoComment">
-												<property name="format" value="^\s*(TODO|XXX|FIXME).*" />
-												<property name="severity" value="info" />
-											</module>
-											<module name="TrailingComment">
-												<property name="format" value="^(.*,)?\s*$" />
-												<property name="legalComment" value="^|TODO$" />
-											</module>
-											<module name="UncommentedMain" />
-											<module name="UpperEll" />
+		<!-- Metrics -->
+		<!-- none -->
 
-											<!-- Modifiers -->
-											<module name="ModifierOrder" />
-											<module name="RedundantModifier" />
+		<!-- Miscellaneous -->
+		<module name="ArrayTypeStyle" />
+		<module name="AvoidDoubleBraceInitialization" />
+		<module name="AvoidEscapedUnicodeCharacters">
+			<property name="allowEscapesForControlCharacters" value="true" />
+			<property name="allowByTailComment" value="true" />
+			<property name="allowNonPrintableEscapes" value="true" />
+		</module>
+		<module name="CommentsIndentation" />
+		<module name="DescendantToken">
+			<property name="tokens" value="ANNOTATION, ASSIGN, BAND_ASSIGN, BOR_ASSIGN, BSR_ASSIGN, BXOR_ASSIGN, DIV_ASSIGN, DO_WHILE, ELIST, FOR_EACH_CLAUSE, LAMBDA, LITERAL_ASSERT, LITERAL_CASE, LITERAL_IF, LITERAL_RETURN, LITERAL_WHILE, MINUS_ASSIGN, MOD_ASSIGN, PLUS_ASSIGN, QUESTION, SL_ASSIGN, SR_ASSIGN, STAR_ASSIGN" />
+			<property name="limitedTokens" value="POST_DEC, POST_INC" />
+			<property name="maximumNumber" value="0" />
+			<property name="maximumMessage" value="The return value of the operators ++ and -- should not be used as they lead to hardly readable code." />
+		</module>
+		<module name="FinalParameters">
+			<property name="tokens" value="METHOD_DEF, CTOR_DEF, LITERAL_CATCH, FOR_EACH_CLAUSE" />
+		</module>
+		<module name="Indentation">
+			<property name="caseIndent" value="0" />
+			<property name="throwsIndent" value="8" />
+			<property name="arrayInitIndent" value="8" />
+			<property name="lineWrappingIndentation" value="8" />
+		</module>
+		<module name="NoCodeInFile" />
+		<module name="OuterTypeFilename" />
+		<module name="TodoComment">
+			<property name="format" value="^\s*(TODO|XXX|FIXME).*" />
+			<property name="severity" value="info" />
+		</module>
+		<module name="TrailingComment">
+			<property name="format" value="^(.*,)?\s*$" />
+			<property name="legalComment" value="^|TODO$" />
+		</module>
+		<module name="UncommentedMain" />
+		<module name="UpperEll" />
 
-											<!-- Naming Conventions -->
-											<module name="AbbreviationAsWordInName">
-												<property name="ignoreStatic" value="false" />
-											</module>
-											<module name="CatchParameterName" />
-											<module name="ClassTypeParameterName" />
-											<module name="ConstantName" />
-											<module name="IllegalIdentifierName" />
-											<module name="InterfaceTypeParameterName" />
-											<module name="LambdaParameterName" />
-											<module name="LocalFinalVariableName" />
-											<module name="LocalVariableName" />
-											<module name="MemberName" />
-											<module name="MethodName" />
-											<module name="MethodTypeParameterName" />
-											<module name="PackageName" />
-											<module name="ParameterName">
-												<property name="format" value="^(?!arg\d*$)[a-z][a-zA-Z0-9]*$" />
-											</module>
-											<module name="PatternVariableName" />
-											<module name="RecordComponentName" />
-											<module name="RecordTypeParameterName" />
-											<module name="StaticVariableName" />
-											<module name="TypeName" />
+		<!-- Modifiers -->
+		<module name="ModifierOrder" />
+		<module name="RedundantModifier" />
 
-											<!-- Regexp -->
-											<module name="RegexpSinglelineJava">
-												<property name="id" value="XLineTrailingSpaces" />
-												<property name="format" value="\s+$" />
-												<property name="message" value="Line has trailing spaces." />
-											</module>
-											<module name="RegexpSinglelineJava">
-												<property name="id" value="XNonNullByDefaultAnnotation" />
-												<property name="format" value="@\s*(de\s*\.\s*larssh\s*\.\s*utils\s*\.\s*annotations\s*\.\s*)?NonNullByDefault(\P{javaJavaIdentifierPart}|$)" />
-												<property name="message" value="Package is not annotated with @NonNullByDefault. Package definitions inside package-info.java files shall be annotated with @NonNullByDefault to avoid default nullness." />
-												<property name="minimum" value="1" />
-												<property name="maximum" value="1" />
-												<property name="ignoreComments" value="true" />
-											</module>
+		<!-- Naming Conventions -->
+		<module name="AbbreviationAsWordInName">
+			<property name="ignoreStatic" value="false" />
+		</module>
+		<module name="CatchParameterName" />
+		<module name="ClassTypeParameterName" />
+		<module name="ConstantName" />
+		<module name="IllegalIdentifierName" />
+		<module name="InterfaceTypeParameterName" />
+		<module name="LambdaParameterName" />
+		<module name="LocalFinalVariableName" />
+		<module name="LocalVariableName" />
+		<module name="MemberName" />
+		<module name="MethodName">
+			<property name="id" value="XMethodNameMain" />
+		</module>
+		<!-- Allow method names of tests to contain an underscore. -->
+		<module name="MethodName">
+			<property name="id" value="XMethodNameTest" />
+			<property name="format" value="^[a-z][a-zA-Z0-9_]*$" />
+		</module>
+		<module name="MethodTypeParameterName" />
+		<module name="PackageName" />
+		<module name="ParameterName">
+			<property name="format" value="^(?!arg\d*$)[a-z][a-zA-Z0-9]*$" />
+		</module>
+		<module name="PatternVariableName" />
+		<module name="RecordComponentName" />
+		<module name="RecordTypeParameterName" />
+		<module name="StaticVariableName" />
+		<module name="TypeName" />
 
-											<!-- Size Violations -->
-											<module name="AnonInnerLength" />
-											<module name="ExecutableStatementCount" />
-											<module name="MethodLength" />
-											<module name="OuterTypeNumber" />
-											<module name="ParameterNumber">
-												<property name="ignoreOverriddenMethods" value="true" />
-											</module>
+		<!-- Regexp -->
+		<module name="RegexpSinglelineJava">
+			<property name="id" value="XLineTrailingSpaces" />
+			<property name="format" value="\s+$" />
+			<property name="message" value="Line has trailing spaces." />
+		</module>
+		<module name="RegexpSinglelineJava">
+			<property name="id" value="XNonNullByDefaultAnnotation" />
+			<property name="format" value="@\s*(de\s*\.\s*larssh\s*\.\s*utils\s*\.\s*annotations\s*\.\s*)?NonNullByDefault(\P{javaJavaIdentifierPart}|$)" />
+			<property name="message" value="Package is not annotated with @NonNullByDefault. Package definitions inside package-info.java files shall be annotated with @NonNullByDefault to avoid default nullness." />
+			<property name="minimum" value="1" />
+			<property name="maximum" value="1" />
+			<property name="ignoreComments" value="true" />
+		</module>
 
-											<!-- Whitespace -->
-											<module name="EmptyForInitializerPad" />
-											<module name="EmptyForIteratorPad" />
-											<module name="EmptyLineSeparator">
-												<property name="allowNoEmptyLineBetweenFields" value="true" />
-												<property name="allowMultipleEmptyLines" value="false" />
-												<property name="allowMultipleEmptyLinesInsideClassMembers" value="false" />
-												<property name="tokens" value="IMPORT, STATIC_IMPORT, CLASS_DEF, INTERFACE_DEF, ENUM_DEF, STATIC_INIT, INSTANCE_INIT, METHOD_DEF, CTOR_DEF, VARIABLE_DEF" />
-											</module>
-											<module name="GenericWhitespace" />
-											<module name="MethodParamPad" />
-											<module name="NoLineWrap" />
-											<module name="NoWhitespaceAfter">
-												<property name="tokens" value="AT, INC, DEC, UNARY_MINUS, UNARY_PLUS, BNOT, LNOT, DOT, ARRAY_DECLARATOR, INDEX_OP, METHOD_REF" />
-											</module>
-											<module name="NoWhitespaceBefore">
-												<property name="tokens" value="COMMA, SEMI, POST_INC, POST_DEC, GENERIC_END, ELLIPSIS, LABELED_STAT" />
-											</module>
-											<module name="OperatorWrap">
-												<property name="option" value="nl" />
-												<property name="tokens" value="QUESTION, COLON, EQUAL, NOT_EQUAL, DIV, PLUS, MINUS, STAR, MOD, SR, BSR, GE, GT, SL, LE, LT, BXOR, BOR, LOR, BAND, LAND, LITERAL_INSTANCEOF, TYPE_EXTENSION_AND, ASSIGN, DIV_ASSIGN, PLUS_ASSIGN, MINUS_ASSIGN, STAR_ASSIGN, MOD_ASSIGN, SR_ASSIGN, BSR_ASSIGN, SL_ASSIGN, BXOR_ASSIGN, BOR_ASSIGN, BAND_ASSIGN, METHOD_REF" />
-											</module>
-											<module name="ParenPad" />
-											<module name="SeparatorWrap">
-												<property name="id" value="XSeparatorWrapEndOfLine" />
-												<property name="option" value="eol" />
-												<property name="tokens" value="COMMA, ELLIPSIS, SEMI" />
-											</module>
-											<module name="SeparatorWrap">
-												<property name="id" value="XSeparatorWrapNextLine" />
-												<property name="option" value="nl" />
-												<property name="tokens" value="AT, DOT" />
-											</module>
-											<module name="SingleSpaceSeparator">
-												<property name="validateComments" value="true" />
-											</module>
-											<module name="TypecastParenPad" />
-											<module name="WhitespaceAfter" />
-											<module name="WhitespaceAround">
-												<property name="allowEmptyConstructors" value="true" />
-												<property name="ignoreEnhancedForColon" value="false" />
-											</module>
-										</module>
-									</module>
-								</echoxml>
+		<!-- Size Violations -->
+		<module name="AnonInnerLength" />
+		<module name="ExecutableStatementCount" />
+		<module name="MethodLength" />
+		<module name="OuterTypeNumber" />
+		<module name="ParameterNumber">
+			<property name="ignoreOverriddenMethods" value="true" />
+		</module>
+
+		<!-- Whitespace -->
+		<module name="EmptyForInitializerPad" />
+		<module name="EmptyForIteratorPad" />
+		<module name="EmptyLineSeparator">
+			<property name="allowNoEmptyLineBetweenFields" value="true" />
+			<property name="allowMultipleEmptyLines" value="false" />
+			<property name="allowMultipleEmptyLinesInsideClassMembers" value="false" />
+			<property name="tokens" value="IMPORT, STATIC_IMPORT, CLASS_DEF, INTERFACE_DEF, ENUM_DEF, STATIC_INIT, INSTANCE_INIT, METHOD_DEF, CTOR_DEF, VARIABLE_DEF" />
+		</module>
+		<module name="GenericWhitespace" />
+		<module name="MethodParamPad" />
+		<module name="NoLineWrap" />
+		<module name="NoWhitespaceAfter">
+			<property name="tokens" value="AT, INC, DEC, UNARY_MINUS, UNARY_PLUS, BNOT, LNOT, DOT, ARRAY_DECLARATOR, INDEX_OP, METHOD_REF" />
+		</module>
+		<module name="NoWhitespaceBefore">
+			<property name="tokens" value="COMMA, SEMI, POST_INC, POST_DEC, GENERIC_END, ELLIPSIS, LABELED_STAT" />
+		</module>
+		<module name="NoWhitespaceBeforeCaseDefaultColon" />
+		<module name="OperatorWrap">
+			<property name="option" value="nl" />
+			<property name="tokens" value="QUESTION, COLON, EQUAL, NOT_EQUAL, DIV, PLUS, MINUS, STAR, MOD, SR, BSR, GE, GT, SL, LE, LT, BXOR, BOR, LOR, BAND, LAND, LITERAL_INSTANCEOF, TYPE_EXTENSION_AND, ASSIGN, DIV_ASSIGN, PLUS_ASSIGN, MINUS_ASSIGN, STAR_ASSIGN, MOD_ASSIGN, SR_ASSIGN, BSR_ASSIGN, SL_ASSIGN, BXOR_ASSIGN, BOR_ASSIGN, BAND_ASSIGN, METHOD_REF" />
+		</module>
+		<module name="ParenPad" />
+		<module name="SeparatorWrap">
+			<property name="id" value="XSeparatorWrapEndOfLine" />
+			<property name="option" value="eol" />
+			<property name="tokens" value="COMMA, ELLIPSIS, SEMI" />
+		</module>
+		<module name="SeparatorWrap">
+			<property name="id" value="XSeparatorWrapNextLine" />
+			<property name="option" value="nl" />
+			<property name="tokens" value="AT, DOT" />
+		</module>
+		<module name="SingleSpaceSeparator">
+			<property name="validateComments" value="true" />
+		</module>
+		<module name="TypecastParenPad" />
+		<module name="WhitespaceAfter" />
+		<module name="WhitespaceAround">
+			<property name="allowEmptyConstructors" value="true" />
+			<property name="ignoreEnhancedForColon" value="false" />
+		</module>
+	</module>
+</module>]]></echo>
 
 								<!-- formatter.xml -->
 								<echo level="info" message="Update formatter.xml" />
 								<echoxml file="${project.build.directory}/formatter.xml">
-									<profiles version="20">
-										<profile kind="CodeFormatterProfile" name="de.lars-sh" version="20">
+									<profiles version="21">
+										<profile kind="CodeFormatterProfile" name="de.lars-sh" version="21">
 											<setting id="org.eclipse.jdt.core.formatter.align_assignment_statements_on_columns" value="false" />
 											<setting id="org.eclipse.jdt.core.formatter.align_fields_grouping_blank_lines" value="2147483647" />
 											<setting id="org.eclipse.jdt.core.formatter.align_type_members_on_columns" value="false" />
@@ -1556,11 +1581,14 @@
 								<echo level="info" message="Create mvn-suppressions-parent.sh" />
 								<echo file="${project.build.directory}/mvn-suppressions-parent.sh"><![CDATA[# User Defined Suppressions
 function suppressUserDefined() {
-	if [ -f ./mvn-suppressions.sh ]; then
+	if [ ! -f ./mvn-suppressions.sh ]; then
+		cat < /dev/stdin
+	elif [ -x ./mvn-suppressions.sh ]; then
+		echo "[ERROR] The file \"mvn-suppressions.sh\" exists, but is not executable. You can make it executable using: \"git update-index --chmod=+x mvn-suppressions.sh\"" >&2
+		false
+	else
 		cat < /dev/stdin \
 		| ./mvn-suppressions.sh
-	else
-		cat < /dev/stdin
 	fi
 }
 
@@ -1571,21 +1599,12 @@ function suppressPmdWarnings() {
 	| grep --invert-match --perl-regexp "^\\[WARNING\\] Auxclasspath entry .*[/\\\\]parent[/\\\\]target[/\\\\]classes doesn't exist, ignoring it$"
 }
 
-# JDK14: The JavaDoc creation logs errors about missing "javadoc-bundle-option" folders.
-function suppressJdk14Warnings() {
-	if [ "${JDK_VERSION}" -eq 14 ]; then
+# JDK8: Checksums of github repositories cannot be validated successfully from time to time.
+function suppressJdk8Warnings() {
+	if [ "${JDK_VERSION}" -eq 8 ]; then
 		cat < /dev/stdin \
-		| grep --invert-match --perl-regexp "^\\[ERROR\\] Error fetching link: .*[/\\\\]target[/\\\\]javadoc-bundle-options\\. Ignored it\\.$"
-	else
-		cat < /dev/stdin
-	fi
-}
-
-# JDK15: The JavaDoc creation logs errors about missing "javadoc-bundle-option" folders.
-function suppressJdk15Warnings() {
-	if [ "${JDK_VERSION}" -eq 15 ]; then
-		cat < /dev/stdin \
-		| grep --invert-match --perl-regexp "^\\[ERROR\\] Error fetching link: .*[/\\\\]target[/\\\\]javadoc-bundle-options\\. Ignored it\\.$"
+		| grep --invert-match --perl-regexp "^\\[WARNING\\] Checksum validation failed, expected [a-z0-9]+ but is [a-z0-9]+ from github for https://maven.pkg.github.com/.+/maven-metadata.xml$"
+		| grep --invert-match --perl-regexp "^\\[WARNING\\] Could not validate integrity of download from https://maven.pkg.github.com/.+/maven-metadata.xml: Checksum validation failed, expected [a-z0-9]+ but is [a-z0-9]+$"
 	else
 		cat < /dev/stdin
 	fi
@@ -1599,8 +1618,7 @@ else
 	cat < /dev/stdin \
 	| suppressUserDefined \
 	| suppressPmdWarnings \
-	| suppressJdk14Warnings \
-	| suppressJdk15Warnings
+	| suppressJdk8Warnings
 fi
 ]]></echo>
 
@@ -1924,22 +1942,23 @@ jobs:
       matrix:
         # Supported versions as of https://en.wikipedia.org/wiki/Java_version_history
         java-version:
-          - 1.8
+          - 8
           - 11
-          - 14
+          - 16
 
     name: Build with JDK ${{ matrix.java-version }}
     steps:
       - name: Cache Dependencies
-        uses: actions/cache@v2
+        uses: actions/cache@v2.1.6
         with:
           key: maven-dependencies
           path: ~/.m2/repository
       - name: Check out
-        uses: actions/checkout@v2
+        uses: actions/checkout@v2.3.4
       - name: Set up JDK ${{ matrix.java-version }}
-        uses: actions/setup-java@v1
+        uses: actions/setup-java@v2
         with:
+          distribution: adopt
           java-version: ${{ matrix.java-version }}
           gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
           gpg-passphrase: GPG_PASSPHRASE
@@ -1963,7 +1982,7 @@ jobs:
             echo "::set-output name=is-snapshot::false"
           fi
       - name: Test, Verify, Deploy
-        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' && matrix.java-version == '1.8' && steps.version.outputs.is-snapshot == 'true' }}
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' && matrix.java-version == 8 && steps.version.outputs.is-snapshot == 'true' }}
         run: |
           set -o errexit -o pipefail
           mvn deploy site --batch-mode --show-version 2>&1 | tee --append mvnout.txt
@@ -1972,37 +1991,42 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
       - name: Test, Verify
-        if: ${{ github.event_name != 'push' || github.ref != 'refs/heads/master' || matrix.java-version != '1.8' && steps.install.outputs.is-snapshot != 'true' }}
+        if: ${{ github.event_name != 'push' || github.ref != 'refs/heads/master' || matrix.java-version != 8 || steps.version.outputs.is-snapshot != 'true' }}
         run: |
           set -o errexit -o pipefail
           mvn verify site --define gpg.skip=true --batch-mode --show-version 2>&1 | tee --append mvnout.txt
           set +o errexit +o pipefail
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Check Output
+        shell: bash {0}
         run: |
           chmod +x ./target/mvn-suppressions-parent.sh
           mvnout=`cat mvnout.txt | grep --perl-regexp "(?i)\\[(ERR|WARN)" | ./target/mvn-suppressions-parent.sh "$JDK_VERSION"`
           
           if [ -n "${mvnout}" ]; then
             echo "[ERROR] The Maven output contains the following unknown warnings and errors:" >&2
-            echo "${mvnout}"
+            echo "${mvnout}" >&2
             false
           else
             echo "[INFO] No unknown warnings and errors found."
-            echo "${mvnout}"
+            echo "${mvnout}" >&2
           fi
         env:
           JDK_VERSION: ${{ matrix.java-version }}
       - name: Prepare Site
-        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' && matrix.java-version == '1.8' && steps.install.outputs.is-snapshot == 'true' }}
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' && matrix.java-version == 8 && steps.version.outputs.is-snapshot == 'true' }}
         run: |
-          rm ./target/site/index.html
-          cp ./CHANGELOG.md ./target/site/CHANGELOG.md
-          cp ./README.md ./target/site/README.md
+          if [ -f ./target/site/index.html ]; then
+            rm ./target/site/index.html
+          fi
+          if [ -f ./CHANGELOG.md ]; then
+            cp ./CHANGELOG.md ./target/site/CHANGELOG.md
+          fi
+          if [ -f ./README.md ]; then
+            cp ./README.md ./target/site/README.md
+          fi
       - name: Deploy Site
-        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' && matrix.java-version == '1.8' && steps.install.outputs.is-snapshot == 'true' }}
-        uses: peaceiris/actions-gh-pages@v3
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' && matrix.java-version == 8 && steps.version.outputs.is-snapshot == 'true' }}
+        uses: peaceiris/actions-gh-pages@v3.8.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./target/site
@@ -2034,11 +2058,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out
-        uses: actions/checkout@v2
+        uses: actions/checkout@v2.3.4
       - name: Set up JDK and Maven Central Repository
-        uses: actions/setup-java@v1
+        uses: actions/setup-java@v2
         with:
-          java-version: 1.8
+          distribution: adopt
+          java-version: 8
           gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
           gpg-passphrase: GPG_PASSPHRASE
           server-id: ossrh
@@ -2224,7 +2249,7 @@ jdk:
   # Supported versions as of https://en.wikipedia.org/wiki/Java_version_history
   - openjdk8
   - openjdk11
-  - openjdk15
+  - openjdk16
 cache:
   directories:
     - $HOME/.m2/repository
@@ -2244,12 +2269,12 @@ script: |
   
   if [ -n "${mvnout}" ]; then
     echo "[ERROR] The Maven output contains the following unknown warnings and errors:" >&2
-    echo "${mvnout}"
+    echo "${mvnout}" >&2
     # Not using "exit 1" to avoid truncated output as described at https://travis-ci.community/t/7159
     false
   else
     echo "[INFO] No unknown warnings and errors found."
-    echo "${mvnout}"
+    echo "${mvnout}" >&2
   fi
 
 after_success:
@@ -2453,6 +2478,7 @@ deploy:
 						</goals>
 						<configuration>
 							<failOnWarning>${dependency.failOnWarning}</failOnWarning>
+							<ignoreUnusedRuntime>${dependency.ignoreUnusedRuntime}</ignoreUnusedRuntime>
 							<ignoredUnusedDeclaredDependencies>
 								<!-- Compile -->
 								<ignoredUnusedDeclaredDependency>de.lars-sh:utils:jar:${parent.version}</ignoredUnusedDeclaredDependency>
@@ -2506,9 +2532,25 @@ deploy:
 			<!-- Sources -->
 			<plugin>
 				<artifactId>maven-javadoc-plugin</artifactId>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>aggregate-no-fork</report>
+							<report>test-aggregate-no-fork</report>
+						</reports>
+					</reportSet>
+				</reportSets>
 			</plugin>
 			<plugin>
 				<artifactId>maven-jxr-plugin</artifactId>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>jxr-no-fork</report>
+							<report>test-jxr-no-fork</report>
+						</reports>
+					</reportSet>
+				</reportSets>
 			</plugin>
 
 			<!-- Verification -->
@@ -2526,6 +2568,13 @@ deploy:
 			<!-- Tests -->
 			<plugin>
 				<artifactId>maven-surefire-report-plugin</artifactId>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>report-only</report>
+						</reports>
+					</reportSet>
+				</reportSets>
 			</plugin>
 			<plugin>
 				<groupId>org.jacoco</groupId>
@@ -2571,12 +2620,23 @@ deploy:
 			</properties>
 		</profile>
 
+		<!-- JDK 10 and lower: Fallback to old Formatter Maven Plugin as of internal Eclipse Platform dependencies with newer/incompatible class file versions -->
+		<profile>
+			<id>fix-jdk8</id>
+			<activation>
+				<jdk>(,11)</jdk>
+			</activation>
+			<properties>
+				<formatter-maven-plugin.version>2.15.0</formatter-maven-plugin.version>
+			</properties>
+		</profile>
+
 		<!-- JDK 9 and later: Do not show warnings as the bootstrap class path
 			does not match the current sources version. -->
 		<profile>
 			<id>fix-jdk9-and-later</id>
 			<activation>
-				<jdk>(9,)</jdk>
+				<jdk>[9,)</jdk>
 			</activation>
 			<properties>
 				<maven.compiler.showDeprecation>false</maven.compiler.showDeprecation>
@@ -2611,15 +2671,118 @@ deploy:
 			</properties>
 		</profile>
 
-		<!-- JDK 15, Maven Javadoc Plugin: Logs warnings on missing JavaDoc comments inside generated code -->
+		<!-- JDK 11 and later: Suppress some SpotBugs null checks as they might fail when using try-with-resource statements as of https://github.com/spotbugs/spotbugs/issues/259 and https://github.com/spotbugs/spotbugs/issues/756 -->
 		<profile>
-			<id>fix-jdk15</id>
+			<id>fix-jdk11-and-later</id>
 			<activation>
-				<jdk>15</jdk>
+				<jdk>[11,)</jdk>
+			</activation>
+			<properties>
+				<spotbugs.excludeFilterFile.fix-jdk11-and-later>${project.build.directory}/spotbugs-excludes-fix-jdk11-and-later.xml,</spotbugs.excludeFilterFile.fix-jdk11-and-later>
+			</properties>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>fix-jdk11-and-later</id>
+								<phase>initialize</phase>
+								<goals>
+									<goal>run</goal>
+								</goals>
+								<configuration>
+									<target>
+										<echo level="info" message="Update spotbugs-excludes-fix-jdk11-and-later.xml" />
+										<echoxml file="${project.build.directory}/spotbugs-excludes-fix-jdk11-and-later.xml">
+											<FindBugsFilter>
+												<Match>
+													<Bug pattern="RCN_REDUNDANT_NULLCHECK_OF_NONNULL_VALUE" />
+												</Match>
+											</FindBugsFilter>
+										</echoxml>
+									</target>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+		<!-- JDK 15 and later, Maven Javadoc Plugin: Logs warnings on missing JavaDoc comments inside generated code -->
+		<profile>
+			<id>fix-jdk15-and-16</id>
+			<activation>
+				<jdk>[15,17)</jdk>
 			</activation>
 			<properties>
 				<doclint>all,-missing</doclint>
 			</properties>
+		</profile>
+
+		<!-- Enable or disable the use of custom checkstyle rules -->
+		<profile>
+			<id>checkstyle-rules-exists</id>
+			<activation>
+				<file>
+					<exists>checkstyle-rules.xml</exists>
+				</file>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>properties-maven-plugin</artifactId>
+						<executions>
+							<execution>
+								<goals>
+									<goal>set-system-properties</goal>
+								</goals>
+								<configuration>
+									<properties>
+										<property>
+											<name>checkstyle.enableExternalDtdLoad</name>
+											<value>true</value>
+										</property>
+									</properties>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>checkstyle-rules-missing</id>
+			<activation>
+				<file>
+					<missing>checkstyle-rules.xml</missing>
+				</file>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>properties-maven-plugin</artifactId>
+						<executions>
+							<execution>
+								<goals>
+									<goal>set-system-properties</goal>
+								</goals>
+								<configuration>
+									<properties>
+										<property>
+											<name>checkstyle.enableExternalDtdLoad</name>
+											<value>false</value>
+										</property>
+									</properties>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
 		</profile>
 
 		<!-- Eclipse only: Add lombok sources to class path -->
@@ -2639,7 +2802,7 @@ deploy:
 				<dependency>
 					<groupId>org.junit.platform</groupId>
 					<artifactId>junit-platform-runner</artifactId>
-					<version>1.7.1</version>
+					<version>1.7.2</version>
 					<scope>test</scope>
 					<exclusions>
 						<exclusion>
@@ -2705,6 +2868,24 @@ deploy:
 											</pluginExecutionFilter>
 											<action>
 												<ignore></ignore>
+											</action>
+										</pluginExecution>
+
+										<!-- Execute Properties goals on configuration and non-incremental builds -->
+										<pluginExecution>
+											<pluginExecutionFilter>
+												<groupId>org.codehaus.mojo</groupId>
+												<artifactId>properties-maven-plugin</artifactId>
+												<versionRange>${properties-maven-plugin.version}</versionRange>
+												<goals>
+													<goal>set-system-properties</goal>
+												</goals>
+											</pluginExecutionFilter>
+											<action>
+												<execute>
+													<runOnConfiguration>true</runOnConfiguration>
+													<runOnIncremental>false</runOnIncremental>
+												</execute>
 											</action>
 										</pluginExecution>
 
@@ -2964,6 +3145,7 @@ deploy:
 											<entry key="line.separator" value="&#10;" />
 										</propertyfile>
 										<propertyfile file="${project.basedir}/.settings/org.eclipse.jdt.ui.prefs">
+											<entry key="cleanup.add_all" value="false" />
 											<entry key="cleanup.add_default_serial_version_id" value="true" />
 											<entry key="cleanup.add_generated_serial_version_id" value="false" />
 											<entry key="cleanup.add_missing_annotations" value="true" />
@@ -2977,12 +3159,16 @@ deploy:
 											<entry key="cleanup.always_use_parentheses_in_expressions" value="false" />
 											<entry key="cleanup.always_use_this_for_non_static_field_access" value="false" />
 											<entry key="cleanup.always_use_this_for_non_static_method_access" value="false" />
+											<entry key="cleanup.array_with_curly" value="true" />
 											<entry key="cleanup.arrays_fill" value="true" />
 											<entry key="cleanup.bitwise_conditional_expression" value="false" />
 											<entry key="cleanup.boolean_literal" value="true" />
+											<entry key="cleanup.boolean_value_rather_than_comparison" value="true" />
 											<entry key="cleanup.break_loop" value="true" />
 											<entry key="cleanup.collection_cloning" value="true" />
+											<entry key="cleanup.comparing_on_criteria" value="true" />
 											<entry key="cleanup.comparison_statement" value="true" />
+											<entry key="cleanup.controlflow_merge" value="true" />
 											<entry key="cleanup.convert_functional_interfaces" value="true" />
 											<entry key="cleanup.convert_to_enhanced_for_loop" value="true" />
 											<entry key="cleanup.convert_to_enhanced_for_loop_if_loop_var_used" value="false" />
@@ -2992,12 +3178,15 @@ deploy:
 											<entry key="cleanup.else_if" value="true" />
 											<entry key="cleanup.embedded_if" value="true" />
 											<entry key="cleanup.evaluate_nullable" value="true" />
+											<entry key="cleanup.extract_increment" value="true" />
 											<entry key="cleanup.format_source_code" value="true" />
 											<entry key="cleanup.format_source_code_changes_only" value="false" />
 											<entry key="cleanup.hash" value="true" />
 											<entry key="cleanup.if_condition" value="true" />
 											<entry key="cleanup.insert_inferred_type_arguments" value="false" />
-											<entry key="cleanup.instanceof" value="false" />
+											<entry key="cleanup.instanceof" value="true" />
+											<entry key="cleanup.instanceof_keyword" value="true" />
+											<entry key="cleanup.invert_equals" value="false" />
 											<entry key="cleanup.join" value="true" />
 											<entry key="cleanup.lazy_logical_operator" value="true" />
 											<entry key="cleanup.make_local_variable_final" value="true" />
@@ -3007,16 +3196,24 @@ deploy:
 											<entry key="cleanup.make_variable_declarations_final" value="true" />
 											<entry key="cleanup.map_cloning" value="true" />
 											<entry key="cleanup.merge_conditional_blocks" value="true" />
+											<entry key="cleanup.multi_catch" value="true" />
 											<entry key="cleanup.never_use_blocks" value="false" />
 											<entry key="cleanup.never_use_parentheses_in_expressions" value="true" />
 											<entry key="cleanup.no_string_creation" value="true" />
 											<entry key="cleanup.no_super" value="true" />
 											<entry key="cleanup.number_suffix" value="true" />
 											<entry key="cleanup.objects_equals" value="true" />
+											<entry key="cleanup.one_if_rather_than_duplicate_blocks_that_fall_through" value="true" />
+											<entry key="cleanup.operand_factorization" value="true" />
 											<entry key="cleanup.organize_imports" value="true" />
 											<entry key="cleanup.overridden_assignment" value="true" />
+											<entry key="cleanup.plain_replacement" value="true" />
 											<entry key="cleanup.precompile_regex" value="true" />
+											<entry key="cleanup.primitive_comparison" value="true" />
+											<entry key="cleanup.primitive_parsing" value="true" />
+											<entry key="cleanup.primitive_rather_than_wrapper" value="true" />
 											<entry key="cleanup.primitive_serialization" value="true" />
+											<entry key="cleanup.pull_out_if_from_if_else" value="true" />
 											<entry key="cleanup.pull_up_assignment" value="true" />
 											<entry key="cleanup.push_down_negation" value="true" />
 											<entry key="cleanup.qualify_static_field_accesses_with_declaring_class" value="false" />
@@ -3024,6 +3221,8 @@ deploy:
 											<entry key="cleanup.qualify_static_member_accesses_through_subtypes_with_declaring_class" value="false" />
 											<entry key="cleanup.qualify_static_member_accesses_with_declaring_class" value="true" />
 											<entry key="cleanup.qualify_static_method_accesses_with_declaring_class" value="false" />
+											<entry key="cleanup.reduce_indentation" value="true" />
+											<entry key="cleanup.redundant_comparator" value="true" />
 											<entry key="cleanup.redundant_falling_through_block_end" value="true" />
 											<entry key="cleanup.remove_private_constructors" value="true" />
 											<entry key="cleanup.remove_redundant_modifiers" value="true" />
@@ -3041,14 +3240,27 @@ deploy:
 											<entry key="cleanup.remove_unused_private_members" value="false" />
 											<entry key="cleanup.remove_unused_private_methods" value="true" />
 											<entry key="cleanup.remove_unused_private_types" value="true" />
+											<entry key="cleanup.return_expression" value="true" />
 											<entry key="cleanup.simplify_lambda_expression_and_method_ref" value="true" />
+											<entry key="cleanup.single_used_field" value="true" />
 											<entry key="cleanup.sort_members" value="false" />
 											<entry key="cleanup.sort_members_all" value="false" />
+											<entry key="cleanup.standard_comparison" value="false" />
+											<entry key="cleanup.static_inner_class" value="true" />
 											<entry key="cleanup.strictly_equal_or_different" value="true" />
 											<entry key="cleanup.stringbuilder" value="false" />
+											<entry key="cleanup.substring" value="true" />
 											<entry key="cleanup.switch" value="true" />
+											<entry key="cleanup.system_property" value="true" />
+											<entry key="cleanup.system_property_boolean" value="true" />
+											<entry key="cleanup.system_property_file_encoding" value="true" />
+											<entry key="cleanup.system_property_file_separator" value="true" />
+											<entry key="cleanup.system_property_line_separator" value="true" />
+											<entry key="cleanup.system_property_path_separator" value="true" />
 											<entry key="cleanup.ternary_operator" value="true" />
 											<entry key="cleanup.try_with_resource" value="true" />
+											<entry key="cleanup.unlooped_while" value="true" />
+											<entry key="cleanup.unreachable_block" value="false" />
 											<entry key="cleanup.use_anonymous_class_creation" value="false" />
 											<entry key="cleanup.use_autoboxing" value="true" />
 											<entry key="cleanup.use_blocks" value="true" />
@@ -3056,6 +3268,7 @@ deploy:
 											<entry key="cleanup.use_directly_map_method" value="true" />
 											<entry key="cleanup.use_lambda" value="true" />
 											<entry key="cleanup.use_parentheses_in_expressions" value="true" />
+											<entry key="cleanup.use_string_is_blank" value="true" />
 											<entry key="cleanup.use_this_for_non_static_field_access" value="false" />
 											<entry key="cleanup.use_this_for_non_static_field_access_only_if_necessary" value="true" />
 											<entry key="cleanup.use_this_for_non_static_method_access" value="false" />
@@ -3064,12 +3277,13 @@ deploy:
 											<entry key="cleanup.use_var" value="true" />
 											<entry key="cleanup.useless_continue" value="true" />
 											<entry key="cleanup.useless_return" value="true" />
+											<entry key="cleanup.valueof_rather_than_instantiation" value="true" />
 											<entry key="cleanup_profile" value="_de.lars-sh" />
 											<entry key="cleanup_settings_version" value="2" />
 											<entry key="eclipse.preferences.version" value="1" />
 											<entry key="editor_save_participant_org.eclipse.jdt.ui.postsavelistener.cleanup" value="true" />
 											<entry key="formatter_profile" value="_de.lars-sh" />
-											<entry key="formatter_settings_version" value="20" />
+											<entry key="formatter_settings_version" value="21" />
 											<entry key="org.eclipse.jdt.ui.exception.name" value="e" />
 											<entry key="org.eclipse.jdt.ui.gettersetter.use.is" value="true" />
 											<entry key="org.eclipse.jdt.ui.ignorelowercasenames" value="true" />
@@ -3079,6 +3293,7 @@ deploy:
 											<entry key="org.eclipse.jdt.ui.overrideannotation" value="true" />
 											<entry key="org.eclipse.jdt.ui.staticondemandthreshold" value="99" />
 											<entry key="org.eclipse.jdt.ui.text.custom_code_templates" value="" />
+											<entry key="sp_cleanup.add_all" value="false" />
 											<entry key="sp_cleanup.add_default_serial_version_id" value="true" />
 											<entry key="sp_cleanup.add_generated_serial_version_id" value="false" />
 											<entry key="sp_cleanup.add_missing_annotations" value="true" />
@@ -3092,12 +3307,16 @@ deploy:
 											<entry key="sp_cleanup.always_use_parentheses_in_expressions" value="false" />
 											<entry key="sp_cleanup.always_use_this_for_non_static_field_access" value="false" />
 											<entry key="sp_cleanup.always_use_this_for_non_static_method_access" value="false" />
+											<entry key="sp_cleanup.array_with_curly" value="true" />
 											<entry key="sp_cleanup.arrays_fill" value="true" />
 											<entry key="sp_cleanup.bitwise_conditional_expression" value="false" />
 											<entry key="sp_cleanup.boolean_literal" value="true" />
+											<entry key="sp_cleanup.boolean_value_rather_than_comparison" value="true" />
 											<entry key="sp_cleanup.break_loop" value="true" />
 											<entry key="sp_cleanup.collection_cloning" value="true" />
+											<entry key="sp_cleanup.comparing_on_criteria" value="true" />
 											<entry key="sp_cleanup.comparison_statement" value="true" />
+											<entry key="sp_cleanup.controlflow_merge" value="true" />
 											<entry key="sp_cleanup.convert_functional_interfaces" value="true" />
 											<entry key="sp_cleanup.convert_to_enhanced_for_loop" value="true" />
 											<entry key="sp_cleanup.convert_to_enhanced_for_loop_if_loop_var_used" value="false" />
@@ -3107,12 +3326,15 @@ deploy:
 											<entry key="sp_cleanup.else_if" value="true" />
 											<entry key="sp_cleanup.embedded_if" value="true" />
 											<entry key="sp_cleanup.evaluate_nullable" value="true" />
+											<entry key="sp_cleanup.extract_increment" value="true" />
 											<entry key="sp_cleanup.format_source_code" value="true" />
 											<entry key="sp_cleanup.format_source_code_changes_only" value="false" />
 											<entry key="sp_cleanup.hash" value="true" />
 											<entry key="sp_cleanup.if_condition" value="true" />
 											<entry key="sp_cleanup.insert_inferred_type_arguments" value="false" />
-											<entry key="sp_cleanup.instanceof" value="false" />
+											<entry key="sp_cleanup.instanceof" value="true" />
+											<entry key="sp_cleanup.instanceof_keyword" value="true" />
+											<entry key="sp_cleanup.invert_equals" value="false" />
 											<entry key="sp_cleanup.join" value="true" />
 											<entry key="sp_cleanup.lazy_logical_operator" value="true" />
 											<entry key="sp_cleanup.make_local_variable_final" value="true" />
@@ -3122,6 +3344,7 @@ deploy:
 											<entry key="sp_cleanup.make_variable_declarations_final" value="true" />
 											<entry key="sp_cleanup.map_cloning" value="true" />
 											<entry key="sp_cleanup.merge_conditional_blocks" value="true" />
+											<entry key="sp_cleanup.multi_catch" value="true" />
 											<entry key="sp_cleanup.never_use_blocks" value="false" />
 											<entry key="sp_cleanup.never_use_parentheses_in_expressions" value="true" />
 											<entry key="sp_cleanup.no_string_creation" value="true" />
@@ -3129,10 +3352,17 @@ deploy:
 											<entry key="sp_cleanup.number_suffix" value="true" />
 											<entry key="sp_cleanup.objects_equals" value="true" />
 											<entry key="sp_cleanup.on_save_use_additional_actions" value="true" />
+											<entry key="sp_cleanup.one_if_rather_than_duplicate_blocks_that_fall_through" value="true" />
+											<entry key="sp_cleanup.operand_factorization" value="true" />
 											<entry key="sp_cleanup.organize_imports" value="true" />
 											<entry key="sp_cleanup.overridden_assignment" value="true" />
+											<entry key="sp_cleanup.plain_replacement" value="true" />
 											<entry key="sp_cleanup.precompile_regex" value="true" />
+											<entry key="sp_cleanup.primitive_comparison" value="true" />
+											<entry key="sp_cleanup.primitive_parsing" value="true" />
+											<entry key="sp_cleanup.primitive_rather_than_wrapper" value="true" />
 											<entry key="sp_cleanup.primitive_serialization" value="true" />
+											<entry key="sp_cleanup.pull_out_if_from_if_else" value="true" />
 											<entry key="sp_cleanup.pull_up_assignment" value="true" />
 											<entry key="sp_cleanup.push_down_negation" value="true" />
 											<entry key="sp_cleanup.qualify_static_field_accesses_with_declaring_class" value="false" />
@@ -3140,6 +3370,8 @@ deploy:
 											<entry key="sp_cleanup.qualify_static_member_accesses_through_subtypes_with_declaring_class" value="false" />
 											<entry key="sp_cleanup.qualify_static_member_accesses_with_declaring_class" value="true" />
 											<entry key="sp_cleanup.qualify_static_method_accesses_with_declaring_class" value="false" />
+											<entry key="sp_cleanup.reduce_indentation" value="true" />
+											<entry key="sp_cleanup.redundant_comparator" value="true" />
 											<entry key="sp_cleanup.redundant_falling_through_block_end" value="true" />
 											<entry key="sp_cleanup.remove_private_constructors" value="true" />
 											<entry key="sp_cleanup.remove_redundant_modifiers" value="true" />
@@ -3157,14 +3389,27 @@ deploy:
 											<entry key="sp_cleanup.remove_unused_private_members" value="false" />
 											<entry key="sp_cleanup.remove_unused_private_methods" value="true" />
 											<entry key="sp_cleanup.remove_unused_private_types" value="true" />
+											<entry key="sp_cleanup.return_expression" value="true" />
 											<entry key="sp_cleanup.simplify_lambda_expression_and_method_ref" value="true" />
+											<entry key="sp_cleanup.single_used_field" value="true" />
 											<entry key="sp_cleanup.sort_members" value="false" />
 											<entry key="sp_cleanup.sort_members_all" value="false" />
+											<entry key="sp_cleanup.standard_comparison" value="false" />
+											<entry key="sp_cleanup.static_inner_class" value="true" />
 											<entry key="sp_cleanup.strictly_equal_or_different" value="true" />
 											<entry key="sp_cleanup.stringbuilder" value="false" />
+											<entry key="sp_cleanup.substring" value="true" />
 											<entry key="sp_cleanup.switch" value="true" />
+											<entry key="sp_cleanup.system_property" value="true" />
+											<entry key="sp_cleanup.system_property_boolean" value="true" />
+											<entry key="sp_cleanup.system_property_file_encoding" value="true" />
+											<entry key="sp_cleanup.system_property_file_separator" value="true" />
+											<entry key="sp_cleanup.system_property_line_separator" value="true" />
+											<entry key="sp_cleanup.system_property_path_separator" value="true" />
 											<entry key="sp_cleanup.ternary_operator" value="true" />
 											<entry key="sp_cleanup.try_with_resource" value="true" />
+											<entry key="sp_cleanup.unlooped_while" value="true" />
+											<entry key="sp_cleanup.unreachable_block" value="false" />
 											<entry key="sp_cleanup.use_anonymous_class_creation" value="false" />
 											<entry key="sp_cleanup.use_autoboxing" value="true" />
 											<entry key="sp_cleanup.use_blocks" value="true" />
@@ -3172,6 +3417,7 @@ deploy:
 											<entry key="sp_cleanup.use_directly_map_method" value="true" />
 											<entry key="sp_cleanup.use_lambda" value="true" />
 											<entry key="sp_cleanup.use_parentheses_in_expressions" value="true" />
+											<entry key="sp_cleanup.use_string_is_blank" value="true" />
 											<entry key="sp_cleanup.use_this_for_non_static_field_access" value="false" />
 											<entry key="sp_cleanup.use_this_for_non_static_field_access_only_if_necessary" value="true" />
 											<entry key="sp_cleanup.use_this_for_non_static_method_access" value="false" />
@@ -3180,6 +3426,7 @@ deploy:
 											<entry key="sp_cleanup.use_var" value="true" />
 											<entry key="sp_cleanup.useless_continue" value="true" />
 											<entry key="sp_cleanup.useless_return" value="true" />
+											<entry key="sp_cleanup.valueof_rather_than_instantiation" value="true" />
 										</propertyfile>
 										<propertyfile file="${project.basedir}/.settings/org.eclipse.jdt.core.prefs">
 											<entry key="eclipse.preferences.version" value="1" />

@@ -85,7 +85,7 @@ public class SentenceFormatter {
 	 * translated to lower case.
 	 */
 	public static final SentenceFormatter LOWER_CAMEL_CASE
-			= new SentenceFormatter(Strings::toNeutralLowerCase, "", Strings::toNeutralTitleCase);
+			= new SentenceFormatter(Strings::toLowerCaseNeutral, "", Strings::toTitleCaseNeutral);
 
 	/**
 	 * Lower Kebab Case formatter
@@ -97,7 +97,7 @@ public class SentenceFormatter {
 	 * Words are translated to lower case and are separated by minus character.
 	 */
 	public static final SentenceFormatter LOWER_KEBAB_CASE
-			= new SentenceFormatter(Strings::toNeutralLowerCase, SEPARATOR_KEBAB_CASE, Strings::toNeutralLowerCase);
+			= new SentenceFormatter(Strings::toLowerCaseNeutral, SEPARATOR_KEBAB_CASE, Strings::toLowerCaseNeutral);
 
 	/**
 	 * Lower Snake Case formatter
@@ -109,7 +109,7 @@ public class SentenceFormatter {
 	 * Words are translated to lower case and are separated by underscore character.
 	 */
 	public static final SentenceFormatter LOWER_SNAKE_CASE
-			= new SentenceFormatter(Strings::toNeutralLowerCase, SEPARATOR_SNAKE_CASE, Strings::toNeutralLowerCase);
+			= new SentenceFormatter(Strings::toLowerCaseNeutral, SEPARATOR_SNAKE_CASE, Strings::toLowerCaseNeutral);
 
 	/**
 	 * Lower White Space formatter
@@ -122,7 +122,7 @@ public class SentenceFormatter {
 	 * translated to title case, and are separated by white space character.
 	 */
 	public static final SentenceFormatter LOWER_WHITE_SPACE
-			= new SentenceFormatter(Strings::toNeutralTitleCase, SEPARATOR_WHITE_SPACE, Strings::toNeutralLowerCase);
+			= new SentenceFormatter(Strings::toTitleCaseNeutral, SEPARATOR_WHITE_SPACE, Strings::toLowerCaseNeutral);
 
 	/**
 	 * Upper Camel Case formatter
@@ -134,7 +134,7 @@ public class SentenceFormatter {
 	 * Words are translated to title case.
 	 */
 	public static final SentenceFormatter UPPER_CAMEL_CASE
-			= new SentenceFormatter(Strings::toNeutralTitleCase, "", Strings::toNeutralTitleCase);
+			= new SentenceFormatter(Strings::toTitleCaseNeutral, "", Strings::toTitleCaseNeutral);
 
 	/**
 	 * Upper Kebab Case formatter
@@ -146,7 +146,7 @@ public class SentenceFormatter {
 	 * Words are translated to upper case and are separated by minus character.
 	 */
 	public static final SentenceFormatter UPPER_KEBAB_CASE
-			= new SentenceFormatter(Strings::toNeutralUpperCase, SEPARATOR_KEBAB_CASE, Strings::toNeutralUpperCase);
+			= new SentenceFormatter(Strings::toUpperCaseNeutral, SEPARATOR_KEBAB_CASE, Strings::toUpperCaseNeutral);
 
 	/**
 	 * Upper Snake Case formatter
@@ -158,7 +158,7 @@ public class SentenceFormatter {
 	 * Words are translated to upper case and are separated by underscore character.
 	 */
 	public static final SentenceFormatter UPPER_SNAKE_CASE
-			= new SentenceFormatter(Strings::toNeutralUpperCase, SEPARATOR_SNAKE_CASE, Strings::toNeutralUpperCase);
+			= new SentenceFormatter(Strings::toUpperCaseNeutral, SEPARATOR_SNAKE_CASE, Strings::toUpperCaseNeutral);
 
 	/**
 	 * Upper White Space formatter
@@ -171,7 +171,7 @@ public class SentenceFormatter {
 	 * character.
 	 */
 	public static final SentenceFormatter UPPER_WHITE_SPACE
-			= new SentenceFormatter(Strings::toNeutralTitleCase, SEPARATOR_WHITE_SPACE, Strings::toNeutralTitleCase);
+			= new SentenceFormatter(Strings::toTitleCaseNeutral, SEPARATOR_WHITE_SPACE, Strings::toTitleCaseNeutral);
 
 	/**
 	 * Function to convert the first word
