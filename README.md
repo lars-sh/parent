@@ -552,8 +552,6 @@ The following files are generated for the build process itself. You should not n
 
 `target/pmd/pmd-ruleset.xml` contains the PMD rule set. It is overwritten at the Maven goal `initialize`.
 
-`target/spotbugs-excludes-fix-jdk11-and-later.xml` contains Spotbugs eclusions for compatibility with JDK11 and later. It is overwritten at the Maven goal `initialize` while executing Maven with Java 11 and later.
-
 `target/versions-ruleset.xml` contains a rule set used by the Maven Versions Plugin to ignore pre-release versions. It is overwritten at the Maven goal `initialize`.
 
 #### Suppress Warnings
