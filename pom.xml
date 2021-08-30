@@ -120,8 +120,7 @@
 		<shade.dependencyReducedPomLocation>${project.build.directory}/dependency-reduced-pom.xml</shade.dependencyReducedPomLocation>
 		<shade.packageDependenciesPhase>none</shade.packageDependenciesPhase>
 		<spotbugs.effort>Max</spotbugs.effort>
-		<spotbugs.excludeFilterFile>${spotbugs.excludeFilterFile.fix-jdk11-and-later}${spotbugs.excludeFilterFile.global}${spotbugs.excludeFilterFile.user}</spotbugs.excludeFilterFile>
-		<spotbugs.excludeFilterFile.fix-jdk11-and-later></spotbugs.excludeFilterFile.fix-jdk11-and-later>
+		<spotbugs.excludeFilterFile>${spotbugs.excludeFilterFile.global}${spotbugs.excludeFilterFile.user}</spotbugs.excludeFilterFile>
 		<spotbugs.excludeFilterFile.global>${project.build.directory}/spotbugs-excludes-global.xml,</spotbugs.excludeFilterFile.global>
 		<!-- <spotbugs.excludeFilterFile.user></spotbugs.excludeFilterFile.user> -->
 		<spotbugs.threshold>Low</spotbugs.threshold>
@@ -2672,50 +2671,11 @@ deploy:
 			</properties>
 		</profile>
 
-		<!-- JDK 11 and later: Suppress some SpotBugs null checks as they might fail when using try-with-resource statements as of https://github.com/spotbugs/spotbugs/issues/259 and https://github.com/spotbugs/spotbugs/issues/756 -->
+		<!-- JDK 15 and later, Maven Javadoc Plugin: Logs warnings on missing JavaDoc comments inside generated code -->
 		<profile>
-			<id>fix-jdk11-and-later</id>
+			<id>fix-jdk15-and-later</id>
 			<activation>
-				<jdk>[11,)</jdk>
-			</activation>
-			<properties>
-				<spotbugs.excludeFilterFile.fix-jdk11-and-later>${project.build.directory}/spotbugs-excludes-fix-jdk11-and-later.xml,</spotbugs.excludeFilterFile.fix-jdk11-and-later>
-			</properties>
-			<build>
-				<plugins>
-					<plugin>
-						<artifactId>maven-antrun-plugin</artifactId>
-						<executions>
-							<execution>
-								<id>fix-jdk11-and-later</id>
-								<phase>initialize</phase>
-								<goals>
-									<goal>run</goal>
-								</goals>
-								<configuration>
-									<target>
-										<echo level="info" message="Update spotbugs-excludes-fix-jdk11-and-later.xml" />
-										<echoxml file="${project.build.directory}/spotbugs-excludes-fix-jdk11-and-later.xml">
-											<FindBugsFilter>
-												<Match>
-													<Bug pattern="RCN_REDUNDANT_NULLCHECK_OF_NONNULL_VALUE" />
-												</Match>
-											</FindBugsFilter>
-										</echoxml>
-									</target>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-
-		<!-- JDK 15 and 16, Maven Javadoc Plugin: Logs warnings on missing JavaDoc comments inside generated code -->
-		<profile>
-			<id>fix-jdk15-and-16</id>
-			<activation>
-				<jdk>[15,17)</jdk>
+				<jdk>[15,)</jdk>
 			</activation>
 			<properties>
 				<doclint>all,-missing</doclint>
@@ -3129,7 +3089,6 @@ deploy:
 											<entry key="filter_settings_neg" value="NOISE|" />
 											<entry key="excludefilter0" value="spotbugs-excludes.xml|true" />
 											<entry key="excludefilter1" value="target/spotbugs-excludes-global.xml|true" />
-											<entry key="excludefilter2" value="target/spotbugs-excludes-fix-jdk11-and-later.xml|true" />
 											<entry key="run_at_full_build" value="true" />
 										</propertyfile>
 										<propertyfile file="${project.basedir}/.settings/org.eclipse.core.resources.prefs">
