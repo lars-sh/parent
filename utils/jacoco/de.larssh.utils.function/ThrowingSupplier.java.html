@@ -29,7 +29,7 @@ public interface ThrowingSupplier&lt;T&gt; extends Supplier&lt;T&gt; {
 	 * @return hidden throwing supplier
 	 */
 	static &lt;T&gt; Supplier&lt;T&gt; throwing(final ThrowingSupplier&lt;T&gt; supplier) {
-<span class="nc" id="L32">		return supplier;</span>
+<span class="fc" id="L32">		return supplier;</span>
 	}
 
 	/**
@@ -52,8 +52,8 @@ public interface ThrowingSupplier&lt;T&gt; extends Supplier&lt;T&gt; {
 	@SuppressWarnings({ &quot;checkstyle:IllegalCatch&quot;, &quot;PMD.AvoidCatchingGenericException&quot; })
 	default T get() {
 		try {
-<span class="nc" id="L55">			return getThrowing();</span>
-<span class="nc" id="L56">		} catch (final Exception e) {</span>
+<span class="fc" id="L55">			return getThrowing();</span>
+<span class="fc" id="L56">		} catch (final Exception e) {</span>
 <span class="nc" id="L57">			throw new SneakyException(e);</span>
 		}
 	}

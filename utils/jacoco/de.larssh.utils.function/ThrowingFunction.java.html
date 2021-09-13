@@ -30,7 +30,7 @@ public interface ThrowingFunction&lt;T, R&gt; extends Function&lt;T, R&gt; {
 	 * @return hidden throwing function
 	 */
 	static &lt;T, R&gt; Function&lt;T, R&gt; throwing(final ThrowingFunction&lt;T, R&gt; function) {
-<span class="nc" id="L33">		return function;</span>
+<span class="fc" id="L33">		return function;</span>
 	}
 
 	/**
@@ -55,8 +55,8 @@ public interface ThrowingFunction&lt;T, R&gt; extends Function&lt;T, R&gt; {
 	@SuppressWarnings({ &quot;checkstyle:IllegalCatch&quot;, &quot;PMD.AvoidCatchingGenericException&quot; })
 	default R apply(@Nullable final T value) {
 		try {
-<span class="nc" id="L58">			return applyThrowing(value);</span>
-<span class="nc" id="L59">		} catch (final Exception e) {</span>
+<span class="fc" id="L58">			return applyThrowing(value);</span>
+<span class="fc" id="L59">		} catch (final Exception e) {</span>
 <span class="nc" id="L60">			throw new SneakyException(e);</span>
 		}
 	}
