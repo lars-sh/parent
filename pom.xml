@@ -2628,6 +2628,7 @@ deploy:
 			</activation>
 			<properties>
 				<formatter-maven-plugin.version>2.15.0</formatter-maven-plugin.version>
+				<org-eclipse-jdt-core.version>3.26.0</org-eclipse-jdt-core.version>
 			</properties>
 		</profile>
 
