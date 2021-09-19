@@ -88,7 +88,6 @@
 		<aggregate>true</aggregate>
 		<checkstyle.config.location>${project.build.directory}/checkstyle.xml</checkstyle.config.location>
 		<checkstyle.consoleOutput>true</checkstyle.consoleOutput>
-		<cpd.aggregate>false</cpd.aggregate>
 		<!-- <cpd.excludeFromFailureFile>${project.basedir}/cpd-excludes.csv</cpd.excludeFromFailureFile> -->
 		<cpd.printFailingErrors>true</cpd.printFailingErrors>
 		<dependency.failOnWarning>true</dependency.failOnWarning>
@@ -110,7 +109,6 @@
 		<maven.javadoc.failOnWarnings>true</maven.javadoc.failOnWarnings>
 		<maven.version.rules>file:///${project.build.directory}/versions-ruleset.xml</maven.version.rules>
 		<nexus-staging.autoReleaseAfterClose>true</nexus-staging.autoReleaseAfterClose>
-		<pmd.aggregate>false</pmd.aggregate>
 		<pmd-only.excludeFromFailureFile>${project.basedir}/pmd-excludes.properties</pmd-only.excludeFromFailureFile>
 		<pmd-only.printFailingErrors>true</pmd-only.printFailingErrors>
 		<pmd-only.ruleset>${project.build.directory}/pmd-ruleset.xml</pmd-only.ruleset>
@@ -156,7 +154,7 @@
 		<maven-javadoc-plugin.version>3.3.1</maven-javadoc-plugin.version>
 		<maven-jxr-plugin.version>3.1.1</maven-jxr-plugin.version>
 		<maven-plugin-plugin.version>3.6.1</maven-plugin-plugin.version>
-		<maven-pmd-plugin.version>3.14.0</maven-pmd-plugin.version>
+		<maven-pmd-plugin.version>3.15.0</maven-pmd-plugin.version>
 		<maven-project-info-reports-plugin.version>3.1.2</maven-project-info-reports-plugin.version>
 		<maven-release-plugin.version>2.5.3</maven-release-plugin.version>
 		<maven-resources-plugin.version>3.2.0</maven-resources-plugin.version>
@@ -2411,7 +2409,6 @@ deploy:
 						</goals>
 						<phase>verify</phase>
 						<configuration>
-							<aggregate>${cpd.aggregate}</aggregate>
 							<excludeFromFailureFile>${cpd.excludeFromFailureFile}</excludeFromFailureFile>
 						</configuration>
 					</execution>
@@ -2421,7 +2418,6 @@ deploy:
 							<goal>cpd-check</goal>
 						</goals>
 						<configuration>
-							<aggregate>${cpd.aggregate}</aggregate>
 							<printFailingErrors>${cpd.printFailingErrors}</printFailingErrors>
 						</configuration>
 					</execution>
@@ -2435,7 +2431,6 @@ deploy:
 						</goals>
 						<phase>verify</phase>
 						<configuration>
-							<aggregate>${pmd.aggregate}</aggregate>
 							<excludeFromFailureFile>${pmd-only.excludeFromFailureFile}</excludeFromFailureFile>
 							<rulesets>
 								<ruleset>${pmd-only.ruleset}</ruleset>
@@ -2448,7 +2443,6 @@ deploy:
 							<goal>check</goal>
 						</goals>
 						<configuration>
-							<aggregate>${pmd.aggregate}</aggregate>
 							<printFailingErrors>${pmd-only.printFailingErrors}</printFailingErrors>
 						</configuration>
 					</execution>
