@@ -1,1 +1,12 @@
+de.larssh.utils
 de.larssh.utils.annotations
+de.larssh.utils.collection
+de.larssh.utils.dom
+de.larssh.utils.function
+de.larssh.utils.io
+de.larssh.utils.maven
+de.larssh.utils.net
+de.larssh.utils.test
+de.larssh.utils.text
+de.larssh.utils.time
+de.larssh.utils.xml

@@ -454,7 +454,6 @@ This parent POM either predefines existing Maven Properties or introduces some o
 aggregate:                                         true
 checkstyle.config.location:                        ${project.build.directory}/checkstyle.xml
 checkstyle.consoleOutput:                          true
-cpd.aggregate:                                     false
 cpd.excludeFromFailureFile:                        ${project.basedir}/cpd-excludes.csv (if existing)
 cpd.printFailingErrors:                            true
 dependency.failOnWarning:                          true
@@ -476,7 +475,6 @@ maven.compiler.target:                             1.8
 maven.javadoc.failOnWarnings:                      true
 maven.version.rules:                               file:///${project.build.directory}/versions-ruleset.xml
 nexus-staging.autoReleaseAfterClose:               true
-pmd.aggregate:                                     false
 pmd-only.excludeFromFailureFile:                   ${project.basedir}/pmd-excludes.properties
 pmd-only.printFailingErrors:                       true
 pmd-only.ruleset:                                  ${project.build.directory}/pmd-ruleset.xml
