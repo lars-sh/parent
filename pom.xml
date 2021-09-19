@@ -177,7 +177,7 @@
 		<sb-contrib.version>7.4.7</sb-contrib.version>
 		<findsecbugs.version>1.11.0</findsecbugs.version>
 		<lombok.version>1.18.20</lombok.version>
-		<org-eclipse-jdt-core.version>3.26.0</org-eclipse-jdt-core.version>
+		<org-eclipse-jdt-core.version>3.27.0</org-eclipse-jdt-core.version>
 		<pmd.version>6.38.0</pmd.version>
 		<spotbugs.version>4.4.1</spotbugs.version>
 		<spotbugs-annotations.version>4.4.1</spotbugs-annotations.version>
@@ -2628,6 +2628,7 @@ deploy:
 			</activation>
 			<properties>
 				<formatter-maven-plugin.version>2.15.0</formatter-maven-plugin.version>
+				<org-eclipse-jdt-core.version>3.26.0</org-eclipse-jdt-core.version>
 			</properties>
 		</profile>
 
@@ -3134,6 +3135,7 @@ deploy:
 											<entry key="cleanup.convert_to_enhanced_for_loop_if_loop_var_used" value="false" />
 											<entry key="cleanup.convert_to_switch_expressions" value="true" />
 											<entry key="cleanup.correct_indentation" value="true" />
+											<entry key="cleanup.do_while_rather_than_while" value="true" />
 											<entry key="cleanup.double_negation" value="true" />
 											<entry key="cleanup.else_if" value="true" />
 											<entry key="cleanup.embedded_if" value="true" />
@@ -3208,7 +3210,9 @@ deploy:
 											<entry key="cleanup.standard_comparison" value="false" />
 											<entry key="cleanup.static_inner_class" value="true" />
 											<entry key="cleanup.strictly_equal_or_different" value="true" />
+											<entry key="cleanup.stringbuffer_to_stringbuilder" value="true" />
 											<entry key="cleanup.stringbuilder" value="false" />
+											<entry key="cleanup.stringbuilder_for_local_vars" value="true" />
 											<entry key="cleanup.substring" value="true" />
 											<entry key="cleanup.switch" value="true" />
 											<entry key="cleanup.system_property" value="true" />
@@ -3282,6 +3286,7 @@ deploy:
 											<entry key="sp_cleanup.convert_to_enhanced_for_loop_if_loop_var_used" value="false" />
 											<entry key="sp_cleanup.convert_to_switch_expressions" value="true" />
 											<entry key="sp_cleanup.correct_indentation" value="true" />
+											<entry key="sp_cleanup.do_while_rather_than_while" value="true" />
 											<entry key="sp_cleanup.double_negation" value="true" />
 											<entry key="sp_cleanup.else_if" value="true" />
 											<entry key="sp_cleanup.embedded_if" value="true" />
@@ -3357,7 +3362,9 @@ deploy:
 											<entry key="sp_cleanup.standard_comparison" value="false" />
 											<entry key="sp_cleanup.static_inner_class" value="true" />
 											<entry key="sp_cleanup.strictly_equal_or_different" value="true" />
+											<entry key="sp_cleanup.stringbuffer_to_stringbuilder" value="true" />
 											<entry key="sp_cleanup.stringbuilder" value="false" />
+											<entry key="sp_cleanup.stringbuilder_for_local_vars" value="true" />
 											<entry key="sp_cleanup.substring" value="true" />
 											<entry key="sp_cleanup.switch" value="true" />
 											<entry key="sp_cleanup.system_property" value="true" />
