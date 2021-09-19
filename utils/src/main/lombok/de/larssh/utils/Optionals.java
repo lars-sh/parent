@@ -135,8 +135,46 @@ public class Optionals {
 	}
 
 	/**
+	 * Returns the first present value. Returns empty if no value is present.
+	 *
+	 * @param <T>    value type
+	 * @param values any number of optional values to test
+	 * @return the first present value, empty if no value is present
+	 */
+	@SafeVarargs
+	public static <T> Optional<T> getFirst(final Optional<T>... values) {
+		for (final Optional<T> value : values) {
+			if (value.isPresent()) {
+				return value;
+			}
+		}
+		return Optional.empty();
+	}
+
+	/**
+	 * Returns the first present value. Values are created on-demand by calling
+	 * {@code suppliers} one after the other. Returns empty if no value is present.
+	 *
+	 * @param <T>       value type
+	 * @param suppliers any number of value suppliers, which values to test,
+	 *                  evaluated in a lazy manner
+	 * @return the first present value, empty if no value is present
+	 */
+	@SafeVarargs
+	public static <T> Optional<T> getFirst(final Supplier<? extends Optional<T>>... suppliers) {
+		for (final Supplier<? extends Optional<T>> supplier : suppliers) {
+			final Optional<T> value = supplier.get();
+			if (value.isPresent()) {
+				return value;
+			}
+		}
+		return Optional.empty();
+	}
+
+	/**
 	 * Returns an {@link Optional} describing the first value matching the predicate
-	 * {@code isPresent}. Returns an empty {@link Optional} if no element matches.
+	 * {@code isPresent}. Values are created on-demand by calling {@code suppliers}
+	 * one after the other. Returns an empty {@link Optional} if no element matches.
 	 *
 	 * @param <T>       type of the return value
 	 * @param isPresent predicate to match
