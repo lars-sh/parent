@@ -34,6 +34,27 @@ public class Nullables {
 	}
 
 	/**
+	 * Returns the first non-null value. Values are created on-demand by calling
+	 * {@code suppliers} one after the other. Returns null if no value is non-null.
+	 *
+	 * @param <T>       value type
+	 * @param suppliers any number of value suppliers, which values to test,
+	 *                  evaluated in a lazy manner
+	 * @return the first non-null value, null if no value is non-null
+	 */
+	@Nullable
+	@SafeVarargs
+	public static <T> T getFirst(final Supplier<? extends T>... suppliers) {
+		for (final Supplier<? extends T> supplier : suppliers) {
+			final T value = supplier.get();
+			if (value != null) {
+				return value;
+			}
+		}
+		return null;
+	}
+
+	/**
 	 * If {@code value} is non-null, invoke the specified consumer with
 	 * {@code value}, otherwise do nothing.
 	 *
