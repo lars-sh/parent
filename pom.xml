@@ -717,7 +717,7 @@
 		<property name="id" value="XCheckForNullAnnotation" />
 		<property name="fileExtensions" value="java" />
 		<property name="format" value="\P{javaJavaIdentifierPart}final\s([^,\(\);]*\s)?@\s*(edu\s*\.\s*umd\s*\.\s*cs\s*\.\s*findbugs\s*\.\s*annotations\s*\.\s*)?CheckForNull\s" />
-		<property name="message" value="@CheckForNull should precede keyword &quot;final&quot;." />
+		<property name="message" value="@CheckForNull should precede keyword &quot;final&quot; to follow a predefined order." />
 	</module>
 	<module name="RegexpMultiline">
 		<property name="id" value="XCollectionsEmptyConstants" />
@@ -729,7 +729,7 @@
 		<property name="id" value="XFinalsConstant" />
 		<property name="fileExtensions" value="java" />
 		<property name="format" value="[^\p{javaJavaIdentifierPart}\s]\s*(public\s+|protected\s+|)(static\s+final|final\s+static)\s+\S+\s+\S+\s*=\s*(['&quot;0-9\.+\-]|(true|false)\P{javaJavaIdentifierPart})" />
-		<property name="message" value="String and primitive constants should use Finals.constant." />
+		<property name="message" value="String and primitive constants should use Finals.constant to avoid unexpected compiler behavior." />
 	</module>
 	<module name="RegexpMultiline">
 		<property name="id" value="XFinalsConstantPrivate" />
@@ -747,61 +747,61 @@
 		<property name="id" value="XAvoidSerialVersionUID" />
 		<property name="fileExtensions" value="java" />
 		<property name="format" value="(^|\P{javaJavaIdentifierPart})serialVersionUID(\P{javaJavaIdentifierPart}|$)" />
-		<property name="message" value="Avoid using serialVersionUID as of https://github.com/rzwitserloot/lombok/wiki/WHY-NOT:-serialVersionUID" />
+		<property name="message" value="Avoid using serialVersionUID as of https://github.com/rzwitserloot/lombok/wiki/WHY-NOT:-serialVersionUID ." />
 	</module>
 	<module name="RegexpMultiline">
 		<property name="id" value="XNullableAnnotation" />
 		<property name="fileExtensions" value="java" />
 		<property name="format" value="\P{javaJavaIdentifierPart}final\s([^,\(\)\{;]*\s)?@\s*(edu\s*\.\s*umd\s*\.\s*cs\s*\.\s*findbugs\s*\.\s*annotations\s*\.\s*)?Nullable\s" />
-		<property name="message" value="@Nullable should precede keyword &quot;final&quot;." />
+		<property name="message" value="@Nullable should precede keyword &quot;final&quot; to follow a predefined order." />
 	</module>
 	<module name="RegexpMultiline">
 		<property name="id" value="XOptionalDouble" />
 		<property name="fileExtensions" value="java" />
 		<property name="format" value="\P{javaJavaIdentifierPart}Optional\s*&lt;\s*Double\s*&gt;" />
-		<property name="message" value="Optional&lt;Double&gt; must not be used. Use OptionalDouble instead." />
+		<property name="message" value="Optional&lt;Double&gt; must not be used for performance reasons. Use OptionalDouble instead." />
 	</module>
 	<module name="RegexpMultiline">
 		<property name="id" value="XOptionalInteger" />
 		<property name="fileExtensions" value="java" />
 		<property name="format" value="\P{javaJavaIdentifierPart}Optional\s*&lt;\s*Integer\s*&gt;" />
-		<property name="message" value="Optional&lt;Integer&gt; must not be used. Use OptionalInt instead." />
+		<property name="message" value="Optional&lt;Integer&gt; must not be used for performance reasons. Use OptionalInt instead." />
 	</module>
 	<module name="RegexpMultiline">
 		<property name="id" value="XOptionalLong" />
 		<property name="fileExtensions" value="java" />
 		<property name="format" value="\P{javaJavaIdentifierPart}Optional\s*&lt;\s*Long\s*&gt;" />
-		<property name="message" value="Optional&lt;Long&gt; must not be used. Use OptionalLong instead." />
+		<property name="message" value="Optional&lt;Long&gt; must not be used for performance reasons. Use OptionalLong instead." />
 	</module>
 	<module name="RegexpMultiline">
 		<property name="id" value="XPatternSplit" />
 		<property name="fileExtensions" value="java" />
 		<property name="format" value="\.\s*split\s*\(\s*([^&quot;\(,\)]+|&quot;([^\\&quot;]+|\\.)*&quot;|\([^\)]*\))++\s*\)" />
-		<property name="message" value="String.split and Pattern.split(input) must not be used. Use Pattern.split(input, limit) instead and think about the limit. Use StringLimit.NONE to not discard trailing empty strings." />
+		<property name="message" value="String.split and Pattern.split(input) must not be used, as its default value for the limit parameter might be unexpected. Use Pattern.split(input, limit) instead and think about the limit. Use StringLimit.NONE to not discard trailing empty strings." />
 	</module>
 	<module name="RegexpMultiline">
 		<property name="id" value="XStringMatches" />
 		<property name="fileExtensions" value="java" />
 		<property name="format" value="\.\s*matches\s*\(\s*([^&quot;\(,\)]+|&quot;([^\\&quot;]+|\\.)*&quot;|\([^\)]*\))++\s*\)" />
-		<property name="message" value="String.matches must not be used. Use Strings.matches instead. This is likely to be a false positive if String.matches is not called." />
+		<property name="message" value="String.matches must not be used, as it is compiling patterns, while developers might not be aware of it. Use Strings.matches instead. This is likely to be a false positive if String.matches is not called." />
 	</module>
 	<module name="RegexpMultiline">
 		<property name="id" value="XStringReplaceAll" />
 		<property name="fileExtensions" value="java" />
 		<property name="format" value="&quot;\s*\.\s*replaceAll\s*\(|(?!\P{javaJavaIdentifierPart}Strings).{8}\.\s*replaceAll\s*\(\s*([^&quot;\(,\)]+|&quot;([^\\&quot;]+|\\.)*&quot;|\([^\)]*\))*+\s*," />
-		<property name="message" value="String.replaceAll must not be used. Use Strings.replaceAll instead. This is likely to be a false positive if String.replaceAll is not called." />
+		<property name="message" value="String.replaceAll must not be used, as it is compiling patterns, while developers might not be aware of it. Use Strings.replaceAll instead. This is likely to be a false positive if String.replaceAll is not called." />
 	</module>
 	<module name="RegexpMultiline">
 		<property name="id" value="XStringReplaceFirst" />
 		<property name="fileExtensions" value="java" />
 		<property name="format" value="&quot;\s*\.\s*replaceFirst\s*\(|(?!\P{javaJavaIdentifierPart}Strings).{8}\.\s*replaceFirst\s*\(\s*([^&quot;\(,\)]+|&quot;([^\\&quot;]+|\\.)*&quot;|\([^\)]*\))*+\s*," />
-		<property name="message" value="String.replaceFirst must not be used. Use Strings.replaceFirst instead. This is likely to be a false positive if String.replaceFirst is not called." />
+		<property name="message" value="String.replaceFirst must not be used, as it is compiling patterns, while developers might not be aware of it. Use Strings.replaceFirst instead. This is likely to be a false positive if String.replaceFirst is not called." />
 	</module>
 	<module name="RegexpMultiline">
 		<property name="id" value="XStringSplit" />
 		<property name="fileExtensions" value="java" />
 		<property name="format" value="&quot;\s*\.\s*split\s*\(" />
-		<property name="message" value="String.split must not be used. Use Pattern.split(input, limit) instead. This is likely to be a false positive if String.split is not called." />
+		<property name="message" value="String.split must not be used, as it is compiling patterns, while developers might not be aware of it. Use Pattern.split(input, limit) instead. This is likely to be a false positive if String.split is not called." />
 	</module>
 	<module name="RegexpMultiline">
 		<property name="id" value="XSuperWithoutParameters" />
@@ -1109,7 +1109,7 @@
 		<module name="RegexpSinglelineJava">
 			<property name="id" value="XNonNullByDefaultAnnotation" />
 			<property name="format" value="@\s*(de\s*\.\s*larssh\s*\.\s*utils\s*\.\s*annotations\s*\.\s*)?NonNullByDefault(\P{javaJavaIdentifierPart}|$)" />
-			<property name="message" value="Package is not annotated with @NonNullByDefault. Package definitions inside package-info.java files shall be annotated with @NonNullByDefault to avoid default nullness." />
+			<property name="message" value="Package is not annotated with @NonNullByDefault. Package definitions inside package-info.java files shall be annotated with @NonNullByDefault to avoid default nullability." />
 			<property name="minimum" value="1" />
 			<property name="maximum" value="1" />
 			<property name="ignoreComments" value="true" />
