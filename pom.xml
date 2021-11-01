@@ -1705,7 +1705,7 @@ fi
 										<!-- Allow utility class names ending with character 's' -->
 										<rule ref="category/java/codestyle.xml/ClassNamingConventions">
 											<properties>
-												<property name="utilityClassPattern" value="[A-Z][a-zA-Z0-9]+(s|Helper|Utils?)" />
+												<property name="utilityClassPattern" value="[A-Z][a-zA-Z0-9]+(s|Helper|Util)" />
 											</properties>
 										</rule>
 
