@@ -176,7 +176,7 @@
 		<findsecbugs.version>1.11.0</findsecbugs.version>
 		<lombok.version>1.18.22</lombok.version>
 		<org-eclipse-jdt-core.version>3.27.0</org-eclipse-jdt-core.version>
-		<pmd.version>6.39.0</pmd.version>
+		<pmd.version>6.40.0</pmd.version>
 		<spotbugs.version>4.4.2</spotbugs.version>
 		<spotbugs-annotations.version>4.4.2</spotbugs-annotations.version>
 
@@ -1705,7 +1705,7 @@ fi
 										<!-- Allow utility class names ending with character 's' -->
 										<rule ref="category/java/codestyle.xml/ClassNamingConventions">
 											<properties>
-												<property name="utilityClassPattern" value="[A-Z][a-zA-Z0-9]+(s|Helper|Utils?)" />
+												<property name="utilityClassPattern" value="[A-Z][a-zA-Z0-9]+(s|Helper|Util)" />
 											</properties>
 										</rule>
 
