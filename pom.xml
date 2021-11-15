@@ -177,7 +177,7 @@
 		<lombok.version>1.18.22</lombok.version>
 		<org-eclipse-jdt-core.version>3.27.0</org-eclipse-jdt-core.version>
 		<pmd.version>6.40.0</pmd.version>
-		<spotbugs.version>4.4.2</spotbugs.version>
+		<spotbugs.version>4.5.0</spotbugs.version>
 		<spotbugs-annotations.version>4.5.0</spotbugs-annotations.version>
 
 		<!-- Versions: Reporting Skins -->
@@ -1952,7 +1952,7 @@ jobs:
           key: maven-dependencies
           path: ~/.m2/repository
       - name: Check out
-        uses: actions/checkout@v2.3.4
+        uses: actions/checkout@v2.4.0
       - name: Set up JDK ${{ matrix.java-version }}
         uses: actions/setup-java@v2
         with:
@@ -2056,7 +2056,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out
-        uses: actions/checkout@v2.3.4
+        uses: actions/checkout@v2.4.0
       - name: Set up JDK and Maven Central Repository
         uses: actions/setup-java@v2
         with:
