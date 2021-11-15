@@ -1,5 +1,6 @@
 package de.larssh.utils.time;
 
+import java.time.Duration;
 import java.util.Optional;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
@@ -191,9 +192,6 @@ public class LoggingStopwatch extends CloseableStopwatch {
 		EARLY((stopwatch, logger) -> {
 			final Optional<Checkpoint> lastCheckpoint = stopwatch.getLastCheckpoint();
 			if (stopwatch.isStopped()) {
-				if (lastCheckpoint.isPresent()) {
-					logStopwatchLastPeriod(stopwatch, logger);
-				}
 				logStopwatchStopped(stopwatch, logger);
 			} else if (lastCheckpoint.isPresent()) {
 				logCheckpoint(lastCheckpoint.get(), logger);
@@ -216,12 +214,19 @@ public class LoggingStopwatch extends CloseableStopwatch {
 				stopwatch.stream().forEach(checkpoint -> logCheckpoint(checkpoint, logger));
 
 				// Stopwatch: Stop
-				if (stopwatch.getLastCheckpoint().isPresent()) {
-					logStopwatchLastPeriod(stopwatch, logger);
-				}
 				logStopwatchStopped(stopwatch, logger);
 			}
 		});
+
+		/**
+		 * Formats a duration for user-readable output
+		 *
+		 * @param duration the duration to format
+		 * @return the formatted duration
+		 */
+		private static String formatDuration(final Duration duration) {
+			return duration.toString().substring(2);
+		}
 
 		/**
 		 * Logs {@code checkpoint}.
@@ -230,25 +235,11 @@ public class LoggingStopwatch extends CloseableStopwatch {
 		 * @param logger     the string supplier logging operation
 		 */
 		private static void logCheckpoint(final Checkpoint checkpoint, final Consumer<Supplier<String>> logger) {
-			logger.accept(() -> Strings.format("Period took %s. Checkpoint \"%s\" reached at %s.",
-					checkpoint.sincePrevious().toString().substring(2),
+			logger.accept(() -> Strings.format("Period took %s. Checkpoint \"%s\" reached at %s after %s.",
+					formatDuration(checkpoint.sincePrevious()),
 					checkpoint.getName(),
-					checkpoint.getInstant()));
-		}
-
-		/**
-		 * Logs the last periods length.
-		 *
-		 * <p>
-		 * The last period is either from stopwatch start or from the last checkpoint
-		 * until the stopwatches stop.
-		 *
-		 * @param stopwatch the stopwatch
-		 * @param logger    the string supplier logging operation
-		 */
-		private static void logStopwatchLastPeriod(final LoggingStopwatch stopwatch,
-				final Consumer<Supplier<String>> logger) {
-			logger.accept(() -> Strings.format("Period took %s.", stopwatch.sinceLast().toString().substring(2)));
+					checkpoint.getInstant(),
+					formatDuration(checkpoint.sinceStart())));
 		}
 
 		/**
@@ -271,9 +262,15 @@ public class LoggingStopwatch extends CloseableStopwatch {
 		 */
 		private static void logStopwatchStopped(final LoggingStopwatch stopwatch,
 				final Consumer<Supplier<String>> logger) {
-			logger.accept(() -> Strings.format("Stopwatch \"%s\" stopped after %s.",
+			final String lastPeriod = stopwatch.getLastCheckpoint().isPresent()
+					? Strings.format("Period took %s. ", formatDuration(stopwatch.sinceLast()))
+					: "";
+
+			logger.accept(() -> Strings.format("%sStopwatch \"%s\" stopped at %s after %s.",
+					lastPeriod,
 					stopwatch.getName(),
-					stopwatch.sinceStart().toString().substring(2)));
+					stopwatch.getStopInstant(),
+					formatDuration(stopwatch.sinceStart())));
 		}
 
 		/**
