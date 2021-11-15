@@ -6,6 +6,7 @@ import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 import de.larssh.utils.text.Strings;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -149,6 +150,8 @@ public class LoggingStopwatch extends CloseableStopwatch {
 	 * @param name   the stopwatches name
 	 * @param logger the logging operation
 	 */
+	@SuppressFBWarnings(value = "MC_OVERRIDABLE_METHOD_CALL_IN_CONSTRUCTOR",
+			justification = "made sure to call accept after initializing all fields")
 	public LoggingStopwatch(final String name, final Consumer<? super LoggingStopwatch> logger) {
 		this.logger = logger;
 		this.name = name;

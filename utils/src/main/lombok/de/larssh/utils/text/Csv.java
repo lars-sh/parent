@@ -114,7 +114,7 @@ public class Csv extends ProxiedList<CsvRow> {
 		this(data.size());
 
 		for (final List<String> row : Nullables.orElseThrow(data)) {
-			super.add(new CsvRow(this, size(), Nullables.orElseThrow(row)));
+			super.add(new CsvRow(this, super.size(), Nullables.orElseThrow(row)));
 		}
 	}
 
