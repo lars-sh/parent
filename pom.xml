@@ -176,7 +176,7 @@
 		<findsecbugs.version>1.11.0</findsecbugs.version>
 		<lombok.version>1.18.22</lombok.version>
 		<org-eclipse-jdt-core.version>3.27.0</org-eclipse-jdt-core.version>
-		<pmd.version>6.40.0</pmd.version>
+		<pmd.version>6.41.0</pmd.version>
 		<spotbugs.version>4.5.0</spotbugs.version>
 		<spotbugs-annotations.version>4.5.0</spotbugs-annotations.version>
 
@@ -2758,7 +2758,7 @@ deploy:
 				<dependency>
 					<groupId>org.junit.platform</groupId>
 					<artifactId>junit-platform-runner</artifactId>
-					<version>1.8.1</version>
+					<version>1.8.2</version>
 					<scope>test</scope>
 					<exclusions>
 						<exclusion>
