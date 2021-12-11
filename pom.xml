@@ -3207,6 +3207,7 @@ deploy:
 											<entry key="cleanup.stringbuffer_to_stringbuilder" value="true" />
 											<entry key="cleanup.stringbuilder" value="false" />
 											<entry key="cleanup.stringbuilder_for_local_vars" value="true" />
+											<entry key="cleanup.stringconcat_to_textblock" value="true" />
 											<entry key="cleanup.substring" value="true" />
 											<entry key="cleanup.switch" value="true" />
 											<entry key="cleanup.system_property" value="true" />
@@ -3359,6 +3360,7 @@ deploy:
 											<entry key="sp_cleanup.stringbuffer_to_stringbuilder" value="true" />
 											<entry key="sp_cleanup.stringbuilder" value="false" />
 											<entry key="sp_cleanup.stringbuilder_for_local_vars" value="true" />
+											<entry key="sp_cleanup.stringconcat_to_textblock" value="true" />
 											<entry key="sp_cleanup.substring" value="true" />
 											<entry key="sp_cleanup.switch" value="true" />
 											<entry key="sp_cleanup.system_property" value="true" />
