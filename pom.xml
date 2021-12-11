@@ -175,7 +175,7 @@
 		<sb-contrib.version>7.4.7</sb-contrib.version>
 		<findsecbugs.version>1.11.0</findsecbugs.version>
 		<lombok.version>1.18.22</lombok.version>
-		<org-eclipse-jdt-core.version>3.27.0</org-eclipse-jdt-core.version>
+		<org-eclipse-jdt-core.version>3.28.0</org-eclipse-jdt-core.version>
 		<pmd.version>6.41.0</pmd.version>
 		<spotbugs.version>4.5.1</spotbugs.version>
 		<spotbugs-annotations.version>4.5.1</spotbugs-annotations.version>
@@ -3207,6 +3207,7 @@ deploy:
 											<entry key="cleanup.stringbuffer_to_stringbuilder" value="true" />
 											<entry key="cleanup.stringbuilder" value="false" />
 											<entry key="cleanup.stringbuilder_for_local_vars" value="true" />
+											<entry key="cleanup.stringconcat_to_textblock" value="true" />
 											<entry key="cleanup.substring" value="true" />
 											<entry key="cleanup.switch" value="true" />
 											<entry key="cleanup.system_property" value="true" />
@@ -3359,6 +3360,7 @@ deploy:
 											<entry key="sp_cleanup.stringbuffer_to_stringbuilder" value="true" />
 											<entry key="sp_cleanup.stringbuilder" value="false" />
 											<entry key="sp_cleanup.stringbuilder_for_local_vars" value="true" />
+											<entry key="sp_cleanup.stringconcat_to_textblock" value="true" />
 											<entry key="sp_cleanup.substring" value="true" />
 											<entry key="sp_cleanup.switch" value="true" />
 											<entry key="sp_cleanup.system_property" value="true" />
