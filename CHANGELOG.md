@@ -22,7 +22,7 @@ Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%
 * Allow underscores in the name of test methods.
 
 ### Fixed
-* Support point-relative paths in de.arssh.utils.io.Resources
+* Support point-relative paths in `de.larssh.utils.io.Resources`
 
 ### Removed
 * `de.larssh.utils.test.Assertions#assertEqualsAndHashCode` as most `equals` and `hashCode` implementations don't need to be tested in a that specific way.
