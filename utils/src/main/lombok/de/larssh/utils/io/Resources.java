@@ -225,10 +225,11 @@ public class Resources {
 	 * @return the path to the resource
 	 */
 	public static Optional<Path> getResource(final ClassLoader classLoader, final Path resource) {
-		return Optional.ofNullable(classLoader.getResource(checkAndFixResourcePath(resource)))
+		final String fixedPath = checkAndFixResourcePath(resource);
+		return Optional.ofNullable(classLoader.getResource(fixedPath))
 				.map(URL::toString)
 				.map(Resources::createPath)
-				.filter(path -> endsPathWithCaseSensitive(path, resource));
+				.filter(path -> endsPathWithCaseSensitive(path, Paths.get(fixedPath)));
 	}
 
 	/**
@@ -279,9 +280,11 @@ public class Resources {
 	@SuppressFBWarnings(value = "EXS_EXCEPTION_SOFTENING_NO_CONSTRAINTS",
 			justification = "converting to unchecked IOException")
 	public static Stream<Path> getResources(final ClassLoader classLoader, final Path resource) {
+		final String fixedPath = checkAndFixResourcePath(resource);
+
 		final Enumeration<URL> enumeration;
 		try {
-			enumeration = classLoader.getResources(checkAndFixResourcePath(resource));
+			enumeration = classLoader.getResources(fixedPath);
 		} catch (final IOException e) {
 			throw new UncheckedIOException(e);
 		}
@@ -289,7 +292,7 @@ public class Resources {
 		return Enumerations.stream(enumeration)
 				.map(URL::toString)
 				.map(Resources::createPath)
-				.filter(path -> endsPathWithCaseSensitive(path, resource));
+				.filter(path -> endsPathWithCaseSensitive(path, Paths.get(fixedPath)));
 	}
 
 	/**
