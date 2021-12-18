@@ -644,7 +644,9 @@ The Maven Dependency Plugin performs bytecode-level analysis and therefore might
 </build>
 ```
 
-In case you really need to suppress a dependency warning from either the "declared but unused" or the "used but undeclared" list, use the `ignoredDependencies` property, which is further described [on the Maven Dependency Plugin page](http://maven.apache.org/plugins/maven-dependency-plugin/analyze-only-mojo.html#ignoredDependencies).
+In case you really need to suppress a dependency warning from the "declared but unused" list, use the `ignoredUnusedDeclaredDependencies` property, which is further described [on the Maven Dependency Plugin page](http://maven.apache.org/plugins/maven-dependency-plugin/analyze-only-mojo.html#ignoredUnusedDeclaredDependencies).
+
+Make sure to use the attribute `combine.children="append"` as shown above, as the Parent POM ignores some dependencies for you already.
 
 ```XML
 <build>
@@ -653,9 +655,9 @@ In case you really need to suppress a dependency warning from either the "declar
 			<plugin>
 				<artifactId>maven-dependency-plugin</artifactId>
 				<configuration>
-					<ignoredDependencies>
-						<ignoredDependency>[groupId]:[artifactId]:[type]:[version]</ignoredDependency>
-					</ignoredDependencies>
+					<ignoredUnusedDeclaredDependencies combine.children="append">
+						<ignoredUnusedDeclaredDependency>[groupId]:[artifactId]:[type]:[version]</ignoredUnusedDeclaredDependency>
+					</ignoredUnusedDeclaredDependencies>
 				</configuration>
 			</plugin>
 		</plugins>
@@ -663,7 +665,24 @@ In case you really need to suppress a dependency warning from either the "declar
 </build>
 ```
 
-*Warning:* Do not use the `ignoredUnusedDeclaredDependencies` property, as that's already in use by the Parent POM.
+In case you really need to suppress a dependency warning from the "used but undeclared" list, use the `ignoredUsedUndeclaredDependencies` property, which is further described [on the Maven Dependency Plugin page](http://maven.apache.org/plugins/maven-dependency-plugin/analyze-only-mojo.html#ignoredUsedUndeclaredDependencies).
+
+```XML
+<build>
+	<pluginManagement>
+		<plugins>
+			<plugin>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<configuration>
+					<ignoredUsedUndeclaredDependencies combine.children="append">
+						<ignoredUsedUndeclaredDependency>[groupId]:[artifactId]:[type]:[version]</ignoredUsedUndeclaredDependency>
+					</ignoredUsedUndeclaredDependencies>
+				</configuration>
+			</plugin>
+		</plugins>
+	</pluginManagement>
+</build>
+```
 
 ##### JaCoCo
 Use the `de.larssh.utils.annotations.SuppressJacocoGenerated` annotation to indicate that JaCoCo should ignore the annotated type, constructor or method.
