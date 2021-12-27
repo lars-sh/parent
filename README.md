@@ -19,12 +19,12 @@ This POM is made for development using Maven and Eclipse by handling some of its
 
 # Contents
 * [Getting Started](#getting-started)
-  * [With a new Project](#with-a-new-Project)
+  * [With a new Project](#with-a-new-project)
   * [With an existing Project](#with-an-existing-project)
   * [Import into Eclipse](#import-into-eclipse)
   * [Open with IntelliJ IDEA](#open-with-intellij-idea)
   * [GitHub Actions](#github-actions)
-  * [Skip Validations](#akip-validations)
+  * [Skip Validations](#skip-validations)
 * [Ingredients](#ingredients)
   * [Project Lombok](#project-lombok)
     * [Introduction](#introduction)
@@ -634,7 +634,7 @@ The Maven Dependency Plugin performs bytecode-level analysis and therefore might
 			<plugin>
 				<artifactId>maven-dependency-plugin</artifactId>
 				<configuration>
-					<usedDependencies>
+					<usedDependencies combine.children="append">
 						<usedDependency>[groupId]:[artifactId]</usedDependency>
 					</usedDependencies>
 				</configuration>
