@@ -129,7 +129,8 @@
 		<junit-jupiter-api.version>5.8.2</junit-jupiter-api.version>
 		<junit-jupiter-engine.version>5.8.2</junit-jupiter-engine.version>
 		<lombok-annotations.version>1.18.22</lombok-annotations.version>
-		<mockito.version>4.2.0</mockito.version>
+		<mockito-core.version>4.2.0</mockito-core.version>
+		<mockito-inline.version>4.2.0</mockito-inline.version>
 		<parent.version>0.9.13-SNAPSHOT</parent.version>
 
 		<!-- Versions: Plugins -->
@@ -270,7 +271,13 @@
 		<dependency>
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-core</artifactId>
-			<version>${mockito.version}</version>
+			<version>${mockito-core.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-inline</artifactId>
+			<version>${mockito-inline.version}</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
@@ -2488,7 +2495,8 @@ deploy:
 								<ignoredUnusedDeclaredDependency>org.jooq:joor-java-8:jar:${joor.version}</ignoredUnusedDeclaredDependency>
 								<ignoredUnusedDeclaredDependency>org.junit.jupiter:junit-jupiter-api:jar:${junit-jupiter-api.version}</ignoredUnusedDeclaredDependency>
 								<ignoredUnusedDeclaredDependency>org.junit.jupiter:junit-jupiter-engine:jar:${junit-jupiter-engine.version}</ignoredUnusedDeclaredDependency>
-								<ignoredUnusedDeclaredDependency>org.mockito:mockito-core:jar:${mockito.version}</ignoredUnusedDeclaredDependency>
+								<ignoredUnusedDeclaredDependency>org.mockito:mockito-core:jar:${mockito-core.version}</ignoredUnusedDeclaredDependency>
+								<ignoredUnusedDeclaredDependency>org.mockito:mockito-inline:jar:${mockito-inline.version}</ignoredUnusedDeclaredDependency>
 							</ignoredUnusedDeclaredDependencies>
 						</configuration>
 					</execution>
