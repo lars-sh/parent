@@ -4,7 +4,7 @@
 
 	<groupId>de.lars-sh</groupId>
 	<artifactId>root</artifactId>
-	<version>0.9.13-SNAPSHOT</version>
+	<version>0.9.13</version>
 	<packaging>pom</packaging>
 
 	<name>Root POM</name>
@@ -131,7 +131,7 @@
 		<lombok-annotations.version>1.18.22</lombok-annotations.version>
 		<mockito-core.version>4.2.0</mockito-core.version>
 		<mockito-inline.version>4.2.0</mockito-inline.version>
-		<parent.version>0.9.13-SNAPSHOT</parent.version>
+		<parent.version>0.9.13</parent.version>
 
 		<!-- Versions: Plugins -->
 		<build-helper-maven-plugin.version>3.2.0</build-helper-maven-plugin.version>
