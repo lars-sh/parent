@@ -14,6 +14,7 @@ Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%
   Therefore protected getters were renamed to `getProxied*` and now differentiate between read-only access and the need to check for write access.
   In addition a method `isModifiable` is forced to be implemented.
 * Method overloads to retrieve the first non-null or present value: `de.larssh.utils.Nullables.getFirst` and `de.larssh.utils.Optionals.getFirst`
+* Method `de.larssh.utils.io.ProcessBuilders.toCommandLine` to create command line string out of `ProcessBuilder` instances
 
 ### Changed
 * Renamed constants of `de.larssh.utils.text.SplitLimit` to be more precise
