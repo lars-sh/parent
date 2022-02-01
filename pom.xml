@@ -945,6 +945,7 @@
 		<module name="UnnecessarySemicolonAfterOuterTypeDeclaration" />
 		<module name="UnnecessarySemicolonAfterTypeMemberDeclaration" />
 		<module name="UnnecessarySemicolonInTryWithResources" />
+		<module name="UnusedLocalVariable" />
 		<module name="VariableDeclarationUsageDistance" />
 
 		<!-- Filters -->
