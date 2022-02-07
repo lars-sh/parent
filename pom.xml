@@ -156,7 +156,7 @@
 		<maven-jxr-plugin.version>3.1.1</maven-jxr-plugin.version>
 		<maven-plugin-plugin.version>3.6.4</maven-plugin-plugin.version>
 		<maven-pmd-plugin.version>3.15.0</maven-pmd-plugin.version>
-		<maven-project-info-reports-plugin.version>3.1.2</maven-project-info-reports-plugin.version>
+		<maven-project-info-reports-plugin.version>3.2.1</maven-project-info-reports-plugin.version>
 		<maven-release-plugin.version>2.5.3</maven-release-plugin.version>
 		<maven-resources-plugin.version>3.2.0</maven-resources-plugin.version>
 		<maven-shade-plugin.version>3.2.4</maven-shade-plugin.version>
