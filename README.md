@@ -461,7 +461,6 @@ dependency.ignoreUnusedRuntime:                    true
 enforcer.requiredMavenVersion:                     3.3.9
 formatter.configFile:                              ${project.build.directory}/formatter.xml
 formatter.lineEnding:                              LF
-jar.manifest.addClasspath:                         true
 jar.manifest.addDefaultImplementationEntries:      true
 jar.manifest.addDefaultSpecificationEntries:       true
 jar.manifest.mainClass:                            
