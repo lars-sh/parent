@@ -17,7 +17,7 @@ TODO
 TODO
 
 ### Removed
-TODO
+* Property `jar.manifest.addClasspath`
 
 <a name="0.9.13"></a>
 
