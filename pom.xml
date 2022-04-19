@@ -127,7 +127,7 @@
 		<joor.version>0.9.14</joor.version>
 		<junit-jupiter-api.version>5.8.2</junit-jupiter-api.version>
 		<junit-jupiter-engine.version>5.8.2</junit-jupiter-engine.version>
-		<lombok-annotations.version>1.18.22</lombok-annotations.version>
+		<lombok-annotations.version>1.18.24</lombok-annotations.version>
 		<mockito-core.version>4.4.0</mockito-core.version>
 		<mockito-inline.version>4.4.0</mockito-inline.version>
 		<parent.version>0.9.14-SNAPSHOT</parent.version>
