@@ -4,6 +4,7 @@ import java.util.function.Function;
 
 import de.larssh.utils.SneakyException;
 import edu.umd.cs.findbugs.annotations.Nullable;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
 /**
  * Represents a function that accepts one argument and produces a result.
@@ -30,7 +31,7 @@ public interface ThrowingFunction&lt;T, R&gt; extends Function&lt;T, R&gt; {
 	 * @return hidden throwing function
 	 */
 	static &lt;T, R&gt; Function&lt;T, R&gt; throwing(final ThrowingFunction&lt;T, R&gt; function) {
-<span class="fc" id="L33">		return function;</span>
+<span class="fc" id="L34">		return function;</span>
 	}
 
 	/**
@@ -55,9 +56,9 @@ public interface ThrowingFunction&lt;T, R&gt; extends Function&lt;T, R&gt; {
 	@SuppressWarnings({ &quot;checkstyle:IllegalCatch&quot;, &quot;PMD.AvoidCatchingGenericException&quot; })
 	default R apply(@Nullable final T value) {
 		try {
-<span class="fc" id="L58">			return applyThrowing(value);</span>
-<span class="fc" id="L59">		} catch (final Exception e) {</span>
-<span class="nc" id="L60">			throw new SneakyException(e);</span>
+<span class="fc" id="L59">			return applyThrowing(value);</span>
+<span class="fc" id="L60">		} catch (final Exception e) {</span>
+<span class="nc" id="L61">			throw new SneakyException(e);</span>
 		}
 	}
 
@@ -71,6 +72,8 @@ public interface ThrowingFunction&lt;T, R&gt; extends Function&lt;T, R&gt; {
 	 */
 	@Nullable
 	@SuppressWarnings(&quot;PMD.SignatureDeclareThrowsException&quot;)
+	@SuppressFBWarnings(value = &quot;THROWS_METHOD_THROWS_CLAUSE_BASIC_EXCEPTION&quot;,
+			justification = &quot;this is the way throwing functions work&quot;)
 	R applyThrowing(@Nullable T value) throws Exception;
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

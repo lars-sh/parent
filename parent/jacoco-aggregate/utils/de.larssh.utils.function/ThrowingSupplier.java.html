@@ -4,6 +4,7 @@ import java.util.function.Supplier;
 
 import de.larssh.utils.SneakyException;
 import edu.umd.cs.findbugs.annotations.Nullable;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
 /**
  * Represents a supplier of results. There is no requirement that a new or
@@ -29,7 +30,7 @@ public interface ThrowingSupplier&lt;T&gt; extends Supplier&lt;T&gt; {
 	 * @return hidden throwing supplier
 	 */
 	static &lt;T&gt; Supplier&lt;T&gt; throwing(final ThrowingSupplier&lt;T&gt; supplier) {
-<span class="fc" id="L32">		return supplier;</span>
+<span class="fc" id="L33">		return supplier;</span>
 	}
 
 	/**
@@ -52,9 +53,9 @@ public interface ThrowingSupplier&lt;T&gt; extends Supplier&lt;T&gt; {
 	@SuppressWarnings({ &quot;checkstyle:IllegalCatch&quot;, &quot;PMD.AvoidCatchingGenericException&quot; })
 	default T get() {
 		try {
-<span class="fc" id="L55">			return getThrowing();</span>
-<span class="fc" id="L56">		} catch (final Exception e) {</span>
-<span class="nc" id="L57">			throw new SneakyException(e);</span>
+<span class="fc" id="L56">			return getThrowing();</span>
+<span class="fc" id="L57">		} catch (final Exception e) {</span>
+<span class="nc" id="L58">			throw new SneakyException(e);</span>
 		}
 	}
 
@@ -66,6 +67,8 @@ public interface ThrowingSupplier&lt;T&gt; extends Supplier&lt;T&gt; {
 	 */
 	@Nullable
 	@SuppressWarnings(&quot;PMD.SignatureDeclareThrowsException&quot;)
+	@SuppressFBWarnings(value = &quot;THROWS_METHOD_THROWS_CLAUSE_BASIC_EXCEPTION&quot;,
+			justification = &quot;this is the way throwing suppliers work&quot;)
 	T getThrowing() throws Exception;
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

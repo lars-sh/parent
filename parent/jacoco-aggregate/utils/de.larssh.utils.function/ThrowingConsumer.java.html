@@ -4,6 +4,7 @@ import java.util.function.Consumer;
 
 import de.larssh.utils.SneakyException;
 import edu.umd.cs.findbugs.annotations.Nullable;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
 /**
  * Represents an operation that accepts a single input argument and returns no
@@ -30,7 +31,7 @@ public interface ThrowingConsumer&lt;T&gt; extends Consumer&lt;T&gt; {
 	 * @return hidden throwing consumer
 	 */
 	static &lt;T&gt; Consumer&lt;T&gt; throwing(final ThrowingConsumer&lt;T&gt; consumer) {
-<span class="fc" id="L33">		return consumer;</span>
+<span class="fc" id="L34">		return consumer;</span>
 	}
 
 	/**
@@ -53,11 +54,11 @@ public interface ThrowingConsumer&lt;T&gt; extends Consumer&lt;T&gt; {
 	@SuppressWarnings({ &quot;checkstyle:IllegalCatch&quot;, &quot;PMD.AvoidCatchingGenericException&quot; })
 	default void accept(@Nullable final T value) {
 		try {
-<span class="fc" id="L56">			acceptThrowing(value);</span>
-<span class="fc" id="L57">		} catch (final Exception e) {</span>
-<span class="nc" id="L58">			throw new SneakyException(e);</span>
-<span class="fc" id="L59">		}</span>
-<span class="fc" id="L60">	}</span>
+<span class="fc" id="L57">			acceptThrowing(value);</span>
+<span class="fc" id="L58">		} catch (final Exception e) {</span>
+<span class="nc" id="L59">			throw new SneakyException(e);</span>
+<span class="fc" id="L60">		}</span>
+<span class="fc" id="L61">	}</span>
 
 	/**
 	 * Performs this operation on the given argument, allow throwing any kind of
@@ -67,6 +68,8 @@ public interface ThrowingConsumer&lt;T&gt; extends Consumer&lt;T&gt; {
 	 * @throws Exception any kind of exception
 	 */
 	@SuppressWarnings(&quot;PMD.SignatureDeclareThrowsException&quot;)
+	@SuppressFBWarnings(value = &quot;THROWS_METHOD_THROWS_CLAUSE_BASIC_EXCEPTION&quot;,
+			justification = &quot;this is the way throwing consumers work&quot;)
 	void acceptThrowing(@Nullable T value) throws Exception;
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
