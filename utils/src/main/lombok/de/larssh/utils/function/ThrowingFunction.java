@@ -4,6 +4,7 @@ import java.util.function.Function;
 
 import de.larssh.utils.SneakyException;
 import edu.umd.cs.findbugs.annotations.Nullable;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
 /**
  * Represents a function that accepts one argument and produces a result.
@@ -71,5 +72,7 @@ public interface ThrowingFunction<T, R> extends Function<T, R> {
 	 */
 	@Nullable
 	@SuppressWarnings("PMD.SignatureDeclareThrowsException")
+	@SuppressFBWarnings(value = "THROWS_METHOD_THROWS_CLAUSE_BASIC_EXCEPTION",
+			justification = "this is the way throwing functions work")
 	R applyThrowing(@Nullable T value) throws Exception;
 }

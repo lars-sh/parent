@@ -43,4 +43,8 @@
 		<Bug pattern="MDM_THREAD_YIELD" />
 		<Class name="de.larssh.utils.time.Stopwatch" />
 	</Match>
+	<Match>
+		<Bug pattern="THROWS_METHOD_THROWS_CLAUSE_BASIC_EXCEPTION" />
+		<Class name="de.larssh.utils.time.Stopwatch" />
+	</Match>
 </FindBugsFilter>

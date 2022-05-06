@@ -174,6 +174,8 @@ public class Nullables {
 	 * @return the non-null value
 	 * @throws X if {@code value} is null
 	 */
+	@SuppressFBWarnings(value = "THROWS_METHOD_THROWS_CLAUSE_THROWABLE",
+			justification = "this is the way orElseThrow works")
 	public static <T, X extends Throwable> T orElseThrow(@Nullable final T value,
 			final Supplier<? extends X> exceptionSupplier) throws X {
 		if (value == null) {
