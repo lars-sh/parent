@@ -1,6 +1,7 @@
 package de.larssh.utils.test;
 
 import de.larssh.utils.annotations.PackagePrivate;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
 /**
  * SneakyException allow rethrowing any kind of {@link Exception}, hiding them
@@ -54,6 +55,8 @@ final class SneakyException extends RuntimeException {
 	 * @throws T hidden throwable
 	 */
 	@SuppressWarnings("unchecked")
+	@SuppressFBWarnings(value = "THROWS_METHOD_THROWS_CLAUSE_THROWABLE",
+			justification = "this is the way sneaky exceptions work")
 	private <T extends Throwable> void rethrow(final Throwable throwable) throws T {
 		throw (T) throwable;
 	}

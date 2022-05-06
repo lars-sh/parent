@@ -1,6 +1,7 @@
 package de.larssh.utils.function;
 
 import de.larssh.utils.SneakyException;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
 /**
  * Represents a classes, that are intended to be executed by a thread.
@@ -55,5 +56,7 @@ public interface ThrowingRunnable extends Runnable {
 	 * @throws Exception any kind of exception
 	 */
 	@SuppressWarnings("PMD.SignatureDeclareThrowsException")
+	@SuppressFBWarnings(value = "THROWS_METHOD_THROWS_CLAUSE_BASIC_EXCEPTION",
+			justification = "this is the way throwing runnables work")
 	void runThrowing() throws Exception;
 }

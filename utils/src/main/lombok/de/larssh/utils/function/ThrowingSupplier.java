@@ -4,6 +4,7 @@ import java.util.function.Supplier;
 
 import de.larssh.utils.SneakyException;
 import edu.umd.cs.findbugs.annotations.Nullable;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
 /**
  * Represents a supplier of results. There is no requirement that a new or
@@ -66,5 +67,7 @@ public interface ThrowingSupplier<T> extends Supplier<T> {
 	 */
 	@Nullable
 	@SuppressWarnings("PMD.SignatureDeclareThrowsException")
+	@SuppressFBWarnings(value = "THROWS_METHOD_THROWS_CLAUSE_BASIC_EXCEPTION",
+			justification = "this is the way throwing suppliers work")
 	T getThrowing() throws Exception;
 }

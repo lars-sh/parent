@@ -4,6 +4,7 @@ import java.util.function.Consumer;
 
 import de.larssh.utils.SneakyException;
 import edu.umd.cs.findbugs.annotations.Nullable;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
 /**
  * Represents an operation that accepts a single input argument and returns no
@@ -67,5 +68,7 @@ public interface ThrowingConsumer<T> extends Consumer<T> {
 	 * @throws Exception any kind of exception
 	 */
 	@SuppressWarnings("PMD.SignatureDeclareThrowsException")
+	@SuppressFBWarnings(value = "THROWS_METHOD_THROWS_CLAUSE_BASIC_EXCEPTION",
+			justification = "this is the way throwing consumers work")
 	void acceptThrowing(@Nullable T value) throws Exception;
 }
