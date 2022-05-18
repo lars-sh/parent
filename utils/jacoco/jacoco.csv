@@ -15,8 +15,8 @@ Utilities,de.larssh.utils,Optionals,348,0,54,0,61,0,61,0,34,0
 Utilities,de.larssh.utils,SystemUtils,39,119,2,0,4,29,5,1,4,1
 Utilities,de.larssh.utils,OptionalLongs,175,0,34,0,17,0,35,0,18,0
 Utilities,de.larssh.utils,Finals.CachedSupplier,20,0,2,0,5,0,2,0,1,0
-Utilities,de.larssh.utils,Finals,5,2,0,0,1,1,1,1,1,1
 Utilities,de.larssh.utils,Collectors,43,19,0,0,7,4,7,4,7,4
+Utilities,de.larssh.utils,Finals,5,2,0,0,1,1,1,1,1,1
 Utilities,de.larssh.utils,TooManyElementsException,5,0,0,0,2,0,1,0,1,0
 Utilities,de.larssh.utils,SneakyException,4,5,0,0,2,2,0,2,0,2
 Utilities,de.larssh.utils,CompletedException,5,0,0,0,2,0,1,0,1,0
