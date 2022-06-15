@@ -3179,6 +3179,7 @@ deploy:
 											<entry key="cleanup.operand_factorization" value="true" />
 											<entry key="cleanup.organize_imports" value="true" />
 											<entry key="cleanup.overridden_assignment" value="true" />
+											<entry key="cleanup.overridden_assignment_move_decl" value="true" />
 											<entry key="cleanup.plain_replacement" value="true" />
 											<entry key="cleanup.precompile_regex" value="true" />
 											<entry key="cleanup.primitive_comparison" value="true" />
@@ -3208,6 +3209,7 @@ deploy:
 											<entry key="cleanup.remove_unnecessary_nls_tags" value="true" />
 											<entry key="cleanup.remove_unused_imports" value="true" />
 											<entry key="cleanup.remove_unused_local_variables" value="false" />
+											<entry key="cleanup.remove_unused_method_parameters" value="false" />
 											<entry key="cleanup.remove_unused_private_fields" value="true" />
 											<entry key="cleanup.remove_unused_private_members" value="false" />
 											<entry key="cleanup.remove_unused_private_methods" value="true" />
@@ -3332,6 +3334,7 @@ deploy:
 											<entry key="sp_cleanup.operand_factorization" value="true" />
 											<entry key="sp_cleanup.organize_imports" value="true" />
 											<entry key="sp_cleanup.overridden_assignment" value="true" />
+											<entry key="sp_cleanup.overridden_assignment_move_decl" value="true" />
 											<entry key="sp_cleanup.plain_replacement" value="true" />
 											<entry key="sp_cleanup.precompile_regex" value="true" />
 											<entry key="sp_cleanup.primitive_comparison" value="true" />
@@ -3361,6 +3364,7 @@ deploy:
 											<entry key="sp_cleanup.remove_unnecessary_nls_tags" value="true" />
 											<entry key="sp_cleanup.remove_unused_imports" value="true" />
 											<entry key="sp_cleanup.remove_unused_local_variables" value="false" />
+											<entry key="sp_cleanup.remove_unused_method_parameters" value="false" />
 											<entry key="sp_cleanup.remove_unused_private_fields" value="true" />
 											<entry key="sp_cleanup.remove_unused_private_members" value="false" />
 											<entry key="sp_cleanup.remove_unused_private_methods" value="true" />
