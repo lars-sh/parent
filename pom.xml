@@ -181,7 +181,7 @@
 		<spotbugs-annotations.version>4.7.1</spotbugs-annotations.version>
 
 		<!-- Versions: Reporting Skins -->
-		<maven-fluido-skin.version>1.11.0</maven-fluido-skin.version>
+		<maven-fluido-skin.version>1.11.1</maven-fluido-skin.version>
 	</properties>
 
 	<dependencyManagement>
