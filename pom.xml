@@ -134,7 +134,7 @@
 
 		<!-- Versions: Plugins -->
 		<build-helper-maven-plugin.version>3.3.0</build-helper-maven-plugin.version>
-		<formatter-maven-plugin.version>2.19.0</formatter-maven-plugin.version>
+		<formatter-maven-plugin.version>2.20.0</formatter-maven-plugin.version>
 		<jacoco-maven-plugin.version>0.8.8</jacoco-maven-plugin.version>
 		<lifecycle-mapping.version>1.0.0</lifecycle-mapping.version>
 		<lombok-maven-plugin.version>1.18.20.0</lombok-maven-plugin.version>
