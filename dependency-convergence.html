@@ -101,16 +101,16 @@
 <td>62</td></tr>
 <tr class="b">
 <th>Number of unique artifacts (NOA):</th>
-<td>72</td></tr>
+<td>74</td></tr>
 <tr class="a">
 <th>Number of version-conflicting artifacts (NOC):</th>
-<td>8</td></tr>
+<td>10</td></tr>
 <tr class="b">
 <th>Number of SNAPSHOT artifacts (NOS):</th>
 <td>0</td></tr>
 <tr class="a">
 <th>Convergence (NOD/NOA):</th>
-<td><img src="images/icon_error_sml.gif" alt="[Error]" />&#160;<b>86 %</b></td></tr>
+<td><img src="images/icon_error_sml.gif" alt="[Error]" />&#160;<b>83 %</b></td></tr>
 <tr class="b">
 <th>Ready for release (100% convergence and no SNAPSHOTS):</th>
 <td><img src="images/icon_error_sml.gif" alt="[Error]" />&#160;<b>Error</b><br />You do not have 100% convergence.</td></tr></table></section><section>
@@ -237,6 +237,58 @@
 <td>
 <ol style="list-style-type: decimal">
 <li>de.lars-sh:utils:jar:0.9.14-SNAPSHOT<br />\-&#160;org.apache.maven:maven-core:jar:3.8.6:provided<br />&#160;&#160;&#160;+-&#160;org.apache.maven:maven-model-builder:jar:3.8.6:provided<br />&#160;&#160;&#160;|&#160;&#160;\-&#160;org.eclipse.sisu:org.eclipse.sisu.inject:jar:0.3.5:provided<br />&#160;&#160;&#160;+-&#160;org.eclipse.sisu:org.eclipse.sisu.plexus:jar:0.3.5:provided<br />&#160;&#160;&#160;|&#160;&#160;\-&#160;org.eclipse.sisu:org.eclipse.sisu.inject:jar:0.3.5:provided<br />&#160;&#160;&#160;\-&#160;org.eclipse.sisu:org.eclipse.sisu.inject:jar:0.3.5:provided<br /></li><br /></ol></td></tr></table></td></tr></table></section><section>
+<h4><a name="org.junit.jupiter:junit-jupiter-api"></a>org.junit.jupiter:junit-jupiter-api</h4>
+<table border="0" class="table table-striped">
+<tr class="b">
+<td><img src="images/icon_error_sml.gif" alt="[Error]" /></td>
+<td>
+<table border="0" class="table table-striped">
+<tr class="a">
+<td width="25%">5.8.2</td>
+<td>
+<ol style="list-style-type: decimal">
+<li>de.lars-sh:parent-archetype:maven-archetype:0.9.14-SNAPSHOT<br />\-&#160;org.junit.jupiter:junit-jupiter-api:jar:5.8.2:test<br /></li><br />
+<li>de.lars-sh:parent:pom:0.9.14-SNAPSHOT<br />+-&#160;de.lars-sh:utils-test:jar:0.9.14-SNAPSHOT:test<br />|&#160;&#160;\-&#160;org.junit.jupiter:junit-jupiter-api:jar:5.8.2:test<br />\-&#160;org.junit.jupiter:junit-jupiter-api:jar:5.8.2:test<br /></li><br />
+<li>de.lars-sh:root:pom:0.9.14-SNAPSHOT<br />\-&#160;org.junit.jupiter:junit-jupiter-api:jar:5.8.2:test<br /></li><br />
+<li>de.lars-sh:utils-annotations:jar:0.9.14-SNAPSHOT<br />\-&#160;org.junit.jupiter:junit-jupiter-api:jar:5.8.2:test<br /></li><br />
+<li>de.lars-sh:utils-test:jar:0.9.14-SNAPSHOT<br />\-&#160;org.junit.jupiter:junit-jupiter-api:jar:5.8.2:compile<br /></li><br />
+<li>de.lars-sh:utils:jar:0.9.14-SNAPSHOT<br />+-&#160;de.lars-sh:utils-test:jar:0.9.14-SNAPSHOT:test<br />|&#160;&#160;\-&#160;org.junit.jupiter:junit-jupiter-api:jar:5.8.2:test<br />\-&#160;org.junit.jupiter:junit-jupiter-api:jar:5.8.2:test<br /></li><br /></ol></td></tr>
+<tr class="b">
+<td width="25%">5.9.0</td>
+<td>
+<ol style="list-style-type: decimal">
+<li>de.lars-sh:parent-archetype:maven-archetype:0.9.14-SNAPSHOT<br />\-&#160;org.junit.jupiter:junit-jupiter-engine:jar:5.9.0:test<br />&#160;&#160;&#160;\-&#160;org.junit.jupiter:junit-jupiter-api:jar:5.9.0:test<br /></li><br />
+<li>de.lars-sh:parent:pom:0.9.14-SNAPSHOT<br />\-&#160;org.junit.jupiter:junit-jupiter-engine:jar:5.9.0:test<br />&#160;&#160;&#160;\-&#160;org.junit.jupiter:junit-jupiter-api:jar:5.9.0:test<br /></li><br />
+<li>de.lars-sh:root:pom:0.9.14-SNAPSHOT<br />\-&#160;org.junit.jupiter:junit-jupiter-engine:jar:5.9.0:test<br />&#160;&#160;&#160;\-&#160;org.junit.jupiter:junit-jupiter-api:jar:5.9.0:test<br /></li><br />
+<li>de.lars-sh:utils-annotations:jar:0.9.14-SNAPSHOT<br />\-&#160;org.junit.jupiter:junit-jupiter-engine:jar:5.9.0:test<br />&#160;&#160;&#160;\-&#160;org.junit.jupiter:junit-jupiter-api:jar:5.9.0:test<br /></li><br />
+<li>de.lars-sh:utils-test:jar:0.9.14-SNAPSHOT<br />\-&#160;org.junit.jupiter:junit-jupiter-engine:jar:5.9.0:test<br />&#160;&#160;&#160;\-&#160;org.junit.jupiter:junit-jupiter-api:jar:5.9.0:test<br /></li><br />
+<li>de.lars-sh:utils:jar:0.9.14-SNAPSHOT<br />\-&#160;org.junit.jupiter:junit-jupiter-engine:jar:5.9.0:test<br />&#160;&#160;&#160;\-&#160;org.junit.jupiter:junit-jupiter-api:jar:5.9.0:test<br /></li><br /></ol></td></tr></table></td></tr></table></section><section>
+<h4><a name="org.junit.platform:junit-platform-commons"></a>org.junit.platform:junit-platform-commons</h4>
+<table border="0" class="table table-striped">
+<tr class="a">
+<td><img src="images/icon_error_sml.gif" alt="[Error]" /></td>
+<td>
+<table border="0" class="table table-striped">
+<tr class="b">
+<td width="25%">1.8.2</td>
+<td>
+<ol style="list-style-type: decimal">
+<li>de.lars-sh:parent-archetype:maven-archetype:0.9.14-SNAPSHOT<br />\-&#160;org.junit.jupiter:junit-jupiter-api:jar:5.8.2:test<br />&#160;&#160;&#160;\-&#160;org.junit.platform:junit-platform-commons:jar:1.8.2:test<br /></li><br />
+<li>de.lars-sh:parent:pom:0.9.14-SNAPSHOT<br />\-&#160;org.junit.jupiter:junit-jupiter-api:jar:5.8.2:test<br />&#160;&#160;&#160;\-&#160;org.junit.platform:junit-platform-commons:jar:1.8.2:test<br /></li><br />
+<li>de.lars-sh:root:pom:0.9.14-SNAPSHOT<br />\-&#160;org.junit.jupiter:junit-jupiter-api:jar:5.8.2:test<br />&#160;&#160;&#160;\-&#160;org.junit.platform:junit-platform-commons:jar:1.8.2:test<br /></li><br />
+<li>de.lars-sh:utils-annotations:jar:0.9.14-SNAPSHOT<br />\-&#160;org.junit.jupiter:junit-jupiter-api:jar:5.8.2:test<br />&#160;&#160;&#160;\-&#160;org.junit.platform:junit-platform-commons:jar:1.8.2:test<br /></li><br />
+<li>de.lars-sh:utils-test:jar:0.9.14-SNAPSHOT<br />\-&#160;org.junit.jupiter:junit-jupiter-api:jar:5.8.2:compile<br />&#160;&#160;&#160;\-&#160;org.junit.platform:junit-platform-commons:jar:1.8.2:compile<br /></li><br />
+<li>de.lars-sh:utils:jar:0.9.14-SNAPSHOT<br />\-&#160;org.junit.jupiter:junit-jupiter-api:jar:5.8.2:test<br />&#160;&#160;&#160;\-&#160;org.junit.platform:junit-platform-commons:jar:1.8.2:test<br /></li><br /></ol></td></tr>
+<tr class="a">
+<td width="25%">1.9.0</td>
+<td>
+<ol style="list-style-type: decimal">
+<li>de.lars-sh:parent-archetype:maven-archetype:0.9.14-SNAPSHOT<br />\-&#160;org.junit.jupiter:junit-jupiter-engine:jar:5.9.0:test<br />&#160;&#160;&#160;\-&#160;org.junit.platform:junit-platform-engine:jar:1.9.0:test<br />&#160;&#160;&#160;&#160;&#160;&#160;\-&#160;org.junit.platform:junit-platform-commons:jar:1.9.0:test<br /></li><br />
+<li>de.lars-sh:parent:pom:0.9.14-SNAPSHOT<br />\-&#160;org.junit.jupiter:junit-jupiter-engine:jar:5.9.0:test<br />&#160;&#160;&#160;\-&#160;org.junit.platform:junit-platform-engine:jar:1.9.0:test<br />&#160;&#160;&#160;&#160;&#160;&#160;\-&#160;org.junit.platform:junit-platform-commons:jar:1.9.0:test<br /></li><br />
+<li>de.lars-sh:root:pom:0.9.14-SNAPSHOT<br />\-&#160;org.junit.jupiter:junit-jupiter-engine:jar:5.9.0:test<br />&#160;&#160;&#160;\-&#160;org.junit.platform:junit-platform-engine:jar:1.9.0:test<br />&#160;&#160;&#160;&#160;&#160;&#160;\-&#160;org.junit.platform:junit-platform-commons:jar:1.9.0:test<br /></li><br />
+<li>de.lars-sh:utils-annotations:jar:0.9.14-SNAPSHOT<br />\-&#160;org.junit.jupiter:junit-jupiter-engine:jar:5.9.0:test<br />&#160;&#160;&#160;\-&#160;org.junit.platform:junit-platform-engine:jar:1.9.0:test<br />&#160;&#160;&#160;&#160;&#160;&#160;\-&#160;org.junit.platform:junit-platform-commons:jar:1.9.0:test<br /></li><br />
+<li>de.lars-sh:utils-test:jar:0.9.14-SNAPSHOT<br />\-&#160;org.junit.jupiter:junit-jupiter-engine:jar:5.9.0:test<br />&#160;&#160;&#160;\-&#160;org.junit.platform:junit-platform-engine:jar:1.9.0:test<br />&#160;&#160;&#160;&#160;&#160;&#160;\-&#160;org.junit.platform:junit-platform-commons:jar:1.9.0:test<br /></li><br />
+<li>de.lars-sh:utils:jar:0.9.14-SNAPSHOT<br />\-&#160;org.junit.jupiter:junit-jupiter-engine:jar:5.9.0:test<br />&#160;&#160;&#160;\-&#160;org.junit.platform:junit-platform-engine:jar:1.9.0:test<br />&#160;&#160;&#160;&#160;&#160;&#160;\-&#160;org.junit.platform:junit-platform-commons:jar:1.9.0:test<br /></li><br /></ol></td></tr></table></td></tr></table></section><section>
 <h4><a name="org.slf4j:slf4j-api"></a>org.slf4j:slf4j-api</h4>
 <table border="0" class="table table-striped">
 <tr class="b">
