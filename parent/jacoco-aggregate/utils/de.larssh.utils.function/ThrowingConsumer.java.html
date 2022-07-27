@@ -31,7 +31,7 @@ public interface ThrowingConsumer&lt;T&gt; extends Consumer&lt;T&gt; {
 	 * @return hidden throwing consumer
 	 */
 	static &lt;T&gt; Consumer&lt;T&gt; throwing(final ThrowingConsumer&lt;T&gt; consumer) {
-<span class="nc" id="L34">		return consumer;</span>
+<span class="fc" id="L34">		return consumer;</span>
 	}
 
 	/**
@@ -54,11 +54,11 @@ public interface ThrowingConsumer&lt;T&gt; extends Consumer&lt;T&gt; {
 	@SuppressWarnings({ &quot;checkstyle:IllegalCatch&quot;, &quot;PMD.AvoidCatchingGenericException&quot; })
 	default void accept(@Nullable final T value) {
 		try {
-<span class="nc" id="L57">			acceptThrowing(value);</span>
-<span class="nc" id="L58">		} catch (final Exception e) {</span>
+<span class="fc" id="L57">			acceptThrowing(value);</span>
+<span class="fc" id="L58">		} catch (final Exception e) {</span>
 <span class="nc" id="L59">			throw new SneakyException(e);</span>
-<span class="nc" id="L60">		}</span>
-<span class="nc" id="L61">	}</span>
+<span class="fc" id="L60">		}</span>
+<span class="fc" id="L61">	}</span>
 
 	/**
 	 * Performs this operation on the given argument, allow throwing any kind of

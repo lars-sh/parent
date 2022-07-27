@@ -35,7 +35,7 @@ public final class SneakyException extends RuntimeException {
 	 * @param throwable throwable to be hidden
 	 */
 	public SneakyException(final Throwable throwable) {
-<span class="nc" id="L38">		super(throwable);</span>
+<span class="fc" id="L38">		super(throwable);</span>
 
 <span class="nc" id="L40">		rethrow(throwable);</span>
 <span class="nc" id="L41">	}</span>
@@ -55,7 +55,7 @@ public final class SneakyException extends RuntimeException {
 	@SuppressFBWarnings(value = &quot;THROWS_METHOD_THROWS_CLAUSE_THROWABLE&quot;,
 			justification = &quot;this is the way sneaky exceptions work&quot;)
 	private &lt;T extends Throwable&gt; void rethrow(final Throwable throwable) throws T {
-<span class="nc" id="L58">		throw (T) throwable;</span>
+<span class="fc" id="L58">		throw (T) throwable;</span>
 	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
