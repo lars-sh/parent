@@ -182,7 +182,7 @@ public class Lines {
 				lines.add(peekableLinesIterator.next());
 
 				// Fail fast if the peeked line is not consecutive
-				if (!isNextConsecutive.test(lines, peekableLinesIterator.peek())) {
+				if (peekableLinesIterator.hasNext() && !isNextConsecutive.test(lines, peekableLinesIterator.peek())) {
 					return lines;
 				}
 			}
