@@ -55,7 +55,7 @@ Parent POM/utils,de.larssh.utils.net,InsecureConnections.TrustManagerThatDoesNot
 Parent POM/utils,de.larssh.utils.text,CsvParser,96,228,12,62,19,52,8,38,2,7
 Parent POM/utils,de.larssh.utils.text,StringConverters,225,0,20,0,44,0,24,0,14,0
 Parent POM/utils,de.larssh.utils.text,NumericTextComparator.NumericTextComparatorContext,383,0,72,0,64,0,47,0,11,0
-Parent POM/utils,de.larssh.utils.text,Lines,176,0,18,0,35,0,20,0,11,0
+Parent POM/utils,de.larssh.utils.text,Lines,179,0,20,0,35,0,21,0,11,0
 Parent POM/utils,de.larssh.utils.text,SplitLimit,13,0,0,0,2,0,1,0,1,0
 Parent POM/utils,de.larssh.utils.text,NumericTextComparator,31,0,6,0,5,0,5,0,2,0
 Parent POM/utils,de.larssh.utils.text,Csv,168,13,8,0,31,2,21,1,17,1
