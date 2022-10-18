@@ -177,7 +177,7 @@
 		<lombok.version>1.18.24</lombok.version>
 		<org-eclipse-jdt-core.version>3.31.0</org-eclipse-jdt-core.version>
 		<pmd.version>6.50.0</pmd.version>
-		<spotbugs.version>4.7.2</spotbugs.version>
+		<spotbugs.version>4.7.3</spotbugs.version>
 		<spotbugs-annotations.version>4.7.3</spotbugs-annotations.version>
 
 		<!-- Versions: Reporting Skins -->
