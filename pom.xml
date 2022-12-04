@@ -176,7 +176,7 @@
 		<findsecbugs.version>1.12.0</findsecbugs.version>
 		<lombok.version>1.18.24</lombok.version>
 		<org-eclipse-jdt-core.version>3.31.0</org-eclipse-jdt-core.version>
-		<pmd.version>6.51.0</pmd.version>
+		<pmd.version>6.52.0</pmd.version>
 		<spotbugs.version>4.7.3</spotbugs.version>
 		<spotbugs-annotations.version>4.7.3</spotbugs-annotations.version>
 
@@ -1727,7 +1727,7 @@ fi
 										<!-- Ignore annotation de.larssh.utils.annotations.PackagePrivate -->
 										<rule ref="category/java/codestyle.xml/CommentDefaultAccessModifier">
 											<properties>
-												<property name="ignoredAnnotations" value="com.google.common.annotations.VisibleForTesting|android.support.annotation.VisibleForTesting|org.junit.jupiter.api.Test|org.junit.jupiter.api.ParameterizedTest|org.junit.jupiter.api.RepeatedTest|org.junit.jupiter.api.TestFactory|org.junit.jupiter.api.TestTemplate|org.junit.jupiter.api.BeforeEach|org.junit.jupiter.api.BeforeAll|org.junit.jupiter.api.AfterEach|org.junit.jupiter.api.AfterAll|de.larssh.utils.annotations.PackagePrivate" />
+												<property name="ignoredAnnotations" value="com.google.common.annotations.VisibleForTesting|android.support.annotation.VisibleForTesting|org.junit.jupiter.api.Test|org.junit.jupiter.api.ParameterizedTest|org.junit.jupiter.api.RepeatedTest|org.junit.jupiter.api.TestFactory|org.junit.jupiter.api.TestTemplate|org.junit.jupiter.api.BeforeEach|org.junit.jupiter.api.BeforeAll|org.junit.jupiter.api.AfterEach|org.junit.jupiter.api.AfterAll|lombok.Value|de.larssh.utils.annotations.PackagePrivate" />
 											</properties>
 										</rule>
 
@@ -1758,8 +1758,8 @@ fi
 											<exclude name="LoggerIsNotStaticFinal" />
 
 											<!-- Avoid using serialVersionUID as of https://github.com/rzwitserloot/lombok/wiki/WHY-NOT:-serialVersionUID -->
-											<exclude name="BeanMembersShouldSerialize" />
 											<exclude name="MissingSerialVersionUID" />
+											<exclude name="NonSerializableClass" />
 
 											<!-- See separate rule with different properties -->
 											<exclude name="AvoidDuplicateLiterals" />
