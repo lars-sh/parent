@@ -157,9 +157,7 @@ public class Iterators {
 				throw new NoSuchElementException();
 			}
 			final E next = peekedElement;
-			if (state == ElementsSupplierState.PEEKED) {
-				state = ElementsSupplierState.CALL_FOR_NEXT;
-			}
+			state = ElementsSupplierState.CALL_FOR_NEXT;
 			peekedElement = null;
 			return next;
 		}
