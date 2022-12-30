@@ -14,10 +14,10 @@ TODO
 TODO
 
 ### Fixed
-TODO
+* Possible `NullPointerException` in `de.larssh.utils.text.Lines.consecutive(...)`
 
 ### Removed
-* Property `jar.manifest.addClasspath`
+* POM Property `jar.manifest.addClasspath`
 
 <a name="0.9.13"></a>
 
