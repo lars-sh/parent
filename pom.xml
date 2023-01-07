@@ -1944,8 +1944,10 @@ updates:
 								<echo level="info" message="Update .github/workflows/push-and-pull_request.yml" />
 								<echo file="${project.basedir}/.github/workflows/push-and-pull_request.yml"><![CDATA[name: Build on Push and Pull Request
 on:
-  - push
-  - pull_request
+  push:
+    branches:
+      - master
+  pull_request:
 
 jobs:
   build:
@@ -1982,6 +1984,7 @@ jobs:
           set +o errexit +o pipefail
       - id: version
         name: Evaluate Version
+        shell: bash {0}
         run: |
           project_version=`mvn help:evaluate --quiet --define expression=project.version --define forceStdout`
           echo "Version: ${project_version}"
@@ -2039,7 +2042,7 @@ jobs:
           fi
       - name: Deploy Site
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' && matrix.java-version == 8 && steps.version.outputs.is-snapshot == 'true' }}
-        uses: peaceiris/actions-gh-pages@v3.8.0
+        uses: peaceiris/actions-gh-pages@v3.9.1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./target/site
