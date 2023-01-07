@@ -17,7 +17,7 @@ TODO
 TODO
 
 ### Removed
-TODO
+* Triggering builds on all pushes to avoid duplicate triggering. Instead, builds are triggered for pull requests and pushes to the master branch only.
 
 <a name="0.9.14"></a>
 
