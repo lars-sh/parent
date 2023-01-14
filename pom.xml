@@ -341,6 +341,12 @@
 							<artifactId>checkstyle</artifactId>
 							<version>${checkstyle.version}</version>
 						</dependency>
+						<!-- Fix NullPointerException when executing goal check of the Maven Checkstyle Plugin 3.2.0 and later -->
+						<dependency>
+							<groupId>xerces</groupId>
+							<artifactId>xercesImpl</artifactId>
+							<version>2.12.2</version>
+						</dependency>
 					</dependencies>
 					<configuration>
 						<sourceDirectories>
