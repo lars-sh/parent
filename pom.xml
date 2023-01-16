@@ -129,7 +129,7 @@
 		<junit-jupiter-engine.version>5.9.2</junit-jupiter-engine.version>
 		<lombok-annotations.version>1.18.24</lombok-annotations.version>
 		<mockito-core.version>4.11.0</mockito-core.version>
-		<mockito-inline.version>4.11.0</mockito-inline.version>
+		<mockito-inline.version>5.0.0</mockito-inline.version>
 		<parent.version>0.9.15-SNAPSHOT</parent.version>
 
 		<!-- Versions: Plugins -->
