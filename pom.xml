@@ -175,7 +175,7 @@
 		<sb-contrib.version>7.4.7</sb-contrib.version>
 		<findsecbugs.version>1.12.0</findsecbugs.version>
 		<lombok.version>1.18.26</lombok.version>
-		<org-eclipse-jdt-core.version>3.32.0</org-eclipse-jdt-core.version>
+		<org-eclipse-jdt-core.version>3.33.0</org-eclipse-jdt-core.version>
 		<pmd.version>6.55.0</pmd.version>
 		<spotbugs.version>4.7.3</spotbugs.version>
 		<spotbugs-annotations.version>4.7.3</spotbugs-annotations.version>
@@ -1185,8 +1185,8 @@
 								<!-- formatter.xml -->
 								<echo level="info" message="Update formatter.xml" />
 								<echoxml file="${project.build.directory}/formatter.xml">
-									<profiles version="22">
-										<profile kind="CodeFormatterProfile" name="de.lars-sh" version="22">
+									<profiles version="23">
+										<profile kind="CodeFormatterProfile" name="de.lars-sh" version="23">
 											<setting id="org.eclipse.jdt.core.formatter.align_assignment_statements_on_columns" value="false" />
 											<setting id="org.eclipse.jdt.core.formatter.align_fields_grouping_blank_lines" value="2147483647" />
 											<setting id="org.eclipse.jdt.core.formatter.align_selector_in_method_invocation_on_expression_first_line" value="true" />
@@ -1228,6 +1228,7 @@
 											<setting id="org.eclipse.jdt.core.formatter.alignment_for_parameterized_type_references" value="0" />
 											<setting id="org.eclipse.jdt.core.formatter.alignment_for_parameters_in_constructor_declaration" value="80" />
 											<setting id="org.eclipse.jdt.core.formatter.alignment_for_parameters_in_method_declaration" value="80" />
+											<setting id="org.eclipse.jdt.core.formatter.alignment_for_permitted_types_in_type_declaration" value="16" />
 											<setting id="org.eclipse.jdt.core.formatter.alignment_for_record_components" value="80" />
 											<setting id="org.eclipse.jdt.core.formatter.alignment_for_relational_operator" value="0" />
 											<setting id="org.eclipse.jdt.core.formatter.alignment_for_resources_in_try" value="81" />
@@ -3269,7 +3270,7 @@ deploy:
 											<entry key="eclipse.preferences.version" value="1" />
 											<entry key="editor_save_participant_org.eclipse.jdt.ui.postsavelistener.cleanup" value="true" />
 											<entry key="formatter_profile" value="_de.lars-sh" />
-											<entry key="formatter_settings_version" value="22" />
+											<entry key="formatter_settings_version" value="23" />
 											<entry key="org.eclipse.jdt.ui.exception.name" value="e" />
 											<entry key="org.eclipse.jdt.ui.gettersetter.use.is" value="true" />
 											<entry key="org.eclipse.jdt.ui.ignorelowercasenames" value="true" />
@@ -3603,6 +3604,7 @@ deploy:
 											<entry key="org.eclipse.jdt.core.formatter.alignment_for_parameterized_type_references" value="0" />
 											<entry key="org.eclipse.jdt.core.formatter.alignment_for_parameters_in_constructor_declaration" value="80" />
 											<entry key="org.eclipse.jdt.core.formatter.alignment_for_parameters_in_method_declaration" value="80" />
+											<entry key="org.eclipse.jdt.core.formatter.alignment_for_permitted_types_in_type_declaration" value="16" />
 											<entry key="org.eclipse.jdt.core.formatter.alignment_for_record_components" value="80" />
 											<entry key="org.eclipse.jdt.core.formatter.alignment_for_relational_operator" value="0" />
 											<entry key="org.eclipse.jdt.core.formatter.alignment_for_resources_in_try" value="81" />
