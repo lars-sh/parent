@@ -105,7 +105,7 @@ jobs:
           cp -R ./utils-test/target/site ./target/site/utils-test
       - name: Deploy Site
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' && matrix.java-version == 8 && steps.version.outputs.is-snapshot == 'true' }}
-        uses: peaceiris/actions-gh-pages@v3.9.2
+        uses: peaceiris/actions-gh-pages@v3.9.3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./target/site
