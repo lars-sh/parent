@@ -28,6 +28,7 @@ import lombok.experimental.UtilityClass;
  * This class contains helper methods for Aether.
  */
 @UtilityClass
+@SuppressWarnings("deprecation")
 public class AetherUtils {
 	/**
 	 * Converts {@code mavenRepository} to an Aether Remote Repository.
