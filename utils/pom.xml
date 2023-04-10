@@ -17,6 +17,8 @@
 	<properties>
 		<parent-pom.create-dependabot-yml>false</parent-pom.create-dependabot-yml>
 		<parent-pom.create-github-workflow-yml>false</parent-pom.create-github-workflow-yml>
+
+		<maven.compiler.showDeprecation>false</maven.compiler.showDeprecation>
 	</properties>
 
 	<dependencies>
