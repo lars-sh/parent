@@ -44,8 +44,8 @@ public class Finals {
 	 * @param supplier value supplier
 	 * @return value
 	 */
-	public static <T> Supplier<T> lazy(final Supplier<T> supplier) {
-		return new CachedSupplier<>(supplier);
+	public static <T> CachingSupplier<T> lazy(final Supplier<T> supplier) {
+		return new CachingSupplier<>(supplier);
 	}
 
 	/**
@@ -58,7 +58,7 @@ public class Finals {
 	 * @param <T> return type
 	 */
 	@RequiredArgsConstructor
-	private static class CachedSupplier<T> implements Supplier<T> {
+	public static class CachingSupplier<T> implements Supplier<T> {
 		/**
 		 * Wrapped supplier
 		 *
@@ -79,6 +79,16 @@ public class Finals {
 		 * Object used for locking
 		 */
 		Object lock = new Object();
+
+		/**
+		 * Determines if a cached value has been calculated already.
+		 *
+		 * @return {@code true} if a cached value has been calculated already, else
+		 *         {@code false}
+		 */
+		public boolean isCalculated() {
+			return value != null;
+		}
 
 		/** {@inheritDoc} */
 		@Override
