@@ -11,7 +11,7 @@ Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%
 TODO
 
 ### Changed
-TODO
+* `de.larssh.utils.Finals.lazy` now returns a `CachingSupplier` to allow other to determine if the lazy-loading value has been calculated already
 
 ### Fixed
 TODO
