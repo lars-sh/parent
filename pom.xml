@@ -1981,7 +1981,7 @@ jobs:
       - name: Set up JDK ${{ matrix.java-version }}
         uses: actions/setup-java@v3
         with:
-          distribution: adopt
+          distribution: temurin
           java-version: ${{ matrix.java-version }}
           gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
           gpg-passphrase: GPG_PASSPHRASE
@@ -2086,7 +2086,7 @@ jobs:
       - name: Set up JDK and Maven Central Repository
         uses: actions/setup-java@v3
         with:
-          distribution: adopt
+          distribution: temurin
           java-version: 8
           gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
           gpg-passphrase: GPG_PASSPHRASE
@@ -2641,18 +2641,6 @@ deploy:
 			</properties>
 		</profile>
 
-		<!-- JDK 10 and previous: Fallback to old Formatter Maven Plugin as of internal Eclipse Platform dependencies with newer/incompatible class file versions -->
-		<profile>
-			<id>fix-jdk10-and-previous</id>
-			<activation>
-				<jdk>(,11)</jdk>
-			</activation>
-			<properties>
-				<formatter-maven-plugin.version>2.15.0</formatter-maven-plugin.version>
-				<org-eclipse-jdt-core.version>3.26.0</org-eclipse-jdt-core.version>
-			</properties>
-		</profile>
-
 		<!-- JDK 9 and later: Do not show warnings as the bootstrap class path
 			does not match the current sources version. -->
 		<profile>
@@ -2663,6 +2651,18 @@ deploy:
 			<properties>
 				<maven.compiler.showDeprecation>false</maven.compiler.showDeprecation>
 				<maven.compiler.showWarnings>false</maven.compiler.showWarnings>
+			</properties>
+		</profile>
+
+		<!-- JDK 10 and previous: Fallback to old Formatter Maven Plugin as of internal Eclipse Platform dependencies with newer/incompatible class file versions -->
+		<profile>
+			<id>fix-jdk10-and-previous</id>
+			<activation>
+				<jdk>(,11)</jdk>
+			</activation>
+			<properties>
+				<formatter-maven-plugin.version>2.15.0</formatter-maven-plugin.version>
+				<org-eclipse-jdt-core.version>3.26.0</org-eclipse-jdt-core.version>
 			</properties>
 		</profile>
 
@@ -2701,17 +2701,6 @@ deploy:
 			</activation>
 			<properties>
 				<doclint>all,-missing</doclint>
-			</properties>
-		</profile>
-
-		<!-- JDK 16 and previous: Fallback to old as of internal Eclipse Platform dependencies with newer/incompatible class file versions -->
-		<profile>
-			<id>fix-jdk16-and-previous</id>
-			<activation>
-				<jdk>(,17)</jdk>
-			</activation>
-			<properties>
-				<org-eclipse-jdt-core.version>3.32.0</org-eclipse-jdt-core.version>
 			</properties>
 		</profile>
 
