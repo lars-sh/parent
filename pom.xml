@@ -2642,18 +2642,6 @@ deploy:
 			</properties>
 		</profile>
 
-		<!-- JDK 10 and previous: Fallback to old Formatter Maven Plugin as of internal Eclipse Platform dependencies with newer/incompatible class file versions -->
-		<profile>
-			<id>fix-jdk10-and-previous</id>
-			<activation>
-				<jdk>(,11)</jdk>
-			</activation>
-			<properties>
-				<formatter-maven-plugin.version>2.15.0</formatter-maven-plugin.version>
-				<org-eclipse-jdt-core.version>3.26.0</org-eclipse-jdt-core.version>
-			</properties>
-		</profile>
-
 		<!-- JDK 9 and later: Do not show warnings as the bootstrap class path
 			does not match the current sources version. -->
 		<profile>
@@ -2664,6 +2652,18 @@ deploy:
 			<properties>
 				<maven.compiler.showDeprecation>false</maven.compiler.showDeprecation>
 				<maven.compiler.showWarnings>false</maven.compiler.showWarnings>
+			</properties>
+		</profile>
+
+		<!-- JDK 10 and previous: Fallback to old Formatter Maven Plugin as of internal Eclipse Platform dependencies with newer/incompatible class file versions -->
+		<profile>
+			<id>fix-jdk10-and-previous</id>
+			<activation>
+				<jdk>(,11)</jdk>
+			</activation>
+			<properties>
+				<formatter-maven-plugin.version>2.15.0</formatter-maven-plugin.version>
+				<org-eclipse-jdt-core.version>3.26.0</org-eclipse-jdt-core.version>
 			</properties>
 		</profile>
 
@@ -2694,6 +2694,17 @@ deploy:
 			</properties>
 		</profile>
 
+		<!-- JDK 11 to 16: Fallback to old as of internal Eclipse Platform dependencies with newer/incompatible class file versions -->
+		<profile>
+			<id>fix-jdk11-to-jdk16</id>
+			<activation>
+				<jdk>[11,17)</jdk>
+			</activation>
+			<properties>
+				<org-eclipse-jdt-core.version>3.32.0</org-eclipse-jdt-core.version>
+			</properties>
+		</profile>
+
 		<!-- JDK 15 and later, Maven Javadoc Plugin: Logs warnings on missing JavaDoc comments inside generated code -->
 		<profile>
 			<id>fix-jdk15-and-later</id>
@@ -2702,17 +2713,6 @@ deploy:
 			</activation>
 			<properties>
 				<doclint>all,-missing</doclint>
-			</properties>
-		</profile>
-
-		<!-- JDK 16 and previous: Fallback to old as of internal Eclipse Platform dependencies with newer/incompatible class file versions -->
-		<profile>
-			<id>fix-jdk16-and-previous</id>
-			<activation>
-				<jdk>(,17)</jdk>
-			</activation>
-			<properties>
-				<org-eclipse-jdt-core.version>3.32.0</org-eclipse-jdt-core.version>
 			</properties>
 		</profile>
 
