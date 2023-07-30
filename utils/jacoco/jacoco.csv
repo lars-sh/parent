@@ -63,7 +63,7 @@ Utilities,de.larssh.utils.text,CsvRow,59,0,6,0,11,0,8,0,5,0
 Utilities,de.larssh.utils.text,Lines.GroupedLineType,34,0,0,0,4,0,1,0,1,0
 Utilities,de.larssh.utils.text,Patterns,51,0,4,0,6,0,6,0,4,0
 Utilities,de.larssh.utils.text,ParseException,14,0,0,0,4,0,2,0,2,0
-Utilities,de.larssh.utils.text,Strings,702,225,94,0,129,14,81,6,34,6
+Utilities,de.larssh.utils.text,Strings,616,225,78,0,107,14,73,6,34,6
 Utilities,de.larssh.utils.time,Stopwatch,152,0,16,0,21,0,18,0,10,0
 Utilities,de.larssh.utils.time,CloseableStopwatch,67,0,4,0,16,0,8,0,6,0
 Utilities,de.larssh.utils.time,Stopwatch.Checkpoint,56,0,0,0,7,0,8,0,8,0
