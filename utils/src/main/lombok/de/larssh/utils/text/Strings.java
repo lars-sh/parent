@@ -74,7 +74,7 @@ public class Strings {
 	@SuppressWarnings({ "checkstyle:MagicNumber", "checkstyle:MultipleStringLiterals" })
 	@SuppressFBWarnings(value = "PSC_PRESIZE_COLLECTIONS",
 			justification = "this method is called just once (in static initializer); keep code simple")
-	public static final Map<String, Integer> DECIMAL_UNITS = Maps.builder(new LinkedHashMap<String, Integer>())
+	public static final Map<String, Integer> DECIMAL_UNITS = Maps.<String, Integer>builder(new LinkedHashMap<>())
 			.put("y", -24)
 			.put("z", -21)
 			.put("a", -18)
@@ -790,23 +790,8 @@ public class Strings {
 	 */
 	public static String toLowerCaseAscii(final CharSequence value) {
 		final int length = value.length();
-		int index = 0;
-
-		char lower = ' ';
-		boolean found = false;
-		for (; index < length && !found; index += 1) {
-			final char character = value.charAt(index);
-			lower = Characters.toLowerCaseAscii(character);
-			found = character != lower;
-		}
-		if (index >= length) {
-			return value.toString();
-		}
-
 		final StringBuilder builder = new StringBuilder(length);
-		builder.append(value, 0, index - 1);
-		builder.append(lower);
-		for (; index < length; index += 1) {
+		for (int index = 0; index < length; index += 1) {
 			builder.append(Characters.toLowerCaseAscii(value.charAt(index)));
 		}
 		return builder.toString();
@@ -857,23 +842,8 @@ public class Strings {
 	 */
 	public static String toUpperCaseAscii(final CharSequence value) {
 		final int length = value.length();
-		int index = 0;
-
-		char upper = ' ';
-		boolean found = false;
-		for (; index < length && !found; index += 1) {
-			final char character = value.charAt(index);
-			upper = Characters.toUpperCaseAscii(character);
-			found = character != upper;
-		}
-		if (index >= length) {
-			return value.toString();
-		}
-
 		final StringBuilder builder = new StringBuilder(length);
-		builder.append(value, 0, index - 1);
-		builder.append(upper);
-		for (; index < length; index += 1) {
+		for (int index = 0; index < length; index += 1) {
 			builder.append(Characters.toUpperCaseAscii(value.charAt(index)));
 		}
 		return builder.toString();

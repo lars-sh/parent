@@ -14,7 +14,7 @@ TODO
 * `de.larssh.utils.Finals.lazy` now returns a `CachingSupplier` to allow other to determine if the lazy-loading value has been calculated already
 
 ### Fixed
-TODO
+* `de.larssh.utils.text.Strings.toLowerCaseAscii` and `de.larssh.utils.text.Strings.toUpperCaseAscii` for single character strings
 
 ### Removed
 * `de.larssh.utils.maven.AetherUtils` and `de.larssh.utils.maven.DependencyScope`
