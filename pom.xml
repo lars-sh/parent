@@ -124,7 +124,7 @@
 
 		<!-- Versions: Dependencies -->
 		<assertj-core.version>3.24.2</assertj-core.version>
-		<joor.version>0.9.14</joor.version>
+		<joor.version>0.9.15</joor.version>
 		<junit-jupiter-api.version>5.9.3</junit-jupiter-api.version>
 		<junit-jupiter-engine.version>5.9.3</junit-jupiter-engine.version>
 		<lombok-annotations.version>1.18.28</lombok-annotations.version>
