@@ -1977,7 +1977,7 @@ jobs:
           key: maven-dependencies
           path: ~/.m2/repository
       - name: Check out
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Set up JDK ${{ matrix.java-version }}
         uses: actions/setup-java@v3
         with:
@@ -2082,7 +2082,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Set up JDK and Maven Central Repository
         uses: actions/setup-java@v3
         with:
