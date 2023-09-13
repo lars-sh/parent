@@ -124,7 +124,7 @@
 
 		<!-- Versions: Dependencies -->
 		<assertj-core.version>3.24.2</assertj-core.version>
-		<joor.version>0.9.14</joor.version>
+		<joor.version>0.9.15</joor.version>
 		<junit-jupiter-api.version>5.9.3</junit-jupiter-api.version>
 		<junit-jupiter-engine.version>5.9.3</junit-jupiter-engine.version>
 		<lombok-annotations.version>1.18.28</lombok-annotations.version>
@@ -142,11 +142,11 @@
 		<maven-archetype-plugin.version>3.2.1</maven-archetype-plugin.version>
 		<maven-assembly-plugin.version>3.6.0</maven-assembly-plugin.version>
 		<maven-checkstyle-plugin.version>3.3.0</maven-checkstyle-plugin.version>
-		<maven-clean-plugin.version>3.2.0</maven-clean-plugin.version>
+		<maven-clean-plugin.version>3.3.1</maven-clean-plugin.version>
 		<maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
 		<maven-dependency-plugin.version>3.6.0</maven-dependency-plugin.version>
 		<maven-deploy-plugin.version>3.1.1</maven-deploy-plugin.version>
-		<maven-enforcer-plugin.version>3.3.0</maven-enforcer-plugin.version>
+		<maven-enforcer-plugin.version>3.4.0</maven-enforcer-plugin.version>
 		<maven-gpg-plugin.version>3.1.0</maven-gpg-plugin.version>
 		<maven-help-plugin.version>3.4.0</maven-help-plugin.version>
 		<maven-install-plugin.version>3.1.1</maven-install-plugin.version>
@@ -158,19 +158,19 @@
 		<maven-project-info-reports-plugin.version>3.4.5</maven-project-info-reports-plugin.version>
 		<maven-release-plugin.version>3.0.1</maven-release-plugin.version>
 		<maven-resources-plugin.version>3.3.1</maven-resources-plugin.version>
-		<maven-shade-plugin.version>3.4.1</maven-shade-plugin.version>
+		<maven-shade-plugin.version>3.5.0</maven-shade-plugin.version>
 		<maven-site-plugin.version>3.12.1</maven-site-plugin.version>
 		<maven-source-plugin.version>3.3.0</maven-source-plugin.version>
 		<maven-surefire-plugin.version>3.1.2</maven-surefire-plugin.version>
 		<maven-surefire-report-plugin.version>3.1.2</maven-surefire-report-plugin.version>
 		<nexus-staging-maven-plugin.version>1.6.13</nexus-staging-maven-plugin.version>
 		<properties-maven-plugin.version>1.1.0</properties-maven-plugin.version>
-		<spotbugs-maven-plugin.version>4.7.3.4</spotbugs-maven-plugin.version>
+		<spotbugs-maven-plugin.version>4.7.3.5</spotbugs-maven-plugin.version>
 		<tidy-maven-plugin.version>1.2.0</tidy-maven-plugin.version>
 		<versions-maven-plugin.version>2.16.0</versions-maven-plugin.version>
 
 		<!-- Versions: Plugin Dependencies -->
-		<apache-ant.version>1.10.13</apache-ant.version>
+		<apache-ant.version>1.10.14</apache-ant.version>
 		<checkstyle.version>9.3</checkstyle.version>
 		<sb-contrib.version>7.6.0</sb-contrib.version>
 		<findsecbugs.version>1.12.0</findsecbugs.version>
@@ -181,7 +181,7 @@
 		<spotbugs-annotations.version>4.7.3</spotbugs-annotations.version>
 
 		<!-- Versions: Reporting Skins -->
-		<maven-fluido-skin.version>1.11.2</maven-fluido-skin.version>
+		<maven-fluido-skin.version>1.12.0</maven-fluido-skin.version>
 	</properties>
 
 	<dependencyManagement>
@@ -1978,7 +1978,7 @@ jobs:
           key: maven-dependencies
           path: ~/.m2/repository
       - name: Check out
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Set up JDK ${{ matrix.java-version }}
         uses: actions/setup-java@v3
         with:
@@ -2083,7 +2083,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Set up JDK and Maven Central Repository
         uses: actions/setup-java@v3
         with:
@@ -2797,7 +2797,7 @@ deploy:
 				<dependency>
 					<groupId>org.junit.platform</groupId>
 					<artifactId>junit-platform-runner</artifactId>
-					<version>1.9.3</version>
+					<version>1.10.0</version>
 					<scope>test</scope>
 					<exclusions>
 						<exclusion>
