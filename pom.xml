@@ -146,7 +146,7 @@
 		<maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
 		<maven-dependency-plugin.version>3.6.0</maven-dependency-plugin.version>
 		<maven-deploy-plugin.version>3.1.1</maven-deploy-plugin.version>
-		<maven-enforcer-plugin.version>3.4.0</maven-enforcer-plugin.version>
+		<maven-enforcer-plugin.version>3.4.1</maven-enforcer-plugin.version>
 		<maven-gpg-plugin.version>3.1.0</maven-gpg-plugin.version>
 		<maven-help-plugin.version>3.4.0</maven-help-plugin.version>
 		<maven-install-plugin.version>3.1.1</maven-install-plugin.version>
@@ -3149,6 +3149,7 @@ deploy:
 											<entry key="cleanup.add_missing_override_annotations" value="true" />
 											<entry key="cleanup.add_missing_override_annotations_interface_methods" value="true" />
 											<entry key="cleanup.add_serial_version_id" value="false" />
+											<entry key="cleanup.also_simplify_lambda" value="true" />
 											<entry key="cleanup.always_use_blocks" value="true" />
 											<entry key="cleanup.always_use_parentheses_in_expressions" value="false" />
 											<entry key="cleanup.always_use_this_for_non_static_field_access" value="false" />
@@ -3304,6 +3305,7 @@ deploy:
 											<entry key="sp_cleanup.add_missing_override_annotations" value="true" />
 											<entry key="sp_cleanup.add_missing_override_annotations_interface_methods" value="true" />
 											<entry key="sp_cleanup.add_serial_version_id" value="false" />
+											<entry key="sp_cleanup.also_simplify_lambda" value="true" />
 											<entry key="sp_cleanup.always_use_blocks" value="true" />
 											<entry key="sp_cleanup.always_use_parentheses_in_expressions" value="false" />
 											<entry key="sp_cleanup.always_use_this_for_non_static_field_access" value="false" />
