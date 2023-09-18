@@ -1291,6 +1291,7 @@
 											<setting id="org.eclipse.jdt.core.formatter.comment.insert_new_line_before_root_tags" value="insert" />
 											<setting id="org.eclipse.jdt.core.formatter.comment.insert_new_line_between_different_tags" value="do not insert" />
 											<setting id="org.eclipse.jdt.core.formatter.comment.insert_new_line_for_parameter" value="do not insert" />
+											<setting id="org.eclipse.jdt.core.formatter.comment.javadoc_do_not_separate_block_tags" value="false" />
 											<setting id="org.eclipse.jdt.core.formatter.comment.line_length" value="80" />
 											<setting id="org.eclipse.jdt.core.formatter.comment.new_lines_at_block_boundaries" value="true" />
 											<setting id="org.eclipse.jdt.core.formatter.comment.new_lines_at_javadoc_boundaries" value="true" />
@@ -3137,6 +3138,7 @@ deploy:
 											<entry key="cleanup.add_missing_override_annotations" value="true" />
 											<entry key="cleanup.add_missing_override_annotations_interface_methods" value="true" />
 											<entry key="cleanup.add_serial_version_id" value="false" />
+											<entry key="cleanup.also_simplify_lambda" value="true" />
 											<entry key="cleanup.always_use_blocks" value="true" />
 											<entry key="cleanup.always_use_parentheses_in_expressions" value="false" />
 											<entry key="cleanup.always_use_this_for_non_static_field_access" value="false" />
@@ -3236,6 +3238,7 @@ deploy:
 											<entry key="cleanup.stringbuffer_to_stringbuilder" value="true" />
 											<entry key="cleanup.stringbuilder" value="false" />
 											<entry key="cleanup.stringbuilder_for_local_vars" value="true" />
+											<entry key="cleanup.stringconcat_stringbuffer_stringbuilder" value="true" />
 											<entry key="cleanup.stringconcat_to_textblock" value="true" />
 											<entry key="cleanup.substring" value="true" />
 											<entry key="cleanup.switch" value="true" />
@@ -3291,6 +3294,7 @@ deploy:
 											<entry key="sp_cleanup.add_missing_override_annotations" value="true" />
 											<entry key="sp_cleanup.add_missing_override_annotations_interface_methods" value="true" />
 											<entry key="sp_cleanup.add_serial_version_id" value="false" />
+											<entry key="sp_cleanup.also_simplify_lambda" value="true" />
 											<entry key="sp_cleanup.always_use_blocks" value="true" />
 											<entry key="sp_cleanup.always_use_parentheses_in_expressions" value="false" />
 											<entry key="sp_cleanup.always_use_this_for_non_static_field_access" value="false" />
@@ -3391,6 +3395,7 @@ deploy:
 											<entry key="sp_cleanup.stringbuffer_to_stringbuilder" value="true" />
 											<entry key="sp_cleanup.stringbuilder" value="false" />
 											<entry key="sp_cleanup.stringbuilder_for_local_vars" value="true" />
+											<entry key="sp_cleanup.stringconcat_stringbuffer_stringbuilder" value="true" />
 											<entry key="sp_cleanup.stringconcat_to_textblock" value="true" />
 											<entry key="sp_cleanup.substring" value="true" />
 											<entry key="sp_cleanup.switch" value="true" />
@@ -3668,6 +3673,7 @@ deploy:
 											<entry key="org.eclipse.jdt.core.formatter.comment.insert_new_line_before_root_tags" value="insert" />
 											<entry key="org.eclipse.jdt.core.formatter.comment.insert_new_line_between_different_tags" value="do not insert" />
 											<entry key="org.eclipse.jdt.core.formatter.comment.insert_new_line_for_parameter" value="do not insert" />
+											<entry key="org.eclipse.jdt.core.formatter.comment.javadoc_do_not_separate_block_tags" value="false" />
 											<entry key="org.eclipse.jdt.core.formatter.comment.line_length" value="80" />
 											<entry key="org.eclipse.jdt.core.formatter.comment.new_lines_at_block_boundaries" value="true" />
 											<entry key="org.eclipse.jdt.core.formatter.comment.new_lines_at_javadoc_boundaries" value="true" />
