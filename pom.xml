@@ -174,7 +174,7 @@
 		<checkstyle.version>9.3</checkstyle.version>
 		<sb-contrib.version>7.6.0</sb-contrib.version>
 		<findsecbugs.version>1.12.0</findsecbugs.version>
-		<lombok.version>1.18.28</lombok.version>
+		<lombok.version>1.18.30</lombok.version>
 		<org-eclipse-jdt-core.version>3.33.0</org-eclipse-jdt-core.version>
 		<pmd.version>6.55.0</pmd.version>
 		<spotbugs.version>4.7.3</spotbugs.version>
