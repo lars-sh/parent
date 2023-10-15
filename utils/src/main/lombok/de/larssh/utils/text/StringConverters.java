@@ -99,15 +99,15 @@ public class StringConverters {
 	 *
 	 * @param value the value to be decoded
 	 * @return the decoded value
-	 * @throws ParseException on illegal or incomplete hex characters
+	 * @throws StringParseException on illegal or incomplete hex characters
 	 */
 	@SuppressFBWarnings(value = "EXS_EXCEPTION_SOFTENING_NO_CONSTRAINTS",
 			justification = "converting checked to unchecked exception, that should never be thrown at all")
-	public static String decodeUrl(final String value) throws ParseException {
+	public static String decodeUrl(final String value) throws StringParseException {
 		try {
 			return URLDecoder.decode(value, StandardCharsets.UTF_8.name());
 		} catch (final IllegalArgumentException e) {
-			throw new ParseException(e, "Failed decoding URL.");
+			throw new StringParseException(e, "Failed decoding URL.");
 		} catch (final UnsupportedEncodingException e) {
 			throw new UncheckedIOException(e);
 		}
