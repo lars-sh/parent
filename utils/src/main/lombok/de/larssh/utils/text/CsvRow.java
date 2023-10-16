@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import de.larssh.utils.annotations.PackagePrivate;
 import de.larssh.utils.collection.ProxiedList;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import lombok.Getter;
 
 /**
@@ -60,6 +61,17 @@ public class CsvRow extends ProxiedList<String> {
 
 		this.csv = csv;
 		this.rowIndex = rowIndex;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	@SuppressWarnings({ "deprecation", "checkstyle:NoFinalizer" })
+	@SuppressFBWarnings(value = { "BED_BOGUS_EXCEPTION_DECLARATION", "FI_USELESS" },
+			justification = "finalize implemented as final method to avoid finalizer attacks when throwing an exception in the constructor")
+	protected final void finalize() throws Throwable {
+		super.finalize();
 	}
 
 	/**
