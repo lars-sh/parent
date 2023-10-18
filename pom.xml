@@ -92,7 +92,7 @@
 		<cpd.printFailingErrors>true</cpd.printFailingErrors>
 		<dependency.failOnWarning>true</dependency.failOnWarning>
 		<dependency.ignoreUnusedRuntime>true</dependency.ignoreUnusedRuntime>
-		<enforcer.requiredMavenVersion>3.3.9</enforcer.requiredMavenVersion>
+		<enforcer.requiredMavenVersion>3.5.4</enforcer.requiredMavenVersion>
 		<formatter.configFile>${project.build.directory}/formatter.xml</formatter.configFile>
 		<formatter.lineEnding>LF</formatter.lineEnding>
 		<jar.manifest.addDefaultImplementationEntries>true</jar.manifest.addDefaultImplementationEntries>
@@ -135,7 +135,7 @@
 		<!-- Versions: Plugins -->
 		<build-helper-maven-plugin.version>3.4.0</build-helper-maven-plugin.version>
 		<formatter-maven-plugin.version>2.23.0</formatter-maven-plugin.version>
-		<jacoco-maven-plugin.version>0.8.10</jacoco-maven-plugin.version>
+		<jacoco-maven-plugin.version>0.8.11</jacoco-maven-plugin.version>
 		<lifecycle-mapping.version>1.0.0</lifecycle-mapping.version>
 		<lombok-maven-plugin.version>1.18.20.0</lombok-maven-plugin.version>
 		<maven-antrun-plugin.version>3.1.0</maven-antrun-plugin.version>
