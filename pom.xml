@@ -1973,7 +1973,7 @@ jobs:
     name: Build with JDK ${{ matrix.java-version }}
     steps:
       - name: Cache Dependencies
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           key: maven-dependencies
           path: ~/.m2/repository
