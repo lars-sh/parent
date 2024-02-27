@@ -34,6 +34,7 @@ import lombok.experimental.UtilityClass;
  */
 @UtilityClass
 @SuppressWarnings({ "PMD.CyclomaticComplexity", "PMD.ExcessiveImports", "PMD.GodClass" })
+@SuppressFBWarnings(value = "POTENTIAL_XML_INJECTION", justification = "false positive caused by named groups")
 public class Strings {
 	/**
 	 * Character to separate strings inside regular expressions
@@ -55,7 +56,6 @@ public class Strings {
 	/**
 	 * Pattern for parsing binary unit strings
 	 */
-	@SuppressFBWarnings(value = "POTENTIAL_XML_INJECTION", justification = "false positive caused by named group")
 	private static final Pattern BINARY_UNIT_PATTERN
 			= Pattern.compile("(?i)^\\s*(?<value>[+-]?\\s*(\\d([\\d_]*\\d)?)?\\.?\\d([\\d_]*\\d)?)\\s*((?<unit>"
 					+ BINARY_UNITS.keySet().stream().map(Pattern::quote).collect(joining(PATTERN_STRING_SEPARATOR))
@@ -73,8 +73,8 @@ public class Strings {
 	 * </ul>
 	 */
 	@SuppressWarnings({ "checkstyle:MagicNumber", "checkstyle:MultipleStringLiterals" })
-	@SuppressFBWarnings(value = { "POTENTIAL_XML_INJECTION", "PSC_PRESIZE_COLLECTIONS" },
-			justification = "false positive caused by named group / this method is called just once (in static initializer); keep code simple")
+	@SuppressFBWarnings(value = "PSC_PRESIZE_COLLECTIONS",
+			justification = "this method is called just once (in static initializer); keep code simple")
 	public static final Map<String, Integer> DECIMAL_UNITS = Maps.<String, Integer>builder(new LinkedHashMap<>())
 			.put("y", -24)
 			.put("z", -21)
