@@ -34,6 +34,7 @@ import lombok.experimental.UtilityClass;
  */
 @UtilityClass
 @SuppressWarnings({ "PMD.CyclomaticComplexity", "PMD.ExcessiveImports", "PMD.GodClass" })
+@SuppressFBWarnings(value = "POTENTIAL_XML_INJECTION", justification = "false positive caused by named groups")
 public class Strings {
 	/**
 	 * Character to separate strings inside regular expressions
