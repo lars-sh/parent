@@ -165,7 +165,7 @@
 		<maven-surefire-report-plugin.version>3.2.5</maven-surefire-report-plugin.version>
 		<nexus-staging-maven-plugin.version>1.6.13</nexus-staging-maven-plugin.version>
 		<properties-maven-plugin.version>1.2.1</properties-maven-plugin.version>
-		<spotbugs-maven-plugin.version>4.8.3.1</spotbugs-maven-plugin.version>
+		<spotbugs-maven-plugin.version>4.8.4.0</spotbugs-maven-plugin.version>
 		<tidy-maven-plugin.version>1.2.0</tidy-maven-plugin.version>
 		<versions-maven-plugin.version>2.16.2</versions-maven-plugin.version>
 
