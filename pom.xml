@@ -154,7 +154,7 @@
 		<maven-javadoc-plugin.version>3.6.3</maven-javadoc-plugin.version>
 		<maven-jxr-plugin.version>3.3.2</maven-jxr-plugin.version>
 		<maven-plugin-plugin.version>3.12.0</maven-plugin-plugin.version>
-		<maven-pmd-plugin.version>3.21.2</maven-pmd-plugin.version>
+		<maven-pmd-plugin.version>3.22.0</maven-pmd-plugin.version>
 		<maven-project-info-reports-plugin.version>3.5.0</maven-project-info-reports-plugin.version>
 		<maven-release-plugin.version>3.0.1</maven-release-plugin.version>
 		<maven-resources-plugin.version>3.3.1</maven-resources-plugin.version>
@@ -176,7 +176,7 @@
 		<findsecbugs.version>1.13.0</findsecbugs.version>
 		<lombok.version>1.18.32</lombok.version>
 		<org-eclipse-jdt-core.version>3.33.0</org-eclipse-jdt-core.version>
-		<pmd.version>6.55.0</pmd.version>
+		<pmd.version>7.1.0</pmd.version>
 		<spotbugs.version>4.8.4</spotbugs.version>
 		<spotbugs-annotations.version>4.8.4</spotbugs-annotations.version>
 
