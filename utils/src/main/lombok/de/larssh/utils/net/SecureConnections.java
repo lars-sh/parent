@@ -126,7 +126,7 @@ public class SecureConnections {
 	public static SSLSocketFactory getSocketFactory(@Nullable final KeyManager[] keyManagers,
 			@Nullable final TrustManager[] trustManagers) {
 		try {
-			final SSLContext context = SSLContext.getInstance("TLS");
+			final SSLContext context = SSLContext.getInstance("TLSv1.2");
 			context.init(keyManagers, trustManagers, null);
 			return context.getSocketFactory();
 		} catch (final KeyManagementException | NoSuchAlgorithmException e) {
