@@ -13,6 +13,7 @@ TODO
 ### Changed
 * `de.larssh.utils.text.ParseException` renamed to `de.larssh.utils.text.StringParseException` to avoid confusion with `java.text.ParseException`
 * `de.larssh.utils.Finals.lazy` now returns a `CachingSupplier` to allow other to determine if the lazy-loading value has been calculated already
+* `de.larssh.utils.net.SecureConnections.getScoketFactory` updated from using `TLS` to `TLSv1.2`
 
 ### Fixed
 * `de.larssh.utils.text.Strings.toLowerCaseAscii` and `de.larssh.utils.text.Strings.toUpperCaseAscii` for single character strings
