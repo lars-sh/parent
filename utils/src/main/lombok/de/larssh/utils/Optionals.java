@@ -42,8 +42,8 @@ public class Optionals {
 					return 0;
 				}
 
-				// The integer value MIN_VALUE cannot be negated in the integer range
-				// as [-MIN_VALUE] is mathematically equal to [MAX_VALUE + 1].
+				// The integer value MIN_VALUE cannot be negated in the integer range as
+				// [-MIN_VALUE] is mathematically equal to [MAX_VALUE + 1].
 				final int compare = second.compareTo(null);
 				return compare == Integer.MIN_VALUE ? Integer.MAX_VALUE : -compare;
 			}
