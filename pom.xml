@@ -134,7 +134,7 @@
 
 		<!-- Versions: Plugins -->
 		<build-helper-maven-plugin.version>3.6.0</build-helper-maven-plugin.version>
-		<formatter-maven-plugin.version>2.23.0</formatter-maven-plugin.version>
+		<formatter-maven-plugin.version>2.24.1</formatter-maven-plugin.version>
 		<jacoco-maven-plugin.version>0.8.12</jacoco-maven-plugin.version>
 		<lifecycle-mapping.version>1.0.0</lifecycle-mapping.version>
 		<lombok-maven-plugin.version>1.18.20.0</lombok-maven-plugin.version>
@@ -175,7 +175,7 @@
 		<sb-contrib.version>7.6.4</sb-contrib.version>
 		<findsecbugs.version>1.13.0</findsecbugs.version>
 		<lombok.version>1.18.32</lombok.version>
-		<org-eclipse-jdt-core.version>3.35.0</org-eclipse-jdt-core.version>
+		<org-eclipse-jdt-core.version>3.38.0</org-eclipse-jdt-core.version>
 		<pmd.version>7.2.0</pmd.version>
 		<spotbugs.version>4.8.5</spotbugs.version>
 		<spotbugs-annotations.version>4.8.5</spotbugs-annotations.version>
@@ -2694,13 +2694,14 @@ deploy:
 			</properties>
 		</profile>
 
-		<!-- JDK 11 to 16: Fallback to old as of internal Eclipse Platform dependencies with newer/incompatible class file versions -->
+		<!-- JDK 11 to 16: Fallback to older version of Eclipse Platform dependencies -->
 		<profile>
 			<id>fix-jdk11-to-jdk16</id>
 			<activation>
 				<jdk>[11,17)</jdk>
 			</activation>
 			<properties>
+				<formatter-maven-plugin.version>2.23.0</formatter-maven-plugin.version>
 				<org-eclipse-jdt-core.version>3.33.0</org-eclipse-jdt-core.version>
 			</properties>
 		</profile>
