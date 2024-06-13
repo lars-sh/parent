@@ -34,6 +34,7 @@ import lombok.experimental.UtilityClass;
  */
 @UtilityClass
 @SuppressWarnings({ "PMD.CyclomaticComplexity", "PMD.ExcessiveImports", "PMD.GodClass" })
+@SuppressFBWarnings(value = "POTENTIAL_XML_INJECTION", justification = "false positive caused by named groups")
 public class Strings {
 	/**
 	 * Character to separate strings inside regular expressions
@@ -558,18 +559,18 @@ public class Strings {
 	 *
 	 * @param binaryValue binary string
 	 * @return binary value
-	 * @throws ParseException on parse failure
+	 * @throws StringParseException on parse failure
 	 */
 	@SuppressWarnings("checkstyle:MultipleStringLiterals")
-	public static BigInteger parseBinaryUnit(final CharSequence binaryValue) throws ParseException {
+	public static BigInteger parseBinaryUnit(final CharSequence binaryValue) throws StringParseException {
 		final Optional<Matcher> matcher = Patterns.matches(BINARY_UNIT_PATTERN, binaryValue);
 		if (!matcher.isPresent()) {
-			throw new ParseException("Value [%s] does not match binary unit pattern.", binaryValue);
+			throw new StringParseException("Value [%s] does not match binary unit pattern.", binaryValue);
 		}
 
 		final String value = matcher.get().group("value");
 		if (value == null) {
-			throw new ParseException("No binary unit value given in string [%s].", binaryValue);
+			throw new StringParseException("No binary unit value given in string [%s].", binaryValue);
 		}
 
 		final String unit = matcher.get().group("unit");
@@ -619,18 +620,18 @@ public class Strings {
 	 *
 	 * @param decimalValue decimal string
 	 * @return decimal value
-	 * @throws ParseException on parse failure
+	 * @throws StringParseException on parse failure
 	 */
 	@SuppressWarnings("checkstyle:MultipleStringLiterals")
-	public static BigDecimal parseDecimalUnit(final CharSequence decimalValue) throws ParseException {
+	public static BigDecimal parseDecimalUnit(final CharSequence decimalValue) throws StringParseException {
 		final Optional<Matcher> matcher = Patterns.matches(DECIMAL_UNIT_PATTERN, decimalValue);
 		if (!matcher.isPresent()) {
-			throw new ParseException("Value [%s] does not match decimal unit pattern.", decimalValue);
+			throw new StringParseException("Value [%s] does not match decimal unit pattern.", decimalValue);
 		}
 
 		final String value = matcher.get().group("value");
 		if (value == null) {
-			throw new ParseException("No decimal unit value given in string [%s].", decimalValue);
+			throw new StringParseException("No decimal unit value given in string [%s].", decimalValue);
 		}
 
 		final String unit = matcher.get().group("unit");
@@ -641,7 +642,7 @@ public class Strings {
 						() -> DECIMAL_UNITS.get(unit),
 						() -> DECIMAL_UNITS.get(toUpperCaseAscii(unit)),
 						() -> DECIMAL_UNITS.get(toLowerCaseAscii(unit)))
-				.orElseThrow(() -> new ParseException("Found unexpected decimal unit [%s].", unit));
+				.orElseThrow(() -> new StringParseException("Found unexpected decimal unit [%s].", unit));
 
 		return new BigDecimal(replaceAll(value, UNIT_WHITE_SPACE_PATTERN, "")).scaleByPowerOfTen(powerOfTen);
 	}
