@@ -6,6 +6,7 @@ import java.util.Optional;
 import de.larssh.utils.annotations.PackagePrivate;
 import de.larssh.utils.collection.ProxiedList;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
 /**
@@ -22,6 +23,7 @@ import lombok.Getter;
  * the column's CSV header value.
  */
 @Getter
+@EqualsAndHashCode(callSuper = true)
 public class CsvRow extends ProxiedList<String> {
 	/**
 	 * Reference to the parent CSV object
@@ -65,7 +67,7 @@ public class CsvRow extends ProxiedList<String> {
 
 	/** {@inheritDoc} */
 	@Override
-	@SuppressWarnings({ "deprecation", "checkstyle:NoFinalizer" })
+	@SuppressWarnings({ "deprecation", "checkstyle:NoFinalizer", "java:S1113", "PMD.FinalizeOnlyCallsSuperFinalize" })
 	@SuppressFBWarnings(value = { "BED_BOGUS_EXCEPTION_DECLARATION", "FI_USELESS" },
 			justification = "finalize implemented as final method to avoid finalizer attacks when throwing an exception in the constructor")
 	protected final void finalize() throws Throwable {
