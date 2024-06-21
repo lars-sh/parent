@@ -1966,12 +1966,12 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        # Supported versions as of https://en.wikipedia.org/wiki/Java_version_history
+        # Supported LTS versions as of https://en.wikipedia.org/wiki/Java_version_history
         java-version:
           - 8
           - 11
           - 17
-          - 20
+          - 21
 
     name: Build with JDK ${{ matrix.java-version }}
     steps:
