@@ -14,7 +14,7 @@ Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%
 * TODO
 
 ### Fixed
-* TODO
+* Removed warnings in PMD output as of removed rules
 
 ### Removed
 * TODO

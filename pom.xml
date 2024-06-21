@@ -1691,18 +1691,6 @@ fi
 										<rule ref="category/java/codestyle.xml">
 											<exclude name="TooManyStaticImports" />
 
-											<!-- Deprecated -->
-											<exclude name="AbstractNaming" />
-											<exclude name="AvoidFinalLocalVariable" />
-											<exclude name="AvoidPrefixingMethodParameters" />
-											<exclude name="ForLoopsMustUseBraces" />
-											<exclude name="IfElseStmtsMustUseBraces" />
-											<exclude name="IfStmtsMustUseBraces" />
-											<exclude name="MIsLeadingVariableName" />
-											<exclude name="SuspiciousConstantFieldName" />
-											<exclude name="VariableNamingConventions" />
-											<exclude name="WhileLoopsMustUseBraces" />
-
 											<!-- See separate rule with different properties -->
 											<exclude name="ClassNamingConventions" />
 											<exclude name="CommentDefaultAccessModifier" />
@@ -1710,9 +1698,6 @@ fi
 
 											<!-- Better document why a constructor is empty than writing "super()" -->
 											<exclude name="CallSuperInConstructor" />
-
-											<!-- Requires Google Guava -->
-											<exclude name="DefaultPackage" />
 
 											<!-- Quite a few false positives when using Lombok -->
 											<exclude name="FieldDeclarationsShouldBeAtStartOfClass" />
@@ -1752,10 +1737,6 @@ fi
 										<rule ref="category/java/design.xml">
 											<exclude name="LawOfDemeter" />
 											<exclude name="LoosePackageCoupling" />
-											<exclude name="NcssConstructorCount" />
-											<exclude name="NcssMethodCount" />
-											<exclude name="NcssTypeCount" />
-											<exclude name="StdCyclomaticComplexity" />
 											<exclude name="TooManyMethods" />
 										</rule>
 
@@ -1765,9 +1746,6 @@ fi
 										</rule>
 
 										<rule ref="category/java/errorprone.xml">
-											<!-- Deprecated -->
-											<exclude name="LoggerIsNotStaticFinal" />
-
 											<!-- Avoid using serialVersionUID as of https://github.com/rzwitserloot/lombok/wiki/WHY-NOT:-serialVersionUID -->
 											<exclude name="MissingSerialVersionUID" />
 											<exclude name="NonSerializableClass" />
@@ -1800,9 +1778,6 @@ fi
 										</rule>
 
 										<rule ref="category/java/multithreading.xml">
-											<!-- Deprecated -->
-											<exclude name="UnsynchronizedStaticDateFormatter" />
-
 											<!-- No need to avoid volatile if you know what you are doing -->
 											<exclude name="AvoidUsingVolatile" />
 
