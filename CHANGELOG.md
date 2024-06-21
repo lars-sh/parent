@@ -1,19 +1,34 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+<a name="0.9.16"></a>
+
+## [0.9.16-SNAPSHOT](https://github.com/lars-sh/parent/compare/9cbb4cf88b441d78cefde49962d4d0d86687ed88...master)
+
+Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%20%28a:parent%20a:parent-archetype%20a:root%20a:utils%20a:utils-annotations%20a:utils-test%29%20AND%20v:0.9.16)
+
+### Added
+* TODO
+
+### Changed
+* TODO
+
+### Fixed
+* TODO
+
+### Removed
+* TODO
+
 <a name="0.9.15"></a>
 
-## [0.9.15-SNAPSHOT](https://github.com/lars-sh/parent/compare/66575e54e8da5f2e68b2dd1c7a2f27b486e2bf5c...master)
+## [0.9.15](https://github.com/lars-sh/parent/compare/66575e54e8da5f2e68b2dd1c7a2f27b486e2bf5c...9cbb4cf88b441d78cefde49962d4d0d86687ed88) (2024-06-21)
 
 Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%20%28a:parent%20a:parent-archetype%20a:root%20a:utils%20a:utils-annotations%20a:utils-test%29%20AND%20v:0.9.15)
 
-### Added
-TODO
-
 ### Changed
 * `de.larssh.utils.text.ParseException` renamed to `de.larssh.utils.text.StringParseException` to avoid confusion with `java.text.ParseException`
-* `de.larssh.utils.Finals.lazy` now returns a `CachingSupplier` to allow other to determine if the lazy-loading value has been calculated already
-* `de.larssh.utils.net.SecureConnections.getScoketFactory` updated from using `TLS` to `TLSv1.2`
+* `de.larssh.utils.Finals.lazy` now returns a `CachingSupplier` to allow others to determine if the lazy-loading value has been calculated already
+* `de.larssh.utils.net.SecureConnections.getSocketFactory` updated from using `TLS` to `TLSv1.2`
 
 ### Fixed
 * `de.larssh.utils.text.Strings.toLowerCaseAscii` and `de.larssh.utils.text.Strings.toUpperCaseAscii` for single character strings
@@ -24,7 +39,7 @@ TODO
 
 <a name="0.9.14"></a>
 
-## [0.9.14](https://github.com/lars-sh/parent/compare/01adecb082f55fca1e6f83e38a65f6e1bd3027a1...66575e54e8da5f2e68b2dd1c7a2f27b486e2bf5c)
+## [0.9.14](https://github.com/lars-sh/parent/compare/01adecb082f55fca1e6f83e38a65f6e1bd3027a1...66575e54e8da5f2e68b2dd1c7a2f27b486e2bf5c) (2022-12-30)
 
 Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%20%28a:parent%20a:parent-archetype%20a:root%20a:utils%20a:utils-annotations%20a:utils-test%29%20AND%20v:0.9.14)
 
