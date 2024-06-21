@@ -63,9 +63,7 @@ public class CsvRow extends ProxiedList<String> {
 		this.rowIndex = rowIndex;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	/** {@inheritDoc} */
 	@Override
 	@SuppressWarnings({ "deprecation", "checkstyle:NoFinalizer" })
 	@SuppressFBWarnings(value = { "BED_BOGUS_EXCEPTION_DECLARATION", "FI_USELESS" },
