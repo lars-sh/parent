@@ -2628,6 +2628,7 @@ deploy:
 				<jdk>[9,)</jdk>
 			</activation>
 			<properties>
+				<maven.compiler.failOnWarning>false</maven.compiler.failOnWarning>
 				<maven.compiler.showDeprecation>false</maven.compiler.showDeprecation>
 				<maven.compiler.showWarnings>false</maven.compiler.showWarnings>
 			</properties>
