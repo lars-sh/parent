@@ -2633,15 +2633,19 @@ deploy:
 			</properties>
 		</profile>
 
-		<!-- JDK 10 and previous: Fallback to old Formatter Maven Plugin as of internal Eclipse Platform dependencies with newer/incompatible class file versions -->
+		<!-- JDK 10 and previous -->
 		<profile>
 			<id>fix-jdk10-and-previous</id>
 			<activation>
 				<jdk>(,11)</jdk>
 			</activation>
 			<properties>
+				<!-- Fallback to old Formatter Maven Plugin as of internal Eclipse Platform dependencies with newer/incompatible class file versions -->
 				<formatter-maven-plugin.version>2.15.0</formatter-maven-plugin.version>
 				<org-eclipse-jdt-core.version>3.26.0</org-eclipse-jdt-core.version>
+
+				<!-- Freeze Spotbugs release to the latest version supporting JDK < 11 -->
+				<spotbugs-maven-plugin.version>4.8.5.0</spotbugs-maven-plugin.version>
 			</properties>
 		</profile>
 
