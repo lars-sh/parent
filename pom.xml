@@ -1690,6 +1690,7 @@ fi
 
 										<rule ref="category/java/codestyle.xml">
 											<exclude name="TooManyStaticImports" />
+											<exclude name="UseExplicitTypes" />
 
 											<!-- See separate rule with different properties -->
 											<exclude name="ClassNamingConventions" />
