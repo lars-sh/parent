@@ -11,7 +11,7 @@ Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%
 * TODO
 
 ### Changed
-* TODO
+* Make the shade property createDependencyReducedPom configurable using the Maven property `shade.createDependencyReducedPom`. The default value differs from the Maven Shade Plugin and is `false`.
 
 ### Fixed
 * TODO
