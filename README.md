@@ -480,7 +480,7 @@ pmd-only.ruleset:                                  ${project.build.directory}/pm
 pmd.analysisCache:                                 true
 project.build.sourceEncoding:                      UTF-8
 project.reporting.outputEncoding:                  UTF-8
-shade.createDependencyReducedPom:                  false
+shade.createDependencyReducedPom:                  true
 shade.dependencyReducedPomLocation:                ${project.build.directory}/dependency-reduced-pom.xml
 shade.packageDependenciesPhase:                    none
 spotbugs.effort:                                   Max
