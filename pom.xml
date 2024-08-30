@@ -171,7 +171,7 @@
 		<versions-maven-plugin.version>2.17.1</versions-maven-plugin.version>
 
 		<!-- Versions: Plugin Dependencies -->
-		<apache-ant.version>1.10.14</apache-ant.version>
+		<apache-ant.version>1.10.15</apache-ant.version>
 		<checkstyle.version>9.3</checkstyle.version>
 		<sb-contrib.version>7.6.4</sb-contrib.version>
 		<findsecbugs.version>1.13.0</findsecbugs.version>
