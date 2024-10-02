@@ -182,7 +182,7 @@
 		<spotbugs-annotations.version>4.8.6</spotbugs-annotations.version>
 
 		<!-- Versions: Reporting Skins -->
-		<maven-fluido-skin.version>2.0.0-M10</maven-fluido-skin.version>
+		<maven-fluido-skin.version>2.0.0-M11</maven-fluido-skin.version>
 	</properties>
 
 	<dependencyManagement>
