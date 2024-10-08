@@ -114,6 +114,7 @@
 		<pmd.analysisCache>true</pmd.analysisCache>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<shade.createDependencyReducedPom>false</shade.createDependencyReducedPom>
 		<shade.dependencyReducedPomLocation>${project.build.directory}/dependency-reduced-pom.xml</shade.dependencyReducedPomLocation>
 		<shade.packageDependenciesPhase>none</shade.packageDependenciesPhase>
 		<spotbugs.effort>Max</spotbugs.effort>
@@ -123,11 +124,11 @@
 		<spotbugs.threshold>Low</spotbugs.threshold>
 
 		<!-- Versions: Dependencies -->
-		<assertj-core.version>3.26.0</assertj-core.version>
+		<assertj-core.version>3.26.3</assertj-core.version>
 		<joor.version>0.9.15</joor.version>
-		<junit-jupiter-api.version>5.10.2</junit-jupiter-api.version>
-		<junit-jupiter-engine.version>5.10.2</junit-jupiter-engine.version>
-		<lombok-annotations.version>1.18.32</lombok-annotations.version>
+		<junit-jupiter-api.version>5.11.2</junit-jupiter-api.version>
+		<junit-jupiter-engine.version>5.11.2</junit-jupiter-engine.version>
+		<lombok-annotations.version>1.18.34</lombok-annotations.version>
 		<mockito-core.version>4.11.0</mockito-core.version>
 		<mockito-inline.version>4.11.0</mockito-inline.version>
 		<parent.version>0.9.17-SNAPSHOT</parent.version>
@@ -139,49 +140,49 @@
 		<lifecycle-mapping.version>1.0.0</lifecycle-mapping.version>
 		<lombok-maven-plugin.version>1.18.20.0</lombok-maven-plugin.version>
 		<maven-antrun-plugin.version>3.1.0</maven-antrun-plugin.version>
-		<maven-archetype-plugin.version>3.2.1</maven-archetype-plugin.version>
+		<maven-archetype-plugin.version>3.3.0</maven-archetype-plugin.version>
 		<maven-assembly-plugin.version>3.7.1</maven-assembly-plugin.version>
-		<maven-checkstyle-plugin.version>3.4.0</maven-checkstyle-plugin.version>
+		<maven-checkstyle-plugin.version>3.5.0</maven-checkstyle-plugin.version>
 		<maven-clean-plugin.version>3.4.0</maven-clean-plugin.version>
 		<maven-compiler-plugin.version>3.13.0</maven-compiler-plugin.version>
-		<maven-dependency-plugin.version>3.7.1</maven-dependency-plugin.version>
-		<maven-deploy-plugin.version>3.1.2</maven-deploy-plugin.version>
+		<maven-dependency-plugin.version>3.8.0</maven-dependency-plugin.version>
+		<maven-deploy-plugin.version>3.1.3</maven-deploy-plugin.version>
 		<maven-enforcer-plugin.version>3.5.0</maven-enforcer-plugin.version>
-		<maven-gpg-plugin.version>3.2.4</maven-gpg-plugin.version>
-		<maven-help-plugin.version>3.4.1</maven-help-plugin.version>
-		<maven-install-plugin.version>3.1.2</maven-install-plugin.version>
+		<maven-gpg-plugin.version>3.2.7</maven-gpg-plugin.version>
+		<maven-help-plugin.version>3.5.0</maven-help-plugin.version>
+		<maven-install-plugin.version>3.1.3</maven-install-plugin.version>
 		<maven-jar-plugin.version>3.4.2</maven-jar-plugin.version>
-		<maven-javadoc-plugin.version>3.7.0</maven-javadoc-plugin.version>
-		<maven-jxr-plugin.version>3.4.0</maven-jxr-plugin.version>
-		<maven-plugin-plugin.version>3.13.1</maven-plugin-plugin.version>
-		<maven-pmd-plugin.version>3.23.0</maven-pmd-plugin.version>
-		<maven-project-info-reports-plugin.version>3.6.0</maven-project-info-reports-plugin.version>
-		<maven-release-plugin.version>3.1.0</maven-release-plugin.version>
+		<maven-javadoc-plugin.version>3.10.1</maven-javadoc-plugin.version>
+		<maven-jxr-plugin.version>3.5.0</maven-jxr-plugin.version>
+		<maven-plugin-plugin.version>3.15.0</maven-plugin-plugin.version>
+		<maven-pmd-plugin.version>3.25.0</maven-pmd-plugin.version>
+		<maven-project-info-reports-plugin.version>3.7.0</maven-project-info-reports-plugin.version>
+		<maven-release-plugin.version>3.1.1</maven-release-plugin.version>
 		<maven-resources-plugin.version>3.3.1</maven-resources-plugin.version>
 		<maven-shade-plugin.version>3.6.0</maven-shade-plugin.version>
-		<maven-site-plugin.version>3.12.1</maven-site-plugin.version>
+		<maven-site-plugin.version>3.20.0</maven-site-plugin.version>
 		<maven-source-plugin.version>3.3.1</maven-source-plugin.version>
-		<maven-surefire-plugin.version>3.3.0</maven-surefire-plugin.version>
-		<maven-surefire-report-plugin.version>3.3.0</maven-surefire-report-plugin.version>
+		<maven-surefire-plugin.version>3.5.1</maven-surefire-plugin.version>
+		<maven-surefire-report-plugin.version>3.5.1</maven-surefire-report-plugin.version>
 		<nexus-staging-maven-plugin.version>1.7.0</nexus-staging-maven-plugin.version>
 		<properties-maven-plugin.version>1.2.1</properties-maven-plugin.version>
-		<spotbugs-maven-plugin.version>4.8.5.0</spotbugs-maven-plugin.version>
+		<spotbugs-maven-plugin.version>4.8.6.4</spotbugs-maven-plugin.version>
 		<tidy-maven-plugin.version>1.3.0</tidy-maven-plugin.version>
-		<versions-maven-plugin.version>2.16.2</versions-maven-plugin.version>
+		<versions-maven-plugin.version>2.17.1</versions-maven-plugin.version>
 
 		<!-- Versions: Plugin Dependencies -->
-		<apache-ant.version>1.10.14</apache-ant.version>
+		<apache-ant.version>1.10.15</apache-ant.version>
 		<checkstyle.version>9.3</checkstyle.version>
-		<sb-contrib.version>7.6.4</sb-contrib.version>
+		<sb-contrib.version>7.6.5</sb-contrib.version>
 		<findsecbugs.version>1.13.0</findsecbugs.version>
-		<lombok.version>1.18.32</lombok.version>
+		<lombok.version>1.18.34</lombok.version>
 		<org-eclipse-jdt-core.version>3.37.0</org-eclipse-jdt-core.version>
-		<pmd.version>7.2.0</pmd.version>
+		<pmd.version>7.6.0</pmd.version>
 		<spotbugs.version>4.8.6</spotbugs.version>
 		<spotbugs-annotations.version>4.8.6</spotbugs-annotations.version>
 
 		<!-- Versions: Reporting Skins -->
-		<maven-fluido-skin.version>1.12.0</maven-fluido-skin.version>
+		<maven-fluido-skin.version>2.0.0-M11</maven-fluido-skin.version>
 	</properties>
 
 	<dependencyManagement>
@@ -457,6 +458,7 @@
 					<artifactId>maven-shade-plugin</artifactId>
 					<version>${maven-shade-plugin.version}</version>
 					<configuration>
+						<createDependencyReducedPom>${shade.createDependencyReducedPom}</createDependencyReducedPom>
 						<dependencyReducedPomLocation>${shade.dependencyReducedPomLocation}</dependencyReducedPomLocation>
 					</configuration>
 				</plugin>
@@ -1690,6 +1692,7 @@ fi
 
 										<rule ref="category/java/codestyle.xml">
 											<exclude name="TooManyStaticImports" />
+											<exclude name="UseExplicitTypes" />
 
 											<!-- See separate rule with different properties -->
 											<exclude name="ClassNamingConventions" />
@@ -2634,15 +2637,19 @@ deploy:
 			</properties>
 		</profile>
 
-		<!-- JDK 10 and previous: Fallback to old Formatter Maven Plugin as of internal Eclipse Platform dependencies with newer/incompatible class file versions -->
+		<!-- JDK 10 and previous -->
 		<profile>
 			<id>fix-jdk10-and-previous</id>
 			<activation>
 				<jdk>(,11)</jdk>
 			</activation>
 			<properties>
+				<!-- Fallback to old Formatter Maven Plugin as of internal Eclipse Platform dependencies with newer/incompatible class file versions -->
 				<formatter-maven-plugin.version>2.15.0</formatter-maven-plugin.version>
 				<org-eclipse-jdt-core.version>3.26.0</org-eclipse-jdt-core.version>
+
+				<!-- Freeze Spotbugs release to the latest version supporting JDK < 11 -->
+				<spotbugs-maven-plugin.version>4.8.5.0</spotbugs-maven-plugin.version>
 			</properties>
 		</profile>
 
@@ -2777,7 +2784,7 @@ deploy:
 				<dependency>
 					<groupId>org.junit.platform</groupId>
 					<artifactId>junit-platform-runner</artifactId>
-					<version>1.10.2</version>
+					<version>1.11.2</version>
 					<scope>test</scope>
 					<exclusions>
 						<exclusion>
