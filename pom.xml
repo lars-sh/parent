@@ -179,7 +179,7 @@
 		<org-eclipse-jdt-core.version>3.37.0</org-eclipse-jdt-core.version>
 		<pmd.version>7.9.0</pmd.version>
 		<spotbugs.version>4.8.6</spotbugs.version>
-		<spotbugs-annotations.version>4.8.6</spotbugs-annotations.version>
+		<spotbugs-annotations.version>4.9.0</spotbugs-annotations.version>
 
 		<!-- Versions: Reporting Skins -->
 		<maven-fluido-skin.version>2.0.1</maven-fluido-skin.version>
