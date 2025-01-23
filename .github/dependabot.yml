@@ -9,6 +9,10 @@ updates:
     schedule:
       interval: daily
     ignore:
+      - dependency-name: com.github.spotbugs:spotbugs
+        versions: "[4.9.0,)"
+      - dependency-name: com.github.spotbugs:spotbugs-annotations
+        versions: "[4.9.0,)"
       - dependency-name: org.mockito:mockito-core
         versions: "[5.0.0,)"
       - dependency-name: org.mockito:mockito-inline
