@@ -77,10 +77,10 @@ public class Optionals {
 	 * @param keyExtractor method to extract the optional sort key
 	 * @return comparator for optional
 	 */
-	public static <T, V extends Comparable<V>> Comparator<T> comparator(final Function<T, Optional<V>> keyExtractor) {
+	public static <T, U extends Comparable<U>> Comparator<T> comparator(final Function<T, Optional<U>> keyExtractor) {
 		return (first, second) -> {
-			final Optional<V> firstOptional = keyExtractor.apply(first);
-			final Optional<V> secondOptional = keyExtractor.apply(second);
+			final Optional<U> firstOptional = keyExtractor.apply(first);
+			final Optional<U> secondOptional = keyExtractor.apply(second);
 
 			if (firstOptional.isPresent()) {
 				return secondOptional.isPresent() ? firstOptional.get().compareTo(secondOptional.get()) : 1;
