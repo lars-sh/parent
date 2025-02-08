@@ -60,6 +60,22 @@ public class Csv extends ProxiedList<CsvRow> {
 	}
 
 	/**
+	 * The instances CSV separator character
+	 *
+	 * @return the CSV separator character
+	 */
+	@Getter(AccessLevel.PUBLIC)
+	char separator;
+
+	/**
+	 * The instances CSV escape character
+	 *
+	 * @return the CSV escape character
+	 */
+	@Getter(AccessLevel.PUBLIC)
+	char escaper;
+
+	/**
 	 * Flag specifying if this instance can be modified
 	 *
 	 * @param modifiable flag
@@ -78,7 +94,25 @@ public class Csv extends ProxiedList<CsvRow> {
 	 * allow to retrieve their values by the column's CSV header value.
 	 */
 	public Csv() {
+		this(DEFAULT_SEPARATOR, DEFAULT_ESCAPER);
+	}
+
+	/**
+	 * This class represents CSV data, consisting of rows of values, implementing
+	 * {@code List<String>} for convenience reasons.
+	 *
+	 * <p>
+	 * The first row is referenced as <i>header</i> row and {@link CsvRow} instances
+	 * allow to retrieve their values by the column's CSV header value.
+	 *
+	 * @param separator the instances CSV separator character
+	 * @param escaper   the instances CSV escape character
+	 */
+	public Csv(final char separator, final char escaper) {
 		super(new ArrayList<>());
+
+		this.separator = separator;
+		this.escaper = escaper;
 	}
 
 	/**
@@ -94,7 +128,28 @@ public class Csv extends ProxiedList<CsvRow> {
 	 *                                  negative
 	 */
 	public Csv(final int initialCapacity) {
+		this(initialCapacity, DEFAULT_SEPARATOR, DEFAULT_ESCAPER);
+	}
+
+	/**
+	 * This class represents CSV data, consisting of rows of values, implementing
+	 * {@code List<String>} for convenience reasons.
+	 *
+	 * <p>
+	 * The first row is referenced as <i>header</i> row and {@link CsvRow} instances
+	 * allow to retrieve their values by the column's CSV header value.
+	 *
+	 * @param initialCapacity an initial capacity of the internal list
+	 * @param separator       the instances CSV separator character
+	 * @param escaper         the instances CSV escape character
+	 * @throws IllegalArgumentException if the specified initial capacity is
+	 *                                  negative
+	 */
+	public Csv(final int initialCapacity, final char separator, final char escaper) {
 		super(new ArrayList<>(initialCapacity));
+
+		this.separator = separator;
+		this.escaper = escaper;
 	}
 
 	/**
@@ -107,11 +162,27 @@ public class Csv extends ProxiedList<CsvRow> {
 	 *
 	 * @param data a collection containing CSV rows to be added
 	 */
+	public Csv(final List<? extends List<String>> data) {
+		this(data, DEFAULT_SEPARATOR, DEFAULT_ESCAPER);
+	}
+
+	/**
+	 * This class represents CSV data, consisting of rows of values, implementing
+	 * {@code List<String>} for convenience reasons.
+	 *
+	 * <p>
+	 * The first row is referenced as <i>header</i> row and {@link CsvRow} instances
+	 * allow to retrieve their values by the column's CSV header value.
+	 *
+	 * @param data      a collection containing CSV rows to be added
+	 * @param separator the instances CSV separator character
+	 * @param escaper   the instances CSV escape character
+	 */
 	@SuppressWarnings("PMD.AvoidInstantiatingObjectsInLoops")
 	@SuppressFBWarnings(value = "PCOA_PARTIALLY_CONSTRUCTED_OBJECT_ACCESS",
 			justification = "passing this object to CsvRow constructor shouldn't be a problem")
-	public Csv(final List<? extends List<String>> data) {
-		this(data.size());
+	public Csv(final List<? extends List<String>> data, final char separator, final char escaper) {
+		this(data.size(), separator, escaper);
 
 		for (final List<String> row : Nullables.orElseThrow(data)) {
 			super.add(new CsvRow(this, super.size(), Nullables.orElseThrow(row)));
@@ -212,15 +283,15 @@ public class Csv extends ProxiedList<CsvRow> {
 	}
 
 	/**
-	 * Returns a valid CSV string representation of this object using the default
+	 * Returns a valid CSV string representation of this object using the instances
 	 * separator and escaper.
 	 *
-	 * @return a valid CSV representation of this object using default separator and
-	 *         escaper
+	 * @return a valid CSV representation of this object using the instances
+	 *         separator and escaper
 	 */
 	@Override
 	public String toString() {
-		return toString(DEFAULT_SEPARATOR, Csv.DEFAULT_ESCAPER);
+		return toString(getSeparator(), getEscaper());
 	}
 
 	/**

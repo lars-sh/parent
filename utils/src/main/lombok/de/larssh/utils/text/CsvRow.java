@@ -108,7 +108,7 @@ public class CsvRow extends ProxiedList<String> {
 	 */
 	@Override
 	public String toString() {
-		return toString(Csv.DEFAULT_SEPARATOR, Csv.DEFAULT_ESCAPER);
+		return toString(getCsv().getSeparator(), getCsv().getEscaper());
 	}
 
 	/**

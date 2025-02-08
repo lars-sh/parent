@@ -124,7 +124,7 @@ class CsvParser {
 	private Csv parse(final PeekableReader reader) throws IOException {
 		assertCsvInput(separator, escaper);
 
-		final Csv csv = new Csv();
+		final Csv csv = new Csv(separator, escaper);
 
 		// Make sure, an empty input results in an empty result with no row
 		if (!reader.hasNext()) {
