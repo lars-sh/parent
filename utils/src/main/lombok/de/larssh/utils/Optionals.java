@@ -70,6 +70,26 @@ public class Optionals {
 	}
 
 	/**
+	 * Wraps a {@link Comparator} to allow compare {@link Optional}s.
+	 *
+	 * @param <T>          the type of element to be compared
+	 * @param <U>          the type of the sort key
+	 * @param keyExtractor method to extract the optional sort key
+	 * @return comparator for optional
+	 */
+	public static <T, V extends Comparable<V>> Comparator<T> comparator(final Function<T, Optional<V>> keyExtractor) {
+		return (first, second) -> {
+			final Optional<V> firstOptional = keyExtractor.apply(first);
+			final Optional<V> secondOptional = keyExtractor.apply(second);
+
+			if (firstOptional.isPresent()) {
+				return secondOptional.isPresent() ? firstOptional.get().compareTo(secondOptional.get()) : 1;
+			}
+			return secondOptional.isPresent() ? -1 : 0;
+		};
+	}
+
+	/**
 	 * If a value is present, apply the provided {@link OptionalDouble}-bearing
 	 * mapping function to it, return that result, otherwise return an empty
 	 * {@link OptionalDouble}. This method is similar to
