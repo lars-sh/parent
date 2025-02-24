@@ -4,7 +4,7 @@
 
 	<groupId>de.lars-sh</groupId>
 	<artifactId>root</artifactId>
-	<version>0.9.17-SNAPSHOT</version>
+	<version>0.9.17</version>
 	<packaging>pom</packaging>
 
 	<name>Root POM</name>
