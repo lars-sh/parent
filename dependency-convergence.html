@@ -30,7 +30,7 @@
           <ul class="breadcrumb">
         <li id="publishDate">Last Published: 2025-02-24<span class="divider">|</span>
 </li>
-          <li id="projectVersion">Version: 0.9.17-SNAPSHOT</li>
+          <li id="projectVersion">Version: 0.9.18-SNAPSHOT</li>
           </ul>
         </div>
       </header>
@@ -98,20 +98,36 @@
 <td>19</td></tr>
 <tr class="a">
 <th>Number of unique artifacts (NOA):</th>
-<td>20</td></tr>
+<td>23</td></tr>
 <tr class="b">
 <th>Number of version-conflicting artifacts (NOC):</th>
-<td>1</td></tr>
+<td>3</td></tr>
 <tr class="a">
 <th>Number of SNAPSHOT artifacts (NOS):</th>
 <td>0</td></tr>
 <tr class="b">
 <th>Convergence (NOD/NOA):</th>
-<td><img src="images/icon_error_sml.gif" alt="[Error]" />&#160;<b>95 %</b></td></tr>
+<td><img src="images/icon_error_sml.gif" alt="[Error]" />&#160;<b>82 %</b></td></tr>
 <tr class="a">
 <th>Ready for release (100% convergence and no SNAPSHOTS):</th>
 <td><img src="images/icon_error_sml.gif" alt="[Error]" />&#160;<b>Error</b><br />You do not have 100% convergence.</td></tr></table></section><section>
 <h2>Dependencies used in modules</h2><section>
+<h3>de.lars-sh:utils-annotations</h3>
+<table class="table table-striped">
+<tr class="a">
+<td><img src="images/icon_error_sml.gif" alt="[Error]" /></td>
+<td>
+<table class="table table-striped">
+<tr class="b">
+<td>0.9.17-SNAPSHOT</td>
+<td>
+<ol style="list-style-type: decimal;">
+<li>de.lars-sh:parent:pom:0.9.18-SNAPSHOT<br />\-&#160;de.lars-sh:utils-test:jar:0.9.18-SNAPSHOT:test<br />&#160;&#160;&#160;\-&#160;de.lars-sh:utils-annotations:jar:0.9.17-SNAPSHOT:test<br /></li><br /></ol></td></tr>
+<tr class="a">
+<td>0.9.18-SNAPSHOT</td>
+<td>
+<ol style="list-style-type: decimal;">
+<li>de.lars-sh:parent:pom:0.9.18-SNAPSHOT<br />\-&#160;de.lars-sh:utils-annotations:jar:0.9.18-SNAPSHOT:provided<br /></li><br /></ol></td></tr></table></td></tr></table></section><section>
 <h3>net.bytebuddy:byte-buddy</h3>
 <table class="table table-striped">
 <tr class="a">
@@ -122,22 +138,38 @@
 <td>1.12.19</td>
 <td>
 <ol style="list-style-type: decimal;">
-<li>de.lars-sh:parent-archetype:maven-archetype:0.9.17-SNAPSHOT<br />\-&#160;org.mockito:mockito-core:jar:4.11.0:test<br />&#160;&#160;&#160;\-&#160;net.bytebuddy:byte-buddy:jar:1.12.19:test<br /></li><br />
-<li>de.lars-sh:parent:pom:0.9.17-SNAPSHOT<br />\-&#160;org.mockito:mockito-core:jar:4.11.0:test<br />&#160;&#160;&#160;\-&#160;net.bytebuddy:byte-buddy:jar:1.12.19:test<br /></li><br />
-<li>de.lars-sh:root:pom:0.9.17-SNAPSHOT<br />\-&#160;org.mockito:mockito-core:jar:4.11.0:test<br />&#160;&#160;&#160;\-&#160;net.bytebuddy:byte-buddy:jar:1.12.19:test<br /></li><br />
-<li>de.lars-sh:utils-annotations:jar:0.9.17-SNAPSHOT<br />\-&#160;org.mockito:mockito-core:jar:4.11.0:test<br />&#160;&#160;&#160;\-&#160;net.bytebuddy:byte-buddy:jar:1.12.19:test<br /></li><br />
-<li>de.lars-sh:utils-test:jar:0.9.17-SNAPSHOT<br />\-&#160;org.mockito:mockito-core:jar:4.11.0:test<br />&#160;&#160;&#160;\-&#160;net.bytebuddy:byte-buddy:jar:1.12.19:test<br /></li><br />
-<li>de.lars-sh:utils:jar:0.9.17-SNAPSHOT<br />\-&#160;org.mockito:mockito-core:jar:4.11.0:test<br />&#160;&#160;&#160;\-&#160;net.bytebuddy:byte-buddy:jar:1.12.19:test<br /></li><br /></ol></td></tr>
+<li>de.lars-sh:parent-archetype:maven-archetype:0.9.18-SNAPSHOT<br />\-&#160;org.mockito:mockito-core:jar:4.11.0:test<br />&#160;&#160;&#160;\-&#160;net.bytebuddy:byte-buddy:jar:1.12.19:test<br /></li><br />
+<li>de.lars-sh:parent:pom:0.9.18-SNAPSHOT<br />\-&#160;org.mockito:mockito-core:jar:4.11.0:test<br />&#160;&#160;&#160;\-&#160;net.bytebuddy:byte-buddy:jar:1.12.19:test<br /></li><br />
+<li>de.lars-sh:root:pom:0.9.18-SNAPSHOT<br />\-&#160;org.mockito:mockito-core:jar:4.11.0:test<br />&#160;&#160;&#160;\-&#160;net.bytebuddy:byte-buddy:jar:1.12.19:test<br /></li><br />
+<li>de.lars-sh:utils-annotations:jar:0.9.18-SNAPSHOT<br />\-&#160;org.mockito:mockito-core:jar:4.11.0:test<br />&#160;&#160;&#160;\-&#160;net.bytebuddy:byte-buddy:jar:1.12.19:test<br /></li><br />
+<li>de.lars-sh:utils-test:jar:0.9.18-SNAPSHOT<br />\-&#160;org.mockito:mockito-core:jar:4.11.0:test<br />&#160;&#160;&#160;\-&#160;net.bytebuddy:byte-buddy:jar:1.12.19:test<br /></li><br />
+<li>de.lars-sh:utils:jar:0.9.18-SNAPSHOT<br />\-&#160;org.mockito:mockito-core:jar:4.11.0:test<br />&#160;&#160;&#160;\-&#160;net.bytebuddy:byte-buddy:jar:1.12.19:test<br /></li><br /></ol></td></tr>
 <tr class="a">
 <td>1.15.11</td>
 <td>
 <ol style="list-style-type: decimal;">
-<li>de.lars-sh:parent-archetype:maven-archetype:0.9.17-SNAPSHOT<br />\-&#160;org.assertj:assertj-core:jar:3.27.3:test<br />&#160;&#160;&#160;\-&#160;net.bytebuddy:byte-buddy:jar:1.15.11:test<br /></li><br />
-<li>de.lars-sh:parent:pom:0.9.17-SNAPSHOT<br />\-&#160;org.assertj:assertj-core:jar:3.27.3:test<br />&#160;&#160;&#160;\-&#160;net.bytebuddy:byte-buddy:jar:1.15.11:test<br /></li><br />
-<li>de.lars-sh:root:pom:0.9.17-SNAPSHOT<br />\-&#160;org.assertj:assertj-core:jar:3.27.3:test<br />&#160;&#160;&#160;\-&#160;net.bytebuddy:byte-buddy:jar:1.15.11:test<br /></li><br />
-<li>de.lars-sh:utils-annotations:jar:0.9.17-SNAPSHOT<br />\-&#160;org.assertj:assertj-core:jar:3.27.3:test<br />&#160;&#160;&#160;\-&#160;net.bytebuddy:byte-buddy:jar:1.15.11:test<br /></li><br />
-<li>de.lars-sh:utils-test:jar:0.9.17-SNAPSHOT<br />\-&#160;org.assertj:assertj-core:jar:3.27.3:test<br />&#160;&#160;&#160;\-&#160;net.bytebuddy:byte-buddy:jar:1.15.11:test<br /></li><br />
-<li>de.lars-sh:utils:jar:0.9.17-SNAPSHOT<br />\-&#160;org.assertj:assertj-core:jar:3.27.3:test<br />&#160;&#160;&#160;\-&#160;net.bytebuddy:byte-buddy:jar:1.15.11:test<br /></li><br /></ol></td></tr></table></td></tr></table></section></section>        </main>
+<li>de.lars-sh:parent-archetype:maven-archetype:0.9.18-SNAPSHOT<br />\-&#160;org.assertj:assertj-core:jar:3.27.3:test<br />&#160;&#160;&#160;\-&#160;net.bytebuddy:byte-buddy:jar:1.15.11:test<br /></li><br />
+<li>de.lars-sh:parent:pom:0.9.18-SNAPSHOT<br />\-&#160;org.assertj:assertj-core:jar:3.27.3:test<br />&#160;&#160;&#160;\-&#160;net.bytebuddy:byte-buddy:jar:1.15.11:test<br /></li><br />
+<li>de.lars-sh:root:pom:0.9.18-SNAPSHOT<br />\-&#160;org.assertj:assertj-core:jar:3.27.3:test<br />&#160;&#160;&#160;\-&#160;net.bytebuddy:byte-buddy:jar:1.15.11:test<br /></li><br />
+<li>de.lars-sh:utils-annotations:jar:0.9.18-SNAPSHOT<br />\-&#160;org.assertj:assertj-core:jar:3.27.3:test<br />&#160;&#160;&#160;\-&#160;net.bytebuddy:byte-buddy:jar:1.15.11:test<br /></li><br />
+<li>de.lars-sh:utils-test:jar:0.9.18-SNAPSHOT<br />\-&#160;org.assertj:assertj-core:jar:3.27.3:test<br />&#160;&#160;&#160;\-&#160;net.bytebuddy:byte-buddy:jar:1.15.11:test<br /></li><br />
+<li>de.lars-sh:utils:jar:0.9.18-SNAPSHOT<br />\-&#160;org.assertj:assertj-core:jar:3.27.3:test<br />&#160;&#160;&#160;\-&#160;net.bytebuddy:byte-buddy:jar:1.15.11:test<br /></li><br /></ol></td></tr></table></td></tr></table></section><section>
+<h3>org.junit.jupiter:junit-jupiter-api</h3>
+<table class="table table-striped">
+<tr class="a">
+<td><img src="images/icon_error_sml.gif" alt="[Error]" /></td>
+<td>
+<table class="table table-striped">
+<tr class="b">
+<td>5.11.4</td>
+<td>
+<ol style="list-style-type: decimal;">
+<li>de.lars-sh:utils:jar:0.9.18-SNAPSHOT<br />\-&#160;de.lars-sh:utils-test:jar:0.9.17-SNAPSHOT:test<br />&#160;&#160;&#160;\-&#160;org.junit.jupiter:junit-jupiter-api:jar:5.11.4:test<br /></li><br /></ol></td></tr>
+<tr class="a">
+<td>5.12.0</td>
+<td>
+<ol style="list-style-type: decimal;">
+<li>de.lars-sh:utils:jar:0.9.18-SNAPSHOT<br />+-&#160;org.junit.jupiter:junit-jupiter-api:jar:5.12.0:test<br />\-&#160;org.junit.jupiter:junit-jupiter-engine:jar:5.12.0:test<br />&#160;&#160;&#160;\-&#160;org.junit.jupiter:junit-jupiter-api:jar:5.12.0:test<br /></li><br /></ol></td></tr></table></td></tr></table></section></section>        </main>
       </div>
     </div>
     <hr/>
