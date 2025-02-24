@@ -2783,7 +2783,7 @@ deploy:
 				<dependency>
 					<groupId>org.junit.platform</groupId>
 					<artifactId>junit-platform-runner</artifactId>
-					<version>1.11.4</version>
+					<version>1.12.0</version>
 					<scope>test</scope>
 					<exclusions>
 						<exclusion>
