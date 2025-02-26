@@ -1662,11 +1662,6 @@ fi
 
 											<!-- Bad code style for non-null code -->
 											<exclude name="LiteralsFirstInComparisons" />
-
-											<!-- Simplify JUnit usage -->
-											<exclude name="JUnitAssertionsShouldIncludeMessage" />
-											<exclude name="JUnitTestContainsTooManyAsserts" />
-											<exclude name="JUnitTestsShouldIncludeAssert" />
 										</rule>
 
 										<rule ref="category/java/bestpractices.xml/AvoidReassigningLoopVariables">
