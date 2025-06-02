@@ -47,4 +47,22 @@
 		<Bug pattern="THROWS_METHOD_THROWS_CLAUSE_BASIC_EXCEPTION" />
 		<Class name="de.larssh.utils.time.Stopwatch" />
 	</Match>
+
+	<!-- Proxied* classes do not return java.util.Collection. This seems to be a false-positive of sb-contrib 7.6.10 instead. -->
+	<Match>
+		<Bug pattern="IMC_IMMATURE_CLASS_COLLECTION_RETURN" />
+		<Class name="de.larssh.utils.collection.ProxiedList" />
+	</Match>
+	<Match>
+		<Bug pattern="IMC_IMMATURE_CLASS_COLLECTION_RETURN" />
+		<Class name="de.larssh.utils.collection.ProxiedList$3" />
+	</Match>
+	<Match>
+		<Bug pattern="IMC_IMMATURE_CLASS_COLLECTION_RETURN" />
+		<Class name="de.larssh.utils.collection.ProxiedMap" />
+	</Match>
+	<Match>
+		<Bug pattern="IMC_IMMATURE_CLASS_COLLECTION_RETURN" />
+		<Class name="de.larssh.utils.collection.ProxiedSet" />
+	</Match>
 </FindBugsFilter>
