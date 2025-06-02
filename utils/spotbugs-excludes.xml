@@ -55,6 +55,10 @@
 	</Match>
 	<Match>
 		<Bug pattern="IMC_IMMATURE_CLASS_COLLECTION_RETURN" />
+		<Class name="de.larssh.utils.collection.ProxiedList$3" />
+	</Match>
+	<Match>
+		<Bug pattern="IMC_IMMATURE_CLASS_COLLECTION_RETURN" />
 		<Class name="de.larssh.utils.collection.ProxiedMap" />
 	</Match>
 	<Match>
