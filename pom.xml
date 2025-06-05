@@ -134,7 +134,7 @@
 		<parent.version>0.9.18-SNAPSHOT</parent.version>
 
 		<!-- Versions: Plugins -->
-		<build-helper-maven-plugin.version>3.6.0</build-helper-maven-plugin.version>
+		<build-helper-maven-plugin.version>3.6.1</build-helper-maven-plugin.version>
 		<formatter-maven-plugin.version>2.26.0</formatter-maven-plugin.version>
 		<jacoco-maven-plugin.version>0.8.13</jacoco-maven-plugin.version>
 		<lifecycle-mapping.version>1.0.0</lifecycle-mapping.version>
