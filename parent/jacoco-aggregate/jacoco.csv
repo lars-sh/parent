@@ -15,8 +15,8 @@ Parent POM/utils,de.larssh.utils,AutoCompletable,3,0,0,0,2,0,1,0,1,0
 Parent POM/utils,de.larssh.utils,Optionals,383,0,60,0,67,0,66,0,36,0
 Parent POM/utils,de.larssh.utils,SystemUtils,39,119,2,0,4,29,5,1,4,1
 Parent POM/utils,de.larssh.utils,OptionalLongs,175,0,34,0,17,0,35,0,18,0
-Parent POM/utils,de.larssh.utils,Finals,5,2,0,0,1,1,1,1,1,1
 Parent POM/utils,de.larssh.utils,Collectors,43,19,0,0,7,4,7,4,7,4
+Parent POM/utils,de.larssh.utils,Finals,5,2,0,0,1,1,1,1,1,1
 Parent POM/utils,de.larssh.utils,TooManyElementsException,5,0,0,0,2,0,1,0,1,0
 Parent POM/utils,de.larssh.utils,SneakyException,4,5,0,0,2,2,0,2,0,2
 Parent POM/utils,de.larssh.utils,CompletedException,5,0,0,0,2,0,1,0,1,0
@@ -30,8 +30,8 @@ Parent POM/utils,de.larssh.utils.collection,ProxiedList.new ProxiedListIterator(
 Parent POM/utils,de.larssh.utils.collection,ProxiedList.new ProxiedListIterator() {...},11,0,0,0,2,0,2,0,2,0
 Parent POM/utils,de.larssh.utils.collection,ProxiedList.new ProxiedList() {...},11,0,0,0,2,0,2,0,2,0
 Parent POM/utils,de.larssh.utils.collection,ProxiedMap.1.new ProxiedIterator() {...},22,0,0,0,3,0,3,0,3,0
-Parent POM/utils,de.larssh.utils.collection,ProxiedMap,108,0,2,0,24,0,21,0,20,0
 Parent POM/utils,de.larssh.utils.collection,ProxiedMap.new ProxiedCollection() {...},11,0,0,0,2,0,2,0,2,0
+Parent POM/utils,de.larssh.utils.collection,ProxiedMap,108,0,2,0,24,0,21,0,20,0
 Parent POM/utils,de.larssh.utils.collection,ProxiedMap.new ProxiedSet() {...},11,0,0,0,2,0,2,0,2,0
 Parent POM/utils,de.larssh.utils.collection,ProxiedMap.new ProxiedSet() {...},51,0,0,0,7,0,7,0,7,0
 Parent POM/utils,de.larssh.utils.collection,Maps.Builder,90,15,0,0,24,4,12,3,12,3
