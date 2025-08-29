@@ -1956,7 +1956,7 @@ jobs:
       - name: Check out
         uses: actions/checkout@v5
       - name: Set up JDK ${{ matrix.java-version }}
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           distribution: temurin
           java-version: ${{ matrix.java-version }}
@@ -2061,7 +2061,7 @@ jobs:
       - name: Check out
         uses: actions/checkout@v5
       - name: Set up JDK and Maven Central Repository
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           distribution: temurin
           java-version: 8
