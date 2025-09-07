@@ -52,11 +52,6 @@
 			<name>GitHub Packages</name>
 			<url>https://maven.pkg.github.com/${parent-pom.github.organization}/${parent-pom.github.project}</url>
 		</snapshotRepository>
-		<repository>
-			<id>ossrh</id>
-			<name>Sonatype Nexus Releases</name>
-			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
-		</repository>
 	</distributionManagement>
 
 	<properties>
@@ -86,6 +81,8 @@
 
 		<!-- Plugins -->
 		<aggregate>true</aggregate>
+		<central-publishing.autoPublish>true</central-publishing.autoPublish>
+		<central-publishing.waitUntil>published</central-publishing.waitUntil>
 		<checkstyle.config.location>${project.build.directory}/checkstyle.xml</checkstyle.config.location>
 		<checkstyle.consoleOutput>true</checkstyle.consoleOutput>
 		<!-- <cpd.excludeFromFailureFile>${project.basedir}/cpd-excludes.csv</cpd.excludeFromFailureFile> -->
@@ -107,7 +104,6 @@
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<maven.javadoc.failOnWarnings>true</maven.javadoc.failOnWarnings>
 		<maven.version.rules>file:///${project.build.directory}/versions-ruleset.xml</maven.version.rules>
-		<nexus-staging.autoReleaseAfterClose>true</nexus-staging.autoReleaseAfterClose>
 		<pmd-only.excludeFromFailureFile>${project.basedir}/pmd-excludes.properties</pmd-only.excludeFromFailureFile>
 		<pmd-only.printFailingErrors>true</pmd-only.printFailingErrors>
 		<pmd-only.ruleset>${project.build.directory}/pmd-ruleset.xml</pmd-only.ruleset>
@@ -135,6 +131,7 @@
 
 		<!-- Versions: Plugins -->
 		<build-helper-maven-plugin.version>3.6.1</build-helper-maven-plugin.version>
+		<central-publishing-maven-plugin.version>0.8.0</central-publishing-maven-plugin.version>
 		<formatter-maven-plugin.version>2.27.0</formatter-maven-plugin.version>
 		<jacoco-maven-plugin.version>0.8.13</jacoco-maven-plugin.version>
 		<lifecycle-mapping.version>1.0.0</lifecycle-mapping.version>
@@ -164,7 +161,6 @@
 		<maven-source-plugin.version>3.3.1</maven-source-plugin.version>
 		<maven-surefire-plugin.version>3.5.3</maven-surefire-plugin.version>
 		<maven-surefire-report-plugin.version>3.5.3</maven-surefire-report-plugin.version>
-		<nexus-staging-maven-plugin.version>1.7.0</nexus-staging-maven-plugin.version>
 		<properties-maven-plugin.version>1.2.1</properties-maven-plugin.version>
 		<spotbugs-maven-plugin.version>4.9.4.1</spotbugs-maven-plugin.version>
 		<tidy-maven-plugin.version>1.4.0</tidy-maven-plugin.version>
@@ -566,13 +562,12 @@
 					</dependencies>
 				</plugin>
 				<plugin>
-					<groupId>org.sonatype.plugins</groupId>
-					<artifactId>nexus-staging-maven-plugin</artifactId>
-					<version>${nexus-staging-maven-plugin.version}</version>
+					<groupId>org.sonatype.central</groupId>
+					<artifactId>central-publishing-maven-plugin</artifactId>
+					<version>${central-publishing-maven-plugin.version}</version>
 					<configuration>
-						<serverId>ossrh</serverId>
-						<nexusUrl>https://oss.sonatype.org/</nexusUrl>
-						<autoReleaseAfterClose>${nexus-staging.autoReleaseAfterClose}</autoReleaseAfterClose>
+						<autoPublish>${central-publishing.autoPublish}</autoPublish>
+						<waitUntil>${central-publishing.waitUntil}</waitUntil>
 					</configuration>
 				</plugin>
 			</plugins>
@@ -2067,15 +2062,15 @@ jobs:
           java-version: 8
           gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
           gpg-passphrase: GPG_PASSPHRASE
-          server-id: ossrh
-          server-username: OSSRH_USERNAME
-          server-password: OSSRH_TOKEN
+          server-id: central
+          server-username: CENTRAL_PUBLISHING_USERNAME
+          server-password: CENTRAL_PUBLISHING_TOKEN
       - name: Deploy
         run: mvn clean deploy --batch-mode --show-version
         env:
           GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
-          OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
-          OSSRH_TOKEN: ${{ secrets.OSSRH_TOKEN }}
+          CENTRAL_PUBLISHING_USERNAME: ${{ secrets.CENTRAL_PUBLISHING_USERNAME }}
+          CENTRAL_PUBLISHING_TOKEN: ${{ secrets.CENTRAL_PUBLISHING_TOKEN }}
 ]]></echo>
 							</target>
 						</configuration>
@@ -2513,8 +2508,8 @@ deploy:
 
 			<!-- Deployment -->
 			<plugin>
-				<groupId>org.sonatype.plugins</groupId>
-				<artifactId>nexus-staging-maven-plugin</artifactId>
+				<groupId>org.sonatype.central</groupId>
+				<artifactId>central-publishing-maven-plugin</artifactId>
 				<extensions>true</extensions>
 			</plugin>
 		</plugins>
