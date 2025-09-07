@@ -11,7 +11,7 @@ Download at [Maven Search](https://search.maven.org/search?q=g:de.lars-sh%20AND%
 * TODO
 
 ### Changed
-* TODO
+* The OSSRH integration was replaced by the Maven Central Repository. You will need to migrate existing `OSSRH_*` environment variables to `CENTRAL_PUBLISHING_*` and the Maven property `nexus-staging.autoReleaseAfterClose` was migrated to `central-publishing.autoPublish` and `central-publishing.waitUntil`.
 
 ### Fixed
 * TODO

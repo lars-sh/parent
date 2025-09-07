@@ -142,9 +142,9 @@ For both you will need to configure secrets inside your GitHub project. You can 
 
 `GPG_PASSPHRASE` is the passphrase for the specified private key and can be omitted if your private key comes with an empty passphrase.
 
-`OSSRH_USERNAME` is your OSSRH (Maven Central via Sonartype Nexus) username. It is used for the release action only.
+`CENTRAL_PUBLISHING_USERNAME` is your generated Maven Central Repository username. It is used for the release action only.
 
-`OSSRH_TOKEN` is an OSSRH (Maven Central via Sonartype Nexus) token. It is used for the release action only.
+`CENTRAL_PUBLISHING_TOKEN` is your generated Maven Central Repository token. It is used for the release action only.
 
 ### Skip Validations
 Upgrading existing projects to use this parent POM can be done step by step. As this parent specifies some strict rules, some validations might need to be skipped until others pass. The following sections describe the corresponding Maven Properties.
@@ -452,6 +452,8 @@ This parent POM either predefines existing Maven Properties or introduces some o
 
 ```
 aggregate:                                         true
+central-publishing.autoPublish:                    true
+central-publishing.waitUntil:                      published
 checkstyle.config.location:                        ${project.build.directory}/checkstyle.xml
 checkstyle.consoleOutput:                          true
 cpd.excludeFromFailureFile:                        ${project.basedir}/cpd-excludes.csv (if existing)
@@ -473,7 +475,6 @@ maven.compiler.source:                             1.8
 maven.compiler.target:                             1.8
 maven.javadoc.failOnWarnings:                      true
 maven.version.rules:                               file:///${project.build.directory}/versions-ruleset.xml
-nexus-staging.autoReleaseAfterClose:               true
 pmd-only.excludeFromFailureFile:                   ${project.basedir}/pmd-excludes.properties
 pmd-only.printFailingErrors:                       true
 pmd-only.ruleset:                                  ${project.build.directory}/pmd-ruleset.xml
