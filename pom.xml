@@ -164,7 +164,7 @@
 		<properties-maven-plugin.version>1.2.1</properties-maven-plugin.version>
 		<spotbugs-maven-plugin.version>4.9.6.0</spotbugs-maven-plugin.version>
 		<tidy-maven-plugin.version>1.4.0</tidy-maven-plugin.version>
-		<versions-maven-plugin.version>2.19.0</versions-maven-plugin.version>
+		<versions-maven-plugin.version>2.19.1</versions-maven-plugin.version>
 
 		<!-- Versions: Plugin Dependencies -->
 		<apache-ant.version>1.10.15</apache-ant.version>
