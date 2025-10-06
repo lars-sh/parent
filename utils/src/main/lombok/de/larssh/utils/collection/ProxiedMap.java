@@ -13,6 +13,7 @@ import de.larssh.utils.Finals;
 import de.larssh.utils.Nullables;
 import edu.umd.cs.findbugs.annotations.CheckForNull;
 import edu.umd.cs.findbugs.annotations.Nullable;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -75,6 +76,8 @@ public abstract class ProxiedMap<K, V> implements Map<K, V> {
 
 				/** {@inheritDoc} */
 				@Override
+				@SuppressFBWarnings(value = "FII_AVOID_TOARRAY_ON_COLLECTED_STREAM",
+						justification = "We need to fulfill the Set interface, thus calling a constructor on the generic is not possible.")
 				public <T> T[] toArray(@Nullable final T[] array) {
 					return stream() //
 							.map(entry -> new ProxiedEntry<>(this::isModifiable, entry))
