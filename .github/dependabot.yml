@@ -13,6 +13,8 @@ updates:
         versions: "[4.9.0,)"
       - dependency-name: com.github.spotbugs:spotbugs-annotations
         versions: "[4.9.0,)"
+      - dependency-name: com.puppycrawl.tools:checkstyle
+        versions: "[10.0.0,)"
       - dependency-name: org.junit.jupiter:junit-jupiter-api
         versions: "[6.0.0,)"
       - dependency-name: org.junit.jupiter:junit-jupiter-engine
