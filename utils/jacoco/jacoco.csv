@@ -59,7 +59,7 @@ Utilities,de.larssh.utils.text,NumericTextComparator,31,0,6,0,5,0,5,0,2,0
 Utilities,de.larssh.utils.text,Csv,201,13,8,0,41,2,24,1,20,1
 Utilities,de.larssh.utils.text,Characters,0,106,0,32,0,14,0,25,0,9
 Utilities,de.larssh.utils.text,SentenceFormatter,217,0,16,0,43,0,14,0,6,0
-Utilities,de.larssh.utils.text,CsvRow,66,0,6,0,13,0,9,0,6,0
+Utilities,de.larssh.utils.text,CsvRow,63,0,6,0,11,0,8,0,5,0
 Utilities,de.larssh.utils.text,Lines.GroupedLineType,34,0,0,0,4,0,1,0,1,0
 Utilities,de.larssh.utils.text,StringParseException,14,0,0,0,4,0,2,0,2,0
 Utilities,de.larssh.utils.text,Patterns,51,0,4,0,6,0,6,0,4,0
