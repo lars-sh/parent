@@ -24,6 +24,7 @@ import lombok.Getter;
  */
 @Getter
 @EqualsAndHashCode(callSuper = true)
+@SuppressFBWarnings(value = "CT_CONSTRUCTOR_THROW", justification = "The finalize method is deprecated since JDK 25")
 public class CsvRow extends ProxiedList<String> {
 	/**
 	 * Reference to the parent CSV object
@@ -63,15 +64,6 @@ public class CsvRow extends ProxiedList<String> {
 
 		this.csv = csv;
 		this.rowIndex = rowIndex;
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	@SuppressWarnings({ "deprecation", "checkstyle:NoFinalizer", "java:S1113", "PMD.FinalizeOnlyCallsSuperFinalize" })
-	@SuppressFBWarnings(value = { "BED_BOGUS_EXCEPTION_DECLARATION", "FI_USELESS" },
-			justification = "finalize implemented as final method to avoid finalizer attacks when throwing an exception in the constructor")
-	protected final void finalize() throws Throwable {
-		super.finalize();
 	}
 
 	/**
