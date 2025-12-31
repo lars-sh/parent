@@ -173,7 +173,7 @@
 		<findsecbugs.version>1.14.0</findsecbugs.version>
 		<lombok.version>1.18.42</lombok.version>
 		<org-eclipse-jdt-core.version>3.41.0</org-eclipse-jdt-core.version>
-		<pmd.version>7.19.0</pmd.version>
+		<pmd.version>7.20.0</pmd.version>
 		<spotbugs.version>4.8.6</spotbugs.version>
 		<spotbugs-annotations.version>4.8.6</spotbugs-annotations.version>
 
