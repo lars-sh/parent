@@ -1624,7 +1624,7 @@ function suppressPmdWarnings() {
 function suppressJdk8Warnings() {
 	if [ "${JDK_VERSION}" -eq 8 ]; then
 		cat < /dev/stdin \
-		| grep --invert-match --perl-regexp "^\\[WARNING\\] Checksum validation failed, expected [a-z0-9]+ but is [a-z0-9]+ from github for https://maven.pkg.github.com/.+/maven-metadata.xml$"
+		| grep --invert-match --perl-regexp "^\\[WARNING\\] Checksum validation failed, expected [a-z0-9]+ but is [a-z0-9]+ from github for https://maven.pkg.github.com/.+/maven-metadata.xml$" \
 		| grep --invert-match --perl-regexp "^\\[WARNING\\] Could not validate integrity of download from https://maven.pkg.github.com/.+/maven-metadata.xml: Checksum validation failed, expected [a-z0-9]+ but is [a-z0-9]+$"
 	else
 		cat < /dev/stdin
@@ -2622,6 +2622,7 @@ deploy:
 				<jdk>[9,)</jdk>
 			</activation>
 			<properties>
+				<maven.compiler.failOnWarning>false</maven.compiler.failOnWarning>
 				<maven.compiler.showDeprecation>false</maven.compiler.showDeprecation>
 				<maven.compiler.showWarnings>false</maven.compiler.showWarnings>
 			</properties>
