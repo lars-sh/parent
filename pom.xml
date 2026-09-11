@@ -469,6 +469,9 @@
 				<plugin>
 					<artifactId>maven-surefire-plugin</artifactId>
 					<version>${maven-surefire-plugin.version}</version>
+					<configuration>
+						<argLine>@{argLine} -javaagent:${org.mockito:mockito-core:jar}</argLine>
+					</configuration>
 				</plugin>
 				<plugin>
 					<artifactId>maven-surefire-report-plugin</artifactId>
@@ -2461,10 +2464,17 @@ deploy:
 				</executions>
 			</plugin>
 
-			<!-- Check for un/used dependencies -->
 			<plugin>
 				<artifactId>maven-dependency-plugin</artifactId>
 				<executions>
+					<!-- Read dependency paths to properties to be used for the Maven Surefire Plugin -->
+					<execution>
+						<goals>
+							<goal>properties</goal>
+						</goals>
+					</execution>
+
+					<!-- Check for un/used dependencies -->
 					<execution>
 						<goals>
 							<goal>analyze-only</goal>
