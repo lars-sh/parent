@@ -80,6 +80,7 @@
 		<eclipse.compiler.potentialNullReference>error</eclipse.compiler.potentialNullReference>
 
 		<!-- Plugins -->
+		<argLine />
 		<aggregate>true</aggregate>
 		<central-publishing.autoPublish>true</central-publishing.autoPublish>
 		<central-publishing.waitUntil>published</central-publishing.waitUntil>
