@@ -2469,6 +2469,7 @@ deploy:
 				<executions>
 					<!-- Read dependency paths to properties to be used for the Maven Surefire Plugin -->
 					<execution>
+						<id>properties</id>
 						<goals>
 							<goal>properties</goal>
 						</goals>
@@ -2476,6 +2477,7 @@ deploy:
 
 					<!-- Check for un/used dependencies -->
 					<execution>
+						<id>analyze-only</id>
 						<goals>
 							<goal>analyze-only</goal>
 						</goals>
